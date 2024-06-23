@@ -4,7 +4,25 @@ baseurl: ""
 url: "http://fsdv.eu.com"
 github_username: "PacoSanto"
 
-# Configurazione del tema
+# Build settings
 theme: minima
 plugins:
   - jekyll-feed
+
+# Author settings
+author:
+  name: "Francesco Santoro De Vico"
+  email: "francesco.santoro.geologo@gmail.com"
+
+# Social links
+social:
+  github: https://github.com/PacoSanto
+
+# Default values
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      author: "Francesco Santoro De Vico"

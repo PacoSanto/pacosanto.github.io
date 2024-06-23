@@ -9,36 +9,35 @@ If you have any way to help me make my wed site named fsdv.eu better please cont
 
 ## Project Structure
 
-/
-|-- _config.yml
+-- _config.yml
 
-|-- _data/
-|   |-- navigation.yml
+-- _data/
+   |-- navigation.yml
 
-|-- _includes/
-|   |-- header.html
+-- _includes/
+   |-- header.html
 
-|-- _layouts/
-|   |-- default.html
+-- _layouts/
+   |-- default.html
 
-|-- _posts/
-|   |-- Varipost.md
+-- _posts/
+   |-- Varipost.md
 
-|-- assets/
-|   |-- css/
-|       |-- main.css
-|       |-- dropdown.css
+-- assets/
+   |-- css/
+       |-- main.css
+       |-- dropdown.css
 
-|-- index.html
-|-- about.html
-|-- cv.html
-|-- community.html
-|-- about-my-research.html
-|-- news.html
-|-- music.html
-|-- football.html
-|-- photography.html
-|-- other.html
+-- index.html
+-- about.html
+-- cv.html
+-- community.html
+-- about-my-research.html
+-- news.html
+-- music.html
+-- football.html
+-- photography.html
+-- other.html
 
 
 # Installazione

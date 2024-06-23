@@ -5,7 +5,7 @@ baseurl: "" # Lascia vuoto per il sito principale
 url: "https://fsdv.eu" # URL del tuo sito
 github_username: "PacoSanto"
 markdown: kramdown
-theme: minima
+theme: forty-jekyll-theme
 
 author:
 street_address: Cuesta de alhacaba 7 y 9

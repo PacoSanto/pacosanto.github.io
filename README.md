@@ -11,20 +11,24 @@ If you have any way to help me make my wed site named fsdv.eu better please cont
 
 /
 |-- _config.yml
+
 |-- _data/
 |   |-- navigation.yml
+
 |-- _includes/
 |   |-- header.html
+
 |-- _layouts/
 |   |-- default.html
+
 |-- _posts/
-|   |-- 2024-06-25-self-cleaning.md
-|   |-- 2024-06-25-importanza-della-geologia.md
-|   |-- 2024-06-25-lenny-kravitz-musicista.md
+|   |-- Varipost.md
+
 |-- assets/
 |   |-- css/
 |       |-- main.css
 |       |-- dropdown.css
+
 |-- index.html
 |-- about.html
 |-- cv.html

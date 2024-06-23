@@ -8,149 +8,23 @@
     <link rel="stylesheet" href="style.css"> <!-- Collega un file CSS per il design -->
     <link rel="stylesheet" href="dropdown.css"> <!-- Collega un file CSS per il menu a tendina -->
 
-    <!-- Aggiungi lo script JavaScript qui -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Seleziona tutti gli elementi con la classe "dropdown"
-            var dropdowns = document.querySelectorAll('.dropdown');
+---
+layout: default
+title: Home
+---
 
-            // Aggiungi un gestore di eventi per ciascun elemento "dropdown"
-            dropdowns.forEach(function (dropdown) {
-                var link = dropdown.querySelector('a'); // Seleziona il link nell'elemento "dropdown"
-                var subMenu = dropdown.querySelector('.sub-menu'); // Seleziona il sottomenù
-
-                link.addEventListener('click', function (event) {
-                    event.preventDefault(); // Impedisci al link di navigare alla sua destinazione
-
-                    // Chiudi gli altri sottomenù
-                    dropdowns.forEach(function (otherDropdown) {
-                        if (otherDropdown !== dropdown) {
-                            otherDropdown.querySelector('.sub-menu').classList.remove('show');
-                        }
-                    });
-
-                    // Toggle della classe "show" per mostrare/nascondere il menu a tendina
-                    subMenu.classList.toggle('show');
-                });
-            });
-
-            // Gestisci la chiusura del sottomenù quando si fa clic al di fuori
-            document.addEventListener('click', function (event) {
-                var isDropdown = event.target.closest('.dropdown');
-
-                if (!isDropdown) {
-                    // Chiudi tutti i sottomenù quando si fa clic al di fuori
-                    dropdowns.forEach(function (dropdown) {
-                        dropdown.querySelector('.sub-menu').classList.remove('show');
-                    });
-                }
-            });
-        });
-    </script>
-</head>
-
-<body>
-    <header>
-        <h1>My Portfolio</h1>
-        <nav>
-            <ul>
-                <li><a href="#about">About me</a></li>
-                <li><a href="#cv">Curriculum</a></li>
-                <li><a href="#Article">Pubblication</a></li>
-				<li class="dropdown">
-					<a href="#Personal">Hobbies</a>
-					<ul class="sub-menu">
-                        <li><a href="#Foto">Photos</a></li>
-						<li><a href="#Music">Music</a></li>
-                        <li><a href="#Football">Football</a></li>
-                        <!-- Aggiungi ulteriori sottosezioni qui se necessario -->
-                    </ul>
-                </li>
-                <li><a href="#Blog">Blog</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-
-<section id="about" style="background-image: url('SUBLime_logo.png'); background-attachment: fixed;">
-    <h2>About Me</h2>
-    <p>Sono un ragazzo molto simpatico pieno di competenze. Sto imparando a scrivere in HTML.</p>
+<section id="introduction">
+  <h2>Benvenuto nel mio Portfolio</h2>
+  <p>Questa è una breve introduzione su di me e su cosa troverai nel mio sito.</p>
 </section>
 
-
-
-	<section id="about" style="position: relative; background-attachment: fixed; background-color: rgba(255, 255, 255, 0.8); height: 500px; overflow: hidden;">
-    <div class="background-image" style="background-image: url('SUBLime_logo.png'); height: 100%; position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: -1;"></div>
-    <div class="content" style="position: relative; z-index: 1;">
-	    <h2>About Me</h2>
-        <p> Francesco Santoro was born in 1994, but his growth was tragically interrupted at the age of 16, when he realized he wanted to devote himself to studying rather than to his two other youthful passions: karate and saxophone. Considered himself a "complete time waster" until the age of 21, Francesco then decided to apply his talent for geology in the direction of mineralogy. His work includes a Marie Curie doctorate still ongoing at the University of Granada and various social participations for representation from high school to doctorate, the possibility of having a thousand passions including music, climbing, meditative practices, combat sports and padel but not being able to finish even one of them, but rediscovering them sporadically from time to time. Lives around Europe based in Granada. Stubborn in following his bizarre ideas such as pushing to live near a sea to someday learn to fish, reviving the cult of calcite and its pillars, and creating scientific articles on stabilizing amorphous phases of prenucleation. He is trying to add his mother's family surname to his name, because it is nicer to read in the articles and more respectful to the family, but he is too lazy to do the paperwork and has only the surname on the scientific articles for now. He is in love with the cult of the International of Milano and considers the discovery of pasta as the greatest leap in human progress until the invention of the Internet. Many people see him not just as a geologist but more as a building materials expert living in Granada for work, but his neighbors wish he didn't because of playing vinyls with peculiar tastes.
-		</p>
-	</div>
-    </section>
-
-
-    <section id="Curriculum">
-        <h1>Curriculum Vitae</h1>
-		<h2>2023</h2>
-        <div class="image-and-text">
-            <img src="SUBLime_logo.png" width="25%" height="25%" alt="SUBLime logo" class="left-image">
-        <div class="text">
-            <h3>Sublime Project 1</h3>
-            <p>Description of Project and ESR3.</p>
-        </div>
-
-        <div class="project">
-            <img src="minions.jpeg" alt="minions">
-            <h3>New Project Job, YOU </h3>
-            <p>Description of Project.</p>
-        </div>
-        <!-- Aggiungi ulteriori progetti qui -->
-    </section>
-
-
-	<section id="Article">
-		<h1>Pubblication</h1>
-        <h2>2023</h2>
-        <ul>A physico-chemical study of lime-based mortars from different historical periods. Santoro De Vico­ Zagaroli, 2023. Nanoworld Journal, proceeding of CMSS23</ul>
-		<ul>A comparative study of the composition and physico-mechanical properties of bricks from different periods. Zagaroli-Santoro De Vico, 2023. Proceeding of 14NAMC</ul>
-		<ul>Additive impact on early-stage magnesium carbonate mineralization (under review. Journal article)</ul>
-    </section>
-	
-	<section id="Personal">
-        <h2>Hobbies</h2>
-        <p>Explore my hobbies here:</p>
-
-        <!-- Subsections for Hobbies -->
-        <section id="Foto">
-			<h2>My Photos</h2>
-			<div class="image-and-text">
-				<img src="juzalink.jpg" alt="juzaQR" width="10%" height="10%" class="left-image">
-				<div class="text">
-					<p>A brief introduction it's really complicated now.</p>
-					<p>For now you can check out <a href="www.juzaphoto.com/p/PacoSanto">this link</a> or you can scan the QR code in the photo.</p>
-				</div>
-			</div>
-        </section>
-
-        <section id="Music">
-            <h3>Music</h3>
-            <p>Share your musical interests and creations. spotify playlists</p>
-        </section>
-
-        <section id="Football">
-            <h3>Football</h3>
-            <p>Talk about your passion for football. Inter &#128420;&#128153; </p>
-        </section>
-        <!-- Add more subsections as needed -->
-    </section>
-
-	
-	<section id="Blog">
-        <h2>Blog section</h2>
-        <p>I hope to have something to write. This is not a blog but my "social" page in which I will write things and if you have something to say, you can send me a message on What's up.</p>
-    </section>
-
+<section id="about">
+  <div class="background-image" style="background-image: url('path/to/about-background.jpg'); background-attachment: fixed;"></div>
+  <div class="content" style="background-color: rgba(255, 255, 255, 0.7);">
+    <h2>About Me</h2>
+    <p>Sono un ragazzo molto simpatico pieno di competenze. Sto imparando a scrivere in HTML.</p>
+  </div>
+</section>
 
     <section id="contact">
         <h2>Contact</h2>

@@ -1,0 +1,19 @@
+<header>
+  <h1><a href="{{ site.baseurl }}/">{{ site.title }}</a></h1>
+  <nav>
+    <ul>
+      {% for item in site.data.navigation.main %}
+        <li class="{% if item.sublinks %}dropdown{% endif %}">
+          <a href="{{ site.baseurl }}{{ item.link }}">{{ item.name }}</a>
+          {% if item.sublinks %}
+            <ul class="sub-menu">
+              {% for subitem in item.sublinks %}
+                <li><a href="{{ site.baseurl }}{{ subitem.link }}">{{ subitem.name }}</a></li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+</header>

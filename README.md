@@ -9,25 +9,33 @@ If you have any way to help me make my wed site named fsdv.eu better please cont
 
 ## Project Structure
 
-<p></p>
-<p>_config.yml: Main site configuration.</p>
-<p>_data/navigation.yml: Defines navigation links.</p>
-<p>_includes/header.html: Contains the HTML code for the header and navigation.</p>
-<p>_posts/: Contains blog posts. Example posts:</p>
-<p>2024-06-01-introduzione-alla-programmazione.md</p>
-<p>2024-06-15-analisi-dei-dati.md</p>
-<p>2024-07-01-intelligenza-artificiale.md</p>
-<p>_layouts/: Contains page layouts.</p>
-<p>index.html: The site homepage.</p>
-<p>about.html: About Me Section.</p>
-<p>cv.html: Curriculum Vitae Section.</p>
-<p>community.html: Community Section.</p>
-<p>about-my-research.html: About My Research Section.</p>
-<p>news.html: News Section.</p>
-<p>music.html: Music Section.</p>
-<p>football.html: Football Section.</p>
-<p>photography.html: Photography Section.</p>
-<p>other.html: Other Section.</p>
+/
+|-- _config.yml
+|-- _data/
+|   |-- navigation.yml
+|-- _includes/
+|   |-- header.html
+|-- _layouts/
+|   |-- default.html
+|-- _posts/
+|   |-- 2024-06-25-self-cleaning.md
+|   |-- 2024-06-25-importanza-della-geologia.md
+|   |-- 2024-06-25-lenny-kravitz-musicista.md
+|-- assets/
+|   |-- css/
+|       |-- main.css
+|       |-- dropdown.css
+|-- index.html
+|-- about.html
+|-- cv.html
+|-- community.html
+|-- about-my-research.html
+|-- news.html
+|-- music.html
+|-- football.html
+|-- photography.html
+|-- other.html
+
 
 # Installazione
 

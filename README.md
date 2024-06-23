@@ -45,7 +45,7 @@ If you have any way to help me make my wed site named fsdv.eu better please cont
 1. Per clonare il repository:
    ```sh
    https://github.com/ilTuoUsername/forty-jekyll-theme.git
-   A Jekyll version of the "Forty" theme by [HTML5 UP](https://html5up.net/).  
+   My Jekyll version of the "Forty" theme by [HTML5 UP](https://html5up.net/).  
 
 ![Forty Theme](assets/images/forty.jpg "Forty Theme")
    ```sh

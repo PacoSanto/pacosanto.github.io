@@ -1,0 +1,10 @@
+title: "Il Mio Portfolio"
+description: "Il mio sito portfolio utilizzando Forty Jekyll"
+baseurl: ""
+url: "http://fsdv.eu.com"
+github_username: "PacoSanto"
+
+# Configurazione del tema
+theme: minima
+plugins:
+  - jekyll-feed

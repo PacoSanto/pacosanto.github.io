@@ -1,3 +1,4 @@
+# site settings
 title: "Francesco Santoro De Vico Portfolio"
 description: "Benvenuti nel mio portfolio. Scopri di più su di me, i miei hobby e le mie passioni."
 baseurl: "" # Lascia vuoto per il sito principale
@@ -5,6 +6,16 @@ url: "https://fsdv.eu" # URL del tuo sito
 github_username: "PacoSanto"
 markdown: kramdown
 theme: minima
+
+author:
+street_address: Cuesta de alhacaba 7 y 9
+city: Granada
+zip_code: 18010
+country: Spain
+phone: (+39) 3200108001
+socials:
+  GitHub: https://github.com/PacoSanto
+  LinkedIn: https://www.linkedin.com/in/francesco-santoro-geo
 
 # Configurazione delle sezioni del sito
 sections:
@@ -34,7 +45,6 @@ sections:
         url: "/other.html"
   - name: "Contact"
     url: "/contact.html"
-
 
 # Forty theme settings
 intro: "Welcome to Francesco Santoro De Vico portfolio website. Explore my work, my hobbies, and learn more about me."

@@ -1,10 +1,7 @@
-# Il Mio Portfolio
+# Francesco Santoro De Vico Portfolio code
 
-Questo è il mio portfolio personale costruito utilizzando il tema Forty Jekyll. 
+This is my personal portfolio built using the Forty Jekyll theme. I am neither a programmer, but just an overly curious geologist
 
-## Installazione
+## Help
 
-1. Clona il repository:
-   ```sh
-   git clone https://github.com/ilTuoUsername/forty-jekyll-theme.git
-   cd forty-jekyll-theme
+If you have any way to help me make my wed site named fsdv.eu better please contact me by e-mail at francescosantoro@go.ugr.es . 

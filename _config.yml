@@ -1,28 +1,41 @@
 title: "Francesco Santoro De Vico Portfolio"
-description: "Un portfolio personale su fsdv.eu"
-baseurl: ""
-url: "http://fsdv.eu.com"
+description: "Benvenuti nel mio portfolio. Scopri di più su di me, i miei hobby e le mie passioni."
+baseurl: "" # Lascia vuoto per il sito principale
+url: "https://fsdv.eu" # URL del tuo sito
 github_username: "PacoSanto"
-
-# Build settings
+markdown: kramdown
 theme: minima
-plugins:
-  - jekyll-feed
 
-# Author settings
-author:
-  name: "Francesco Santoro De Vico"
-  email: "francesco.santoro.geologo@gmail.com"
+# Configurazione delle sezioni del sito
+sections:
+  - name: "About"
+    url: "/about.html"
+  - name: "News"
+    url: "/news.html"
+  - name: "University"
+    url: "/university.html"
+    subsections:
+      - name: "CV"
+        url: "/cv.html"
+      - name: "Community"
+        url: "/community.html"
+      - name: "About My Research"
+        url: "/about-my-research.html"
+  - name: "Passion"
+    url: "/passion.html"
+    subsections:
+      - name: "Music"
+        url: "/music.html"
+      - name: "Football"
+        url: "/football.html"
+      - name: "Photography"
+        url: "/photography.html"
+      - name: "Other"
+        url: "/other.html"
+  - name: "Contact"
+    url: "/contact.html"
 
-# Social links
-social:
-  github: https://github.com/PacoSanto
 
-# Default values
-defaults:
-  - scope:
-      path: ""
-      type: posts
-    values:
-      layout: post
-      author: "Francesco Santoro De Vico"
+# Forty theme settings
+intro: "Welcome to Francesco Santoro De Vico portfolio website. Explore my work, my hobbies, and learn more about me."
+header_image: "assets/images/header.jpg" # Path to your header image

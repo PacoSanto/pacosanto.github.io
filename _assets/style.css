@@ -1,0 +1,95 @@
+/* Stile per il body */
+body {
+    font-family: 'Helvetica', sans-serif;
+    color: #333;
+    background-color: #e6e6e6;
+    margin: 0;
+    padding: 0;
+}
+
+/* Stile per l'header */
+header {
+    background-color: #574c4c;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+header h1 {
+    font-size: 24px;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/* Stile per le sezioni principali */
+section {
+    padding: 20px;
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+
+section h2 {
+    color: #574c4c;
+}
+
+p {
+    line-height: 1.5;
+}
+
+/* Stile per le sezioni con immagine di sfondo */
+section.with-background {
+    position: relative;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+section.with-background .content {
+    position: relative;
+    z-index: 2;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 20px;
+}
+
+/* Stile per il menu a tendina */
+nav ul ul,
+.sub-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+li.dropdown:hover ul,
+.dropdown:hover .sub-menu {
+    display: block;
+}
+
+nav ul ul a,
+.sub-menu a {
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+    display: block;
+}
+
+nav ul ul a:hover,
+.sub-menu a:hover {
+    background-color: #f0f0f0;
+}
+

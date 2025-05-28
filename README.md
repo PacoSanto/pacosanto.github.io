@@ -5,7 +5,7 @@ This is my personal portfolio built using the Forty Jekyll theme. I am neither a
 ## Help
 
 Please help me customize the site by giving me advice on how to modify the configuration files and the contents of the _includes, _layouts, and _posts folders !!
-If you have any way to help me make my wed site named fsdv.eu better please contact me by e-mail at francescosantoro@go.ugr.es . 
+If you have any way to help me make my wed site named fsdv.eu better please contact me by e-mail at francesco.santoro@unipd.it . 
 
 ## Project Structure Wish
 

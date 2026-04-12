@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volcanic deposits from Mount Etna as lunar simulants — Francesco Santoro De Vico</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* ── Article-specific styles ── */
+        .article-body h2 {
+            margin-top: 2.4em;
+        }
+
+        .hero-img {
+            width: 100%;
+            max-height: 480px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 0.6em;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
+            border-radius: 12px;
+            padding: 2em 2.2em;
+            margin: 2em 0;
+            border-left: 4px solid #e8a838;
+            font-size: 1.05em;
+            line-height: 1.7;
+        }
+        .highlight-box strong {
+            color: #e8a838;
+        }
+
+        .key-number-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.2em;
+            margin: 2em 0;
+        }
+        .key-number {
+            background: #f5f0e8;
+            border-radius: 10px;
+            padding: 1.5em;
+            text-align: center;
+        }
+        .key-number .number {
+            font-size: 2.2em;
+            font-weight: 700;
+            color: #c0392b;
+            display: block;
+            line-height: 1.1;
+        }
+        .key-number .label {
+            font-size: 0.88em;
+            color: #555;
+            margin-top: 0.4em;
+            display: block;
+        }
+
+        .method-timeline {
+            position: relative;
+            padding-left: 2.5em;
+            margin: 2em 0;
+        }
+        .method-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0.7em;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #e8a838, #c0392b);
+            border-radius: 2px;
+        }
+        .method-step {
+            position: relative;
+            margin-bottom: 1.6em;
+            padding-left: 1em;
+        }
+        .method-step::before {
+            content: '';
+            position: absolute;
+            left: -1.95em;
+            top: 0.35em;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #e8a838;
+            border: 3px solid #fff;
+            box-shadow: 0 0 0 2px #e8a838;
+        }
+        .method-step h3 {
+            margin: 0 0 0.3em;
+            font-size: 1.05em;
+            color: #1a1a2e;
+        }
+        .method-step p {
+            margin: 0;
+            font-size: 0.95em;
+            color: #444;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5em 0;
+            font-size: 0.92em;
+        }
+        .comparison-table th {
+            background: #1a1a2e;
+            color: #e8a838;
+            padding: 0.8em 1em;
+            text-align: left;
+            font-weight: 600;
+        }
+        .comparison-table td {
+            padding: 0.7em 1em;
+            border-bottom: 1px solid #e0d8cc;
+        }
+        .comparison-table tr:nth-child(even) td {
+            background: #faf6f0;
+        }
+        .comparison-table .match {
+            color: #27ae60;
+            font-weight: 600;
+        }
+        .comparison-table .diff {
+            color: #c0392b;
+            font-weight: 600;
+        }
+
+        .callout {
+            background: #fdf6ec;
+            border: 1px solid #e8a838;
+            border-radius: 10px;
+            padding: 1.4em 1.6em;
+            margin: 1.5em 0;
+            font-size: 0.95em;
+        }
+        .callout .callout-title {
+            font-weight: 700;
+            color: #b87a00;
+            margin-bottom: 0.4em;
+        }
+    </style>
+</head>
+<body>
+    <div id="site-header"></div>
+
+    <main class="page-top">
+        <div class="container">
+            <a href="../publications.html" class="back-link">Back to Publications</a>
+
+            <div class="article-detail">
+                <div class="article-detail-header">
+                    <h1>Volcanic deposits from Mount Etna (Italy) as high-fidelity lunar simulants for ISRU applications</h1>
+                    <div class="article-meta">
+                        <span><strong>Year:</strong> 2026</span>
+                        <span><strong>Journal:</strong> Materials Today Advances, Vol. 29, 100678</span>
+                    </div>
+                </div>
+
+                <div class="article-body">
+                    <img class="hero-img" src="../img/articles/etna-simulants-hero.jpg" alt="Mount Etna volcanic deposits sampled for lunar simulant characterization">
+                    <p class="img-caption">Volcanic deposits sampled on Mount Etna for lunar simulant characterization.</p>
+
+                    <!-- ═══════════════════════════════════════ -->
+                    <h2>Why this research matters</h2>
+
+                    <p>Before we can build on the Moon, we need to practice on Earth — and that means finding rocks that genuinely resemble lunar soil. Only about 380 kg of real lunar material was brought back by the Apollo missions, and that is far too precious to crush inside a concrete mixer or feed into an oxygen-extraction reactor. Scientists therefore rely on <em>lunar simulants</em>: terrestrial materials that mimic the chemistry, mineralogy and grain-size of the real regolith closely enough to serve as stand-ins for engineering tests.</p>
+
+                    <p>The problem is that most existing simulants are produced in the United States, supply is limited, and European alternatives remain scarce. This is where Mount Etna enters the picture. Europe's largest active volcano sits at a tectonic crossroads — the Ionian oceanic lithosphere subducting beneath the Calabrian Arc — and its complex magmatic plumbing has generated an unusually wide compositional range of volcanic products, from tholeiitic to alkali basalts. Some of those products turn out to be remarkably close to what Apollo astronauts scooped up on the lunar highlands.</p>
+
+                    <div class="highlight-box">
+                        <strong>The core question:</strong> Can we find, right on the slopes of Etna, a natural volcanic deposit whose chemistry, mineralogy and grain-size distribution are close enough to real lunar regolith to serve as a high-fidelity simulant — and can that same material actually be processed into construction bricks and breathable oxygen through In-Situ Resource Utilization (ISRU) techniques?
+                    </div>
+
+                    <!-- ═══════════════════════════════════════ -->
+                    <h2>What we did</h2>
+
+                    <p>We collected samples from three geologically distinct sites on Etna, each representing a different volcanic environment that could mirror features we expect to find on the Moon:</p>
+
+                    <div class="method-timeline">
+                        <div class="method-step">
+                            <h3>🌋 Cisternazza Pit Crater (2 600 m a.s.l.)</h3>
+                            <p>A summit pit crater mantled by fresh pyroclastic fall deposits from the paroxysmal eruptions of the last four decades — unweathered, glassy material ideal for simulating impact-generated lunar regolith. Three samples collected (CL-2, CM-1, CM-3).</p>
+                        </div>
+                        <div class="method-step">
+                            <h3>🪨 Monte Nunziata Lava Tube (1 790 m a.s.l.)</h3>
+                            <p>Pyroclastic deposits behind the lining wall of an 1843-eruption lava tube — analogous to material that might accumulate inside lunar lava tubes, the prime candidates for future sheltered habitats. One sample (MN-1).</p>
+                        </div>
+                        <div class="method-step">
+                            <h3>🕳️ Tre Livelli Lava Tube System (1 625 m a.s.l.)</h3>
+                            <p>Basaltic samples from different levels of a multi-tiered 1792–93 lava tube, capturing the internal variability of tube-hosted flows — relevant because the Moon hosts extensive lava tube networks. Two samples (TL-4, TL-5).</p>
+                        </div>
+                    </div>
+
+                    <div class="article-image-grid">
+                        <div>
+                            <img src="../img/articles/etna-sample-1.jpg" alt="SEM image of volcanic glass fragment">
+                            <p class="img-caption">SEM image of volcanic glass fragment from CL-2.</p>
+                        </div>
+                        <div>
+                            <img src="../img/articles/etna-sample-2.jpg" alt="Comparison with Apollo 14 regolith composition">
+                            <p class="img-caption">Comparison with Apollo 14 regolith composition.</p>
+                        </div>
+                    </div>
+
+                    <p>We then subjected these samples to a comprehensive analytical workflow inspired by — but not limited to — the NASA protocol for simulant characterisation. The pipeline combined bulk chemical screening (XRF + principal component analysis), quantitative mineralogy (Rietveld-refined XRD), cross-validation (ICP-OES), morphological analysis (optical microscopy, SEM-EDS, particle-size distribution), hyperspectral imaging in the VIS-NIR range, and two practical ISRU tests: alkali-activated material synthesis (i.e. "lunar concrete") and solid-gas carbothermal reduction for oxygen/water extraction.</p>
+
+                    <!-- ═══════════════════════════════════════ -->
+                    <h2>Key findings</h2>
+
+                    <h3>1. Chemistry: a near-twin of Apollo 14</h3>
+
+                    <p>Principal component analysis of major-element XRF data immediately flagged sample <strong>CL2</strong> (Cisternazza pyroclastics) as the closest match to Apollo 14 highlands materials — specifically to sample 14259, a mature regolith collected 125 m west of the Apollo 14 Lunar Module on the Fra Mauro formation. The main compositional offset is higher alkali content (Na₂O ≈ 3.3 % vs 0.7 %; K₂O ≈ 1.8 % vs 0.5 %), which is expected: the Moon is depleted in volatile lithophile elements by a factor of 4–5 relative to Earth's primitive upper mantle.</p>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr><th>Oxide</th><th>CL2 (Etna)</th><th>14259 (Apollo 14)</th><th>Match?</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>SiO₂</td><td>47.5 %</td><td>48.1 %</td><td class="match">✓ excellent</td></tr>
+                            <tr><td>TiO₂</td><td>1.9 %</td><td>1.8 %</td><td class="match">✓ excellent</td></tr>
+                            <tr><td>Al₂O₃</td><td>16.4 %</td><td>17.0 %</td><td class="match">✓ excellent</td></tr>
+                            <tr><td>FeO<sub>tot</sub></td><td>11.7 %</td><td>10.1 %</td><td class="match">✓ good</td></tr>
+                            <tr><td>CaO</td><td>10.8 %</td><td>10.7 %</td><td class="match">✓ excellent</td></tr>
+                            <tr><td>MgO</td><td>5.5 %</td><td>9.3 %</td><td class="diff">△ lower</td></tr>
+                            <tr><td>Na₂O</td><td>3.3 %</td><td>0.7 %</td><td class="diff">△ higher (expected)</td></tr>
+                            <tr><td>K₂O</td><td>1.8 %</td><td>0.5 %</td><td class="diff">△ higher (expected)</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h3>2. Mineralogy: the right mineral cocktail, including 50 % glass</h3>
+
+                    <p>Rietveld-refined XRD showed CL2 carries a plagioclase-pyroxene-olivine assemblage with roughly <strong>50 % amorphous (glass) phase</strong> — strikingly close to the 47.7 % glass measured in Apollo 14259. That glass fraction is crucial: on the Moon, impact melting and explosive volcanism produce abundant glassy phases in the regolith, and any serious simulant must reproduce this feature. Sample TL5, despite acceptable chemistry, was disqualified because it lacked glass entirely (>55 % feldspar instead).</p>
+
+                    <h3>3. Spectral fingerprint: CL2 looks like lunar agglutinates</h3>
+
+                    <p>Hyperspectral analysis in the 0.4–2.5 µm range revealed that CL2's 1-µm absorption feature — diagnostic of Fe²⁺ in pyroxene and olivine — closely matches the spectral signature of the agglutinate-rich fraction of Apollo 14259. A PCA of spectral parameters (band centre, FWHM, asymmetry) confirmed this affinity. The slight ~30 nm offset in band minimum reflects the higher Ca content in Etna's augite compared with the low-Ca orthopyroxene dominant in the Apollo agglutinates.</p>
+
+                    <div class="callout">
+                        <div class="callout-title">🔬 What are agglutinates?</div>
+                        Agglutinates are clusters of mineral and rock fragments welded together by impact-generated glass. They can make up 60–70 % of a mature lunar soil and are a hallmark of prolonged space weathering. Their spectral resemblance to CL2 — a volcanic glass-rich pyroclastic — is expected because both consist of mineral fragments embedded in a glassy matrix.
+                    </div>
+
+                    <h3>4. Building with "Moon dust": up to 16.4 MPa compressive strength</h3>
+
+                    <p>Four alkali-activated formulations were prepared from CL2 powder and cured for 28 days at 25 °C and 65 % relative humidity. The best performer (sodium aluminate + sodium hydroxide, liquid/solid ratio 0.27) reached an average compressive strength of <strong>16.40 ± 3.36 MPa</strong>. Adding 3 % urea slightly reduced peak strength (14.50 MPa) but dramatically improved batch-to-batch consistency (coefficient of variation dropping from 20.5 % to 6.9 %) — a critical advantage for automated robotic construction on the Moon.</p>
+
+                    <p>On the Moon, where gravity is only 1/6 of Earth's, even a conservatively degraded material (accounting for vacuum and thermal cycling) would bear loads equivalent to a much stronger terrestrial concrete, making these values promising for habitats, landing pads and radiation shielding.</p>
+
+                    <h3>5. Oxygen and water extraction: comparable to certified simulants</h3>
+
+                    <p>CL2 was tested in a solid-gas carbothermal reduction plant at 1 100 °C for 8 hours using a H₂/CH₄ gas mixture. The CO extraction trend closely tracked those of certified highlands simulants NU-LHT-2M and LHS-1. CL2's higher ferrous-oxide content actually increased its reactivity with hydrogen, supporting faster reduction during hydrogen-only process steps — a practical advantage for ISRU oxygen production.</p>
+
+                    <div class="key-number-grid">
+                        <div class="key-number">
+                            <span class="number">~50 %</span>
+                            <span class="label">Amorphous glass in CL2, matching Apollo 14's 47.7 %</span>
+                        </div>
+                        <div class="key-number">
+                            <span class="number">16.4 MPa</span>
+                            <span class="label">Best compressive strength as alkali-activated material</span>
+                        </div>
+                        <div class="key-number">
+                            <span class="number">r = 0.84</span>
+                            <span class="label">Pearson correlation of grain-size distribution with Apollo 14259</span>
+                        </div>
+                        <div class="key-number">
+                            <span class="number">6 sites</span>
+                            <span class="label">sampled across lava tubes and pit craters on Etna</span>
+                        </div>
+                    </div>
+
+                    <!-- ═══════════════════════════════════════ -->
+                    <h2>Why Etna, and why now?</h2>
+
+                    <p>Mount Etna offers something no artificial blending plant can easily replicate: <em>natural compositional variability</em>. Its complex slab-edge geodynamics has produced both mare-like and highlands-like lithologies within a few kilometres of each other, and Sicilian law already classifies volcanic ash fallout as a reusable waste stream. That means tonnes of fresh simulant material can be sourced legally, sustainably and cheaply — right on the doorstep of European space agencies and research labs. As ISRU technologies mature and demand for large-volume testing grows, a readily accessible, high-fidelity natural simulant like CL2 could become an invaluable asset for the next phase of lunar exploration.</p>
+
+                    <!-- ═══════════════════════════════════════ -->
+                    <h2>Where to find the full paper</h2>
+                    <p>The full article is available at <a href="https://doi.org/10.1016/j.mtadv.2025.100678" target="_blank">doi.org/10.1016/j.mtadv.2025.100678</a>. You can also watch the <a href="https://youtu.be/orKbDZ7eTls" target="_blank">video interview</a> about this work.</p>
+                </div>
+
+                <div class="post-nav">
+                    <a href="../publications.html" class="back-link">Back to Publications</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="site-footer"></div>
+    <script src="../js/components.js"></script>
+</body>
+</html>

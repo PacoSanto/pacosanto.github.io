@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formation of micropillars on etched calcite — Francesco Santoro De Vico</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .article-body h2 {
+            margin-top: 2.4em;
+        }
+
+        .hero-img {
+            width: 100%;
+            max-height: 480px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 0.6em;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #0a2e1a 0%, #14402a 100%);
+            color: #e0e8e3;
+            border-radius: 12px;
+            padding: 2em 2.2em;
+            margin: 2em 0;
+            border-left: 4px solid #5dbb63;
+            font-size: 1.05em;
+            line-height: 1.7;
+        }
+        .highlight-box strong {
+            color: #8edd93;
+        }
+
+        .key-number-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.2em;
+            margin: 2em 0;
+        }
+        .key-number {
+            background: #f0f5f1;
+            border-radius: 10px;
+            padding: 1.5em;
+            text-align: center;
+        }
+        .key-number .number {
+            font-size: 2.2em;
+            font-weight: 700;
+            color: #2e7d32;
+            display: block;
+            line-height: 1.1;
+        }
+        .key-number .label {
+            font-size: 0.88em;
+            color: #555;
+            margin-top: 0.4em;
+            display: block;
+        }
+
+        .step-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.4em;
+            margin: 2em 0;
+        }
+        .step-card {
+            background: #fafaf5;
+            border: 1px solid #d8d4c8;
+            border-radius: 10px;
+            padding: 1.6em;
+        }
+        .step-card .step-num {
+            display: inline-block;
+            background: #2e7d32;
+            color: #fff;
+            width: 28px; height: 28px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-size: 0.85em;
+            font-weight: 700;
+            margin-bottom: 0.6em;
+        }
+        .step-card h3 {
+            margin: 0 0 0.4em;
+            font-size: 1.05em;
+            color: #1a1a1a;
+        }
+        .step-card p {
+            margin: 0;
+            font-size: 0.93em;
+            color: #444;
+            line-height: 1.6;
+        }
+
+        .callout {
+            background: #f3faf4;
+            border: 1px solid #5dbb63;
+            border-radius: 10px;
+            padding: 1.4em 1.6em;
+            margin: 1.5em 0;
+            font-size: 0.95em;
+        }
+        .callout .callout-title {
+            font-weight: 700;
+            color: #2e7d32;
+            margin-bottom: 0.4em;
+        }
+
+        .before-after {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 1em;
+            margin: 2em 0;
+            text-align: center;
+        }
+        .before-after .angle-box {
+            background: #f0f5f1;
+            border-radius: 12px;
+            padding: 1.5em 2em;
+        }
+        .before-after .angle-val {
+            font-size: 2.4em;
+            font-weight: 700;
+            display: block;
+        }
+        .before-after .hydro { color: #2e7d32; }
+        .before-after .hydra { color: #c0392b; }
+        .before-after .arrow {
+            font-size: 2em;
+            color: #888;
+        }
+        .before-after .angle-label {
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 0.3em;
+        }
+        @media (max-width: 600px) {
+            .before-after { grid-template-columns: 1fr; }
+            .before-after .arrow { transform: rotate(90deg); }
+        }
+    </style>
+</head>
+<body>
+    <div id="site-header"></div>
+
+    <main class="page-top">
+        <div class="container">
+            <a href="../publications.html" class="back-link">Back to Publications</a>
+
+            <div class="article-detail">
+                <div class="article-detail-header">
+                    <h1>Formation of micropillars on etched calcite and their biomimetic effect on wettability</h1>
+                    <div class="article-meta">
+                        <span><strong>Year:</strong> 2025</span>
+                        <span><strong>Journal:</strong> Materials &amp; Design, 255, 114214</span>
+                    </div>
+                </div>
+
+                <div class="article-body">
+                    <img class="hero-img" src="../img/articles/calcite-micropillars-hero.jpg" alt="SEM image of micropillars on etched calcite surfaces">
+                    <p class="img-caption">SEM image of micropillars formed on calcite surfaces after 24 h etching in ammonium chloride solution.</p>
+
+                    <!-- ═══════════════════════════════════════ -->
+                    <h2>Why this research matters</h2>
+
+                    <p>Marble facades, limestone cathedrals, lime-based plasters — a vast share of our architectural and sculptural heritage is made of calcite (CaCO₃). And calcite has an Achilles' heel: water. Rainwater, polluted or not, slowly dissolves calcium carbonate, eats away surface detail, and opens the pore network to salt damage, frost and biological colonisation. Protecting these surfaces has traditionally meant applying polymer coatings — siloxanes, polyacrylates, sometimes containing PFAS "forever chemicals" — that can trap moisture, alter the stone's breathability, and raise environmental concerns.</p>
+
+                    <p>Nature, however, solved the water-repellency problem long ago. The lotus leaf famously achieves superhydrophobicity (contact angle > 150°) not through chemistry alone, but through <em>surface architecture</em>: a dense bed of microscopic pillars that traps air pockets beneath water droplets and makes them bead up and roll off, carrying dirt away. Could we borrow this trick and apply it directly to calcite — without any polymer coating at all?</p>
+
+                    <div class="highlight-box">
+                        <strong>The idea:</strong> Use a simple ammonium chloride solution to etch the calcite surface and let the crystal's own anisotropic dissolution create a dense array of oriented micropillars — a biomimetic "fakir bed" that makes the originally hydrophilic stone nearly superhydrophobic, with no coating needed.
+                    </div>
+
+                    <!-- ═══════════════════════════════════════ -->
+                    <h2>What we did</h2>
+
+                    <p>We cleaved optical-quality Iceland spar calcite crystals to expose pristine {104} faces, then immersed them in a 1 M NH₄Cl solution and watched what happened — over minutes, hours and days — using a battery of complementary techniques:</p>
+
+                    <div class="step-cards">
+                        <div class="step-card">
+                            <div class="step-num">1</div>
+                            <h3>In situ AFM</h3>
+                            <p>We filmed the very first moments of etching at nanometre resolution inside a fluid-cell atomic force microscope, tracking individual etch pits as they nucleated, spread, and began to merge.</p>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-num">2</div>
+                            <h3>SEM / FESEM time series</h3>
+                            <p>Crystals etched for ½ h, 1 h, 2 h, 24 h and 90 h were imaged to capture the full lifecycle of micropillar formation, maturation and eventual over-etching.</p>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-num">3</div>
+                            <h3>ESEM condensation</h3>
+                            <p>We condensed water vapour directly onto flat and micropillared calcite inside an environmental SEM, watching how microdroplets interact with individual pillars.</p>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-num">4</div>
+                            <h3>Contact angle measurements</h3>
+                            <p>Macroscale sessile-drop tests quantified the wettability change at each etching stage — from hydrophilic to nearly superhydrophobic.</p>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-num">5</div>
+                            <h3>MATLAB modelling</h3>
+                            <p>A numerical simulation of etch-pit nucleation and coalescence reproduced the emergence of pillar-like topography, confirming the dissolution-based formation mechanism.</p>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-num">6</div>
+                            <h3>Durability tests</h3>
+                            <p>Sandpaper abrasion and prolonged water immersion challenged the micropillars' mechanical and chemical stability.</p>
+                        </div>
+                    </div>
+
+                    <div class="article-image-grid">
+                        <div>
+                            <img src="../img/articles/calcite-sample-1.jpg" alt="Detail of micropillar formation at different etching times">
+                            <p class="img-caption">Detail of micropillar formation at different etching stages.</p>
+                        </div>
+                        <div>
+                            <img src="../img/articles/calcite-sample-2.jpg" alt="Water contact angle measurements on etched surfaces">
+                            <p class="img-caption">Wettability measurements on treated surfaces.</p>
+                        </div>
+                    </div>
+
+                    <!-- ═══════════════════════════════════════ -->
+                    <h2>Key findings</h2>
+
+                    <h3>1. How the micropillars form: dissolution, not growth</h3>
+
+                    <p>Within 30 minutes of contact with NH₄Cl solution, rhombohedral etch pits appeared on the calcite surface. A crucial detail emerged under the AFM: obtuse steps of the pits became <em>rounded</em>, a signature of NH₄⁺ ions interacting with carbonate groups via hydrogen bonding. As etch pits deepened and spread, their coalescence left behind elevated islands — the embryonic micropillars. By 24 h, the entire crystal face was covered by a dense array of iso-oriented, c-axis-elongated pyramidal micropillars about 15–30 µm tall and 3–7 µm wide at their base, bounded by steep {1̄02} polar faces stabilised by ammonium adsorption.</p>
+
+                    <div class="callout">
+                        <div class="callout-title">🔑 The ammonium key</div>
+                        Control experiments with NaCl, KCl and LiCl produced no micropillars — only generic surface roughening. Different ammonium salts (bromide, iodide, nitrate) all generated micropillars. This proves the NH₄⁺ cation is the essential ingredient: its ability to hydrogen-bond with CO₃²⁻ groups in calcite's polar faces selectively stabilises the emerging pillar walls against further dissolution.
+                    </div>
+
+                    <h3>2. From hydrophilic to nearly superhydrophobic — without any coating</h3>
+
+                    <div class="before-after">
+                        <div class="angle-box">
+                            <span class="angle-val hydra">~60°</span>
+                            <div class="angle-label">Flat calcite — hydrophilic</div>
+                        </div>
+                        <div class="arrow">→</div>
+                        <div class="angle-box">
+                            <span class="angle-val hydro">~140°</span>
+                            <div class="angle-label">24 h etched — nearly superhydrophobic</div>
+                        </div>
+                    </div>
+
+                    <p>The flat (104) calcite surface starts with a contact angle of about 60° — clearly hydrophilic. After 24 h of etching, the micropillared surface pushes the contact angle up to <strong>138 ± 8°</strong>, entering the regime of near-superhydrophobicity. Cassie-Baxter modelling (predicted θ ≈ 148°) confirms that macroscopic water droplets sit on top of the pillar tips, resting on trapped air pockets — exactly like water on a lotus leaf. A Wenzel (fully-wetting) model fails entirely for these roughness values, proving that the Cassie-Baxter "fakir bed" state is responsible for the observed water repellency.</p>
+
+                    <p>Interestingly, ESEM showed that at the microscale, individual water microdroplets condensing from vapour <em>do</em> wet individual pillars — a behaviour shared by all micropillared superhydrophobic surfaces. The protection is therefore most effective against rain-type exposure (macroscopic droplets) rather than condensation.</p>
+
+                    <h3>3. How much material is removed?</h3>
+
+                    <p>For micropillars of ~25 µm height tilted at 45° to the surface, the normal surface recession is only about <strong>18 µm</strong>. That is a negligibly thin layer — far less invasive than the thermal decomposition zone left by laser surface texturing, and vastly less than typical stone erosion rates in polluted urban atmospheres over decades.</p>
+
+                    <h3>4. Durability</h3>
+
+                    <p>The micropillars survived 6 days of continuous immersion in water with no visible change in morphology or density. The aggressive sandpaper abrasion test (1 500 grit, 50 cycles) did erode the pillars — calcite is soft (Mohs 3) — but even then the surface remained hydrophobic due to the new roughness introduced by abrasion. Under realistic exposure conditions (no one drags sandpaper across cathedral walls), the treatment should be durable; retreatment after many years of weathering remains straightforward.</p>
+
+                    <div class="key-number-grid">
+                        <div class="key-number">
+                            <span class="number">~140°</span>
+                            <span class="label">Contact angle after 24 h etching (vs ~60° untreated)</span>
+                        </div>
+                        <div class="key-number">
+                            <span class="number">~18 µm</span>
+                            <span class="label">Surface recession — negligibly thin</span>
+                        </div>
+                        <div class="key-number">
+                            <span class="number">24 h</span>
+                            <span class="label">Optimal etching time for maximum pillar coverage</span>
+                        </div>
+                        <div class="key-number">
+                            <span class="number">0</span>
+                            <span class="label">Polymer coatings needed</span>
+                        </div>
+                    </div>
+
+                    <!-- ═══════════════════════════════════════ -->
+                    <h2>The bigger picture</h2>
+
+                    <p>This work demonstrates that a simple, cheap and safe etching solution — ammonium chloride dissolved in water — can turn the Achilles' heel of calcite (its tendency to dissolve) into a protective advantage. By letting the crystal dissolve in a controlled, anisotropic fashion, nature's own crystallography builds a biomimetic armour against future water attack, with no synthetic polymers, no PFAS, no laser, and no change in the stone's appearance.</p>
+
+                    <p>From a practical standpoint, the treatment could be delivered to irregularly shaped surfaces (statues, carved facades) via poultices soaked in the ammonium salt solution — left in place for 24 h, removed, and rinsed. Future research will test this on real stone (marble, limestone) and explore bonus effects such as antibacterial activity of the micropillared surface.</p>
+
+                    <!-- ═══════════════════════════════════════ -->
+                    <h2>Where to find the full paper</h2>
+                    <p>The full article is available at <a href="https://doi.org/10.1016/j.matdes.2025.114214" target="_blank">doi.org/10.1016/j.matdes.2025.114214</a>. You can also watch the <a href="https://youtu.be/orKbDZ7eTls" target="_blank">video interview</a> about this work.</p>
+                </div>
+
+                <div class="post-nav">
+                    <a href="../publications.html" class="back-link">Back to Publications</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="site-footer"></div>
+    <script src="../js/components.js"></script>
+</body>
+</html>

@@ -57,7 +57,7 @@
     + '<footer class="site-footer">'
     + '  <div class="container">'
     + '    <div class="footer-content">'
-    + '      <p>&copy; 2025 Francesco Santoro De Vico. All rights reserved.</p>'
+    + '      <p>&copy; 2026 Francesco Santoro De Vico. All rights reserved.</p>'
     + '      <ul class="footer-links">'
     + '        <li><a href="https://www.linkedin.com/in/francesco-santoro-geo/" target="_blank" rel="noopener">LinkedIn</a></li>'
     + '        <li><a href="https://github.com/PacoSanto" target="_blank" rel="noopener">GitHub</a></li>'

@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Last Frontier of Sight — Artemis II Visual Legacy</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+
+        /* ── Dark page override ── */
+        body.dark-page {
+        background-color: #0a0a0f;
+        color: #e8e8e8;
+        }
+
+        /* ── Hero (post-specific) ── */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 92vh;
+            min-height: 500px;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            margin-top: var(--nav-height);
+        }
+
+        .hero img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            filter: brightness(0.55);
+        }
+
+        .hero-overlay {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            padding: 3rem 6%;
+            background: linear-gradient(to top, rgba(10,10,15,0.95) 0%, transparent 100%);
+        }
+
+        .hero-meta {
+            font-family: 'Arial', sans-serif;
+            font-size: 0.78rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #7ab3d4;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(1.8rem, 4vw, 3.2rem);
+            font-weight: 400;
+            line-height: 1.25;
+            color: #f5f0e8;
+            max-width: 820px;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.01em;
+        }
+
+        .hero-caption {
+            font-size: 0.78rem;
+            color: #8a9aaa;
+            font-family: 'Arial', sans-serif;
+            font-style: italic;
+        }
+
+        /* ── Article Layout ── */
+        article {
+            max-width: 740px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem 6rem;
+        }
+
+        /* ── Drop Cap ── */
+        article > p:first-of-type::first-letter {
+            float: left;
+            font-size: 4.2rem;
+            line-height: 0.8;
+            margin: 0.1em 0.12em 0 0;
+            color: #7ab3d4;
+            font-family: 'Georgia', serif;
+        }
+
+        /* ── Paragraphs ── */
+        article p {
+            margin-bottom: 1.6rem;
+            color: #d4d4d8;
+        }
+
+        /* ── Section Headings ── */
+        article h2 {
+            font-size: 1.45rem;
+            font-weight: 400;
+            color: #c9e0f0;
+            margin: 3.5rem 0 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #1e3048;
+            letter-spacing: 0.01em;
+        }
+
+        article h3 {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #7ab3d4;
+            margin: 2.5rem 0 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* ── Inline Images ── */
+        .img-block {
+            margin: 2.8rem -2rem;
+        }
+
+        .img-block img {
+            width: 100%;
+            display: block;
+            border-radius: 3px;
+            filter: brightness(0.92) saturate(0.9);
+            transition: filter 0.4s;
+        }
+
+        .img-block img:hover { filter: brightness(1) saturate(1); }
+
+        .img-block figcaption {
+            font-size: 0.78rem;
+            color: #6a7a8a;
+            font-style: italic;
+            font-family: 'Arial', sans-serif;
+            margin-top: 0.6rem;
+            padding: 0 0.5rem;
+            border-left: 2px solid #1e3048;
+            padding-left: 0.8rem;
+        }
+
+        /* ── Pull Quote ── */
+        blockquote {
+            margin: 2.5rem 0;
+            padding: 1.5rem 2rem;
+            border-left: 3px solid #7ab3d4;
+            background: rgba(122,179,212,0.06);
+            border-radius: 0 4px 4px 0;
+        }
+
+        blockquote p {
+            font-size: 1.2rem;
+            color: #c9e0f0;
+            font-style: italic;
+            margin: 0;
+            line-height: 1.7;
+        }
+
+        blockquote cite {
+            display: block;
+            font-size: 0.78rem;
+            color: #6a7a8a;
+            font-style: normal;
+            margin-top: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* ── Image Grid (comparison) ── */
+        .img-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 2.8rem -2rem;
+        }
+
+        .img-grid figure img {
+            width: 100%;
+            display: block;
+            border-radius: 3px;
+            filter: brightness(0.88) saturate(0.85);
+            transition: filter 0.4s;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+        }
+
+        .img-grid figure img:hover { filter: brightness(1) saturate(1); }
+
+        .img-grid figcaption {
+            font-size: 0.72rem;
+            color: #6a7a8a;
+            font-style: italic;
+            font-family: 'Arial', sans-serif;
+            margin-top: 0.4rem;
+            padding-left: 0.5rem;
+            border-left: 2px solid #1e3048;
+        }
+
+        /* ── Divider ── */
+        .divider {
+            border: none;
+            border-top: 1px solid #1e2a3a;
+            margin: 3rem 0;
+        }
+
+        /* ── Sources ── */
+        .sources {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid #1e2a3a;
+            border-radius: 6px;
+            padding: 1.8rem 2rem;
+            margin-top: 3rem;
+        }
+
+        .sources h3 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .sources ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sources ul li {
+            padding: 0.4rem 0;
+            border-bottom: 1px solid #1a2230;
+            font-size: 0.85rem;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .sources ul li:last-child { border-bottom: none; }
+
+        .sources a {
+            color: #7ab3d4;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .sources a:hover {
+            color: #c9e8f5;
+            text-decoration: underline;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 640px) {
+            .img-block { margin: 2rem -0.5rem; }
+            .img-grid  { grid-template-columns: 1fr; margin: 2rem -0.5rem; }
+            .hero h1   { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body class="dark-page">
+
+    <!-- ① Header globale iniettato da components.js -->
+    <div id="site-header"></div>
+
+    <!-- Hero Image -->
+    <header class="hero">
+        <img
+            src="https://images-assets.nasa.gov/image/art002e010208/art002e010208~large.jpg?w=1920&h=1280&fit=clip&crop=faces%2Cfocalpoint"
+            alt="Artemis II — Earth rising beyond the lunar limb, captured by Orion's optical navigation cameras"
+            loading="eager"
+        >
+        <div class="hero-overlay">
+            <p class="hero-meta">Space &amp; Science &nbsp;·&nbsp; January 2025</p>
+            <h1>The Last Frontier of Sight:<br>
+                Artemis II's Visual Legacy and Humanity's New Mirror</h1>
+            <p class="hero-caption">
+                Earth beyond the lunar limb — Artemis II, Orion optical navigation cameras. Credit: NASA
+            </p>
+        </div>
+    </header>
+
+    <!-- Article Body -->
+    <article>
+
+        <!-- Introduction -->
+        <p>
+            Close your eyes for a moment and imagine the deafening roar slowly fading,
+            replaced by the nearly imperceptible hum of life-support systems. You are
+            aboard the Orion capsule. Through the small reinforced porthole, the darkness
+            surrounding you is not a void but a dense, velvety presence, broken only by
+            a quality of light you have never encountered on Earth. Then, there it is:
+            the Moon. No longer a flat silver disc in the night sky, but a three-dimensional
+            world of titanic proportions — an expanse of dust and craters that seems to have
+            been waiting for your gaze since the beginning of time. To photograph this moment
+            is not merely an act of technical documentation; it is a desperate and beautiful
+            attempt to capture the ineffable. The images of the Artemis II mission are not
+            simple high-resolution digital files; they are new chapters in a diary humanity
+            has been writing ever since it first raised its eyes to the sky. In this post,
+            we explore how these visions are changing, once again, our place in the universe.
+        </p>
+
+        <!-- Section 1 -->
+        <h2>Section 1 — The Historical Context: The Pillars of Our Perception</h2>
+
+        <p>
+            To understand the importance of Artemis II, you must first look back. The history
+            of space photography is, in truth, the history of our self-awareness. Three images
+            have acted as genuine "cosmic mirrors" for our species — each one arriving at a
+            moment when humanity needed to see itself from the outside.
+        </p>
+
+        <p>
+            The first is <strong>Earthrise</strong> (1968), taken by William Anders during
+            Apollo 8. As the crew orbited the Moon, the Earth suddenly appeared above the
+            lunar horizon: a fragile, vibrant blue marble against absolute nothingness.
+            That image gave birth to the modern environmental movement, forcing the world
+            to understand that we are all passengers aboard a finite and vulnerable
+            "Spaceship Earth."
+        </p>
+
+        <figure class="img-block">
+            <img
+                src="https://images-assets.nasa.gov/image/as08-14-2383/as08-14-2383~large.jpg"
+                alt="Earthrise — Earth rising above the lunar horizon, Apollo 8, 1968"
+                loading="lazy"
+            >
+            <figcaption>
+                <em>Earthrise</em> (Apollo 8, December 24, 1968). Photograph by William Anders.
+                The image widely credited with launching the modern environmental movement. Source: NASA.
+            </figcaption>
+        </figure>
+
+        <p>
+            A few years later, in 1972, the crew of Apollo 17 gave us the <strong>Blue Marble</strong>.
+            For the first time, the entire sunlit face of the Earth was visible in a single frame —
+            no borders, no nations, only swirling clouds and oceans. Then, in 1990, the Voyager 1
+            probe turned back from six billion kilometres away to capture the <strong>Pale Blue Dot</strong>.
+            As Carl Sagan wrote, Earth was reduced to "a mote of dust suspended in a sunbeam."
+            These photographs did not merely document space; they humbled our ego and inspired
+            our responsibility toward the only home we have ever known.
+        </p>
+
+        <blockquote>
+            <p>
+                "Look again at that dot. That's here. That's home. That's us."
+            </p>
+            <cite>— Carl Sagan, Pale Blue Dot: A Vision of the Human Future in Space, 1994</cite>
+        </blockquote>
+
+        <!-- Section 2 -->
+        <h2>Section 2 — The Photographs of Artemis II: Analysis of Image art002e010208</h2>
+
+        <p>
+            We arrive at the present. Artemis II delivers an image quality without precedent,
+            thanks to digital sensors that far surpass the sensitivity of the Hasselblad film
+            cameras used during the Apollo era. Examine this specific frame captured by Orion's
+            optical navigation cameras:
+        </p>
+
+        <figure class="img-block">
+            <img
+                src="https://images-assets.nasa.gov/image/art002e010208/art002e010208~large.jpg?w=1920&h=1280&fit=clip&crop=faces%2Cfocalpoint"
+                alt="Artemis II — Earth beyond the lunar limb, captured by Orion optical navigation cameras"
+                loading="lazy"
+            >
+            <figcaption>
+                A symphony of contrasts. In the foreground, the lunar limb reveals its rugged skin —
+                a regolith desert where every crater records the violence of deep geological time.
+                In the background, Earth emerges as a sapphire jewel set in ebony, reminding us
+                of the physical and metaphysical distance bridged by the crew.
+                (Source: NASA — Artemis II Multimedia)
+            </figcaption>
+        </figure>
+
+        <p>
+            In this image, the Moon is no longer a distant destination but a material
+            presence, almost tactile. The sharpness of surface details — small craters
+            nested within larger ones, razor-sharp shadows cast by the absence of
+            atmosphere — stands in deliberate contrast to the softness of the Earth
+            blurred in the distance. It is a composition that shouts "perspective."
+            It tells you that we have returned, but with new eyes: eyes capable of
+            capturing the nuances of lunar dust with a precision our grandparents
+            could only dream of. Every pixel is a data point; every shadow is a
+            story written in silence over billions of years.
+        </p>
+
+        <!-- Section 3 -->
+        <h2>Section 3 — Why These Images Change Everything: A Prospective View</h2>
+
+        <p>
+            The photographs of Artemis II are not merely "more beautiful" than their
+            predecessors; they are politically and socially revolutionary. For the
+            first time, we will see the Moon through the eyes of a mixed crew.
+            When Christina Koch or Victor Glover look out of that porthole, the image
+            that emerges speaks to the whole of humanity, not just a fraction of it.
+            This inclusivity forges a new aesthetic of exploration: no longer the
+            solitary "conqueror," but a team representative of Earth's diversity.
+        </p>
+
+        <p>
+            The cultural impact is immense. We live in the age of instant sharing.
+            If Apollo was documented through grainy footage transmitted with minutes
+            of delay, Artemis II allows us to experience space in 4K resolution —
+            vivid, immediate, almost visceral. This will transform the way the next
+            generation — the so-called <em>Artemis Generation</em> — perceives science.
+            Documentation becomes immersive. You```html
+            do not simply look at a photograph;
+            you feel yourself part of the journey. This "visual democratisation" of
+            space accelerates scientific curiosity and inspires careers in STEM fields
+            on a scale never seen before.
+        </p>
+
+        <p>
+            There is also a subtler shift happening. The Apollo photographs were taken
+            in an era of geopolitical competition, where the race to the Moon was a
+            proxy battle between superpowers. The images carried a flag — literally
+            and symbolically. The images of Artemis II are born in a different
+            context: international collaboration, commercial partnerships, and a
+            stated mission to return to the Moon not just to plant a flag, but to
+            learn how to <em>stay</em>. That intent is visible in how the photographs
+            are composed, shared, and discussed. They feel less like trophies and
+            more like dispatches from a long expedition that is only just beginning.
+        </p>
+
+        <!-- Section 4 -->
+        <h2>Section 4 — A Visual Dialogue Across Epochs</h2>
+
+        <p>
+            Comparing the historic shots with those of Artemis II is like observing
+            the evolution of human thought rendered in light. Where the Apollo images
+            carried the tone of almost mystical discovery, the current photographs
+            have the flavour of a <em>conscious return</em> — we know what we are
+            looking at, and we know why it matters.
+        </p>
+
+        <p>
+            The old photographs are saturated with the warm tones of analogue film,
+            heavy with the grain that reminds you a human hand loaded that cartridge
+            in a suit glove at the edge of the known world. The new images are cool,
+            precise, technically flawless — reflecting our current reliance on digital
+            technology to parse reality. Neither is superior; both are honest portraits
+            of the moment that produced them.
+        </p>
+
+        <div class="img-grid">
+            <figure>
+                <img
+                    src="https://images-assets.nasa.gov/image/as17-148-22727/as17-148-22727~large.jpg"
+                    alt="Blue Marble — Full Earth photographed by Apollo 17, 1972"
+                    loading="lazy"
+                >
+                <figcaption>
+                    <em>Blue Marble</em> (Apollo 17, December 7, 1972).
+                    The first photograph showing the fully illuminated Earth.
+                    An icon of planetary unity. Source: NASA.
+                </figcaption>
+            </figure>
+            <figure>
+                <img
+                    src="https://images-assets.nasa.gov/image/PIA23645/PIA23645~large.jpg"
+                    alt="Pale Blue Dot — Earth seen from Voyager 1, 1990, revisited"
+                    loading="lazy"
+                >
+                <figcaption>
+                    <em>Pale Blue Dot</em> revisited (Voyager 1, 1990 / reprocessed 2020).
+                    The vastness that puts everything in perspective.
+                    Source: NASA / JPL-Caltech.
+                </figcaption>
+            </figure>
+        </div>
+
+        <p>
+            What unites all these images — from Earthrise to the lunar limb of
+            Artemis II — is the involuntary emotion they provoke. No caption is
+            strictly necessary. The geometry of a small blue world against infinite
+            darkness does something to the human nervous system that no amount of
+            written description can replicate. It bypasses the rational mind and
+            speaks directly to something older, something that looked up at the
+            night sky long before we had language to describe what we saw.
+        </p>
+
+        <p>
+            Where the <strong>Blue Marble</strong> showed us who we were,
+            Artemis II shows us where we are going. And crucially, it shows us
+            that the journey is not reserved for a chosen few. The camera does
+            not lie about that. Every frame transmitted from Orion is a quiet,
+            insistent argument that the universe belongs to everyone willing to
+            look at it with honesty and wonder.
+        </p>
+
+        <hr class="divider">
+
+        <!-- Conclusion -->
+        <h2>Conclusion — To Photograph Space Is to Photograph Ourselves</h2>
+
+        <p>
+            Why do we keep pointing lenses into that silent void? Because
+            photographing space is the only way we have of seeing ourselves
+            clearly. Every Artemis II shot — every detail of the lunar surface
+            juxtaposed against our small blue home — is a reminder: we are
+            stardust that learned to use glass and light to admire its own
+            origins. These photographs remind us that, despite our divisions
+            on Earth, we are a single species bound by an inexhaustible
+            curiosity. Looking at the Moon through Artemis II, we are not
+            merely exploring a satellite; we are asking how far we can travel
+            without losing sight of who we truly are. The answer, it seems,
+            is written in every photograph we have ever taken from space.
+            It has always been the same answer. It is us, together, small
+            and extraordinary, suspended in the light.
+        </p>
+
+        <!-- Sources -->
+        <div class="sources">
+            <h3>Sources</h3>
+            <ul>
+                <li>
+                    <a href="https://www.nasa.gov/artemis-ii-multimedia/" target="_blank" rel="noopener">
+                        NASA — Artemis II Multimedia Official Page
+                    </a>
+                </li>
+                <li>
+                    <a href="https://images-assets.nasa.gov/image/art002e010208/art002e010208~large.jpg" target="_blank" rel="noopener">
+                        NASA Image Archive — Artemis II (art002e010208)
+                    </a>
+                </li>
+                <li>
+                    <a href="https://images-assets.nasa.gov/image/as08-14-2383/as08-14-2383~large.jpg" target="_blank" rel="noopener">
+                        NASA Image Archive — Earthrise, Apollo 8 (1968)
+                    </a>
+                </li>
+                <li>
+                    <a href="https://images-assets.nasa.gov/image/as17-148-22727/as17-148-22727~large.jpg" target="_blank" rel="noopener">
+                        NASA Image Archive — Blue Marble, Apollo 17 (1972)
+                    </a>
+                </li>
+                <li>
+                    <a href="https://images-assets.nasa.gov/image/PIA23645/PIA23645~large.jpg" target="_blank" rel="noopener">
+                        NASA / JPL-Caltech — Pale Blue Dot revisited (2020)
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Navigazione in fondo -->
+        <div class="post-nav">
+            <a href="../../hobbies/geology.html" class="back-link">← Back to Space &amp; Science</a>
+            <a href="../../hobbies.html" class="back-link">All Hobbies &amp; Blog</a>
+        </div>
+
+    </article>
+
+    <!-- ② Footer globale iniettato da components.js -->
+    <div id="site-footer"></div>
+
+    <!-- ③ Script components (percorso relativo dalla sottocartella posts/) -->
+    <script src="../../js/components.js"></script>
+
+</body>
+</html>

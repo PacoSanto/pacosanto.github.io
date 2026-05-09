@@ -124,6 +124,11 @@ p {
   padding: 0 var(--space-lg);
 }
 
+body.dark-page {
+    background-color: #0a0a0f;
+    color: #e8e8e8;
+}
+
 /* ============================================
    HEADER & NAVIGATION
    ============================================ */

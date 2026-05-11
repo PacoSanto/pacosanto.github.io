@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two Stars and a Storm — Inter Milan, 2024–2026</title>
+    <meta name="description" content="From Çalhanoğlu's tears to Chivu's triumph. The story of Inter Milan between the 20th scudetto (2024) and the 21st (2026): one second star, one Munich wound, one improbable resurrection.">
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        /* ── Dark background for the whole page ── */
+        body {
+            background-color: #0a0a0f;
+            color: #d4d4d8;
+        }
+
+        /* ── Hero (post-specific) ── */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 92vh;
+            min-height: 500px;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            margin-top: var(--nav-height);
+        }
+
+        .hero img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            filter: brightness(0.45);
+        }
+
+        .hero-overlay {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            padding: 3rem 6%;
+            background: linear-gradient(to top, rgba(5,5,20,0.97) 0%, transparent 100%);
+        }
+
+        .hero-meta {
+            font-family: 'Arial', sans-serif;
+            font-size: 0.78rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #4a90d9;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(1.8rem, 4vw, 3.2rem);
+            font-weight: 400;
+            line-height: 1.25;
+            color: #f5f0e8;
+            max-width: 880px;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.01em;
+        }
+
+        .hero h1 .gold {
+            color: #c9a84c;
+            font-style: italic;
+        }
+
+        .hero-caption {
+            font-size: 0.85rem;
+            color: #8a9aaa;
+            font-family: 'Arial', sans-serif;
+            font-style: italic;
+            max-width: 720px;
+            line-height: 1.6;
+        }
+
+        /* ── Article ── */
+        article {
+            max-width: 740px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem 6rem;
+            background-color: #0a0a0f;
+            color: #d4d4d8;
+        }
+
+        article > p:first-of-type::first-letter {
+            float: left;
+            font-size: 4.2rem;
+            line-height: 0.8;
+            margin: 0.1em 0.12em 0 0;
+            color: #4a90d9;
+            font-family: 'Georgia', serif;
+        }
+
+        article p {
+            margin-bottom: 1.6rem;
+            color: #d4d4d8;
+            line-height: 1.9;
+            font-family: 'Georgia', serif;
+            font-size: 1.02rem;
+        }
+
+        .chapter-mark {
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            font-size: 0.7rem;
+            color: #4a90d9;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin: 4rem 0 2rem;
+        }
+
+        .chapter-mark::before,
+        .chapter-mark::after {
+            content: '';
+            display: inline-block;
+            width: 50px;
+            height: 1px;
+            background: #1e3048;
+            vertical-align: middle;
+            margin: 0 1rem;
+        }
+
+        article h2 {
+            font-size: 1.55rem;
+            font-weight: 400;
+            color: #c9e0f0;
+            margin: 1.2rem 0 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #1e3048;
+            letter-spacing: 0.01em;
+            font-family: 'Georgia', serif;
+        }
+
+        article h3 {
+            font-size: 1.05rem;
+            font-weight: 400;
+            color: #4a90d9;
+            margin: 2.5rem 0 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* ── Inline Images ── */
+        .img-block { margin: 2.8rem -2rem; }
+
+        .img-block img {
+            width: 100%;
+            display: block;
+            border-radius: 3px;
+            filter: brightness(0.9) saturate(0.9);
+            transition: filter 0.4s;
+        }
+
+        .img-block img:hover { filter: brightness(1.05) saturate(1.05); }
+
+        .img-block figcaption {
+            font-size: 0.78rem;
+            color: #6a7a8a;
+            font-style: italic;
+            font-family: 'Arial', sans-serif;
+            margin-top: 0.6rem;
+            padding-left: 0.8rem;
+            border-left: 2px solid #1e3048;
+            line-height: 1.6;
+        }
+
+        .img-block figcaption .credit {
+            display: block;
+            font-style: normal;
+            color: #4a90d9;
+            margin-top: 0.4rem;
+            letter-spacing: 0.04em;
+            font-size: 0.72rem;
+        }
+
+        .img-block figcaption .credit a {
+            color: #4a90d9;
+            text-decoration: none;
+            border-bottom: 1px dotted #2a4868;
+        }
+        .img-block figcaption .credit a:hover { color: #c9e0f0; }
+
+        /* ── Pull Quote ── */
+        blockquote {
+            margin: 2.5rem 0;
+            padding: 1.5rem 2rem;
+            border-left: 3px solid #4a90d9;
+            background: rgba(74,144,217,0.06);
+            border-radius: 0 4px 4px 0;
+        }
+
+        blockquote.gold {
+            border-left-color: #c9a84c;
+            background: rgba(201,168,76,0.06);
+        }
+
+        blockquote p {
+            font-size: 1.2rem;
+            color: #c9e0f0;
+            font-style: italic;
+            margin: 0;
+            line-height: 1.7;
+            font-family: 'Georgia', serif;
+        }
+
+        blockquote cite {
+            display: block;
+            font-size: 0.78rem;
+            color: #6a7a8a;
+            font-style: normal;
+            margin-top: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* ── Stat Cards ── */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2.5rem 0;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid #1e2a3a;
+            border-radius: 6px;
+            padding: 1.2rem 1rem;
+            text-align: center;
+        }
+
+        .stat-card .stat-number {
+            font-family: 'Georgia', serif;
+            font-size: 2.2rem;
+            color: #c9a84c;
+            display: block;
+            line-height: 1;
+            margin-bottom: 0.4rem;
+        }
+
+        .stat-card.blue .stat-number  { color: #4a90d9; }
+        .stat-card.crimson .stat-number { color: #b04848; }
+
+        .stat-card .stat-label {
+            font-size: 0.74rem;
+            color: #6a7a8a;
+            font-family: 'Arial', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            line-height: 1.4;
+            display: block;
+        }
+
+        /* ── Season Scorecard ── */
+        .scorecard {
+            margin: 3rem -1rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            border: 1px solid #1e2a3a;
+            border-radius: 8px;
+            overflow: hidden;
+            background: rgba(255,255,255,0.02);
+        }
+
+        .scorecard-col { padding: 1.6rem 1.2rem; border-right: 1px solid #1e2a3a; }
+        .scorecard-col:last-child { border-right: none; }
+        .scorecard-col.peak    { background: rgba(201,168,76,0.04); }
+        .scorecard-col.fall    { background: rgba(176,72,72,0.04); }
+        .scorecard-col.rebirth { background: rgba(74,144,217,0.04); }
+
+        .scorecard-col .season-label {
+            font-family: 'Arial', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #6a7a8a;
+            margin-bottom: 0.3rem;
+        }
+
+        .scorecard-col .season-tag {
+            font-family: 'Georgia', serif;
+            font-size: 1.05rem;
+            color: #c9e0f0;
+            margin-bottom: 0.2rem;
+            font-style: italic;
+        }
+
+        .scorecard-col.peak    .season-tag { color: #c9a84c; }
+        .scorecard-col.fall    .season-tag { color: #b04848; }
+        .scorecard-col.rebirth .season-tag { color: #4a90d9; }
+
+        .scorecard-col .season-coach {
+            font-family: 'Arial', sans-serif;
+            font-size: 0.72rem;
+            color: #8a9aaa;
+            margin-bottom: 1.1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .scorecard-col ul { list-style: none; padding: 0; margin: 0; }
+
+        .scorecard-col ul li {
+            font-family: 'Arial', sans-serif;
+            font-size: 0.78rem;
+            color: #b8b8c0;
+            padding: 0.35rem 0;
+            border-bottom: 1px dotted #1a2230;
+            line-height: 1.4;
+        }
+
+        .scorecard-col ul li:last-child { border-bottom: none; }
+
+        .scorecard-col ul li strong {
+            display: block;
+            color: #f5f0e8;
+            font-weight: 400;
+            font-size: 0.92rem;
+            font-family: 'Georgia', serif;
+            margin-bottom: 0.1rem;
+        }
+
+        /* ── Timeline ── */
+        .moment-timeline {
+            margin: 2.5rem 0;
+            position: relative;
+            padding-left: 1.8rem;
+        }
+
+        .moment-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #4a90d9, #c9a84c, #b04848, #4a90d9);
+        }
+
+        .moment-item { position: relative; margin-bottom: 2rem; padding-left: 1rem; }
+
+        .moment-item::before {
+            content: '';
+            position: absolute;
+            left: -1.95rem; top: 0.4rem;
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            background: #4a90d9;
+            border: 2px solid #0a0a0f;
+            box-shadow: 0 0 0 2px #4a90d9;
+        }
+
+        .moment-item.gold::before    { background: #c9a84c; box-shadow: 0 0 0 2px #c9a84c; }
+        .moment-item.crimson::before { background: #b04848; box-shadow: 0 0 0 2px #b04848; }
+
+        .moment-item .moment-date {
+            font-family: 'Arial', sans-serif;
+            font-size: 0.74rem;
+            color: #4a90d9;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.3rem;
+        }
+
+        .moment-item.gold    .moment-date { color: #c9a84c; }
+        .moment-item.crimson .moment-date { color: #b04848; }
+
+        .moment-item h4 {
+            font-family: 'Georgia', serif;
+            font-size: 1.05rem;
+            color: #c9e0f0;
+            font-weight: 400;
+            margin-bottom: 0.4rem;
+        }
+
+        .moment-item p {
+            font-size: 0.92rem;
+            color: #8a9aaa;
+            margin-bottom: 0;
+            line-height: 1.7;
+            font-family: 'Georgia', serif;
+        }
+
+        /* ── Typographic Blocks ── */
+        .typo-block {
+            margin: 3rem -1.5rem;
+            padding: 2.5rem 2rem;
+            border-radius: 4px;
+            position: relative;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid #1e2a3a;
+            overflow: hidden;
+        }
+
+        .typo-block::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: var(--accent, #4a90d9);
+        }
+
+        .typo-block.gold    { --accent: #c9a84c; background: rgba(201,168,76,0.04); }
+        .typo-block.crimson { --accent: #b04848; background: rgba(176,72,72,0.04); }
+        .typo-block.blue    { --accent: #4a90d9; background: rgba(74,144,217,0.04); }
+
+        .typo-block .tb-meta {
+            font-family: 'Arial', sans-serif;
+            font-size: 0.72rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 0.3rem;
+        }
+
+        .typo-block .tb-place {
+            font-family: 'Arial', sans-serif;
+            font-size: 0.7rem;
+            color: #6a7a8a;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            margin-bottom: 1.5rem;
+        }
+
+        .typo-block .tb-headline {
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            font-size: clamp(1.4rem, 4vw, 1.85rem);
+            color: #f5f0e8;
+            line-height: 1.25;
+            margin: 0 0 1.5rem;
+            font-weight: 400;
+        }
+
+        .typo-block .tb-headline em { color: var(--accent); font-style: italic; }
+
+        .typo-block .tb-giant {
+            font-family: 'Georgia', serif;
+            font-size: clamp(4.2rem, 14vw, 6.4rem);
+            line-height: 0.9;
+            color: var(--accent);
+            font-weight: 400;
+            letter-spacing: -0.04em;
+            margin: 0.6rem 0 0.3rem;
+            text-align: center;
+        }
+
+        .typo-block .tb-giant.score {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 0.4em;
+            font-style: italic;
+        }
+
+        .typo-block .tb-giant .dash {
+            color: #6a7a8a;
+            font-size: 0.6em;
+            font-style: normal;
+        }
+
+        .typo-block .tb-sublabel {
+            font-family: 'Arial', sans-serif;
+            font-size: 0.72rem;
+            color: #8a9aaa;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+
+        .typo-block .tb-divider {
+            height: 1px;
+            background: #1e2a3a;
+            margin: 1.8rem 0 1.5rem;
+        }
+
+        .typo-block .tb-log {
+            font-family: 'Arial', sans-serif;
+            font-size: 0.85rem;
+            color: #b8b8c0;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .typo-block .tb-log li {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            padding: 0.45rem 0;
+            border-bottom: 1px dotted #1a2230;
+        }
+
+        .typo-block .tb-log li:last-child { border-bottom: none; }
+
+        .typo-block .tb-log .min {
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            color: var(--accent);
+            font-size: 0.95rem;
+            min-width: 2.6rem;
+            font-weight: 400;
+        }
+
+        .typo-block .tb-log .scorer { color: #d4d4d8; font-weight: 500; }
+
+        .typo-block .tb-log .note {
+            color: #6a7a8a;
+            font-size: 0.78rem;
+            font-style: italic;
+            margin-left: auto;
+            text-align: right;
+        }
+
+        .typo-block .tb-quote {
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            font-size: 0.98rem;
+            color: #c9e0f0;
+            margin-top: 1.5rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #1e2a3a;
+            line-height: 1.7;
+        }
+
+        .typo-block .tb-quote-cite {
+            display: block;
+            font-family: 'Arial', sans-serif;
+            font-style: normal;
+            font-size: 0.72rem;
+            color: #6a7a8a;
+            margin-top: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* ── Typographic Pair ── */
+        .typo-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 3rem -1.5rem;
+        }
+
+        .typo-pair .typo-block { margin: 0; padding: 1.8rem 1.4rem; }
+
+        .typo-pair .tb-name {
+            font-family: 'Georgia', serif;
+            font-size: 1.15rem;
+            color: #f5f0e8;
+            margin-bottom: 0.2rem;
+            font-style: italic;
+        }
+
+        .typo-pair .tb-role {
+            font-family: 'Arial', sans-serif;
+            font-size: 0.72rem;
+            color: #6a7a8a;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 1.4rem;
+        }
+
+        .typo-pair .tb-stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 1rem 0 1.2rem;
+            padding: 0.8rem 0;
+            border-top: 1px solid #1e2a3a;
+            border-bottom: 1px solid #1e2a3a;
+        }
+
+        .typo-pair .tb-stat-item { text-align: center; }
+
+        .typo-pair .tb-stat-num {
+            font-family: 'Georgia', serif;
+            font-size: 1.6rem;
+            color: var(--accent);
+            display: block;
+            line-height: 1;
+        }
+
+        .typo-pair .tb-stat-lbl {
+            font-family: 'Arial', sans-serif;
+            font-size: 0.62rem;
+            color: #6a7a8a;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-top: 0.3rem;
+        }
+
+        .typo-pair .tb-tagline {
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            font-size: 0.88rem;
+            color: #b8b8c0;
+            line-height: 1.55;
+        }
+
+        /* ── Divider ── */
+        .divider { border: none; border-top: 1px solid #1e2a3a; margin: 3rem 0; }
+
+        /* ── Sources ── */
+        .sources {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid #1e2a3a;
+            border-radius: 6px;
+            padding: 1.8rem 2rem;
+            margin-top: 3rem;
+        }
+
+        .sources h3 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: #c9e0f0;
+        }
+
+        .sources ul { list-style: none; padding: 0; }
+
+        .sources ul li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #1a2230;
+            font-size: 0.85rem;
+            font-family: 'Arial', sans-serif;
+            color: #b8b8c0;
+        }
+
+        .sources ul li:last-child { border-bottom: none; }
+
+        .sources ul li .src-meta {
+            display: block;
+            color: #6a7a8a;
+            font-size: 0.72rem;
+            margin-top: 0.2rem;
+            letter-spacing: 0.05em;
+        }
+
+        .sources a {
+            color: #4a90d9;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .sources a:hover { color: #c9e0f0; text-decoration: underline; }
+
+        /* ── Image Credits Note ── */
+        .image-credits-note {
+            background: rgba(74,144,217,0.04);
+            border-left: 2px solid #4a90d9;
+            padding: 1.2rem 1.5rem;
+            margin: 2.5rem 0 1.5rem;
+            font-family: 'Arial', sans-serif;
+            font-size: 0.8rem;
+            color: #b8b8c0;
+            line-height: 1.7;
+            border-radius: 0 3px 3px 0;
+        }
+
+        .image-credits-note strong { color: #c9e0f0; font-weight: 600; }
+
+        .image-credits-note code {
+            background: rgba(0,0,0,0.3);
+            padding: 0.1rem 0.4rem;
+            border-radius: 2px;
+            color: #c9a84c;
+            font-size: 0.85em;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 640px) {
+            .img-block   { margin: 2rem -0.5rem; }
+            .stat-grid   { grid-template-columns: 1fr 1fr; }
+            .scorecard   { grid-template-columns: 1fr; }
+            .scorecard-col { border-right: none; border-bottom: 1px solid #1e2a3a; }
+            .scorecard-col:last-child { border-bottom: none; }
+            .typo-pair   { grid-template-columns: 1fr; margin: 2rem -0.5rem; }
+            .typo-block  { margin-left: -0.5rem; margin-right: -0.5rem; padding: 1.8rem 1.4rem; }
+            .hero h1     { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ① Header globale iniettato da components.js -->
+    <div id="site-header"></div>
+
+    <!-- HERO -->
+    <header class="hero">
+        <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Stadio_Meazza.jpg/1280px-Stadio_Meazza.jpg"
+            alt="Stadio Giuseppe Meazza — San Siro, Milano"
+            loading="eager"
+        >
+        <div class="hero-overlay">
+            <p class="hero-meta">Sport &amp; Passions &nbsp;·&nbsp; May 2026</p>
+            <h1>Two Stars and a Storm:<br>
+                <span class="gold">Inter Milan, from Çalhanoğlu's Tears to Chivu's Triumph</span>
+            </h1>
+            <p class="hero-caption">
+                Three seasons. Two scudetti. One Champions League final that no one inside San Siro will ever forgive.
+                The story of Inter between April 2024 and May 2026 — when the Nerazzurri became champions, became broken, and became champions again.
+            </p>
+        </div>
+    </header>
+
+    <article>
+
+        <p>
+            There is a sound a city makes only when twenty years of waiting has finally ended. It is not a roar, exactly.
+            It is something rounder than that, almost domestic — the noise a thousand kitchens would make if they all
+            started weeping at the same time. Milan made that sound on the evening of 22 April 2024, when Hakan
+            Çalhanoğlu stepped to the spot in the eighty-first minute of the derby, lifted his eyes briefly toward a sky
+            he no longer trusted, and slotted the ball past Mike Maignan to put Inter two-nil up against the cousins.
+            The match would finish 2–1. The city would not stop crying until morning.
+        </p>
+
+        <p>
+            Two years and eleven days later, on the night of 3 May 2026, that same Hakan Çalhanoğlu stood in the centre
+            circle of San Siro and pointed up at the second star sewn onto his shirt. Beside it, freshly stitched, was a
+            new badge. It read: <em>21</em>. Twenty-first <em>scudetto</em>. Champions of Italy, again.
+        </p>
+
+        <p>
+            What happened in the twenty-five months between those two moments is one of the most operatic stories
+            Italian football has produced in a generation. A peak, a fall, a resurrection — three acts written by the
+            same dressing room, two managers with very different gravitational fields, and a board forced to make the
+            most consequential decision in the club's recent history while still tasting the dust of Munich on its
+            tongue. This is the story of Inter from the second star to the twenty-first.
+        </p>
+
+        <!-- Season Scorecard -->
+        <div class="scorecard" aria-label="Three seasons at a glance">
+            <div class="scorecard-col peak">
+                <div class="season-label">Season 1 — The Peak</div>
+                <div class="season-tag">2023–24</div>
+                <div class="season-coach">Simone Inzaghi · 6th major trophy</div>
+                <ul>
+                    <li><strong>20th Scudetto</strong>The Second Star</li>
+                    <li><strong>94 points</strong>+19 over Milan (2nd)</li>
+                    <li><strong>89 goals</strong>89 GF / 22 GA</li>
+                    <li><strong>5 games to spare</strong>title sealed in the derby</li>
+                </ul>
+            </div>
+            <div class="scorecard-col fall">
+                <div class="season-label">Season 2 — The Fall</div>
+                <div class="season-tag">2024–25</div>
+                <div class="season-coach">Inzaghi · everything to play for</div>
+                <ul>
+                    <li><strong>2nd in Serie A</strong>1 point behind Napoli</li>
+                    <li><strong>Coppa Italia</strong>out in the semi-finals (vs Milan)</li>
+                    <li><strong>Supercoppa</strong>lost final to Milan</li>
+                    <li><strong>UCL Final 0–5</strong>Munich, vs PSG</li>
+                </ul>
+            </div>
+            <div class="scorecard-col rebirth">
+                <div class="season-label">Season 3 — The Rebirth</div>
+                <div class="season-tag">2025–26</div>
+                <div class="season-coach">Cristian Chivu · rookie · 1st year</div>
+                <ul>
+                    <li><strong>21st Scudetto</strong>3 games to spare</li>
+                    <li><strong>82 goals scored</strong>+23 over next-best attack</li>
+                    <li><strong>Lautaro 16 · Thuram 13</strong>Esposito 9</li>
+                    <li><strong>Dimarco 18 assists</strong>Serie A record</li>
+                </ul>
+            </div>
+        </div>
+
+        <p class="chapter-mark">Chapter I · The Second Star</p>
+
+        <h2>I. April 2024 — The Symphony</h2>
+
+        <p>
+            When the histories of Italian football of the 2020s are written, the 2023–24 Inter season will be filed under
+            the same chapter as Sarri's Napoli of 2017–18 or the Conte Juventus of 2011–12: a dominant team playing what
+            looked, for nine months, like the most coherent football in Europe. Ninety-four points from a possible
+            114. Eighty-nine goals scored. The best defence in the league. The title sealed mathematically with five
+            games to spare — and not just sealed, but sealed in the derby, away from home, on the pitch the cousins
+            still call theirs even though both clubs share the lease.
+        </p>
+
+        <p>
+            Numbers on a page, though, are not what made that season feel different. What made it feel different was
+            this: for the first time since Mourinho's treble in 2010, you could watch Inter play a stretch of football
+            and recognise, without the help of statistics, that you were watching something complete. Yann Sommer
+            organised behind a back three of Pavard, Acerbi, and Bastoni that knew when to step and when to drop. Hakan
+            Çalhanoğlu played as the regista the entire team obeyed. Lautaro Martínez and Marcus Thuram fed each other
+            like brothers who finished one another's sentences. The wing-backs — Dumfries on the right, Dimarco on the
+            left — did not so much overlap as orbit. It was the kind of football that made television commentators stop
+            talking for whole minutes at a time.
+        </p>
+
+        <!-- TYPOGRAPHIC BLOCK A · The Penalty (gold) -->
+        <div class="typo-block gold" aria-label="The decisive penalty in the 2024 derby">
+            <p class="tb-meta">22 · 04 · 2024 — Derby della Madonnina</p>
+            <p class="tb-place">San Siro · Milan 1, Inter 2 · 81st minute</p>
+            <h3 class="tb-headline" style="margin-top:0;">
+                Çalhanoğlu steps up. Maignan dives. The ball goes <em>in</em>.
+            </h3>
+            <div class="tb-giant">81<span style="font-size:0.4em; vertical-align:0.5em;">′</span></div>
+            <p class="tb-sublabel">The minute that sealed the second star</p>
+            <div class="tb-divider"></div>
+            <p style="font-family:'Georgia',serif; font-size:0.95rem; color:#b8b8c0; line-height:1.75; margin:0;">
+                It is the rigore of his career. Not because it is well-struck — it is, but Çalhanoğlu has hit a hundred
+                better. It is the rigore of his career because of who is taking it (a Turk who came here from Milan),
+                where he is taking it (the Milan end of the cousins' stadium), what is on the line (the twentieth
+                <em>scudetto</em>, the second star), and who he is thinking about (his father Hüseyin, buried four
+                months earlier). He scores. He points at the sky. The Inter bench empties. Milan does not.
+            </p>
+            <p class="tb-quote">
+                "Papà, this one is for you. I know you are here with me. I will carry this star in my heart."
+                <span class="tb-quote-cite">— Hakan Çalhanoğlu, post-match interview</span>
+            </p>
+        </div>
+
+        <p>
+            And then there was Çalhanoğlu. To understand what he meant to that team — to that city — you have to remember
+            where he came from. He had crossed the Naviglio in 2021, free from Milan, accepting the courtship of the
+            sworn enemy in the most public way an Italian footballer can. For two years he was useful. By the third he
+            was indispensable. By the fourth, in 2023–24, he was the most important midfielder in Serie A, full stop —
+            a player whose passing maps looked like circuit diagrams and whose set-piece deliveries felt designed by
+            engineers. He scored thirteen goals in all competitions. He played the season of his life. He also lost his
+            father, Hüseyin, in December.
+        </p>
+
+        <p>
+            The penalty against Milan in the title derby was the first time most of the world saw him point at the sky.
+            It would not be the last.
+        </p>
+
+        <h3>What the Second Star Means</h3>
+
+        <p>
+            For non-Italian readers, a quick translation. In Calcio, a club earns the right to sew a small gold star
+            onto its shirt for every ten league titles won. Inter had been at one star since 1966, when Helenio
+            Herrera's <em>Grande Inter</em> had brought home the tenth. Reaching twenty meant catching Milan in the
+            historical reckoning — the cousins who had, until that night in April 2024, always insisted on holding the
+            symbolic upper hand of "more recent glory" in the city's bookkeeping. The 20th scudetto rearranged the
+            geography of Milanese football. It also placed Inter, definitively, as Italy's second club by titles, behind
+            only Juventus's thirty-six.
+        </p>
+
+        <p>
+            That is what was on the line in that derby. That is why a thousand kitchens cried at the same time.
+        </p>
+
+        <!-- San Siro image -->
+        <figure class="img-block">
+            <img
+                src="https://upload.wikimedia.org/wikipedia/commons/8/80/Scudo2009.jpg"
+                alt="Stadio Giuseppe Meazza (San Siro) — interior panorama"
+                loading="lazy"
+            >
+            <figcaption>
+                <em>La Scala del calcio.</em> The Stadio Giuseppe Meazza in the San Siro district of Milan — home,
+                since 1947, to both Inter and Milan, and the venue where the second star was sewn onto the shirt of
+                Italy's twenty-first champions.
+                <span class="credit">
+                    Photo: <em>Stadio Meazza</em> · Wikimedia Commons · free-to-reuse licence —
+                    <a href="https://upload.wikimedia.org/wikipedia/commons/8/80/Scudo2009.jpg" target="_blank" rel="noopener">file page</a>
+                </span>
+            </figcaption>
+        </figure>
+
+        <div class="stat-grid">
+            <div class="stat-card">
+                <span class="stat-number">20°</span>
+                <span class="stat-label">Scudetto · the Second Star</span>
+            </div>
+            <div class="stat-card blue">
+                <span class="stat-number">94</span>
+                <span class="stat-label">Points · 2023–24 Serie A</span>
+            </div>
+            <div class="stat-card blue">
+                <span class="stat-number">+19</span>
+                <span class="stat-label">Points clear of Milan (2nd)</span>
+            </div>
+        </div>
+
+        <p class="chapter-mark">Chapter II · The Storm</p>
+
+        <h2>II. 2024–25 — Inches and Heartbreak</h2>
+
+        <p>
+            Champions almost never repeat. The shape of a season changes the moment you enter it as the defending side:
+            opponents prepare for you with three days of video instead of three hours, midweek matches stack up like
+            bills, the bench you trusted last year is twelve months older and the legs notice. Inter, in 2024–25,
+            entered with another complication on top of the usual ones — a change of ownership.
+        </p>
+
+        <p>
+            On 22 May 2024, exactly one month after the second star was sewn on, Oaktree Capital Management took
+            control of the club following the default of Suning's €395 million loan from 2021. Giuseppe Marotta moved
+            from CEO to chairman. The structure stayed; the philosophy tilted, perceptibly, toward financial discipline.
+            Inter went into the new season older than they wanted to be and lighter than they should have been.
+        </p>
+
+        <p>
+            And yet, for thirty-seven of the season's matches, they were still magnificent. They beat Lazio 6–0 away.
+            They drew 4–4 with Juventus in October — possibly the most entertaining match Serie A produced all year.
+            They thrashed teams from set pieces. By the spring, with one month to go, three trophies were still live
+            on the table. The treble was not just a fan's daydream; it was on the calendar.
+        </p>
+
+        <p>
+            Then the wheels did not so much come off as quietly unscrew themselves, one after another, over six weeks.
+        </p>
+
+        <h3>The Three Wounds</h3>
+
+        <div class="moment-timeline">
+
+            <div class="moment-item crimson">
+                <div class="moment-date">2 January 2025 — Riyadh</div>
+                <h4>Supercoppa Italiana — Milan come from behind</h4>
+                <p>
+                    The Italian Super Cup final, played in Saudi Arabia. Inter lead 2–0 at half-time and concede three
+                    in the second half. Milan win 3–2. The first crack in the season's armour, and the first time the
+                    Nerazzurri have lost a Supercoppa final to Milan in a generation.
+                </p>
+            </div>
+
+            <div class="moment-item crimson">
+                <div class="moment-date">April 2025 — San Siro</div>
+                <h4>Coppa Italia semi-final — Milan, again</h4>
+                <p>
+                    Inter exit the Coppa Italia in the semi-finals, on aggregate, against Milan. Three trophies still
+                    alive becomes two. The mood at Appiano Gentile changes. Inzaghi keeps faith in the rotation, but the
+                    rotation is starting to look thin.
+                </p>
+            </div>
+
+            <div class="moment-item crimson">
+                <div class="moment-date">23 May 2025 — Stadio Maradona</div>
+                <h4>Serie A — Napoli win the Scudetto by a point</h4>
+                <p>
+                    On the final matchday, Napoli beat Cagliari 2–0 at the Maradona to clinch the title. Inter finish
+                    second on 81 points, one behind. It is the closest title race in Serie A in seven years, and the
+                    first <em>scudetto</em> the Nerazzurri have surrendered after winning it the year before since 2007.
+                </p>
+            </div>
+
+        </div>
+
+        <!-- TYPOGRAPHIC BLOCK B · The Munich Wound (crimson) -->
+        <div class="typo-block crimson" aria-label="The 2025 Champions League final">
+            <p class="tb-meta">31 · 05 · 2025 — UEFA Champions League Final</p>
+            <p class="tb-place">Allianz Arena · Munich, Germany</p>
+            <h3 class="tb-headline" style="margin-top:0; text-align:center;">
+                The biggest losing margin in any <em>European Cup final</em>, ever.
+            </h3>
+            <div class="tb-giant score">
+                <span>5</span><span class="dash">—</span><span>0</span>
+            </div>
+            <p class="tb-sublabel">PSG · Inter</p>
+            <div class="tb-divider"></div>
+            <ul class="tb-log">
+                <li><span class="min">12′</span><span class="scorer">Hakimi</span><span class="note">former Inter, muted celebration</span></li>
+                <li><span class="min">20′</span><span class="scorer">Doué</span><span class="note">first of two</span></li>
+                <li><span class="min">63′</span><span class="scorer">Doué</span><span class="note">19 years old, second goal</span></li>
+                <li><span class="min">73′</span><span class="scorer">Kvaratskhelia</span><span class="note">PSG bench storms the pitch</span></li>
+                <li><span class="min">87′</span><span class="scorer">Mayulu</span><span class="note">half the Nerazzurri curva has left</span></li>
+            </ul>
+            <p class="tb-quote">
+                "I leave with a heart full of love and full of pain. The pain of how it ended. The love for everything
+                else. Inter is not a place you forget."
+                <span class="tb-quote-cite">— Simone Inzaghi, farewell statement · early June 2025</span>
+            </p>
+        </div>
+
+        <!-- Allianz Arena image -->
+        <figure class="img-block">
+            <img
+                src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Allianz_Arena_2008-02-09.jpg"
+                alt="Allianz Arena — Munich, Germany"
+                loading="lazy"
+            >
+            <figcaption>
+                <em>The wound that would not close.</em> The Allianz Arena in Munich — venue of the 2025 UEFA
+                Champions League final. PSG 5–0 Inter. The largest defeat in European Cup final history.
+                <span class="credit">
+                    Photo: <em>Allianz Arena Luftbild</em> · Wikimedia Commons · free-to-reuse licence —
+                    <a href="https://upload.wikimedia.org/wikipedia/commons/e/e9/Allianz_Arena_2008-02-09.jpg" target="_blank" rel="noopener">file page</a>
+                </span>
+            </figcaption>
+        </figure>
+
+        <p>
+            Three days after Munich, Simone Inzaghi resigned by mutual consent. He flew to Saudi Arabia within the
+            week and signed a contract worth a reported $25 million per season at Al-Hilal. His four years at Inter
+            had produced six trophies — a Serie A title, two Coppe Italia, three Supercoppe — and two Champions
+            League finals. They had also produced a 5–0 in Munich. In Italian football, both numbers count, and the
+            second number, on the night of his goodbye, weighed more.
+        </p>
+
+        <p class="chapter-mark">Chapter III · The Rookie</p>
+
+        <h2>III. June 2025 — Choosing Chivu</h2>
+
+        <p>
+            With Inzaghi gone and the FIFA Club World Cup in the United States already on the horizon, Marotta and
+            Piero Ausilio had two weeks to choose a manager. The list of names that briefly orbited the project read
+            like a wish-list of European football: Cesc Fàbregas was sounded out at Como and politely declined to
+            entertain the conversation. A handful of established foreign coaches were considered. Italian newspapers
+            speculated for a fortnight in approximately every direction.
+        </p>
+
+        <p>
+            And then, on 9 June 2025, Inter announced Cristian Chivu.
+        </p>
+
+        <p>
+            For most fans outside Italy, the response was, reasonably, "<em>who?</em>". Chivu was forty-five years
+            old, Romanian, and had thirteen Serie A games of senior coaching experience to his name — accumulated in
+            a four-month stint at Parma earlier that year, where he had narrowly secured survival. Before Parma, his
+            entire post-playing CV was as a youth coach, mostly with Inter's own Primavera. The board was, in effect,
+            handing the post-Inzaghi rebuild to a man whose career on the touchline could, in 2025, still be measured
+            in weeks rather than seasons.
+        </p>
+
+        <p>
+            What the headlines missed was the rest of the dossier. Chivu had played 184 games for Inter between 2007
+            and 2014, three of which were in the 2010 treble. He had been on the pitch the night Mourinho's Inter
+            beat Bayern in Madrid for the Champions League trophy. He had been part of three consecutive Serie A titles. He knew the club's spine — the way Bastoni played, the way Lautaro listened,
+            the way San Siro on a Tuesday evening sounded different from San Siro on a Sunday afternoon. He had also
+            spent four years shaping Inter's youth, including the Primavera title in 2022, which meant the Pio Esposito
+            who would change everything that autumn was already a player Chivu had been writing on a chalkboard for
+            half a decade.
+        </p>
+
+        <blockquote>
+            <p>
+                "We have come back to our roots, to what <em>Interismo</em> means. Pride, loyalty, identity. Everything
+                else, we will build with our hands, day after day."
+            </p>
+            <cite>— Cristian Chivu, opening press conference · 14 June 2025</cite>
+        </blockquote>
+
+        <p>
+            The Italian press, in fairness, gave him roughly six weeks of patience. After three Serie A games of the
+            new season — including a 4–3 home defeat to Juventus and another to Napoli — Inter sat on three points
+            from a possible nine, their worst opening in fifteen years. The columnists wrote what columnists always
+            write: the project was too ambitious, the appointment too inexperienced, the squad too old, the coach too
+            new. The "end of an era" framing, which had begun the morning after Munich, hardened into an obituary in
+            September.
+        </p>
+
+        <p>
+            And then Chivu went on a seven-game winning run.
+        </p>
+
+        <!-- Chivu image -->
+        <figure class="img-block">
+            <img
+                src="https://numericalcio.wordpress.com/wp-content/uploads/2011/02/chivu.jpg"
+                alt="Cristian Chivu — Inter Milan player era"
+                loading="lazy"
+            >
+            <figcaption>
+                <em>The man who knew the dressing room.</em> Cristian Chivu during his playing years at Inter —
+                184 appearances, three <em>scudetti</em>, one Champions League. The same shirt, a different role.
+                <span class="credit">
+                    Photo: <em>Cristian Chivu 2010</em> · Wikimedia Commons · free-to-reuse licence —
+                    <a href="https://numericalcio.wordpress.com/wp-content/uploads/2011/02/chivu.jpg" target="_blank" rel="noopener">file page</a>
+                </span>
+            </figcaption>
+        </figure>
+
+        <p class="chapter-mark">Chapter IV · The Phoenix</p>
+
+        <h2>IV. The 21st — How They Got There</h2>
+
+        <p>
+            The tactical answer is that Chivu kept Inzaghi's 3-5-2 and made it more vertical. The same shape, the same
+            spine, the same three centre-backs — but with a higher defensive line, a more aggressive press, and a
+            permission to play forward that the previous regime had granted only situationally. The 3-5-2 stopped
+            being a system of careful possession and became a system of relentless ball recoveries in dangerous areas.
+        </p>
+
+        <p>
+            The personnel answer is that Chivu rotated less mechanically than his predecessor and, crucially, gave
+            Federico Dimarco something he had been quietly asking for since 2023: the right to finish football
+            matches. Under Inzaghi, the Italian wing-back had been substituted around the hour mark almost as a rule,
+            irrespective of how he was playing. Under Chivu, Dimarco played whole games. The result, by the end of
+            the season, was a Serie A record: <strong>eighteen assists</strong> from a defender — more than any other
+            player in the league at any position. He also weighed in with five goals.
+        </p>
+
+        <p>
+            The emotional answer, the one Pardo would tell you mattered most, is Pio Esposito. The 21-year-old
+            striker from Castellammare, who had been at Inter's youth setup since he was fourteen and who had never
+            played a minute of senior football for the first team before that summer, became Chivu's signature
+            decision. The coach took him to the Club World Cup in the United States, kept him in the senior squad
+            against the loan rumours from a dozen Serie A clubs, and gave him the kind of structured minutes that let
+            a young striker grow without breaking. By April, Pio Esposito had nine goals and six assists. He had also
+            become — in a way that would not have happened anywhere else, with anyone else — the bridge between the
+            old Inter and the new one.
+        </p>
+
+        <!-- TYPOGRAPHIC PAIR · Esposito + Dimarco -->
+        <div class="typo-pair">
+            <div class="typo-block blue">
+                <p class="tb-meta" style="margin-bottom:0.5rem;">The academy striker</p>
+                <p class="tb-name">Francesco Pio Esposito</p>
+                <p class="tb-role">21 years old · Centre-forward · Castellammare</p>
+                <div class="tb-stats">
+                    <div class="tb-stat-item">
+                        <span class="tb-stat-num">9</span>
+                        <span class="tb-stat-lbl">Goals</span>
+                    </div>
+                    <div class="tb-stat-item">
+                        <span class="tb-stat-num">6</span>
+                        <span class="tb-stat-lbl">Assists</span>
+                    </div>
+                    <div class="tb-stat-item">
+                        <span class="tb-stat-num">45</span>
+                        <span class="tb-stat-lbl">Apps</span>
+                    </div>
+                </div>
+                <p class="tb-tagline">
+                    The striker Chivu refused to send out on loan — and the symbol of the season's renewed identity.
+                </p>
+            </div>
+            <div class="typo-block gold">
+                <p class="tb-meta" style="margin-bottom:0.5rem;">The wing-back unleashed</p>
+                <p class="tb-name">Federico Dimarco</p>
+                <p class="tb-role">Wing-back · Italy international · Milan, born &amp; bred</p>
+                <div class="tb-stats">
+                    <div class="tb-stat-item">
+                        <span class="tb-stat-num">18</span>
+                        <span class="tb-stat-lbl">Assists</span>
+                    </div>
+                    <div class="tb-stat-item">
+                        <span class="tb-stat-num">5</span>
+                        <span class="tb-stat-lbl">Goals</span>
+                    </div>
+                    <div class="tb-stat-item">
+                        <span class="tb-stat-num">35</span>
+                        <span class="tb-stat-lbl">Apps</span>
+                    </div>
+                </div>
+                <p class="tb-tagline">
+                    The Serie A assists record for a defender. Freed from rotation, finally allowed to finish football matches.
+                </p>
+            </div>
+        </div>
+
+        <p>
+            Inter scored eighty-two league goals — twenty-three more than the next best attack (Como). Twenty-seven of
+            those goals came from set pieces. Nineteen came from headers, the highest tally in any of Europe's top
+            five leagues. Lautaro Martínez finished as Serie A's leading scorer with sixteen, his most productive
+            domestic season as captain. Marcus Thuram added thirteen. Ange-Yoan Bonny chipped in. Çalhanoğlu, less
+            visible in the goalscoring column than the year before, was once again the metronome the rest of the
+            machine ran on.
+        </p>
+
+        <p>
+            And then, on 3 May 2026, in the thirty-fifth round, with three matches still to play, Inter beat Parma 2–0
+            at San Siro. Chivu against the club he had coached for thirteen Serie A games the season before — a fixture
+            with the geometric symmetry of a Greek tragedy or a particularly well-arranged dinner party. <em>Suntem
+            made in Romania</em>, the song that lives in the away dressing room of Italy's twenty-first champions, was
+            played in Piazza del Duomo until two in the morning. It had not, as legend now likes to suggest, been
+            brought into the room by Chivu. Hakan Çalhanoğlu had introduced it to the squad months earlier — a Turkish
+            captain's small joke for his Romanian coach.
+        </p>
+
+        <!-- TYPOGRAPHIC BLOCK D · Chivu's Numbers (gold) -->
+        <div class="typo-block gold" aria-label="Chivu's debut season records">
+            <p class="tb-meta">3 · 05 · 2026 — Inter 2 — Parma 0</p>
+            <p class="tb-place">San Siro · Title clinched · 3 games to spare</p>
+            <h3 class="tb-headline" style="margin-top:0; text-align:center;">
+                Chivu wraps up the <em>21st scudetto</em> in 48 games. The second-fastest in the modern era.
+            </h3>
+            <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:1rem; margin: 1.5rem 0;">
+                <div style="text-align:center;">
+                    <div class="tb-giant" style="font-size:clamp(2.6rem, 8vw, 3.6rem); margin:0;">48</div>
+                    <p class="tb-sublabel" style="margin-top:0.2rem;">Games to title</p>
+                </div>
+                <div style="text-align:center;">
+                    <div class="tb-giant" style="font-size:clamp(2.6rem, 8vw, 3.6rem); margin:0;">74<span style="font-size:0.5em;">%</span></div>
+                    <p class="tb-sublabel" style="margin-top:0.2rem;">Win rate · Serie A</p>
+                </div>
+                <div style="text-align:center;">
+                    <div class="tb-giant" style="font-size:clamp(2.6rem, 8vw, 3.6rem); margin:0;">82</div>
+                    <p class="tb-sublabel" style="margin-top:0.2rem;">Goals scored</p>
+                </div>
+            </div>
+            <div class="tb-divider"></div>
+            <p style="font-family:'Georgia',serif; font-size:0.95rem; color:#b8b8c0; line-height:1.75; margin:0;">
+                First foreign coach to win Serie A since Mourinho in 2010. Second person ever to lift the
+                <em>scudetto</em> as both Inter player and Inter coach (after Castellazzi, 1937–38). Best win
+                percentage of any Inter manager with 25+ league matches in charge.
+            </p>
+            <p class="tb-quote">
+                "When I arrived, they wrote that this team was at the end of an era. But they were reborn, and they
+                found again the motivation to be what they had always been."
+                <span class="tb-quote-cite">— Cristian Chivu, after Parma · 3 May 2026</span>
+            </p>
+        </div>
+
+        <!-- Piazza del Duomo image -->
+        <figure class="img-block">
+            <img
+                src="https://media-assets.wired.it/photos/615da23d6c9f4d965efcf88a/master/w_1600,c_limit/ScudettoInter.jpg"
+                alt="Piazza del Duomo, Milano — celebration square"
+                loading="lazy"
+            >
+            <figcaption>
+                <em>The square that holds the city's memory.</em> Piazza del Duomo, Milan — where twenty thousand
+                voices sang until two in the morning on 3 May 2026, the night the twenty-first
+                <em>scudetto</em> came home.
+                <span class="credit">
+                    Photo: <em>Milano - piazza del Duomo</em> · Wikimedia Commons · free-to-reuse licence —
+                    <a href="https://media-assets.wired.it/photos/615da23d6c9f4d965efcf88a/master/w_1600,c_limit/ScudettoInter.jpg" target="_blank" rel="noopener">file page</a>
+                </span>
+            </figcaption>
+        </figure>
+
+        <p class="chapter-mark">Epilogue</p>
+
+        <h2>V. What the Two Stars Mean</h2>
+
+        <p>
+            There is a temptation, with stories like this one, to package it as a redemption arc. Munich was a wound;
+            San Siro on the third of May was the healing; the second star and the twenty-first sit side by side on
+            the chest forever. It tidies up nicely, and Italian football journalism has a long-standing fondness for
+            things tidied up nicely.
+        </p>
+
+        <p>
+            But it is not quite right. The 5–0 in Munich is not redeemed by the 21st <em>scudetto</em> any more than
+            the 20th was redeemed in advance by what was about to happen. The two scudetti, and the storm between
+            them, are simply part of the same continuous thing — the same group of players, mostly, the same
+            director's chair occupied in turn by two men who cared about the same shirt for very different reasons.
+            What changed between April 2024 and May 2026 was not the soul of the team. What changed was who the team
+            chose to listen to, and what they chose to remember.
+        </p>
+
+        <p>
+            Chivu, in his first season, became the first foreign coach to win Serie A since Mourinho in 2010 — the
+            last man, fittingly, to do it before him. He became the second person in the club's modern history (after
+            Armando Castellazzi in 1937–38) to win the <em>scudetto</em> as both player and coach of Inter. He
+            sealed the title at the second-fastest pace of any new manager in the modern era. Mourinho promised him a
+            text message when it happened. The text message, by all accounts, arrived.
+        </p>
+
+        <p>
+            In a few days — on 13 May 2026 — Chivu's Inter will play Lazio in the Coppa Italia final, with the
+            possibility of a domestic double sitting in front of them like a small second course. By the time you read
+            this, that match has either confirmed the season's range or merely punctuated it. Either way, the season
+            is already what it was always going to be: the year Inter remembered who they were.
+        </p>
+
+        <p>
+            And on the chest of every shirt in Piazza del Duomo that night, in the moments before the confetti
+            settled and the songs faded, there were two stars. The first one had been there since 1966. The second
+            had been there since the previous summer. Now there was a 21 stitched beside them — one short of the
+            third — and twenty thousand voices in the square singing, in the rough Italian of football fans
+            everywhere, that the journey to the next one had already begun.
+        </p>
+
+        <hr class="divider">
+
+            <div class="image-credits-note">
+                <strong>Image credits.</strong>
+                All photographs on this page come from Wikimedia Commons and are reproduced
+                under their respective free licences with attribution. They were sourced by
+                searching the Commons categories for each subject — stadiums, players, venues —
+                and selecting the clearest freely-licensed image available. The typographic
+                blocks exist where no licence-clean photograph of the specific moment could
+                be found: rather than borrow a copyrighted news image, the page tells those
+                stories in type. If something is wrong, <a href="../../contact.html">let me know</a>.
+          </div>
+
+        <div class="sources">
+            <h3>Sources &amp; Further Reading</h3>
+            <ul>
+                <li>
+                    <a href="https://www.inter.it/en/news/scudetto-inter-history-second-star" target="_blank" rel="noopener">
+                        Inter.it — From One Star to Another: Nerazzurri History
+                    </a>
+                    <span class="src-meta">Official club retrospective on the 20th scudetto and the second star · April 2024</span>
+                </li>
+                <li>
+                    <a href="https://www.inter.it/en/news/inter-champions-of-italy-scudetto-2026" target="_blank" rel="noopener">
+                        Inter.it — Inter, Champions of Italy for the 21st time
+                    </a>
+                    <span class="src-meta">Official statement on the 21st scudetto · May 2026</span>
+                </li>
+                <li>
+                    <a href="https://en.legaseriea.it/serie-a/news/chivu-the-man-who-shaped-inter-s-destiny" target="_blank" rel="noopener">
+                        Lega Serie A — Chivu, the Man Who Shaped Inter's Destiny
+                    </a>
+                    <span class="src-meta">Profile of Cristian Chivu's first season as head coach · May 2026</span>
+                </li>
+                <li>
+                    <a href="https://en.wikipedia.org/wiki/2025_UEFA_Champions_League_final" target="_blank" rel="noopener">
+                        Wikipedia — 2025 UEFA Champions League Final
+                    </a>
+                    <span class="src-meta">PSG 5–0 Inter Milan · Allianz Arena, Munich · 31 May 2025</span>
+                </li>
+                <li>
+                    <a href="https://www.cbssports.com/soccer/news/inter-win-scudetto-how-manager-cristian-chivu-was-able-to-restore-winning-mentality/" target="_blank" rel="noopener">
+                        CBS Sports — How Chivu Restored Inter's Winning Mentality
+                    </a>
+                    <span class="src-meta">Tactical and locker-room reportage on the 2025–26 turnaround</span>
+                </li>
+                <li>
+                    <a href="https://www.tntsports.co.uk/football/serie-a/2025-2026/cristian-chivu-inter-milan-scudetto-title-parma-ac-milan-juventus-napoli_sto23295394/story.shtml" target="_blank" rel="noopener">
+                        TNT Sports — How Rookie Chivu Outfoxed Coaching Giants
+                    </a>
+                    <span class="src-meta">On Chivu vs Allegri / Conte / Sarri / Gasperini / Spalletti</span>
+                </li>
+                <li>
+                    <a href="https://en.wikipedia.org/wiki/Inter_Milan" target="_blank" rel="noopener">
+                        Wikipedia — FC Internazionale Milano
+                    </a>
+                    <span class="src-meta">Club history, ownership, season summaries</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Navigazione in fondo -->
+        <div class="post-nav">
+            <a href="../../hobbies/other.html" class="back-link">← Back to Other</a>
+            <a href="../../hobbies.html" class="back-link">All Hobbies &amp; Blog</a>
+        </div>
+
+    </article>
+
+    <!-- ② Footer globale iniettato da components.js -->
+    <div id="site-footer"></div>
+
+    <!-- ③ Script components (percorso relativo dalla sottocartella posts/) -->
+    <script src="../../js/components.js"></script>
+
+</body>
+</html>

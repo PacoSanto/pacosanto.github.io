@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Sport of Giants: An Introduction to Grand Sumo — Francesco Santoro De Vico</title>
+    <meta name="description" content="An introduction to Grand Sumo — history, hierarchy, ceremony, kimarite, and the tournaments of 2025–2026. Discovered through NHK World Japan.">
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+
+        /* ══════════════════════════════════════════════
+           HERO
+        ══════════════════════════════════════════════ */
+        .post-hero {
+            position: relative;
+            width: 100%;
+            height: 72vh;
+            min-height: 440px;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            margin-top: var(--nav-height, 64px);
+        }
+
+        .post-hero img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 30%;
+            filter: brightness(0.52);
+        }
+
+        .post-hero-overlay {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            padding: 3rem 6%;
+            background: linear-gradient(to top,
+                rgba(245,240,232,0.98) 0%,
+                rgba(245,240,232,0.4) 55%,
+                transparent 100%);
+        }
+
+        .post-hero-meta {
+            font-family: var(--font-body, 'Inter', sans-serif);
+            font-size: 0.76rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--accent-alt, #4a8b7f);
+            margin-bottom: 0.9rem;
+        }
+
+        .post-hero h1 {
+            font-family: var(--font-display, 'Playfair Display', Georgia, serif);
+            font-size: clamp(1.9rem, 4.5vw, 3.2rem);
+            font-weight: 400;
+            line-height: 1.2;
+            color: var(--color-obsidian, #1a1a2e);
+            max-width: 860px;
+            margin-bottom: 0.9rem;
+        }
+
+        .post-hero h1 .highlight {
+              color: var(--color-purple, #8b5cf6);
+               font-style: italic;
+               text-shadow:
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
+        }
+
+        .post-hero-caption {
+            font-size: 0.76rem;
+            color: var(--text-secondary, #4a4a6a);
+            font-style: italic;
+        }
+
+        /* ══════════════════════════════════════════════
+           ARTICLE LAYOUT
+        ══════════════════════════════════════════════ */
+        article {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 4.5rem 1.5rem 7rem;
+        }
+
+        /* Drop cap */
+        article > p:first-of-type::first-letter {
+            float: left;
+            font-size: 4.4rem;
+            line-height: 0.78;
+            margin: 0.1em 0.14em 0 0;
+            color: var(--color-amber, #d4a03c);
+            font-family: var(--font-display, 'Playfair Display', Georgia, serif);
+        }
+
+        article p {
+            margin-bottom: 1.65rem;
+            color: var(--text-secondary, #4a4a6a);
+            line-height: 1.88;
+            font-size: 1.02rem;
+        }
+
+        /* Section headings */
+        article h2 {
+            font-family: var(--font-display, 'Playfair Display', Georgia, serif);
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: var(--text-primary, #1a1a2e);
+            margin: 4rem 0 1.4rem;
+            padding-bottom: 0.55rem;
+            border-bottom: 2px solid var(--color-amber, #d4a03c);
+        }
+
+        article h2::after { display: none; }
+
+        article h3 {
+            font-family: var(--font-body, 'Inter', sans-serif);
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--accent-alt, #4a8b7f);
+            margin: 2.8rem 0 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+        }
+
+        article h3::after { display: none; }
+
+        /* Tournament result heading */
+        article h4 {
+            font-family: var(--font-display, 'Playfair Display', Georgia, serif);
+            font-size: 1.15rem;
+            font-weight: 400;
+            color: var(--text-primary, #1a1a2e);
+            margin: 2.8rem 0 0.8rem;
+            padding-left: 1.1rem;
+            border-left: 3px solid var(--color-amber, #d4a03c);
+        }
+
+        /* Horizontal rule */
+        .divider {
+            border: none;
+            border-top: 1px solid var(--border, #e0ddd6);
+            margin: 3.5rem 0;
+        }
+
+        /* ══════════════════════════════════════════════
+           IMAGES
+        ══════════════════════════════════════════════ */
+        .img-block {
+            margin: 3rem -2rem;
+        }
+
+        .img-block img {
+            width: 100%;
+            display: block;
+            border-radius: var(--radius, 6px);
+            filter: brightness(0.94);
+            transition: filter 0.4s ease;
+        }
+
+        .img-block img:hover { filter: brightness(1); }
+
+        .img-block figcaption {
+            font-size: 0.77rem;
+            color: var(--text-light, #7a7a9a);
+            font-style: italic;
+            font-family: var(--font-body, 'Inter', sans-serif);
+            margin-top: 0.65rem;
+            padding-left: 0.9rem;
+            border-left: 2px solid var(--color-amber, #d4a03c);
+            line-height: 1.65;
+        }
+
+        .img-block figcaption .credit {
+            display: block;
+            font-style: normal;
+            color: var(--accent-alt, #4a8b7f);
+            margin-top: 0.3rem;
+            font-size: 0.7rem;
+            letter-spacing: 0.04em;
+        }
+
+        .img-block figcaption .credit a {
+            color: var(--accent-alt, #4a8b7f);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--border, #e0ddd6);
+        }
+
+        .img-block figcaption .credit a:hover {
+            color: var(--color-apatite-dark, #2d6b60);
+        }
+
+        /* 2-col image grid */
+        .img-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 3rem -2rem;
+        }
+
+        .img-grid figure { margin: 0; }
+
+        .img-grid figure img {
+            width: 100%;
+            display: block;
+            border-radius: var(--radius, 6px);
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            filter: brightness(0.90);
+            transition: filter 0.4s ease;
+        }
+
+        .img-grid figure img:hover { filter: brightness(1); }
+
+        .img-grid figcaption {
+            font-size: 0.72rem;
+            color: var(--text-light, #7a7a9a);
+            font-style: italic;
+            font-family: var(--font-body, 'Inter', sans-serif);
+            margin-top: 0.5rem;
+            padding-left: 0.6rem;
+            border-left: 2px solid var(--border, #e0ddd6);
+            line-height: 1.55;
+        }
+
+        /* ══════════════════════════════════════════════
+           PULL QUOTE
+        ══════════════════════════════════════════════ */
+        blockquote {
+            margin: 2.8rem 0;
+            padding: 1.6rem 2.2rem;
+            border-left: 3px solid var(--color-amber, #d4a03c);
+            background: rgba(212,160,60,0.045);
+            border-radius: 0 var(--radius, 6px) var(--radius, 6px) 0;
+        }
+
+        blockquote p {
+            font-size: 1.18rem;
+            color: var(--text-primary, #1a1a2e);
+            font-style: italic;
+            margin: 0;
+            line-height: 1.75;
+        }
+
+        blockquote cite {
+            display: block;
+            font-size: 0.76rem;
+            color: var(--text-light, #7a7a9a);
+            font-style: normal;
+            margin-top: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-family: var(--font-body, 'Inter', sans-serif);
+        }
+
+        /* ══════════════════════════════════════════════
+           RANK TABLE
+        ══════════════════════════════════════════════ */
+        .rank-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0 2.8rem;
+            font-family: var(--font-body, 'Inter', sans-serif);
+            font-size: 0.9rem;
+        }
+
+        .rank-table thead tr {
+            background: var(--color-obsidian, #1a1a2e);
+            color: #f5f0e8;
+        }
+
+        .rank-table th {
+            padding: 0.75rem 1.1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.76rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .rank-table tbody tr {
+            border-bottom: 1px solid var(--border, #e0ddd6);
+            transition: background 0.2s;
+        }
+
+        .rank-table tbody tr:hover {
+            background: rgba(212,160,60,0.04);
+        }
+
+        .rank-table td {
+            padding: 0.8rem 1.1rem;
+            color: var(--text-secondary, #4a4a6a);
+            vertical-align: top;
+            line-height: 1.6;
+        }
+
+        .rank-table td:first-child {
+            font-family: var(--font-display, 'Playfair Display', Georgia, serif);
+            color: var(--text-primary, #1a1a2e);
+            font-size: 1rem;
+            white-space: nowrap;
+        }
+
+        .rank-table td .kanji {
+            display: block;
+            font-size: 0.76rem;
+            color: var(--text-light, #7a7a9a);
+            margin-top: 0.15rem;
+            font-family: var(--font-body, 'Inter', sans-serif);
+        }
+
+        .rank-badge {
+            display: inline-block;
+            padding: 2px 9px;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .rank-badge.top    { background: rgba(212,160,60,0.15); color: #b8852a; }
+        .rank-badge.second { background: rgba(74,139,127,0.12); color: #3a7a6e; }
+        .rank-badge.mid    { background: rgba(92,92,122,0.12);  color: #5c5c7a; }
+        .rank-badge.base   { background: rgba(26,26,46,0.06);   color: #7a7a9a; }
+
+        /* ══════════════════════════════════════════════
+           TOURNAMENT CARDS
+        ══════════════════════════════════════════════ */
+        .tournament-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 2.2rem 0 2.8rem;
+        }
+
+        .tournament-card {
+            background: var(--color-white, #fff);
+            border: 1px solid var(--border, #e0ddd6);
+            border-radius: var(--radius, 6px);
+            padding: 1.3rem 1.5rem;
+            border-top: 3px solid var(--color-amber, #d4a03c);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .tournament-card:hover {
+            box-shadow: 0 6px 22px rgba(26,26,46,0.07);
+        }
+
+        .tournament-card .t-tag {
+            display: inline-block;
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 2px 8px;
+            border-radius: 3px;
+            background: rgba(212,160,60,0.1);
+            color: #a07020;
+            margin-bottom: 0.75rem;
+        }
+
+        .tournament-card .t-name {
+            font-family: var(--font-display, 'Playfair Display', Georgia, serif);
+            font-size: 1.12rem;
+            color: var(--text-primary, #1a1a2e);
+            margin-bottom: 0.2rem;
+            line-height: 1.3;
+        }
+
+        .tournament-card .t-kanji {
+            font-size: 0.74rem;
+            color: var(--text-light, #7a7a9a);
+            font-family: var(--font-body, 'Inter', sans-serif);
+            letter-spacing: 0.05em;
+            margin-bottom: 0.65rem;
+        }
+
+        .tournament-card .t-detail {
+            font-size: 0.83rem;
+            color: var(--text-secondary, #4a4a6a);
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        /* ══════════════════════════════════════════════
+           KIMARITE (TECHNIQUE LIST)
+        ══════════════════════════════════════════════ */
+        .technique-list {
+            margin: 1.8rem 0 2.2rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .technique-item {
+            display: grid;
+            grid-template-columns: 210px 1fr;
+            gap: 1.2rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border, #e0ddd6);
+            align-items: baseline;
+        }
+
+        .technique-item:last-child { border-bottom: none; }
+
+        .technique-item .t-romaji {
+            font-family: var(--font-display, 'Playfair Display', Georgia, serif);
+            font-size: 1.02rem;
+            color: var(--text-primary, #1a1a2e);
+            display: block;
+        }
+
+        .technique-item .t-kanji-small {
+            font-size: 0.74rem;
+            color: var(--text-light, #7a7a9a);
+            display: block;
+            margin-top: 0.1rem;
+            font-family: var(--font-body, 'Inter', sans-serif);
+        }
+
+        .technique-item .t-meaning {
+            font-size: 0.76rem;
+            color: var(--color-amber, #d4a03c);
+            font-style: italic;
+            display: block;
+            margin-top: 0.2rem;
+            font-family: var(--font-body, 'Inter', sans-serif);
+        }
+
+        .technique-item .t-desc {
+            font-size: 0.91rem;
+            color: var(--text-secondary, #4a4a6a);
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* ══════════════════════════════════════════════
+           STATS ROW
+        ══════════════════════════════════════════════ */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2.5rem 0;
+        }
+
+        .stat-card {
+            background: var(--color-white, #fff);
+            border: 1px solid var(--border, #e0ddd6);
+            border-radius: var(--radius, 6px);
+            padding: 1.3rem 1rem;
+            text-align: center;
+            border-top: 3px solid var(--color-amber, #d4a03c);
+        }
+
+        .stat-card.alt { border-top-color: var(--accent-alt, #4a8b7f); }
+
+        .stat-card .stat-number {
+            font-family: var(--font-display, 'Playfair Display', Georgia, serif);
+            font-size: 2.4rem;
+            color: var(--color-amber, #d4a03c);
+            display: block;
+            line-height: 1;
+            margin-bottom: 0.45rem;
+        }
+
+        .stat-card.alt .stat-number { color: var(--accent-alt, #4a8b7f); }
+
+        .stat-card .stat-label {
+            font-size: 0.72rem;
+            color: var(--text-light, #7a7a9a);
+            font-family: var(--font-body, 'Inter', sans-serif);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            line-height: 1.5;
+        }
+
+        /* ══════════════════════════════════════════════
+           SEASON RESULT CARDS
+        ══════════════════════════════════════════════ */
+        .season-result {
+            background: var(--color-white, #fff);
+            border: 1px solid var(--border, #e0ddd6);
+            border-radius: var(--radius, 6px);
+            padding: 1.5rem 1.7rem;
+            margin: 1.5rem 0;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1.4rem;
+            align-items: start;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .season-result:hover {
+            box-shadow: 0 6px 22px rgba(26,26,46,0.07);
+        }
+
+        .season-result .sr-date {
+            text-align: center;
+            min-width: 76px;
+        }
+
+        .season-result .sr-month {
+            display: block;
+            font-family: var(--font-body, 'Inter', sans-serif);
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-light, #7a7a9a);
+        }
+
+        .season-result .sr-location {
+            display: block;
+            font-family: var(--font-display, 'Playfair Display', Georgia, serif);
+            font-size: 1.15rem;
+            color: var(--color-amber, #d4a03c);
+            line-height: 1.1;
+            margin: 0.25rem 0;
+        }
+
+        .season-result .sr-year {
+            display: block;
+            font-size: 0.68rem;
+            color: var(--text-light, #7a7a9a);
+            font-family: var(--font-body, 'Inter', sans-serif);
+        }
+
+        .season-result .sr-title {
+            font-family: var(--font-display, 'Playfair Display', Georgia, serif);
+            font-size: 1.08rem;
+            color: var(--text-primary, #1a1a2e);
+            margin-bottom: 0.35rem;
+            line-height: 1.35;
+        }
+
+        .season-result .sr-winner {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 2px 9px;
+            border-radius: 3px;
+            background: rgba(212,160,60,0.12);
+            color: #a07020;
+            margin-bottom: 0.65rem;
+        }
+
+        .season-result .sr-text {
+            font-size: 0.9rem;
+            color: var(--text-secondary, #4a4a6a);
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* Live / ongoing badge */
+        .live-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            background: rgba(74,139,127,0.1);
+            border: 1px solid rgba(74,139,127,0.28);
+            color: var(--accent-alt, #4a8b7f);
+            font-family: var(--font-body, 'Inter', sans-serif);
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 4px 11px;
+            border-radius: 20px;
+            margin-left: 0.7rem;
+            vertical-align: middle;
+        }
+
+        .live-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent-alt, #4a8b7f);
+            animation: blink 1.6s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50%       { opacity: 0.25; }
+        }
+
+        /* Update note */
+        .update-note {
+            background: rgba(74,139,127,0.05);
+            border-left: 3px solid var(--accent-alt, #4a8b7f);
+            padding: 1rem 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 var(--radius, 6px) var(--radius, 6px) 0;
+            font-family: var(--font-body, 'Inter', sans-serif);
+            font-size: 0.85rem;
+            color: var(--text-secondary, #4a4a6a);
+            line-height: 1.65;
+        }
+
+        .update-note strong { color: var(--accent-alt, #4a8b7f); }
+
+        /* ══════════════════════════════════════════════
+           SOURCES BLOCK
+        ══════════════════════════════════════════════ */
+        .sources {
+            background: rgba(245,240,232,0.6);
+            border: 1px solid var(--border, #e0ddd6);
+            border-radius: var(--radius, 6px);
+            padding: 2rem 2.2rem;
+            margin-top: 3.5rem;
+        }
+
+        .sources h3 {
+            margin-top: 0;
+            margin-bottom: 1.1rem;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--text-secondary, #4a4a6a);
+        }
+
+        .sources h3::after { display: none; }
+
+        .sources ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sources ul li {
+            padding: 0.55rem 0;
+            border-bottom: 1px solid var(--border, #e0ddd6);
+            font-size: 0.84rem;
+            font-family: var(--font-body, 'Inter', sans-serif);
+            color: var(--text-secondary, #4a4a6a);
+            line-height: 1.55;
+        }
+
+        .sources ul li:last-child { border-bottom: none; }
+
+        .sources ul li a {
+            color: var(--accent-alt, #4a8b7f);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--border, #e0ddd6);
+        }
+
+        .sources ul li a:hover { color: #2d6b60; }
+
+        .sources ul li .src-meta {
+            display: block;
+            color: var(--text-light, #7a7a9a);
+            font-size: 0.71rem;
+            margin-top: 0.2rem;
+        }
+
+        /* ══════════════════════════════════════════════
+           RESPONSIVE
+        ══════════════════════════════════════════════ */
+        @media (max-width: 640px) {
+            .img-block       { margin: 2rem -0.5rem; }
+            .img-grid        { grid-template-columns: 1fr; margin: 2rem -0.5rem; }
+            .stat-grid       { grid-template-columns: 1fr 1fr; }
+            .tournament-grid { grid-template-columns: 1fr; }
+            .technique-item  { grid-template-columns: 1fr; gap: 0.4rem; }
+            .season-result   { grid-template-columns: 1fr; }
+            .sr-date         { display: flex; gap: 0.7rem; align-items: baseline; }
+            .post-hero h1    { font-size: 1.65rem; }
+            article          { padding: 3rem 1rem 5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<!-- ════════════════════════════════════════
+     HERO
+════════════════════════════════════════ -->
+<header class="post-hero">
+    <img
+        src="https://cdn.theculturetrip.com/wp-content/uploads/2017/05/3989894162_bbeaacae7d_b.jpg"
+        alt="Grand Sumo tournament"
+        loading="eager"
+    >
+   <div class="post-hero-overlay">
+        <p class="post-hero-meta">Sport &amp; Passions &nbsp;·&nbsp; May 2026</p>
+        <h1>The Sport of Giants:<br>
+            <span class="highlight">An Introduction to Grand Sumo</span>
+        </h1>
+        <p class="post-hero-caption">
+              &nbsp;·&nbsp;
+            <em></em>
+        </p>
+    </div>
+</header>
+
+<!-- ════════════════════════════════════════
+     ARTICLE
+════════════════════════════════════════ -->
+<article>
+
+    <!-- INTRODUCTION -->
+    <p>
+        There is a moment, in every sumo bout, that lasts less than a second and contains everything.
+        Two men — enormous, impossibly still — crouch at the centre of a clay circle four and a half metres wide.
+        They place their fists on the ground. They lock eyes. And then the world accelerates past the speed of
+        ordinary sport. A clash of bodies. A geometry of force. Then it is over, and one man is on the ground
+        or across the rope, and the silence in the arena is so absolute that you can hear the referees'
+        robes rustle.
+    </p>
+
+    <p>
+        I discovered Grand Sumo through NHK World Japan, which broadcasts daily highlights of every major
+        tournament on YouTube — free, subtitled, available to anyone with an internet connection and a
+        willingness to be surprised. What I found was not the caricature I vaguely expected. It was one of the
+        most technically complex and ritually beautiful sports on the planet. This is my attempt to explain it
+        to whoever arrives here with the same curiosity I once had.
+    </p>
+
+    <hr class="divider">
+
+    <!-- ── WHAT SUMO IS ── -->
+    <h2>What Sumo Is</h2>
+
+    <p>
+        Sumo (<em>相撲</em>) is the national sport of Japan, and its history reaches back at least fifteen
+        centuries. Its earliest documented forms were ritual performances dedicated to the Shinto gods —
+        prayers for good harvests enacted through wrestling — and those origins have never fully left it.
+        Modern professional sumo is saturated with Shinto ceremony. Every element of the event, from the
+        architecture of the ring to the gestures of the wrestlers, carries a religious or symbolic weight
+        that most sports abandoned centuries ago.
+    </p>
+
+    <p>
+        The governing body is the Japan Sumo Association (<em>Nihon Sumo Kyōkai</em>), founded in 1925,
+        which oversees the careers of approximately 600 to 700 professional wrestlers (<em>rikishi</em>)
+        organised into six competitive divisions. The top two divisions — <em>Makuuchi</em> (42 wrestlers)
+        and <em>Jūryō</em> (28 wrestlers) — are fully professional: their members receive salaries, live in
+        regulated training stables, and compete in all six annual grand tournaments. The four lower
+        divisions work their way up under considerably more spartan conditions.
+    </p>
+
+    <div class="stat-grid">
+        <div class="stat-card">
+            <span class="stat-number">6</span>
+            <span class="stat-label">Grand tournaments per year</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-number">82</span>
+            <span class="stat-label">Official winning techniques</span>
+        </div>
+        <div class="stat-card alt">
+            <span class="stat-number">700</span>
+            <span class="stat-label">Active professional wrestlers</span>
+        </div>
+    </div>
+
+    <!-- ── THE RULES ── -->
+    <h2>The Rules: Simpler Than They Look, Deeper Than They Sound</h2>
+
+    <p>
+        The rules of sumo are, on the surface, elegant in their austerity. Two wrestlers face each other
+        inside a circular clay ring called the <em>dohyō</em> (<em>土俵</em>), which measures 4.55 metres
+        in diameter and sits on a raised platform. A bout begins with the <em>tachiai</em> — the initial
+        charge — and ends the moment either wrestler touches the ground with any body part other than the
+        soles of his feet, or when any part of his body crosses outside the ring's boundary rope
+        (<em>tawara</em>).
+    </p>
+
+    <p>
+        No punching with a closed fist. No grabbing the hair. No targeting the eyes or throat directly.
+        No strangling. Everything else — pushing, pulling, slapping, lifting, throwing, tripping — is legal,
+        provided it fits within the 82 recognised finishing techniques. Bouts typically last between two
+        and twenty seconds. A match lasting sixty seconds is a rarity; one lasting more than three minutes
+        is a genuine event.
+    </p>
+
+    <blockquote>
+        <p>
+            What makes sumo more complex than its rules suggest is the physical and technical intelligence
+            required to operate within them. A wrestler of 170 kilograms can be thrown by a lighter opponent
+            who understands leverage better.
+        </p>
+    </blockquote>
+
+    <p>
+        The game is simultaneously a physics problem and a psychological one: the <em>tachiai</em> is not
+        merely a charge, it is a read of the opponent, and the best wrestlers in the world know — before
+        the clash — what their adversary is going to attempt.
+    </p>
+
+    <!-- ── THE HIERARCHY ── -->
+    <h2>The Hierarchy: A World of Ranks</h2>
+
+    <p>
+        Professional sumo operates under a strict hierarchical system called the <em>banzuke</em>
+        (<em>番付</em>), a document released by the Japan Sumo Association before every tournament that
+        lists every single wrestler in the entire system, from highest to lowest. Rankings are determined
+        by win-loss records across recent tournaments. Within the top division (<em>Makuuchi</em>), the
+        structure runs as follows:
+    </p>
+
+    <table class="rank-table">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Kanji</th>
+                <th>Wrestlers</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Yokozuna <span class="kanji">横綱</span></td>
+                <td>Grand Champion</td>
+                <td>0–3 active</td>
+                <td><span class="rank-badge top">Highest rank</span> No demotion possible — only retirement. Carries the <em>tsuna</em> rope.</td>
+            </tr>
+            <tr>
+                <td>Ōzeki <span class="kanji">大関</span></td>
+                <td>Great Barrier</td>
+                <td>2–4 active</td>
+                <td><span class="rank-badge second">Champion rank</span> Requires 33+ wins over 3 tournaments to promote. Two consecutive losing records triggers demotion.</td>
+            </tr>
+            <tr>
+                <td>Sekiwake <span class="kanji">関脇</span></td>
+                <td>Side of the Barrier</td>
+                <td>2–3 active</td>
+                <td><span class="rank-badge mid">San'yaku</span> Literally "the one guarding the gate." Active Ōzeki candidacy range.</td>
+            </tr>
+            <tr>
+                <td>Komusubi <span class="kanji">小結</span></td>
+                <td>Small Knot</td>
+                <td>2–3 active</td>
+                <td><span class="rank-badge mid">San'yaku</span> Upper-tier competition against Yokozuna and Ōzeki daily.</td>
+            </tr>
+            <tr>
+                <td>Maegashira <span class="kanji">前頭</span></td>
+                <td>Forward Row</td>
+                <td>~32 active</td>
+                <td><span class="rank-badge base">Base rank</span> Numbered M1 (highest) to ~M17. Even M1 East is among the world's top five ranked wrestlers.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>
+        The Yokozuna rank deserves particular note. There is no promotion from it and there is no demotion:
+        a Yokozuna who can no longer compete at the required standard is expected to retire, because the
+        rank carries a dignity that consistent losing would compromise. Promotion requires not only winning
+        consecutive tournaments but doing so with <em>hinkaku</em> — a quality the Japanese might translate
+        as "dignity befitting the rank." The rope (<em>tsuna</em>) worn during the Yokozuna's entrance
+        ceremony is a twisted cord of white silk that can weigh up to 20 kilograms, tied in a ritual knot
+        unique to each rank holder's lineage.
+    </p>
+
+    <!-- ── THE SIX TOURNAMENTS ── -->
+    <h2>The Six Grand Tournaments</h2>
+
+    <p>
+        Since 1958, professional sumo has organised its year around six official grand tournaments, each
+        called a <em>honbasho</em> (<em>本場所</em>, "main tournament"). Each lasts 15 days; wrestlers in
+        the top two divisions compete once per day. The champion receives the Emperor's Cup
+        (<em>Tennō Hai</em>), a 30-kilogram sterling silver trophy, along with a constellation of additional
+        prizes from sponsoring countries and organisations.
+    </p>
+
+    <div class="tournament-grid">
+        <div class="tournament-card">
+            <span class="t-tag">January · Tokyo</span>
+            <p class="t-name">Hatsu Basho</p>
+            <p class="t-kanji">初場所 — "First Tournament"</p>
+            <p class="t-detail">Held at the Ryōgoku Kokugikan. Opens the year with added emotional weight — a strong January performance can reshape a wrestler's entire season trajectory.</p>
+        </div>
+        <div class="tournament-card">
+            <span class="t-tag">March · Osaka</span>
+            <p class="t-name">Haru Basho</p>
+            <p class="t-kanji">春場所 — "Spring Tournament"</p>
+            <p class="t-detail">The only major tournament held west of Tokyo. Osaka crowds are famously louder and more demonstrative; local wrestlers receive an outsize welcome.</p>
+        </div>
+        <div class="tournament-card">
+            <span class="t-tag">May · Tokyo</span>
+            <p class="t-name">Natsu Basho</p>
+            <p class="t-kanji">夏場所 — "Summer Tournament"</p>
+            <p class="t-detail">Return to the Kokugikan in spring heat. By May the banzuke has been reshaped twice, and Ōzeki and Yokozuna promotion storylines have crystallised.</p>
+        </div>
+        <div class="tournament-card">
+            <span class="t-tag">July · Nagoya</span>
+            <p class="t-name">Nagoya Basho</p>
+            <p class="t-kanji">名古屋場所</p>
+            <p class="t-detail">Historically held in a venue so hot it earned the nickname "Tropical Tournament." Since 2025 held at the new Aichi International Arena.</p>
+        </div>
+        <div class="tournament-card">
+            <span class="t-tag">September · Tokyo</span>
+            <p class="t-name">Aki Basho</p>
+            <p class="t-kanji">秋場所 — "Autumn Tournament"</p>
+            <p class="t-detail">The third Tokyo tournament, often the most competitive of the year: wrestlers at full strength, with scores to settle from the first half of the season.</p>
+        </div>
+        <div class="tournament-card">
+            <span class="t-tag">November · Fukuoka</span>
+            <p class="t-name">Kyūshū Basho</p>
+            <p class="t-kanji">九州場所</p>
+            <p class="t-detail">The annual curtain-closer. Determines final year-end rankings. A Yokozuna promotion confirmed in November carries particular prestige.</p>
+        </div>
+    </div>
+
+    <!-- ── CEREMONY ── -->
+    <h2>The Ceremony: Ritual at the Heart of the Sport</h2>
+
+<figure class="img-block">
+    <img
+        src="https://upload.wikimedia.org/wikipedia/commons/b/b1/09_Osaka_Juryo_dohyo-iri.JPG"
+        alt="Jūryō-division wrestlers in embroidered silk aprons performing the dohyō-iri ring-entering ceremony, Osaka 2009"
+        loading="lazy"
+    >
+    <figcaption>
+        The <em>dohyō-iri</em> ring-entering ceremony — jūryō-division wrestlers wearing
+        ceremonial embroidered silk aprons (<em>keshō-mawashi</em>) perform a sequence of
+        stomps, claps, and arm raises to purify the <em>dohyō</em> and ward off evil spirits.
+        <span class="credit">
+            Photo: FourTildes / Wikimedia Commons, CC BY-SA 3.0 ·
+            <a href="https://commons.wikimedia.org/wiki/File:09_Osaka_Juryo_dohyo-iri.JPG"
+               target="_blank" rel="noopener">File page</a>
+        </span>
+    </figcaption>
+</figure>
+
+    <h3>The Dohyō</h3>
+    <p>
+        The ring is reconstructed fresh for every tournament. Made of clay compacted by hand by specialists
+        called <em>yobidashi</em>, the circular boundary is formed by partially buried bales of rice straw
+        (<em>tawara</em>). The surface is covered with fine sand. Four coloured tassels — green, white,
+        black, and red — hang from the suspended shrine-shaped roof above the ring (<em>tsuriyane</em>),
+        each representing a cardinal direction and a seasonal deity. The <em>dohyō</em> is not a sports
+        arena floor. It is, by design, a consecrated space. Before each tournament begins, a Shinto
+        purification ceremony is conducted by the chief referee, with offerings of salt, dried chestnuts,
+        seaweed, and sake placed in a hole at the centre of the clay.
+    </p>
+
+    <h3>The Salt</h3>
+    <p>
+        The white substance that wrestlers hurl, sometimes by the kilogram, into the air before every bout
+        is purifying salt — a practice rooted in Shinto ritual, where salt has been used to cleanse spaces
+        of malevolent spirits and negative energy for millennia. The amount thrown is a matter of temperament
+        and habit: some wrestlers toss a modest handful; others, famously, launch clouds of it into the arena
+        lights. Over the course of a single tournament day, approximately 45 kilograms of salt will be
+        scattered and collected.
+    </p>
+
+    <h3>The Mawashi</h3>
+    <p>
+        The heavyweight silk belt that every professional wrestler wears during competition is the only item
+        of clothing permitted. In the lower divisions it is cotton and dark; in the top two divisions it is
+        silk, and the colour is the wrestler's own choice. A competition mawashi weighs between four and five
+        kilograms and, once tied around the body in a specific pattern of folds and knots, becomes the most
+        important tactical object in a sumo bout — a thing to grip, to deny, to manipulate, to use as a
+        lever.
+    </p>
+
+    <h3>The Chonmage</h3>
+    <p>
+        The topknot hairstyle that all wrestlers in the top two divisions are required to maintain is called
+        the <em>chonmage</em> (<em>丁髷</em>). For members of the <em>Makuuchi</em> division, the style is
+        shaped into the <em>ōichō</em> — a fan-shape named for the ginkgo leaf it resembles — worn only
+        during official competitions and formal occasions. Wearing the <em>ōichō</em> is a privilege of rank.
+    </p>
+
+    <h3>The Dohyō-iri</h3>
+    <p>
+        The ring-entering ceremony performed each day before the top division bouts begin. <em>Makuuchi</em>
+        wrestlers enter in a procession, dressed in elaborate embroidered silk aprons
+        (<em>keshō-mawashi</em>), and perform a sequence of stamps, claps, and outstretched hands — gestures
+        that in Shinto practice drive evil spirits from the ground below. A Yokozuna's <em>dohyō-iri</em> is
+        performed separately: he enters accompanied by two attendants, one holding a sword symbolising his
+        authority, and performs a solo ritual in either the <em>Unryū</em> style (one arm extended, one folded)
+        or the <em>Shiranui</em> style (both arms extended) — a reflection of his personal lineage.
+    </p>
+
+    <h3>The Kenshō and the Gyōji</h3>
+    <p>
+        The banners paraded around the ring before high-profile bouts represent the prize money envelopes
+        (<em>kenshō-kin</em>) committed by sponsors. Each banner represents approximately 62,000 yen, of
+        which the wrestler receives roughly 60% immediately and the rest is held in a pension fund. This
+        envelope is what the referee (<em>gyōji</em>) presents to the victor after the bout — folded in a
+        fan shape that resembles a letter or document, not because it is one, but because elegance demands it.
+        The gyōji themselves are dressed in Heian-era court robes and carry a small knife at the belt — a
+        symbolic reminder that, historically, an incorrect call in a critical bout was met with an expectation
+        of ritual self-harm. The knife is now purely ceremonial, but its presence is a measure of how
+        seriously the tradition takes the weight of judgment.
+    </p>
+
+    <!-- ── KIMARITE ── -->
+    <h2>The Kimarite: 82 Ways to Win</h2>
+
+    <p>
+        The Japan Sumo Association officially recognises 82 <em>kimarite</em> (<em>決まり手</em>) — finishing
+        techniques — though in practice a handful account for the vast majority of bouts. Understanding even
+        the most common ones transforms watching sumo from witnessing chaos into reading a language.
+    </p>
+
+    <figure class="img-block">
+    <img
+        src="https://cdn.theculturetrip.com/wp-content/uploads/2017/10/4274125794_cdc0f9d822_b.jpg"
+        alt="Two top-division (Makuuchi) wrestlers squaring off at the January 2010 Tokyo Basho"
+        loading="lazy"
+    >
+    <figcaption>
+        Two top-division (<em>makuuchi</em>) wrestlers face off at the
+        <em>dohyō</em> during the January 2010 Tokyo Basho (<em>Hatsu Basho</em>).
+        Each wrestler wears the <em>mawashi</em> fighting loincloth; the bout begins
+        the instant both place their fists on the clay simultaneously.
+        <span class="credit">
+            Photo: davidgsteadman / Flickr, CC BY 2.0 ·
+            <a href="https://www.flickr.com/photos/davidgsteadman/4274125794"
+               target="_blank" rel="noopener">Original photo</a>
+        </span>
+    </figcaption>
+    </figure>
+
+    <div class="technique-list">
+
+        <div class="technique-item">
+            <div>
+                <span class="t-romaji">Yorikiri</span>
+                <span class="t-kanji-small">寄り切り</span>
+                <span class="t-meaning">"To cut by pushing"</span>
+            </div>
+            <p class="t-desc">The most common winning technique, accounting for roughly a third of all victories. The wrestler grips the opponent's belt, drives forward with his legs, and forces him across the boundary rope. The technique of pure forward pressure.</p>
+        </div>
+
+        <div class="technique-item">
+            <div>
+                <span class="t-romaji">Oshidashi</span>
+                <span class="t-kanji-small">押し出し</span>
+                <span class="t-meaning">"Frontal push out"</span>
+            </div>
+            <p class="t-desc">Second most common — identical to Yorikiri but without a belt grip. Open-handed pushes against the torso or shoulders drive the opponent out. The technique of straight-line power, favoured by wrestlers called <em>oshi-zumo</em> practitioners.</p>
+        </div>
+
+        <div class="technique-item">
+            <div>
+                <span class="t-romaji">Hatakikomi</span>
+                <span class="t-kanji-small">叩き込み</span>
+                <span class="t-meaning">"Slap down"</span>
+            </div>
+            <p class="t-desc">The art of using the opponent's momentum against him. As the charging wrestler drives forward, his adversary steps aside and delivers a sharp downward slap to the back of the neck, sending him to the ground. Beautiful when executed correctly; controversial when overused.</p>
+        </div>
+
+        <div class="technique-item">
+            <div>
+                <span class="t-romaji">Uwatenage</span>
+                <span class="t-kanji-small">上手投げ</span>
+                <span class="t-meaning">"Overarm throw"</span>
+            </div>
+            <p class="t-desc">An outer belt grip is used to rotate and throw the opponent to the ground in a sweeping arc of the arm. One of the more visually spectacular throws. Requires both upper body strength and precise timing.</p>
+        </div>
+
+        <div class="technique-item">
+            <div>
+                <span class="t-romaji">Shitatenage</span>
+                <span class="t-kanji-small">下手投げ</span>
+                <span class="t-meaning">"Underarm throw"</span>
+            </div>
+            <p class="t-desc">The inner-grip equivalent of Uwatenage — same throwing motion, different arm position, different leverage. A wrestler with short arms who fights close is often more dangerous with this than with the outer throw.</p>
+        </div>
+
+        <div class="technique-item">
+            <div>
+                <span class="t-romaji">Tsukiotoshi</span>
+                <span class="t-kanji-small">突き落とし</span>
+                <span class="t-meaning">"Thrust down sideways"</span>
+            </div>
+            <p class="t-desc">The opponent's momentum is redirected to send him down sideways rather than straight back. Not over the rope but into the ground — requires reading the charge angle and placing the guiding hand precisely.</p>
+        </div>
+
+        <div class="technique-item">
+            <div>
+                <span class="t-romaji">Tsukidashi</span>
+                <span class="t-kanji-small">突き出し</span>
+                <span class="t-meaning">"Thrust out"</span>
+            </div>
+            <p class="t-desc">Repeated targeted thrusts — to the chin, chest, throat — pound an opponent backward across the ring and out. Wrestlers who specialise in this technique tend to have extraordinary arm speed and are known as <em>tsuki-oshi</em> stylists.</p>
+        </div>
+
+        <div class="technique-item">
+            <div>
+                <span class="t-romaji">Katasukashi</span>
+                <span class="t-kanji-small">肩透かし</span>
+                <span class="t-meaning">"Under shoulder swing down"</span>
+            </div>
+            <p class="t-desc">Slipping under the opponent's arm and using it as a lever to swing him down to the clay. An elegant technique that tends to appear when a larger wrestler overextends his reach and finds his momentum suddenly redirected.</p>
+        </div>
+
+        <div class="technique-item">
+            <div>
+                <span class="t-romaji">Tsuridashi</span>
+                <span class="t-kanji-small">吊り出し</span>
+                <span class="t-meaning">"Lifting carry out"</span>
+            </div>
+            <p class="t-desc">Among the most dramatic moves in sumo: both hands grip the belt, and the opponent is physically lifted — sometimes entirely off the ground — and carried over the boundary rope. Reserved for wrestlers of exceptional lower body strength.</p>
+        </div>
+
+        <div class="technique-item">
+            <div>
+                <span class="t-romaji">Kubinage</span>
+                <span class="t-kanji-small">首投げ</span>
+                <span class="t-meaning">"Headlock throw"</span>
+            </div>
+            <p class="t-desc">An arm is wrapped around the opponent's neck and used as leverage to throw him forward and down. Appears most often when a wrestler finds his arm trapped at the side of his adversary's head in close grappling.</p>
+        </div>
+
+        <div class="technique-item">
+            <div>
+                <span class="t-romaji">Uwatehineri</span>
+                <span class="t-kanji-small">上手捻り</span>
+                <span class="t-meaning">"Twisting overarm throw"</span>
+            </div>
+            <p class="t-desc">A spinning variant of the outer throw, in which the wrestler twists his body to generate rotational force rather than pure arm strength. Among the most aesthetically striking techniques — the arena reacts with a noise that distinguishes it clearly from other finishes.</p>
+        </div>
+
+        <div class="technique-item">
+            <div>
+                <span class="t-romaji">Uchimuso</span>
+                <span class="t-kanji-small">内無双</span>
+                <span class="t-meaning">"Inner thigh propping twist down"</span>
+            </div>
+            <p class="t-desc">A leg is hooked inside the opponent's thigh and used as a fulcrum to twist him down. Unorthodox enough to appear as a surprise; spectacular enough that the arena reacts with a distinctly different quality of noise.</p>
+        </div>
+
+        <div class="technique-item">
+            <div>
+                <span class="t-romaji">Kotenage</span>
+                <span class="t-kanji-small">小手投げ</span>
+                <span class="t-meaning">"Arm lock throw"</span>
+            </div>
+            <p class="t-desc">Traps the opponent's arm against the body and uses it as a pivot to swing him down. Common in close-range grappling when neither wrestler has a clean belt grip and both are looking for any angle of leverage.</p>
+        </div>
+
+        <div class="technique-item">
+            <div>
+                <span class="t-romaji">Sukuinage</span>
+                <span class="t-kanji-small">掬い投げ</span>
+                <span class="t-meaning">"Beltless scoop throw"</span>
+            </div>
+            <p class="t-desc">One or both arms scoop under the opponent's arms — without gripping the belt — to lift and throw him sideways. Often a desperation move executed at the ring's edge; when it works, it is one of the more surprising reversals in the sport.</p>
+        </div>
+
+    </div>
+
+    <!-- ── HIGHLIGHTS 2025-2026 ── -->
+    <hr class="divider">
+    <h2>Grand Sumo Highlights: 2025–2026</h2>
+
+    <p>
+        This section covers the major tournaments of the 2025 and 2026 sumo calendar as followed through
+        the NHK World Japan Grand Sumo Highlights on YouTube — the finest free sports broadcast available
+        in English, and the reason many outside Japan find the sport at all. These are not comprehensive
+        records; they are the stories that stayed.
+    </p>
+
+    <h3>2025 — The Year of Two New Yokozuna</h3>
+
+    <p>
+        The 2025 sumo year arrived with the sport at something close to an inflection point. The previous
+        era's dominant figure, Yokozuna Terunofuji, had spent years at the top of the <em>banzuke</em> but
+        was increasingly unable to compete due to injury. The year would fill that vacuum — twice, in rapid
+        succession.
+    </p>
+
+    <!-- HATSU 2025 -->
+    <div class="season-result">
+        <div class="sr-date">
+            <span class="sr-month">Jan</span>
+            <span class="sr-location">Tokyo</span>
+            <span class="sr-year">2025</span>
+        </div>
+        <div class="sr-body">
+            <p class="sr-title">Hatsu Basho — First Tournament</p>
+            <span class="sr-winner">Champion: Hōshōryū · 12–3 (playoff)</span>
+            <p class="sr-text">
+                A second top-division title for the 25-year-old Hōshōryū, won through a three-way playoff.
+                Not the most dominant path to a championship, and it generated some murmuring about whether
+                his promotion had been earned cheaply. The murmuring did not prevent what followed:
+                confirmation as the sport's 74th Yokozuna and the latest in a long line of Mongolian
+                wrestlers to reach the summit — and, notably, the nephew of the 68th Yokozuna Asashōryū.
+            </p>
+        </div>
+    </div>
+
+    <!-- HARU 2025 -->
+    <div class="season-result">
+        <div class="sr-date">
+            <span class="sr-month">Mar</span>
+            <span class="sr-location">Osaka</span>
+            <span class="sr-year">2025</span>
+        </div>
+        <div class="sr-body">
+            <p class="sr-title">Haru Basho — Spring Tournament</p>
+            <span class="sr-winner">Champion: Ōnosato · 12–3 (playoff)</span>
+            <p class="sr-text">
+                Hōshōryū's first tournament as the sport's top man did not go well — a 5-5-5 record after
+                pulling out on day nine with an elbow injury. In his absence, Ōnosato took his third
+                top-division title through a playoff. The young wrestler who had broken onto the professional
+                scene in 2024 was starting to mature into something the sport had not seen for years: a
+                genuinely dominant presence.
+            </p>
+        </div>
+    </div>
+
+    <!-- NATSU 2025 -->
+    <div class="season-result">
+        <div class="sr-date">
+            <span class="sr-month">May</span>
+            <span class="sr-location">Tokyo</span>
+            <span class="sr-year">2025</span>
+        </div>
+        <div class="sr-body">
+            <p class="sr-title">Natsu Basho — Summer Tournament</p>
+            <span class="sr-winner">Champion: Ōnosato · 14–1</span>
+            <p class="sr-text">
+                His fourth top-division title. His dominant 14–1 record — won back-to-back as Ōzeki —
+                secured his promotion to Yokozuna, making him the sport's 75th grand champion and the first
+                Japanese wrestler promoted to the rank since Kisenosato in 2017. On the final day, Hōshōryū
+                denied him a perfect 15–0 record with an <em>uwatehineri</em> — a twisting overarm throw —
+                that said everything about both men at once. Ōnosato won the tournament regardless.
+            </p>
+        </div>
+    </div>
+
+    <!-- NAGOYA 2025 -->
+    <div class="season-result">
+        <div class="sr-date">
+            <span class="sr-month">Jul</span>
+            <span class="sr-location">Nagoya</span>
+            <span class="sr-year">2025</span>
+        </div>
+        <div class="sr-body">
+            <p class="sr-title">Nagoya Basho</p>
+            <span class="sr-winner">Champion: Kotoshōhō · 13–2</span>
+            <p class="sr-text">
+                The summer heat arrived and with it, a surprise. Kotoshōhō, 25 years old, clinched his
+                first Emperor's Cup on the final day — a shoulder charge followed by a thrust that sent
+                runner-up Aonishiki to the clay. The final guaranteed the trophy would go to a first-time
+                winner regardless of outcome, which is among the more satisfying guarantees the sport can
+                produce. It was also the first significant spotlight for Aonishiki, a name that would grow
+                considerably in importance before the year was out.
+            </p>
+        </div>
+    </div>
+
+    <!-- AKI 2025 -->
+    <div class="season-result">
+        <div class="sr-date">
+            <span class="sr-month">Sep</span>
+            <span class="sr-location">Tokyo</span>
+            <span class="sr-year">2025</span>
+        </div>
+        <div class="sr-body">
+            <p class="sr-title">Aki Basho — Autumn Tournament</p>
+            <span class="sr-winner">Champion: Ōnosato</span>
+            <p class="sr-text">
+                September brought no underdog stories. The two Yokozuna duelled across fifteen days in a
+                tournament that built toward an epic <em>senshuraku</em> (final day). Ōnosato lost on day
+                four but was otherwise close to flawless. Hōshōryū, who led for much of the tournament,
+                was pegged back by Aonishiki on day twelve and by Kotozakura on day thirteen — leaving the
+                final reckoning to the Yokozuna pair. Ōnosato emerged as champion.
+            </p>
+        </div>
+    </div>
+
+    <!-- KYUSHU 2025 -->
+    <div class="season-result">
+        <div class="sr-date">
+            <span class="sr-month">Nov</span>
+            <span class="sr-location">Fukuoka</span>
+            <span class="sr-year">2025</span>
+        </div>
+        <div class="sr-body">
+            <p class="sr-title">Kyūshū Basho — The Rise of the Blue Whirlwind</p>
+            <span class="sr-winner">Champion: Aonishiki · playoff</span>
+            <p class="sr-text">
+                The curtain-closer of 2025 belonged to Aonishiki — a 21-year-old former Ukrainian refugee
+                who had arrived in Japan and found, in sumo's strict hierarchy and demanding lifestyle, not
+                an obstacle but a structure he was willing to inhabit completely. In Fukuoka, he proved
+                that the sport's top three were no longer just the two Yokozuna but a triangle, with himself
+                the third corner. He lifted the Emperor's Cup for the first time, winning through a playoff
+                in another dramatic final day. The Blue Whirlwind had arrived.
+            </p>
+        </div>
+    </div>
+
+    <hr class="divider">
+    <h3>2026 — The Triangle Holds</h3>
+
+    <!-- HATSU 2026 -->
+    <div class="season-result">
+        <div class="sr-date">
+            <span class="sr-month">Jan</span>
+            <span class="sr-location">Tokyo</span>
+            <span class="sr-year">2026</span>
+        </div>
+        <div class="sr-body">
+            <p class="sr-title">Hatsu Basho — Back-to-Back</p>
+            <span class="sr-winner">Champion: Aonishiki · 12–3 (playoff over Atamifuji)</span>
+            <p class="sr-text">
+                The first tournament of 2026 produced the same winner as the one that closed 2025. Both
+                Yokozuna arrived carrying injuries — Ōnosato in particular was dealing with a reported
+                separated shoulder — and finished on 10–5 records that were, under the circumstances,
+                statements of will more than condition. Aonishiki navigated fifteen days of precise sumo
+                and won the playoff over Atamifuji with a <em>kubinage</em> — a headlock throw — on the
+                final day. His victory marked the first time in almost twenty years, since Hakuhō in 2006,
+                that a newly promoted Ōzeki had won the championship. The rock-paper-scissors dynamic among
+                the top three — Hōshōryū beats Ōnosato, Ōnosato beats Aonishiki, Aonishiki beats Hōshōryū —
+                had become the defining storyline of the era.
+            </p>
+        </div>
+    </div>
+
+    <!-- HARU 2026 -->
+    <div class="season-result">
+        <div class="sr-date">
+            <span class="sr-month">Mar</span>
+            <span class="sr-location">Osaka</span>
+            <span class="sr-year">2026</span>
+        </div>
+        <div class="sr-body">
+            <p class="sr-title">Haru Basho — Kirishima's Third Title</p>
+            <span class="sr-winner">Champion: Kirishima · won on Day 14</span>
+            <p class="sr-text">
+                The spring tournament in Osaka was full of twists and upsets — and was ultimately won by
+                the Mongolian Sekiwake Kirishima, who built a commanding lead through the first thirteen
+                days and was able to absorb two losses in the final stretch because his rivals faltered
+                simultaneously. His third career title. More significantly, the performance locked in his
+                promotion to Ōzeki — a rank he had reached once before and lost, and was now reclaiming
+                through a harder route. Aonishiki, the favourite following back-to-back titles, had a
+                tournament he would prefer to forget.
+            </p>
+        </div>
+    </div>
+
+    <!-- NATSU 2026 -->
+    <div class="season-result">
+        <div class="sr-date">
+            <span class="sr-month">May</span>
+            <span class="sr-location">Tokyo</span>
+            <span class="sr-year">2026</span>
+        </div>
+        <div class="sr-body">
+            <p class="sr-title">
+                Natsu Basho — Summer Tournament
+                <span class="live-badge">Ongoing</span>
+            </p>
+            <p class="sr-text">
+                The May tournament is currently underway as of the writing of this post. This section will
+                be updated when it concludes.
+            </p>
+        </div>
+    </div>
+
+    <div class="update-note">
+        <strong>Last updated:</strong> May 2026. The Natsu Basho (Tokyo, May 2026) is currently in progress.
+        All tournament results above are sourced from Wikipedia, Sumo Stomp! (Substack), and Combat Press.
+    </div>
+
+    <!-- ── HOW TO WATCH ── -->
+    <hr class="divider">
+    <h2>A Note on How to Watch</h2>
+
+    <section class="video-section">
+    <h2>Watch Grand Sumo</h2>
+    
+    <!-- Promo Video -->
+    <div class="video-wrapper">
+        <h3>Promo Video</h3>
+        <iframe
+            src="https://www.youtube.com/embed/E4_fTjwih5I"
+            title="Grand Sumo Promo Video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+        ></iframe>
+    </div>
+
+    <!-- Full Playlist -->
+    <div class="video-wrapper">
+        <h3>Full Playlist</h3>
+        <iframe
+            src="https://www.youtube.com/embed/E4_fTjwih5I?list=PLFEzXnIQVwV9JgQkOMJZM23G8g-wBBWKf"
+            title="Grand Sumo Full Playlist"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+        ></iframe>
+    </div>
+    </section>
+
+    <p>
+        NHK World Japan uploads daily highlight packages for every <em>honbasho</em> to YouTube, free of
+        charge, at approximately 30 minutes per episode. They cover the top division bouts in full, with
+        English-language commentary that is consistently informative and occasionally excellent. The channel
+        also produces longer documentary content on wrestlers, traditions, and sumo culture that is worth
+        seeking out.
+    </p>
+
+    <p>
+        For those wanting to go deeper: the Japan Sumo Association's official website (<em>sumo.or.jp</em>)
+        publishes full results and the <em>banzuke</em> before each tournament. The <em>Sumo Stomp!</em>
+        newsletter on Substack offers English-language daily tournament coverage that is detailed,
+        analytically grounded, and free. Combat Press provides clean round-up articles after each tournament
+        closes.
+    </p>
+
+    <p>
+        Sumo asks nothing complicated of a new viewer. You do not need to understand the ritual to feel the
+        weight of it, any more than you need to understand Shinto theology to know that something is being
+        conducted with great seriousness. Watch a few bouts. Learn a few names. The rest arrives on its own.
+    </p>
+
+    <!-- SOURCES -->
+    <div class="sources">
+        <h3>Sources &amp; Further Reading</h3>
+        <ul>
+            <li>
+                <a href="https://en.wikipedia.org/wiki/2025_in_sumo" target="_blank" rel="noopener">Wikipedia — 2025 in Sumo</a>
+                <span class="src-meta">Full chronology of events, results, and banzuke changes across all six 2025 tournaments</span>
+            </li>
+            <li>
+                <a href="https://en.wikipedia.org/wiki/2026_in_sumo" target="_blank" rel="noopener">Wikipedia — 2026 in Sumo</a>
+                <span class="src-meta">Ongoing chronicle of the 2026 season — Hatsu, Haru, and Natsu tournaments</span>
+            </li>
+            <li>
+                <a href="https://www.sumo-stomp.com" target="_blank" rel="noopener">Sumo Stomp! — Substack newsletter</a>
+                <span class="src-meta">Daily tournament coverage in English; the most reliable day-by-day analysis available outside Japanese-language media</span>
+            </li>
+            <li>
+                <a href="https://combatpress.com" target="_blank" rel="noopener">Combat Press — Grand Sumo coverage</a>
+                <span class="src-meta">Tournament result summaries and pre-tournament rankings in English</span>
+            </li>
+            <li>
+                <a href="https://www.sumo.or.jp/En/" target="_blank" rel="noopener">Nihon Sumo Kyōkai — Official site</a>
+                <span class="src-meta">Official banzuke, results, wrestler profiles, and tournament schedules from the Japan Sumo Association</span>
+            </li>
+            <li>
+                <a href="https://www3.nhk.or.jp/nhkworld/en/tv/sumo/" target="_blank" rel="noopener">NHK World Japan — Grand Sumo Highlights</a>
+                <span class="src-meta">Free daily highlight broadcasts on YouTube and the NHK World platform; the best entry point for new viewers</span>
+            </li>
+            <li>
+                <a href="https://en.wikipedia.org/wiki/Honbasho" target="_blank" rel="noopener">Wikipedia — Honbasho</a>
+                <span class="src-meta">Historical overview of the six-tournament system and its evolution since 1958</span>
+            </li>
+        </ul>
+    </div>
+
+    <p style="font-size:0.75rem; color:var(--text-light,#7a7a9a); margin-top:2rem; font-style:italic; font-family:var(--font-body,'Inter',sans-serif);">
+        Hero image: <em>Sumo November Tournament 2005</em>, Wikimedia Commons, CC BY-SA 3.0.
+        Ceremony image: <em>09 Osaka Juryo dohyo-iri</em>, Wikimedia Commons, CC BY-SA 3.0.
+        All photographs reproduced under their respective free licences with attribution.
+    </p>
+
+        <!-- Bottom navigation -->
+        <div class="post-nav">
+            <a href="../../hobbies/other.html" class="back-link">← Back to Other</a>
+            <a href="../../hobbies.html" class="back-link">All Hobbies &amp; Blog</a>
+        </div>
+
+    </article>
+
+    <div id="site-footer"></div>
+    <script src="../../js/components.js"></script>
+</body>
+</html>

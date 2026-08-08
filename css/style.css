@@ -1430,3 +1430,214 @@ body.dark-page {
     grid-template-columns: 1fr;
   }
 }
+/* ═══════════════════════════════════════════════════════════════════════
+   POST COMPONENT KIT
+   Appended August 2026. APPEND ONLY — nothing above this line was changed.
+
+   Safe by construction:
+   · None of these selectors existed in this file before, so no existing
+     rule is overridden.
+   · Every published post defines its own copies of these classes inside a
+     <style> block in its <head>, which comes AFTER this stylesheet in the
+     document. Same specificity, later wins — so published posts keep
+     rendering exactly as they do today. Nothing to fix retroactively.
+
+   A new post opts in by setting three variables on its body class and
+   then NOT copying these rules at all:
+
+       body.mypost {
+           --post-accent: #4a90d9;   /* borders, numbers, titles       */
+           --post-tint:   #eff6ff;   /* pale fill for boxes            */
+           --post-ink:    #0c1929;   /* dark fill for highlight blocks */
+       }
+
+   Everything below inherits the site's mineral tokens by default, so a
+   post that sets nothing still looks like the site.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+:root {
+    --post-accent:      var(--accent);
+    --post-accent-deep: var(--color-copper);
+    --post-tint:        var(--color-chalk);
+    --post-ink:         var(--color-obsidian);
+    --post-ink-2:       var(--color-basalt);
+    --post-on-ink:      var(--color-feldspar);
+    --post-radius:      10px;
+}
+
+/* ── Callout ─────────────────────────────────────────────────────────── */
+
+.callout {
+    background: var(--post-tint);
+    border: 1px solid var(--post-accent);
+    border-radius: var(--post-radius);
+    padding: 1.4em 1.6em;
+    margin: 1.5em 0;
+    font-size: 0.95em;
+}
+
+.callout .callout-title {
+    font-weight: 700;
+    color: var(--post-accent-deep);
+    margin-bottom: 0.4em;
+}
+
+/* ── Key numbers ─────────────────────────────────────────────────────── */
+
+.key-number-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.2em;
+    margin: 2em 0;
+}
+
+.key-number {
+    background: var(--post-tint);
+    border-radius: var(--post-radius);
+    padding: 1.5em;
+    text-align: center;
+}
+
+.key-number .number {
+    display: block;
+    font-size: 2.2em;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--post-accent-deep);
+}
+
+.key-number .label {
+    display: block;
+    margin-top: 0.4em;
+    font-size: 0.85em;
+    color: var(--text-secondary);
+}
+
+/* ── Highlight box ───────────────────────────────────────────────────── */
+
+.highlight-box {
+    background: linear-gradient(135deg, var(--post-ink), var(--post-ink-2));
+    color: var(--post-on-ink);
+    border-left: 4px solid var(--post-accent);
+    border-radius: 12px;
+    padding: 2em 2.2em;
+    margin: 2em 0;
+}
+
+.highlight-box strong { color: var(--post-accent); }
+
+/* ── Inline images ───────────────────────────────────────────────────── */
+
+.img-block { margin: 2.8rem -2rem; }
+
+.img-block img {
+    width: 100%;
+    display: block;
+    border-radius: 3px;
+    filter: brightness(0.92) saturate(0.92);
+    transition: filter 0.4s;
+}
+
+.img-block img:hover { filter: brightness(1) saturate(1); }
+
+.img-block figcaption {
+    margin-top: 0.6rem;
+    padding-left: 0.8rem;
+    border-left: 2px solid var(--border);
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-style: italic;
+    color: var(--text-secondary);
+}
+
+.img-block figcaption .credit {
+    display: block;
+    margin-top: 0.4rem;
+    font-style: normal;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    color: var(--post-accent);
+}
+
+.img-block figcaption .credit a {
+    color: var(--post-accent);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--border);
+}
+
+/* ── Hero image ──────────────────────────────────────────────────────── */
+
+.hero-img {
+    width: 100%;
+    max-height: 480px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 0.6em;
+}
+
+/* ── Divider ─────────────────────────────────────────────────────────── */
+
+.divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 3rem 0;
+}
+
+/* ── Sources block ───────────────────────────────────────────────────── */
+
+.sources {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1.8rem 2rem;
+    margin-top: 3rem;
+}
+
+.sources h3 {
+    margin: 0 0 1rem;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--text-secondary);
+}
+
+.sources h3::after { display: none; }
+
+.sources ul { list-style: none; margin: 0; padding: 0; }
+
+.sources ul li {
+    padding: 0.55rem 0;
+    border-bottom: 1px solid var(--border);
+    font-family: var(--font-body);
+    font-size: 0.84rem;
+}
+
+.sources ul li:last-child { border-bottom: none; }
+
+.sources ul li .src-meta {
+    display: block;
+    margin-top: 0.2rem;
+    font-size: 0.71rem;
+    letter-spacing: 0.05em;
+    color: var(--text-light);
+}
+
+.sources a {
+    color: var(--post-accent);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--border);
+}
+
+.sources a:hover { border-bottom-style: solid; }
+
+/* ── Responsive ──────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+    .img-block { margin: 2rem -0.5rem; }
+    .highlight-box { padding: 1.5em 1.4em; }
+}
+
+/* ── Motion ──────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+    .img-block img { transition: none; }
+}

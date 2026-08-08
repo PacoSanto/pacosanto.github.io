@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fra la via Emilia e la Luna — Diciassette anni di Guccini</title>
+
+    <meta name="description" content="Un ricordo personale per Francesco Guccini (1940–2026): un primo concerto a Montichiari, un tema andato male, tre città, la regolite lunare e un contratto che scade.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Fra la via Emilia e la Luna">
+    <meta property="og:description" content="Diciassette anni di Guccini, un tema andato male, tre città e un contratto che scade.">
+    <meta property="og:locale" content="it_IT">
+    <meta property="og:image" content="https://pacosanto.github.io/img/post/music/guccini-og.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="stylesheet" href="../../../css/style.css">
+
+    <style>
+    /* ═══════════════════════════════════════════════════════════
+       FRA LA VIA EMILIA E LA LUNA
+       Direzione: un disco e una carota di sondaggio sono la stessa
+       cosa — una serie temporale incisa nella materia. Il pezzo si
+       legge come un log stratigrafico: la colonna a sinistra è
+       l'unità di misura, non un ornamento.
+
+       Palette: colori di interferenza al microscopio polarizzatore
+       (rosso di primo ordine, verde di secondo) su fondo inchiostro.
+       Tipografia: monospaziato da stampata di laboratorio per le
+       etichette, serif da libretto per il testo.
+       ═══════════════════════════════════════════════════════════ */
+
+    .gp {
+        /* — colore — */
+        --ink:        #0e1013;
+        --ink-raised: #14171b;
+        --paper:      #e9e5dc;
+        --paper-dim:  #b3aea3;
+        --muted:      #7d7d78;
+        --rule:       #23272c;
+        --rule-soft:  #191d21;
+        --pol:        #c4275c;   /* rosso di primo ordine */
+        --pol-2:      #4fa89e;   /* verde di secondo ordine */
+
+        /* — tipo — */
+        --mono: ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", Menlo, Consolas, monospace;
+        --serif: "Iowan Old Style", Charter, "Bitstream Charter", "Sitka Text", Cambria, Palatino, serif;
+
+        /* — misure — */
+        --measure: 34rem;
+        --rail: 88px;
+    }
+
+    body.gp {
+        background: var(--ink);
+        color: var(--paper);
+        font-family: var(--serif);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .gp ::selection { background: var(--pol); color: #fff; }
+
+    .gp a:focus-visible,
+    .gp button:focus-visible {
+        outline: 2px solid var(--pol-2);
+        outline-offset: 3px;
+    }
+
+    /* ── etichetta monospaziata, usata ovunque serva un dato ── */
+    .gp .label {
+        font-family: var(--mono);
+        font-size: 0.66rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--muted);
+    }
+
+    /* ═══ HERO ═══════════════════════════════════════════════ */
+    .gp .masthead {
+        margin-top: var(--nav-height, 0);
+        padding: clamp(4rem, 14vh, 9rem) 6% clamp(2.5rem, 6vh, 4rem);
+        border-bottom: 1px solid var(--rule);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .gp .masthead-inner {
+        max-width: 1180px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+    }
+
+    .gp .masthead-meta {
+        display: flex;
+        gap: 1.4rem;
+        flex-wrap: wrap;
+        align-items: baseline;
+        margin-bottom: 2.4rem;
+    }
+
+    .gp .masthead-meta .live {
+        color: var(--pol);
+    }
+
+    .gp h1 {
+        font-family: var(--serif);
+        font-size: clamp(2.4rem, 7.2vw, 5.6rem);
+        font-weight: 400;
+        line-height: 0.98;
+        letter-spacing: -0.028em;
+        color: #f3efe6;
+        max-width: 14ch;
+        margin: 0 0 1.6rem;
+    }
+
+    .gp h1 .luna {
+        font-style: italic;
+        color: var(--pol);
+    }
+
+    .gp .deck {
+        font-size: clamp(1.02rem, 1.7vw, 1.26rem);
+        line-height: 1.5;
+        color: var(--paper-dim);
+        max-width: 40ch;
+        margin: 0 0 3rem;
+    }
+
+    /* la tesi: un solco e una carota sono la stessa cosa */
+    .gp .thesis {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        border-top: 1px solid var(--rule);
+        padding-top: 1.6rem;
+        max-width: 62ch;
+    }
+
+    .gp .thesis p {
+        margin: 0;
+        font-size: 0.94rem;
+        line-height: 1.65;
+        color: var(--muted);
+    }
+
+    .gp .thesis strong {
+        color: var(--paper-dim);
+        font-weight: 400;
+    }
+
+    /* solco/carota: bande orizzontali a spessore variabile */
+    .gp .groove {
+        position: absolute;
+        inset: 0 0 0 auto;
+        width: 46%;
+        min-width: 260px;
+        z-index: 1;
+        opacity: 0.5;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 3px;
+        padding-right: 6%;
+        pointer-events: none;
+        mask-image: linear-gradient(to left, #000 30%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to left, #000 30%, transparent 100%);
+    }
+
+    .gp .groove i {
+        display: block;
+        background: var(--rule);
+    }
+
+    @media (max-width: 900px) { .gp .groove { display: none; } }
+
+    /* ═══ IMPIANTO: log + testo ══════════════════════════════ */
+    .gp .shell {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0 6% 7rem;
+        display: grid;
+        grid-template-columns: var(--rail) minmax(0, 1fr);
+        gap: clamp(2rem, 5vw, 4.5rem);
+        align-items: start;
+    }
+
+    /* ── colonna stratigrafica ── */
+    .gp .log {
+        position: sticky;
+        top: calc(var(--nav-height, 0px) + 3rem);
+        padding-top: 4.5rem;
+    }
+
+    .gp .log-head {
+        font-family: var(--mono);
+        font-size: 0.58rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--muted);
+        border-bottom: 1px solid var(--rule);
+        padding-bottom: 0.5rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .gp .log ol {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .gp .log li { margin: 0; }
+
+    .gp .log a {
+        display: grid;
+        grid-template-columns: 20px 1fr;
+        gap: 0.55rem;
+        align-items: stretch;
+        text-decoration: none;
+        color: var(--muted);
+        padding: 2px 0;
+    }
+
+    /* il letto: pattern litologico, spessore proporzionale */
+    .gp .bed {
+        border: 1px solid var(--rule);
+        border-radius: 1px;
+        transition: border-color .25s, background-color .25s;
+    }
+
+    .gp .bed-1 { background-image: repeating-linear-gradient(0deg, var(--rule) 0 1px, transparent 1px 5px); }
+    .gp .bed-2 { background-image: repeating-linear-gradient(45deg, var(--rule) 0 1px, transparent 1px 6px); }
+    .gp .bed-3 { background-image: radial-gradient(var(--rule) 0.8px, transparent 0.9px); background-size: 6px 6px; }
+    .gp .bed-4 { background-image: repeating-linear-gradient(-45deg, var(--rule) 0 1px, transparent 1px 7px); }
+    .gp .bed-5 { background-color: var(--rule-soft); background-image: repeating-linear-gradient(0deg, var(--rule) 0 1px, transparent 1px 9px); }
+
+    .gp .log-name {
+        font-family: var(--mono);
+        font-size: 0.6rem;
+        letter-spacing: 0.05em;
+        line-height: 1.25;
+        align-self: center;
+        transition: color .25s;
+    }
+
+    .gp .log a:hover .log-name { color: var(--paper-dim); }
+    .gp .log a:hover .bed { border-color: var(--pol-2); }
+
+    .gp .log a.is-current .log-name { color: var(--pol); }
+    .gp .log a.is-current .bed {
+        border-color: var(--pol);
+        background-color: rgba(196,39,92,0.14);
+    }
+
+    @media (max-width: 1080px) {
+        .gp .shell { grid-template-columns: 1fr; }
+        .gp .log { display: none; }
+    }
+
+    /* ═══ ARTICOLO ═══════════════════════════════════════════ */
+    .gp article {
+        max-width: var(--measure);
+        padding: 4.5rem 0 0;
+        margin: 0;
+    }
+
+    .gp article p {
+        font-size: 1.045rem;
+        line-height: 1.72;
+        color: var(--paper);
+        margin: 0 0 1.35rem;
+    }
+
+    .gp article p.lede {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        color: #f1ede4;
+    }
+
+    .gp article em { color: #f1ede4; }
+    .gp article strong { font-weight: 600; color: #f5f1e8; }
+
+    /* ── titoli di sezione: numerati come le unità di un log ── */
+    .gp article section { scroll-margin-top: 6rem; }
+
+    .gp article section + section { margin-top: 4.6rem; }
+
+    .gp h2 {
+        font-family: var(--mono);
+        font-size: 0.78rem;
+        font-weight: 500;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        color: #f0ece3;
+        margin: 0 0 1.9rem;
+        padding-top: 1.2rem;
+        border-top: 1px solid var(--rule);
+        display: grid;
+        grid-template-columns: 2.6rem 1fr;
+        gap: 0.4rem;
+        align-items: baseline;
+    }
+
+    .gp h2 .u {
+        color: var(--pol);
+        font-size: 0.7rem;
+        letter-spacing: 0.08em;
+    }
+
+    /* ═══ SCHEDA BRANO ═══════════════════════════════════════
+       Sostituisce i vecchi blockquote: nessun testo di canzone
+       riprodotto, solo dati verificabili e una riga d'autore.  */
+    .gp .scheda {
+        margin: 2.4rem 0;
+        border: 1px solid var(--rule);
+        border-left: 2px solid var(--pol);
+        background: var(--ink-raised);
+        padding: 1.1rem 1.3rem 1.2rem;
+    }
+
+    .gp .scheda-tag {
+        font-family: var(--mono);
+        font-size: 0.56rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--pol);
+        display: block;
+        margin-bottom: 0.6rem;
+    }
+
+    .gp .scheda-title {
+        font-size: 1.22rem;
+        line-height: 1.2;
+        color: #f5f1e8;
+        margin: 0 0 0.5rem;
+    }
+
+    .gp .scheda-fields {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem 0.9rem;
+        font-family: var(--mono);
+        font-size: 0.63rem;
+        letter-spacing: 0.06em;
+        color: var(--muted);
+        border-bottom: 1px solid var(--rule);
+        padding-bottom: 0.75rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .gp .scheda-fields span::before {
+        content: attr(data-k) " ";
+        color: #4a4d51;
+    }
+
+    .gp .scheda-note {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: var(--paper-dim);
+        margin: 0;
+    }
+
+    /* ═══ DISCO (copertina + testo) ══════════════════════════ */
+    .gp .disco {
+        display: grid;
+        grid-template-columns: 128px 1fr;
+        gap: 1.4rem;
+        margin: 2.6rem 0;
+        align-items: start;
+    }
+
+    .gp .disco figure { margin: 0; }
+
+    .gp .disco img {
+        width: 100%;
+        display: block;
+        border: 1px solid var(--rule);
+        filter: grayscale(0.55) contrast(1.05) brightness(0.86);
+        transition: filter .45s ease;
+    }
+
+    .gp .disco:hover img { filter: grayscale(0) contrast(1) brightness(1); }
+
+    .gp .disco figcaption {
+        font-family: var(--mono);
+        font-size: 0.56rem;
+        line-height: 1.5;
+        letter-spacing: 0.05em;
+        color: #55585c;
+        margin-top: 0.5rem;
+    }
+
+    /* fallback pulito se la copertina non carica */
+    .gp .disco figure.missing img { display: none; }
+    .gp .disco figure.missing::before {
+        content: attr(data-fallback);
+        display: grid;
+        place-items: center;
+        text-align: center;
+        aspect-ratio: 1;
+        border: 1px solid var(--rule);
+        background: var(--ink-raised);
+        font-family: var(--mono);
+        font-size: 0.58rem;
+        line-height: 1.5;
+        letter-spacing: 0.08em;
+        color: var(--muted);
+        padding: 0.6rem;
+    }
+
+    .gp .disco p { margin-bottom: 1rem; }
+    .gp .disco p:last-child { margin-bottom: 0; }
+
+    @media (max-width: 620px) {
+        .gp .disco { grid-template-columns: 96px 1fr; gap: 1rem; }
+    }
+
+    /* ═══ MARGINALIA ═════════════════════════════════════════ */
+    .gp .nota {
+        margin: 2.2rem 0;
+        padding-left: 1.1rem;
+        border-left: 1px solid var(--pol-2);
+        font-size: 0.95rem;
+        line-height: 1.62;
+        color: var(--paper-dim);
+    }
+
+    .gp .nota strong { color: var(--pol-2); font-weight: 400; }
+
+    /* ═══ CHIUSURA ═══════════════════════════════════════════ */
+    .gp .coda {
+        margin: 4rem 0 0;
+        padding-top: 2rem;
+        border-top: 1px solid var(--rule);
+    }
+
+    .gp .coda p:last-of-type {
+        font-size: 1.3rem;
+        line-height: 1.45;
+        color: #f3efe6;
+    }
+
+    .gp .signoff {
+        font-family: var(--mono);
+        font-size: 0.7rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--pol);
+        margin: 2.5rem 0 0;
+    }
+
+    .gp .ps {
+        margin-top: 2.6rem;
+        padding-top: 1.4rem;
+        border-top: 1px dashed var(--rule);
+        font-size: 0.92rem;
+        line-height: 1.6;
+        color: var(--muted);
+    }
+
+    /* ═══ CREDITI + NAV ══════════════════════════════════════ */
+    .gp .crediti {
+        margin-top: 4rem;
+        padding-top: 1.4rem;
+        border-top: 1px solid var(--rule);
+    }
+
+    .gp .crediti p {
+        font-family: var(--mono);
+        font-size: 0.62rem;
+        line-height: 1.75;
+        letter-spacing: 0.04em;
+        color: #5a5d61;
+        margin: 0 0 0.6rem;
+    }
+
+    .gp .post-nav {
+        display: flex;
+        gap: 1.6rem;
+        flex-wrap: wrap;
+        margin-top: 2.6rem;
+        padding-top: 1.6rem;
+        border-top: 1px solid var(--rule);
+    }
+
+    .gp .post-nav a {
+        font-family: var(--mono);
+        font-size: 0.68rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--paper-dim);
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        padding-bottom: 2px;
+        transition: color .25s, border-color .25s;
+    }
+
+    .gp .post-nav a:hover { color: var(--pol); border-bottom-color: var(--pol); }
+
+    /* ═══ ACCESSIBILITÀ ══════════════════════════════════════ */
+    @media (prefers-reduced-motion: reduce) {
+        .gp *, .gp *::before, .gp *::after {
+            transition-duration: 0.01ms !important;
+            animation-duration: 0.01ms !important;
+        }
+        .gp html { scroll-behavior: auto; }
+    }
+    </style>
+</head>
+
+<body class="gp">
+
+    <div id="site-header"></div>
+
+    <!-- ══════════════════════════════════════════════════════
+         TESTATA
+    ══════════════════════════════════════════════════════ -->
+    <header class="masthead">
+
+        <div class="groove" aria-hidden="true">
+            <i style="height:2px"></i><i style="height:1px"></i><i style="height:6px"></i>
+            <i style="height:1px"></i><i style="height:1px"></i><i style="height:14px"></i>
+            <i style="height:2px"></i><i style="height:1px"></i><i style="height:4px"></i>
+            <i style="height:9px"></i><i style="height:1px"></i><i style="height:2px"></i>
+            <i style="height:1px"></i><i style="height:22px"></i><i style="height:1px"></i>
+            <i style="height:3px"></i><i style="height:1px"></i><i style="height:7px"></i>
+            <i style="height:1px"></i><i style="height:2px"></i><i style="height:11px"></i>
+            <i style="height:1px"></i><i style="height:1px"></i><i style="height:5px"></i>
+        </div>
+
+        <div class="masthead-inner">
+            <p class="masthead-meta">
+                <span class="label">Music · Padova · Agosto 2026</span>
+                <span class="label live">Francesco Guccini &nbsp;1940 — 2026</span>
+            </p>
+
+            <h1>Fra la via Emilia<br>e la <span class="luna">Luna</span></h1>
+
+            <p class="deck">
+                Diciassette anni di Guccini, un tema andato male, tre città
+                e un contratto che scade.
+            </p>
+
+            <div class="thesis">
+                <p>
+                    <strong>Un disco è una serie temporale incisa nella materia.</strong>
+                    Lo è anche una carota di sondaggio. In entrambi i casi si legge
+                    un solco alla volta, dall'esterno verso il centro, e in entrambi
+                    i casi quello che trovi dipende da quanto sei disposto a
+                    guardare da vicino. Questa pagina è impaginata di conseguenza.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- ══════════════════════════════════════════════════════
+         CORPO
+    ══════════════════════════════════════════════════════ -->
+    <div class="shell">
+
+        <!-- ── colonna stratigrafica / indice ── -->
+        <nav class="log" aria-label="Indice della pagina">
+            <p class="log-head">Log</p>
+            <ol>
+                <li><a href="#s0"><span class="bed bed-5" style="height:26px"></span><span class="log-name">6 ago<br>2026</span></a></li>
+                <li><a href="#s1"><span class="bed bed-1" style="height:44px"></span><span class="log-name">Monti-<br>chiari</span></a></li>
+                <li><a href="#s2"><span class="bed bed-3" style="height:52px"></span><span class="log-name">Il tre su<br>dieci</span></a></li>
+                <li><a href="#s3"><span class="bed bed-2" style="height:34px"></span><span class="log-name">Via Paolo<br>Fabbri</span></a></li>
+                <li><a href="#s4"><span class="bed bed-4" style="height:46px"></span><span class="log-name">Il giura-<br>mento</span></a></li>
+                <li><a href="#s5"><span class="bed bed-1" style="height:40px"></span><span class="log-name">Il sisma</span></a></li>
+                <li><a href="#s6"><span class="bed bed-3" style="height:64px"></span><span class="log-name">Granada</span></a></li>
+                <li><a href="#s7"><span class="bed bed-2" style="height:44px"></span><span class="log-name">La Luna</span></a></li>
+                <li><a href="#s8"><span class="bed bed-4" style="height:48px"></span><span class="log-name">Autogrill</span></a></li>
+                <li><a href="#s9"><span class="bed bed-1" style="height:50px"></span><span class="log-name">Eskimo</span></a></li>
+                <li><a href="#s10"><span class="bed bed-5" style="height:36px"></span><span class="log-name">Pavana</span></a></li>
+            </ol>
+        </nav>
+
+        <article>
+
+            <!-- ══ 00 ══════════════════════════════════════ -->
+            <section id="s0">
+                <h2><span class="u">00</span><span>6 agosto 2026</span></h2>
+
+                <p class="lede">
+                    Tornavo da quello che, con una certa generosità, avevo chiamato
+                    "assaggio di vacanza".
+                </p>
+
+                <p>
+                    Guidavo, e per la prima volta dopo anni non stavo ascoltando qualche
+                    canzone a caso finita lì per algoritmo: stavo ascoltando <em>lui</em>,
+                    di fila, come si fa con i dischi quando i dischi erano l'unità di
+                    misura. E stavo dicendo a voce alta — perché a voce alta si dicono le
+                    cose che non si vogliono ammettere in silenzio — quanto ancora mi
+                    ricordassi i testi. Tutti. Parola per parola, dopo anni di disuso,
+                    come certe formule di cristallografia che credi di aver dimenticato
+                    e invece ti risalgono su dal midollo.
+                </p>
+
+                <p>
+                    Poi la notizia. Francesco Guccini è morto a Pavana, sull'Appennino,
+                    a ottantasei anni. Funerali in forma privata, come è giusto che sia
+                    per uno che aveva passato l'ultima parte della vita a togliersi di
+                    torno dal rumore.
+                </p>
+
+                <p>
+                    Non credo alle coincidenze significative. Faccio un mestiere in cui
+                    le coincidenze si chiamano rumore di fondo e si trattano con la
+                    statistica. Però quella lì me la tengo.
+                </p>
+            </section>
+
+            <!-- ══ 01 ══════════════════════════════════════ -->
+            <section id="s1">
+                <h2><span class="u">01</span><span>Montichiari, prima superiore</span></h2>
+
+                <p>
+                    Il mio primo concerto in assoluto. Non un concerto qualsiasi:
+                    <em>il</em> primo, quello che stabilisce cosa sia un concerto per tutto il resto della tua vita. 
+                    Ci andai con il mio amico Cisco e suo padre — perché a quattordici anni per andare ai concerti serve 
+                    un adulto con la patente e la pazienza, e il padre di un amico, prof di filosofia al liceo, 
+                    anche lui fun di Guccini, è la figura mitologica che rende possibile l'adolescenza.
+                </p>
+
+                <p>
+                    Ci ero arrivato preparato come si arriva a un esame. Avevo ascoltato
+                    tutto: gli album in ordine, quelli belli e quelli meno, i live, le
+                    versioni alternative. Mi ero costruito una cattedrale.
+                </p>
+
+                <p>
+                    Poi le luci si abbassano ed esce un signore con la barba e una chitarra.
+                </p>
+
+                <p>
+                    Non c'era niente. Nessun effetto scenico, nessuna macchina del fumo,
+                    nessuna coreografia. Un uomo grosso, padano, con l'aria di uno che
+                    potrebbe benissimo essere tuo zio, che si siede e comincia a parlare
+                    tra una canzone e l'altra più di quanto canti. E dalla gradinata,
+                    quattordicenne, capisci una cosa che poi ti serve per sempre: che la
+                    sostanza non ha bisogno di scenografia. Che se hai qualcosa da dire,
+                    basta dirla.
+                </p>
+
+                <div class="nota">
+                    Ho passato gli ultimi dieci anni a scrivere articoli scientifici.
+                    Ogni volta che sono tentato di nascondere un dato debole dietro una
+                    figura ben fatta, quel signore con la barba mi guarda male dalla
+                    gradinata del 2008.
+                </div>
+            </section>
+
+            <!-- ══ 02 ══════════════════════════════════════ -->
+            <section id="s2">
+                <h2><span class="u">02</span><span>Il tre su dieci</span></h2>
+
+                <div class="disco">
+                    <figure data-fallback="FOLK BEAT N.1 · 1967">
+                        <img
+                            src="/img/post/music/guccini-folk-beat-n1-1967.jpg"
+                            alt="Copertina di Folk Beat n.1, Francesco Guccini, 1967"
+                            loading="lazy"
+                            onerror="this.parentNode.classList.add('missing')">
+                        <figcaption>Folk Beat n.1 · 1967<br>© RCA Italiana</figcaption>
+                    </figure>
+                    <div>
+                        <p>
+                            Al liceo diedero un tema sui valori del mondo contemporaneo.
+                            Io — con l'incoscienza tipica di chi ha appena scoperto
+                            qualcosa e crede di averlo scoperto per primo nella storia
+                            dell'umanità — citai e difesi <strong>Dio è morto</strong>.
+                        </p>
+                        <p>
+                            Se non la conoscete: è del 1965, Guccini la scrive a
+                            venticinque anni, ed è una delle canzoni più fraintese della
+                            musica italiana. Non è un manifesto ateo. È il ritratto di
+                            una generazione che si guarda intorno e vede crollare tutto
+                            — la morale borghese, le certezze dei padri, la retorica del
+                            dopoguerra — e prova a capire cosa si costruisce sulle macerie.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="scheda">
+                    <span class="scheda-tag">Scheda</span>
+                    <p class="scheda-title">Dio è morto</p>
+                    <p class="scheda-fields">
+                        <span data-k="Disco">Folk Beat n.1</span>
+                        <span data-k="Anno">1967</span>
+                        <span data-k="Scritta nel">1965</span>
+                    </p>
+                    <p class="scheda-note">
+                        Censurata dalla RAI, trasmessa da Radio Vaticana. Il malinteso
+                        è la sua biografia.
+                    </p>
+                </div>
+
+                <p>
+                    Il titolo è nietzschiano, il contenuto è quasi un atto di fede laica:
+                    dalle macerie qualcosa risorge. Chi l'aveva capita e chi no risulta
+                    abbastanza chiaro da quel dettaglio.
+                </p>
+
+                <p>
+                    Presi tre su dieci.
+                </p>
+
+                <p>
+                    La professoressa era di Comunione e Liberazione. Non lo dico per
+                    polemica postuma — lo dico perché è la dimostrazione empirica più
+                    elegante che io abbia mai ricevuto della tesi contenuta nel testo che
+                    stavo difendendo. Un esperimento di controllo perfetto: canzone che
+                    denuncia il conformismo dei valori ereditati → punita da chi quei
+                    valori li amministra. Riproducibile, peer-reviewed dall'intera classe.
+                </p>
+            </section>
+
+            <!-- ══ 03 ══════════════════════════════════════ -->
+            <section id="s3">
+                <h2><span class="u">03</span><span>Via Paolo Fabbri 43</span></h2>
+
+                <div class="disco">
+                    <figure data-fallback="VIA PAOLO FABBRI 43 · 1976">
+                        <img
+                            src="/img/post/music/guccini-via-paolo-fabbri-43-1976.jpg"
+                            alt="Copertina di Via Paolo Fabbri 43, Francesco Guccini, 1976"
+                            loading="lazy"
+                            onerror="this.parentNode.classList.add('missing')">
+                        <figcaption>Via Paolo Fabbri 43 · 1976<br>© EMI Italiana</figcaption>
+                    </figure>
+                    <div>
+                        <p>
+                            <strong>L'avvelenata</strong> sta su un disco che si chiama
+                            come un indirizzo. Ed è un indirizzo vero — era casa sua, a
+                            Bologna, un appartamento reale in una strada reale, dove per
+                            anni bussarono studenti, fan, ubriachi, gente che voleva
+                            conoscerlo. E lui, spesso, apriva.
+                        </p>
+                        <p>
+                            Provate a pensare a un artista contemporaneo che intitoli un
+                            disco col proprio indirizzo di casa. Non riesco a farlo
+                            nemmeno io, e ho una discreta immaginazione.
+                        </p>
+                    </div>
+                </div>
+
+                <p>
+                    C'è qualcosa di profondamente non-mitologico in quel gesto, che è poi
+                    la ragione per cui Guccini ha funzionato su tre generazioni diverse:
+                    non si è mai messo su un piedistallo, si è messo su un citofono.
+                </p>
+
+                <p>
+                    Al tre su dieci, del resto, lui aveva già risposto. Nel 1976 aveva
+                    inciso <strong>L'avvelenata</strong>, che non è una canzone politica
+                    ma è forse la sua canzone più libera: una bestemmia in musica contro
+                    i critici, contro il pubblico che voleva incasellarlo, contro chi lo
+                    accusava di essersi venduto e contro chi lo voleva puro. Una
+                    dichiarazione di indipendenza dalle aspettative di tutti, comprese
+                    le sue.
+                </p>
+
+                <div class="scheda">
+                    <span class="scheda-tag">Scheda</span>
+                    <p class="scheda-title">L'avvelenata</p>
+                    <p class="scheda-fields">
+                        <span data-k="Disco">Via Paolo Fabbri 43</span>
+                        <span data-k="Anno">1976</span>
+                    </p>
+                    <p class="scheda-note">
+                        A quattordici anni pensi che serva a insultare i nemici.
+                        A trentadue capisci che serve a proteggersi dagli amici.
+                    </p>
+                </div>
+            </section>
+
+            <!-- ══ 04 ══════════════════════════════════════ -->
+            <section id="s4">
+                <h2><span class="u">04</span><span>Bologna, il giuramento</span></h2>
+
+                <div class="disco">
+                    <figure data-fallback="METROPOLIS · 1981">
+                        <img
+                            src="/img/post/music/guccini-metropolis-1981.jpg"
+                            alt="Copertina di Metropolis, Francesco Guccini, 1981"
+                            loading="lazy"
+                            onerror="this.parentNode.classList.add('missing')">
+                        <figcaption>Metropolis · 1981<br>© EMI Italiana</figcaption>
+                    </figure>
+                    <div>
+                        <p>
+                            Lo rividi a Bologna, sempre al liceo. E lì, con l'amico di
+                            sempre, giurammo che avremmo studiato in quella città. Era un
+                            giuramento serio nel modo in cui sono seri i giuramenti a
+                            diciassette anni: totalmente, e per circa due anni.
+                        </p>
+                        <p>
+                            Bologna, nella mitologia gucciniana, non è una città: è un
+                            carattere. Un posto che ti accoglie e ti frega allo stesso
+                            tempo, raccontato da uno che quella famiglia la conosce
+                            troppo bene per idealizzarla.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="scheda">
+                    <span class="scheda-tag">Scheda</span>
+                    <p class="scheda-title">Bologna</p>
+                    <p class="scheda-fields">
+                        <span data-k="Disco">Metropolis</span>
+                        <span data-k="Anno">1981</span>
+                    </p>
+                    <p class="scheda-note">
+                        Non è un inno turistico. È un ritratto di famiglia.
+                    </p>
+                </div>
+
+                <p>
+                    Poi andammo a Padova.
+                </p>
+
+                <p>
+                    Che è la città della scienza — Galileo, il teatro anatomico, l'orto
+                    botanico più vecchio del mondo, ottocento anni di gente che ha deciso
+                    di guardare le cose invece di crederci. Non me ne sono mai pentito.
+                    Ma il giuramento rotto è rimasto lì, come una faglia sepolta che ogni
+                    tanto si riattiva.
+                </p>
+
+                <p>
+                    Guccini ha scritto la canzone definitiva su questo, e si chiama
+                    <strong>Incontro</strong>. È il pezzo in cui rivede per caso una
+                    ragazza che aveva amato, ormai sposata, sistemata, con una vita che
+                    non assomiglia per niente a quello che si erano immaginati insieme.
+                    Non c'è rimpianto sentimentale: c'è la constatazione fredda e
+                    dolcissima che la vita che fai non è quasi mai la vita che avevi
+                    progettato, e che il progetto non era sbagliato — era solo un progetto.
+                </p>
+
+                <div class="scheda">
+                    <span class="scheda-tag">Scheda</span>
+                    <p class="scheda-title">Incontro</p>
+                    <p class="scheda-fields">
+                        <span data-k="Disco">Radici</span>
+                        <span data-k="Anno">1972</span>
+                    </p>
+                    <p class="scheda-note">
+                        A diciassette anni ti sembra una canzone d'amore.
+                        A trentadue capisci che è una canzone sul curriculum.
+                    </p>
+                </div>
+            </section>
+
+            <!-- ══ 05 ══════════════════════════════════════ -->
+            <section id="s5">
+                <h2><span class="u">05</span><span>Il concerto per l'Emilia</span></h2>
+
+                <div class="disco">
+                    <figure data-fallback="RADICI · 1972">
+                        <img
+                            src="/img/post/music/guccini-radici-1972.jpg"
+                            alt="Copertina di Radici, Francesco Guccini, 1972"
+                            loading="lazy"
+                            onerror="this.parentNode.classList.add('missing')">
+                        <figcaption>Radici · 1972<br>© RCA Italiana</figcaption>
+                    </figure>
+                    <div>
+                        <p>
+                            Quarto anno. Terremoto in Emilia, maggio 2012. Campanili
+                            spezzati a metà, capannoni giù, morti al lavoro. E un concerto
+                            per raccogliere fondi, dove andammo come si va a queste cose a
+                            diciotto anni: per la musica, e ci si trova dentro
+                            qualcos'altro.
+                        </p>
+                        <p>
+                            Non lo sapevo ancora, ma quel terremoto era già la mia materia.
+                            Il magnitudo, la profondità dell'ipocentro, la liquefazione
+                            dei terreni della pianura, la muratura storica che cede perché
+                            nessuno l'aveva mai calcolata per quelle accelerazioni.
+                        </p>
+                    </div>
+                </div>
+
+                <p>
+                    Tre anni dopo avrei iniziato a occuparmi di materiali da costruzione,
+                    di calci, di malte, di come si tiene in piedi un muro. Il primo pezzo
+                    di quella storia l'ho ascoltato in piedi, in un prato, mentre qualcuno
+                    cantava.
+                </p>
+
+                <p>
+                    In quei concerti lì, prima o poi, arriva <strong>La locomotiva</strong>.
+                    È il pezzo che tutti gli chiedevano e che lui, per tutta la vita, ha
+                    suonato con una certa insofferenza: la storia dell'anarchico che lancia
+                    una locomotiva contro il treno dei signori, un episodio d'inizio
+                    Novecento riscritto in chiave epica. È diventata un inno da corteo,
+                    cantata a memoria da centomila persone alla volta. E lui ne diffidava
+                    esattamente per quello: perché una canzone che nasce come racconto di
+                    un gesto disperato e ambiguo era diventata uno slogan da alzata di pugno.
+                </p>
+
+                <div class="scheda">
+                    <span class="scheda-tag">Scheda</span>
+                    <p class="scheda-title">La locomotiva</p>
+                    <p class="scheda-fields">
+                        <span data-k="Disco">Radici</span>
+                        <span data-k="Anno">1972</span>
+                    </p>
+                    <p class="scheda-note">
+                        C'è una lezione professionale anche lì, per uno che scrive
+                        articoli: non controlli mai come verrà citato quello che hai
+                        scritto.
+                    </p>
+                </div>
+            </section>
+
+            <!-- ══ 06 ══════════════════════════════════════ -->
+            <section id="s6">
+                <h2><span class="u">06</span><span>Granada, la calcite, i dieci anni di una canzone</span></h2>
+
+                <div class="disco">
+                    <figure data-fallback="D'AMORE DI MORTE E DI ALTRE SCIOCCHEZZE · 1996">
+                        <img
+                            src="/img/post/music/guccini-damore-di-morte-1996.jpg"
+                            alt="Copertina di D'amore di morte e di altre sciocchezze, Francesco Guccini, 1996"
+                            loading="lazy"
+                            onerror="this.parentNode.classList.add('missing')">
+                        <figcaption>D'amore di morte e di<br>altre sciocchezze · 1996<br>© EMI Italiana</figcaption>
+                    </figure>
+                    <div>
+                        <p>
+                            Poi il dottorato. Marie Curie, Granada, il progetto SUBLime:
+                            materiali a base di calce autopulenti, approcci biomimetici,
+                            transizioni amorfo-cristallino, superfici. Tradotto: passare
+                            quattro anni a guardare come nasce e come muore un cristallo
+                            di carbonato di calcio, e a convincersi che sia la cosa più
+                            interessante del mondo. Cosa di cui, va detto, sono ancora
+                            convinto.
+                        </p>
+                        <p>
+                            Vivere all'estero fa una cosa precisa: ti rende straniero
+                            due volte, là e poi a casa.
+                        </p>
+                    </div>
+                </div>
+
+                <p>
+                    Ed è qui che arriva la canzone. <strong>Vorrei</strong> è la mia
+                    preferita di Guccini, e per anni non sono riuscito a spiegarmi bene
+                    perché. È una canzone d'amore, dedicata a sua moglie, ma non è una
+                    canzone di corteggiamento: è una canzone di conoscenza. Chi canta non
+                    chiede di essere amato — chiede di conoscere. Vuole sapere da dove
+                    viene l'altra persona, che aria si respira nel suo paese, come la
+                    salutano i vecchi, che odore hanno le erbe dell'orto. Vuole i muri, le
+                    soglie, le pietre, le erbacce che crescono negli interstizi, le tracce
+                    lasciate dalle lumache. Cose minime. Cose che nessuno guarda.
+                </p>
+
+                <div class="scheda">
+                    <span class="scheda-tag">Scheda</span>
+                    <p class="scheda-title">Vorrei</p>
+                    <p class="scheda-fields">
+                        <span data-k="Disco">D'amore di morte e di altre sciocchezze</span>
+                        <span data-k="Anno">1996</span>
+                        <span data-k="Stesura">≈ 10 anni</span>
+                    </p>
+                    <p class="scheda-note">
+                        Dieci anni per scriverla, lui che di solito chiudeva un pezzo in
+                        una notte. Dieci anni per una canzone che sembra un elenco di
+                        dettagli irrilevanti.
+                    </p>
+                </div>
+
+                <p>
+                    Io faccio un lavoro che consiste esattamente in questo: guardare cose
+                    minime che nessuno guarda, e passarci anni. Un cristallo di calcite di
+                    trenta micron. Una patina di ossalato su un marmo. La parietaria che
+                    cresce su un muro è biodeterioramento, tecnicamente. Ma è anche, se sei
+                    disposto a guardarla, la prova che qualcosa vive dentro la pietra.
+                </p>
+
+                <div class="nota">
+                    <strong>Vorrei</strong> è la canzone in cui ho scoperto che l'amore e
+                    la mineralogia hanno lo stesso metodo: si dimostrano nell'attenzione
+                    ai dettagli che agli altri non interessano.
+                </div>
+
+                <p>
+                    E poi c'è il resto di quel disco, che nel 1996 conteneva anche
+                    <strong>Cirano</strong> e <strong>Quattro stracci</strong>. Cirano è
+                    il Cyrano di Rostand preso e fatto proprio: l'uomo che ha lo spirito,
+                    la lingua, il coraggio, e proprio per questo resta fuori — perché il
+                    mondo premia altro. Quattro stracci, invece, è amara e asciutta, e
+                    parla di chi ha perso: la povertà, la dignità tenuta insieme con
+                    niente, le vite di scarto che nessuno canta.
+                </p>
+
+                <div class="scheda">
+                    <span class="scheda-tag">Scheda</span>
+                    <p class="scheda-title">Cirano · Quattro stracci</p>
+                    <p class="scheda-fields">
+                        <span data-k="Disco">D'amore di morte e di altre sciocchezze</span>
+                        <span data-k="Anno">1996</span>
+                    </p>
+                    <p class="scheda-note">
+                        La prima è la canzone di chi ha scelto di essere bravo in
+                        qualcosa di poco spendibile. La seconda l'ho ascoltata a sedici
+                        anni pensando che parlasse di altri.
+                    </p>
+                </div>
+            </section>
+
+            <!-- ══ 07 ══════════════════════════════════════ -->
+            <section id="s7">
+                <h2><span class="u">07</span><span>Padova, la Luna, i mulini a vento</span></h2>
+
+                <div class="disco">
+                    <figure data-fallback="STAGIONI · 2000">
+                        <img
+                            src="/img/post/music/guccini-stagioni-2000.jpg"
+                            alt="Copertina di Stagioni, Francesco Guccini, 2000"
+                            loading="lazy"
+                            onerror="this.parentNode.classList.add('missing')">
+                        <figcaption>Stagioni · 2000<br>© BMG Ricordi</figcaption>
+                    </figure>
+                    <div>
+                        <p>
+                            Adesso sono a Padova, al CISAS, dentro il progetto Space It Up
+                            finanziato da ASI e MUR. Caratterizzo analoghi terrestri e
+                            simulanti di regolite lunare. In pratica: cerco di capire con
+                            che roba si costruirà una casa sulla Luna, e siccome sulla
+                            Luna per ora non ci andiamo a fare la spesa, si parte da quello
+                            che abbiamo — per esempio i depositi vulcanici dell'Etna.
+                        </p>
+                        <p>
+                            Se lo racconti a cena, la gente ride. Se lo racconti a un
+                            bando, spesso ride anche quello.
+                        </p>
+                    </div>
+                </div>
+
+                <p>
+                    Nel 2000, su <em>Stagioni</em>, Guccini incide
+                    <strong>Don Chisciotte</strong>: un dialogo tra il cavaliere e Sancho
+                    Panza, tra chi vede giganti e chi vede mulini a vento. La cosa geniale
+                    è che la canzone non dà ragione a nessuno dei due. Sancho ha ragione:
+                    sono mulini. Don Chisciotte ha ragione: se nessuno vede giganti,
+                    nessuno combatte mai niente.
+                </p>
+
+                <div class="scheda">
+                    <span class="scheda-tag">Scheda</span>
+                    <p class="scheda-title">Don Chisciotte</p>
+                    <p class="scheda-fields">
+                        <span data-k="Disco">Stagioni</span>
+                        <span data-k="Anno">2000</span>
+                        <span data-k="Forma">duetto</span>
+                    </p>
+                    <p class="scheda-note">
+                        Non dà ragione a nessuno dei due. È esattamente questo il punto.
+                    </p>
+                </div>
+
+                <p>
+                    Io costruisco case su un satellite dove non abita nessuno. Coltivo,
+                    letteralmente, il culto della calcite. Sono abbastanza consapevole di
+                    quale dei due personaggi sto interpretando, e sono abbastanza sereno
+                    al riguardo.
+                </p>
+
+                <div class="nota">
+                    Il problema è che Don Chisciotte non aveva un contratto a tempo
+                    determinato.
+                </div>
+            </section>
+
+            <!-- ══ 08 ══════════════════════════════════════ -->
+            <section id="s8">
+                <h2><span class="u">08</span><span>Autogrill</span></h2>
+
+                <div class="disco">
+                    <figure data-fallback="GUCCINI · 1983">
+                        <img
+                            src="/img/post/music/guccini-guccini-1983.jpg"
+                            alt="Copertina dell'album Guccini, 1983"
+                            loading="lazy"
+                            onerror="this.parentNode.classList.add('missing')">
+                        <figcaption>Guccini · 1983<br>© EMI Italiana</figcaption>
+                    </figure>
+                    <div>
+                        <p>
+                            Sei canzoni sole, su quel disco del 1983. Una di esse si
+                            intitola come il posto meno poetico d'Italia, e riesce a
+                            essere una delle cose più malinconiche che abbia scritto.
+                        </p>
+                        <p>
+                            Nessuno si aspetta che l'epica stia in una sosta in
+                            autostrada. È esattamente lì che la mette.
+                        </p>
+                    </div>
+                </div>
+
+                <p>
+                    Nel 1983 Guccini scrive <strong>Autogrill</strong>, che è una delle
+                    sue canzoni più sottovalutate: una sosta in autostrada, una cassiera,
+                    un panino, e da lì una riflessione su tutto — sul tempo che passa,
+                    sulle vite degli altri che scorrono accanto alla tua per tre minuti e
+                    poi spariscono, su cosa stai facendo lì.
+                </p>
+
+                <div class="scheda">
+                    <span class="scheda-tag">Scheda</span>
+                    <p class="scheda-title">Autogrill</p>
+                    <p class="scheda-fields">
+                        <span data-k="Disco">Guccini</span>
+                        <span data-k="Anno">1983</span>
+                    </p>
+                    <p class="scheda-note">
+                        La canzone della mezza età che si accorge di essere in transito.
+                    </p>
+                </div>
+
+                <p>
+                    Io ho trentadue anni e sono in un autogrill professionale. Il contratto
+                    scade. Il bando importante — quello che mi avrebbe permesso di restare
+                    in università — è andato male, e la notizia è arrivata in questi
+                    giorni, giusto per completare la settimana.
+                </p>
+
+                <p>
+                    E qui la parte antipatica, quella che di solito nei blog dei
+                    ricercatori non si scrive perché fa brutta figura: non è solo colpa
+                    mia. L'università non aumenta i finanziamenti, e nel frattempo, con la
+                    nuova normativa, un dipendente costa il doppio di prima. La matematica
+                    di questa cosa non richiede un dottorato: a parità di fondi, con costi
+                    raddoppiati, i posti si dimezzano. Non è una selezione dei migliori,
+                    è una divisione. Il mio nome è finito dalla parte sbagliata di
+                    un'operazione aritmetica decisa altrove.
+                </p>
+
+                <p>
+                    Quindi adesso si cerca. E "si cerca", a questo livello, in questo
+                    Paese, in questo settore, significa quasi sempre una parola sola:
+                    emigrare.
+                </p>
+            </section>
+
+            <!-- ══ 09 ══════════════════════════════════════ -->
+            <section id="s9">
+                <h2><span class="u">09</span><span>Eskimo</span></h2>
+
+                <div class="disco">
+                    <figure data-fallback="AMERIGO · 1978">
+                        <img
+                            src="/img/post/music/guccini-amerigo-1978.jpg"
+                            alt="Copertina di Amerigo, Francesco Guccini, 1978"
+                            loading="lazy"
+                            onerror="this.parentNode.classList.add('missing')">
+                        <figcaption>Amerigo · 1978<br>© EMI Italiana</figcaption>
+                    </figure>
+                    <div>
+                        <p>
+                            C'è una canzone del 1978 che si chiama <strong>Eskimo</strong>,
+                            dal nome del parka verde che era la divisa del movimento
+                            studentesco. È il bilancio di una generazione che aveva creduto
+                            di cambiare il mondo e si ritrova, dieci anni dopo, a fare i
+                            conti con le cose come sono.
+                        </p>
+                        <p>
+                            Non è una canzone cinica: è una canzone onesta.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="scheda">
+                    <span class="scheda-tag">Scheda</span>
+                    <p class="scheda-title">Eskimo</p>
+                    <p class="scheda-fields">
+                        <span data-k="Disco">Amerigo</span>
+                        <span data-k="Anno">1978</span>
+                    </p>
+                    <p class="scheda-note">
+                        Gli ideali non si tradiscono con un gesto plateale: si consumano
+                        per attrito, lentamente, mentre uno cerca di campare.
+                    </p>
+                </div>
+
+                <p>
+                    Poche settimane fa dicevo a qualcuno che dentro di me c'è ancora quel
+                    ragazzo lì — il gucciniano — ma che crescendo ti adatti: pensi al
+                    lavoro, a realizzarti, ad andare avanti, e smetti di goderti quello
+                    che hai.
+                </p>
+
+                <p>
+                    La cosa curiosa, che sto imparando in questi giorni, è che il
+                    gucciniano non si sveglia quando le cose vanno bene. Si sveglia quando
+                    la stabilità vacilla. Finché il contratto regge, il ragazzo del 2008
+                    dorme tranquillo in gradinata. Appena la struttura scricchiola, si alza
+                    in piedi e comincia a fare domande scomode: <em>ma sei sicuro che il
+                    posto fosse lo scopo? ma quando è che hai smesso di guardare le pietre
+                    per il gusto di guardarle?</em>
+                </p>
+
+                <p>
+                    E dall'altra parte, i miei nonni. Perché la fuga dei cervelli è
+                    un'espressione elegante per una cosa che in Italia sappiamo fare da un
+                    secolo e mezzo, solo che una volta si partiva con la valigia di cartone
+                    e adesso si parte con l'ORCID.
+                </p>
+
+                <div class="scheda">
+                    <span class="scheda-tag">Scheda</span>
+                    <p class="scheda-title">Amerigo</p>
+                    <p class="scheda-fields">
+                        <span data-k="Disco">Amerigo</span>
+                        <span data-k="Anno">1978</span>
+                    </p>
+                    <p class="scheda-note">
+                        Il prozio partito per l'America, il ritorno, la vita spezzata in
+                        due continenti. Cambia il bagaglio, non cambia il verbo.
+                    </p>
+                </div>
+            </section>
+
+            <!-- ══ 10 ══════════════════════════════════════ -->
+            <section id="s10">
+                <h2><span class="u">10</span><span>Pavana</span></h2>
+
+                <p>
+                    Guccini, alla fine, ha fatto una cosa che non fanno quasi mai gli
+                    artisti: si è fermato. <em>L'ultima Thule</em> nel 2012, annunciato
+                    come il suo ultimo disco di inediti, poi basta tour, poi la casa a
+                    Pavana, sull'Appennino tosco-emiliano — cioè il posto dove era stato
+                    sfollato da bambino durante la guerra, il paese dei nonni paterni, il
+                    mulino, la montagna, il dialetto che poi si è messo a studiare da
+                    lessicografo perché non gli bastava averlo parlato.
+                </p>
+
+                <p>
+                    È tornato alla pietra da cui era venuto. Cosa che,
+                    professionalmente, trovo di un'eleganza notevole.
+                </p>
+
+                <p>
+                    Ieri, mentre tornavo in macchina, stavo ascoltando le sue canzoni per
+                    la prima volta dopo anni. Non lo sapevo, ma era il giorno giusto.
+                </p>
+
+                <div class="coda">
+                    <p>
+                        Ho trentadue anni, un contratto che scade, un bando perso, una
+                        valigia non ancora fatta e un mestiere che consiste nel guardare
+                        cose piccolissime finché non rivelano qualcosa. Non so dove sarò
+                        tra un anno. So che a quattordici anni, in una gradinata a
+                        Montichiari, un signore con la barba e una chitarra mi ha insegnato
+                        che non serve la scenografia, che il dubbio vale più della
+                        certezza, che vale la pena prendere tre su dieci pur di non
+                        scrivere quello che si vuole sentire, e che se ami qualcosa — una
+                        persona, una montagna, un cristallo — devi volerne conoscere anche
+                        i muri, le soglie e le erbacce.
+                    </p>
+
+                    <p>Il resto sono dettagli logistici.</p>
+
+                    <p class="signoff">Grazie, Maestro</p>
+
+                    <p class="ps">
+                        Il vicinato, stanotte, dovrà sopportare i vinili.
+                        Ho l'impressione che stavolta capiranno.
+                    </p>
+                </div>
+            </section>
+
+            <!-- ══ CREDITI ═════════════════════════════════ -->
+            <div class="crediti">
+                <p>
+                    Copertine dei dischi riprodotte a bassa risoluzione a scopo
+                    informativo e critico, ai sensi dell'art. 70 L. 633/1941.
+                    Diritti dei rispettivi titolari: RCA Italiana, EMI Italiana,
+                    BMG Ricordi.
+                </p>
+                <p>
+                    Nessun testo delle canzoni è riprodotto in questa pagina.
+                    Le note nelle schede sono commento personale dell'autore.
+                </p>
+            </div>
+
+            <nav class="post-nav">
+                <a href="../music.html">← Back to Music</a>
+                <a href="../../hobbies.html">All Hobbies &amp; Blog</a>
+            </nav>
+
+        </article>
+    </div>
+
+    <div id="site-footer"></div>
+    <script src="../../../js/components.js"></script>
+
+    <script>
+    /* Evidenzia nel log la sezione in lettura. */
+    (function () {
+        var links = Array.prototype.slice.call(document.querySelectorAll('.log a'));
+        if (!links.length || !('IntersectionObserver' in window)) return;
+
+        var map = {};
+        links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (!e.isIntersecting) return;
+                links.forEach(function (a) { a.classList.remove('is-current'); });
+                var a = map[e.target.id];
+                if (a) a.classList.add('is-current');
+            });
+        }, { rootMargin: '-25% 0px -65% 0px' });
+
+        document.querySelectorAll('article section').forEach(function (s) { io.observe(s); });
+    })();
+    </script>
+
+</body>
+</html>

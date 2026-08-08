@@ -124,3 +124,15 @@
   }
 
 })();
+
+/* GoatCounter — cookieless analytics, no consent banner required */
+(function () {
+  'use strict'
+  var h = location.hostname
+  if (h === 'localhost' || h === '127.0.0.1' || h === '') return
+  var s = document.createElement('script')
+  s.async = true
+  s.src = 'https://gc.zgo.at/count.js'
+  s.setAttribute('data-goatcounter', 'https://fsdv.goatcounter.com/count')
+  document.head.appendChild(s)
+})()

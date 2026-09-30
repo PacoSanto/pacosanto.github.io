@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<!--
+    /posts/geology/geology-two-roofs.html
+    Markers left in this file (HTML comments, not visible on the page):
+      [CHECK]   exact wording of the hero-photo caption (location detail, credit) — confirm before publishing
+
+    Resolved 2026-09-30:
+      - Licence: confirmed open access on the publisher page (agupubs.onlinelibrary.wiley.com),
+        kept the unversioned "CC BY" already in the credit lines since the exact CC version
+        could not be read past the paywall redirect.
+      - Concrete range: 20-40 MPa now cited to Eurocode 2 (EN 1992-1-1) strength classes
+        C20/25-C40/50, in place of "secondary sources".
+      - Driouich value: web search confirms 17.0 ± 3.1 MPa is the correct figure for the
+        no-metakaolin, sodium-aluminate blend cured 24 h at 60 °C, 14 days — no discrepancy
+        with the text.
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Two Roofs for the Moon — Francesco Santoro De Vico</title>
+
+    <meta name="description" content="Two 2026 papers, one lunar problem: finding a lava tube with geophysics, and making cement from regolith that has to harden in a vacuum.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Two Roofs for the Moon">
+    <meta property="og:description" content="Two 2026 papers, one lunar problem: finding a lava tube with geophysics, and making cement from regolith that has to harden in a vacuum.">
+    <meta property="og:image" content="https://fsdv.eu/img/post/geology/two-roofs-og.jpg">
+    <meta property="og:url" content="https://fsdv.eu/posts/geology/geology-two-roofs.html">
+    <meta property="og:locale" content="en_GB">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <style>
+    /* ─────────────────────────────────────────────────────────────
+       Two Roofs for the Moon
+
+       Signature: a core log. The sticky bar under the site header is
+                  a stratigraphic column of the post: one segment per
+                  section, coloured by half of the story (dig / build),
+                  with the current segment lit. Section headings carry
+                  the same colour, so the reader always knows which roof
+                  they are under.
+       Palette:   --sig      scoria red, the oxidised lapilli of the
+                             Timanfaya flows the tube sits in.
+                  --sig-alt  regolith grey, the greyscale of the
+                             simulant grains in the SEM mosaics.
+
+       Inherits the site tokens from css/style.css. Only the two
+       accent tokens below are new. Everything scoped under .tr.
+       ───────────────────────────────────────────────────────────── */
+
+    .tr {
+        --sig:     #e0764d;
+        --sig-alt: #a9bcc4;
+
+        --measure: 36rem;
+
+        /* hooks the shared kit already reads */
+        --post-accent:      var(--sig);
+        --post-accent-deep: var(--sig);
+        --post-tint:        var(--color-basalt);
+        --post-radius:      6px;
+    }
+
+    body.tr {
+        background: var(--color-obsidian);
+        color: var(--color-feldspar);
+        font-family: var(--font-body);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .tr ::selection { background: var(--sig); color: var(--color-obsidian); }
+
+    .tr a:focus-visible,
+    .tr button:focus-visible {
+        outline: 2px solid var(--sig);
+        outline-offset: 3px;
+    }
+
+    .tr a { color: var(--sig-alt); }
+    .tr a:hover { color: var(--color-calcite); }
+
+    /* labels, data, captions: mono reads as instrument output */
+    .tr .label {
+        font-family: var(--font-mono);
+        font-size: 0.66rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--color-ite-light);
+    }
+
+    /* ── masthead: a true-scale section of the survey ── */
+    .tr .hero {
+        display: block;
+        min-height: 0;
+        overflow: visible;
+        background: var(--color-obsidian);
+    }
+
+    /* the real place, before the schematic one below it */
+    .tr .hero-photo {
+        position: relative;
+        height: 46vh;
+        min-height: 260px;
+        max-height: 440px;
+        overflow: hidden;
+    }
+
+    .tr .hero-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 65%;
+        filter: saturate(0.92) brightness(0.88);
+    }
+
+    .tr .hero-photo::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, rgba(26, 26, 46, 0) 55%, var(--color-obsidian) 100%);
+    }
+
+    .tr .hero-photo figcaption {
+        position: absolute;
+        z-index: 1;
+        right: 1rem;
+        bottom: 0.6rem;
+        font-family: var(--font-mono);
+        font-size: 0.68rem;
+        letter-spacing: 0.03em;
+        color: var(--color-ite-light);
+    }
+
+    .tr .hero-overlay {
+        max-width: 58rem;
+        margin: 0 auto;
+        padding: var(--space-xl) 1.5rem var(--space-lg);
+    }
+
+    .tr .hero-meta { margin-bottom: 1rem; }
+
+    .tr .hero h1 {
+        font-size: clamp(2.4rem, 7vw, 4.4rem);
+        line-height: 1.05;
+        color: var(--color-calcite);
+        margin-bottom: 1.2rem;
+    }
+
+    .tr .hero-caption {
+        max-width: 34rem;
+        font-size: 1.2rem;
+        line-height: 1.5;
+        color: var(--color-feldspar);
+        margin: 0;
+    }
+
+    /* the ground bleeds edge to edge; the drawing stays centred */
+    .tr .hero-section {
+        margin: 0;
+        background: linear-gradient(to bottom, transparent 26.9%, var(--color-basalt) 26.9%);
+    }
+
+    .tr .hero-section svg {
+        display: block;
+        width: 100%;
+        max-width: 64rem;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    .tr .g-ground { fill: var(--color-basalt); }
+    .tr .g-void   { fill: var(--color-obsidian); stroke: var(--sig); stroke-width: 1.5; }
+    .tr .g-line   { stroke: var(--color-ite-light); stroke-width: 1; fill: none; }
+    .tr .g-dim    { stroke: var(--color-ite-light); stroke-width: 1; fill: none; }
+    .tr .g-dim.on { stroke: var(--sig); }
+    .tr .g-st     { fill: var(--color-ite-light); }
+    .tr .g-st.on  { fill: var(--sig); }
+    .tr .g-txt    { font-family: var(--font-mono); font-size: 18px; fill: var(--color-ite-light); }
+    .tr .g-txt.on { fill: var(--sig); }
+
+    /* ── signature: the core log ── */
+    .tr .log {
+        position: sticky;
+        top: var(--nav-height);
+        z-index: 50;
+        display: flex;
+        gap: 0.9rem;
+        padding: 0.55rem 1.5rem 0.6rem;
+        background: rgba(26, 26, 46, 0.96);
+        border-bottom: 1px solid var(--color-basalt);
+    }
+
+    .tr .grp { --c: var(--color-ite); min-width: 0; }
+    .tr .grp--dig   { --c: var(--sig); }
+    .tr .grp--build { --c: var(--sig-alt); }
+
+    .tr .grp-name {
+        display: block;
+        margin-bottom: 0.25rem;
+        font-size: 0.74rem;
+        color: var(--color-ite-light);
+    }
+
+    .tr .segs { display: flex; gap: 3px; }
+
+    .tr .segs a {
+        flex: 1;
+        min-width: 0;
+        display: block;
+        color: var(--color-ite-light);
+        font-size: 0.78rem;
+        line-height: 1.3;
+    }
+
+    .tr .seg-bar {
+        display: block;
+        height: 5px;
+        margin-bottom: 0.35rem;
+        border-radius: 1px;
+        background: var(--c);
+        opacity: 0.35;
+    }
+
+    .tr .seg-name {
+        display: block;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .tr .segs a:hover .seg-bar,
+    .tr .segs a[aria-current="location"] .seg-bar { opacity: 1; }
+
+    .tr .segs a[aria-current="location"] { color: var(--color-calcite); }
+
+    .tr .log-now {
+        display: none;
+        margin: 0;
+        font-size: 0.78rem;
+        color: var(--color-calcite);
+    }
+
+    @media (max-width: 720px) {
+        .tr .log { flex-wrap: wrap; gap: 0.3rem 0.6rem; }
+        .tr .grp-name, .tr .seg-name { display: none; }
+        .tr .seg-bar { margin-bottom: 0; }
+        .tr .grp { flex: 1; }
+        .tr .log-now { display: block; flex: 0 0 100%; }
+    }
+
+    /* ── article: one text column, figures may break out ── */
+    .tr article {
+        display: grid;
+        grid-template-columns:
+            [full-start] minmax(1.5rem, 1fr)
+            [text-start] min(var(--measure), calc(100% - 3rem))
+            [text-end]   minmax(1.5rem, 1fr) [full-end];
+        padding: var(--space-lg) 0 5rem;
+    }
+
+    .tr article > * { grid-column: text; min-width: 0; }
+
+    .tr article > .wide {
+        grid-column: full;
+        width: 100%;
+        max-width: 58rem;
+        justify-self: center;
+        padding-inline: 1.5rem;
+    }
+
+    .tr article h2 {
+        font-family: var(--font-display);
+        font-size: clamp(1.7rem, 4vw, 2.1rem);
+        line-height: 1.2;
+        color: var(--color-calcite);
+        margin: 3.6rem 0 1.2rem;
+        scroll-margin-top: calc(var(--nav-height) + 5rem);
+    }
+
+    .tr article h2::before {
+        content: "";
+        display: block;
+        width: 2.5rem;
+        height: 3px;
+        margin-bottom: 0.9rem;
+        background: var(--c, var(--color-ite));
+    }
+
+    .tr article h2[data-grp="dig"]   { --c: var(--sig); }
+    .tr article h2[data-grp="build"] { --c: var(--sig-alt); }
+
+    .tr article h3 {
+        font-family: var(--font-display);
+        font-size: 1.25rem;
+        color: var(--color-calcite);
+        margin: 2.2rem 0 0.6rem;
+    }
+
+    .tr article p {
+        font-size: 1.1rem;
+        line-height: 1.75;
+        color: var(--color-feldspar);
+        margin: 0 0 1.35rem;
+    }
+
+    /* ── shared kit, recoloured for the dark page ── */
+    .tr .callout { margin: 2rem 0; }
+    .tr .callout p { font-size: 1rem; margin-bottom: 0.6rem; }
+    .tr .callout p:last-child { margin-bottom: 0; }
+
+    .tr .key-number-grid { grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); }
+    .tr .key-number { text-align: left; }
+    .tr .key-number .number { font-family: var(--font-display); font-weight: 400; }
+    .tr .key-number .label {
+        font-family: var(--font-body);
+        font-size: 0.92rem;
+        letter-spacing: 0;
+        text-transform: none;
+        color: var(--color-feldspar);
+    }
+
+    /* paper figures are white-backed prints: pin them on a chalk plate */
+    .tr .img-block { margin: 3rem 0; }
+
+    .tr .img-block img {
+        filter: none;
+        background: var(--color-chalk);
+        padding: 0.6rem;
+        border-radius: 3px;
+        min-height: 5rem;
+        color: var(--color-ite);
+    }
+
+    .tr .img-block figcaption {
+        border-left-color: var(--color-slate);
+        font-size: 0.86rem;
+        line-height: 1.55;
+        font-style: normal;
+        color: var(--color-ite-light);
+    }
+
+    .tr .img-block figcaption .credit { color: var(--color-ite-light); font-size: 0.76rem; }
+    .tr .img-block figcaption .credit a { color: var(--sig-alt); border-bottom-color: var(--color-slate); }
+
+    .tr .sources { border-color: var(--color-basalt); }
+    .tr .sources h3 { color: var(--color-ite-light); font-family: var(--font-body); font-size: 0.9rem; }
+    .tr .sources ul li { border-bottom-color: var(--color-basalt); color: var(--color-feldspar); }
+    .tr .sources ul li .src-meta { color: var(--color-ite-light); }
+    .tr .sources p { font-size: 0.86rem; color: var(--color-ite-light); }
+    .tr .sources a { color: var(--sig-alt); border-bottom-color: var(--color-slate); }
+
+    .tr .post-nav { border-top-color: var(--color-basalt); }
+    .tr .back-link, .tr .post-nav a { color: var(--sig-alt); }
+    .tr .back-link:hover, .tr .post-nav a:hover { color: var(--color-calcite); }
+
+    /* ── figure: how wide is a tube (log scale) ── */
+    .tr .ruler { margin: 0; padding: 0; list-style: none; }
+    .tr .ruler li { margin: 0 0 1.1rem; }
+    .tr .ruler p { margin: 0 0 0.4rem; font-size: 0.98rem; line-height: 1.4; color: var(--color-feldspar); }
+    .tr .ruler p b { font-weight: 600; color: var(--color-calcite); }
+
+    .tr .ruler-body {
+        position: relative;
+        background:
+            linear-gradient(var(--color-slate), var(--color-slate)) 0% 0 / 1px 100% no-repeat,
+            linear-gradient(var(--color-slate), var(--color-slate)) 43.46% 0 / 1px 100% no-repeat,
+            linear-gradient(var(--color-slate), var(--color-slate)) 86.92% 0 / 1px 100% no-repeat;
+    }
+
+    .tr .track { position: relative; height: 16px; }
+
+    .tr .bar {
+        position: absolute;
+        top: 1px;
+        height: 14px;
+        left: var(--x);
+        width: var(--w);
+        background: var(--sig);
+    }
+
+    .tr .bar--open { background: linear-gradient(to right, var(--sig), transparent); }
+
+    .tr .dot {
+        position: absolute;
+        top: -1px;
+        left: 7.65%;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: var(--color-calcite);
+        transform: translateX(-50%);
+    }
+
+    .tr .ruler-axis {
+        position: relative;
+        height: 1.4rem;
+        margin-top: 0.3rem;
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        color: var(--color-ite-light);
+    }
+
+    .tr .ruler-axis span { position: absolute; transform: translateX(-50%); }
+    .tr .ruler-axis span:first-child { transform: none; }
+
+    /* ── figure: strength ladder ── */
+    .tr .ladder { margin: 0; padding: 0; list-style: none; position: relative; }
+
+    .tr .ladder .band {
+        position: absolute;
+        left: 40%;
+        width: 40%;
+        top: 0;
+        bottom: 0;
+        background: rgba(201, 185, 154, 0.09);
+        border-inline: 1px dashed rgba(201, 185, 154, 0.35);
+        pointer-events: none;
+    }
+
+    .tr .ladder .band span {
+        position: absolute;
+        top: 0.15rem;
+        left: 0.5rem;
+        font-size: 0.74rem;
+        color: var(--color-sandstone);
+    }
+
+    .tr .ladder li { position: relative; margin: 0 0 0.85rem; }
+
+    .tr .ladder .lgrp {
+        margin: 1.4rem 0 0.7rem;
+        font-size: 0.86rem;
+        font-weight: 600;
+        color: var(--color-calcite);
+        position: relative;
+    }
+
+    .tr .ladder .lgrp:first-of-type { margin-top: 1.9rem; }
+
+    .tr .lhead {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        font-size: 0.92rem;
+        line-height: 1.35;
+        color: var(--color-feldspar);
+    }
+
+    .tr .lval { font-family: var(--font-mono); font-size: 0.82rem; white-space: nowrap; color: var(--color-calcite); }
+
+    .tr .ltrack { height: 12px; margin-top: 0.3rem; background: rgba(255, 255, 255, 0.04); }
+    .tr .lbar { display: block; height: 100%; width: var(--w); }
+    .tr .lbar.b-mk  { background: var(--sig-alt); }
+    .tr .lbar.b-al  { background: var(--color-calcite); }
+    .tr .lbar.b-vac { background: repeating-linear-gradient(45deg, var(--sig-alt) 0 4px, transparent 4px 8px); }
+
+    .tr .laxis {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 0.5rem;
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        color: var(--color-ite-light);
+    }
+
+    .tr .fig-plain figcaption {
+        margin-top: 0.8rem;
+        padding-left: 0.8rem;
+        border-left: 2px solid var(--color-slate);
+        font-size: 0.86rem;
+        line-height: 1.55;
+        color: var(--color-ite-light);
+    }
+
+    .tr .fig-title { margin: 0 0 0.3rem; font-family: var(--font-display); font-size: 1.15rem; color: var(--color-calcite); }
+
+    @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        .tr *, .tr *::before, .tr *::after {
+            transition-duration: 0.01ms !important;
+            animation-duration: 0.01ms !important;
+        }
+    }
+    </style>
+</head>
+
+<body class="tr">
+
+    <div id="site-header"></div>
+
+    <header class="hero">
+        <figure class="hero-photo">
+            <img
+                src="/img/post/geology/lanzarote-skylight.jpg"
+                alt="A collapsed section of lava-tube roof breaks the surface near the survey site in Lanzarote; volcanic cones and a white village sit in the background."
+                loading="eager" decoding="async">
+            <!-- [CHECK: exact wording — location detail and photo credit] -->
+            <figcaption>Near the survey site, Lanzarote — March 2025</figcaption>
+        </figure>
+
+        <div class="hero-overlay">
+            <p class="hero-meta label">Geology &nbsp;·&nbsp; September 2026</p>
+            <h1>Two Roofs for the Moon</h1>
+            <p class="hero-caption">A tunnel in Lanzarote and a paste of crushed volcanic glass. Two papers, accepted a day apart, on one problem: a ceiling on a world with no air.</p>
+        </div>
+
+        <figure class="hero-section">
+            <svg viewBox="0 0 840 260" role="img" aria-label="Cross-section drawn to scale. Nine seismic stations 5 metres apart sit on the ground surface. Below three of them, a lava tube 15 metres wide and 3 metres high lies under a roof 1 to 3 metres thick.">
+                <rect class="g-ground" x="0" y="70" width="840" height="190"/>
+                <line class="g-line" x1="0" y1="70" x2="840" y2="70"/>
+                <ellipse class="g-void" cx="420" cy="130" rx="150" ry="30"/>
+
+                <g>
+                    <path class="g-st" d="M12 50 L28 50 L20 66 Z"/>
+                    <path class="g-st" d="M112 50 L128 50 L120 66 Z"/>
+                    <path class="g-st" d="M212 50 L228 50 L220 66 Z"/>
+                    <path class="g-st on" d="M312 50 L328 50 L320 66 Z"/>
+                    <path class="g-st on" d="M412 50 L428 50 L420 66 Z"/>
+                    <path class="g-st on" d="M512 50 L528 50 L520 66 Z"/>
+                    <path class="g-st" d="M612 50 L628 50 L620 66 Z"/>
+                    <path class="g-st" d="M712 50 L728 50 L720 66 Z"/>
+                    <path class="g-st" d="M812 50 L828 50 L820 66 Z"/>
+                </g>
+
+                <path class="g-dim" d="M20 34 V40 M120 34 V40 M20 37 H120"/>
+                <text class="g-txt" x="70" y="26" text-anchor="middle">5 m</text>
+                <text class="g-txt on" x="420" y="26" text-anchor="middle">station 10</text>
+
+                <path class="g-dim on" d="M470 70 V102 M466 70 H474 M466 102 H474"/>
+                <text class="g-txt on" x="486" y="92">roof 1–3 m</text>
+
+                <path class="g-dim" d="M270 178 V190 M570 178 V190 M270 184 H570"/>
+                <text class="g-txt" x="420" y="212" text-anchor="middle">15 m wide</text>
+
+                <text class="g-txt" x="20" y="250">to scale: 40 m of the 120 m survey line</text>
+            </svg>
+        </figure>
+    </header>
+
+    <nav class="log" aria-label="Sections of this post">
+        <div class="grp" style="flex:1">
+            <span class="grp-name">Problem</span>
+            <div class="segs"><a href="#surface"><span class="seg-bar"></span><span class="seg-name">The surface</span></a></div>
+        </div>
+        <div class="grp grp--dig" style="flex:3">
+            <span class="grp-name">Dig</span>
+            <div class="segs">
+                <a href="#dig"><span class="seg-bar"></span><span class="seg-name">The tunnel</span></a>
+                <a href="#measure"><span class="seg-bar"></span><span class="seg-name">Finding a hole</span></a>
+                <a href="#inversion"><span class="seg-bar"></span><span class="seg-name">Guessing the shape</span></a>
+            </div>
+        </div>
+        <div class="grp grp--build" style="flex:3">
+            <span class="grp-name">Build</span>
+            <div class="segs">
+                <a href="#build"><span class="seg-bar"></span><span class="seg-name">No furnace</span></a>
+                <a href="#aluminium"><span class="seg-bar"></span><span class="seg-name">Missing ingredient</span></a>
+                <a href="#vacuum"><span class="seg-bar"></span><span class="seg-name">Vacuum</span></a>
+            </div>
+        </div>
+        <div class="grp" style="flex:1">
+            <span class="grp-name">Open</span>
+            <div class="segs"><a href="#limits"><span class="seg-bar"></span><span class="seg-name">Unknowns</span></a></div>
+        </div>
+        <p class="log-now" aria-hidden="true"></p>
+    </nav>
+
+    <article>
+
+        <p>
+            Two seismic sensors sit on bare ground in the UNESCO Global Geopark of Lanzarote.
+            They cannot be buried and they cannot be pinned down with metal spikes, because
+            the park forbids both. On 17 and 18 March 2025 I was on the team that moved them
+            along 120 metres of unpaved road, 5 metres at a time, recording the ground’s
+            ambient noise for at least twelve minutes at each stop. Now and then someone hits
+            the road with a 4-kilogram sledgehammer.
+        </p>
+
+        <p>
+            Under that road, roughly one to three metres down, the rock stops and there is a
+            tunnel: 1.6 kilometres long, emptied by lava during the Timanfaya eruption of
+            1730–1736. At stations 5 and 19 the ground behaves as ground should. At station 10,
+            directly above the cavity, it moves up and down four times more than it moves
+            sideways: at about 11 Hz the ratio between the two drops to 0.25. Our reading is
+            that the roof of the cave is vibrating, like a plank.
+        </p>
+
+        <p>
+            That ringing roof is half of this post. The other half is a paste of crushed
+            volcanic glass that has to harden in a vacuum. The two papers come from different
+            groups and were accepted a day apart, on 9 and 10 August 2026. I am third author
+            on both. They look unrelated. They ask the same thing from opposite ends: where do
+            you put a roof over your head on the Moon?
+        </p>
+
+        <h2 id="surface">Why the surface is the problem</h2>
+
+        <p>
+            At the lunar equator the ground swings from about 100 K to about 390 K in a single
+            day, roughly −170 °C to +120 °C. Near the poles it stays colder, between about
+            50 K and 200 K. With no atmosphere, radiation at the surface exceeds 200
+            millisieverts a year and micrometeorites keep falling, with no air to stop them.
+        </p>
+
+        <p>
+            Inside a lava tube, one modelling study puts the temperature near 290 K, about
+            17 °C, and the roof gives shielding equivalent to several metres of regolith.
+            Both are “could”, not “does”: nobody has measured either inside a lunar tube.
+        </p>
+
+        <p>
+            So there are two ways to get a roof. Find a hole that nature has already dug, or
+            make one from the ground you are standing on. The second has an economic argument:
+            the regolith paper cites an estimate of 20,000 to 100,000 US dollars to send one
+            kilogram of water to the Moon. Every kilogram made from local material is a
+            kilogram you do not pay that price for.
+        </p>
+
+        <h2 id="dig" data-grp="dig">A tunnel that is already there</h2>
+
+        <p>
+            A lava tube forms when the outside of a basalt flow solidifies while the inside
+            stays molten. The liquid keeps flowing beneath its own crust, eventually drains
+            away, and leaves a tube. On the Moon and Mars, orbiters have photographed pits
+            that look like tube ceilings collapsed in places. They are called skylights, and
+            some of the lunar ones are more than 100 metres across. From orbit the information
+            stops there. You can see the hole. You cannot see how thick the roof is, how wide
+            the tube is, or whether it continues.
+        </p>
+
+        <p>
+            Gravity and magnetism do not help from that height either. Both weaken quickly
+            with distance, gravity with the square and magnetism with the cube, so at orbital
+            altitude a small tube disappears into the background. The plan is to put
+            instruments on the ground, on a rover, and measure from there. First, you test
+            the plan on Earth.
+        </p>
+
+        <p>
+            The Cueva de Los Naturalistas is a good rehearsal room. It is easy to reach, and
+            it is cut in basalt not far in composition from lunar and martian mare basalts.
+            Its cross-section is an ellipse, 1 to 8 metres high (mean 3) and 1 to 20 metres
+            wide (mean 10); under the survey line it is about 15 metres wide. Geologists call
+            it a shallow inflated tube: lava kept pushing in beneath a crust that had already
+            set, and lifted it like a lid.
+        </p>
+
+        <figure class="wide fig-plain">
+            <p class="fig-title">How wide is a tube?</p>
+            <ul class="ruler">
+                <li>
+                    <p><b>Cueva de Los Naturalistas</b>, the stretch under the survey line: about 15 m</p>
+                    <div class="ruler-body"><div class="track"><span class="dot"></span></div></div>
+                </li>
+                <li>
+                    <p><b>Typical tubes on Earth</b>: 10 to 40 m</p>
+                    <div class="ruler-body"><div class="track"><span class="bar" style="--x:0%;--w:26.16%"></span></div></div>
+                </li>
+                <li>
+                    <p><b>Mars</b>, from the pit chains: 40 to 400 m</p>
+                    <div class="ruler-body"><div class="track"><span class="bar" style="--x:26.16%;--w:43.46%"></span></div></div>
+                </li>
+                <li>
+                    <p><b>The Moon</b>, predicted: 500 to 600 m or more</p>
+                    <div class="ruler-body"><div class="track">
+                        <span class="bar" style="--x:73.84%;--w:3.44%"></span>
+                        <span class="bar bar--open" style="--x:77.28%;--w:22.72%"></span>
+                    </div></div>
+                </li>
+            </ul>
+            <div class="ruler-axis" aria-hidden="true">
+                <span style="left:0">10 m</span>
+                <span style="left:43.46%">100 m</span>
+                <span style="left:86.92%">1,000 m</span>
+            </div>
+            <figcaption>
+                Logarithmic scale: each gridline is ten times the one before. Ranges are the
+                values quoted in Ghirotto et al. (2026). In exceptional cases, gravity surveys
+                suggest lunar tubes wider than a thousand metres.
+            </figcaption>
+        </figure>
+
+        <p>
+            The Naturalistas tube is small, and the paper says so. The authors expect the
+            methods to work better on bigger tubes. That is a hypothesis, not a result. They
+            also note that gravity and magnetic inversions tend to pull deep bodies towards
+            the surface, so deeper tubes will be harder.
+        </p>
+
+        <h2 id="measure" data-grp="dig">Three ways to find a hole</h2>
+
+        <p>
+            The team ran three kinds of measurement along the same 120-metre line: 25
+            stations, 5 metres apart. Each is sensitive to a different property of the rock.
+        </p>
+
+        <h3>Weight</h3>
+
+        <p>
+            A cavity is missing mass, and a gravimeter can feel that. The instrument reads to
+            1 microgal and is accurate to 5; a microgal is about a billionth of Earth’s
+            gravity. Above the tube the corrected signal dips by roughly 0.15 milligal. The
+            rock itself is light and variable: two samples averaged 1,570 kg/m³ and some
+            measured as low as about 1,200.
+        </p>
+
+        <h3>Magnetism</h3>
+
+        <p>
+            Empty space contains no magnetic minerals, so the field dips over the tube, by
+            close to 2,000 nT. A dip can have other causes, and the paper rules them out. Rock
+            magnetised backwards would do it, but these lavas erupted during the current
+            normal-polarity chron. Rock whose magnetic minerals were altered by hot fluids
+            would do it too, but no hydrothermal activity is documented in the area.
+        </p>
+
+        <div class="callout">
+            <p class="callout-title">The catch for the Moon</p>
+            <p>
+                Neither the Moon nor Mars has a global magnetic field today. Lava that erupted
+                after the field died carries no magnetisation to detect, so a tube in it would
+                be invisible to a magnetometer. Gravity and seismic methods would still see it.
+                That is one reason to use more than one method.
+            </p>
+        </div>
+
+        <figure class="wide img-block">
+            <img
+                src="/img/post/geology/lanzarote-gravity-magnetic-maps.jpg"
+                alt="Four map panels of the survey area. Top row: gravity anomaly, measured and after upward continuation. Bottom row: magnetic anomaly, measured and after upward continuation. The white outline of the laser-scanned tube crosses each panel."
+                loading="lazy" decoding="async">
+            <figcaption>
+                Top row: gravity. Bottom row: magnetism. Left: as measured. Right: the same
+                data mathematically lifted 10 m above the ground, which blurs small local
+                sources and keeps the large ones. The white outline is the tube, laser-scanned.
+                The coloured strip is the survey line, and the second magnetic area, M2,
+                lies to the west.
+                <span class="credit">Ghirotto et al. (2026), <em>JGR Planets</em>, Fig. 4.
+                Open access, CC BY.</span>
+            </figcaption>
+        </figure>
+
+        <p>
+            Lifting the data also isolates a second, weaker dip south of the tube on both
+            maps. The authors read it as more likely porous rock than a second tube: the
+            seismic data show no void signature there, and the sampled rock is that variable.
+            The lifted magnetic map of the second area, M2, seems to follow the tube’s course,
+            which suggests the method could trace a tube where nobody knows one exists.
+        </p>
+
+        <h3>Vibration</h3>
+
+        <p>
+            The passive seismic method is called HVSR, the horizontal-to-vertical spectral
+            ratio. It uses ambient noise only, wind, sea and distant traffic, and compares how
+            much the ground shakes sideways with how much it shakes up and down, frequency by
+            frequency. Ordinary ground gives a curve with a few peaks that mark buried layers,
+            here at about 2.5 and 6.5 Hz. Over the cavity the 2.5 Hz peak is still there, but
+            at 11 Hz the curve falls into a trough: vertical shaking beats horizontal by four
+            to one. Stations 9 to 11 show it, which makes a width of 15 metres. The real tube
+            is about 15 metres wide.
+        </p>
+
+        <p>
+            Why 11 Hz? Seismic waves bouncing between the top and bottom of a 1.5-metre roof
+            would resonate at about 150 Hz.
+        </p>
+
+        <div class="key-number-grid">
+            <div class="key-number">
+                <span class="number">150 Hz</span>
+                <span class="label">expected if waves bounced inside the roof</span>
+            </div>
+            <div class="key-number">
+                <span class="number">11 Hz</span>
+                <span class="label">recorded over the cavity</span>
+            </div>
+        </div>
+
+        <p>
+            The authors’ explanation is that the roof is not ringing like a slab of rock. It
+            flexes like a plank fixed at both ends, and a plank vibrates far more slowly. They
+            modelled it as a fixed beam 14 metres long. With a stiffness estimated from the
+            shallow seismic velocities, 0.314 GPa, the beam rings at 4.15 Hz. Raising the
+            stiffness to 2.20 GPa gives 11 Hz.
+        </p>
+
+        <div class="callout">
+            <p class="callout-title">A fit, not a measurement</p>
+            <p>
+                Nobody measured the stiffness of that roof. 2.2 GPa is the value that
+                reproduces 11 Hz, and the paper argues it is plausible for fractured, layered
+                volcanic rock. The authors also call the uniform-beam assumption a crude
+                simplification. If the stiffness were known independently, the same frequency
+                could in principle give the roof thickness.
+            </p>
+        </div>
+
+        <figure class="wide img-block">
+            <img
+                src="/img/post/geology/lanzarote-roof-beam.jpg"
+                alt="Three-dimensional finite-element model of the cave roof as a stepped beam, coloured from blue at the ends to red in the middle by vertical displacement."
+                loading="lazy" decoding="async">
+            <figcaption>
+                The roof modelled as a fixed beam, 1 m elements, coloured by vertical
+                displacement at maximum flexure: still at the walls, moving most in the middle.
+                <span class="credit">Ghirotto et al. (2026), <em>JGR Planets</em>, Fig. 6.
+                Open access, CC BY.</span>
+            </figcaption>
+        </figure>
+
+        <p>
+            A fourth method, active seismic with the hammer, also showed clear anomalies above
+            the cavity, but its resolution is too low to say anything quantitative. Put the
+            other three on one axis and they agree.
+        </p>
+
+        <figure class="wide img-block">
+            <img
+                src="/img/post/geology/lanzarote-profile-p1.jpg"
+                alt="Four strips sharing one horizontal axis along profile P1: HVSR spectrogram, gravity anomaly curve, magnetic anomaly curve, and the true section of the tube below the stations."
+                loading="lazy" decoding="async">
+            <figcaption>
+                One line, four views, north to south. From the top: HVSR, gravity, magnetism,
+                and the true tube section. The bright trough in the HVSR, the two dips and the
+                cavity all sit at the same place along the line.
+                <span class="credit">Ghirotto et al. (2026), <em>JGR Planets</em>, Fig. 5.
+                Open access, CC BY.</span>
+            </figcaption>
+        </figure>
+
+        <h2 id="inversion" data-grp="dig">Letting a computer guess the shape</h2>
+
+        <p>
+            Each measurement alone fits many possible tubes. So the team let an algorithm
+            propose them. A Hamiltonian Monte Carlo inversion explores the space of possible
+            shapes and spends more time on those that reproduce gravity and magnetism
+            together. Here it ran 10,000 iterations on a polygon with 24 corners, with the
+            first 500 discarded as warm-up. The most probable horizontal diameter came out
+            between 14 and 16 metres. The laser scan says about 15.
+        </p>
+
+        <p>
+            The probabilistic part is what matters for the Moon. You get a range of tubes and
+            how likely each one is, not a single answer, which is what you need when nobody
+            can check the ground truth.
+        </p>
+
+        <div class="callout">
+            <p class="callout-title">What the algorithm was given</p>
+            <p>
+                Density and magnetisation came from field and laboratory measurements on rock
+                samples, and the starting shape was placed near the real tube. The algorithm
+                had to find the outline, not the rock.
+            </p>
+        </div>
+
+        <figure class="wide img-block">
+            <img
+                src="/img/post/geology/lanzarote-inversion.jpg"
+                alt="Inversion at iteration 9,878: observed and calculated magnetic and gravity curves, the starting polygon, the laser-scanned tube outline, thousands of candidate polygons clustering around it, and a histogram of horizontal diameter peaking between 14 and 16 metres."
+                loading="lazy" decoding="async">
+            <figcaption>
+                Panel c: the laser-scanned outline (black), the starting shape (orange) and the
+                candidate at iteration 9,878 of 10,000 (red). Panel d: every candidate the
+                algorithm visited after warm-up, in red. Panel e: how often each horizontal
+                diameter came up.
+                <span class="credit">Ghirotto et al. (2026), <em>JGR Planets</em>, Fig. 7.
+                Open access, CC BY.</span>
+            </figcaption>
+        </figure>
+
+        <h2 id="build" data-grp="build">A cement that needs no furnace</h2>
+
+        <p>
+            The second paper starts with a shortage. Apollo, Luna and Chang’E have returned
+            hundreds of kilograms of lunar soil between them, and nobody wants to grind up
+            irreplaceable samples to test a cement. Labs work with simulants: terrestrial
+            volcanic rock crushed to match the chemistry and grain size of the real thing.
+            Real regolith has a median grain size of 30 to 130 micrometres.
+        </p>
+
+        <p>
+            You can turn that powder into a building material by sintering it in a furnace at
+            1000–1100 °C, or by mixing it with sulphur or polymer binders, or with Portland
+            cement shipped from Earth. The paper takes another route: alkali activation. Soak
+            the powder in a strongly alkaline liquid, the glass in it dissolves, and the
+            dissolved material re-precipitates as a solid gel that binds the grains together.
+            Sintering fuses with heat. This fuses with chemistry, at room temperature. It
+            still needs water and alkali, shipped or made on the Moon.
+        </p>
+
+        <h2 id="aluminium" data-grp="build">The missing ingredient</h2>
+
+        <p>
+            The reactive part of the powder is its glass, and the crystals mostly sit there.
+            The simulant used for most of the work, LMS-1D, is 10 wt% glass, against 25–40 wt%
+            in Apollo samples. Worse, the glass is short of aluminium: 0.28 aluminium atoms per
+            silicon atom, when the binder needs between 0.32 and 0.92. Think of a recipe with
+            one ingredient missing. Everything else is in the bowl, and it does not bind.
+        </p>
+
+        <figure class="wide img-block">
+            <img
+                src="/img/post/geology/regolith-glass-shard.webp"
+                alt="Four microscope panels of the LMS-1D simulant: a glass shard full of round bubbles under polarised light, the same powder in electron microscopy, one glassy grain with feathery crystals, and a close-up of a single dendrite."
+                loading="lazy" decoding="async">
+            <figcaption>
+                (a) A glass shard, outlined in yellow, in a thin section of the simulant under
+                polarised light; the round holes are gas bubbles. (b) The same powder under the
+                electron microscope, and (c) one glassy grain. (d) Close-up of a dendrite, a
+                tiny crystal that grew inside the glass.
+                <span class="credit">Driouich et al. (2026), <em>Materials and Structures</em>
+                59:349, Fig. 1. Open access, CC BY 4.0.</span>
+            </figcaption>
+        </figure>
+
+        <p>
+            The experiments bear it out. In a designed set of 26 runs, in randomised order,
+            with a sodium silicate activator, every sample with no added aluminium and cured
+            at 40 °C or below failed to set. Cured at 60 °C for the first day, they set but
+            stayed under 1 MPa.
+        </p>
+
+        <p>
+            A word on the unit. Strength here is compressive strength in megapascals: 1 MPa is
+            about 10 kilograms of load on every square centimetre. Ordinary building concrete
+            is usually in the 20–40 MPa range: Eurocode 2 (EN 1992-1-1) lists this as strength
+            classes C20/25 to C40/50.
+        </p>
+
+        <h3>Fix one: bring the aluminium from Earth</h3>
+
+        <p>
+            Add metakaolin, a calcined clay rich in reactive aluminium. At 8.5 wt% metakaolin
+            the 14-day strength was 31.1 MPa, at 12 wt% it was 34.2, and across the whole
+            trial up to 15 wt% reached 44 MPa. The catch is that metakaolin does not come from
+            the Moon. For the 8.5 wt% recipe the authors work out 61 kilograms of Earth-made
+            material per tonne of binder if the alkaline solution can be made on the Moon, and
+            346 kilograms if everything except the regolith has to be shipped.
+        </p>
+
+        <h3>Fix two: put the aluminium in the liquid</h3>
+
+        <p>
+            Blend two simulants, 40% LMS-1D and 60% JSC-2A, which lifts the glass to 29 wt%,
+            close to real Apollo samples, and activate with sodium aluminate, a liquid that
+            carries its own aluminium. No clay. With 24 hours at 60 °C the 14-day strength
+            averages 17.0 ± 3.1 MPa; left at ambient temperature it falls to 4.8 ± 2.7 MPa.
+            The transport bill: nothing, if the activator can be made on site, or 231
+            kilograms per tonne if the aluminate and water are shipped. The authors consider
+            about 17 MPa possibly acceptable in lunar gravity, and say a better assessment at
+            longer curing times is needed.
+        </p>
+
+        <figure class="wide fig-plain">
+            <p class="fig-title">Compressive strength of the pastes, MPa</p>
+            <ul class="ladder">
+                <li class="lgrp">Sodium silicate plus metakaolin, clay from Earth (14 days)</li>
+                <li>
+                    <div class="lhead"><span>5 wt% metakaolin</span><span class="lval">13.8</span></div>
+                    <div class="ltrack"><span class="lbar b-mk" style="--w:27.6%"></span></div>
+                </li>
+                <li>
+                    <div class="lhead"><span>8.5 wt% metakaolin</span><span class="lval">31.1</span></div>
+                    <div class="ltrack"><span class="lbar b-mk" style="--w:62.2%"></span></div>
+                </li>
+                <li>
+                    <div class="lhead"><span>12 wt% metakaolin</span><span class="lval">34.2</span></div>
+                    <div class="ltrack"><span class="lbar b-mk" style="--w:68.4%"></span></div>
+                </li>
+                <li>
+                    <div class="lhead"><span>Best run of the 26, up to 15 wt% metakaolin</span><span class="lval">44</span></div>
+                    <div class="ltrack"><span class="lbar b-mk" style="--w:88%"></span></div>
+                </li>
+
+                <li class="lgrp">No metakaolin (14 days)</li>
+                <li>
+                    <div class="lhead"><span>Silicate, first day at 40 °C or below</span><span class="lval">did not set</span></div>
+                    <div class="ltrack"></div>
+                </li>
+                <li>
+                    <div class="lhead"><span>Silicate, first day at 60 °C</span><span class="lval">&lt; 1</span></div>
+                    <div class="ltrack"><span class="lbar b-al" style="--w:2%"></span></div>
+                </li>
+                <li>
+                    <div class="lhead"><span>Aluminate blend, ambient</span><span class="lval">4.8 ± 2.7</span></div>
+                    <div class="ltrack"><span class="lbar b-al" style="--w:9.6%"></span></div>
+                </li>
+                <li>
+                    <div class="lhead"><span>Aluminate blend, first day at 60 °C</span><span class="lval">17.0 ± 3.1</span></div>
+                    <div class="ltrack"><span class="lbar b-al" style="--w:34%"></span></div>
+                </li>
+
+                <li class="lgrp">Vacuum straight after mixing, then two weeks of thermal vacuum</li>
+                <li>
+                    <div class="lhead"><span>Silicate, 8.5 wt% metakaolin</span><span class="lval">8.5</span></div>
+                    <div class="ltrack"><span class="lbar b-vac" style="--w:17%"></span></div>
+                </li>
+                <li>
+                    <div class="lhead"><span>Aluminate blend</span><span class="lval">8.8</span></div>
+                    <div class="ltrack"><span class="lbar b-vac" style="--w:17.6%"></span></div>
+                </li>
+                <li class="band" aria-hidden="true"><span>ordinary building concrete</span></li>
+            </ul>
+            <div class="laxis" aria-hidden="true"><span>0</span><span>10</span><span>20</span><span>30</span><span>40</span><span>50</span></div>
+            <figcaption>
+                Values from Driouich et al. (2026). Each is a mean of repeated tests. The
+                shaded band is the usual range for ordinary building concrete, added for scale.
+            </figcaption>
+        </figure>
+
+        <h2 id="vacuum" data-grp="build">Then the vacuum</h2>
+
+        <p>
+            The lunar surface is close to a perfect vacuum, and the trouble with vacuum for a
+            wet binder is that water wants to leave. The team tested two orders of events.
+        </p>
+
+        <p>
+            First order: let the binder harden on Earth, then move it into a thermal vacuum
+            chamber. Four cycles between −51.0 and 101.1 °C at 0.05 Pa. Nothing degraded,
+            visibly or in measured strength. The three silicate recipes actually came out
+            stronger after the chamber, but that comparison mixes two ages, 14 and 28 days,
+            and the error bars are large. The safe reading is “no damage found”, not “vacuum
+            helps”. The cold end of the cycle is also far from a lunar night: the paper puts
+            equatorial lows near −170 °C, and says the aim was a wide swing, not a copy of any
+            latitude.
+        </p>
+
+        <p>
+            Second order: put the fresh paste under vacuum straight after mixing, before it
+            has set. Here, a vacuum oven for 48 hours at 60 °C and 300 Pa, then into the same
+            chamber. Water vapour escaped from the wet paste and left large voids that merged
+            with one another.
+        </p>
+
+        <figure class="wide img-block">
+            <img
+                src="/img/post/geology/regolith-vacuum-sem.webp"
+                alt="Four electron-microscope mosaics of hardened paste. Panels a and c: compact matrix with few holes. Panels b and d: matrix riddled with large black voids after vacuum exposure while fresh."
+                loading="lazy" decoding="async">
+            <figcaption>
+                Same recipes, two histories. (a) Silicate paste hardened first, then vacuum.
+                (b) The same recipe under vacuum straight after mixing. (c) and (d): the same
+                comparison for the aluminate paste. Black is empty. Scale bars 2.5 mm.
+                <span class="credit">Driouich et al. (2026), <em>Materials and Structures</em>
+                59:349, Fig. 10. Open access, CC BY 4.0.</span>
+            </figcaption>
+        </figure>
+
+        <p>
+            It still set. The silicate paste reached 8.5 MPa and the aluminate paste 8.8 MPa.
+            Two different recipes ending up nearly equal suggests that once the holes are
+            there, the holes set the strength and the chemistry matters less. Why the paste
+            set at all is not fully explained. The authors point to three things: modelling
+            suggests the binder starts forming within seconds of mixing, with a significant
+            amount there after 30 minutes; this binder holds little water compared with
+            Portland cement; and the oven’s vacuum was milder than the Moon’s, so some binder
+            may have formed before the water left.
+        </p>
+
+        <h2 id="limits">What neither paper can tell you yet</h2>
+
+        <p>
+            For the tube: one tube, one 120-metre profile, and a roof stiffness tuned to
+            reproduce the 11 Hz it was meant to explain. How the HVSR trough behaves over
+            other shapes and depths is an open question in the paper’s own words. On the Moon
+            a spring gravimeter also has to cope with a day–night swing of about 300 K at the
+            equator, a problem the paper discusses.
+        </p>
+
+        <p>
+            For the cement: the powders are simulants, not lunar soil; the oven’s vacuum was
+            mild next to the Moon’s; and the paste could never be mixed inside a vacuum, which
+            is the test that would settle it. The aluminate route is known at 14 days only. If
+            a paste cannot be poured outdoors, the paper’s fallback is to cast pieces indoors,
+            in a pressurised room, and carry them out.
+        </p>
+
+        <p>
+            Two missions are being planned to visit lunar pits from the surface: LunarLeaper,
+            a small legged robot, and Leto. Until one of them lands, the rehearsal is what
+            there is: a tunnel in Lanzarote and a handful of small prisms of hardened paste
+            that spent two weeks in a vacuum chamber.
+        </p>
+
+        <div class="sources">
+            <h3>Papers</h3>
+            <ul>
+                <li>
+                    Ghirotto, A., Barone, I., Santoro De Vico, F., Melchiori, G., Zunino, A.,
+                    Armadillo, E., Mittelholz, A., Sauro, F., Massironi, M. (2026). Coupling
+                    seismic, gravity and magnetic surveys for the investigation of planetary
+                    lava tubes: a terrestrial analog case study in Lanzarote (Spain).
+                    <em>Journal of Geophysical Research: Planets</em>, 131, e2026JE009802.
+                    <span class="src-meta"><a href="https://doi.org/10.1029/2026JE009802" target="_blank" rel="noopener">doi.org/10.1029/2026JE009802</a></span>
+                </li>
+                <li>
+                    Driouich, A., Goudarzi, A., Santoro, F., Dalconi, M. C., Dau, M.,
+                    Bettanini, C., Pilehvar, S., Valentini, L. (2026). Role of amorphous phase,
+                    temperature fluctuations, and vacuum, on the performance of alkali-activated
+                    lunar regolith simulants. <em>Materials and Structures</em>, 59:349.
+                    <span class="src-meta"><a href="https://doi.org/10.1617/s11527-026-03243-w" target="_blank" rel="noopener">doi.org/10.1617/s11527-026-03243-w</a></span>
+                </li>
+            </ul>
+            <h3>Images and numbers</h3>
+            <p>
+                Figures are reproduced from the two papers, both open access, and credited
+                under each one. Every number in the text, including the lunar temperatures,
+                radiation dose, water-cost estimate and tube widths, is quoted from the two
+                papers and their references. The 20–40 MPa band for ordinary concrete is added
+                for scale, from Eurocode 2 (EN 1992-1-1) strength classes C20/25-C40/50.
+            </p>
+        </div>
+
+        <nav class="post-nav">
+            <a href="/hobbies/geology.html" class="back-link">Back to Geology</a>
+            <a href="/hobbies.html" class="back-link">All Hobbies &amp; Blog</a>
+        </nav>
+
+    </article>
+
+    <div id="site-footer"></div>
+    <script src="/js/components.js"></script>
+
+    <script>
+    /* core log: light the segment for the section the reader is in */
+    (function () {
+        var links = Array.prototype.slice.call(document.querySelectorAll('.log .segs a'));
+        var now = document.querySelector('.log-now');
+        var targets = links.map(function (a) {
+            return document.getElementById(a.getAttribute('href').slice(1));
+        });
+        var ticking = false;
+
+        function update() {
+            ticking = false;
+            var line = window.innerHeight * 0.35, cur = -1, i;
+            for (i = 0; i < targets.length; i++) {
+                if (targets[i] && targets[i].getBoundingClientRect().top <= line) cur = i;
+            }
+            links.forEach(function (a, j) {
+                if (j === cur) a.setAttribute('aria-current', 'location');
+                else a.removeAttribute('aria-current');
+            });
+            if (now) now.textContent = cur >= 0 ? links[cur].textContent : '';
+        }
+
+        window.addEventListener('scroll', function () {
+            if (!ticking) { ticking = true; requestAnimationFrame(update); }
+        }, { passive: true });
+        window.addEventListener('resize', update);
+        update();
+    })();
+    </script>
+
+</body>
+</html>

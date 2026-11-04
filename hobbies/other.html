@@ -3,23 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Other — Hobbies &amp; Blog — Francesco Santoro De Vico</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <title>Other | Hobbies &amp; Blog | Francesco Santoro De Vico</title>
+    <meta name="description" content="Inter Milano, pasta philosophy, cooking, travel, and everything else.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fsdv.eu/hobbies/other.html">
+    <meta property="og:title" content="Other | Hobbies &amp; Blog | Francesco Santoro De Vico">
+    <meta property="og:description" content="Inter Milano, pasta philosophy, cooking, travel, and everything else.">
+    <meta property="og:image" content="https://fsdv.eu/img/hobbies/other-cover.jpg">
+    <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
+    <link rel="stylesheet" href="../css/style.css?v=3">
 </head>
-<body>
+<body class="has-cover">
     <div id="site-header"></div>
 
-    <main class="page-top">
-        <div class="container">
-            <a href="../hobbies.html" class="back-link">Back to Hobbies &amp; Blog</a>
-
-            <div class="section-header">
-                <h1>&#127775; Other</h1>
+    <main>
+        <section class="page-cover">
+            <img class="page-cover-img" src="../img/hobbies/other-cover.jpg" alt="" fetchpriority="high">
+            <div class="frame">
+                <a href="../hobbies.html" class="back-link">Back to Hobbies &amp; Blog</a>
+                <h1>Other</h1>
+                <div class="page-cover-lede">
+                    <p>Inter Milano supporter. Pasta enthusiast. Occasional karate practitioner. Lifelong learner of Geology (slowly). Cooking adventures, travel notes, and anything else that catches my curiosity long enough before the next mineral distracts me.</p>
+                </div>
             </div>
+        </section>
 
-            <div class="category-intro">
-                <p>Inter Milano supporter. Pasta enthusiast. Occasional karate practitioner. Lifelong learner of Geology (slowly). Cooking adventures, travel notes, and anything else that catches my curiosity long enough before the next mineral distracts me.</p>
-            </div>
+        <section class="post-index">
+        <div class="frame">
 
             <!-- ===== BLOG POSTS LIST ===== -->
             <div class="blog-post-list">
@@ -30,7 +40,7 @@
                     2. Add a card here linking to it
 
                     TEMPLATE:
-                    <a href="../posts/YOUR-POST-NAME.html" class="blog-post-card">
+                    <a href="../posts/YOUR-POST-NAME.html" class="blog-post-card reveal">
                         <div class="blog-post-card-image">
                             <img src="../img/posts/your-image.jpg" alt="Post image">
                         </div>
@@ -43,7 +53,7 @@
                     </a>
                 -->
 
-                <a href="../posts/other/sumo-grand-sport.html" class="blog-post-card">
+                <a href="../posts/other/sumo-grand-sport.html" class="blog-post-card reveal">
                     <div class="blog-post-card-image">
                         <img 
                             src="https://cdn.theculturetrip.com/wp-content/uploads/2017/05/3989894162_bbeaacae7d_b.jpg" 
@@ -59,24 +69,24 @@
                     </div>
                 </a>
                 
-                <a href="../posts/other/inter-2024-2026.html" class="blog-post-card">
+                <a href="../posts/other/inter-2024-2026.html" class="blog-post-card reveal">
                     <div class="blog-post-card-image">
                         <img 
                             src="https://media-assets.wired.it/photos/615da23d6c9f4d965efcf88a/master/w_1600,c_limit/ScudettoInter.jpg" 
-                            alt="Inter Campioni d'Italia 2024 — La seconda stella"
+                            alt="Inter Campioni d'Italia 2024: La seconda stella"
                             loading="lazy"
                         >
                     </div>
                     <div class="blog-post-card-body">
                     <span class="post-date">May 2026</span>
-                        <h3>Stars on the Heart — Inter's 21st Scudetto</h3>
+                        <h3>Stars on the Heart: Inter's 21st Scudetto</h3>
                         <p>The second star, Çalhanoğlu's derby penalty, and a season of grief and glory. How Inter won a title that went far beyond football.</p>
                         <span class="read-more">Read more &rarr;</span>
                     </div>
                 </a>
 
                 
-                <a href="../posts/other/other-crisiFIGC.html" class="blog-post-card">
+                <a href="../posts/other/other-crisiFIGC.html" class="blog-post-card reveal">
                     <div class="blog-post-card-image">
                                 <img 
                                     src="https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?w=600" 
@@ -94,9 +104,12 @@
                 
             </div>
         </div>
+        </section>
     </main>
 
     <div id="site-footer"></div>
-    <script src="../js/components.js"></script>
+    <script src="../js/components.js?v=3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+    <script src="../js/site.js?v=3" defer></script>
 </body>
 </html>

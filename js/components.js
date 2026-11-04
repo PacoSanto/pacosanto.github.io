@@ -1,5 +1,5 @@
 /* ============================================
-   FSDV.EU — Site Components & Navigation
+   FSDV.EU - Site Components & Navigation
    Single source of truth for header + footer.
    ============================================ */
 
@@ -11,7 +11,7 @@
   // Pages in subdir: src="../js/components.js" → base = "../"
   var scripts = document.getElementsByTagName('script');
   var thisScript = scripts[scripts.length - 1];
-  var src = thisScript.getAttribute('src') || '';
+  var src = (thisScript.getAttribute('src') || '').split('?')[0];   // drop ?v= cache-busters
   var BASE = src.replace('js/components.js', '');
 
   // --- Detect current page for active state ---
@@ -76,6 +76,46 @@
   if (headerEl) headerEl.innerHTML = headerHTML;
   if (footerEl) footerEl.innerHTML = footerHTML;
 
+  // ===== HEADER SCROLL STATE =====
+  // .is-scrolled shrinks the header; on .has-cover pages it also
+  // turns the transparent header solid.
+  var ticking = false;
+  function updateScrolled() {
+    var y = window.pageYOffset || document.documentElement.scrollTop;
+    document.body.classList.toggle('is-scrolled', y > 40);
+    ticking = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(updateScrolled); }
+  }, { passive: true });
+  updateScrolled();
+
+  // ===== ENTRANCE + REVEAL ON SCROLL =====
+  // Pages opt in by adding html.js in <head>; elements with .reveal get
+  // .is-in when they enter the viewport. --d staggers siblings.
+  requestAnimationFrame(function () {
+    requestAnimationFrame(function () { document.body.classList.add('is-loaded'); });
+  });
+
+  var revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+    Array.prototype.forEach.call(revealEls, function (el) {
+      var idx = Array.prototype.indexOf.call(el.parentElement.children, el);
+      if (!el.style.getPropertyValue('--d')) el.style.setProperty('--d', Math.min(idx * 0.1, 0.4).toFixed(2) + 's');
+      io.observe(el);
+    });
+  } else {
+    Array.prototype.forEach.call(revealEls, function (el) { el.classList.add('is-in'); });
+  }
+
   // ===== ACTIVE PAGE HIGHLIGHT =====
   var navLinks = document.querySelectorAll('#nav-list > li > a[data-page]');
   for (var i = 0; i < navLinks.length; i++) {
@@ -104,7 +144,7 @@
     });
   }
 
-  // ===== DROPDOWN — works on both desktop (hover) and mobile (click) =====
+  // ===== DROPDOWN - works on both desktop (hover) and mobile (click) =====
   var dropdown = document.getElementById('hobbies-dropdown');
   if (dropdown) {
     var dropdownLink = dropdown.querySelector(':scope > a');
@@ -125,7 +165,7 @@
 
 })();
 
-/* GoatCounter — cookieless analytics, no consent banner required */
+/* GoatCounter - cookieless analytics, no consent banner required */
 (function () {
   'use strict'
   var h = location.hostname

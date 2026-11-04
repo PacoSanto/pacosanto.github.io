@@ -3,49 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hobbies &amp; Blog — Francesco Santoro De Vico</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Hobbies &amp; Blog | Francesco Santoro De Vico</title>
+    <meta name="description" content="Photography, outdoor, music, geology thoughts, and more, each with its own blog.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fsdv.eu/hobbies.html">
+    <meta property="og:title" content="Hobbies &amp; Blog | Francesco Santoro De Vico">
+    <meta property="og:description" content="Photography, outdoor, music, geology thoughts, and more, each with its own blog.">
+    <meta property="og:image" content="https://fsdv.eu/img/hobbies/outdoor-cover.jpg">
+    <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
+    <link rel="stylesheet" href="css/style.css?v=3">
 </head>
-<body>
+<body class="has-cover">
     <div id="site-header"></div>
 
-    <main class="page-top">
-        <div class="container">
-            <div class="section-header">
+    <main>
+        <section class="page-cover">
+            <img class="page-cover-img" src="img/hobbies/outdoor-cover.jpg" alt="" fetchpriority="high">
+            <div class="frame">
                 <h1>Hobbies &amp; Blog</h1>
-                <p>Because geology is just the starting point. Each category has its own blog — pick one and explore.</p>
+                <div class="page-cover-lede">
+                    <p>Because geology is just the starting point. Each category has its own blog, pick one and explore.</p>
+                </div>
             </div>
-            <div class="hobbies-grid">
-                <a href="hobbies/photography.html" class="hobby-card">
-                    <div class="hobby-card-bg placeholder" style="background-image: url('img/hobbies/photography-cover.jpg');"></div>
-                    <div class="hobby-card-overlay"></div>
-                    <div class="hobby-card-content"><h3>Photography</h3><p>Landscapes, architecture, cultural heritage, and the play of light on stone.</p></div>
+        </section>
+
+        <section class="hub">
+            <div class="frame hub-grid">
+                <a href="hobbies/photography.html" class="tile reveal">
+                    <span class="tile-bg" style="background-image: url('img/hobbies/photography-cover.jpg');"></span>
+                    <span class="tile-body">
+                        <span class="tile-title">Photography</span>
+                        <span class="tile-text">Landscapes, architecture, cultural heritage, and the play of light on stone.</span>
+                    </span>
                 </a>
-                <a href="hobbies/outdoor.html" class="hobby-card">
-                    <div class="hobby-card-bg placeholder" style="background-image: url('img/hobbies/outdoor-cover.jpg');"></div>
-                    <div class="hobby-card-overlay"></div>
-                    <div class="hobby-card-content"><h3>Outdoor &amp; Sport</h3><p>Football, climbing, caving, surfing, padel, and dreams of fishing.</p></div>
+                <a href="hobbies/outdoor.html" class="tile reveal">
+                    <span class="tile-bg" style="background-image: url('img/hobbies/outdoor-cover.jpg');"></span>
+                    <span class="tile-body">
+                        <span class="tile-title">Outdoor &amp; Sport</span>
+                        <span class="tile-text">Football, climbing, caving, surfing, padel, and dreams of fishing.</span>
+                    </span>
                 </a>
-                <a href="hobbies/music.html" class="hobby-card">
-                    <div class="hobby-card-bg placeholder" style="background-image: url('img/hobbies/music-cover.jpg');"></div>
-                    <div class="hobby-card-overlay"></div>
-                    <div class="hobby-card-content"><h3>Music</h3><p>Guitar, saxophone, jazz, blues, bossa nova, and a vinyl collection with peculiar tastes.</p></div>
+                <a href="hobbies/music.html" class="tile reveal">
+                    <span class="tile-bg" style="background-image: url('img/hobbies/music-cover.jpg');"></span>
+                    <span class="tile-body">
+                        <span class="tile-title">Music</span>
+                        <span class="tile-text">Guitar, saxophone, jazz, blues, bossa nova, and a vinyl collection with peculiar tastes.</span>
+                    </span>
                 </a>
-                <a href="hobbies/geology.html" class="hobby-card">
-                    <div class="hobby-card-bg placeholder" style="background-image: url('img/hobbies/geology-cover.jpg');"></div>
-                    <div class="hobby-card-overlay"></div>
-                    <div class="hobby-card-content"><h3>Geology &amp; Science</h3><p>Thoughts on minerals, fieldwork stories, and science communication adventures.</p></div>
+                <a href="hobbies/geology.html" class="tile reveal">
+                    <span class="tile-bg" style="background-image: url('img/hobbies/geology-cover.jpg');"></span>
+                    <span class="tile-body">
+                        <span class="tile-title">Geology &amp; Science</span>
+                        <span class="tile-text">Thoughts on minerals, fieldwork stories, and science communication adventures.</span>
+                    </span>
                 </a>
-                <a href="hobbies/other.html" class="hobby-card">
-                    <div class="hobby-card-bg placeholder" style="background-image: url('img/hobbies/other-cover.jpg');"></div>
-                    <div class="hobby-card-overlay"></div>
-                    <div class="hobby-card-content"><h3>Other</h3><p>Inter Milano, pasta philosophy, cooking, travel, and everything else.</p></div>
+                <a href="hobbies/other.html" class="tile reveal">
+                    <span class="tile-bg" style="background-image: url('img/hobbies/other-cover.jpg');"></span>
+                    <span class="tile-body">
+                        <span class="tile-title">Other</span>
+                        <span class="tile-text">Inter Milano, pasta philosophy, cooking, travel, and everything else.</span>
+                    </span>
                 </a>
             </div>
-        </div>
+        </section>
     </main>
 
     <div id="site-footer"></div>
-    <script src="js/components.js"></script>
+    <script src="js/components.js?v=3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+    <script src="js/site.js?v=3" defer></script>
 </body>
 </html>

@@ -1,0 +1,544 @@
+/* ============================================
+   FSDV.EU — CV as a descent
+   Orbit -> surface -> crust -> mantle -> core.
+   A drill core runs down the left edge of every
+   stratum; a depth gauge (js/cv.js) reads out
+   altitude/depth as the page scrolls.
+   Loaded only by cv.html, after style.css.
+   ============================================ */
+
+.cv-descent {
+  background: #070912;
+  --core-w: clamp(46px, 7vw, 104px);
+}
+.cv-descent .site-footer { margin-top: 0; }
+
+/* ── Orbit ──────────────────────────────────────────────────────────── */
+.sky {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding: 160px 0 clamp(220px, 30vh, 320px);
+  color: #fff;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse 70% 50% at 78% 8%, rgba(70, 92, 160, 0.28), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 12% 30%, rgba(120, 70, 110, 0.14), transparent 70%),
+    linear-gradient(#05060c, #0a0e1c 70%, #0f1730);
+}
+
+/* two tiled star fields; cv.js drifts them at different speeds */
+.stars {
+  position: absolute;
+  inset: -20% 0 0 0;
+  z-index: -2;
+  pointer-events: none;
+}
+.stars-far {
+  background-image:
+    radial-gradient(1px 1px at 23px 41px, rgba(255,255,255,0.9), transparent),
+    radial-gradient(1px 1px at 97px 13px, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1px 1px at 151px 88px, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1px 1px at 211px 160px, rgba(220,230,255,0.7), transparent),
+    radial-gradient(1px 1px at 61px 199px, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 178px 233px, rgba(255,240,220,0.8), transparent),
+    radial-gradient(1px 1px at 9px 121px, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 131px 151px, rgba(255,255,255,0.6), transparent);
+  background-size: 250px 250px;
+}
+.stars-near {
+  background-image:
+    radial-gradient(1.5px 1.5px at 40px 70px, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 310px 40px, rgba(255,235,210,0.95), transparent),
+    radial-gradient(2px 2px at 220px 300px, rgba(210,225,255,0.95), transparent),
+    radial-gradient(1.5px 1.5px at 400px 210px, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 120px 380px, rgba(255,255,255,0.85), transparent);
+  background-size: 470px 470px;
+  animation: twinkle 6s ease-in-out infinite alternate;
+}
+@keyframes twinkle { from { opacity: 0.55; } to { opacity: 1; } }
+
+/* Earth's limb: a very large disc whose top edge is the horizon */
+.limb {
+  position: absolute;
+  left: 50%;
+  top: calc(100% - clamp(120px, 16vh, 180px));
+  width: 320vw;
+  height: 320vw;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: var(--st-bg, #efe6d6);
+  box-shadow:
+    0 0 0 2px rgba(190, 220, 255, 0.55),
+    0 -6px 30px 6px rgba(120, 175, 255, 0.45),
+    0 -30px 120px 40px rgba(70, 120, 220, 0.28);
+  z-index: -1;
+}
+.sky .limb { --st-bg: #5b7d3b; }   /* same green as the top of .st-surface */
+
+.sky-frame { width: 100%; }
+.sky h1 {
+  font-size: clamp(3.4rem, 9vw, 8.5rem);
+  font-weight: 300;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-bottom: 1.8rem;
+}
+.sky .page-cover-lede { max-width: 40rem; }
+.sky-download { margin: 2rem 0 0; }
+.sky-download a {
+  position: relative;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 0.98rem;
+  color: #fff;
+}
+.sky-download a::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -5px;
+  height: 1px;
+  background: var(--color-amber);
+}
+.sky-download a:hover { color: #f0b39f; }
+
+.js .sky h1,
+.js .sky .page-cover-lede,
+.js .sky-download {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 1.1s var(--ease-out), transform 1.1s var(--ease-out);
+}
+.js .is-loaded .sky h1,
+.js .is-loaded .sky .page-cover-lede,
+.js .is-loaded .sky-download { opacity: 1; transform: none; }
+.js .is-loaded .sky .page-cover-lede { transition-delay: 0.15s; }
+.js .is-loaded .sky-download { transition-delay: 0.3s; }
+
+/* ── Strata ─────────────────────────────────────────────────────────── */
+.stratum {
+  --st-bg: #efe6d6;
+  --st-fg: var(--color-ink);
+  --st-muted: var(--color-slate);
+  --st-rule: rgba(29, 32, 27, 0.16);
+  --st-tag: var(--color-copper);
+  position: relative;
+  background: var(--st-bg);
+  color: var(--st-fg);
+  padding: clamp(4.5rem, 9vw, 8rem) 0 clamp(4.5rem, 9vw, 8rem);
+}
+
+/* irregular contact with the layer above */
+.stratum + .stratum::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -34px;
+  height: 36px;
+  background: var(--st-bg);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 36' preserveAspectRatio='none'%3E%3Cpath d='M0 36V20C60 14 120 26 210 19S360 6 450 15 600 30 700 21 860 6 960 14 1110 28 1200 17V36Z'/%3E%3C/svg%3E") 0 0 / 100% 100% no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 36' preserveAspectRatio='none'%3E%3Cpath d='M0 36V20C60 14 120 26 210 19S360 6 450 15 600 30 700 21 860 6 960 14 1110 28 1200 17V36Z'/%3E%3C/svg%3E") 0 0 / 100% 100% no-repeat;
+  z-index: 1;
+  pointer-events: none;
+}
+.stratum:nth-of-type(odd) + .stratum::before { transform: scaleX(-1); }
+
+/* the drill core: a cylinder down the left edge, lithology inside */
+.core {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--gutter);
+  width: var(--core-w);
+  background: var(--litho);
+  z-index: 2;
+}
+.core::before {
+  /* cylinder shading */
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+    rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.08) 18%, rgba(255,255,255,0.22) 34%,
+    rgba(255,255,255,0.04) 52%, rgba(0,0,0,0.18) 78%, rgba(0,0,0,0.5) 100%);
+}
+.core::after {
+  /* ruler ticks along the right edge of the core */
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -14px;
+  width: 9px;
+  background:
+    repeating-linear-gradient(180deg, var(--st-rule) 0 1px, transparent 1px 24px) right / 5px 100% no-repeat,
+    repeating-linear-gradient(180deg, var(--st-fg) 0 1px, transparent 1px 120px) right / 9px 100% no-repeat;
+  opacity: 0.55;
+}
+/* a break in the core at every contact */
+.stratum + .stratum .core {
+  top: -34px;
+  -webkit-clip-path: polygon(0 10px, 22% 0, 48% 14px, 70% 4px, 100% 12px, 100% 100%, 0 100%);
+          clip-path: polygon(0 10px, 22% 0, 48% 14px, 70% 4px, 100% 12px, 100% 100%, 0 100%);
+}
+
+.stratum-body {
+  position: relative;
+  z-index: 3;
+  max-width: var(--frame);
+  margin: 0 auto;
+  padding: 0 var(--gutter) 0 calc(var(--gutter) + var(--core-w) + clamp(2rem, 6vw, 6.5rem));
+}
+
+.stratum-tag {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--st-tag);
+  margin-bottom: 1rem;
+}
+.stratum-head h2 {
+  font-size: clamp(3rem, 6.5vw, 5.6rem);
+  line-height: 0.95;
+  color: var(--st-fg);
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+/* entries: date on the left, the rest on the right */
+.samples { list-style: none; }
+.sample {
+  display: grid;
+  grid-template-columns: minmax(150px, 2.2fr) 7fr;
+  gap: clamp(1rem, 3vw, 3rem);
+  border-top: 1px solid var(--st-rule);
+  padding: 1.8rem 0 2.2rem;
+}
+.sample-date {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--st-muted);
+  padding-top: 0.45rem;
+  margin: 0;
+}
+.sample h3 {
+  font-size: clamp(1.6rem, 2.4vw, 2.1rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--st-fg);
+  margin-bottom: 0.35rem;
+}
+.sample-place {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--st-muted);
+  margin-bottom: 0.8rem;
+}
+.sample-place a { color: inherit; border-bottom: 1px solid var(--color-amber); }
+.sample-place a:hover { color: var(--color-amber); }
+.sample-body > p:last-child { margin-bottom: 0; }
+.sample-body p { color: var(--st-fg); max-width: 62ch; }
+.sample-body .sample-place { color: var(--st-muted); }
+
+/* ── Surface: the current position, grass over topsoil ─────────────── */
+.st-surface {
+  --st-bg: #4b6a31;
+  --st-fg: #f4f2e6;
+  --st-muted: #cdd8b2;
+  --st-rule: rgba(244, 242, 230, 0.2);
+  --st-tag: #dce9a6;
+  background: linear-gradient(180deg, #5b7d3b 0%, #4b6a31 30%, #3f4f2a 68%, #3a2c1e 100%);
+  padding-top: clamp(5rem, 9vw, 8rem);
+  --litho:
+    radial-gradient(circle, rgba(214, 196, 150, 0.35) 0 1px, transparent 1.6px) 0 0 / 10px 12px,
+    radial-gradient(circle, rgba(20, 12, 6, 0.45) 0 1.5px, transparent 2.2px) 5px 6px / 14px 11px,
+    linear-gradient(180deg, #6f9a43 0 14px, #4c3826 14px 45%, #3a2a1c);
+}
+/* grass fringe: the cut edge of the ground, where trunk and core start */
+.st-surface::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -11px;
+  height: 14px;
+  background: #79a447;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='46' height='14'%3E%3Cpath d='M0 14V9l2-6 2 7 3-9 2 9 3-6 2 6 4-8 1 8 3-5 3 5 2-9 2 9 3-6 2 6 3-8 2 8 3-4 2 4V14Z'/%3E%3C/svg%3E") 0 0 / 46px 14px repeat-x;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='46' height='14'%3E%3Cpath d='M0 14V9l2-6 2 7 3-9 2 9 3-6 2 6 4-8 1 8 3-5 3 5 2-9 2 9 3-6 2 6 3-8 2 8 3-4 2 4V14Z'/%3E%3C/svg%3E") 0 0 / 46px 14px repeat-x;
+  z-index: 1;
+  pointer-events: none;
+}
+.st-surface { box-shadow: inset 0 3px 0 #79a447; }
+
+.st-sandstone .stratum-head .stratum-tag { margin-bottom: 0.4rem; }
+
+.sample-now { border-top-color: rgba(244, 242, 230, 0.35); }
+.sample-now h3 { font-size: clamp(2.1rem, 3.4vw, 3rem); font-weight: 300; }
+.sample-now .sample-place { font-size: 1.35rem; }
+.sample-now .sample-date { color: var(--st-tag); }
+
+/* umbrella pine on the horizon; .pine is a thin band at the top edge */
+.pine {
+  position: absolute;
+  top: 0;
+  right: clamp(1rem, 15vw, 17rem);   /* clear of the depth gauge */
+  width: clamp(190px, 26vw, 380px);
+  height: 48px;
+  z-index: 2;
+  pointer-events: none;
+}
+.pine-tree {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% - 16px);   /* trunk base sinks 16px into the grass */
+  width: 100%;
+  height: auto;
+  overflow: visible;   /* crown glow comes from the SVG filter #pine-glow */
+}
+.pine-trunk  { fill: #3d2b1c; }
+.pine-branch { fill: none; stroke: #3d2b1c; stroke-width: 5; stroke-linecap: round; }
+.pine-crown  { fill: #36522a; }
+.pine-light  { fill: #5e8540; opacity: 0.85; }
+.pine-shade  { fill: #1f3118; opacity: 0.55; }
+.pine-roots {
+  position: absolute;
+  top: 10px;
+  left: 18%;
+  width: 64%;
+  height: clamp(140px, 17vw, 250px);
+  overflow: visible;
+}
+.pine-roots path {
+  fill: none;
+  stroke: rgba(28, 18, 10, 0.55);
+  stroke-width: 3;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.js .pine-tree {
+  opacity: 0;
+  transform: scale(0.86);
+  transform-origin: 50% 100%;
+  transition: opacity 1.2s var(--ease-out), transform 1.6s var(--ease-out);
+}
+.js .pine-roots { clip-path: inset(0 0 100% 0); transition: clip-path 1.8s var(--ease-out) 0.4s; }
+.js .pine.is-in .pine-tree { opacity: 1; transform: none; }
+.js .pine.is-in .pine-roots { clip-path: inset(0 0 0 0); }
+
+/* ── Lithologies, one per stratum ───────────────────────────────────── */
+/* sandstone: speckled grains */
+.st-sandstone {
+  --st-bg: #f1e8d8;
+  --litho:
+    radial-gradient(circle at 30% 40%, rgba(70,45,20,0.35) 0 1px, transparent 1.6px) 0 0 / 9px 9px,
+    radial-gradient(circle, rgba(255,255,255,0.45) 0 1px, transparent 1.6px) 4px 5px / 11px 11px,
+    radial-gradient(circle, rgba(120,80,40,0.25) 0 1.4px, transparent 2px) 2px 1px / 17px 13px,
+    #c9a679;
+}
+/* limestone: bedded blocks */
+.st-limestone {
+  --st-bg: #e4ddcd;
+  --litho:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='22'%3E%3Cpath d='M0 .5H44M0 11.5H44M11 1V11M33 12V22' stroke='%23000' stroke-opacity='.28' fill='none'/%3E%3C/svg%3E") 0 0 / 44px 22px,
+    #d3cbb6;
+}
+/* shale: fine laminae */
+.st-shale {
+  --st-bg: #cfc7b6;
+  --st-rule: rgba(29, 32, 27, 0.2);
+  --litho:
+    repeating-linear-gradient(180deg, rgba(0,0,0,0.22) 0 1px, transparent 1px 4px),
+    repeating-linear-gradient(180deg, rgba(255,255,255,0.12) 0 2px, transparent 2px 13px),
+    #7d786b;
+}
+/* gneiss: foliated, folded bands — the page turns dark from here */
+.st-gneiss {
+  --st-bg: #34322d;
+  --st-fg: #f1ece2;
+  --st-muted: #b9b1a1;
+  --st-rule: rgba(241, 236, 226, 0.16);
+  --st-tag: #e0a089;
+  --litho:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='16'%3E%3Cpath d='M0 8C10 2 20 2 30 8S50 14 60 8' stroke='%23fff' stroke-opacity='.35' stroke-width='2' fill='none'/%3E%3Cpath d='M0 14C10 9 20 9 30 14S50 19 60 14' stroke='%23000' stroke-opacity='.35' stroke-width='3' fill='none'/%3E%3C/svg%3E") 0 0 / 60px 16px,
+    #5b5750;
+}
+/* mantle: peridotite, olivine-green grains in a warming dark */
+.st-mantle {
+  --st-bg: #1a1c13;
+  --st-fg: #eef0e2;
+  --st-muted: #b7bc9f;
+  --st-rule: rgba(238, 240, 226, 0.14);
+  --st-tag: #b9c96f;
+  background:
+    radial-gradient(ellipse 90% 45% at 50% 115%, rgba(196, 82, 30, 0.45), transparent 70%),
+    var(--st-bg);
+  --litho:
+    radial-gradient(circle at 40% 40%, #a5b456 0 2px, transparent 3px) 0 0 / 13px 11px,
+    radial-gradient(circle, #6f7d34 0 2.5px, transparent 3.5px) 6px 5px / 17px 15px,
+    radial-gradient(circle, #2c3318 0 1.5px, transparent 2.5px) 3px 9px / 9px 12px,
+    linear-gradient(180deg, #56632c, #6c5a2a 80%, #8a4a22);
+}
+/* outer core: liquid iron, slowly flowing */
+.st-outer {
+  --st-bg: #2a0e06;
+  --st-fg: #fff1e6;
+  --st-muted: #f3b892;
+  --st-rule: rgba(255, 220, 190, 0.18);
+  --st-tag: #ffb27a;
+  background:
+    radial-gradient(ellipse 80% 60% at 30% 100%, rgba(232, 110, 36, 0.55), transparent 70%),
+    linear-gradient(180deg, #2a0e06, #5a1d08);
+  --litho:
+    repeating-linear-gradient(170deg, rgba(255,200,120,0.35) 0 6px, transparent 6px 22px),
+    linear-gradient(180deg, #b8410f, #e8742a 50%, #c4501a);
+}
+.st-outer .core { background-size: 100% 200%, 100% 100%; animation: flow 9s linear infinite; }
+@keyframes flow { to { background-position: 0 -220px, 0 0; } }
+
+/* inner core: solid, white-hot */
+.st-inner {
+  --st-bg: #f2c766;
+  --st-fg: #2b1407;
+  --st-muted: #6e3d17;
+  --st-rule: rgba(43, 20, 7, 0.2);
+  --st-tag: #7a2f0b;
+  background:
+    radial-gradient(ellipse 70% 80% at 50% 60%, #fff3cf 0%, #f6d27e 40%, #e89a3c 100%);
+  --litho:
+    radial-gradient(circle at 50% 50%, #fffbe9, #ffe3a0 45%, #f0a640);
+  padding-bottom: clamp(6rem, 12vw, 10rem);
+}
+.st-inner .core::before { background: linear-gradient(90deg, rgba(160,70,10,0.4), rgba(255,255,255,0.35) 34%, rgba(160,70,10,0.35)); }
+.st-inner .core { box-shadow: 0 0 60px 10px rgba(255, 230, 160, 0.7); }
+
+/* ── Skills, languages, affiliations ───────────────────────────────── */
+.grains {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  max-width: 62rem;
+}
+.grains li {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  line-height: 1;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--st-rule);
+  color: var(--st-fg);
+  background: rgba(255, 255, 255, 0.03);
+}
+.st-mantle .grains li { border-color: rgba(185, 201, 111, 0.35); }
+.grains-links li { padding: 0; }
+.grains-links a {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: var(--st-fg);
+  transition: background-color 0.3s, color 0.3s;
+}
+.grains-links a:hover { background: var(--st-fg); color: var(--st-bg); }
+.st-inner .grains li { border-color: rgba(43, 20, 7, 0.35); background: rgba(255, 255, 255, 0.25); }
+
+.tongues {
+  list-style: none;
+  max-width: 50rem;
+}
+.tongues li {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(1.8rem, 3.6vw, 2.9rem);
+  line-height: 1.2;
+  color: var(--st-fg);
+  border-top: 1px solid var(--st-rule);
+  padding: 0.7rem 0;
+}
+
+/* ── Depth gauge ────────────────────────────────────────────────────── */
+/* a scale on the right edge; the marker and its readout slide along it */
+.gauge {
+  --gh: min(52vh, 420px);
+  position: fixed;
+  right: clamp(18px, 2.4vw, 34px);
+  top: 50%;
+  height: var(--gh);
+  width: 3px;
+  margin-top: calc(var(--gh) / -2);
+  z-index: 900;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.6s;
+}
+.is-loaded .gauge { opacity: 1; }
+.gauge-track {
+  position: absolute;
+  inset: 0;
+  background: var(--gauge-scale, linear-gradient(#5d79c9, #f1e8d8 14%, #7d786b 40%, #1a1c13 62%, #c4501a 82%, #f2c766));
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+}
+.gauge-mark {
+  position: absolute;
+  left: 50%;
+  top: var(--p, 0%);
+  width: 13px;
+  height: 13px;
+  margin: -6.5px 0 0 -6.5px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid var(--color-amber);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.25);
+}
+.gauge-read {
+  position: absolute;
+  right: 18px;
+  top: var(--p, 0%);
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 0.55rem 0.75rem;
+  background: rgba(13, 15, 12, 0.8);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  font-family: var(--font-mono);
+  text-align: right;
+  white-space: nowrap;
+}
+.gauge-kind { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+.gauge-val  { font-size: 1.05rem; font-variant-numeric: tabular-nums; line-height: 1.35; }
+.gauge-zone { font-family: var(--font-display); font-style: italic; font-size: 1rem; color: #f0b39f; }
+
+/* ── Responsive ─────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .sample { grid-template-columns: 1fr; gap: 0.4rem; }
+  .sample-date { padding-top: 0; }
+}
+
+@media (max-width: 640px) {
+  .cv-descent { --core-w: 30px; }
+  .core::after { display: none; }
+  .stratum-body { padding-left: calc(var(--gutter) + var(--core-w) + 1.1rem); }
+  .stratum-head h2 { font-size: clamp(2.4rem, 11vw, 3.2rem); }
+  .grains li, .grains-links a { font-size: 0.8rem; padding: 0.6rem 0.75rem; }
+
+  /* gauge collapses to a pill in the bottom corner */
+  .gauge { top: auto; bottom: 14px; right: 14px; height: auto; width: auto; margin: 0; }
+  .gauge-track { display: none; }
+  .gauge-read { position: static; transform: none; padding: 0.45rem 0.65rem; }
+  .gauge-val { font-size: 0.92rem; }
+  .gauge-zone { font-size: 0.9rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stars-near, .st-outer .core { animation: none; }
+  .js .sky h1, .js .sky .page-cover-lede, .js .sky-download { transition: none; }
+}

@@ -3,23 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music — Hobbies &amp; Blog — Francesco Santoro De Vico</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <title>Music | Hobbies &amp; Blog | Francesco Santoro De Vico</title>
+    <meta name="description" content="Guitar, saxophone, jazz, blues, bossa nova, and a vinyl collection with peculiar tastes.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fsdv.eu/hobbies/music.html">
+    <meta property="og:title" content="Music | Hobbies &amp; Blog | Francesco Santoro De Vico">
+    <meta property="og:description" content="Guitar, saxophone, jazz, blues, bossa nova, and a vinyl collection with peculiar tastes.">
+    <meta property="og:image" content="https://fsdv.eu/img/hobbies/music-cover.jpg">
+    <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
+    <link rel="stylesheet" href="../css/style.css?v=3">
 </head>
-<body>
+<body class="has-cover">
     <div id="site-header"></div>
 
-    <main class="page-top">
-        <div class="container">
-            <a href="../hobbies.html" class="back-link">Back to Hobbies &amp; Blog</a>
-
-            <div class="section-header">
-                <h1>&#127925; Music</h1>
+    <main>
+        <section class="page-cover">
+            <img class="page-cover-img" src="../img/hobbies/music-cover.jpg" alt="" fetchpriority="high">
+            <div class="frame">
+                <a href="../hobbies.html" class="back-link">Back to Hobbies &amp; Blog</a>
+                <h1>Music</h1>
+                <div class="page-cover-lede">
+                    <p>From playing guitar and saxophone to listening to jazz, blues, and bossa nova. My neighbors know about my vinyl collection and its peculiar tastes. Music is the background to every field campaign and every late-night data analysis session.</p>
+                </div>
             </div>
+        </section>
 
-            <div class="category-intro">
-                <p>From playing guitar and saxophone to listening to jazz, blues, and bossa nova. My neighbors know about my vinyl collection and its peculiar tastes. Music is the background to every field campaign and every late-night data analysis session.</p>
-            </div>
+        <section class="post-index">
+        <div class="frame">
 
             <!-- ===== BLOG POSTS LIST ===== -->
             <div class="blog-post-list">
@@ -30,7 +40,7 @@
                     2. Add a card here linking to it
 
                     TEMPLATE:
-                    <a href="../posts/YOUR-POST-NAME.html" class="blog-post-card">
+                    <a href="../posts/YOUR-POST-NAME.html" class="blog-post-card reveal">
                         <div class="blog-post-card-image">
                             <img src="../img/posts/your-image.jpg" alt="Post image">
                         </div>
@@ -43,7 +53,7 @@
                     </a>
                 -->
                 
-                <a href="../posts/music/guccini.html" class="blog-post-card">
+                <a href="../posts/music/guccini.html" class="blog-post-card reveal">
                     <div class="blog-post-card-image">
                         <img
                             src="../img/post/music/guccini-og.jpg"
@@ -59,7 +69,7 @@
                     </div>
                 </a>
 
-                <a href="../posts/music/music-reggaeton.html" class="blog-post-card">
+                <a href="../posts/music/music-reggaeton.html" class="blog-post-card reveal">
                     <div class="blog-post-card-image">
                         <img 
                             src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600" 
@@ -79,9 +89,12 @@
 
             </div>
         </div>
+        </section>
     </main>
 
     <div id="site-footer"></div>
-    <script src="../js/components.js"></script>
+    <script src="../js/components.js?v=3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+    <script src="../js/site.js?v=3" defer></script>
 </body>
 </html>

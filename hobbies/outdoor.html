@@ -3,23 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Outdoor &amp; Sport — Hobbies &amp; Blog — Francesco Santoro De Vico</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <title>Outdoor &amp; Sport | Hobbies &amp; Blog | Francesco Santoro De Vico</title>
+    <meta name="description" content="Football, climbing, caving, surfing, padel, and dreams of fishing.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fsdv.eu/hobbies/outdoor.html">
+    <meta property="og:title" content="Outdoor &amp; Sport | Hobbies &amp; Blog | Francesco Santoro De Vico">
+    <meta property="og:description" content="Football, climbing, caving, surfing, padel, and dreams of fishing.">
+    <meta property="og:image" content="https://fsdv.eu/img/hobbies/outdoor-cover.jpg">
+    <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
+    <link rel="stylesheet" href="../css/style.css?v=3">
 </head>
-<body>
+<body class="has-cover">
     <div id="site-header"></div>
 
-    <main class="page-top">
-        <div class="container">
-            <a href="../hobbies.html" class="back-link">Back to Hobbies &amp; Blog</a>
-
-            <div class="section-header">
-                <h1>&#9968; Outdoor &amp; Sport</h1>
+    <main>
+        <section class="page-cover">
+            <img class="page-cover-img" src="../img/hobbies/outdoor-cover.jpg" alt="" fetchpriority="high">
+            <div class="frame">
+                <a href="../hobbies.html" class="back-link">Back to Hobbies &amp; Blog</a>
+                <h1>Outdoor &amp; Sport</h1>
+                <div class="page-cover-lede">
+                    <p>From football to climbing, from caving to surfing, I need to move. Padel has been the latest addition to the collection, along with meditative practices and the occasional table tennis match. I also dream of learning to fish, which requires living near the sea (working on it).</p>
+                </div>
             </div>
+        </section>
 
-            <div class="category-intro">
-                <p>From football to climbing, from caving to surfing — I need to move. Padel has been the latest addition to the collection, along with meditative practices and the occasional table tennis match. I also dream of learning to fish, which requires living near the sea (working on it).</p>
-            </div>
+        <section class="post-index">
+        <div class="frame">
 
             <!-- ===== BLOG POSTS LIST ===== -->
             <div class="blog-post-list">
@@ -30,7 +40,7 @@
                     2. Add a card here linking to it
 
                     TEMPLATE:
-                    <a href="../posts/YOUR-POST-NAME.html" class="blog-post-card">
+                    <a href="../posts/YOUR-POST-NAME.html" class="blog-post-card reveal">
                         <div class="blog-post-card-image">
                             <img src="../img/posts/your-image.jpg" alt="Post image">
                         </div>
@@ -43,10 +53,10 @@
                     </a>
                 -->
 
-<a href="../posts/outdoor/outdoor-collieuganei.html" class="blog-post-card">
+<a href="../posts/outdoor/outdoor-collieuganei.html" class="blog-post-card reveal">
     <div class="blog-post-card-image">
         <img src="https://images.unsplash.com/photo-1705786582353-93e150e71fd5?w=800&fit=crop" 
-             alt="Sunset on a rocky trail — Euganean Hills">
+             alt="Sunset on a rocky trail: Euganean Hills">
     </div>
     <div class="blog-post-card-body">
         <span class="post-date">April 2026</span>
@@ -58,9 +68,12 @@
 
             </div>
         </div>
+        </section>
     </main>
 
     <div id="site-footer"></div>
-    <script src="../js/components.js"></script>
+    <script src="../js/components.js?v=3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+    <script src="../js/site.js?v=3" defer></script>
 </body>
 </html>

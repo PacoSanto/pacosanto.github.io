@@ -3,141 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Francesco Santoro De Vico — Geologist &amp; Researcher</title>
-    <meta name="description" content="Personal portfolio of Francesco Santoro De Vico — Geologist, Applied Mineralogist, and Postdoctoral Researcher at CISAS, University of Padova.">
-    <link rel="stylesheet" href="css/style.css">
+    <title>Francesco Santoro De Vico | Geologist &amp; Researcher</title>
+    <meta name="description" content="Personal portfolio of Francesco Santoro De Vico, Geologist, Applied Mineralogist, and Postdoctoral Researcher at CISAS, University of Padova.">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fsdv.eu/">
+    <meta property="og:title" content="Francesco Santoro De Vico | Geologist &amp; Researcher">
+    <meta property="og:description" content="Personal portfolio of Francesco Santoro De Vico, Geologist, Applied Mineralogist, and Postdoctoral Researcher at CISAS, University of Padova.">
+    <meta property="og:image" content="https://fsdv.eu/img/home/home-og.jpg">
+
+    <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
+
+    <link rel="stylesheet" href="css/style.css?v=3">
+    <link rel="stylesheet" href="css/home.css?v=3">
+    <link rel="preload" as="image" href="img/home/cover-2400.jpg" imagesrcset="img/home/cover-1200.jpg 1200w, img/home/cover-2400.jpg 2400w" imagesizes="100vw">
 </head>
-<body>
+<body class="home-cover has-cover">
 
     <div id="site-header"></div>
 
-    <!-- ========== HERO ========== -->
-    <section class="hero">
-        <div class="hero-bg" style="background-image: url('img/banner_horizontal.jpg');"></div>
-        <div class="container">
-            <div class="hero-text">
-                <h1>Francesco Santoro<span>De Vico</span></h1>
-                <p class="subtitle">
-                    Geologist with a passion for applied mineralogy, biomineralization and building materials — from cultural heritage preservation to modern construction innovations and future space applications. Currently Research Fellow at CISAS, University of Padova.
+    <main>
+
+        <!-- ========== COVER ========== -->
+        <section class="cover" aria-label="Introduction">
+            <img class="cover-img"
+                 src="img/home/cover-2400.jpg"
+                 srcset="img/home/cover-1200.jpg 1200w, img/home/cover-2400.jpg 2400w"
+                 sizes="100vw"
+                 alt="" fetchpriority="high">
+            <div class="frame cover-frame">
+                <p class="cover-kicker" data-enter>Geologist · Applied Mineralogy · CISAS, University of Padova</p>
+                <h1 data-enter>Francesco Santoro<span>De Vico</span></h1>
+                <p class="cover-lede" data-enter>
+                    Geologist with a passion for applied mineralogy, biomineralization and building materials (from cultural heritage preservation to modern construction innovations and future space applications). Currently Research Fellow at CISAS, University of Padova.
                 </p>
-                <div class="hero-tags">
-                    <span class="tag">Applied Mineralogy</span>
-                    <span class="tag">Geochemistry</span>
-                    <span class="tag">Biomimetics</span>
-                    <span class="tag">Planetary Geology</span>
-                    <span class="tag">Building Materials</span>
-                    <span class="tag">ISRU</span>
+                <ul class="cover-fields" data-enter>
+                    <li>Applied mineralogy</li>
+                    <li>Geochemistry</li>
+                    <li>Biomimetics</li>
+                    <li>Planetary geology</li>
+                    <li>Building materials</li>
+                    <li>ISRU</li>
+                </ul>
+            </div>
+            <a class="cover-cue" href="#about" data-enter>A little about me <span aria-hidden="true">↓</span></a>
+        </section>
+
+        <!-- ========== ABOUT ========== -->
+        <section class="intro" id="about">
+            <div class="frame">
+                <div class="intro-card reveal">
+                    <div class="intro-media">
+                        <div class="intro-portrait">
+                            <img src="img/home/profile-1100.jpg" alt="Francesco Santoro De Vico" width="1100" height="1101" loading="lazy">
+                        </div>
+                        <figure class="intro-inset">
+                            <img src="img/io-etna-grotta.jpg" alt="Francesco inside a cave on Etna" width="1280" height="960" loading="lazy">
+                            <figcaption>Etna</figcaption>
+                        </figure>
+                    </div>
+                    <div class="intro-body">
+                        <h2 class="kicker">About Me</h2>
+                        <p class="intro-lede">Born in 1994, I realized at 16 that I wanted to devote myself to studying rather than my two other youthful passions: karate and saxophone. Considered myself a "complete time waster" until 21, then I decided to apply my talent for geology in the direction of mineralogy.</p>
+                        <p>My journey includes a Marie Curie doctorate at the University of Granada (SUBLime project), where I focused on self-cleaning lime-based materials through biomimetic approaches, studying amorphous-crystalline transitions and surface modifications. Now I'm a Postdoctoral Research Fellow at CISAS, working within the "Space It Up" project funded by ASI and MUR, characterizing terrestrial analogues and lunar regolith simulants for extraterrestrial construction.</p>
+                        <p>I live in Padova, stubbornly following bizarre ideas such as reviving the cult of calcite and its pillars, and pushing to understand other planets because one is not enough. A devoted Inter Milano supporter. Convinced that pasta was the greatest leap in human progress until the Internet. My neighbors wish I didn't play vinyls with peculiar tastes.</p>
+                    </div>
                 </div>
             </div>
-            <div class="hero-photo">
-                <img src="img/profile.jpg" alt="Francesco Santoro De Vico">
+        </section>
+
+        <!-- ========== NEWS ========== -->
+        <section class="dispatches" id="news">
+            <div class="frame dispatches-grid">
+
+                <article class="dispatch dispatch-lead reveal">
+                    <div class="dispatch-img"><img src="img/post/music/guccini-og.jpg" alt="" loading="lazy"></div>
+                    <div class="dispatch-meta">
+                        <p class="dispatch-date"><span>Aug</span> <span>2026</span></p>
+                        <span class="dispatch-tag">Music</span>
+                    </div>
+                    <h3>Fra la via Emilia e la Luna</h3>
+                    <p>A personal farewell to Francesco Guccini (1940&ndash;2026): a first concert at fourteen, an essay that earned a 3/10, three cities, lunar regolith, and a contract about to expire. Written in Italian.</p>
+                    <a class="dispatch-link" href="https://fsdv.eu/posts/music/guccini.html" target="_blank" rel="noopener">Read more</a>
+                </article>
+
+                <div class="dispatches-side reveal">
+                    <header class="dispatches-head reveal">
+                        <h2>News</h2>
+                        <p>Latest updates from research, conferences, and life.</p>
+                    </header>
+                    <div class="dispatches-pair">
+
+                        <article class="dispatch reveal">
+                            <div class="dispatch-img"><img src="img/home/news-earthrise.jpg" alt="" loading="lazy"></div>
+                            <div class="dispatch-meta">
+                                <p class="dispatch-date"><span>Apr</span> <span>2026</span></p>
+                                <span class="dispatch-tag">Photography</span>
+                            </div>
+                            <h3>The Last Frontier of Sight: Artemis II's photos</h3>
+                            <p>What does it mean to photograph the Earth from the Moon's distance? A reflection on Artemis II's images as humanity's new self-portrait.</p>
+                            <a class="dispatch-link" href="https://fsdv.eu/posts/photography/photography-Artemisii.html" target="_blank" rel="noopener">Read more</a>
+                        </article>
+
+                        <article class="dispatch reveal">
+                            <div class="dispatch-img"><img src="img/home/news-etna.jpg" alt="" loading="lazy"></div>
+                            <div class="dispatch-meta">
+                                <p class="dispatch-date"><span>Jan</span> <span>2026</span></p>
+                                <span class="dispatch-tag">Publication</span>
+                            </div>
+                            <h3>Volcanic deposits from Mount Etna as lunar simulants</h3>
+                            <p>New paper in <em>Materials Today Advances</em>, because if you want to build on the Moon, you might as well start with a volcano.</p>
+                            <a class="dispatch-link" href="https://fsdv.eu/articles/etna-lunar-simulants.html" target="_blank" rel="noopener">Read more</a>
+                        </article>
+
+                    </div>
+                </div>
+
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ========== ABOUT ========== -->
-    <section class="section section-alt" id="about">
-        <div class="container">
-            <div class="section-header">
-                <h2>About Me</h2>
-            </div>
-            <div style="max-width: 800px; margin: 0 auto;">
-                <p>Born in 1994, I realized at 16 that I wanted to devote myself to studying rather than my two other youthful passions: karate and saxophone. Considered myself a "complete time waster" until 21, then I decided to apply my talent for geology in the direction of mineralogy.</p>
-                <p>My journey includes a Marie Curie doctorate at the University of Granada (SUBLime project), where I focused on self-cleaning lime-based materials through biomimetic approaches, studying amorphous-crystalline transitions and surface modifications. Now I'm a Postdoctoral Research Fellow at CISAS, working within the "Space It Up" project funded by ASI and MUR, characterizing terrestrial analogues and lunar regolith simulants for extraterrestrial construction.</p>
-                <p>I live in Padova, stubbornly following bizarre ideas such as reviving the cult of calcite and its pillars, and pushing to understand other planets because one is not enough. A devoted Inter Milano supporter. Convinced that pasta was the greatest leap in human progress until the Internet. My neighbors wish I didn't play vinyls with peculiar tastes.</p>
-            </div>
-        </div>
-    </section>
+        <!-- ========== EXPLORE ========== -->
+        <section class="explore" id="explore">
+            <div class="frame explore-grid">
+                <header class="explore-head reveal">
+                    <h2>Explore</h2>
+                    <p>Dig deeper into research, publications, and everything else.</p>
+                </header>
 
-    <!-- ========== NEWS ========== -->
-<section class="section" id="news">
-  <div class="container">
-    <div class="section-header">
-      <h2>News</h2>
-      <p>Latest updates from research, conferences, and life.</p>
-    </div>
-    <div class="news-list">
-
-      <article class="news-item">
-        <div class="news-date">
-          <span class="day">Aug</span>
-          <span class="month-year">2026</span>
-        </div>
-        <div class="news-content">
-          <span class="news-tag personal">Music</span>
-          <h3>Fra la via Emilia e la Luna</h3>
-          <p>A personal farewell to Francesco Guccini (1940&ndash;2026): a first concert at fourteen, an essay that earned a 3/10, three cities, lunar regolith, and a contract about to expire. Written in Italian.</p>
-          <a class="card-link" href="https://fsdv.eu/posts/music/guccini.html" target="_blank" rel="noopener">Read more</a>
-        </div>
-      </article>
-
-      <article class="news-item">
-        <div class="news-date">
-          <span class="day">Apr</span>
-          <span class="month-year">2026</span>
-        </div>
-        <div class="news-content">
-          <span class="news-tag research">Photography</span>
-          <h3>The Last Frontier of Sight: Artemis II's photos</h3>
-          <p>What does it mean to photograph the Earth from the Moon's distance? A reflection on Artemis II's images as humanity's new self-portrait.</p>
-          <a class="card-link" href="https://fsdv.eu/posts/photography/photography-Artemisii.html" target="_blank" rel="noopener">Read more</a>
-        </div>
-      </article>
-
-      <article class="news-item">
-        <div class="news-date">
-          <span class="day">Jan</span>
-          <span class="month-year">2026</span>
-        </div>
-        <div class="news-content">
-          <span class="news-tag publication">Publication</span>
-          <h3>Volcanic deposits from Mount Etna as lunar simulants</h3>
-          <p>New paper in <em>Materials Today Advances</em> — because if you want to build on the Moon, you might as well start with a volcano.</p>
-          <a class="card-link" href="https://fsdv.eu/articles/etna-lunar-simulants.html" target="_blank" rel="noopener">Read more</a>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-    <!-- ========== EXPLORE ========== -->
-    <section class="section section-alt" id="explore">
-        <div class="container">
-            <div class="section-header">
-                <h2>Explore</h2>
-                <p>Dig deeper into research, publications, and everything else.</p>
-            </div>
-            <div class="card-grid">
-                <a href="cv.html" class="card" style="text-decoration:none; color:inherit;">
-                    <div class="card-icon">&#9881;</div>
-                    <h3>Curriculum Vitae</h3>
-                    <p>Education, work experience, research training, conferences, and affiliations.</p>
-                    <span class="card-link">View CV</span>
+                <a href="cv.html" class="tile reveal">
+                    <span class="tile-bg" style="background-image: url('img/home/tile-cv.jpg'); background-position: 50% 8%;"></span>
+                    <span class="tile-body">
+                        <span class="tile-title">Curriculum Vitae</span>
+                        <span class="tile-text">Education, work experience, research training, conferences, and affiliations.</span>
+                        <span class="tile-action">View CV</span>
+                    </span>
                 </a>
-                <a href="publications.html" class="card" style="text-decoration:none; color:inherit;">
-                    <div class="card-icon">&#128214;</div>
-                    <h3>Publications</h3>
-                    <p>Peer-reviewed articles, conference proceedings, and co-authored works organized by year.</p>
-                    <span class="card-link">View Publications</span>
+                <a href="publications.html" class="tile reveal">
+                    <span class="tile-bg" style="background-image: url('img/home/tile-publications.jpg');"></span>
+                    <span class="tile-body">
+                        <span class="tile-title">Publications</span>
+                        <span class="tile-text">Peer-reviewed articles, conference proceedings, and co-authored works organized by year.</span>
+                        <span class="tile-action">View Publications</span>
+                    </span>
                 </a>
-                <a href="hobbies.html" class="card" style="text-decoration:none; color:inherit;">
-                    <div class="card-icon">&#127760;</div>
-                    <h3>Hobbies &amp; Blog</h3>
-                    <p>Photography, outdoor, music, geology thoughts, and more — each with its own blog.</p>
-                    <span class="card-link">Explore</span>
+                <a href="hobbies.html" class="tile reveal">
+                    <span class="tile-bg" style="background-image: url('img/hobbies/photography-cover.jpg');"></span>
+                    <span class="tile-body">
+                        <span class="tile-title">Hobbies &amp; Blog</span>
+                        <span class="tile-text">Photography, outdoor, music, geology thoughts, and more, each with its own blog.</span>
+                        <span class="tile-action">Explore</span>
+                    </span>
                 </a>
-                <a href="contact.html" class="card" style="text-decoration:none; color:inherit;">
-                    <div class="card-icon">&#9993;</div>
-                    <h3>Contact</h3>
-                    <p>Get in touch for collaborations, questions, or just to talk about minerals.</p>
-                    <span class="card-link">Contact Me</span>
+                <a href="contact.html" class="tile reveal">
+                    <span class="tile-bg" style="background-image: url('img/home/tile-contact.jpg'); background-position: 50% 30%;"></span>
+                    <span class="tile-body">
+                        <span class="tile-title">Contact</span>
+                        <span class="tile-text">Get in touch for collaborations, questions, or just to talk about minerals.</span>
+                        <span class="tile-action">Contact Me</span>
+                    </span>
                 </a>
             </div>
-        </div>
-    </section>
+        </section>
+
+    </main>
 
     <div id="site-footer"></div>
-    <script src="js/components.js"></script>
+
+    <script src="js/components.js?v=3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+    <script src="js/site.js?v=3" defer></script>
 </body>
 </html>

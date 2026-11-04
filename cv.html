@@ -3,193 +3,342 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curriculum Vitae — Francesco Santoro De Vico</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Curriculum Vitae | Francesco Santoro De Vico</title>
+    <meta name="description" content="Education, work experience, research training, conferences, and affiliations.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fsdv.eu/cv.html">
+    <meta property="og:title" content="Curriculum Vitae | Francesco Santoro De Vico">
+    <meta property="og:description" content="Education, work experience, research training, conferences, and affiliations.">
+    <meta property="og:image" content="https://fsdv.eu/img/home/home-og.jpg">
+    <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
+    <link rel="stylesheet" href="css/style.css?v=3">
+    <link rel="stylesheet" href="css/cv.css?v=3">
 </head>
-<body>
+<body class="has-cover cv-descent">
     <div id="site-header"></div>
 
-    <main class="page-top">
-        <div class="container">
-            <div class="cv-intro">
+    <!--
+        The page is one descent: orbit -> surface -> crust -> mantle -> core.
+        Each <section> carries the depth range it represents (km; negative =
+        altitude) and the zone name; js/cv.js reads them for the depth gauge.
+        Depths are the usual textbook (PREM) boundaries: Moho ~35 km under
+        continents, core-mantle boundary 2,890 km, inner core 5,150 km,
+        centre 6,371 km.
+    -->
+    <main class="descent">
+
+        <!-- ===== ORBIT ===== -->
+        <section class="sky" data-from="-400" data-to="0" data-zone="Low Earth orbit">
+            <div class="stars stars-far" aria-hidden="true"></div>
+            <div class="stars stars-near" aria-hidden="true"></div>
+            <div class="limb" aria-hidden="true"></div>
+
+            <div class="frame sky-frame">
                 <h1>Curriculum Vitae</h1>
-                <p>A geologist with a passion for applied mineralogy and building materials — from cultural heritage preservation to modern construction innovations and future space applications.</p>
-                <p class="mt-md"><a href="img/CV.pdf" target="_blank" style="font-weight:600;">Download full CV (PDF) &darr;</a></p>
-            </div>
-
-            <div class="cv-subsection">
-                <h2 class="cv-section-title">Work Experience</h2>
-
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-date">Jan 2025 — Present</div>
-                        <h3>Research Fellow</h3> <!-- Postdoctoral -->
-                        <div class="timeline-place">CISAS "Giuseppe Colombo" — University of Padova, Italy</div>
-                        <p>Working within the "Space It Up" project funded by ASI and MUR. Research focuses on characterization of terrestrial analogues and lunar regolith simulants for extraterrestrial construction, optimizing new mix formulations.</p>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-date">May 2024 — Nov 2024</div>
-                        <h3>Research Assistant</h3>
-                        <div class="timeline-place">University of Granada (UGR), Spain</div>
-                        <p>Research focused on surface modification techniques and chemical etching processes for material characterization and enhancement.</p>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-date">Apr 2021 — Apr 2024</div>
-                        <h3>Marie Sk&#322;odowska-Curie ESR 3</h3>
-                        <div class="timeline-place">University of Granada (UGR), Spain — <a href="https://sublime-etn.eu/" target="_blank">SUBLime ETN</a></div>
-                        <p>Developing self-cleaning lime-based materials through biomimetic approaches. Project: "Lime-based mortars and plasters with added functionality: a biomimetic approach".</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">Oct 2020 — Apr 2021</div>
-                        <h3>Research Contract</h3>
-                        <div class="timeline-place">Department of Geoscience — University of Padova, Italy</div>
-                        <p>Research focused on the rheology and study of injection grouts for use in Pompeii. Collaboration with the Getty Institute and Prof. Gilberto Artioli.</p>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-date">Dec 2019 — Apr 2020</div>
-                        <h3>Civil Service — Environmental Office</h3>
-                        <div class="timeline-place">Comune di Gussago, Italy</div>
-                        <p>Exposure to public administration and land management. Direct involvement in geological reporting and contaminated site remediation. Interrupted due to Covid-19.</p>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-date">Jan 2019 — Sep 2019</div>
-                        <h3>Erasmus+ Traineeship</h3>
-                        <div class="timeline-place">University of Granada — Prof. Carlos Rodríguez Navarro</div>
-                        <p>Interdisciplinary research on carbonation processes and durability in alternative binders. Techniques: XRD, XRD2D, Raman, IR, XRF, SEM (WDS, EDS), TEM, mechanical testing.</p>
-                    </div>
-
+                <div class="page-cover-lede">
+                    <p>A geologist with a passion for applied mineralogy and building materials, from cultural heritage preservation to modern construction innovations and future space applications.</p>
                 </div>
+                <p class="sky-download"><a href="img/CV.pdf" target="_blank">Download full CV (PDF) &darr;</a></p>
+            </div>
+        </section>
+
+        <!-- ===== SURFACE: the current position, in daylight ===== -->
+        <section class="stratum st-surface" data-from="0" data-to="0.002" data-zone="Surface">
+            <div class="core" aria-hidden="true"></div>
+
+            <!-- umbrella pine standing on the horizon; roots run into the topsoil -->
+            <div class="pine reveal" aria-hidden="true">
+                <svg class="pine-tree" viewBox="0 0 320 300" xmlns="http://www.w3.org/2000/svg">
+                    <path class="pine-trunk" d="M154 300 C157 262 150 228 153 196 C155 176 151 160 146 146 L156 144 C161 160 164 176 163 197 C161 230 167 262 170 300 Z"/>
+                    <path class="pine-branch" d="M150 168 C134 150 116 138 92 126 M159 160 C176 144 198 134 226 124 M153 150 C150 136 146 124 140 112"/>
+                    <defs>
+                        <filter id="pine-glow" x="-20%" y="-60%" width="140%" height="220%">
+                            <feDropShadow dx="0" dy="0" stdDeviation="9" flood-color="#78afff" flood-opacity="0.45"/>
+                        </filter>
+                    </defs>
+                    <g filter="url(#pine-glow)">
+                        <path class="pine-crown" d="M14 118C8 104 22 94 38 96C34 80 52 70 70 76C72 58 96 50 112 58C122 40 150 36 164 46C178 34 206 38 214 54C232 46 256 56 258 72C276 68 296 80 292 96C308 98 314 112 304 120C270 132 220 128 186 126C160 134 132 132 108 126C76 130 40 132 14 118Z"/>
+                    </g>
+                    <path class="pine-light" d="M44 98C46 86 60 80 72 86C76 70 98 64 112 70C124 54 150 50 162 60C176 50 200 52 208 66C226 60 246 68 248 82C220 84 190 78 160 82C130 78 90 92 44 98Z"/>
+                    <path class="pine-shade" d="M30 120C80 112 240 112 296 118C270 130 200 128 160 130C110 132 60 130 30 120Z"/>
+                </svg>
+                <svg class="pine-roots" viewBox="0 0 320 240" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M160 0 C150 40 120 70 70 96 C46 108 26 126 14 150 M160 0 C168 50 196 80 236 104 C262 120 286 140 300 170 M158 0 C156 60 150 110 156 170 C158 196 152 218 146 240 M160 0 C140 46 108 60 92 110 C86 130 74 150 58 162 M162 0 C176 40 206 54 220 92 C226 110 240 126 256 132"/>
+                </svg>
             </div>
 
-            <div class="cv-subsection">
-                <h2 class="cv-section-title">Education</h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-date">2017 — 2020</div>
-                        <h3>M.Sc. in Geology and Technical Geology</h3>
-                        <div class="timeline-place">University of Padova — 105/110</div>
-                        <p>Field: Applied Mineralogy, Crystal Chemistry of Materials.<br>Thesis: "Process of carbonation and durability in alternative binders".</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2014 — 2017</div>
-                        <h3>B.Sc. in Geological Sciences</h3>
-                        <div class="timeline-place">University of Padova</div>
-                        <p>Field: Petrology.<br>Thesis: "Understanding the granulitic deformation microstructures of Curinga metagabbro: A SEM-EBSD study".</p>
-                    </div>
-                </div>
-            </div>
+            <div class="stratum-body">
+                <header class="stratum-head reveal rise">
+                    <p class="stratum-tag">0 m · Surface</p>
+                    <h2>Work Experience</h2>
+                </header>
 
-            <div class="cv-subsection">
-                <h2 class="cv-section-title">Research Secondments</h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-date">Jun — Sep 2023</div>
-                        <h3>PhD Secondment — University of Ghent</h3>
-                        <div class="timeline-place">UGent, Belgium</div>
-                        <p>Development of mortars with different functionalities. Including research at µ-CT Core Facility (UGCT).</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">Jun — Jul 2022</div>
-                        <h3>ARQUS Research Period</h3>
-                        <div class="timeline-place">University of Padova, Italy</div>
-                        <p>Development of rheology studies.</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">Feb — Mar 2022</div>
-                        <h3>Industrial Secondment — Lhoist Group R&amp;D</h3>
-                        <div class="timeline-place">Nivelles, Belgium</div>
-                        <p>Development of new mix design for the industry.</p>
-                    </div>
-                </div>
+                <ol class="samples">
+                    <li class="sample sample-now reveal rise">
+                        <p class="sample-date">Jan 2025 to 15 Jan 2027</p>
+                        <div class="sample-body">
+                            <h3>Research Fellow</h3> <!-- Postdoctoral -->
+                            <p class="sample-place">CISAS "Giuseppe Colombo", University of Padova, Italy</p>
+                            <p>Working within the "Space It Up" project funded by ASI and MUR. Research focuses on characterization of terrestrial analogues and lunar regolith simulants for extraterrestrial construction, optimizing new mix formulations.</p>
+                        </div>
+                    </li>
+                </ol>
             </div>
+        </section>
 
-            <div class="cv-subsection">
-                <h2 class="cv-section-title">Teaching</h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-date">Sep 2025 — Jan 2026</div>
-                        <h3>Teaching Assistant — "Principi di Geoscienze"</h3>
-                        <div class="timeline-place">University of Padova</div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">Nov 2025</div>
-                        <h3>Guest Lecturer — Planetary Geology</h3>
-                        <div class="timeline-place">University of Padova — ISRU techniques on the Moon</div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">Feb — May 2025</div>
-                        <h3>Guest Lecturer — Mineral Processes and Environmental Applications</h3>
-                        <div class="timeline-place">University of Padova</div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2022 — 2024</div>
-                        <h3>Lecturer — "Techniques for Analyzing Geomaterials"</h3>
-                        <div class="timeline-place">University of Granada — Course in Spanish, 1 ECTS/year</div>
-                    </div>
-                </div>
+        <!-- ===== CRUST ===== -->
+        <section class="stratum st-sandstone" data-from="0.002" data-to="12" data-zone="Upper crust">
+            <div class="core" aria-hidden="true"></div>
+            <div class="stratum-body">
+                <header class="stratum-head reveal rise">
+                    <p class="stratum-tag">0 to 12 km · Upper crust</p>
+                </header>
+
+                <ol class="samples">
+                    <li class="sample reveal rise">
+                        <p class="sample-date">May 2024 to Nov 2024</p>
+                        <div class="sample-body">
+                            <h3>Research Assistant</h3>
+                            <p class="sample-place">University of Granada (UGR), Spain</p>
+                            <p>Research focused on surface modification techniques and chemical etching processes for material characterization and enhancement.</p>
+                        </div>
+                    </li>
+
+                    <li class="sample reveal rise">
+                        <p class="sample-date">Apr 2021 to Apr 2024</p>
+                        <div class="sample-body">
+                            <h3>Marie Sk&#322;odowska-Curie ESR 3</h3>
+                            <p class="sample-place">University of Granada (UGR), Spain, <a href="https://sublime-etn.eu/" target="_blank">SUBLime ETN</a></p>
+                            <p>Developing self-cleaning lime-based materials through biomimetic approaches. Project: "Lime-based mortars and plasters with added functionality: a biomimetic approach".</p>
+                        </div>
+                    </li>
+
+                    <li class="sample reveal rise">
+                        <p class="sample-date">Oct 2020 to Apr 2021</p>
+                        <div class="sample-body">
+                            <h3>Research Contract</h3>
+                            <p class="sample-place">Department of Geoscience, University of Padova, Italy</p>
+                            <p>Research focused on the rheology and study of injection grouts for use in Pompeii. Collaboration with the Getty Institute and Prof. Gilberto Artioli.</p>
+                        </div>
+                    </li>
+
+                    <li class="sample reveal rise">
+                        <p class="sample-date">Dec 2019 to Apr 2020</p>
+                        <div class="sample-body">
+                            <h3>Civil Service: Environmental Office</h3>
+                            <p class="sample-place">Comune di Gussago, Italy</p>
+                            <p>Exposure to public administration and land management. Direct involvement in geological reporting and contaminated site remediation. Interrupted due to Covid-19.</p>
+                        </div>
+                    </li>
+
+                    <li class="sample reveal rise">
+                        <p class="sample-date">Jan 2019 to Sep 2019</p>
+                        <div class="sample-body">
+                            <h3>Erasmus+ Traineeship</h3>
+                            <p class="sample-place">University of Granada, Prof. Carlos Rodríguez Navarro</p>
+                            <p>Interdisciplinary research on carbonation processes and durability in alternative binders. Techniques: XRD, XRD2D, Raman, IR, XRF, SEM (WDS, EDS), TEM, mechanical testing.</p>
+                        </div>
+                    </li>
+                </ol>
             </div>
+        </section>
 
-             <!-- ===== SKILLS ===== -->
-            <div class="cv-subsection">
-                <h2 class="cv-section-title">Technical Skills</h2>
-                <div class="skill-tags">
-                    <span class="skill-tag">XRD &amp; XRD2D</span>
-                    <span class="skill-tag">Raman Spectroscopy</span>
-                    <span class="skill-tag">FTIR</span>
-                    <span class="skill-tag">SEM (WDS, EDS)</span>
-                    <span class="skill-tag">TEM</span>
-                    <span class="skill-tag">XRF</span>
-                    <span class="skill-tag">&mu;-CT</span>
-                    <span class="skill-tag">PHREEQC</span>
-                    <span class="skill-tag">Origin Pro</span>
-                    <span class="skill-tag">XPert High Score+</span>
-                    <span class="skill-tag">XPowderX</span>
-                    <span class="skill-tag">ImageJ</span>
-                    <span class="skill-tag">LaTeX</span>
-                    <span class="skill-tag">GIMP / Inkscape</span>
-                    <span class="skill-tag">LibreOffice</span>
-                    <span class="skill-tag">Linux &amp; Windows</span>
-                </div>
+        <section class="stratum st-limestone" data-from="12" data-to="22" data-zone="Middle crust">
+            <div class="core" aria-hidden="true"></div>
+            <div class="stratum-body">
+                <header class="stratum-head reveal rise">
+                    <p class="stratum-tag">12 to 22 km · Middle crust</p>
+                    <h2>Education</h2>
+                </header>
+                <ol class="samples">
+                    <li class="sample reveal rise">
+                        <p class="sample-date">9 Oct 2026</p>
+                        <div class="sample-body">
+                            <h3>Ph.D. in Earth Sciences with International Mention (<em>Mención Internacional</em>)</h3>
+                            <p class="sample-place">University of Granada, Spain, <em>Sobresaliente cum laude</em></p>
+                        </div>
+                    </li>
+                    <li class="sample reveal rise">
+                        <p class="sample-date">2017 to 2020</p>
+                        <div class="sample-body">
+                            <h3>M.Sc. in Geology and Technical Geology</h3>
+                            <p class="sample-place">University of Padova, 105/110</p>
+                            <p>Field: Applied Mineralogy, Crystal Chemistry of Materials.<br>Thesis: "Process of carbonation and durability in alternative binders".</p>
+                        </div>
+                    </li>
+                    <li class="sample reveal rise">
+                        <p class="sample-date">2014 to 2017</p>
+                        <div class="sample-body">
+                            <h3>B.Sc. in Geological Sciences</h3>
+                            <p class="sample-place">University of Padova</p>
+                            <p>Field: Petrology.<br>Thesis: "Understanding the granulitic deformation microstructures of Curinga metagabbro: A SEM-EBSD study".</p>
+                        </div>
+                    </li>
+                </ol>
             </div>
+        </section>
 
-            <!-- ===== LANGUAGES ===== -->
-            <div class="cv-subsection">
-                <h2 class="cv-section-title">Languages</h2>
-                <div class="skill-tags">
-                    <span class="skill-tag">Italian — Native</span>
-                    <span class="skill-tag">Spanish — C1/C2</span>
-                    <span class="skill-tag">English — C1</span>
-                    <span class="skill-tag">Greek — A1/A2</span>
-                    <span class="skill-tag">French — A1/A2</span>
-                </div>
+        <section class="stratum st-shale" data-from="22" data-to="30" data-zone="Lower crust">
+            <div class="core" aria-hidden="true"></div>
+            <div class="stratum-body">
+                <header class="stratum-head reveal rise">
+                    <p class="stratum-tag">22 to 30 km · Lower crust</p>
+                    <h2>Research Secondments</h2>
+                </header>
+                <ol class="samples">
+                    <li class="sample reveal rise">
+                        <p class="sample-date">Jun to Sep 2023</p>
+                        <div class="sample-body">
+                            <h3>PhD Secondment: University of Ghent</h3>
+                            <p class="sample-place">UGent, Belgium</p>
+                            <p>Development of mortars with different functionalities. Including research at µ-CT Core Facility (UGCT).</p>
+                        </div>
+                    </li>
+                    <li class="sample reveal rise">
+                        <p class="sample-date">Jun to Jul 2022</p>
+                        <div class="sample-body">
+                            <h3>ARQUS Research Period</h3>
+                            <p class="sample-place">University of Padova, Italy</p>
+                            <p>Development of rheology studies.</p>
+                        </div>
+                    </li>
+                    <li class="sample reveal rise">
+                        <p class="sample-date">Feb to Mar 2022</p>
+                        <div class="sample-body">
+                            <h3>Industrial Secondment: Lhoist Group R&amp;D</h3>
+                            <p class="sample-place">Nivelles, Belgium</p>
+                            <p>Development of new mix design for the industry.</p>
+                        </div>
+                    </li>
+                </ol>
             </div>
+        </section>
 
-            <!-- ===== AFFILIATIONS ===== -->
-            <div class="cv-subsection">
-                <h2 class="cv-section-title">Networks &amp; Affiliations</h2>
-                <div class="skill-tags">
-                    <span class="skill-tag"><a href="https://www.rilem.net/" target="_blank">RILEM</a></span>
-                    <span class="skill-tag"><a href="https://www.geochemsoc.org/" target="_blank">Geochemical Society</a></span>
-                    <span class="skill-tag"><a href="https://sublime-etn.eu/" target="_blank">SUBLime Network</a></span>
-                    <span class="skill-tag"><a href="https://cristallografia.org/giovani-cristallografi/" target="_blank">Giovani Cristallografi Italiani</a></span>
-                    <span class="skill-tag"><a href="https://spaceitup.it/" target="_blank">Consorzio Space It Up</a></span>
-                    <span class="skill-tag"><a href="https://www.mariecuriealumni.eu/" target="_blank">MCAA</a></span>
-                    <span class="skill-tag"><a href="https://www.unipd.it/en/alumni" target="_blank">UniPD Alumni</a></span>
-                    <span class="skill-tag"><a href="https://www.europlanet.org/" target="_blank">Europlanet</a></span>
-                    <span class="skill-tag"><a href="https://www.socminpet.it/" target="_blank">SIMP</a></span>
-                    <span class="skill-tag"><a href="https://speleo.it/site/" target="_blank">SSI</a></span>
-                    <span class="skill-tag"><a href="https://fai-international.org/fai/" target="_blank">FAI</a></span>
-                </div>
+        <section class="stratum st-gneiss" data-from="30" data-to="35" data-zone="Lower crust · Moho">
+            <div class="core" aria-hidden="true"></div>
+            <div class="stratum-body">
+                <header class="stratum-head reveal rise">
+                    <p class="stratum-tag">30 to 35 km · Lower crust to the Moho</p>
+                    <h2>Teaching</h2>
+                </header>
+                <ol class="samples">
+                    <li class="sample reveal rise">
+                        <p class="sample-date">Sep 2025 to Jan 2026</p>
+                        <div class="sample-body">
+                            <h3>Teaching Assistant: "Principi di Geoscienze"</h3>
+                            <p class="sample-place">University of Padova</p>
+                        </div>
+                    </li>
+                    <li class="sample reveal rise">
+                        <p class="sample-date">Nov 2025</p>
+                        <div class="sample-body">
+                            <h3>Guest Lecturer: Planetary Geology</h3>
+                            <p class="sample-place">University of Padova, ISRU techniques on the Moon</p>
+                        </div>
+                    </li>
+                    <li class="sample reveal rise">
+                        <p class="sample-date">Feb to May 2025</p>
+                        <div class="sample-body">
+                            <h3>Guest Lecturer: Mineral Processes and Environmental Applications</h3>
+                            <p class="sample-place">University of Padova</p>
+                        </div>
+                    </li>
+                    <li class="sample reveal rise">
+                        <p class="sample-date">2022 to 2024</p>
+                        <div class="sample-body">
+                            <h3>Lecturer: "Techniques for Analyzing Geomaterials"</h3>
+                            <p class="sample-place">University of Granada, Course in Spanish, 1 ECTS/year</p>
+                        </div>
+                    </li>
+                </ol>
             </div>
+        </section>
 
-        </div>
+        <!-- ===== MANTLE ===== -->
+        <section class="stratum st-mantle" data-from="35" data-to="2890" data-zone="Mantle">
+            <div class="core" aria-hidden="true"></div>
+            <div class="stratum-body">
+                <header class="stratum-head reveal rise">
+                    <p class="stratum-tag">35 to 2,890 km · Mantle</p>
+                    <h2>Technical Skills</h2>
+                </header>
+                <ul class="grains reveal rise">
+                    <li>XRD &amp; XRD2D</li>
+                    <li>Raman Spectroscopy</li>
+                    <li>FTIR</li>
+                    <li>SEM (WDS, EDS)</li>
+                    <li>TEM</li>
+                    <li>XRF</li>
+                    <li>&mu;-CT</li>
+                    <li>PHREEQC</li>
+                    <li>Origin Pro</li>
+                    <li>XPert High Score+</li>
+                    <li>XPowderX</li>
+                    <li>ImageJ</li>
+                    <li>LaTeX</li>
+                    <li>GIMP / Inkscape</li>
+                    <li>LibreOffice</li>
+                    <li>Linux &amp; Windows</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ===== CORE ===== -->
+        <section class="stratum st-outer" data-from="2890" data-to="5150" data-zone="Outer core">
+            <div class="core" aria-hidden="true"></div>
+            <div class="stratum-body">
+                <header class="stratum-head reveal rise">
+                    <p class="stratum-tag">2,890 to 5,150 km · Outer core</p>
+                    <h2>Languages</h2>
+                </header>
+                <ul class="tongues reveal rise">
+                    <li>Italian: Native</li>
+                    <li>Spanish: C1/C2</li>
+                    <li>English: C1</li>
+                    <li>Greek: A1/A2</li>
+                    <li>French: A1/A2</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="stratum st-inner" data-from="5150" data-to="6371" data-zone="Inner core">
+            <div class="core" aria-hidden="true"></div>
+            <div class="stratum-body">
+                <header class="stratum-head reveal rise">
+                    <p class="stratum-tag">5,150 to 6,371 km · Inner core</p>
+                    <h2>Networks &amp; Affiliations</h2>
+                </header>
+                <ul class="grains grains-links reveal rise">
+                    <li><a href="https://www.rilem.net/" target="_blank">RILEM</a></li>
+                    <li><a href="https://www.geochemsoc.org/" target="_blank">Geochemical Society</a></li>
+                    <li><a href="https://sublime-etn.eu/" target="_blank">SUBLime Network</a></li>
+                    <li><a href="https://cristallografia.org/giovani-cristallografi/" target="_blank">Giovani Cristallografi Italiani</a></li>
+                    <li><a href="https://spaceitup.it/" target="_blank">Consorzio Space It Up</a></li>
+                    <li><a href="https://www.mariecuriealumni.eu/" target="_blank">MCAA</a></li>
+                    <li><a href="https://www.unipd.it/en/alumni" target="_blank">UniPD Alumni</a></li>
+                    <li><a href="https://www.europlanet.org/" target="_blank">Europlanet</a></li>
+                    <li><a href="https://www.socminpet.it/" target="_blank">SIMP</a></li>
+                    <li><a href="https://speleo.it/site/" target="_blank">SSI</a></li>
+                    <li><a href="https://fai-international.org/fai/" target="_blank">FAI</a></li>
+                </ul>
+            </div>
+        </section>
     </main>
 
+    <!-- Depth gauge, driven by js/cv.js -->
+    <aside class="gauge" aria-hidden="true">
+        <div class="gauge-track"><span class="gauge-mark"></span></div>
+        <div class="gauge-read">
+            <span class="gauge-kind">Altitude</span>
+            <span class="gauge-val">400 km</span>
+            <span class="gauge-zone">Low Earth orbit</span>
+        </div>
+    </aside>
+
     <div id="site-footer"></div>
-    <script src="js/components.js"></script>
+    <script src="js/components.js?v=3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+    <script src="js/site.js?v=3" defer></script>
+    <script src="js/cv.js?v=3" defer></script>
 </body>
 </html>

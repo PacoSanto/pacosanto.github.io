@@ -3,23 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photography — Hobbies &amp; Blog — Francesco Santoro De Vico</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <title>Photography | Hobbies &amp; Blog | Francesco Santoro De Vico</title>
+    <meta name="description" content="Landscapes, architecture, cultural heritage, and the play of light on stone.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fsdv.eu/hobbies/photography.html">
+    <meta property="og:title" content="Photography | Hobbies &amp; Blog | Francesco Santoro De Vico">
+    <meta property="og:description" content="Landscapes, architecture, cultural heritage, and the play of light on stone.">
+    <meta property="og:image" content="https://fsdv.eu/img/hobbies/photography-cover.jpg">
+    <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
+    <link rel="stylesheet" href="../css/style.css?v=3">
 </head>
-<body>
+<body class="has-cover">
     <div id="site-header"></div>
 
-    <main class="page-top">
-        <div class="container">
-            <a href="../hobbies.html" class="back-link">Back to Hobbies &amp; Blog</a>
-
-            <div class="section-header">
-                <h1>&#128247; Photography</h1>
+    <main>
+        <section class="page-cover">
+            <img class="page-cover-img" src="../img/hobbies/photography-cover.jpg" alt="" fetchpriority="high">
+            <div class="frame">
+                <a href="../hobbies.html" class="back-link">Back to Hobbies &amp; Blog</a>
+                <h1>Photography</h1>
+                <div class="page-cover-lede">
+                    <p>From landscape and architectural photography to visual arts and cultural heritage. I find beauty in geological formations, old buildings, and the play of light on stone surfaces. You can see more on my <a href="https://www.juzaphoto.com/me.php?p=232357&pg=allphotos&srt=data&l=it" target="_blank">JuzaPhoto gallery</a>.</p>
+                </div>
             </div>
+        </section>
 
-            <div class="category-intro">
-                <p>From landscape and architectural photography to visual arts and cultural heritage. I find beauty in geological formations, old buildings, and the play of light on stone surfaces. You can see more on my <a href="https://www.juzaphoto.com/me.php?p=232357&pg=allphotos&srt=data&l=it" target="_blank">JuzaPhoto gallery</a>.</p>
-            </div>
+        <section class="post-index">
+        <div class="frame">
 
             <!-- ===== BLOG POSTS LIST ===== -->
             <div class="blog-post-list">
@@ -30,7 +40,7 @@
                     2. Add a card here linking to it
 
                     TEMPLATE:
-                    <a href="../posts/YOUR-POST-NAME.html" class="blog-post-card">
+                    <a href="../posts/YOUR-POST-NAME.html" class="blog-post-card reveal">
                         <div class="blog-post-card-image">
                             <img src="../img/posts/your-image.jpg" alt="Post image">
                         </div>
@@ -43,21 +53,21 @@
                     </a>
                 -->
                                 
-                <a href="../posts/photography/photography-Artemisii.html" class="blog-post-card">
+                <a href="../posts/photography/photography-Artemisii.html" class="blog-post-card reveal">
                         <div class="blog-post-card-image">
                             <img 
                                 src="https://images-assets.nasa.gov/image/art002e010208/art002e010208~large.jpg?w=800&h=533&fit=clip&crop=faces%2Cfocalpoint" 
-                                alt="Artemis II — Earth beyond the lunar limb, NASA">
+                                alt="Artemis II: Earth beyond the lunar limb, NASA">
                       </div>
                     <div class="blog-post-card-body">
                         <span class="post-date">May 2026</span>
                         <h3>The Last Frontier of Sight: Artemis II's Visual Legacy</h3>
-                        <p>From Earthrise to the lunar limb of Orion — how the photographs of Artemis II are rewriting the visual history of space exploration.</p>
+                        <p>From Earthrise to the lunar limb of Orion, how the photographs of Artemis II are rewriting the visual history of space exploration.</p>
                         <span class="read-more">Read more &rarr;</span>
                     </div>
                 </a>
 
-                <a href="../posts/photography/photography-bird-hawaii.html" class="blog-post-card">
+                <a href="../posts/photography/photography-bird-hawaii.html" class="blog-post-card reveal">
                     <div class="blog-post-card-image">
                         <img src="../img/hobbies/photography-cover.jpg" alt="Post image">
                     </div>
@@ -71,9 +81,12 @@
 
             </div>
         </div>
+        </section>
     </main>
 
     <div id="site-footer"></div>
-    <script src="../js/components.js"></script>
+    <script src="../js/components.js?v=3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+    <script src="../js/site.js?v=3" defer></script>
 </body>
 </html>

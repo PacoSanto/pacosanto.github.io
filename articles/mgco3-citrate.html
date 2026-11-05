@@ -4,207 +4,1195 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Additive impact on early-stage magnesium carbonate mineralisation | Francesco Santoro De Vico</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <meta name="description" content="What happens before the first solid exists? How a small dose of citrate reroutes magnesium carbonate formation towards less hydrated phases, better suited to CO₂ storage.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fsdv.eu/articles/mgco3-citrate.html">
+    <meta property="og:title" content="Additive impact on early-stage magnesium carbonate mineralisation">
+    <meta property="og:description" content="What happens before the first solid exists? How a small dose of citrate reroutes magnesium carbonate formation towards less hydrated phases, better suited to CO₂ storage.">
+    <meta property="og:image" content="https://fsdv.eu/img/articles/mgco3/mgco3-citrate-og.jpg">
+    <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
+    <link rel="stylesheet" href="../css/style.css?v=3">
     <style>
-        .article-body h2 { margin-top: 2.4em; }
-
-        .hero-img {
-            width: 100%;
-            max-height: 480px;
-            object-fit: cover;
-            border-radius: 12px;
-            margin-bottom: 0.6em;
+        /* Two accents, taken from the two routes in the paper's Fig. 4:
+           blue = additive-free control, red = with citrate. */
+        body.mgc {
+            --route-a: #3f63b8;
+            --route-b: #c8402f;
+            font-size: 1.0625rem;
+            color: var(--color-ink);
         }
+        .mgc p { color: inherit; }
+        .mgc .site-footer { margin-top: 0; }
+        .mgc sub, .mgc sup { line-height: 0; font-size: 0.72em; }
 
-        .highlight-box {
-            background: linear-gradient(135deg, #1c1135 0%, #2d1b69 100%);
-            color: #e8e0f0;
-            border-radius: 12px;
-            padding: 2em 2.2em;
-            margin: 2em 0;
-            border-left: 4px solid #a855f7;
-            font-size: 1.05em;
-            line-height: 1.7;
+        /* ── Cover: an electron diffraction pattern that exposes on load ── */
+        .mgc-cover {
+            position: relative;
+            min-height: 100vh;
+            min-height: 100svh;
+            display: flex;
+            align-items: flex-end;
+            padding: 150px 0 clamp(2.5rem, 6vw, 4.5rem);
+            color: #fff;
+            overflow: hidden;
+            isolation: isolate;
+            background:
+                radial-gradient(circle at 68% 46%, #d8d8d2 0, #77776f 3%, #2b2b28 11%, #0d0f0c 42%);
         }
-        .highlight-box strong { color: #c084fc; }
+        .js .mgc-cover { background: var(--color-night); }
+        .saed { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -2; }
+        .mgc-cover::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background:
+                linear-gradient(90deg, rgba(13,15,12,.92) 0%, rgba(13,15,12,.72) 36%, rgba(13,15,12,0) 62%),
+                linear-gradient(0deg, rgba(13,15,12,.75) 0%, rgba(13,15,12,0) 34%);
+        }
+        .saed-tag {
+            position: absolute;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: rgba(255,255,255,.85);
+            padding-left: 34px;
+            white-space: nowrap;
+            text-shadow: 0 0 6px #000, 0 0 2px #000;
+            opacity: 0;
+            transition: opacity 1s var(--ease-out);
+        }
+        .saed-tag::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 28px;
+            height: 1px;
+            background: rgba(255,255,255,.7);
+        }
+        .saed-tag.is-on { opacity: 1; }
+        .mgc-cover-text { max-width: 46rem; }
+        .mgc-cover .back-link {
+            color: rgba(255,255,255,.8);
+            font-size: 0.85rem;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            margin-bottom: 1.6rem;
+        }
+        .mgc-cover .back-link:hover { color: #fff; }
+        .mgc-kicker {
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: var(--color-sandstone);
+            margin-bottom: 1.1rem;
+        }
+        .mgc-cover h1 {
+            font-size: clamp(2.7rem, 5.6vw, 5.2rem);
+            line-height: 0.98;
+            letter-spacing: -.02em;
+            color: #fff;
+            margin-bottom: 1.6rem;
+        }
+        .mgc-lede {
+            font-size: 1.16rem;
+            line-height: 1.6;
+            color: rgba(255,255,255,.88);
+            border-left: 2px solid var(--color-amber);
+            padding-left: 1.25rem;
+            margin-bottom: 1.6rem;
+        }
+        .mgc-authors { font-size: .95rem; color: rgba(255,255,255,.68); margin-bottom: 1.3rem; }
+        .mgc-authors strong { color: #fff; font-weight: 600; }
+        .mgc-actions { display: flex; flex-wrap: wrap; gap: .6rem 1.6rem; margin: 0; }
+        .mgc-actions a {
+            font-weight: 600;
+            font-size: .95rem;
+            color: #fff;
+            padding-bottom: 4px;
+            background: linear-gradient(var(--color-amber), var(--color-amber)) 0 100% / 100% 1px no-repeat;
+        }
+        .mgc-actions a:hover { color: #f0b39f; }
+        .saed-note {
+            position: absolute;
+            right: var(--gutter);
+            bottom: clamp(1.2rem, 3vw, 2.2rem);
+            max-width: 21rem;
+            font-size: .8rem;
+            line-height: 1.45;
+            text-align: right;
+            color: rgba(255,255,255,.58);
+            margin: 0;
+        }
+        .js .mgc-cover-text > * {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity 1s var(--ease-out), transform 1s var(--ease-out);
+        }
+        .js .is-loaded .mgc-cover-text > * { opacity: 1; transform: none; }
+        .js .is-loaded .mgc-cover-text > :nth-child(3) { transition-delay: .1s; }
+        .js .is-loaded .mgc-cover-text > :nth-child(4) { transition-delay: .2s; }
+        .js .is-loaded .mgc-cover-text > :nth-child(5) { transition-delay: .3s; }
+        .js .is-loaded .mgc-cover-text > :nth-child(6) { transition-delay: .4s; }
 
-        .key-number-grid {
+        /* ── Text sections ─────────────────────────────────────────────── */
+        .mgc-band { padding: clamp(4.5rem, 9vw, 8rem) 0; }
+        .mgc-band + .mgc-band { padding-top: 0; }
+        .mgc-split {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.2em;
-            margin: 2em 0;
+            grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+            gap: clamp(2rem, 5vw, 5rem);
+            align-items: start;
         }
-        .key-number {
-            background: #f5f0fa;
-            border-radius: 10px;
-            padding: 1.5em;
-            text-align: center;
+        .mgc h2 {
+            font-size: clamp(2.8rem, 5.4vw, 4.8rem);
+            line-height: .98;
+            letter-spacing: -.015em;
         }
-        .key-number .number {
-            font-size: 2.2em;
-            font-weight: 700;
-            color: #7c3aed;
-            display: block;
-            line-height: 1.1;
-        }
-        .key-number .label {
-            font-size: 0.88em;
-            color: #555;
-            margin-top: 0.4em;
-            display: block;
-        }
+        .mgc-prose p { max-width: 62ch; margin-bottom: 1.25rem; }
+        .mgc-prose p:last-child { margin-bottom: 0; }
 
-        .pathway-box {
+        /* mass of mineral per mole of CO2 */
+        .hydrates { margin: clamp(2.5rem, 5vw, 4rem) 0 0; }
+        .hydrates figcaption {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 1.3rem;
+            line-height: 1.3;
+            margin-bottom: 1.4rem;
+        }
+        .hyd {
             display: grid;
-            grid-template-columns: 1fr auto 1fr;
+            grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
+            gap: .3rem 1.5rem;
             align-items: center;
-            gap: 1.2em;
-            margin: 2em 0;
-            text-align: center;
+            border-top: 1px solid var(--border);
+            padding: 1rem 0;
         }
-        .pathway-box .pbox {
-            background: #f5f0fa;
-            border-radius: 12px;
-            padding: 1.4em;
+        .hyd-name { font-family: var(--font-display); font-size: 1.45rem; line-height: 1.1; }
+        .hyd-name small { display: block; font-family: var(--font-mono); font-size: .74rem; color: var(--color-slate); margin-top: .3rem; }
+        .hyd-bar { display: flex; align-items: center; gap: .8rem; }
+        .hyd-bar i {
+            display: block;
+            height: 14px;
+            width: var(--w);
+            background: var(--c);
+            transform-origin: left;
+            transition: transform 1.2s var(--ease-out) var(--d, 0s);
         }
-        .pathway-box .pbox h4 { margin: 0 0 0.3em; color: #7c3aed; font-size: 1em; }
-        .pathway-box .pbox p { margin: 0; font-size: 0.9em; color: #444; }
-        .pathway-box .arrow { font-size: 2em; color: #aaa; }
-        @media (max-width: 600px) {
-            .pathway-box { grid-template-columns: 1fr; }
-            .pathway-box .arrow { transform: rotate(90deg); }
+        .js .hyd.reveal i { transform: scaleX(0); }
+        .js .hyd.reveal.is-in i { transform: none; }
+        .hyd-bar b { font-family: var(--font-mono); font-weight: 400; font-size: .9rem; white-space: nowrap; }
+        .hydrates-note { font-size: .85rem; color: var(--color-slate); margin: .8rem 0 0; max-width: 62ch; }
+
+        .mgc-question {
+            font-family: var(--font-display);
+            font-weight: 300;
+            font-size: clamp(1.9rem, 3.5vw, 3.1rem);
+            line-height: 1.14;
+            letter-spacing: -.01em;
+            max-width: 24em;
+            margin: 0;
         }
 
-        .callout {
-            background: #faf5ff;
-            border: 1px solid #a855f7;
-            border-radius: 10px;
-            padding: 1.4em 1.6em;
-            margin: 1.5em 0;
-            font-size: 0.95em;
+        /* protocol ledger */
+        .protocol { list-style: none; margin: 0; }
+        .protocol li {
+            display: grid;
+            grid-template-columns: minmax(0, 10rem) minmax(0, 1fr);
+            gap: .3rem 1.5rem;
+            border-top: 1px solid var(--border);
+            padding: 1rem 0 1.1rem;
         }
-        .callout .callout-title {
-            font-weight: 700;
-            color: #7c3aed;
-            margin-bottom: 0.4em;
+        .protocol span {
+            font-family: var(--font-mono);
+            font-size: .76rem;
+            letter-spacing: .05em;
+            text-transform: uppercase;
+            color: var(--color-copper);
+            padding-top: .3rem;
+        }
+        .protocol p { margin: 0; }
+
+        /* ── Two reactors, driven by scroll ────────────────────────────── */
+        .routes { background: var(--color-night); color: #f1efe8; }
+        .routes-intro { padding: clamp(4.5rem, 9vw, 8rem) 0 clamp(1rem, 3vw, 2rem); }
+        .routes-intro h2 { color: #fff; margin-bottom: 1rem; }
+        .routes-intro p { max-width: 58ch; color: rgba(255,255,255,.76); margin: 0; }
+        .routes-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+            gap: clamp(1.5rem, 4vw, 4rem);
+        }
+        .routes-stage {
+            position: sticky;
+            top: 64px;
+            height: calc(100vh - 64px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            order: 2;
+        }
+        html:not(.js) .routes-stage { display: none; }
+        .chambers { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(.75rem, 2vw, 1.75rem); }
+        .chamber { margin: 0; }
+        .chamber canvas { display: block; width: 100%; aspect-ratio: 1; }
+        .chamber figcaption { margin-top: .8rem; }
+        .chamber-name {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: .74rem;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,.62);
+        }
+        .chamber-state {
+            display: block;
+            font-family: var(--font-display);
+            font-size: clamp(1.05rem, 1.7vw, 1.4rem);
+            line-height: 1.2;
+            min-height: 2.4em;
+            margin-top: .25rem;
+            color: #fff;
+        }
+        .legend {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: .25rem 1.1rem;
+            margin: .6rem 0 0;
+            font-size: .8rem;
+            color: rgba(255,255,255,.62);
+        }
+        .legend i {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: .4rem;
+            vertical-align: -1px;
+        }
+        .routes-steps { order: 1; padding-bottom: 28vh; }
+        .step {
+            min-height: 82vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: .32;
+            transition: opacity .5s var(--ease-out);
+        }
+        html:not(.js) .step { opacity: 1; min-height: 0; padding: 2rem 0; }
+        .step.is-active { opacity: 1; }
+        .step-n {
+            font-family: var(--font-mono);
+            font-size: .74rem;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: #f0b39f;
+            margin-bottom: .8rem;
+        }
+        .step h3 {
+            font-size: clamp(2rem, 3.2vw, 2.9rem);
+            font-weight: 300;
+            line-height: 1.04;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+        .step p { margin-bottom: .9rem; max-width: 46ch; color: rgba(255,255,255,.82); }
+        .step p:last-child { margin-bottom: 0; }
+        .step .src { font-size: .85rem; color: rgba(255,255,255,.55); }
+
+        /* ── Figures ───────────────────────────────────────────────────── */
+        .fig {
+            display: grid;
+            grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+            gap: clamp(1.5rem, 4vw, 4rem);
+            align-items: start;
+            padding: clamp(2.5rem, 5vw, 4rem) 0;
+            border-top: 1px solid var(--border);
+        }
+        .fig-plate { margin: 0; }
+        .fig-plate > a { display: block; }
+        .fig-plate img { width: 100%; height: auto; background: #fff; transition: opacity .3s; }
+        .fig-plate > a:hover img { opacity: .9; }
+        .fig-plate figcaption { font-size: .86rem; line-height: 1.5; color: var(--color-slate); margin-top: .9rem; }
+        .fig-plate figcaption strong { color: var(--color-ink); font-weight: 600; }
+        .credit { display: block; margin-top: .45rem; color: var(--color-ite); }
+        .credit a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+        .fig-notes { position: sticky; top: 96px; }
+        .fig-notes h3 {
+            font-size: clamp(1.9rem, 2.8vw, 2.5rem);
+            font-weight: 300;
+            line-height: 1.05;
+            margin-bottom: 1.2rem;
+        }
+        .fig-notes dl { margin: 0; }
+        .fig-notes dt {
+            font-family: var(--font-mono);
+            font-size: .8rem;
+            color: var(--color-copper);
+            margin-top: 1rem;
+        }
+        .fig-notes dd { margin: .15rem 0 0; }
+
+        .fig-dark { background: var(--color-night); color: #f1efe8; }
+        .fig-dark .fig { border-top: 0; padding: clamp(3.5rem, 7vw, 6rem) 0; }
+        .fig-dark .fig-plate figcaption,
+        .fig-dark .credit { color: rgba(255,255,255,.6); }
+        .fig-dark .fig-plate figcaption strong { color: #fff; }
+        .fig-dark .fig-notes h3 { color: #fff; }
+        .fig-dark .fig-notes dt { color: #f0b39f; }
+
+        /* ── Numbers ───────────────────────────────────────────────────── */
+        .numbers {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 0 clamp(1rem, 3vw, 2.5rem);
+            margin: clamp(2rem, 4vw, 3rem) 0 0;
+        }
+        .number { border-top: 1px solid var(--color-ink); padding-top: 1rem; }
+        .number dt {
+            font-family: var(--font-display);
+            font-weight: 300;
+            font-size: clamp(2.2rem, 3.6vw, 3.3rem);
+            line-height: 1;
+            margin-bottom: .7rem;
+        }
+        .number dd { margin: 0; font-size: .98rem; line-height: 1.45; color: var(--color-slate); }
+
+        /* ── Citation ──────────────────────────────────────────────────── */
+        .cite { background: var(--color-night); color: #f1efe8; padding: clamp(4rem, 8vw, 7rem) 0; }
+        .cite h2 { color: #fff; }
+        .cite-text { font-family: var(--font-display); font-size: clamp(1.35rem, 2vw, 1.7rem); line-height: 1.3; margin-bottom: 1.5rem; }
+        .cite-text strong { font-weight: 500; color: #f0b39f; }
+        .cite .mgc-actions { margin-bottom: 2rem; }
+        .cite small { display: block; font-size: .88rem; line-height: 1.55; color: rgba(255,255,255,.6); margin-top: .7rem; max-width: 64ch; }
+        .cite small a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+        .cite .back-link { color: rgba(255,255,255,.8); margin: 2.5rem 0 0; }
+        .cite .back-link:hover { color: #fff; }
+
+        /* ── Responsive ────────────────────────────────────────────────── */
+        @media (max-width: 1000px) {
+            .numbers { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.8rem clamp(1rem, 3vw, 2.5rem); }
+        }
+        @media (max-width: 860px) {
+            .mgc-split, .fig { grid-template-columns: 1fr; }
+            .fig-notes { position: static; order: -1; }
+            .saed-note { display: none; }
+            .mgc-cover::after {
+                background: linear-gradient(0deg, rgba(13,15,12,.95) 0%, rgba(13,15,12,.8) 52%, rgba(13,15,12,.15) 82%);
+            }
+            .saed-tag { display: none; }
+
+            /* reactors stay on top, the steps slide under them */
+            .routes-grid { display: block; }
+            .routes-stage {
+                height: auto;
+                z-index: 2;
+                padding: .9rem 0 .7rem;
+                background: var(--color-night);
+                box-shadow: 0 14px 24px -8px var(--color-night);
+            }
+            .chamber figcaption { margin-top: .45rem; }
+            .chamber-state { font-size: .98rem; }
+            .legend { display: none; }
+            .routes-steps { padding-bottom: 40vh; }
+            .step { min-height: 62vh; justify-content: flex-start; padding-top: 1.5rem; }
+        }
+        @media (max-width: 560px) {
+            .hyd, .protocol li { grid-template-columns: 1fr; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .mgc *, .mgc *::before, .mgc *::after { transition-duration: .01ms !important; transition-delay: 0s !important; }
         }
     </style>
 </head>
-<body>
+<body class="has-cover mgc">
     <div id="site-header"></div>
 
-    <main class="page-top">
-        <div class="container">
-            <a href="../publications.html" class="back-link">Back to Publications</a>
+    <main>
+        <!-- ===== COVER ===== -->
+        <section class="mgc-cover" id="cover">
+            <canvas class="saed" id="saed" aria-hidden="true"></canvas>
+            <span class="saed-tag" data-d="0.249" aria-hidden="true">0.249 nm</span>
+            <span class="saed-tag" data-d="0.213" aria-hidden="true">0.213 nm</span>
+            <span class="saed-tag" data-d="0.150" aria-hidden="true">0.150 nm</span>
 
-            <div class="article-detail">
-                <div class="article-detail-header">
-                    <h1>Additive impact on early-stage magnesium carbonate mineralisation</h1>
-                    <div class="article-meta">
-                        <span><strong>Year:</strong> 2024</span>
-                        <span><strong>Journal:</strong> Geochemical Perspectives Letters, 32, 46–51</span>
-                    </div>
-                </div>
-
-                <div class="article-body">
-                    <img class="hero-img" src="../img/articles/mgco3-citrate-hero.jpg" alt="TEM image of amorphous magnesium carbonate nanoparticles formed during citrate-mediated mineralisation">
-                    <p class="img-caption">TEM image of amorphous magnesium carbonate nanoparticles cross-linked by Mg²⁺–citrate bridges.</p>
-
-                    <h2>Why this research matters</h2>
-
-                    <p>Global warming has pushed scientists to look for ways to trap atmospheric CO₂ permanently inside minerals, a strategy called <em>mineral carbonation</em>. Magnesium carbonate (MgCO₃) is one of the most appealing hosts because magnesium-rich silicates are abundant on Earth's surface. There is a catch, though: the thermodynamically stable form, magnesite, stubbornly refuses to crystallise at ambient temperature. Instead, the system produces a parade of hydrated phases, nesquehonite (MgCO₃·3H₂O), dypingite, hydromagnesite, that carry extra water, are bulkier, and dissolve more easily. None of that is ideal for long-term carbon storage.</p>
-
-                    <p>Understanding and controlling the <em>very first moments</em> of MgCO₃ formation, the prenucleation stage where dissolved ions begin clustering before any solid appears, is therefore critical. Additives can steer this process, but how exactly they act has remained surprisingly unclear.</p>
-
-                    <div class="highlight-box">
-                        <strong>The question:</strong> How does a simple, low-molecular-weight additive like sodium citrate alter the earliest steps of magnesium carbonate precipitation, and can it push the system toward less hydrated, more stable phases better suited for permanent CO₂ storage?
-                    </div>
-
-                    <h2>What we did</h2>
-
-                    <p>We carried out constant-pH titration experiments, slowly adding Mg²⁺ to a carbonate buffer while monitoring three signals in real time: solution transmittance (which drops when particles form), electrical conductivity (which reveals how many ions are being consumed by clustering), and particle size via in situ dynamic light scattering (DLS). Citrate was added at concentrations ranging from 0.04 to 5 mM. Solid precipitates were then characterised ex situ by TEM, FESEM, XRD, FTIR and thermogravimetric analysis (TGA/DSC).</p>
-
-                    <div class="article-image-grid">
-                        <div>
-                            <img src="../img/articles/mgco3-tem-control.jpg" alt="TEM image of control AMC nanoparticles">
-                            <p class="img-caption">TEM of control AMC: compact nanoparticle aggregates.</p>
-                        </div>
-                        <div>
-                            <img src="../img/articles/mgco3-tem-citrate.jpg" alt="TEM image of citrate-bearing AMC showing liquid-liquid separation residue">
-                            <p class="img-caption">TEM of citrate-bearing AMC: residue of a liquid-like precursor formed via spinodal decomposition.</p>
-                        </div>
-                    </div>
-
-                    <h2>Key findings</h2>
-
-                    <h3>1. Citrate delays nucleation by destabilising prenucleation clusters</h3>
-
-                    <p>Conductivity tracking revealed that, before any solid appears, Mg²⁺ and CO₃²⁻ ions form solution associates, aggregates larger than simple ion pairs, consistent with what the literature calls prenucleation clusters (PNCs). Citrate disrupted this clustering. The mechanism is entropic: ion association is primarily driven by the entropy gain from releasing coordination water around Mg²⁺. Because citrate promotes Mg²⁺ dehydration (as shown by atomistic simulations), there is less water to release when Mg²⁺ and CO₃²⁻ associate, making clustering thermodynamically less favourable. The result is a measurable, dose-dependent delay in the onset of AMC (amorphous magnesium carbonate) nucleation.</p>
-
-                    <h3>2. The system is forced through liquid–liquid separation</h3>
-
-                    <p>Because citrate hampers the normal clustering pathway, the system overshoots the spinodal limit and undergoes liquid–liquid phase separation before solid AMC forms. TEM images of quenched aliquots captured the fingerprint of this process: shapeless, emulsion-like structures of spherical nanoparticles connected by neck-like bridges, a morphology characteristic of spinodal decomposition that was absent in additive-free controls.</p>
-
-                    <div class="pathway-box">
-                        <div class="pbox">
-                            <h4>Without citrate</h4>
-                            <p>Ions → PNC aggregation → AMC nucleation → fast aggregation → nesquehonite (3 H₂O)</p>
-                        </div>
-                        <div class="arrow">⇄</div>
-                        <div class="pbox">
-                            <h4>With citrate</h4>
-                            <p>Ions → PNC hampered → liquid–liquid separation → stabilised AMC → dypingite (less H₂O)</p>
-                        </div>
-                    </div>
-
-                    <h3>3. Less water in the final product: better for carbon storage</h3>
-
-                    <p>TGA showed that control AMC contained about 1.82 moles of water per mole of MgCO₃. Citrate at low concentration reduced this value. After ageing in the mother liquor for one week, control AMC recrystallised into <strong>nesquehonite</strong> (MgCO₃·3H₂O), whereas citrate-bearing AMC transformed into <strong>dypingite</strong> (Mg₅(CO₃)₄(OH)₂·5H₂O), a less hydrated phase with lower solubility and higher density per mole of stored CO₂. DSC confirmed that citrate-bearing AMC decomposed at a temperature about 100 °C higher than the control, indicating greater thermal stability.</p>
-
-                    <div class="callout">
-                        <div class="callout-title">🌍 Why does hydration matter for CO₂ storage?</div>
-                        Less hydrated Mg-carbonate phases pack more CO₂ per unit mass and volume, resist dissolution better, and remain stable over geological timescales. Shifting the crystallisation product from nesquehonite to dypingite, using nothing more than traces of a food-grade additive, could meaningfully improve the economics of mineral carbonation.
-                    </div>
-
-                    <h3>4. Citrate also controls nanoparticle aggregation</h3>
-
-                    <p>DLS revealed that citrate initially produced smaller clusters (~2 nm) that rapidly grew to ~40 nm via liquid-phase coalescence, then shrank back to 5–10 nm as AMC nucleated and dehydrated. At longer times, µm-sized aggregates appeared, not seen in controls. We propose that citrate binds to AMC nanoparticle surfaces (analogous to citrate-stabilised gold nanoparticles), initially preventing aggregation through steric repulsion but eventually cross-linking particles via Mg²⁺ complexation of citrate chains.</p>
-
-                    <div class="key-number-grid">
-                        <div class="key-number">
-                            <span class="number">1.82 → lower</span>
-                            <span class="label">Moles H₂O per mole MgCO₃: reduced by citrate</span>
-                        </div>
-                        <div class="key-number">
-                            <span class="number">+100 °C</span>
-                            <span class="label">Higher decarbonation temperature with citrate</span>
-                        </div>
-                        <div class="key-number">
-                            <span class="number">~2 nm</span>
-                            <span class="label">Initial prenucleation cluster size detected by DLS</span>
-                        </div>
-                        <div class="key-number">
-                            <span class="number">Dypingite</span>
-                            <span class="label">Less hydrated crystalline product (vs nesquehonite in controls)</span>
-                        </div>
-                    </div>
-
-                    <h2>The bigger picture</h2>
-
-                    <p>This work shows that a cheap, non-toxic, food-grade additive, citric acid's sodium salt, can replicate the effects of far more complex polymers on mineral nucleation. The mechanism is rooted in something fundamental: the entropy of hydration water. By partially dehydrating Mg²⁺ before it even begins to cluster, citrate reshapes the entire crystallisation pathway, from prenucleation associates through liquid–liquid separation to a less hydrated, more durable final solid. The implications reach beyond carbon capture: the same principle applies wherever cation dehydration is the rate-limiting step in mineralisation, from biomineralisation (bone, shell) to the carbonation of historic dolomitic lime mortars and plasters.</p>
-
-                    <h2>Where to find the full paper</h2>
-                    <p>The full article is available open-access at <a href="https://doi.org/10.7185/geochemlet.2441" target="_blank">doi.org/10.7185/geochemlet.2441</a>.</p>
-                </div>
-
-                <div class="post-nav">
+            <div class="frame" style="width:100%">
+                <div class="mgc-cover-text">
                     <a href="../publications.html" class="back-link">Back to Publications</a>
+                    <p class="mgc-kicker">Geochemical Perspectives Letters · 2024</p>
+                    <h1>Additive impact on early-stage magnesium carbonate mineralisation</h1>
+                    <p class="mgc-lede">Magnesium carbonate could lock CO₂ away in stone, but at the Earth's surface it crystallises full of water. We watched what happens before the first solid exists, and found that a small dose of citrate sends the process down a different route.</p>
+                    <p class="mgc-authors"><strong>F. Santoro De Vico</strong>, S. Bonilla-Correa, G. Pelayo-Punzano, K. Elert, C. Rodríguez-Navarro, E. Ruiz-Agudo</p>
+                    <p class="mgc-actions">
+                        <a href="https://doi.org/10.7185/geochemlet.2441" target="_blank" rel="noopener">Read the paper (open access)</a>
+                        <a href="https://www.geochemicalperspectivesletters.org/documents/GPL2441_SI.pdf" target="_blank" rel="noopener">PDF + Supplementary</a>
+                    </p>
                 </div>
             </div>
-        </div>
+            <p class="saed-note">Simulated electron diffraction, built from the ring spacings measured on our control sample (Fig. 3a). Diffuse rings and no sharp spots: the signature of an amorphous solid.</p>
+        </section>
+
+        <!-- ===== THE PROBLEM ===== -->
+        <section class="mgc-band">
+            <div class="frame">
+                <div class="mgc-split">
+                    <h2 class="reveal rise">A mineral that won't form</h2>
+                    <div class="mgc-prose reveal rise">
+                        <p>Global warming has pushed scientists to look for ways to trap atmospheric CO₂ permanently inside minerals, a strategy called <em>mineral carbonation</em>. Magnesium carbonate is one of the most appealing hosts, because magnesium-rich silicates are abundant on the Earth's surface.</p>
+                        <p>There is a catch. The thermodynamically stable form, magnesite (MgCO₃), does not form under surface conditions, for kinetic reasons. What you get instead is a parade of hydrated phases. They carry extra water, weigh more for every mole of CO₂ they hold, and are less stable.</p>
+                        <p>The route to any of them starts with a transient phase, amorphous magnesium carbonate (AMC), and that first step determines what crystallises later. It has been studied far less than its calcium counterpart. So we looked there, at the moments before any solid appears.</p>
+                    </div>
+                </div>
+
+                <figure class="hydrates">
+                    <figcaption class="reveal rise">Mineral needed to hold one mole of CO₂</figcaption>
+                    <div class="hyd reveal">
+                        <div class="hyd-name">Magnesite<small>MgCO₃</small></div>
+                        <div class="hyd-bar"><i style="--w:60.9%;--c:var(--color-ite-light)"></i><b>84 g</b></div>
+                    </div>
+                    <div class="hyd reveal">
+                        <div class="hyd-name">Dypingite<small>Mg₅(CO₃)₄(OH)₂·5H₂O</small></div>
+                        <div class="hyd-bar"><i style="--w:87.7%;--c:var(--route-b)"></i><b>121 g</b></div>
+                    </div>
+                    <div class="hyd reveal">
+                        <div class="hyd-name">Nesquehonite<small>MgCO₃·3H₂O</small></div>
+                        <div class="hyd-bar"><i style="--w:100%;--c:var(--route-a)"></i><b>138 g</b></div>
+                    </div>
+                    <p class="hydrates-note">Calculated from the chemical formulae; the CO₂ content is 52, 36 and 32 wt% respectively. Keep the two colours in mind: nesquehonite is where the control ends up, dypingite is where citrate takes it.</p>
+                </figure>
+            </div>
+        </section>
+
+        <!-- ===== THE QUESTION + THE EXPERIMENT ===== -->
+        <section class="mgc-band">
+            <div class="frame">
+                <p class="mgc-question reveal rise">How does a simple, low-molecular-weight additive like sodium citrate alter the earliest steps of precipitation, and can it push the system toward less hydrated phases?</p>
+            </div>
+        </section>
+
+        <section class="mgc-band">
+            <div class="frame">
+                <div class="mgc-split">
+                    <h2 class="reveal rise">The experiment</h2>
+                    <ul class="protocol">
+                        <li class="reveal rise"><span>In the reactor</span><p>50 mM potassium carbonate buffer, with 0.04 to 5 mM tri-sodium citrate</p></li>
+                        <li class="reveal rise"><span>Added slowly</span><p>100 mM magnesium chloride, at 0.12 mL per minute</p></li>
+                        <li class="reveal rise"><span>Held at</span><p>pH 11, fixed by adding NaOH</p></li>
+                        <li class="reveal rise"><span>Watched live</span><p>Transmittance (has a solid appeared?), conductivity (where are the ions going?) and dynamic light scattering (how big are the species?)</p></li>
+                        <li class="reveal rise"><span>Repeated</span><p>At least three times per condition, ten times for the additive-free runs</p></li>
+                        <li class="reveal rise"><span>Then</span><p>TEM and electron diffraction, FESEM, XRD, FTIR, TGA/DSC and zeta potential on the solids</p></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== TWO REACTORS ===== -->
+        <section class="routes">
+            <div class="frame routes-intro">
+                <h2 class="reveal rise">Two reactors, same ions</h2>
+                <p class="reveal rise">Scroll to run them side by side. A schematic after Fig. 4 of the paper, not to scale: the positions are illustrative, the sequence is what we propose from the data.</p>
+            </div>
+            <div class="frame routes-grid">
+                <div class="routes-stage" aria-hidden="true">
+                    <div class="chambers">
+                        <figure class="chamber">
+                            <canvas id="chamber-a"></canvas>
+                            <figcaption><span class="chamber-name">Control</span><span class="chamber-state" id="state-a"></span></figcaption>
+                        </figure>
+                        <figure class="chamber">
+                            <canvas id="chamber-b"></canvas>
+                            <figcaption><span class="chamber-name">+ Citrate</span><span class="chamber-state" id="state-b"></span></figcaption>
+                        </figure>
+                    </div>
+                    <ul class="legend">
+                        <li><i style="background:#d8342b"></i>Mg²⁺</li>
+                        <li><i style="background:#2f8f58"></i>CO₃²⁻</li>
+                        <li><i style="background:#4f70d8"></i>Citrate</li>
+                        <li><i style="background:#a9d69a"></i>AMC</li>
+                    </ul>
+                </div>
+
+                <div class="routes-steps">
+                    <article class="step" data-a="Free ions" data-b="Free ions, plus citrate">
+                        <p class="step-n">Step 1 of 6</p>
+                        <h3>Free ions</h3>
+                        <p>Mg²⁺ drips into the carbonate buffer. Magnesium is strongly hydrated: each ion wears a tight shell of water, drawn here as a pale ring. The only difference between the reactors is a little citrate.</p>
+                    </article>
+                    <article class="step" data-a="Associates form and aggregate" data-b="Association hampered">
+                        <p class="step-n">Step 2 of 6</p>
+                        <h3>Before any solid</h3>
+                        <p>We keep adding ions, yet conductivity falls: they are pairing up into associates, possibly prenucleation clusters. Ion association is thought to be driven mostly by entropy, from the water released as the ions bind.</p>
+                        <p>Citrate promotes Mg²⁺ dehydration, so there is less to gain. At low doses it still raises Mg binding, but with more citrate binding drops, and the onset of nucleation is delayed further the more citrate you add.</p>
+                        <p class="src">Fig. 1</p>
+                    </article>
+                    <article class="step" data-a="AMC nucleates, aggregates fast" data-b="Liquid–liquid separation">
+                        <p class="step-n">Step 3 of 6</p>
+                        <h3>The fork</h3>
+                        <p>Without additive, AMC nucleates and aggregates fast. With citrate nucleation is held back, so the system crosses the spinodal limit and separates into a dense, liquid-like phase before any solid forms.</p>
+                        <p>Quenched aliquots caught its dried residue: spherical nanoparticles joined by neck-like bridges. Nothing like it appeared in the control samples.</p>
+                        <p class="src">Fig. 3b</p>
+                    </article>
+                    <article class="step" data-a="AMC aggregates" data-b="AMC stabilised against aggregation">
+                        <p class="step-n">Step 4 of 6</p>
+                        <h3>Held apart</h3>
+                        <p>With 1 mM citrate, light scattering sees clusters of about 2 nm grow rapidly to 40 nm, then shrink to 5–10 nm before solid MgCO₃ nucleates, possibly as the liquid dehydrates.</p>
+                        <p>We propose that citrate binds to the surface of the new nanoparticles and forms layers that keep them apart, as it does on gold nanoparticles.</p>
+                        <p class="src">Fig. 2c</p>
+                    </article>
+                    <article class="step" data-a="AMC aggregates" data-b="µm aggregates, cross-linked by Mg">
+                        <p class="step-n">Step 5 of 6</p>
+                        <h3>Cross-linked</h3>
+                        <p>As Mg²⁺ keeps rising, it may complex with those citrate chains and tie the particles together. After about 3,500 s, aggregates of 1 to 5 µm show up. They were not detected in the control runs.</p>
+                        <p class="src">Fig. 2d, Fig. 3d</p>
+                    </article>
+                    <article class="step" data-a="Nesquehonite, 3 H₂O per CO₃" data-b="Dypingite, 1.25 H₂O per CO₃ (plus OH)">
+                        <p class="step-n">Step 6 of 6</p>
+                        <h3>A week later</h3>
+                        <p>Left to age in the reaction medium, the two amorphous solids recrystallise into different minerals: nesquehonite without citrate, dypingite with it. Less water, less mass per mole of CO₂, and greater stability.</p>
+                        <p class="src">The lattices shown are schematic, not crystal structures. Fig. S-3</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== THE EVIDENCE ===== -->
+        <section class="mgc-band" style="padding-bottom:0">
+            <div class="frame">
+                <h2 class="reveal rise" style="margin-bottom:clamp(2rem,4vw,3rem)">The evidence</h2>
+
+                <div class="fig">
+                    <figure class="fig-plate reveal rise">
+                        <a href="../img/articles/mgco3/fig4.jpg" target="_blank" rel="noopener" aria-label="Open Figure 4 at full size"><img src="../img/articles/mgco3/fig4.jpg" width="1500" height="833" loading="lazy" alt="Scheme of the multi-step formation of amorphous magnesium carbonate: the control route in blue goes from free ions to prenucleation clusters to AMC; the citrate route in red adds liquid-liquid separation, stabilised AMC and micron-sized aggregates cross-linked by magnesium."></a>
+                        <figcaption><strong>Figure 4</strong> Scheme of the multi-step formation of AMC in control solutions (blue circles, no additives in the media) and in the presence of sodium citrate (red circles).
+                            <span class="credit">From Santoro De Vico <em>et al.</em> (2024), <em>Geochem. Persp. Let.</em> 32, 46–51. © 2024 The Authors, <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a>. Reproduced without changes.</span></figcaption>
+                    </figure>
+                    <div class="fig-notes reveal rise">
+                        <h3>The whole story, in one scheme</h3>
+                        <p>This is the published version of what you just scrolled through. The top row is the route without additive. The bottom row is the detour citrate forces on the system.</p>
+                    </div>
+                </div>
+
+                <div class="fig">
+                    <figure class="fig-plate reveal rise">
+                        <a href="../img/articles/mgco3/fig1.jpg" target="_blank" rel="noopener" aria-label="Open Figure 1 at full size"><img src="../img/articles/mgco3/fig1.jpg" width="1500" height="1190" loading="lazy" alt="Four plots from the titration experiments: transmittance over time for each citrate concentration, scale factors of the transmittance slopes, calculated and measured conductivity over time, and calculated concentration of ion associates."></a>
+                        <figcaption><strong>Figure 1</strong> Results of titration experiments. <strong>(a)</strong> Evolution of transmittance in the presence of citrate at pH 11. Black arrows mark the point at which samples were taken for transmission electron microscopy (TEM) analysis. <strong>(b)</strong> Bar plot illustrating the effect of citrate on the different slopes of the decreasing part of the transmittance curve. <strong>(c)</strong> Time evolution of calculated (blue line) and measured (red line) conductivity. <strong>(d)</strong> Evolution of the calculated concentration of ion associates in the presence of different amounts of citrate at pH 11.
+                            <span class="credit">From Santoro De Vico <em>et al.</em> (2024), <em>Geochem. Persp. Let.</em> 32, 46–51. © 2024 The Authors, <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a>. Reproduced without changes.</span></figcaption>
+                    </figure>
+                    <div class="fig-notes reveal rise">
+                        <h3>How to read it</h3>
+                        <dl>
+                            <dt>(a) Waiting for a solid</dt>
+                            <dd>The flat start is the wait. When the curve drops, solid has appeared. At 5 mM the wait is by far the longest.</dd>
+                            <dt>(b) Slopes</dt>
+                            <dd>After the onset, the drop gets shallower at higher citrate concentrations: growth and aggregation are being held back.</dd>
+                            <dt>(c) The missing ions</dt>
+                            <dd>We add ions continuously, so calculated conductivity climbs. The measured one falls. Those ions have gone somewhere before any solid exists.</dd>
+                            <dt>(d) Associates</dt>
+                            <dd>That difference gives the concentration of associates. The 5 mM run sits clearly below the control.</dd>
+                        </dl>
+                    </div>
+                </div>
+
+                <div class="fig">
+                    <figure class="fig-plate reveal rise">
+                        <a href="../img/articles/mgco3/fig2.jpg" target="_blank" rel="noopener" aria-label="Open Figure 2 at full size"><img src="../img/articles/mgco3/fig2.jpg" width="1600" height="1232" loading="lazy" alt="Four maps of particle size against time from in situ dynamic light scattering, for control runs and for runs with 1 mM citrate."></a>
+                        <figcaption><strong>Figure 2</strong> Size evolution of the different (pre- and post-nucleation) species formed during titration experiments obtained by <em>in situ</em> dynamic light scattering (DLS): <strong>(a)</strong> size range from 0 to 40 nm, control runs; <strong>(b)</strong> size range from 0 to 6000 nm, control runs; <strong>(c)</strong> size range from 0 to 40 nm, experiments in the presence of 1 mM citrate; <strong>(d)</strong> size range from 0 to 6000 nm, experiments in the presence of 1 mM citrate. Onset of nucleation is marked with a red line.
+                            <span class="credit">From Santoro De Vico <em>et al.</em> (2024), <em>Geochem. Persp. Let.</em> 32, 46–51. © 2024 The Authors, <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a>. Reproduced without changes.</span></figcaption>
+                    </figure>
+                    <div class="fig-notes reveal rise">
+                        <h3>Time runs upwards</h3>
+                        <dl>
+                            <dt>(a) Control, small sizes</dt>
+                            <dd>Species of 5–10 nm before nucleation, then staying between 2 and 20 nm.</dd>
+                            <dt>(b) Control, large sizes</dt>
+                            <dd>Empty, and that is the result: no micron-sized aggregates.</dd>
+                            <dt>(c) Citrate, small sizes</dt>
+                            <dd>Bottom right, the jump to about 40 nm; then the slide back down to 5–10 nm. The red line marks nucleation.</dd>
+                            <dt>(d) Citrate, large sizes</dt>
+                            <dd>Aggregates of 1 to 5 µm at long reaction times.</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="fig-dark">
+            <div class="frame">
+                <div class="fig">
+                    <figure class="fig-plate reveal rise">
+                        <a href="../img/articles/mgco3/fig3.jpg" target="_blank" rel="noopener" aria-label="Open Figure 3 at full size"><img src="../img/articles/mgco3/fig3.jpg" width="1500" height="1262" loading="lazy" alt="Electron microscopy of the precipitates. Control: a compact amorphous aggregate. With citrate: an irregular network of nanoparticles joined by necks. Both TEM images include diffraction patterns with diffuse rings. Below, FESEM images of the final precipitates."></a>
+                        <figcaption><strong>Figure 3</strong> Nanostructural features of the pre- and post-nucleation species. <strong>(a, b)</strong> TEM images and SAED patterns of dried aliquots drawn from the solution immediately prior to the onset of nucleation: <strong>(a)</strong> control runs and <strong>(b)</strong> sodium citrate 1 mM experiments. <strong>(c, d)</strong> FESEM secondary electron images of the final precipitates: <strong>(c)</strong> control runs and <strong>(d)</strong> sodium citrate 1 mM experiments, separated by filtration from the reaction media at the end of the titration experiments.
+                            <span class="credit">From Santoro De Vico <em>et al.</em> (2024), <em>Geochem. Persp. Let.</em> 32, 46–51. © 2024 The Authors, <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a>. Reproduced without changes.</span></figcaption>
+                    </figure>
+                    <div class="fig-notes reveal rise">
+                        <h3>The fingerprint of a liquid</h3>
+                        <dl>
+                            <dt>(a) Control</dt>
+                            <dd>A compact aggregate, with no necks and no network.</dd>
+                            <dt>(b) With citrate</dt>
+                            <dd>An irregular network, darker spheres joined by lighter necks: what remains of an emulsion once it dries.</dd>
+                            <dt>The insets</dt>
+                            <dd>Diffuse rings at about 1.5, 2.0 and 2.5 Å, the pattern on the cover. Amorphous in both cases, and matching spacings of hydromagnesite, which suggests a hydromagnesite-like protostructure.</dd>
+                            <dt>(c, d) The final solids</dt>
+                            <dd>The precipitates filtered at the end of the titrations.</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== NUMBERS + MEANING ===== -->
+        <section class="mgc-band">
+            <div class="frame">
+                <h2 class="reveal rise">In numbers</h2>
+                <dl class="numbers">
+                    <div class="number reveal rise">
+                        <dt>1.82 ± 0.17</dt>
+                        <dd>Moles of water per mole of MgCO₃ in control AMC. The lowest citrate concentrations reduce it.</dd>
+                    </div>
+                    <div class="number reveal rise">
+                        <dt>ca. 100 °C</dt>
+                        <dd>Increase in decarbonation temperature with citrate, from TGA and DSC.</dd>
+                    </div>
+                    <div class="number reveal rise">
+                        <dt>2 → 40 nm</dt>
+                        <dd>Early growth of the clusters with 1 mM citrate, followed by a return to 5–10 nm before nucleation.</dd>
+                    </div>
+                    <div class="number reveal rise">
+                        <dt>1–5 µm</dt>
+                        <dd>Aggregates seen with citrate at long reaction times, not detected in the control runs.</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+
+        <section class="mgc-band">
+            <div class="frame">
+                <div class="mgc-split">
+                    <h2 class="reveal rise">Why it matters</h2>
+                    <div class="mgc-prose reveal rise">
+                        <p>A small, environmentally friendly carboxylic acid does a job usually associated with far more complex polymers. The explanation is basic: the entropy of hydration water. By lowering the barrier for Mg²⁺ dehydration, citrate reshapes the pathway from the first associates to the final mineral.</p>
+                        <p>The dose decides the outcome. Below 1 mM, citrate accelerates AMC growth and reduces its water content, leading to less hydrated crystalline phases. At higher concentrations it inhibits growth. For carbon storage the direction is the useful one: less hydrated phases need less mass and volume per mole of CO₂, and are chemically more stable, with a positive effect on the effectiveness and cost of CO₂ mineralisation.</p>
+                        <p>The reasoning also travels. Citrate works in a similar way in other mineral systems, which could matter wherever cation dehydration is an essential step. And the early stages of MgCO₃ formation shape more than carbon storage: the phase and microstructure of magnesium carbonates determine how mortars and plasters made with dolomitic lime behave.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CITATION ===== -->
+        <section class="cite">
+            <div class="frame">
+                <div class="mgc-split">
+                    <h2 class="reveal rise">The paper</h2>
+                    <div class="reveal rise">
+                        <p class="cite-text"><strong>Santoro De Vico, F.</strong>, Bonilla-Correa, S., Pelayo-Punzano, G., Elert, K., Rodríguez-Navarro, C., Ruiz-Agudo, E. (2024) Additive impact on early-stage magnesium carbonate mineralisation. <em>Geochem. Persp. Let.</em> 32, 46–51.</p>
+                        <p class="mgc-actions">
+                            <a href="https://doi.org/10.7185/geochemlet.2441" target="_blank" rel="noopener">doi.org/10.7185/geochemlet.2441</a>
+                            <a href="https://www.geochemicalperspectivesletters.org/documents/GPL2441_SI.pdf" target="_blank" rel="noopener">PDF + Supplementary</a>
+                        </p>
+                        <small>Open access under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a>. A <a href="https://doi.org/10.7185/geochemlet.2441cor" target="_blank" rel="noopener">corrigendum</a> published on 16 March 2026 adds a missing funding acknowledgement; the science is unchanged.</small>
+                        <small>Funded in part by the Marie Skłodowska-Curie Action ETN-ITN SUBlime (grant agreement 955986). Full funding details are in the paper.</small>
+                        <a href="../publications.html" class="back-link">Back to Publications</a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <div id="site-footer"></div>
-    <script src="../js/components.js"></script>
+    <script src="../js/components.js?v=3"></script>
+    <script>
+    (function () {
+      'use strict';
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* ---------------------------------------------------------------
+         COVER: a SAED pattern built up one electron at a time.
+         Ring radii are proportional to 1/d, using the d-spacings of the
+         control sample in Fig. 3a. Amplitudes and widths are illustrative.
+         --------------------------------------------------------------- */
+      (function () {
+        var cover = document.getElementById('cover');
+        var cv = document.getElementById('saed');
+        var tags = cover.querySelectorAll('.saed-tag');
+        if (!cv.getContext) return;
+        var ctx = cv.getContext('2d');
+        var w, h, cx, cy, scale, img, counts, table, raf, done = 0;
+        var TOTAL = 2600000, BATCH = 26000;
+
+        function intensity(r) {
+          // r in nm^-1
+          var I = 34 * Math.exp(-r / 0.32) + 0.38 * Math.exp(-r / 2.6);
+          [[1 / 0.249, 0.42, 0.20], [1 / 0.213, 0.48, 0.13], [1 / 0.150, 0.72, 0.10]].forEach(function (g) {
+            I += g[2] * Math.exp(-Math.pow((r - g[0]) / g[1], 2));
+          });
+          return I;
+        }
+
+        function setup() {
+          var cw = cover.clientWidth, ch = cover.clientHeight;
+          var mobile = cw <= 860;
+          var f = 0.62;                                   // grainy on purpose
+          w = cv.width = Math.round(cw * f);
+          h = cv.height = Math.round(ch * f);
+          cx = w * (mobile ? 0.5 : 0.68);
+          cy = h * (mobile ? 0.24 : 0.46);
+          var span = Math.min(h * (mobile ? 0.22 : 0.42), w * 0.3);
+          scale = span / (1 / 0.150);                      // canvas px per nm^-1
+          img = ctx.createImageData(w, h);
+          counts = new Float32Array(w * h);
+          done = 0;
+
+          // cumulative distribution of radius, weighted by the ring's circumference
+          var N = 1600, rMax = Math.hypot(w, h) / scale;
+          table = new Float64Array(N);
+          var sum = 0;
+          for (var i = 0; i < N; i++) {
+            var r = (i + 0.5) / N * rMax;
+            sum += intensity(r) * r;
+            table[i] = sum;
+          }
+          table.rMax = rMax;
+          table.total = sum;
+
+          var cssF = cw / w;
+          Array.prototype.forEach.call(tags, function (t) {
+            var R = (1 / parseFloat(t.getAttribute('data-d'))) * scale * cssF;
+            var a = -0.72;
+            t.style.left = (cx * cssF + Math.cos(a) * R) + 'px';
+            t.style.top = (cy * cssF + Math.sin(a) * R - 9) + 'px';
+          });
+        }
+
+        function sampleRadius() {
+          var u = Math.random() * table.total, lo = 0, hi = table.length - 1;
+          while (lo < hi) { var m = (lo + hi) >> 1; if (table[m] < u) lo = m + 1; else hi = m; }
+          return (lo + Math.random()) / table.length * table.rMax;
+        }
+
+        function expose(n) {
+          for (var i = 0; i < n; i++) {
+            var r = sampleRadius() * scale, a = Math.random() * 6.2832;
+            var x = Math.round(cx + Math.cos(a) * r), y = Math.round(cy + Math.sin(a) * r);
+            if (x >= 0 && y >= 0 && x < w && y < h) counts[y * w + x]++;
+          }
+          done += n;
+        }
+
+        function paint() {
+          var d = img.data, k = TOTAL / (w * h) * 2.2, p = 0;
+          for (var i = 0; i < counts.length; i++, p += 4) {
+            var v = 255 * Math.pow(1 - Math.exp(-counts[i] / k), 0.62);
+            d[p] = v * 0.97; d[p + 1] = v * 0.98; d[p + 2] = v * 0.93; d[p + 3] = 255;
+          }
+          ctx.putImageData(img, 0, 0);
+
+          // beam stop: an arm from the right edge with a rounded head
+          var s = Math.max(5, scale * 0.42);
+          ctx.fillStyle = '#050505';
+          ctx.fillRect(cx, cy - s * 0.42, w - cx, s * 0.84);
+          ctx.beginPath();
+          ctx.ellipse(cx - s * 0.2, cy, s * 1.5, s * 0.92, 0, 0, 6.2832);
+          ctx.fill();
+        }
+
+        function frame() {
+          expose(BATCH); paint();
+          if (done < TOTAL) { raf = requestAnimationFrame(frame); }
+          else Array.prototype.forEach.call(tags, function (t) { t.classList.add('is-on'); });
+        }
+
+        function start() {
+          cancelAnimationFrame(raf);
+          setup();
+          if (reduce) {
+            expose(TOTAL); paint();
+            Array.prototype.forEach.call(tags, function (t) { t.classList.add('is-on'); });
+          } else frame();
+        }
+        start();
+
+        var lastW = window.innerWidth, timer;
+        window.addEventListener('resize', function () {
+          if (window.innerWidth === lastW) return;       // mobile toolbars: keep the exposure
+          lastW = window.innerWidth;
+          clearTimeout(timer);
+          timer = setTimeout(start, 200);
+        });
+      })();
+
+      /* ---------------------------------------------------------------
+         TWO REACTORS: schematic after Fig. 4. Every object stores one
+         position and opacity per step; scroll interpolates between them.
+         --------------------------------------------------------------- */
+      (function () {
+        var steps = Array.prototype.slice.call(document.querySelectorAll('.step'));
+        var canvasA = document.getElementById('chamber-a');
+        var canvasB = document.getElementById('chamber-b');
+        var stateA = document.getElementById('state-a');
+        var stateB = document.getElementById('state-b');
+        var section = document.querySelector('.routes');
+        if (!canvasA.getContext) return;
+        var S = 6, TAU = Math.PI * 2;
+
+        function prng(a) {
+          return function () {
+            a |= 0; a = a + 0x6D2B79F5 | 0;
+            var t = Math.imul(a ^ a >>> 15, 1 | a);
+            t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+            return ((t ^ t >>> 14) >>> 0) / 4294967296;
+          };
+        }
+        function disc(rnd, R) {
+          var a = rnd() * TAU, r = R * Math.sqrt(rnd());
+          return [Math.cos(a) * r, Math.sin(a) * r];
+        }
+        function lerp(a, b, f) { return a + (b - a) * f; }
+        function ease(f) { return f * f * (3 - 2 * f); }
+
+        // alternating Mg / CO3 sites, nearest to the centre first
+        function lattice(n, spacing) {
+          var sets = [[], []];
+          for (var j = -6; j <= 6; j++) for (var i = -6; i <= 6; i++) {
+            sets[Math.abs(i + j) % 2].push([(i + (j % 2 ? 0.5 : 0)) * spacing, j * spacing * 0.87]);
+          }
+          var near = function (p, q) { return Math.hypot(p[0], p[1]) - Math.hypot(q[0], q[1]); };
+          sets[0].sort(near); sets[1].sort(near);
+          var out = [];
+          for (var k = 0; k < n; k++) out.push(sets[k % 2][k >> 1]);
+          return out;
+        }
+
+        function build(kind) {
+          var rnd = prng(kind === 'a' ? 11 : 29);
+          var isB = kind === 'b';
+          var N = 36;
+          var site = lattice(N, 0.23);
+          var ions = [], i, j;
+
+          // step 2: chains of alternating ions; citrate gets fewer and shorter ones
+          var chainCount = isB ? 3 : 5, chainLen = isB ? 5 : 7, chained = chainCount * chainLen;
+          var chainPts = [];
+          for (j = 0; j < chainCount; j++) {
+            var ang = rnd() * TAU, dist = isB ? 0.55 : (j === 0 ? 0 : 0.56);
+            var base = isB ? j * TAU / 3 + 0.5 : (j - 1) * TAU / 4 + 0.6;
+            var x = Math.cos(base) * dist - Math.cos(ang) * 0.2;
+            var y = Math.sin(base) * dist - Math.sin(ang) * 0.2;
+            for (i = 0; i < chainLen; i++) {
+              chainPts.push([x, y]);
+              ang += (rnd() - 0.5) * 0.7;
+              x += Math.cos(ang) * 0.075; y += Math.sin(ang) * 0.075;
+            }
+          }
+
+          // AMC spheres. Control: a tight clump. Citrate: separate, then drawn together
+          var spheres = [];
+          if (!isB) {
+            var clump = [[0, 0], [0.34, 0.06], [-0.32, 0.1], [0.08, 0.34], [-0.1, -0.33], [0.3, -0.27], [-0.34, 0.42]];
+            clump.forEach(function (c) {
+              spheres.push({
+                x: [c[0], c[0], c[0] * 1.05, c[0] * 0.98, c[0] * 0.98, c[0] * 0.98],
+                y: [c[1], c[1], c[1] * 1.05, c[1] * 0.98, c[1] * 0.98, c[1] * 0.98],
+                r: [0, 0, 0.15, 0.185, 0.185, 0.185],
+                a: [0, 0, 1, 1, 1, 0], shell: 0
+              });
+            });
+          } else {
+            [[-0.42, -0.42], [0.42, -0.42], [-0.42, 0.42], [0.42, 0.42]].forEach(function (c) {
+              spheres.push({
+                x: [c[0], c[0], c[0], c[0], c[0] * 0.56, c[0] * 0.56],
+                y: [c[1], c[1], c[1], c[1], c[1] * 0.56, c[1] * 0.56],
+                r: [0, 0, 0, 0.21, 0.21, 0.21],
+                a: [0, 0, 0, 1, 1, 0], shell: 1
+              });
+            });
+          }
+
+          // liquid phase (citrate only): a network of droplets that coalesce into the spheres
+          var nodes = [];
+          if (isB) {
+            var net = [[-0.5, -0.32], [-0.26, -0.5], [-0.05, -0.28], [0.22, -0.46], [0.46, -0.24], [0.28, -0.04],
+                       [0.52, 0.2], [0.26, 0.44], [0.04, 0.2], [-0.2, 0.46], [-0.46, 0.26], [-0.26, 0.02]];
+            net.forEach(function (n, k) {
+              var q = (n[1] < 0 ? 0 : 2) + (n[0] < 0 ? 0 : 1);
+              var sp = spheres[q];
+              nodes.push({
+                x: [n[0], n[0], n[0], sp.x[3], sp.x[4], sp.x[5]],
+                y: [n[1], n[1], n[1], sp.y[3], sp.y[4], sp.y[5]],
+                r: [0, 0, 0.1 + (k % 3) * 0.018, 0.21, 0.21, 0.21],
+                a: [0, 0, 1, 0, 0, 0],
+                link: (k + 1) % net.length
+              });
+            });
+          }
+
+          for (i = 0; i < N; i++) {
+            var isMg = i % 2 === 0;
+            var p0 = disc(rnd, 0.88);
+            var p1 = i < chained ? chainPts[i] : disc(rnd, 0.86);
+            var host, p2;
+            if (isB) { host = nodes[i % nodes.length]; p2 = [host.x[2] + (rnd() - 0.5) * 0.12, host.y[2] + (rnd() - 0.5) * 0.12]; }
+            else { host = spheres[i % spheres.length]; p2 = [host.x[2], host.y[2]]; }
+            var sp3 = isB ? spheres[i % 4] : spheres[i % spheres.length];
+            var ion = {
+              mg: isMg,
+              x: [p0[0], p1[0], p2[0], sp3.x[3], sp3.x[4], site[i][0]],
+              y: [p0[1], p1[1], p2[1], sp3.y[3], sp3.y[4], site[i][1]],
+              a: [1, 1, isB ? 0.35 : 0.1, 0, 0, 1],
+              halo: isMg ? (isB ? [1, 0.3, 0, 0, 0, 0] : [1, 0.8, 0, 0, 0, 0]) : [0, 0, 0, 0, 0, 0],
+              haloR: isB ? [0.06, 0.042, 0.04, 0.04, 0.04, 0.04] : [0.06, 0.056, 0.05, 0.05, 0.05, 0.05],
+              ph: rnd() * TAU, w: 0.5 + rnd() * 0.8, rot: rnd() * TAU
+            };
+            ions.push(ion);
+          }
+
+          // Mg bridges between citrate spheres in step 5
+          if (isB) {
+            var mg = ions.filter(function (o) { return o.mg; });
+            [[0, 1], [1, 3], [3, 2], [2, 0]].forEach(function (pair, k) {
+              var A = spheres[pair[0]], B = spheres[pair[1]];
+              mg[k].x[4] = (A.x[4] + B.x[4]) / 2;
+              mg[k].y[4] = (A.y[4] + B.y[4]) / 2;
+              mg[k].x[3] = mg[k].x[4]; mg[k].y[3] = mg[k].y[4];
+              mg[k].a[4] = 1; mg[k].bridge = true;
+            });
+          }
+
+          // citrate squiggles: free, then in the liquid, then forming the shell of each sphere
+          var cit = [];
+          if (isB) {
+            for (i = 0; i < 28; i++) {
+              var s = spheres[i % 4], th = (i / 7) * TAU + (i % 4) * 0.3;
+              var inNet = nodes[i % nodes.length];
+              var d0 = disc(rnd, 0.86), d1 = disc(rnd, 0.82);
+              cit.push({
+                x: [d0[0], d1[0], inNet.x[2] + (rnd() - 0.5) * 0.14, s.x[3] + Math.cos(th) * 0.22, s.x[4] + Math.cos(th) * 0.22, 0],
+                y: [d0[1], d1[1], inNet.y[2] + (rnd() - 0.5) * 0.14, s.y[3] + Math.sin(th) * 0.22, s.y[4] + Math.sin(th) * 0.22, 0],
+                o: [rnd() * TAU, rnd() * TAU, rnd() * TAU, th + Math.PI / 2, th + Math.PI / 2, 0],
+                a: [1, 1, 1, 1, 1, 0],
+                ph: rnd() * TAU, w: 0.4 + rnd() * 0.7
+              });
+            }
+          }
+
+          return { kind: kind, ions: ions, spheres: spheres, nodes: nodes, cit: cit, site: site };
+        }
+
+        var A = build('a'), B = build('b');
+        var AMP = [0.022, 0.012, 0.005, 0.002, 0.002, 0.0015];
+
+        function val(arr, i, f) { return lerp(arr[i], arr[Math.min(i + 1, S - 1)], f); }
+
+        function sizeCanvas(c) {
+          var css = c.clientWidth, d = Math.min(window.devicePixelRatio || 1, 2);
+          var px = Math.round(css * d);
+          if (px && c.width !== px) { c.width = px; c.height = px; }
+        }
+
+        function draw(c, m, t, clock) {
+          sizeCanvas(c);
+          var g = c.getContext('2d'), P = c.width;
+          if (!P) return;
+          var R = P / 2 - Math.max(2, P * 0.008), U = R;      // unit length in px
+          var i = Math.min(Math.floor(t), S - 1), f = ease(Math.min(t - i, 1));
+          var amp = lerp(AMP[i], AMP[Math.min(i + 1, S - 1)], f);
+          var X = function (o) { return val(o.x, i, f) + Math.sin(clock * o.w + o.ph) * amp; };
+          var Y = function (o) { return val(o.y, i, f) + Math.cos(clock * o.w * 0.8 + o.ph) * amp; };
+
+          g.setTransform(1, 0, 0, 1, 0, 0);
+          g.clearRect(0, 0, P, P);
+          g.translate(P / 2, P / 2);
+
+          g.save();
+          g.beginPath(); g.arc(0, 0, R, 0, TAU); g.clip();
+          g.fillStyle = '#e8e8e2'; g.fillRect(-P, -P, 2 * P, 2 * P);
+
+          // liquid network: one fill, droplets plus necks, so it reads as a single body
+          if (m.nodes.length) {
+            var la = val(m.nodes[0].a, i, f);
+            if (la > 0.01) {
+              g.fillStyle = 'rgba(151,206,135,' + (0.85 * la) + ')';
+              g.strokeStyle = g.fillStyle;
+              g.lineCap = 'round';
+              g.beginPath();
+              m.nodes.forEach(function (n) {
+                var x = X({ x: n.x, y: n.y, w: 0, ph: 0 }) * U, y = Y({ x: n.x, y: n.y, w: 0, ph: 0 }) * U;
+                var r = val(n.r, i, f) * U;
+                g.moveTo(x + r, y); g.arc(x, y, r, 0, TAU);
+              });
+              g.fill();
+              g.lineWidth = 0.075 * U;
+              m.nodes.forEach(function (n) {
+                var o = m.nodes[n.link];
+                g.beginPath();
+                g.moveTo(val(n.x, i, f) * U, val(n.y, i, f) * U);
+                g.lineTo(val(o.x, i, f) * U, val(o.y, i, f) * U);
+                g.stroke();
+              });
+            }
+          }
+
+          // bonding between cross-linked spheres
+          if (m.kind === 'b') {
+            var ba = t <= 3 ? 0 : (t <= 4 ? t - 3 : Math.max(0, 5 - t));   // only in step 5
+            if (ba > 0.01) {
+              g.strokeStyle = 'rgba(151,206,135,' + 0.7 * ba + ')';
+              g.lineWidth = 0.17 * U; g.lineCap = 'butt';
+              [[0, 1], [1, 3], [3, 2], [2, 0]].forEach(function (pair) {
+                var a = m.spheres[pair[0]], b = m.spheres[pair[1]];
+                g.beginPath();
+                g.moveTo(val(a.x, i, f) * U, val(a.y, i, f) * U);
+                g.lineTo(val(b.x, i, f) * U, val(b.y, i, f) * U);
+                g.stroke();
+              });
+            }
+          }
+
+          // AMC spheres
+          m.spheres.forEach(function (s) {
+            var a = val(s.a, i, f), r = val(s.r, i, f) * U;
+            if (a < 0.01 || r < 0.5) return;
+            var x = val(s.x, i, f) * U, y = val(s.y, i, f) * U;
+            var grad = g.createRadialGradient(x, y, r * 0.12, x, y, r);
+            grad.addColorStop(0, 'rgba(238,247,233,' + a + ')');
+            grad.addColorStop(0.72, 'rgba(176,219,163,' + a + ')');
+            grad.addColorStop(1, 'rgba(120,178,106,' + a + ')');
+            g.fillStyle = grad;
+            g.beginPath(); g.arc(x, y, r, 0, TAU); g.fill();
+          });
+
+          // water dots in the crystalline stage: 3 per CO3 vs 1.25 per CO3
+          var wa = t > 4 ? Math.min(1, t - 4) : 0;
+          if (wa > 0.01) {
+            g.fillStyle = 'rgba(70,130,220,' + wa + ')';
+            var count = 0;
+            m.ions.forEach(function (o, k) {
+              if (o.mg) return;
+              count++;
+              var n = m.kind === 'a' ? 3 : (count % 4 === 0 ? 2 : 1);
+              for (var q = 0; q < n; q++) {
+                var th = o.rot + q * TAU / n;
+                g.beginPath();
+                g.arc((m.site[k][0] + Math.cos(th) * 0.075) * U, (m.site[k][1] + Math.sin(th) * 0.075) * U, 0.017 * U, 0, TAU);
+                g.fill();
+              }
+            });
+          }
+
+          // ions
+          m.ions.forEach(function (o) {
+            var a = val(o.a, i, f);
+            if (a < 0.01) return;
+            var x = X(o) * U, y = Y(o) * U;
+            g.globalAlpha = a;
+            if (o.mg) {
+              var ha = val(o.halo, i, f);
+              if (ha > 0.01) {
+                g.strokeStyle = 'rgba(70,130,220,' + 0.75 * ha + ')';
+                g.lineWidth = Math.max(1, 0.012 * U);
+                g.beginPath(); g.arc(x, y, val(o.haloR, i, f) * U, 0, TAU); g.stroke();
+              }
+              g.fillStyle = '#d8342b';
+              g.beginPath(); g.arc(x, y, 0.032 * U, 0, TAU); g.fill();
+            } else {
+              g.fillStyle = '#7e8a84';
+              for (var q = 0; q < 3; q++) {
+                var th = o.rot + q * TAU / 3;
+                g.beginPath(); g.arc(x + Math.cos(th) * 0.032 * U, y + Math.sin(th) * 0.032 * U, 0.017 * U, 0, TAU); g.fill();
+              }
+              g.fillStyle = '#2f8f58';
+              g.beginPath(); g.arc(x, y, 0.02 * U, 0, TAU); g.fill();
+            }
+            g.globalAlpha = 1;
+          });
+
+          // citrate squiggles
+          m.cit.forEach(function (o) {
+            var a = val(o.a, i, f);
+            if (a < 0.01) return;
+            var x = X(o) * U, y = Y(o) * U, or = val(o.o, i, f);
+            g.save();
+            g.translate(x, y); g.rotate(or);
+            g.strokeStyle = 'rgba(38,72,178,' + a + ')';
+            g.lineWidth = Math.max(1.2, 0.016 * U); g.lineCap = 'round';
+            var L = 0.055 * U;
+            g.beginPath(); g.moveTo(-L, 0);
+            g.bezierCurveTo(-L * 0.5, -L * 0.75, -L * 0.2, -L * 0.75, 0, 0);
+            g.bezierCurveTo(L * 0.2, L * 0.75, L * 0.5, L * 0.75, L, 0);
+            g.stroke();
+            g.restore();
+          });
+
+          g.restore();
+
+          // chamber rim, in the colour of the route in Fig. 4
+          g.strokeStyle = m.kind === 'a' ? '#6e90e0' : '#e0604f';
+          g.lineWidth = Math.max(2, P * 0.008);
+          g.beginPath(); g.arc(0, 0, R, 0, TAU); g.stroke();
+        }
+
+        var target = 0, current = 0, active = -1, visible = false, running = false;
+
+        function readScroll() {
+          var mobile = window.innerWidth <= 860;
+          var probe = window.innerHeight * (mobile ? 0.68 : 0.5);
+          var centres = steps.map(function (el) {
+            var r = el.getBoundingClientRect();
+            return r.top + (mobile ? 90 : r.height / 2);
+          });
+          var t = 0;
+          if (probe <= centres[0]) t = 0;
+          else if (probe >= centres[S - 1]) t = S - 1;
+          else for (var i = 0; i < S - 1; i++) {
+            if (probe >= centres[i] && probe < centres[i + 1]) {
+              t = i + (probe - centres[i]) / (centres[i + 1] - centres[i]);
+              break;
+            }
+          }
+          target = t;
+          var n = Math.round(t);
+          if (n !== active) {
+            active = n;
+            steps.forEach(function (el, k) { el.classList.toggle('is-active', k === n); });
+            stateA.textContent = steps[n].getAttribute('data-a');
+            stateB.textContent = steps[n].getAttribute('data-b');
+          }
+        }
+
+        function render(clock) {
+          draw(canvasA, A, current, clock);
+          draw(canvasB, B, current, clock);
+        }
+
+        function loop(ms) {
+          if (!visible) { running = false; return; }
+          current += (target - current) * 0.09;
+          render(ms / 1000);
+          requestAnimationFrame(loop);
+        }
+        function wake() {
+          if (reduce) { current = target; render(0); return; }
+          if (!running && visible) { running = true; requestAnimationFrame(loop); }
+        }
+
+        window.addEventListener('scroll', function () { readScroll(); wake(); }, { passive: true });
+        window.addEventListener('resize', function () { readScroll(); render(0); });
+
+        if ('IntersectionObserver' in window) {
+          new IntersectionObserver(function (es) {
+            visible = es[0].isIntersecting;
+            if (visible) { readScroll(); wake(); }
+          }, { rootMargin: '10% 0px' }).observe(section);
+        } else { visible = true; wake(); }
+
+        readScroll();
+        current = target;
+        render(0);
+      })();
+    })();
+    </script>
 </body>
 </html>

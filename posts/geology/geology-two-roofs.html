@@ -29,7 +29,8 @@
     <meta property="og:locale" content="en_GB">
     <meta name="twitter:card" content="summary_large_image">
 
-    <link rel="stylesheet" href="/css/style.css">
+    <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
+    <link rel="stylesheet" href="/css/style.css?v=3">
 
     <style>
     /* ─────────────────────────────────────────────────────────────
@@ -98,63 +99,68 @@
         background: var(--color-obsidian);
     }
 
-    /* the real place, before the schematic one below it */
-    .tr .hero-photo {
+    /* the real place, full-bleed, before the schematic one below it */
+    .tr .hero { margin-top: 0; }
+    .tr .hero-cover {
         position: relative;
-        height: 46vh;
-        min-height: 260px;
-        max-height: 440px;
+        min-height: 100vh;
+        min-height: 100svh;
+        display: flex;
+        align-items: flex-end;
         overflow: hidden;
+        isolation: isolate;
+        padding: 150px 0 clamp(3rem, 7vw, 5.5rem);
     }
-
+    .tr .hero-photo { position: absolute; inset: 0; margin: 0; width: auto; height: auto; max-width: none; border: 0; border-radius: 0; box-shadow: none; z-index: -2; overflow: hidden; }
     .tr .hero-photo img {
+        position: absolute;
+        inset: -4% 0 auto 0;
         width: 100%;
-        height: 100%;
+        height: 108%;
         object-fit: cover;
-        object-position: center 65%;
-        filter: saturate(0.92) brightness(0.88);
+        object-position: center 62%;
+        max-width: none;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        will-change: transform;
     }
-
-    .tr .hero-photo::after {
+    .js .tr .hero-photo img { transform: scale(1.08); transition: transform 2.6s var(--ease-out); }
+    .js .tr.is-loaded .hero-photo img { transform: scale(1); }
+    .tr .hero-cover::after {
         content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(to bottom, rgba(26, 26, 46, 0) 55%, var(--color-obsidian) 100%);
+        z-index: -1;
+        background:
+            linear-gradient(0deg, var(--color-obsidian) 0%, rgba(37,41,35,.82) 30%, rgba(37,41,35,.15) 66%, rgba(13,15,12,.5) 100%);
     }
-
     .tr .hero-photo figcaption {
         position: absolute;
         z-index: 1;
-        right: 1rem;
-        bottom: 0.6rem;
+        right: var(--gutter);
+        bottom: 1rem;
         font-family: var(--font-mono);
-        font-size: 0.68rem;
+        font-size: 0.7rem;
         letter-spacing: 0.03em;
-        color: var(--color-ite-light);
-    }
-
-    .tr .hero-overlay {
-        max-width: 58rem;
-        margin: 0 auto;
-        padding: var(--space-xl) 1.5rem var(--space-lg);
-    }
-
-    .tr .hero-meta { margin-bottom: 1rem; }
-
-    .tr .hero h1 {
-        font-size: clamp(2.4rem, 7vw, 4.4rem);
-        line-height: 1.05;
-        color: var(--color-calcite);
-        margin-bottom: 1.2rem;
-    }
-
-    .tr .hero-caption {
-        max-width: 34rem;
-        font-size: 1.2rem;
-        line-height: 1.5;
         color: var(--color-feldspar);
-        margin: 0;
+        text-shadow: 0 0 6px #000;
     }
+    .tr .hero-overlay { width: 100%; max-width: var(--frame); margin: 0 auto; padding: 0 var(--gutter); }
+    .tr .hero-meta { margin-bottom: 1.1rem; color: var(--color-sandstone); }
+    .tr .hero h1 {
+        font-size: clamp(3.2rem, 9vw, 8rem);
+        font-weight: 300;
+        line-height: .94;
+        letter-spacing: -.02em;
+        color: #fff;
+        margin-bottom: 1.5rem;
+    }
+    .tr .hero-caption { max-width: 38rem; font-size: 1.25rem; line-height: 1.5; color: #f1efe8; margin: 0; }
+    .js .tr .hero-overlay > * { opacity: 0; transform: translateY(24px); transition: opacity 1.1s var(--ease-out), transform 1.1s var(--ease-out); }
+    .js .tr.is-loaded .hero-overlay > * { opacity: 1; transform: none; }
+    .js .tr.is-loaded .hero-overlay > :nth-child(2) { transition-delay: .12s; }
+    .js .tr.is-loaded .hero-overlay > :nth-child(3) { transition-delay: .26s; }
 
     /* the ground bleeds edge to edge; the drawing stays centred */
     .tr .hero-section {
@@ -170,6 +176,17 @@
         margin: 0 auto;
     }
 
+    .js .tr .hero-section .g-st { opacity: 0; transform: translateY(-26px); transition: opacity .5s var(--ease-out), transform .7s var(--ease-out); }
+    .js .tr .hero-section.is-in .g-st { opacity: 1; transform: none; }
+    .tr .hero-section .g-st:nth-child(2) { transition-delay: .1s; } .tr .hero-section .g-st:nth-child(3) { transition-delay: .2s; }
+    .tr .hero-section .g-st:nth-child(4) { transition-delay: .3s; } .tr .hero-section .g-st:nth-child(5) { transition-delay: .4s; }
+    .tr .hero-section .g-st:nth-child(6) { transition-delay: .5s; } .tr .hero-section .g-st:nth-child(7) { transition-delay: .6s; }
+    .tr .hero-section .g-st:nth-child(8) { transition-delay: .7s; } .tr .hero-section .g-st:nth-child(9) { transition-delay: .8s; }
+    .js .tr .hero-section .g-void { stroke-dasharray: 800; stroke-dashoffset: 800; transition: stroke-dashoffset 1.8s var(--ease-out) .7s; }
+    .js .tr .hero-section.is-in .g-void { stroke-dashoffset: 0; }
+    .js .tr .hero-section .g-dim, .js .tr .hero-section .g-txt { opacity: 0; transition: opacity .8s var(--ease-out) 1.6s; }
+    .js .tr .hero-section.is-in .g-dim, .js .tr .hero-section.is-in .g-txt { opacity: 1; }
+
     .tr .g-ground { fill: var(--color-basalt); }
     .tr .g-void   { fill: var(--color-obsidian); stroke: var(--sig); stroke-width: 1.5; }
     .tr .g-line   { stroke: var(--color-ite-light); stroke-width: 1; fill: none; }
@@ -183,12 +200,14 @@
     /* ── signature: the core log ── */
     .tr .log {
         position: sticky;
-        top: var(--nav-height);
+        top: 64px;
         z-index: 50;
         display: flex;
         gap: 0.9rem;
         padding: 0.55rem 1.5rem 0.6rem;
-        background: rgba(26, 26, 46, 0.96);
+        background: rgba(13, 15, 12, 0.9);
+        -webkit-backdrop-filter: blur(8px);
+        backdrop-filter: blur(8px);
         border-bottom: 1px solid var(--color-basalt);
     }
 
@@ -219,8 +238,7 @@
         height: 5px;
         margin-bottom: 0.35rem;
         border-radius: 1px;
-        background: var(--c);
-        opacity: 0.35;
+        background: linear-gradient(90deg, var(--c) var(--p, 0%), color-mix(in srgb, var(--c) 35%, transparent) var(--p, 0%));
     }
 
     .tr .seg-name {
@@ -230,8 +248,7 @@
         text-overflow: ellipsis;
     }
 
-    .tr .segs a:hover .seg-bar,
-    .tr .segs a[aria-current="location"] .seg-bar { opacity: 1; }
+    .tr .segs a:hover .seg-bar { --p: 100%; }
 
     .tr .segs a[aria-current="location"] { color: var(--color-calcite); }
 
@@ -476,6 +493,55 @@
 
     .tr .fig-title { margin: 0 0 0.3rem; font-family: var(--font-display); font-size: 1.15rem; color: var(--color-calcite); }
 
+
+    /* ── bars grow as the figure arrives ── */
+    .tr .bar, .tr .lbar { transform-origin: left; transition: transform 1.3s var(--ease-out) .15s; }
+    .js .tr .fig-plain.reveal:not(.is-in) .bar, .js .tr .fig-plain.reveal:not(.is-in) .lbar { transform: scaleX(0); }
+    .js .tr .fig-plain.reveal .dot { transition: transform .7s var(--ease-out) .4s; }
+    .js .tr .fig-plain.reveal:not(.is-in) .dot { transform: translateX(-50%) scale(0); }
+    .js .tr article h2.reveal::before { width: 0; transition: width 1s var(--ease-out) .1s; }
+    .js .tr article h2.reveal.is-in::before { width: 2.5rem; }
+
+    /* ── widgets: the science you can play with ── */
+    .tr .widget { margin: 2.6rem 0 3.2rem; }
+    .tr .widget canvas { display: block; width: 100%; background: rgba(0,0,0,.18); border-radius: 3px; }
+    .tr .widget svg { display: block; width: 100%; height: auto; }
+    .tr .widget figcaption { margin-top: .8rem; padding-left: .8rem; border-left: 2px solid var(--color-slate); font-size: .86rem; line-height: 1.55; color: var(--color-ite-light); }
+    .tr .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+    .tr .range-row { display: block; margin-top: .9rem; }
+    .tr .range-row .field { display: block; font-family: var(--font-mono); font-size: .8rem; color: var(--color-feldspar); margin-bottom: .3rem; }
+    .tr .range-row b { font-weight: 500; color: var(--color-calcite); }
+    .tr input[type=range] { display: block; width: 100%; height: 26px; margin: 0; accent-color: var(--sig); cursor: pointer; }
+    .tr .range-ends { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: .72rem; color: var(--color-ite-light); }
+    .tr .sensor-read, .tr .beam-read, .tr .inv-read, .tr .temp-read { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .3rem 1.2rem; margin-bottom: .7rem; color: var(--color-feldspar); font-size: .98rem; }
+    .tr .sensor-st b { font-family: var(--font-mono); font-weight: 500; color: var(--color-calcite); }
+    .tr #s-msg.is-on { color: var(--sig); font-weight: 600; }
+    .tr .beam-read .big { font-family: var(--font-display); font-weight: 300; font-size: clamp(2.6rem, 6vw, 3.8rem); line-height: 1; color: var(--color-calcite); font-variant-numeric: lining-nums tabular-nums; }
+    .tr .beam-read .big b { font-weight: 300; }
+    .tr .beam-presets { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .5rem; }
+    .tr .beam-presets button, .tr .again { font-family: var(--font-body); font-weight: 600; font-size: .9rem; padding: .45rem .85rem; color: var(--color-calcite); background: transparent; border: 1px solid var(--color-ite-light); border-radius: 2px; cursor: pointer; transition: background .25s, color .25s; }
+    .tr .beam-presets button:hover, .tr .again:hover { background: var(--color-calcite); color: var(--color-obsidian); }
+    .tr .inv-read b { font-family: var(--font-mono); font-weight: 500; color: var(--color-calcite); font-variant-numeric: tabular-nums; }
+    .tr .temp-read b { font-family: var(--font-mono); font-weight: 500; color: var(--color-calcite); font-variant-numeric: tabular-nums; }
+    .tr #t-svg text { font-family: var(--font-mono); font-size: 12px; fill: var(--color-ite-light); }
+    .tr #t-svg .t-name { font-family: var(--font-body); font-size: 14px; font-weight: 600; fill: var(--color-calcite); }
+    .tr .al-track { position: relative; height: 44px; margin-top: 2.6rem; background: rgba(255,255,255,.05); }
+    .tr .al-band { position: absolute; top: 0; bottom: 0; background: color-mix(in srgb, var(--sig-alt) 42%, transparent); }
+    .tr .al-band i { position: absolute; left: .5rem; bottom: .6rem; font-style: normal; font-size: .84rem; color: var(--color-calcite); white-space: nowrap; }
+    .tr .al-mark { position: absolute; top: -8px; bottom: -8px; width: 3px; margin-left: -1px; left: var(--x); background: var(--sig); transition: left 1.5s var(--ease-out) .3s; }
+    .tr .al-mark i { position: absolute; right: .6rem; bottom: 100%; font-style: normal; font-size: .84rem; color: var(--color-calcite); white-space: nowrap; }
+    .js .tr #w-al:not(.is-in) .al-mark { left: 0; }
+    .tr .al-axis { position: relative; height: 1.3rem; margin-top: .55rem; font-family: var(--font-mono); font-size: .72rem; color: var(--color-ite-light); }
+    .tr .al-axis span { position: absolute; transform: translateX(-50%); }
+    .tr .al-axis span:first-child { transform: none; }
+    .tr .al-axis span:last-child { transform: translateX(-100%); }
+    @media (max-width: 640px) {
+        .tr #t-svg { overflow: visible; }
+        .tr #t-svg text { font-size: 19px; }
+        .tr #t-svg .t-name { font-size: 19px; }
+    }
+    html:not(.js) .tr #w-sensor, html:not(.js) .tr #w-beam, html:not(.js) .tr #w-inv, html:not(.js) .tr #w-vac, html:not(.js) .tr #w-temp { display: none; }
+
     @media (prefers-reduced-motion: reduce) {
         html { scroll-behavior: auto; }
         .tr *, .tr *::before, .tr *::after {
@@ -486,11 +552,12 @@
     </style>
 </head>
 
-<body class="tr">
+<body class="tr has-cover">
 
     <div id="site-header"></div>
 
     <header class="hero">
+      <div class="hero-cover">
         <figure class="hero-photo">
             <img
                 src="/img/post/geology/lanzarote-skylight.jpg"
@@ -505,8 +572,9 @@
             <h1>Two Roofs for the Moon</h1>
             <p class="hero-caption">A tunnel in Lanzarote and a paste of crushed volcanic glass. Two papers, accepted a day apart, on one problem: a ceiling on a world with no air.</p>
         </div>
+      </div>
 
-        <figure class="hero-section">
+        <figure class="hero-section reveal">
             <svg viewBox="0 0 840 260" role="img" aria-label="Cross-section drawn to scale. Nine seismic stations 5 metres apart sit on the ground surface. Below three of them, a lava tube 15 metres wide and 3 metres high lies under a roof 1 to 3 metres thick.">
                 <rect class="g-ground" x="0" y="70" width="840" height="190"/>
                 <line class="g-line" x1="0" y1="70" x2="840" y2="70"/>
@@ -595,7 +663,7 @@
             you put a roof over your head on the Moon?
         </p>
 
-        <h2 id="surface">Why the surface is the problem</h2>
+        <h2 class="reveal" id="surface">Why the surface is the problem</h2>
 
         <p>
             At the lunar equator the ground swings from about 100 K to about 390 K in a single
@@ -610,6 +678,16 @@
             Both are “could”, not “does”: nobody has measured either inside a lunar tube.
         </p>
 
+        <figure class="wide widget reveal rise" id="w-temp">
+            <p class="fig-title">One lunar day, at the equator</p>
+            <div class="temp-read" aria-hidden="true">
+                <span><b id="t-surf">390 K</b> at the surface</span>
+                <span><b>290 K</b> modelled inside a tube</span>
+            </div>
+            <svg id="t-svg" viewBox="0 0 720 230" role="img" aria-label="The surface temperature swings between about 100 and 390 kelvin over a lunar day. The modelled temperature inside a lava tube stays near 290 kelvin."></svg>
+            <figcaption>The swing is drawn as a simple wave between the two values in the text, so read the extremes rather than the curve between them. The tube line is a modelling result, not a measurement.</figcaption>
+        </figure>
+
         <p>
             So there are two ways to get a roof. Find a hole that nature has already dug, or
             make one from the ground you are standing on. The second has an economic argument:
@@ -618,7 +696,7 @@
             kilogram you do not pay that price for.
         </p>
 
-        <h2 id="dig" data-grp="dig">A tunnel that is already there</h2>
+        <h2 class="reveal" id="dig" data-grp="dig">A tunnel that is already there</h2>
 
         <p>
             A lava tube forms when the outside of a basalt flow solidifies while the inside
@@ -647,7 +725,7 @@
             set, and lifted it like a lid.
         </p>
 
-        <figure class="wide fig-plain">
+        <figure class="wide fig-plain reveal rise">
             <p class="fig-title">How wide is a tube?</p>
             <ul class="ruler">
                 <li>
@@ -689,7 +767,7 @@
             the surface, so deeper tubes will be harder.
         </p>
 
-        <h2 id="measure" data-grp="dig">Three ways to find a hole</h2>
+        <h2 class="reveal" id="measure" data-grp="dig">Three ways to find a hole</h2>
 
         <p>
             The team ran three kinds of measurement along the same 120-metre line: 25
@@ -716,7 +794,7 @@
             would do it too, but no hydrothermal activity is documented in the area.
         </p>
 
-        <div class="callout">
+        <div class="callout reveal rise">
             <p class="callout-title">The catch for the Moon</p>
             <p>
                 Neither the Moon nor Mars has a global magnetic field today. Lava that erupted
@@ -726,7 +804,7 @@
             </p>
         </div>
 
-        <figure class="wide img-block">
+        <figure class="wide img-block reveal rise">
             <img
                 src="/img/post/geology/lanzarote-gravity-magnetic-maps.jpg"
                 alt="Four map panels of the survey area. Top row: gravity anomaly, measured and after upward continuation. Bottom row: magnetic anomaly, measured and after upward continuation. The white outline of the laser-scanned tube crosses each panel."
@@ -763,12 +841,26 @@
             is about 15 metres wide.
         </p>
 
+        <figure class="wide widget reveal rise" id="w-sensor">
+            <p class="fig-title">Walk the sensor along the road</p>
+            <div class="sensor-read" aria-live="polite">
+                <span class="sensor-st"><b id="s-st">Station 1</b></span>
+                <span id="s-msg">Ordinary ground</span>
+            </div>
+            <canvas id="s-canvas" aria-hidden="true"></canvas>
+            <label class="range-row"><span class="sr">Station along the survey line</span>
+                <input type="range" id="s-range" min="1" max="25" step="1" value="1">
+            </label>
+            <div class="range-ends" aria-hidden="true"><span>Station 1</span><span>Station 25</span></div>
+            <figcaption>Road and tube to true scale: 25 stations, 120 m, a tube 15 m wide and 3 m high, with its roof at 1.5 m. The traces are an illustration, not recorded data. They show the one fact that matters: over stations 9 to 11, at about 11 Hz, vertical motion is four times horizontal (a ratio of 0.25). The paper reports stations 5 and 19 as ordinary ground, and other stations are drawn the same way here.</figcaption>
+        </figure>
+
         <p>
             Why 11 Hz? Seismic waves bouncing between the top and bottom of a 1.5-metre roof
             would resonate at about 150 Hz.
         </p>
 
-        <div class="key-number-grid">
+        <div class="key-number-grid reveal rise">
             <div class="key-number">
                 <span class="number">150 Hz</span>
                 <span class="label">expected if waves bounced inside the roof</span>
@@ -787,7 +879,24 @@
             stiffness to 2.20 GPa gives 11 Hz.
         </p>
 
-        <div class="callout">
+        <figure class="wide widget reveal rise" id="w-beam">
+            <p class="fig-title">Tune the roof</p>
+            <div class="beam-read" aria-live="polite">
+                <span class="big"><b id="b-f">11.0</b> Hz</span>
+                <span id="b-note">The stiffness that reproduces what was recorded</span>
+            </div>
+            <canvas id="b-canvas" aria-hidden="true"></canvas>
+            <label class="range-row"><span class="field">Stiffness <b id="b-e">2.20</b> GPa</span>
+                <input type="range" id="b-range" min="0.314" max="2.2" step="0.001" value="2.2">
+            </label>
+            <div class="beam-presets">
+                <button type="button" data-e="0.314">Estimated: 0.314 GPa</button>
+                <button type="button" data-e="2.2">Fitted: 2.20 GPa</button>
+            </div>
+            <figcaption>A 14 m beam, fixed at both walls. Frequency scales with the square root of stiffness, which links the paper's two results, 4.15 Hz and 11 Hz. Bending is hugely exaggerated, and the motion is slowed about ten times so you can follow it.</figcaption>
+        </figure>
+
+        <div class="callout reveal rise">
             <p class="callout-title">A fit, not a measurement</p>
             <p>
                 Nobody measured the stiffness of that roof. 2.2 GPa is the value that
@@ -798,7 +907,7 @@
             </p>
         </div>
 
-        <figure class="wide img-block">
+        <figure class="wide img-block reveal rise">
             <img
                 src="/img/post/geology/lanzarote-roof-beam.jpg"
                 alt="Three-dimensional finite-element model of the cave roof as a stepped beam, coloured from blue at the ends to red in the middle by vertical displacement."
@@ -817,7 +926,7 @@
             other three on one axis and they agree.
         </p>
 
-        <figure class="wide img-block">
+        <figure class="wide img-block reveal rise">
             <img
                 src="/img/post/geology/lanzarote-profile-p1.jpg"
                 alt="Four strips sharing one horizontal axis along profile P1: HVSR spectrogram, gravity anomaly curve, magnetic anomaly curve, and the true section of the tube below the stations."
@@ -831,7 +940,7 @@
             </figcaption>
         </figure>
 
-        <h2 id="inversion" data-grp="dig">Letting a computer guess the shape</h2>
+        <h2 class="reveal" id="inversion" data-grp="dig">Letting a computer guess the shape</h2>
 
         <p>
             Each measurement alone fits many possible tubes. So the team let an algorithm
@@ -848,7 +957,14 @@
             can check the ground truth.
         </p>
 
-        <div class="callout">
+        <figure class="wide widget reveal rise" id="w-inv">
+            <p class="fig-title">How the search works</p>
+            <div class="inv-read" aria-hidden="true"><span>Iteration <b id="i-n">0</b> of 10,000</span><button type="button" class="again" id="i-again">Run again</button></div>
+            <canvas id="i-canvas" aria-hidden="true"></canvas>
+            <figcaption>An illustration of the idea, not our results: 24-cornered candidate shapes pile up around the likely outline, and the histogram collects how often each width comes up, with the 14–16 m range highlighted. The real result is the published figure below.</figcaption>
+        </figure>
+
+        <div class="callout reveal rise">
             <p class="callout-title">What the algorithm was given</p>
             <p>
                 Density and magnetisation came from field and laboratory measurements on rock
@@ -857,7 +973,7 @@
             </p>
         </div>
 
-        <figure class="wide img-block">
+        <figure class="wide img-block reveal rise">
             <img
                 src="/img/post/geology/lanzarote-inversion.jpg"
                 alt="Inversion at iteration 9,878: observed and calculated magnetic and gravity curves, the starting polygon, the laser-scanned tube outline, thousands of candidate polygons clustering around it, and a histogram of horizontal diameter peaking between 14 and 16 metres."
@@ -872,7 +988,7 @@
             </figcaption>
         </figure>
 
-        <h2 id="build" data-grp="build">A cement that needs no furnace</h2>
+        <h2 class="reveal" id="build" data-grp="build">A cement that needs no furnace</h2>
 
         <p>
             The second paper starts with a shortage. Apollo, Luna and Chang’E have returned
@@ -892,7 +1008,7 @@
             still needs water and alkali, shipped or made on the Moon.
         </p>
 
-        <h2 id="aluminium" data-grp="build">The missing ingredient</h2>
+        <h2 class="reveal" id="aluminium" data-grp="build">The missing ingredient</h2>
 
         <p>
             The reactive part of the powder is its glass, and the crystals mostly sit there.
@@ -902,7 +1018,16 @@
             one ingredient missing. Everything else is in the bowl, and it does not bind.
         </p>
 
-        <figure class="wide img-block">
+        <figure class="wide widget reveal rise" id="w-al">
+            <p class="fig-title">Aluminium atoms per silicon atom</p>
+            <div class="al-track">
+                <span class="al-band" style="left:32%;width:60%"><i>The binder needs 0.32 to 0.92</i></span>
+                <span class="al-mark" style="--x:28%"><i>LMS-1D glass: 0.28</i></span>
+            </div>
+            <div class="al-axis" aria-hidden="true"><span style="left:0">0</span><span style="left:50%">0.5</span><span style="left:100%">1</span></div>
+        </figure>
+
+        <figure class="wide img-block reveal rise">
             <img
                 src="/img/post/geology/regolith-glass-shard.webp"
                 alt="Four microscope panels of the LMS-1D simulant: a glass shard full of round bubbles under polarised light, the same powder in electron microscopy, one glassy grain with feathery crystals, and a close-up of a single dendrite."
@@ -955,7 +1080,7 @@
             longer curing times is needed.
         </p>
 
-        <figure class="wide fig-plain">
+        <figure class="wide fig-plain reveal rise">
             <p class="fig-title">Compressive strength of the pastes, MPa</p>
             <ul class="ladder">
                 <li class="lgrp">Sodium silicate plus metakaolin, clay from Earth (14 days)</li>
@@ -1012,7 +1137,7 @@
             </figcaption>
         </figure>
 
-        <h2 id="vacuum" data-grp="build">Then the vacuum</h2>
+        <h2 class="reveal" id="vacuum" data-grp="build">Then the vacuum</h2>
 
         <p>
             The lunar surface is close to a perfect vacuum, and the trouble with vacuum for a
@@ -1037,7 +1162,14 @@
             with one another.
         </p>
 
-        <figure class="wide img-block">
+        <figure class="wide widget reveal rise" id="w-vac">
+            <p class="fig-title">Two orders of events</p>
+            <div class="inv-read" aria-hidden="true"><span id="v-state">Same paste, same vacuum</span><button type="button" class="again" id="v-again">Pull the vacuum again</button></div>
+            <canvas id="v-canvas" aria-hidden="true"></canvas>
+            <figcaption>A sketch of the difference, with the real micrographs just below. Hardened first, the paste keeps its few pores. Fresh, it loses water as vapour, and the voids grow and merge.</figcaption>
+        </figure>
+
+        <figure class="wide img-block reveal rise">
             <img
                 src="/img/post/geology/regolith-vacuum-sem.webp"
                 alt="Four electron-microscope mosaics of hardened paste. Panels a and c: compact matrix with few holes. Panels b and d: matrix riddled with large black voids after vacuum exposure while fresh."
@@ -1062,7 +1194,7 @@
             may have formed before the water left.
         </p>
 
-        <h2 id="limits">What neither paper can tell you yet</h2>
+        <h2 class="reveal" id="limits">What neither paper can tell you yet</h2>
 
         <p>
             For the tube: one tube, one 120-metre profile, and a roof stiffness tuned to
@@ -1124,7 +1256,7 @@
     </article>
 
     <div id="site-footer"></div>
-    <script src="/js/components.js"></script>
+    <script src="/js/components.js?v=3"></script>
 
     <script>
     /* core log: light the segment for the section the reader is in */
@@ -1145,6 +1277,15 @@
             links.forEach(function (a, j) {
                 if (j === cur) a.setAttribute('aria-current', 'location');
                 else a.removeAttribute('aria-current');
+                var bar = a.querySelector('.seg-bar'), pc = 0;
+                if (j < cur) pc = 100;
+                else if (j === cur) {
+                    var top = targets[j].getBoundingClientRect().top;
+                    var nextEl = targets[j + 1] || document.querySelector('.sources');
+                    var end = nextEl ? nextEl.getBoundingClientRect().top : top + 1;
+                    pc = Math.max(0, Math.min(100, (line - top) / Math.max(1, end - top) * 100));
+                }
+                bar.style.setProperty('--p', pc.toFixed(1) + '%');
             });
             if (now) now.textContent = cur >= 0 ? links[cur].textContent : '';
         }
@@ -1154,6 +1295,326 @@
         }, { passive: true });
         window.addEventListener('resize', update);
         update();
+    })();
+    </script>
+
+    <script>
+    /* Scenes. Each draws only while on screen, and each settles on a still,
+       truthful frame for readers who prefer reduced motion. */
+    (function () {
+        'use strict';
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var SIG = '#e0764d', ALT = '#a9bcc4', INK = '#f1efe8', DIM = '#96988f', GROUND = '#393d37', NIGHT = '#252923';
+
+        function fit(c, ratio, minH) {
+            var d = Math.min(window.devicePixelRatio || 1, 2), w = c.clientWidth;
+            var h = Math.max(minH || 0, Math.round(w * ratio));
+            c.style.height = h + 'px';
+            var W = Math.round(w * d), H = Math.round(h * d);
+            if (c.width !== W || c.height !== H) { c.width = W; c.height = H; }
+            return { g: c.getContext('2d'), w: w, h: h, d: d };
+        }
+        /* run draw(t) in a loop while el is visible */
+        function scene(el, draw) {
+            var on = false, run = false;
+            function tick(ms) {
+                if (!on) { run = false; return; }
+                draw(ms / 1000);
+                requestAnimationFrame(tick);
+            }
+            function wake() { if (on && !run) { run = true; requestAnimationFrame(tick); } }
+            if (reduce || !('IntersectionObserver' in window)) { draw(0); return { draw: draw }; }
+            new IntersectionObserver(function (es) { on = es[0].isIntersecting; wake(); }, { rootMargin: '8% 0px' }).observe(el);
+            return { draw: draw };
+        }
+        function firstView(el, fn) {
+            if (!('IntersectionObserver' in window)) { fn(); return; }
+            var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { io.disconnect(); fn(); } }, { threshold: 0.4 });
+            io.observe(el);
+        }
+        function font(g, px, fam) { g.font = px + 'px ' + (fam || "'JetBrains Mono', monospace"); }
+
+        /* cover parallax: standalone `translate`, the entrance zoom owns `transform` */
+        (function () {
+            var img = document.querySelector('.hero-photo img'), box = document.querySelector('.hero-cover');
+            if (!img || reduce) return;
+            var tick = false;
+            window.addEventListener('scroll', function () {
+                if (tick) return; tick = true;
+                requestAnimationFrame(function () {
+                    tick = false;
+                    var y = window.pageYOffset;
+                    if (y < box.offsetHeight) img.style.translate = '0 ' + (y * .28).toFixed(1) + 'px';
+                });
+            }, { passive: true });
+        })();
+
+        /* one lunar day */
+        (function () {
+            var host = document.getElementById('w-temp'), svg = document.getElementById('t-svg'), out = document.getElementById('t-surf');
+            if (!svg) return;
+            var NS = 'http://www.w3.org/2000/svg', L = 46, R = 120, T = 12, B = 30, W = 720, H = 230;
+            function X(f) { return L + f * (W - L - R); }
+            function Y(k) { return T + (420 - k) / 420 * (H - T - B); }
+            function K(f) { return 245 + 145 * Math.cos(f * Math.PI * 2); }
+            function add(n, a, txt) { var e = document.createElementNS(NS, n); for (var k in a) e.setAttribute(k, a[k]); if (txt) e.textContent = txt; svg.appendChild(e); return e; }
+            [100, 200, 300, 400].forEach(function (k) {
+                add('line', { x1: L, x2: W - R, y1: Y(k), y2: Y(k), stroke: '#555a52', 'stroke-width': 1 });
+                add('text', { x: L - 8, y: Y(k) + 4, 'text-anchor': 'end' }, k + ' K');
+            });
+            var d = ''; for (var i = 0; i <= 120; i++) d += (i ? 'L' : 'M') + X(i / 120).toFixed(1) + ' ' + Y(K(i / 120)).toFixed(1);
+            add('path', { d: d, fill: 'none', stroke: SIG, 'stroke-width': 2, 'stroke-linecap': 'round' });
+            add('line', { x1: X(0), x2: X(1), y1: Y(290), y2: Y(290), stroke: ALT, 'stroke-width': 2, 'stroke-dasharray': '6 5' });
+            add('text', { 'class': 't-name', x: X(1) + 10, y: Y(290) + 5 }, 'Inside a tube');
+            add('text', { 'class': 't-name', x: X(1) + 10, y: Y(390) + 5 }, 'Surface');
+            add('text', { x: X(0), y: H - 8 }, 'noon'); add('text', { x: X(.5), y: H - 8, 'text-anchor': 'middle' }, 'midnight'); add('text', { x: X(1), y: H - 8, 'text-anchor': 'end' }, 'noon');
+            var dot = add('circle', { r: 6, fill: SIG, stroke: NIGHT, 'stroke-width': 2, cx: X(0), cy: Y(K(0)) });
+            scene(host, function (t) {
+                var f = reduce ? 0 : (t / 12) % 1, k = K(f);
+                dot.setAttribute('cx', X(f)); dot.setAttribute('cy', Y(k));
+                out.textContent = Math.round(k / 10) * 10 + ' K';
+            });
+        })();
+
+        /* the walking sensor */
+        (function () {
+            var host = document.getElementById('w-sensor'), c = document.getElementById('s-canvas');
+            if (!c) return;
+            var range = document.getElementById('s-range'), stEl = document.getElementById('s-st'), msg = document.getElementById('s-msg');
+            var sta = 1, shown = 1, onAmp = 0, touched = false;
+            function isOn(s) { return s >= 9 && s <= 11; }
+            function setSta(v) {
+                sta = v; range.value = v; stEl.textContent = 'Station ' + v;
+                var on = isOn(v);
+                msg.textContent = on ? 'Over the cavity: vertical shaking four times horizontal' : 'Ordinary ground: no trough at 11 Hz';
+                msg.classList.toggle('is-on', on);
+            }
+            range.addEventListener('input', function () { touched = true; setSta(+range.value); if (reduce) d0.draw(0); });
+            var seed = []; for (var i = 0; i < 40; i++) seed.push(Math.random() * 6.28);
+            function noise(x, k) { return Math.sin(x * 1.3 + seed[k]) * .5 + Math.sin(x * 2.9 + seed[k + 3]) * .3 + Math.sin(x * 6.1 + seed[k + 7]) * .2; }
+            function trace(g, x0, x1, y, amp, sig, t, col, k) {
+                g.strokeStyle = col; g.lineWidth = 1.6; g.beginPath();
+                for (var x = x0; x <= x1; x += 2) {
+                    var u = (x - x0) / 7 + t * 9;
+                    var v = noise(u * .28, k) * 7 + Math.sin(u * 2) * amp * (sig || 0);
+                    g[x === x0 ? 'moveTo' : 'lineTo'](x, y + v);
+                }
+                g.stroke();
+            }
+            var d0 = scene(host, function (t) {
+                var small = c.clientWidth < 520;
+                var a = fit(c, small ? .78 : .46, 250), g = a.g, w = a.w, h = a.h;
+                g.setTransform(a.d, 0, 0, a.d, 0, 0); g.clearRect(0, 0, w, h);
+                shown += (sta - shown) * (reduce ? 1 : .14);
+                onAmp += ((isOn(sta) ? 1 : 0) - onAmp) * (reduce ? 1 : .08);
+                var m = 18, pad = small ? 58 : 76, x0 = m + pad, x1 = w - m;
+                /* traces */
+                font(g, 11); g.fillStyle = DIM; g.textBaseline = 'middle';
+                var yV = h * .17, yH = h * .4;
+                g.fillStyle = INK; g.fillText('Vertical', m, yV); g.fillText('Horizontal', m, yH);
+                var t2 = reduce ? 0 : t;
+                trace(g, x0, x1, yV, 4 + onAmp * 20, 1, t2, SIG, 0);
+                trace(g, x0, x1, yH, 4 + onAmp * 1, 1, t2 + 3, ALT, 9);
+                /* ground, to true scale along 120 m */
+                var gy = h * .68, sx = function (s) { return m + (s - 1) / 24 * (w - 2 * m); }, px = (w - 2 * m) / 120;
+                g.fillStyle = GROUND; g.fillRect(0, gy, w, h - gy);
+                g.strokeStyle = DIM; g.lineWidth = 1; g.beginPath(); g.moveTo(0, gy); g.lineTo(w, gy); g.stroke();
+                /* tube: 15 m by 3 m with the roof at 1.5 m, centred under station 10; flexes when stimulated */
+                var cx = sx(10), rx = 7.5 * px, ry = Math.max(1.5 * px, 5), rf = 1.5 * px;
+                var flex = isOn(sta) ? Math.sin(t2 * 7) * onAmp * 2.2 : 0;
+                g.fillStyle = NIGHT; g.strokeStyle = SIG; g.lineWidth = 1.4;
+                g.beginPath(); g.ellipse(cx, gy + rf + ry + flex * .3, rx, ry, 0, 0, 6.2832); g.fill(); g.stroke();
+                /* stations */
+                for (var s = 1; s <= 25; s++) {
+                    g.fillStyle = isOn(s) ? SIG : DIM; g.fillRect(sx(s) - .75, gy - 5, 1.5, 5);
+                }
+                /* the sensor itself */
+                var sp = sx(shown);
+                g.fillStyle = isOn(sta) ? SIG : INK;
+                g.beginPath(); g.moveTo(sp - 7, gy - 19 + flex); g.lineTo(sp + 7, gy - 19 + flex); g.lineTo(sp, gy - 6 + flex); g.closePath(); g.fill();
+                font(g, 11); g.fillStyle = DIM; g.textAlign = 'center';
+                g.fillText('tube, 15 m wide', cx, Math.min(h - 12, gy + rf + 2 * ry + 15)); g.textAlign = 'left';
+            });
+            setSta(1);
+            /* one slow walk on first sight, 5 m at a time, stopping over the tube */
+            firstView(host, function () {
+                if (reduce) { setSta(10); d0.draw(0); return; }
+                var iv = setInterval(function () {
+                    if (touched) { clearInterval(iv); return; }
+                    if (sta >= 10) { clearInterval(iv); return; }
+                    setSta(sta + 1);
+                }, 620);
+            });
+            window.addEventListener('resize', function () { if (reduce) d0.draw(0); });
+        })();
+
+        /* the roof as a fixed beam */
+        (function () {
+            var host = document.getElementById('w-beam'), c = document.getElementById('b-canvas');
+            if (!c) return;
+            var range = document.getElementById('b-range'), fEl = document.getElementById('b-f'), eEl = document.getElementById('b-e'), note = document.getElementById('b-note');
+            var E = 2.2, phase = 0, last = 0, touched = false;
+            function freq(e) { return 4.15 * Math.sqrt(e / 0.314); }
+            function setE(v) {
+                E = v; range.value = v;
+                eEl.textContent = v.toFixed(v < 1 ? 3 : 2);
+                var f = freq(v);
+                fEl.textContent = f.toFixed(f < 10 ? 2 : 1);
+                note.textContent = v < .32 ? 'The stiffness estimated from shallow seismic velocities' : (v > 2.19 ? 'The stiffness that reproduces what was recorded' : 'Somewhere between the estimate and the fit');
+            }
+            range.addEventListener('input', function () { touched = true; setE(+range.value); if (reduce) d.draw(0); });
+            Array.prototype.forEach.call(host.querySelectorAll('.beam-presets button'), function (b) {
+                b.addEventListener('click', function () { touched = true; setE(+b.getAttribute('data-e')); if (reduce) d.draw(0); });
+            });
+            var d = scene(host, function (t) {
+                var a = fit(c, .34, 190), g = a.g, w = a.w, h = a.h;
+                g.setTransform(a.d, 0, 0, a.d, 0, 0); g.clearRect(0, 0, w, h);
+                var dt = Math.min(.05, t - last); last = t; phase += dt * freq(E) / 11 * 1.1 * 6.2832;
+                var m = Math.max(34, w * .07), y = h * .34, th = Math.max(13, h * .1), amp = reduce ? h * .13 : Math.sin(phase) * h * .17;
+                /* ground overhead, walls and the void */
+                g.fillStyle = GROUND; g.fillRect(0, 0, w, h);
+                g.fillStyle = NIGHT; g.beginPath();
+                g.moveTo(m, y + th);
+                var n = 56, i, u, dy, X, Y;
+                for (i = 0; i <= n; i++) { u = i / n; dy = (1 - Math.cos(u * 6.2832)) / 2 * amp; g.lineTo(m + u * (w - 2 * m), y + th + dy); }
+                g.lineTo(w - m, h); g.lineTo(m, h); g.closePath(); g.fill();
+                /* the beam, in slices coloured by displacement */
+                for (i = 0; i < n; i++) {
+                    u = (i + .5) / n; dy = (1 - Math.cos(u * 6.2832)) / 2;
+                    X = m + i / n * (w - 2 * m);
+                    g.fillStyle = 'rgb(' + Math.round(169 + (224 - 169) * dy) + ',' + Math.round(188 + (118 - 188) * dy) + ',' + Math.round(196 + (77 - 196) * dy) + ')';
+                    Y = y + dy * amp;
+                    g.fillRect(X, Y, (w - 2 * m) / n + .6, th);
+                }
+                /* soil above follows */
+                g.fillStyle = GROUND; g.beginPath(); g.moveTo(m, y);
+                for (i = 0; i <= n; i++) { u = i / n; g.lineTo(m + u * (w - 2 * m), y + (1 - Math.cos(u * 6.2832)) / 2 * amp - 1); }
+                g.lineTo(w - m, 0); g.lineTo(m, 0); g.closePath(); g.fill();
+                font(g, 11); g.fillStyle = DIM; g.textAlign = 'center'; g.textBaseline = 'middle';
+                g.fillText('fixed', m / 2, y + th / 2); g.fillText('fixed', w - m / 2, y + th / 2);
+                g.fillStyle = INK; g.fillText('14 m', w / 2, h - 14);
+            });
+            setE(2.2);
+            firstView(host, function () {
+                if (reduce) { d.draw(0); return; }
+                /* sweep from the estimate up to the fit, once */
+                var t0 = 0;
+                setE(0.314);
+                function sweep(ms) {
+                    if (!t0) t0 = ms;
+                    var p = Math.min(1, (ms - t0) / 3600), q = p * p * (3 - 2 * p);
+                    if (touched) return;
+                    setE(0.314 + (2.2 - 0.314) * (p < .4 ? 0 : (q - .352) / .648));
+                    if (p < 1) requestAnimationFrame(sweep);
+                }
+                requestAnimationFrame(sweep);
+            });
+            window.addEventListener('resize', function () { if (reduce) d.draw(0); });
+        })();
+
+        /* the inversion, as an idea */
+        (function () {
+            var host = document.getElementById('w-inv'), c = document.getElementById('i-canvas');
+            if (!c) return;
+            var nEl = document.getElementById('i-n'), btn = document.getElementById('i-again');
+            var off = document.createElement('canvas'), iter = 0, done = false, bins = new Array(25).fill(0);
+            var N = 10000, START = 500, STEP = 40;
+            function gauss() { return (Math.random() + Math.random() + Math.random() + Math.random() - 2) * .87; }
+            function reset() { iter = 0; done = false; bins = new Array(25).fill(0); off.width = 0; }
+            btn.addEventListener('click', reset);
+            function poly(g, cx, cy, rx, ry, jit, col, lw) {
+                g.strokeStyle = col; g.lineWidth = lw; g.beginPath();
+                for (var k = 0; k <= 24; k++) {
+                    var q = k % 24, an = q / 24 * 6.2832;
+                    var rr = 1 + Math.sin(an * 3 + jit[0]) * jit[1] + Math.sin(an * 5 + jit[2]) * jit[3];
+                    var x = cx + Math.cos(an) * rx * rr, y = cy + Math.sin(an) * ry * rr;
+                    g[k ? 'lineTo' : 'moveTo'](x, y);
+                }
+                g.stroke();
+            }
+            scene(host, function () {
+                var small = c.clientWidth < 520, a = fit(c, small ? .9 : .42, 280), g = a.g, w = a.w, h = a.h;
+                var pw = small ? w : w * .62, cx = pw / 2, cy = small ? h * .3 : h * .5, rx = pw * .36, ry = (small ? h * .17 : h * .26);
+                if (off.width !== c.width || off.height !== c.height) { off.width = c.width; off.height = c.height; var o = off.getContext('2d'); o.setTransform(a.d, 0, 0, a.d, 0, 0); }
+                var og = off.getContext('2d');
+                var perFrame = reduce ? 240 : 3, it;
+                for (it = 0; it < perFrame && iter < N; it++) {
+                    iter += STEP;
+                    var burn = Math.max(0, 1 - iter / START), scale = 1 + gauss() * .045 + burn * .3;
+                    var jit = [Math.random() * 6.28, .05 + Math.random() * .05, Math.random() * 6.28, .03 + Math.random() * .03];
+                    poly(og, cx - burn * 40, cy + gauss() * 3 + burn * 24, rx * scale, ry * (1 + gauss() * .06), jit, iter < START ? 'rgba(201,188,166,.5)' : 'rgba(224,118,77,.08)', 1);
+                    if (iter >= START) { var b = Math.round((15 * scale - 12) / .25); if (b >= 0 && b <= 24) bins[b]++; }
+                }
+                if (iter >= N) done = true;
+                nEl.textContent = Math.min(iter, N).toLocaleString('en-US');
+                g.setTransform(a.d, 0, 0, a.d, 0, 0); g.clearRect(0, 0, w, h);
+                g.drawImage(off, 0, 0, w, h);
+                /* the target outline */
+                g.setLineDash([]); poly(g, cx, cy, rx, ry, [0, 0, 0, 0], INK, 1.6);
+                font(g, 11); g.fillStyle = DIM; g.textAlign = 'center'; g.textBaseline = 'alphabetic';
+                g.fillText('likely outline', cx, cy + ry + 34);
+                /* histogram of widths */
+                var hx = small ? 24 : pw + 14, hw = small ? w - 48 : w - pw - 34, hy = small ? h - 28 : h - 34, hh = small ? h * .26 : h * .62;
+                var max = Math.max.apply(null, bins.concat([1]));
+                for (var i = 0; i <= 24; i++) {
+                    var bw = hw / 25, bh = bins[i] / max * hh;
+                    g.fillStyle = (i >= 8 && i <= 16) ? SIG : ALT;
+                    g.fillRect(hx + i * bw, hy - bh, Math.max(1, bw - 2), bh);
+                }
+                g.strokeStyle = DIM; g.lineWidth = 1; g.beginPath(); g.moveTo(hx, hy + .5); g.lineTo(hx + hw, hy + .5); g.stroke();
+                g.fillStyle = DIM; g.textAlign = 'center';
+                g.fillText('12 m', hx + 12, hy + 15); g.fillText('15 m', hx + hw / 2, hy + 15); g.fillText('18 m', hx + hw - 12, hy + 15);
+                g.fillStyle = INK; g.fillText('how often each width', hx + hw / 2, hy - hh - 10);
+            });
+        })();
+
+        /* vacuum: order of events */
+        (function () {
+            var host = document.getElementById('w-vac'), c = document.getElementById('v-canvas');
+            if (!c) return;
+            var btn = document.getElementById('v-again'), state = document.getElementById('v-state');
+            var seedA = [], seedB = [], vap = [], i, p = 0, t0 = null;
+            for (i = 0; i < 26; i++) seedA.push([Math.random(), Math.random(), .006 + Math.random() * .014]);
+            for (i = 0; i < 46; i++) seedB.push([Math.random(), Math.random(), .02 + Math.random() * .06, Math.random() * .55]);
+            for (i = 0; i < 70; i++) vap.push([Math.random(), Math.random(), .4 + Math.random()]);
+            var speck = []; for (i = 0; i < 700; i++) speck.push([Math.random(), Math.random(), Math.random()]);
+            btn.addEventListener('click', function () { t0 = null; });
+            scene(host, function (t) {
+                var small = c.clientWidth < 520, a = fit(c, small ? 1.1 : .4, 300), g = a.g, w = a.w, h = a.h;
+                g.setTransform(a.d, 0, 0, a.d, 0, 0); g.clearRect(0, 0, w, h);
+                if (t0 === null) t0 = t;
+                p = reduce ? 1 : Math.min(1, (t - t0) / 6);
+                var gap = 12, top = 34, pw = small ? w - 24 : (w - gap - 24) / 2, ph = small ? (h - 2 * top - gap) / 2 : h - top - 14;
+                function panel(x, y, label, draw) {
+                    g.fillStyle = INK; font(g, 12, "'Source Sans 3', sans-serif"); g.textAlign = 'left'; g.textBaseline = 'alphabetic'; g.fillText(label, x, y - 9);
+                    g.save(); g.beginPath(); g.rect(x, y, pw, ph); g.clip();
+                    g.fillStyle = '#8f938a'; g.fillRect(x, y, pw, ph);
+                    speck.forEach(function (s) { g.fillStyle = s[2] > .5 ? 'rgba(255,255,255,.13)' : 'rgba(0,0,0,.14)'; g.fillRect(x + s[0] * pw, y + s[1] * ph, 2, 2); });
+                    draw(x, y); g.restore();
+                }
+                var y1 = top, x2 = small ? 12 : 12 + pw + gap, y2 = small ? top + ph + top : top;
+                panel(12, y1, 'Hardened first, then vacuum', function (x, y) {
+                    g.fillStyle = '#16181a';
+                    seedA.forEach(function (s) { g.beginPath(); g.arc(x + s[0] * pw, y + s[1] * ph, s[2] * pw * .5, 0, 6.2832); g.fill(); });
+                });
+                panel(x2, y2, 'Fresh paste, straight into vacuum', function (x, y) {
+                    g.fillStyle = '#16181a';
+                    seedB.forEach(function (s) {
+                        var q = Math.max(0, Math.min(1, (p - s[3]) / .45));
+                        q = q * q * (3 - 2 * q);
+                        if (q > 0) { g.beginPath(); g.arc(x + s[0] * pw, y + s[1] * ph, s[2] * pw * q, 0, 6.2832); g.fill(); }
+                    });
+                    if (!reduce && p < 1) {
+                        g.fillStyle = 'rgba(241,239,232,.55)';
+                        vap.forEach(function (v) {
+                            var yy = (1 - ((t * .16 * v[2] + v[1]) % 1)) * ph;
+                            g.beginPath(); g.arc(x + v[0] * pw, y + yy, 1.6, 0, 6.2832); g.fill();
+                        });
+                    }
+                });
+                state.textContent = p < 1 ? 'Water leaving the fresh paste…' : 'Same paste, same vacuum, different history';
+            });
+        })();
     })();
     </script>
 

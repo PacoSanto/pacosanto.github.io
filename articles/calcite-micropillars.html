@@ -4,302 +4,1097 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formation of micropillars on etched calcite | Francesco Santoro De Vico</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <meta name="description" content="Calcite dissolves in water. We used that weakness to protect it: controlled etching grows a bed of micropillars that takes the contact angle from about 60° to about 140°, with no coating.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fsdv.eu/articles/calcite-micropillars.html">
+    <meta property="og:title" content="Formation of micropillars on etched calcite and their biomimetic effect on wettability">
+    <meta property="og:description" content="Calcite dissolves in water. We used that weakness to protect it: controlled etching grows a bed of micropillars that takes the contact angle from about 60° to about 140°, with no coating.">
+    <meta property="og:image" content="https://fsdv.eu/img/articles/calcite/calcite-micropillars-og.jpg">
+    <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
+    <link rel="stylesheet" href="../css/style.css?v=3">
     <style>
-        .article-body h2 {
-            margin-top: 2.4em;
+        /* Two accents: the water of the drop, and the warm tone of the
+           calcite in the paper's Fig. 8 schemes. */
+        body.clc {
+            --water: #2c7fb8;
+            --spar: #d9b777;
+            font-size: 1.0625rem;
+            color: var(--color-ink);
         }
+        .clc p { color: inherit; }
+        .clc .site-footer { margin-top: 0; }
+        .clc sub, .clc sup { line-height: 0; font-size: .72em; }
 
-        .hero-img {
-            width: 100%;
-            max-height: 480px;
-            object-fit: cover;
-            border-radius: 12px;
-            margin-bottom: 0.6em;
-        }
-
-        .highlight-box {
-            background: linear-gradient(135deg, #0a2e1a 0%, #14402a 100%);
-            color: #e0e8e3;
-            border-radius: 12px;
-            padding: 2em 2.2em;
-            margin: 2em 0;
-            border-left: 4px solid #5dbb63;
-            font-size: 1.05em;
-            line-height: 1.7;
-        }
-        .highlight-box strong {
-            color: #8edd93;
-        }
-
-        .key-number-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.2em;
-            margin: 2em 0;
-        }
-        .key-number {
-            background: #f0f5f1;
-            border-radius: 10px;
-            padding: 1.5em;
-            text-align: center;
-        }
-        .key-number .number {
-            font-size: 2.2em;
-            font-weight: 700;
-            color: #2e7d32;
-            display: block;
-            line-height: 1.1;
-        }
-        .key-number .label {
-            font-size: 0.88em;
-            color: #555;
-            margin-top: 0.4em;
-            display: block;
-        }
-
-        .step-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.4em;
-            margin: 2em 0;
-        }
-        .step-card {
-            background: #fafaf5;
-            border: 1px solid #d8d4c8;
-            border-radius: 10px;
-            padding: 1.6em;
-        }
-        .step-card .step-num {
-            display: inline-block;
-            background: #2e7d32;
+        /* ── Cover: etch pits spreading and merging, drawn live ─────────── */
+        .clc-cover {
+            position: relative;
+            min-height: 100vh;
+            min-height: 100svh;
+            display: flex;
+            align-items: flex-end;
+            padding: 150px 0 clamp(2.5rem, 6vw, 4.5rem);
             color: #fff;
-            width: 28px; height: 28px;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 28px;
-            font-size: 0.85em;
-            font-weight: 700;
-            margin-bottom: 0.6em;
+            overflow: hidden;
+            isolation: isolate;
+            background: #34352f;
         }
-        .step-card h3 {
-            margin: 0 0 0.4em;
-            font-size: 1.05em;
-            color: #1a1a1a;
+        .etch { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -2; }
+        .clc-cover::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background:
+                linear-gradient(90deg, rgba(13,15,12,.9) 0%, rgba(13,15,12,.68) 38%, rgba(13,15,12,.08) 72%),
+                linear-gradient(0deg, rgba(13,15,12,.72) 0%, rgba(13,15,12,0) 36%),
+                linear-gradient(180deg, rgba(13,15,12,.55) 0%, rgba(13,15,12,0) 22%);
         }
-        .step-card p {
+        .etch-clock {
+            position: absolute;
+            right: var(--gutter);
+            top: 120px;
+            text-align: right;
+            font-family: var(--font-mono);
             margin: 0;
-            font-size: 0.93em;
-            color: #444;
+            text-shadow: 0 0 10px #000;
+        }
+        .etch-clock b { display: block; font-weight: 400; font-size: clamp(1.4rem, 2.4vw, 2.1rem); color: #fff; font-variant-numeric: tabular-nums; }
+        .etch-clock span { font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.72); }
+        .clc-cover-text { max-width: 48rem; }
+        .clc-cover .back-link {
+            color: rgba(255,255,255,.8);
+            font-size: .85rem;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            margin-bottom: 1.6rem;
+        }
+        .clc-cover .back-link:hover { color: #fff; }
+        .clc-kicker {
+            font-size: .8rem;
+            font-weight: 600;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: var(--spar);
+            margin-bottom: 1.1rem;
+        }
+        .clc-cover h1 {
+            font-size: clamp(2.5rem, 5vw, 4.7rem);
+            line-height: .99;
+            letter-spacing: -.02em;
+            color: #fff;
+            margin-bottom: 1.5rem;
+        }
+        .clc-lede {
+            font-size: 1.16rem;
             line-height: 1.6;
+            color: rgba(255,255,255,.9);
+            border-left: 2px solid var(--color-amber);
+            padding-left: 1.25rem;
+            margin-bottom: 1.5rem;
         }
+        .clc-authors { font-size: .95rem; color: rgba(255,255,255,.72); margin-bottom: 1.2rem; }
+        .clc-authors strong { color: #fff; font-weight: 600; }
+        .clc-actions { display: flex; flex-wrap: wrap; gap: .6rem 1.6rem; margin: 0; }
+        .clc-actions a {
+            font-weight: 600;
+            font-size: .95rem;
+            color: #fff;
+            padding-bottom: 4px;
+            background: linear-gradient(var(--color-amber), var(--color-amber)) 0 100% / 100% 1px no-repeat;
+        }
+        .clc-actions a:hover { color: #f0b39f; }
+        .etch-note {
+            position: absolute;
+            right: var(--gutter);
+            bottom: clamp(1.2rem, 3vw, 2.2rem);
+            max-width: 21rem;
+            font-size: .8rem;
+            line-height: 1.45;
+            text-align: right;
+            color: rgba(255,255,255,.72);
+            text-shadow: 0 0 8px #000;
+            margin: 0;
+        }
+        .js .clc-cover-text > * {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity 1s var(--ease-out), transform 1s var(--ease-out);
+        }
+        .js .is-loaded .clc-cover-text > * { opacity: 1; transform: none; }
+        .js .is-loaded .clc-cover-text > :nth-child(3) { transition-delay: .1s; }
+        .js .is-loaded .clc-cover-text > :nth-child(4) { transition-delay: .2s; }
+        .js .is-loaded .clc-cover-text > :nth-child(5) { transition-delay: .3s; }
+        .js .is-loaded .clc-cover-text > :nth-child(6) { transition-delay: .4s; }
 
-        .callout {
-            background: #f3faf4;
-            border: 1px solid #5dbb63;
-            border-radius: 10px;
-            padding: 1.4em 1.6em;
-            margin: 1.5em 0;
-            font-size: 0.95em;
-        }
-        .callout .callout-title {
-            font-weight: 700;
-            color: #2e7d32;
-            margin-bottom: 0.4em;
-        }
-
-        .before-after {
+        /* ── Text sections ─────────────────────────────────────────────── */
+        .clc-band { padding: clamp(4.5rem, 9vw, 8rem) 0; }
+        .clc-band + .clc-band { padding-top: 0; }
+        .clc-split {
             display: grid;
-            grid-template-columns: 1fr auto 1fr;
-            align-items: center;
-            gap: 1em;
-            margin: 2em 0;
-            text-align: center;
+            grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+            gap: clamp(2rem, 5vw, 5rem);
+            align-items: start;
         }
-        .before-after .angle-box {
-            background: #f0f5f1;
-            border-radius: 12px;
-            padding: 1.5em 2em;
+        .clc h2 {
+            font-size: clamp(2.8rem, 5.4vw, 4.8rem);
+            line-height: .98;
+            letter-spacing: -.015em;
         }
-        .before-after .angle-val {
-            font-size: 2.4em;
-            font-weight: 700;
-            display: block;
+        .clc-prose p { max-width: 62ch; margin-bottom: 1.25rem; }
+        .clc-prose p:last-child { margin-bottom: 0; }
+
+        .routes-compare { margin: clamp(2.5rem, 5vw, 4rem) 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(1rem, 3vw, 2.5rem); }
+        .option { border-top: 1px solid var(--color-ink); padding-top: 1rem; }
+        .option h3 { font-size: clamp(1.6rem, 2.3vw, 2.05rem); font-weight: 400; line-height: 1.1; margin-bottom: .7rem; }
+        .option p { font-size: 1rem; line-height: 1.55; color: var(--color-slate); margin: 0; }
+        .option-ours { border-top: 3px solid var(--water); }
+        .option-ours p { color: var(--color-ink); }
+
+        .clc-question {
+            font-family: var(--font-display);
+            font-weight: 300;
+            font-size: clamp(1.9rem, 3.5vw, 3.1rem);
+            line-height: 1.14;
+            letter-spacing: -.01em;
+            max-width: 25em;
+            margin: 0;
         }
-        .before-after .hydro { color: #2e7d32; }
-        .before-after .hydra { color: #c0392b; }
-        .before-after .arrow {
-            font-size: 2em;
-            color: #888;
+
+        .protocol { list-style: none; margin: 0; }
+        .protocol li {
+            display: grid;
+            grid-template-columns: minmax(0, 10rem) minmax(0, 1fr);
+            gap: .3rem 1.5rem;
+            border-top: 1px solid var(--border);
+            padding: 1rem 0 1.1rem;
         }
-        .before-after .angle-label {
-            font-size: 0.85em;
-            color: #666;
-            margin-top: 0.3em;
+        .protocol span {
+            font-family: var(--font-mono);
+            font-size: .76rem;
+            letter-spacing: .05em;
+            text-transform: uppercase;
+            color: var(--color-copper);
+            padding-top: .3rem;
         }
-        @media (max-width: 600px) {
-            .before-after { grid-template-columns: 1fr; }
-            .before-after .arrow { transform: rotate(90deg); }
+        .protocol p { margin: 0; }
+
+        /* ── The etching clock, driven by scroll ───────────────────────── */
+        .clock { background: var(--color-night); color: #f1efe8; }
+        .clock-intro { padding: clamp(4.5rem, 9vw, 8rem) 0 clamp(1rem, 3vw, 2rem); }
+        .clock-intro h2 { color: #fff; margin-bottom: 1rem; }
+        .clock-intro p { max-width: 58ch; color: rgba(255,255,255,.76); margin: 0; }
+        .clock-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+            gap: clamp(1.5rem, 4vw, 4rem);
+        }
+        .clock-stage {
+            position: sticky;
+            top: 64px;
+            height: calc(100vh - 64px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: clamp(.6rem, 1.6vh, 1.1rem);
+            order: 2;
+        }
+        html:not(.js) .clock-stage { display: none; }
+        .readout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 15rem); gap: 1.25rem; align-items: end; }
+        .angle-num {
+            font-family: var(--font-display);
+            font-weight: 300;
+            font-size: clamp(4rem, min(9vw, 15vh), 8.4rem);
+            line-height: .86;
+            letter-spacing: -.03em;
+            color: #fff;
+            font-variant-numeric: lining-nums tabular-nums;
+        }
+        .angle-num small { font-size: .3em; letter-spacing: 0; color: rgba(255,255,255,.7); margin-left: .25em; }
+        .regime { font-family: var(--font-display); font-style: italic; font-size: clamp(1.2rem, 2vw, 1.6rem); color: #9fd0f0; margin: .55rem 0 0; }
+        .rf { font-family: var(--font-mono); font-size: .76rem; letter-spacing: .03em; color: rgba(255,255,255,.62); margin: .3rem 0 0; }
+        .sem-window { position: relative; aspect-ratio: 617 / 393; background: #222; overflow: hidden; }
+        .sem-window img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .55s var(--ease-out); }
+        .sem-window img.is-on { opacity: 1; }
+        #section { display: block; width: 100%; aspect-ratio: 16 / 7; max-height: 44vh; }
+        .etchline {
+            position: relative;
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            margin: 0;
+            font-family: var(--font-mono);
+            font-size: .76rem;
+            color: rgba(255,255,255,.55);
+            border-top: 1px solid rgba(255,255,255,.22);
+        }
+        .etchline li { padding-top: .5rem; position: relative; transition: color .3s; }
+        .etchline li::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: 0;
+            width: 7px;
+            height: 7px;
+            background: rgba(255,255,255,.35);
+            transition: background .3s, transform .3s;
+        }
+        .etchline li.is-on { color: #fff; }
+        .etchline li.is-on::before { background: var(--spar); transform: scale(1.5); }
+        .stage-note { font-size: .78rem; color: rgba(255,255,255,.5); margin: 0; }
+        .clock-steps { order: 1; padding-bottom: 28vh; }
+        .step {
+            min-height: 82vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: .32;
+            transition: opacity .5s var(--ease-out);
+        }
+        html:not(.js) .step { opacity: 1; min-height: 0; padding: 2rem 0; }
+        .step.is-active { opacity: 1; }
+        .step-n {
+            font-family: var(--font-mono);
+            font-size: .78rem;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: var(--spar);
+            margin-bottom: .8rem;
+        }
+        .step h3 { font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 300; line-height: 1.04; color: #fff; margin-bottom: 1rem; }
+        .step p { margin-bottom: .9rem; max-width: 42ch; color: rgba(255,255,255,.82); }
+        .step p:last-child { margin-bottom: 0; }
+
+        /* ── Figures ───────────────────────────────────────────────────── */
+        .fig {
+            display: grid;
+            grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+            gap: clamp(1.5rem, 4vw, 4rem);
+            align-items: start;
+            padding: clamp(2.5rem, 5vw, 4rem) 0;
+            border-top: 1px solid var(--border);
+        }
+        .fig-plate { margin: 0; }
+        .fig-plate > a { display: block; }
+        .fig-plate img { width: 100%; height: auto; background: #fff; transition: opacity .3s; }
+        .fig-plate > a:hover img { opacity: .9; }
+        .fig-plate figcaption { font-size: .86rem; line-height: 1.5; color: var(--color-slate); margin-top: .9rem; }
+        .fig-plate figcaption strong { color: var(--color-ink); font-weight: 600; }
+        .credit { display: block; margin-top: .45rem; color: var(--color-ite); }
+        .credit a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+        .fig-notes { position: sticky; top: 96px; }
+        .fig-notes h3 { font-size: clamp(1.9rem, 2.8vw, 2.5rem); font-weight: 300; line-height: 1.05; margin-bottom: 1.2rem; }
+        .fig-notes dl { margin: 0; }
+        .fig-notes dt { font-family: var(--font-mono); font-size: .8rem; color: var(--color-copper); margin-top: 1rem; }
+        .fig-notes dd { margin: .15rem 0 0; }
+        .fig-notes p { max-width: 50ch; }
+        .fig-dark { background: var(--color-night); color: #f1efe8; }
+        .fig-dark .fig { border-top: 0; padding: clamp(3.5rem, 7vw, 6rem) 0; }
+        .fig-dark .fig-plate figcaption, .fig-dark .credit { color: rgba(255,255,255,.62); }
+        .fig-dark .fig-plate figcaption strong { color: #fff; }
+        .fig-dark .fig-notes h3 { color: #fff; }
+        .fig-dark .fig-notes dt { color: var(--spar); }
+
+        /* ── Fakir vs Wenzel: the arithmetic ───────────────────────────── */
+        .states { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.5rem, 4vw, 3.5rem); margin: clamp(2.5rem, 5vw, 4rem) 0 0; }
+        .state svg { display: block; width: 100%; height: auto; }
+        .state h3 { font-size: clamp(1.8rem, 2.6vw, 2.35rem); font-weight: 400; line-height: 1.1; margin: 1.1rem 0 .6rem; }
+        .state p { margin: 0 0 1rem; max-width: 50ch; }
+        .sum {
+            font-family: var(--font-mono);
+            font-size: .88rem;
+            line-height: 1.75;
+            border-left: 2px solid var(--water);
+            padding-left: 1rem;
+            margin: 0;
+        }
+        .sum strong { font-weight: 500; }
+        .state-no .sum { border-left-color: var(--color-ite-light); }
+        .sum-inputs { font-family: var(--font-mono); font-size: .84rem; color: var(--color-slate); margin: 1.6rem 0 0; }
+
+        /* ── Salt matrix ───────────────────────────────────────────────── */
+        .salts { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 3px; margin: clamp(2rem, 4vw, 3rem) 0 .7rem; }
+        .salt { padding: .85rem .4rem; text-align: center; background: var(--color-calcite); color: var(--color-slate); font-family: var(--font-mono); font-size: .86rem; }
+        .salt b { display: block; font-weight: 400; font-family: var(--font-body); font-size: .76rem; margin-top: .25rem; }
+        .salt.yes { background: var(--color-ink); color: #fff; }
+        .salts-note { font-size: .88rem; color: var(--color-slate); max-width: 66ch; margin: 0; }
+
+        /* ── Limits ────────────────────────────────────────────────────── */
+        .numbers { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 clamp(1rem, 3vw, 2.5rem); margin: clamp(2rem, 4vw, 3rem) 0 0; }
+        .number { border-top: 1px solid var(--color-ink); padding-top: 1rem; }
+        .number dt { font-family: var(--font-display); font-weight: 300; font-size: clamp(2.2rem, 3.6vw, 3.3rem); line-height: 1; margin-bottom: .7rem; font-variant-numeric: lining-nums; }
+        .number dd { margin: 0; font-size: .98rem; line-height: 1.45; color: var(--color-slate); }
+
+        /* ── Citation ──────────────────────────────────────────────────── */
+        .cite { background: var(--color-night); color: #f1efe8; padding: clamp(4rem, 8vw, 7rem) 0; }
+        .cite h2 { color: #fff; }
+        .cite-text { font-family: var(--font-display); font-size: clamp(1.35rem, 2vw, 1.7rem); line-height: 1.3; margin-bottom: 1.5rem; }
+        .cite-text strong { font-weight: 500; color: #f0b39f; }
+        .cite .clc-actions { margin-bottom: 2rem; }
+        .cite small { display: block; font-size: .88rem; line-height: 1.55; color: rgba(255,255,255,.62); margin-top: .7rem; max-width: 64ch; }
+        .cite small a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+        .cite .back-link { color: rgba(255,255,255,.8); margin: 2.5rem 0 0; }
+        .cite .back-link:hover { color: #fff; }
+
+        /* ── Responsive ────────────────────────────────────────────────── */
+        @media (max-width: 1000px) {
+            .numbers { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.8rem clamp(1rem, 3vw, 2.5rem); }
+            .salts { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        }
+        @media (max-width: 860px) {
+            .clc-split, .fig, .states, .routes-compare { grid-template-columns: 1fr; }
+            .routes-compare { gap: 1.6rem; }
+            .fig-notes { position: static; order: -1; }
+            .etch-note { display: none; }
+            .etch-clock { top: 84px; }
+            .clc-cover::after {
+                background: linear-gradient(0deg, rgba(13,15,12,.96) 0%, rgba(13,15,12,.86) 56%, rgba(13,15,12,.25) 86%, rgba(13,15,12,.45) 100%);
+            }
+            .clock-grid { display: block; }
+            .clock-stage {
+                height: auto;
+                z-index: 2;
+                padding: .7rem 0 .6rem;
+                gap: .45rem;
+                background: var(--color-night);
+                box-shadow: 0 14px 24px -8px var(--color-night);
+            }
+            .readout { grid-template-columns: minmax(0, 1fr) minmax(0, 8.5rem); gap: .7rem; }
+            .angle-num { font-size: 3.1rem; }
+            .regime { font-size: 1.02rem; margin-top: .25rem; }
+            .rf { display: none; }
+            #section { aspect-ratio: 16 / 6; max-height: none; }
+            .stage-note { display: none; }
+            .etchline { font-size: .68rem; }
+            .clock-steps { padding-bottom: 40vh; }
+            .step { min-height: 60vh; justify-content: flex-start; padding-top: 1.5rem; }
+        }
+        @media (max-width: 560px) {
+            .protocol li { grid-template-columns: 1fr; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .clc *, .clc *::before, .clc *::after { transition-duration: .01ms !important; transition-delay: 0s !important; }
         }
     </style>
 </head>
-<body>
+<body class="has-cover clc">
     <div id="site-header"></div>
 
-    <main class="page-top">
-        <div class="container">
-            <a href="../publications.html" class="back-link">Back to Publications</a>
+    <main>
+        <!-- ===== COVER ===== -->
+        <section class="clc-cover" id="cover">
+            <canvas class="etch" id="etch" aria-hidden="true"></canvas>
+            <p class="etch-clock" aria-hidden="true"><span>Etching</span><b id="etch-time">0.0 h</b></p>
 
-            <div class="article-detail">
-                <div class="article-detail-header">
-                    <h1>Formation of micropillars on etched calcite and their biomimetic effect on wettability</h1>
-                    <div class="article-meta">
-                        <span><strong>Year:</strong> 2025</span>
-                        <span><strong>Journal:</strong> Materials &amp; Design, 255, 114214</span>
-                    </div>
-                </div>
-
-                <div class="article-body">
-                    <img class="hero-img" src="../img/articles/calcite-micropillars-hero.jpg" alt="SEM image of micropillars on etched calcite surfaces">
-                    <p class="img-caption">SEM image of micropillars formed on calcite surfaces after 24 h etching in ammonium chloride solution.</p>
-
-                    <!-- ═══════════════════════════════════════ -->
-                    <h2>Why this research matters</h2>
-
-                    <p>Marble facades, limestone cathedrals, lime-based plasters, a vast share of our architectural and sculptural heritage is made of calcite (CaCO₃). And calcite has an Achilles' heel: water. Rainwater, polluted or not, slowly dissolves calcium carbonate, eats away surface detail, and opens the pore network to salt damage, frost and biological colonisation. Protecting these surfaces has traditionally meant applying polymer coatings, siloxanes, polyacrylates, sometimes containing PFAS "forever chemicals", that can trap moisture, alter the stone's breathability, and raise environmental concerns.</p>
-
-                    <p>Nature, however, solved the water-repellency problem long ago. The lotus leaf famously achieves superhydrophobicity (contact angle > 150°) not through chemistry alone, but through <em>surface architecture</em>: a dense bed of microscopic pillars that traps air pockets beneath water droplets and makes them bead up and roll off, carrying dirt away. Could we borrow this trick and apply it directly to calcite, without any polymer coating at all?</p>
-
-                    <div class="highlight-box">
-                        <strong>The idea:</strong> Use a simple ammonium chloride solution to etch the calcite surface and let the crystal's own anisotropic dissolution create a dense array of oriented micropillars, a biomimetic "fakir bed" that makes the originally hydrophilic stone nearly superhydrophobic, with no coating needed.
-                    </div>
-
-                    <!-- ═══════════════════════════════════════ -->
-                    <h2>What we did</h2>
-
-                    <p>We cleaved optical-quality Iceland spar calcite crystals to expose pristine {104} faces, then immersed them in a 1 M NH₄Cl solution and watched what happened, over minutes, hours and days, using a battery of complementary techniques:</p>
-
-                    <div class="step-cards">
-                        <div class="step-card">
-                            <div class="step-num">1</div>
-                            <h3>In situ AFM</h3>
-                            <p>We filmed the very first moments of etching at nanometre resolution inside a fluid-cell atomic force microscope, tracking individual etch pits as they nucleated, spread, and began to merge.</p>
-                        </div>
-                        <div class="step-card">
-                            <div class="step-num">2</div>
-                            <h3>SEM / FESEM time series</h3>
-                            <p>Crystals etched for ½ h, 1 h, 2 h, 24 h and 90 h were imaged to capture the full lifecycle of micropillar formation, maturation and eventual over-etching.</p>
-                        </div>
-                        <div class="step-card">
-                            <div class="step-num">3</div>
-                            <h3>ESEM condensation</h3>
-                            <p>We condensed water vapour directly onto flat and micropillared calcite inside an environmental SEM, watching how microdroplets interact with individual pillars.</p>
-                        </div>
-                        <div class="step-card">
-                            <div class="step-num">4</div>
-                            <h3>Contact angle measurements</h3>
-                            <p>Macroscale sessile-drop tests quantified the wettability change at each etching stage, from hydrophilic to nearly superhydrophobic.</p>
-                        </div>
-                        <div class="step-card">
-                            <div class="step-num">5</div>
-                            <h3>MATLAB modelling</h3>
-                            <p>A numerical simulation of etch-pit nucleation and coalescence reproduced the emergence of pillar-like topography, confirming the dissolution-based formation mechanism.</p>
-                        </div>
-                        <div class="step-card">
-                            <div class="step-num">6</div>
-                            <h3>Durability tests</h3>
-                            <p>Sandpaper abrasion and prolonged water immersion challenged the micropillars' mechanical and chemical stability.</p>
-                        </div>
-                    </div>
-
-                    <div class="article-image-grid">
-                        <div>
-                            <img src="../img/articles/calcite-sample-1.jpg" alt="Detail of micropillar formation at different etching times">
-                            <p class="img-caption">Detail of micropillar formation at different etching stages.</p>
-                        </div>
-                        <div>
-                            <img src="../img/articles/calcite-sample-2.jpg" alt="Water contact angle measurements on etched surfaces">
-                            <p class="img-caption">Wettability measurements on treated surfaces.</p>
-                        </div>
-                    </div>
-
-                    <!-- ═══════════════════════════════════════ -->
-                    <h2>Key findings</h2>
-
-                    <h3>1. How the micropillars form: dissolution, not growth</h3>
-
-                    <p>Within 30 minutes of contact with NH₄Cl solution, rhombohedral etch pits appeared on the calcite surface. A crucial detail emerged under the AFM: obtuse steps of the pits became <em>rounded</em>, a signature of NH₄⁺ ions interacting with carbonate groups via hydrogen bonding. As etch pits deepened and spread, their coalescence left behind elevated islands, the embryonic micropillars. By 24 h, the entire crystal face was covered by a dense array of iso-oriented, c-axis-elongated pyramidal micropillars about 15–30 µm tall and 3–7 µm wide at their base, bounded by steep {1̄02} polar faces stabilised by ammonium adsorption.</p>
-
-                    <div class="callout">
-                        <div class="callout-title">🔑 The ammonium key</div>
-                        Control experiments with NaCl, KCl and LiCl produced no micropillars, only generic surface roughening. Different ammonium salts (bromide, iodide, nitrate) all generated micropillars. This proves the NH₄⁺ cation is the essential ingredient: its ability to hydrogen-bond with CO₃²⁻ groups in calcite's polar faces selectively stabilises the emerging pillar walls against further dissolution.
-                    </div>
-
-                    <h3>2. From hydrophilic to nearly superhydrophobic: without any coating</h3>
-
-                    <div class="before-after">
-                        <div class="angle-box">
-                            <span class="angle-val hydra">~60°</span>
-                            <div class="angle-label">Flat calcite, hydrophilic</div>
-                        </div>
-                        <div class="arrow">→</div>
-                        <div class="angle-box">
-                            <span class="angle-val hydro">~140°</span>
-                            <div class="angle-label">24 h etched, nearly superhydrophobic</div>
-                        </div>
-                    </div>
-
-                    <p>The flat (104) calcite surface starts with a contact angle of about 60°, clearly hydrophilic. After 24 h of etching, the micropillared surface pushes the contact angle up to <strong>138 ± 8°</strong>, entering the regime of near-superhydrophobicity. Cassie-Baxter modelling (predicted θ ≈ 148°) confirms that macroscopic water droplets sit on top of the pillar tips, resting on trapped air pockets, exactly like water on a lotus leaf. A Wenzel (fully-wetting) model fails entirely for these roughness values, proving that the Cassie-Baxter "fakir bed" state is responsible for the observed water repellency.</p>
-
-                    <p>Interestingly, ESEM showed that at the microscale, individual water microdroplets condensing from vapour <em>do</em> wet individual pillars, a behaviour shared by all micropillared superhydrophobic surfaces. The protection is therefore most effective against rain-type exposure (macroscopic droplets) rather than condensation.</p>
-
-                    <h3>3. How much material is removed?</h3>
-
-                    <p>For micropillars of ~25 µm height tilted at 45° to the surface, the normal surface recession is only about <strong>18 µm</strong>. That is a negligibly thin layer, far less invasive than the thermal decomposition zone left by laser surface texturing, and vastly less than typical stone erosion rates in polluted urban atmospheres over decades.</p>
-
-                    <h3>4. Durability</h3>
-
-                    <p>The micropillars survived 6 days of continuous immersion in water with no visible change in morphology or density. The aggressive sandpaper abrasion test (1 500 grit, 50 cycles) did erode the pillars, calcite is soft (Mohs 3), but even then the surface remained hydrophobic due to the new roughness introduced by abrasion. Under realistic exposure conditions (no one drags sandpaper across cathedral walls), the treatment should be durable; retreatment after many years of weathering remains straightforward.</p>
-
-                    <div class="key-number-grid">
-                        <div class="key-number">
-                            <span class="number">~140°</span>
-                            <span class="label">Contact angle after 24 h etching (vs ~60° untreated)</span>
-                        </div>
-                        <div class="key-number">
-                            <span class="number">~18 µm</span>
-                            <span class="label">Surface recession: negligibly thin</span>
-                        </div>
-                        <div class="key-number">
-                            <span class="number">24 h</span>
-                            <span class="label">Optimal etching time for maximum pillar coverage</span>
-                        </div>
-                        <div class="key-number">
-                            <span class="number">0</span>
-                            <span class="label">Polymer coatings needed</span>
-                        </div>
-                    </div>
-
-                    <!-- ═══════════════════════════════════════ -->
-                    <h2>The bigger picture</h2>
-
-                    <p>This work demonstrates that a simple, cheap and safe etching solution, ammonium chloride dissolved in water, can turn the Achilles' heel of calcite (its tendency to dissolve) into a protective advantage. By letting the crystal dissolve in a controlled, anisotropic fashion, nature's own crystallography builds a biomimetic armour against future water attack, with no synthetic polymers, no PFAS, no laser, and no change in the stone's appearance.</p>
-
-                    <p>From a practical standpoint, the treatment could be delivered to irregularly shaped surfaces (statues, carved facades) via poultices soaked in the ammonium salt solution, left in place for 24 h, removed, and rinsed. Future research will test this on real stone (marble, limestone) and explore bonus effects such as antibacterial activity of the micropillared surface.</p>
-
-                    <!-- ═══════════════════════════════════════ -->
-                    <h2>Where to find the full paper</h2>
-                    <p>The full article is available at <a href="https://doi.org/10.1016/j.matdes.2025.114214" target="_blank">doi.org/10.1016/j.matdes.2025.114214</a>. You can also watch the <a href="https://youtu.be/orKbDZ7eTls" target="_blank">video interview</a> about this work.</p>
-                </div>
-
-                <div class="post-nav">
+            <div class="frame" style="width:100%">
+                <div class="clc-cover-text">
                     <a href="../publications.html" class="back-link">Back to Publications</a>
+                    <p class="clc-kicker">Materials &amp; Design · 2025 · The heart of my PhD</p>
+                    <h1>Formation of micropillars on etched calcite and their biomimetic effect on wettability</h1>
+                    <p class="clc-lede">Calcite's weakness is that water dissolves it. We used that weakness to protect it: a controlled etch carves a dense bed of microscopic pillars, and water that once spread over the crystal now beads up on the tips. No coating involved.</p>
+                    <p class="clc-authors"><strong>F. Santoro De Vico</strong>, K. Elert, E. Ruiz-Agudo, C. Rodriguez-Navarro</p>
+                    <p class="clc-actions">
+                        <a href="https://doi.org/10.1016/j.matdes.2025.114214" target="_blank" rel="noopener">Read the paper (open access)</a>
+                        <a href="https://youtu.be/orKbDZ7eTls" target="_blank" rel="noopener">Watch the video interview</a>
+                    </p>
                 </div>
             </div>
-        </div>
+            <p class="etch-note">Drawn live in your browser: pits open on a calcite face, spread with steps retreating at v⁺/v⁻ = 2.8, and leave ridges and peaks where they merge. A qualitative sketch of the mechanism, in the spirit of Fig. 7.</p>
+        </section>
+
+        <!-- ===== THE PROBLEM ===== -->
+        <section class="clc-band">
+            <div class="frame">
+                <div class="clc-split">
+                    <h2 class="reveal rise">Water against stone</h2>
+                    <div class="clc-prose reveal rise">
+                        <p>Marble, limestone, lime mortars and plasters: a vast share of our sculptural and built heritage is made of calcite (CaCO₃). Water is involved in every kind of degradation these materials suffer, and acid pollutants make it worse, dissolving the surface and turning it into more soluble salts. The result is erosion, structural weakening and aesthetic damage.</p>
+                        <p>The obvious defence is to stop water reaching the stone. The lotus leaf has shown how: microscopic roughness plus waxy nanostructures keep a droplet sitting on the tips of a "fakir bed", at contact angles above 150°, and it rolls away carrying the dirt. The hard part is getting that onto a statue.</p>
+                    </div>
+                </div>
+
+                <div class="routes-compare">
+                    <div class="option reveal rise">
+                        <h3>Polymer coatings</h3>
+                        <p>Polyacrylates, alkyl-silanes, siloxanes, often with PFAS. They rarely exceed 120°, tend to form impervious films that block water vapour, can foster salt damage below the surface, and raise environmental and health concerns.</p>
+                    </div>
+                    <div class="option reveal rise">
+                        <h3>Laser texturing</h3>
+                        <p>No polymer, and it can reach superhydrophobicity. But the stone discolours, heat decomposes the surface (CaCO₃ = CaO + CO₂), and large, irregular surfaces like statues are a real logistical problem.</p>
+                    </div>
+                    <div class="option option-ours reveal rise">
+                        <h3>This work: etch the calcite itself</h3>
+                        <p>Roughness made from the crystal, by dissolution. No coating on the surface, and it could reach complex shapes through a poultice loaded with the solution.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="clc-band">
+            <div class="frame">
+                <p class="clc-question reveal rise">Geologists already know "spiky calcite" from tufa, travertine, speleothems and weathered marble. Could we produce those textures on purpose, in hours, and would water care?</p>
+            </div>
+        </section>
+
+        <section class="clc-band">
+            <div class="frame">
+                <div class="clc-split">
+                    <h2 class="reveal rise">The experiment</h2>
+                    <ul class="protocol">
+                        <li class="reveal rise"><span>The crystal</span><p>Optical-quality Iceland spar from Chihuahua, Mexico, freshly cleaved to expose {104} faces. No polishing, to keep the steps and ripples real stone would have.</p></li>
+                        <li class="reveal rise"><span>The etchant</span><p>NH₄Cl solutions from 1 mM to 2 M, tested over time and temperature. Best pillars: <strong>1 M, 24 h, 25 °C</strong></p></li>
+                        <li class="reveal rise"><span>Controls</span><p>The same test with NaCl, KCl, LiCl, NH₄Br, NH₄I and NH₄NO₃, at least three crystals per run</p></li>
+                        <li class="reveal rise"><span>Imaging</span><p>SEM and FESEM through time, in situ fluid-cell AFM at 10–15 mM, confocal microscopy</p></li>
+                        <li class="reveal rise"><span>Water</span><p>Static contact angles with 4 µL drops, and condensation cycles inside an environmental SEM</p></li>
+                        <li class="reveal rise"><span>Also</span><p>Batch dissolution with pH tracking, a MATLAB simulation of the pits, sandpaper abrasion and six days under water</p></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== THE ETCHING CLOCK ===== -->
+        <section class="clock">
+            <div class="frame clock-intro">
+                <h2 class="reveal rise">A drop, a clock, a crystal</h2>
+                <p class="reveal rise">Scroll to etch. The contact angles and roughness factors are the measured ones (Fig. 4), and the drop is drawn at the real angle. The SEM panels are cropped from Fig. 1 and all carry a 10 µm scale bar.</p>
+            </div>
+            <div class="frame clock-grid">
+                <div class="clock-stage" aria-hidden="true">
+                    <div class="readout">
+                        <div>
+                            <div class="angle-num"><span id="angle">60</span>°<small id="angle-err">± 3</small></div>
+                            <p class="regime" id="regime">Hydrophilic</p>
+                            <p class="rf">Roughness factor R<sub>f</sub> = <span id="rf">1</span></p>
+                        </div>
+                        <div class="sem-window" id="sem">
+                            <img src="../img/articles/calcite/sem-0h.jpg" alt="" class="is-on" data-t="0">
+                            <img src="../img/articles/calcite/sem-05h.jpg" alt="" data-t="1">
+                            <img src="../img/articles/calcite/sem-2h.jpg" alt="" data-t="3">
+                            <img src="../img/articles/calcite/sem-24h.jpg" alt="" data-t="4">
+                            <img src="../img/articles/calcite/sem-90h.jpg" alt="" data-t="5">
+                        </div>
+                    </div>
+                    <canvas id="section"></canvas>
+                    <ol class="etchline" id="etchline">
+                        <li class="is-on">0 h</li><li>0.5 h</li><li>1 h</li><li>2 h</li><li>24 h</li><li>90 h</li>
+                    </ol>
+                    <p class="stage-note">Schematic section, not to scale: the drop is about 2 mm wide, the pillars about 25 µm tall.</p>
+                </div>
+
+                <div class="clock-steps">
+                    <article class="step">
+                        <p class="step-n">0 h · 60 ± 3°</p>
+                        <h3>A flat face</h3>
+                        <p>Freshly cleaved (104) calcite. Before any etching the surface is clearly hydrophilic: the drop spreads.</p>
+                    </article>
+                    <article class="step">
+                        <p class="step-n">0.5 h · about 82°</p>
+                        <h3>The first relief</h3>
+                        <p>Etch pits have opened and merged, and incipient micropillars with micrometre-sized bases appear. The angle climbs, but the surface is still hydrophilic.</p>
+                    </article>
+                    <article class="step">
+                        <p class="step-n">1 h · about 87°</p>
+                        <h3>Almost there</h3>
+                        <p>Roughness has doubled. The drop sits just short of the 90° that separates a wetting surface from a repellent one. The SEM series in the paper has no 1 h panel, so the image stays on 0.5 h.</p>
+                    </article>
+                    <article class="step">
+                        <p class="step-n">2 h · about 107°</p>
+                        <h3>Across the line</h3>
+                        <p>Different areas of the crystal now show dense pillar coverage, and the surface enters the hydrophobic region. Nothing has been added to it: this is geometry.</p>
+                    </article>
+                    <article class="step">
+                        <p class="step-n">24 h · 138 ± 8°</p>
+                        <h3>The fakir bed</h3>
+                        <p>Dense arrays of pyramidal pillars, about 15–30 µm tall and 3–7 µm wide at the base, all leaning the same way: along the c-axis, at 45.5° to the surface. Water rests on the tips, over pockets of air. The Cassie-Baxter calculation predicts 148°.</p>
+                    </article>
+                    <article class="step">
+                        <p class="step-n">90 h · about 25°</p>
+                        <h3>Too far</h3>
+                        <p>Keep etching and it all collapses. Over-etching removes part of the pillars and widens the base of the survivors, and the surface turns hydrophilic again. The treatment has an optimum, and it is a day long.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ATLAS ===== -->
+        <section class="fig-dark">
+            <div class="frame">
+                <div class="fig" style="padding-top:0">
+                    <figure class="fig-plate reveal rise">
+                        <a href="../img/articles/calcite/fig1.jpg" target="_blank" rel="noopener" aria-label="Open Figure 1 at full size"><img src="../img/articles/calcite/fig1.jpg" width="1500" height="1302" loading="lazy" alt="Twelve SEM images of calcite surfaces: flat and unetched at 0 h, first relief at half an hour, dense pointed pillars at 2 and 24 hours, and eroded, broadened pillars at 90 hours."></a>
+                        <figcaption><strong>Figure 1</strong> FESEM images of the calcite (104) surface after different times of etching in a 1 M NH₄Cl solution. A) Starting calcite with a smooth surface. B) After ½ h etching. C) Detail after 1/2h etching. D) 2 h etching. E) Detail of the pillars in (D). F) high magnification detail of micropillars formed after 2 h etching. G) General overview of micropillars formed after 24 h etching time. H) detail of (G). I) high magnification image of micropillars developed after 24 h etching time. J) General overview of micropillars formed after 90 h etching time. K) detail of (J). L) high magnification image of micropillars developed after 90 h etching time.
+                            <span class="credit">From Santoro De Vico <em>et al.</em> (2025), <em>Materials &amp; Design</em> 255, 114214. © 2025 The Authors, <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>. The panels above in the clock are cropped from this figure.</span></figcaption>
+                    </figure>
+                    <div class="fig-notes reveal rise">
+                        <h3>Twelve frames of one crystal's life</h3>
+                        <p>Read each row left to right to zoom in, and top to bottom to age. The base of the pillars starts rhombic, like the etch pits, then turns pseudo-triangular as the obtuse steps round off.</p>
+                        <p>Look closely at I and L: the faces are not smooth but stepped. The steep {1̄02} faces that bound the pillars are only partly stabilised, so the more stable faces keep appearing as small steps.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== TWO SCALES ===== -->
+        <section class="clc-band">
+            <div class="frame">
+                <div class="clc-split">
+                    <h2 class="reveal rise">Is the water on top, or inside?</h2>
+                    <div class="clc-prose reveal rise">
+                        <p>A rough surface can repel water in two very different ways, or fail to. In a Wenzel state the drop soaks down between the pillars, wetting everything. In a Cassie-Baxter state it only touches the tips, with air trapped below, and a drop in that state rolls off easily. That is what self-cleaning needs.</p>
+                        <p>With our measured geometry, the arithmetic is short enough to do here.</p>
+                        <p class="sum-inputs">h = 25 µm · a = 4 µm · s = 10 µm · θ = 60° · φ<sub>s</sub> = 0.101</p>
+                    </div>
+                </div>
+
+                <div class="states">
+                    <div class="state state-no reveal rise">
+                        <svg viewBox="0 0 520 170" role="img" aria-label="Wenzel state: water fills the spaces between the pillars.">
+                            <path d="M20 96 C110 40 410 40 500 96 L500 150 L20 150 Z" fill="#2c7fb8" fill-opacity=".42"/>
+                            <g fill="#d9b777"><path d="M60 150 L88 150 L112 84 Z"/><path d="M126 150 L154 150 L178 84 Z"/><path d="M192 150 L220 150 L244 84 Z"/><path d="M258 150 L286 150 L310 84 Z"/><path d="M324 150 L352 150 L376 84 Z"/><path d="M390 150 L418 150 L442 84 Z"/></g>
+                            <rect x="0" y="150" width="520" height="20" fill="#d9b777"/>
+                        </svg>
+                        <h3>Wenzel: impossible here</h3>
+                        <p>Roughness amplifies whatever the flat surface does, so a hydrophilic face should become more hydrophilic.</p>
+                        <p class="sum">R<sub>f</sub> = 1 + 2ha / s² = 1 + (2 · 25 · 4) / 10² = 3<br>cos θ<sub>W</sub> = R<sub>f</sub> cos θ = 3 · 0.5 = <strong>1.5</strong><br>A cosine above 1 has no angle. No solution.</p>
+                    </div>
+                    <div class="state reveal rise">
+                        <svg viewBox="0 0 520 170" role="img" aria-label="Cassie-Baxter state: water rests on the pillar tips with air pockets underneath.">
+                            <path d="M62 86 C70 -4 420 -4 462 86 Z" fill="#2c7fb8" fill-opacity=".42"/>
+                            <g fill="#d9b777"><path d="M60 150 L88 150 L112 84 Z"/><path d="M126 150 L154 150 L178 84 Z"/><path d="M192 150 L220 150 L244 84 Z"/><path d="M258 150 L286 150 L310 84 Z"/><path d="M324 150 L352 150 L376 84 Z"/><path d="M390 150 L418 150 L442 84 Z"/></g>
+                            <rect x="0" y="150" width="520" height="20" fill="#d9b777"/>
+                        </svg>
+                        <h3>Cassie-Baxter: it fits</h3>
+                        <p>Only about a tenth of the projected area is solid under the drop. The prediction lands close to the 138 ± 8° we measured.</p>
+                        <p class="sum">cos θ<sub>CB</sub> = φ<sub>s</sub> (cos θ + 1) − 1<br>= 0.101 · 1.5 − 1 = −0.85<br>θ<sub>CB</sub> = <strong>148°</strong></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="clc-band" style="padding-bottom:0">
+            <div class="frame">
+                <div class="fig">
+                    <figure class="fig-plate reveal rise">
+                        <a href="../img/articles/calcite/fig4.jpg" target="_blank" rel="noopener" aria-label="Open Figure 4 at full size"><img src="../img/articles/calcite/fig4.jpg" width="1421" height="1051" loading="lazy" alt="Bar chart of contact angle against etching time, with hydrophobic and superhydrophobic regions, and photographs of a water drop before etching and after 24 hours."></a>
+                        <figcaption><strong>Figure 4</strong> Calcite contact angles. (A) Evolution of contact angle with etching time. (B) and (C) images show the static water contact angle at time zero and after 24 h of etching, respectively, whose values are marked by a red star and a yellow rhomb in (A). The surface roughness factor (R<sub>f</sub>) for each etching time is indicated. Error bars show standard deviation (N ≥ 3).
+                            <span class="credit">From Santoro De Vico <em>et al.</em> (2025), <em>Materials &amp; Design</em> 255, 114214. © 2025 The Authors, <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>.</span></figcaption>
+                    </figure>
+                    <div class="fig-notes reveal rise">
+                        <h3>The same story, measured</h3>
+                        <p>These are the bars behind the clock above, and the two photographs are real drops: (B) on the flat crystal and (C) after 24 h, sitting up on the pillars.</p>
+                    </div>
+                </div>
+
+                <div class="fig">
+                    <figure class="fig-plate reveal rise">
+                        <a href="../img/articles/calcite/fig3.jpg" target="_blank" rel="noopener" aria-label="Open Figure 3 at full size"><img src="../img/articles/calcite/fig3.jpg" width="1500" height="492" loading="lazy" alt="Three environmental SEM images of water microdroplets on calcite pillars: droplets forming on tips, sliding down the edges, and collecting in the valleys."></a>
+                        <figcaption><strong>Figure 3</strong> Wettability of calcite etched with 1 M NH₄Cl. A–C) ESEM images showing the formation of water microdroplets (arrows in A and B) during condensation-evaporation cycles. The rolling of water microdroplets in (B) down the slopes of the micropillars results in their accumulation in valleys (arrow in C). Scale bar: 5 µm.
+                            <span class="credit">From Santoro De Vico <em>et al.</em> (2025), <em>Materials &amp; Design</em> 255, 114214. © 2025 The Authors, <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>.</span></figcaption>
+                    </figure>
+                    <div class="fig-notes reveal rise">
+                        <h3>But at the microscale, the pillars get wet</h3>
+                        <p>Condense water vapour directly onto a pillar and it wets, with a contact angle of 66 ± 7°. The droplets slide down the edges and pool in the valleys, until the surface is fully wet: a Wenzel state.</p>
+                        <p>This is not a contradiction. A condensing microdroplet is smaller than the gap between pillars, while a 2 mm raindrop-like drop rests on many of them. It does set a limit: the treatment should work against raindrops, but condensation could still be an issue.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== HOW THEY FORM ===== -->
+        <section class="clc-band">
+            <div class="frame">
+                <div class="clc-split">
+                    <h2 class="reveal rise">Carved, not grown</h2>
+                    <div class="clc-prose reveal rise">
+                        <p>Pillars on a crystal look like something that grew, and some researchers have read spiky calcite that way. Our data say otherwise. These pillars are bounded by high-energy {012} faces, which are more soluble than the stable {104} faces, so they should not grow under these conditions. Precipitation on drying does not explain why their number and size increase with reaction time. And under the AFM we see pits forming and merging, not pillars growing.</p>
+                        <p>Dissolution alone is not enough either. Our simulation produces pillars from any pits that merge, whatever the solution, yet in the lab only ammonium makes them. Something has to stop the pits from eating the pillars they have just left behind.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="clc-band" style="padding-bottom:0">
+            <div class="frame">
+                <div class="fig">
+                    <figure class="fig-plate reveal rise">
+                        <a href="../img/articles/calcite/fig5.jpg" target="_blank" rel="noopener" aria-label="Open Figure 5 at full size"><img src="../img/articles/calcite/fig5.jpg" width="1500" height="1313" loading="lazy" alt="Atomic force microscopy of one calcite area at 0, 5 and 7 minutes in ammonium chloride, height profiles across etch pits, and an SEM image of a pillar seen along the c-axis."></a>
+                        <figcaption><strong>Figure 5</strong> AFM analysis of calcite etching in ammonium chloride solution. A) Topography and D) deflection images of the etch pits developed upon the interaction with DI water. B) and E) the same area after 5 min in 10 mM NH₄Cl; arrows in E point to the rounding of obtuse steps. C) and F) the same area after 7 min, with the line profiles in G and H. I) SEM image of a micropillar observed along the [001] direction of calcite, showing the nearly-triangular profile at the base.
+                            <span class="credit">From Santoro De Vico <em>et al.</em> (2025), <em>Materials &amp; Design</em> 255, 114214. © 2025 The Authors, <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>. Caption shortened.</span></figcaption>
+                    </figure>
+                    <div class="fig-notes reveal rise">
+                        <h3>Seven minutes under the tip</h3>
+                        <dl>
+                            <dt>A → C, D → F</dt>
+                            <dd>The same 15 µm area. Inject NH₄Cl and the pits deepen, leaving trenches and plateaus.</dd>
+                            <dt>E, the arrows</dt>
+                            <dd>The obtuse steps round off. We attribute this to NH₄⁺ interacting with carbonate groups through hydrogen bonds.</dd>
+                            <dt>G, H</dt>
+                            <dd>Merged pits leave plateaus and hillocks: the reliefs we take to be the seeds of the pillars.</dd>
+                            <dt>I</dt>
+                            <dd>Those rounded steps, seen in a finished pillar: a pseudo-triangular base.</dd>
+                        </dl>
+                    </div>
+                </div>
+
+                <div class="fig">
+                    <figure class="fig-plate reveal rise">
+                        <a href="../img/articles/calcite/fig6.jpg" target="_blank" rel="noopener" aria-label="Open Figure 6 at full size"><img src="../img/articles/calcite/fig6.jpg" width="1006" height="829" loading="lazy" alt="Plot of pH over time for calcite in water and in ammonium chloride, with SEM insets: a flat surface after water and a dense pillar field after ammonium chloride."></a>
+                        <figcaption><strong>Figure 6</strong> pH evolution during dissolution of calcite single crystals in DI water (blue) and in 1 M NH₄Cl solution (red). The starting pH in both cases was 4.78. Insets show SEM images of the calcite (104) surface after 24 h dissolution in water and 1 M NH₄Cl solution.
+                            <span class="credit">From Santoro De Vico <em>et al.</em> (2025), <em>Materials &amp; Design</em> 255, 114214. © 2025 The Authors, <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>.</span></figcaption>
+                    </figure>
+                    <div class="fig-notes reveal rise">
+                        <h3>Slower, and that is the point</h3>
+                        <p>Same starting pH, same crystal, same 24 h. In water the pH rises faster and further, because more calcite dissolves. In ammonium chloride dissolution is held back, and the insets show the outcome: a flat surface on one side, a forest on the other.</p>
+                        <p>The two rates converge with time. That fits what we see at 90 h, when the pillars start to go.</p>
+                    </div>
+                </div>
+
+                <div class="fig">
+                    <figure class="fig-plate reveal rise">
+                        <a href="../img/articles/calcite/fig7.jpg" target="_blank" rel="noopener" aria-label="Open Figure 7 at full size"><img src="../img/articles/calcite/fig7.jpg" width="1500" height="398" loading="lazy" alt="Computer simulation: a flat surface with ten pits at the start, and after 24 hours a surface with ridges and pillar-like peaks up to about 20 micrometres."></a>
+                        <figcaption><strong>Figure 7</strong> Computer simulation of micropillar formation: A) Initial surface with 10 randomly nucleated etch pits (greenish dots); B) Surface after 24 h. The modeling shows the formation of ridges and micropillars at the boundaries of merging pits and supports a top-down anisotropic dissolution process as the mechanism responsible for the formation of oriented micropillars.
+                            <span class="credit">From Santoro De Vico <em>et al.</em> (2025), <em>Materials &amp; Design</em> 255, 114214. © 2025 The Authors, <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>.</span></figcaption>
+                    </figure>
+                    <div class="fig-notes reveal rise">
+                        <h3>Ten pits, one day</h3>
+                        <p>A MATLAB model on a 15 × 15 µm surface, using the rates measured by AFM. After 24 h, ridges and peaks of about 20 µm stand where the pits meet: pillars when several (e.g. four) merge, trenches at the junction of two or three.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="clc-band">
+            <div class="frame">
+                <h2 class="reveal rise">The ammonium key</h2>
+                <div class="salts reveal rise">
+                    <div class="salt yes">NH₄Cl<b>pillars</b></div>
+                    <div class="salt yes">NH₄Br<b>pillars</b></div>
+                    <div class="salt yes">NH₄I<b>pillars</b></div>
+                    <div class="salt yes">NH₄NO₃<b>pillars</b></div>
+                    <div class="salt">NaCl<b>none</b></div>
+                    <div class="salt">KCl<b>none</b></div>
+                    <div class="salt">LiCl<b>none</b></div>
+                    <div class="salt">Water<b>none</b></div>
+                </div>
+                <p class="salts-note">Tested at 1 M for 24 h (Fig. S3). Change the anion and the pillars stay; change the cation and they disappear. Na⁺, K⁺ and Li⁺ gave at most some surface roughening.</p>
+            </div>
+        </section>
+
+        <section class="clc-band" style="padding-bottom:0">
+            <div class="frame">
+                <div class="fig">
+                    <figure class="fig-plate reveal rise">
+                        <a href="../img/articles/calcite/fig8.jpg" target="_blank" rel="noopener" aria-label="Open Figure 8 at full size"><img src="../img/articles/calcite/fig8.jpg" width="1500" height="902" loading="lazy" alt="Scheme of pillar formation: four merging rhombic pits leave a high point at their junction; a pillar seen from above; opposing steps in cross section; a pyramid along the c-axis bounded by polar faces on the 104 surface."></a>
+                        <figcaption><strong>Figure 8</strong> Schematic representation of the micropillar formation mechanism during calcite etching with NH₄Cl. (A) Spreading and coalescence of four merging dissolution pits. (B) Stepped morphological variation of the micropillar contour from the base to the tip, from rhombohedral to hexagonal to trigonal. (C) Cross-sectional illustration of pit nucleation and spreading, and merging of two opposite pits into an incipient micropillar. (D) Orientation of the micropillar on (104) calcite, elongated along the c-axis and bound by three {1̄02} faces stabilised by NH₄⁺ ions.
+                            <span class="credit">From Santoro De Vico <em>et al.</em> (2025), <em>Materials &amp; Design</em> 255, 114214. © 2025 The Authors, <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>. Caption shortened.</span></figcaption>
+                    </figure>
+                    <div class="fig-notes reveal rise">
+                        <h3>The mechanism we propose</h3>
+                        <dl>
+                            <dt>(A) Four pits</dt>
+                            <dd>They spread with different speeds on their obtuse and acute steps, and a high point survives where they meet.</dd>
+                            <dt>(C) The danger</dt>
+                            <dd>Left alone, the opposing steps would keep advancing and wipe the pillar out. Something has to stop them.</dd>
+                            <dt>(D) The brake</dt>
+                            <dd>Our hypothesis: NH₄⁺ adsorbs on the polar {1̄02} faces, binding to their exposed carbonate groups. SEM-EDS finds 2.04 ± 0.77 at% nitrogen on the pillars. Molecules with –NH₂ groups, such as aspartic acid and formamide, also give pillars on calcite.</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== LIMITS ===== -->
+        <section class="clc-band">
+            <div class="frame">
+                <h2 class="reveal rise">What it costs, and where it stops</h2>
+                <dl class="numbers">
+                    <div class="number reveal rise">
+                        <dt>~18 µm</dt>
+                        <dd>Surface recession for pillars of about 25 µm at 45°. Etching does remove material, but very little.</dd>
+                    </div>
+                    <div class="number reveal rise">
+                        <dt>6 days</dt>
+                        <dd>Continuously under water, with no marked change in pillar morphology, size or density.</dd>
+                    </div>
+                    <div class="number reveal rise">
+                        <dt>107 ± 3°</dt>
+                        <dd>After 50 sandpaper cycles the pillars are gone, but the abraded surface stays hydrophobic. Calcite is Mohs 3; a pillar loses that fight.</dd>
+                    </div>
+                    <div class="number reveal rise">
+                        <dt>Single crystals</dt>
+                        <dd>So far, on Iceland spar as a model substrate. Stone, mortars and cement are the next step.</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+
+        <section class="clc-band">
+            <div class="frame">
+                <div class="clc-split">
+                    <h2 class="reveal rise">Where this goes</h2>
+                    <div class="clc-prose reveal rise">
+                        <p>In practice, a poultice loaded with the ammonium salt solution could be laid on marble, limestone or lime-based mortar, removed after 24 h, and the surface cleaned with deionised water, also by poultice. It is simple, it follows complex geometries, and it leaves no coating behind. If the pillars eventually wear away, the treatment will need repeating.</p>
+                        <p>Ahead lie the formation of pillars on more complex materials like stone, mortars and cement, and possible antibacterial properties. The goal is a durable surface treatment that makes polymer coatings unnecessary.</p>
+                        <p>There is also a geological side. Understanding how saline solutions shape calcite helps read the same process in nature, in marine environments and in the crystals and rocks they touch.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CITATION ===== -->
+        <section class="cite">
+            <div class="frame">
+                <div class="clc-split">
+                    <h2 class="reveal rise">The paper</h2>
+                    <div class="reveal rise">
+                        <p class="cite-text"><strong>Santoro De Vico, F.</strong>, Elert, K., Ruiz-Agudo, E., Rodriguez-Navarro, C. (2025) Formation of micropillars on etched calcite and their biomimetic effect on wettability: Implications for built heritage protection. <em>Materials &amp; Design</em> 255, 114214.</p>
+                        <p class="clc-actions">
+                            <a href="https://doi.org/10.1016/j.matdes.2025.114214" target="_blank" rel="noopener">doi.org/10.1016/j.matdes.2025.114214</a>
+                            <a href="https://youtu.be/orKbDZ7eTls" target="_blank" rel="noopener">Video interview</a>
+                        </p>
+                        <small>Open access under <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>. The contact angles at 0.5, 1, 2 and 90 h in the clock are read from the bars of Fig. 4 and are approximate.</small>
+                        <small>Funded in part by the EU Marie Curie Actions ITN SUBLime (grant 955986). Full funding details are in the paper.</small>
+                        <a href="../publications.html" class="back-link">Back to Publications</a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <div id="site-footer"></div>
-    <script src="../js/components.js"></script>
+    <script src="../js/components.js?v=3"></script>
+    <script>
+    (function () {
+      'use strict';
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* ---------------------------------------------------------------
+         COVER: a height field carved by rhombic etch pits. Each pit is an
+         inverted pyramid whose steps retreat with v+/v- = 2.8 (the ratio
+         used in the paper). Where pits merge, ridges and peaks are left.
+         Shaded from the top left, for an SEM-like look. Qualitative only.
+         --------------------------------------------------------------- */
+      (function () {
+        var cover = document.getElementById('cover');
+        var cv = document.getElementById('etch');
+        var clock = document.getElementById('etch-time');
+        if (!cv.getContext) return;
+        var ctx = cv.getContext('2d');
+        var w, h, img, z, pits, noise, raf, t0;
+        var DUR = 11000, ANG = 1.778;                     // ms; rhomb angle, about 102 deg
+
+        // step normals of the rhomb
+        var a1 = 0.35, a2 = a1 + Math.PI - ANG;
+        var n1x = Math.cos(a1), n1y = Math.sin(a1), n2x = Math.cos(a2), n2y = Math.sin(a2);
+        var VP = 2.8, VM = 1;
+
+        function rnd(seed) {
+          return function () {
+            seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+            var t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+            t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+            return ((t ^ t >>> 14) >>> 0) / 4294967296;
+          };
+        }
+
+        function setup() {
+          var cw = cover.clientWidth, ch = cover.clientHeight;
+          var f = Math.min(1, 620 / cw);
+          w = cv.width = Math.round(cw * f);
+          h = cv.height = Math.round(ch * f);
+          img = ctx.createImageData(w, h);
+          z = new Float32Array(w * h);
+          noise = new Float32Array(w * h);
+          var r = rnd(7), i;
+          for (i = 0; i < noise.length; i++) noise[i] = (r() - 0.5) * 11;
+          pits = [];
+          var n = Math.round(w * h / 1100);                // more pits on a bigger field
+          for (i = 0; i < n; i++) pits.push({ x: r() * w, y: r() * h, t: r() * 0.34 });
+        }
+
+        function compute(p) {
+          // p in 0..1; pit radius grows with time since nucleation
+          var scale = Math.max(w, h) * 0.075, slope = 1.25;
+          var active = [], i, k, y, x;
+          for (i = 0; i < pits.length; i++) {
+            var age = p - pits[i].t;
+            if (age > 0) active.push(pits[i], age * scale);
+          }
+          for (y = 0, k = 0; y < h; y++) {
+            for (x = 0; x < w; x++, k++) {
+              var best = 0;
+              for (i = 0; i < active.length; i += 2) {
+                var o = active[i], R = active[i + 1];
+                var dx = x - o.x, dy = y - o.y;
+                if (dx > R * 3 || dx < -R * 3 || dy > R * 3 || dy < -R * 3) continue;
+                var d1 = dx * n1x + dy * n1y, d2 = dx * n2x + dy * n2y;
+                // distance in "time units": the slowest face reached decides
+                var g = Math.max(d1 > 0 ? d1 / VP : -d1 / VM, d2 > 0 ? d2 / VP : -d2 / VM);
+                var depth = R - g;
+                if (depth > best) best = depth;
+              }
+              z[k] = -best * slope;
+            }
+          }
+        }
+
+        function paint() {
+          var d = img.data, p = 0, x, y, k;
+          for (y = 0, k = 0; y < h; y++) {
+            for (x = 0; x < w; x++, k++, p += 4) {
+              var zx = x > 0 ? z[k] - z[k - 1] : 0;
+              var zy = y > 0 ? z[k] - z[k - w] : 0;
+              var v = 112 + (zx * 0.7 + zy * 0.7) * 92 + noise[k];
+              if (v < 8) v = 8; else if (v > 250) v = 250;
+              d[p] = v; d[p + 1] = v * 1.003; d[p + 2] = v * 0.965; d[p + 3] = 255;
+            }
+          }
+          ctx.putImageData(img, 0, 0);
+        }
+
+        function show(p) {
+          compute(p); paint();
+          clock.textContent = (p * 24).toFixed(1) + ' h';
+        }
+        function frame(ms) {
+          if (!t0) t0 = ms;
+          var p = Math.min(1, (ms - t0) / DUR);
+          show(1 - Math.pow(1 - p, 1.6));
+          if (p < 1 && visible) raf = setTimeout(function () { requestAnimationFrame(frame); }, 45);
+        }
+
+        var visible = true;
+        function start() {
+          clearTimeout(raf); t0 = 0;
+          setup();
+          if (reduce) show(1); else requestAnimationFrame(frame);
+        }
+        start();
+
+        var lastW = window.innerWidth, timer;
+        window.addEventListener('resize', function () {
+          if (window.innerWidth === lastW) return;
+          lastW = window.innerWidth;
+          clearTimeout(timer);
+          timer = setTimeout(start, 200);
+        });
+      })();
+
+      /* ---------------------------------------------------------------
+         THE CLOCK. Measured values from Fig. 4: angle and roughness factor
+         per etching time. The drop is a spherical cap of constant area,
+         so its shape follows from the angle alone.
+         --------------------------------------------------------------- */
+      (function () {
+        var steps = Array.prototype.slice.call(document.querySelectorAll('.step'));
+        var cv = document.getElementById('section');
+        var angleEl = document.getElementById('angle');
+        var errEl = document.getElementById('angle-err');
+        var regimeEl = document.getElementById('regime');
+        var rfEl = document.getElementById('rf');
+        var tl = document.querySelectorAll('#etchline li');
+        var sems = document.querySelectorAll('#sem img');
+        var sectionEl = document.querySelector('.clock');
+        if (!cv.getContext) return;
+
+        var THETA = [60, 82, 87, 107, 138, 25];
+        var ERR = ['± 3', '', '', '', '± 8', ''];
+        var RF = ['1', '1.24', '2', '2.4', '3', '1.7'];
+        var APPROX = [false, true, true, true, false, true];
+        var HEIGHT = [0, 0.14, 0.3, 0.52, 1, 0.34];       // pillar height, relative
+        var DENS = [0, 0.3, 0.52, 0.82, 1, 0.42];         // share of slots with a pillar
+        var WIDEN = [1, 1, 1, 1, 1, 2.3];                 // base width factor
+        var AIR = [0, 1, 1, 1, 1, 0];                     // air under the drop?
+        var S = 6;
+
+        function prng(a) {
+          return function () {
+            a |= 0; a = a + 0x6D2B79F5 | 0;
+            var t = Math.imul(a ^ a >>> 15, 1 | a);
+            t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+            return ((t ^ t >>> 14) >>> 0) / 4294967296;
+          };
+        }
+        var rnd = prng(41), slots = [], N = 64, i;
+        for (i = 0; i < N; i++) slots.push({ pos: (i + 0.15 + rnd() * 0.5) / N, gate: rnd(), size: 0.72 + rnd() * 0.42, wid: 0.8 + rnd() * 0.5 });
+
+        function lerp(a, b, f) { return a + (b - a) * f; }
+        function ease(f) { return f * f * (3 - 2 * f); }
+
+        function regimeOf(a) {
+          if (a >= 150) return 'Superhydrophobic';
+          if (a >= 130) return 'Near superhydrophobic';
+          if (a >= 90) return 'Hydrophobic';
+          return 'Hydrophilic';
+        }
+
+        function draw(t) {
+          var dpr = Math.min(window.devicePixelRatio || 1, 2);
+          var W = Math.round(cv.clientWidth * dpr), H = Math.round(cv.clientHeight * dpr);
+          if (!W || !H) return;
+          if (cv.width !== W || cv.height !== H) { cv.width = W; cv.height = H; }
+          var g = cv.getContext('2d');
+          var k = Math.min(Math.floor(t), S - 2), f = ease(Math.min(Math.max(t - k, 0), 1));
+          var at = function (a) { return lerp(a[k], a[k + 1], f); };
+
+          var theta = at(THETA) * Math.PI / 180;
+          var ground = H * 0.82;
+          var hMax = H * 0.2, hNow = at(HEIGHT) * hMax;
+          var dens = at(DENS), widen = at(WIDEN), air = at(AIR);
+
+          g.clearRect(0, 0, W, H);
+
+          // tips of the pillars under the drop set where it rests
+          var lift = hNow * 0.92 * Math.max(air, 0);
+
+          // spherical cap of constant area A: A = R^2 (th - sin th cos th)
+          var A = (H * 0.46) * (H * 0.46) * 1.35;
+          var R = Math.sqrt(A / (theta - Math.sin(theta) * Math.cos(theta)));
+          var a = R * Math.sin(theta);
+          if (a > W * 0.46) { a = W * 0.46; R = a / Math.sin(theta); }
+          var cx = W * 0.5, baseY = ground - lift, cy = baseY + R * Math.cos(theta);
+
+          // water filling the valleys when there is no air
+          var dropFill = g.createLinearGradient(0, baseY - 2 * R, 0, baseY);
+          dropFill.addColorStop(0, 'rgba(120,190,235,.9)');
+          dropFill.addColorStop(1, 'rgba(44,127,184,.82)');
+
+          // substrate
+          var sub = g.createLinearGradient(0, ground, 0, H);
+          sub.addColorStop(0, '#e2c58a');
+          sub.addColorStop(1, '#8d7446');
+          g.fillStyle = sub;
+          g.fillRect(0, ground, W, H - ground);
+
+          // cleavage traces in the crystal
+          g.strokeStyle = 'rgba(70,50,20,.16)';
+          g.lineWidth = Math.max(1, dpr * 0.7);
+          for (i = -2; i < 30; i++) {
+            var lx = i * W / 22;
+            g.beginPath(); g.moveTo(lx, ground); g.lineTo(lx + (H - ground), H); g.stroke();
+          }
+
+          // the drop goes behind the pillars, so the tips read as touching it
+          g.fillStyle = dropFill;
+          g.beginPath();
+          g.arc(cx, cy, R, -Math.PI / 2 - theta, -Math.PI / 2 + theta);
+          g.closePath();
+          g.fill();
+          if (air < 0.99 && (1 - air) > 0.01 && hNow > 0) {
+            g.fillStyle = 'rgba(44,127,184,' + (0.75 * (1 - air)) + ')';
+            g.fillRect(cx - a, baseY, 2 * a, ground - baseY);
+          }
+
+          // highlight on the drop
+          g.strokeStyle = 'rgba(255,255,255,.42)';
+          g.lineWidth = Math.max(1.5, 2 * dpr);
+          g.lineCap = 'round';
+          g.save();
+          g.beginPath(); g.rect(0, 0, W, baseY - 4 * dpr); g.clip();
+          g.beginPath();
+          var ang0 = -Math.PI / 2 - theta * 0.72, ang1 = -Math.PI / 2 - theta * 0.3;
+          g.arc(cx, cy, R * 0.88, ang0, ang1);
+          g.stroke();
+          g.restore();
+
+          // pillars, leaning 45 degrees
+          g.fillStyle = '#e2c58a';
+          slots.forEach(function (s) {
+            if (s.gate > dens) return;
+            var ramp = Math.min(1, (dens - s.gate) / 0.14 + 0.15);
+            var ph = hNow * s.size * ramp;
+            if (ph < 0.5) return;
+            var bw = (H * 0.022) * s.wid * widen;
+            var x = s.pos * W;
+            g.beginPath();
+            g.moveTo(x - bw, ground + 1);
+            g.lineTo(x + bw, ground + 1);
+            g.lineTo(x + ph, ground - ph);
+            g.closePath();
+            g.fill();
+          });
+
+          // angle annotation at the right contact point
+          var px = cx + a, py = baseY;
+          var len = Math.min(H * 0.26, 170 * dpr);
+          g.strokeStyle = '#fff';
+          g.lineWidth = Math.max(1, 1.3 * dpr);
+          g.beginPath();
+          g.moveTo(px, py);
+          g.lineTo(px + Math.cos(Math.PI + theta) * len, py + Math.sin(Math.PI + theta) * len);   // tangent, through the liquid
+          g.stroke();
+          g.setLineDash([4 * dpr, 4 * dpr]);
+          g.beginPath(); g.moveTo(px - len, py); g.lineTo(px, py); g.stroke();
+          g.setLineDash([]);
+          g.strokeStyle = '#f3d79b';
+          g.lineWidth = Math.max(1.5, 2 * dpr);
+          g.beginPath();
+          g.arc(px, py, len * 0.42, Math.PI, Math.PI + theta);
+          g.stroke();
+        }
+
+        var target = 0, current = 0, active = -1, visible = false, running = false;
+
+        function readout(t) {
+          var k = Math.min(Math.floor(t), S - 2), f = ease(Math.min(Math.max(t - k, 0), 1));
+          var ang = lerp(THETA[k], THETA[k + 1], f);
+          angleEl.textContent = Math.round(ang);
+          regimeEl.textContent = regimeOf(ang);
+          var n = Math.round(t);
+          var settled = Math.abs(t - n) < 0.12;
+          errEl.textContent = settled ? ERR[n] : '';
+          rfEl.textContent = RF[n];
+        }
+
+        function readScroll() {
+          var mobile = window.innerWidth <= 860;
+          var probe = window.innerHeight * (mobile ? 0.72 : 0.5);
+          var c = steps.map(function (el) {
+            var r = el.getBoundingClientRect();
+            return r.top + (mobile ? 90 : r.height / 2);
+          });
+          var t = 0;
+          if (probe >= c[S - 1]) t = S - 1;
+          else if (probe > c[0]) for (var i = 0; i < S - 1; i++) {
+            if (probe >= c[i] && probe < c[i + 1]) { t = i + (probe - c[i]) / (c[i + 1] - c[i]); break; }
+          }
+          target = t;
+          var n = Math.round(t);
+          if (n !== active) {
+            active = n;
+            steps.forEach(function (el, j) { el.classList.toggle('is-active', j === n); });
+            Array.prototype.forEach.call(tl, function (li, j) { li.classList.toggle('is-on', j === n); });
+            var pick = 0;
+            Array.prototype.forEach.call(sems, function (im, j) {
+              if (parseInt(im.getAttribute('data-t'), 10) <= n) pick = j;
+            });
+            Array.prototype.forEach.call(sems, function (im, j) { im.classList.toggle('is-on', j === pick); });
+          }
+        }
+
+        function loop() {
+          if (!visible) { running = false; return; }
+          current += (target - current) * 0.1;
+          if (Math.abs(target - current) < 0.0005) current = target;
+          draw(current); readout(current);
+          requestAnimationFrame(loop);
+        }
+        function wake() {
+          if (reduce) { current = target; draw(current); readout(current); return; }
+          if (!running && visible) { running = true; requestAnimationFrame(loop); }
+        }
+        window.addEventListener('scroll', function () { readScroll(); wake(); }, { passive: true });
+        window.addEventListener('resize', function () { readScroll(); draw(current); });
+        if ('IntersectionObserver' in window) {
+          new IntersectionObserver(function (es) {
+            visible = es[0].isIntersecting;
+            if (visible) { readScroll(); wake(); }
+          }, { rootMargin: '10% 0px' }).observe(sectionEl);
+        } else { visible = true; wake(); }
+        readScroll();
+        current = target;
+        draw(current); readout(current);
+      })();
+    })();
+    </script>
 </body>
 </html>

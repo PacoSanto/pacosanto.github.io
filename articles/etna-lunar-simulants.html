@@ -4,433 +4,920 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Volcanic deposits from Mount Etna as lunar simulants | Francesco Santoro De Vico</title>
-
-    <meta name="description" content="A volcanic deposit from Mount Etna matches Apollo 14 lunar regolith in chemistry and glass content, and converts into ISRU bricks and oxygen.">
+    <meta name="description" content="A volcanic deposit from Mount Etna matches Apollo 14 lunar soil in chemistry, glass content and spectral signature, and it can be turned into building material and oxygen.">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Volcanic deposits from Mount Etna as lunar simulants">
-    <meta property="og:description" content="CL2, a pyroclastic deposit from Etna's Cisternazza crater, matches Apollo 14 lunar regolith in chemistry and glass content, and converts into ISRU bricks and oxygen.">
-    <meta property="og:locale" content="en_US">
-    <meta property="og:image" content="https://fsdv.eu/img/articles/etna-simulants-hero.jpg">
-    <meta name="twitter:card" content="summary_large_image">
-
-    <link rel="stylesheet" href="../css/style.css">
-
+    <meta property="og:url" content="https://fsdv.eu/articles/etna-lunar-simulants.html">
+    <meta property="og:title" content="Volcanic deposits from Mount Etna as high-fidelity lunar simulants">
+    <meta property="og:description" content="A volcanic deposit from Mount Etna matches Apollo 14 lunar soil in chemistry, glass content and spectral signature, and it can be turned into building material and oxygen.">
+    <meta property="og:image" content="https://fsdv.eu/img/articles/etna/etna-lunar-simulants-og.jpg">
+    <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
+    <link rel="stylesheet" href="../css/style.css?v=3">
     <style>
-    /* ═══════════════════════════════════════════════════════════
-       VOLCANIC DEPOSITS FROM MOUNT ETNA AS LUNAR SIMULANTS
+        /* Two accents: Etna and the Moon. Checked for colour-blind separation
+           on the light page; the lighter pair below is used on the dark scene. */
+        body.etn {
+            --etna: #c8402f;
+            --moon: #3f6fb0;
+            font-size: 1.0625rem;
+            color: var(--color-ink);
+        }
+        .etn p { color: inherit; }
+        .etn .site-footer { margin-top: 0; }
+        .etn sub, .etn sup { line-height: 0; font-size: .72em; }
 
-       Direction: the paper's finding IS the design, a terrestrial
-       sample and a lunar sample turn out to be near-twins. Every
-       comparison in the text gets a visual "twin" treatment, and
-       the three field sites are laid out by real elevation instead
-       of a decorative timeline.
+        /* ── Cover: Etna and Fra Mauro, split by a handle you can drag ──── */
+        .etn-cover {
+            --x: 63%;
+            position: relative;
+            min-height: 100vh;
+            min-height: 100svh;
+            display: flex;
+            align-items: flex-end;
+            padding: 150px 0 clamp(2.5rem, 6vw, 4.5rem);
+            color: #fff;
+            overflow: hidden;
+            isolation: isolate;
+            background: var(--color-night);
+            touch-action: pan-y;
+            cursor: ew-resize;
+        }
+        .ground { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -3; }
+        .ground-etna { clip-path: inset(0 calc(100% - var(--x)) 0 0); z-index: -2; object-position: 50% 50%; }
+        .ground-moon { object-position: 100% 50%; }
+        .etn-cover::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background:
+                linear-gradient(90deg, rgba(13,15,12,.92) 0%, rgba(13,15,12,.8) 40%, rgba(13,15,12,.1) 64%),
+                linear-gradient(0deg, rgba(13,15,12,.72) 0%, rgba(13,15,12,0) 34%),
+                linear-gradient(180deg, rgba(13,15,12,.58) 0%, rgba(13,15,12,0) 22%);
+        }
+        .divider {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: var(--x);
+            width: 2px;
+            margin-left: -1px;
+            background: #fff;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .divider-knob {
+            position: absolute;
+            top: 44%;
+            left: 50%;
+            width: 46px;
+            height: 46px;
+            margin: -23px 0 0 -23px;
+            border-radius: 50%;
+            background: #fff;
+            color: var(--color-ink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            box-shadow: 0 4px 18px rgba(0,0,0,.45);
+        }
+        .ground-tag {
+            position: absolute;
+            top: 118px;
+            z-index: 2;
+            font-family: var(--font-mono);
+            font-size: .72rem;
+            line-height: 1.5;
+            letter-spacing: .04em;
+            color: #fff;
+            text-shadow: 0 0 8px #000, 0 0 2px #000;
+            pointer-events: none;
+            margin: 0;
+        }
+        .ground-tag-etna { right: calc(100% - var(--x) + 14px); text-align: right; }
+        .ground-tag-moon { left: calc(var(--x) + 14px); }
+        .divider-range {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            width: 100%;
+            height: 1px;
+            margin: 0;
+            opacity: 0;
+            z-index: 3;
+        }
+        .divider-range:focus-visible ~ .divider .divider-knob { outline: 3px solid var(--color-amber); outline-offset: 3px; }
+        .etn-cover-text { max-width: 47rem; position: relative; z-index: 3; cursor: auto; }
+        .etn-cover .back-link {
+            color: rgba(255,255,255,.82);
+            font-size: .85rem;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            margin-bottom: 1.6rem;
+        }
+        .etn-cover .back-link:hover { color: #fff; }
+        .etn-kicker { font-size: .8rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--color-sandstone); margin-bottom: 1.1rem; }
+        .etn-cover h1 {
+            font-size: clamp(2.3rem, 4.1vw, 3.85rem);
+            line-height: 1;
+            letter-spacing: -.02em;
+            color: #fff;
+            margin-bottom: 1.4rem;
+        }
+        .etn-lede {
+            font-size: 1.14rem;
+            line-height: 1.58;
+            color: rgba(255,255,255,.92);
+            border-left: 2px solid var(--color-amber);
+            padding-left: 1.25rem;
+            margin-bottom: 1.3rem;
+        }
+        .etn-authors { font-size: .93rem; line-height: 1.45; color: rgba(255,255,255,.76); margin-bottom: 1.1rem; }
+        .etn-authors strong { color: #fff; font-weight: 600; }
+        .etn-actions { display: flex; flex-wrap: wrap; gap: .6rem 1.6rem; margin: 0; }
+        .etn-actions a {
+            font-weight: 600;
+            font-size: .95rem;
+            color: #fff;
+            padding-bottom: 4px;
+            background: linear-gradient(var(--color-amber), var(--color-amber)) 0 100% / 100% 1px no-repeat;
+        }
+        .etn-actions a:hover { color: #f0b39f; }
+        .ground-note {
+            position: absolute;
+            right: var(--gutter);
+            bottom: clamp(1.2rem, 3vw, 2.2rem);
+            max-width: 19rem;
+            z-index: 2;
+            font-size: .8rem;
+            line-height: 1.42;
+            text-align: right;
+            color: #fff;
+            text-shadow: 0 0 8px #000, 0 0 2px #000;
+            pointer-events: none;
+            margin: 0;
+        }
+        .js .etn-cover-text > * { opacity: 0; transform: translateY(22px); transition: opacity 1s var(--ease-out), transform 1s var(--ease-out); }
+        .js .is-loaded .etn-cover-text > * { opacity: 1; transform: none; }
+        .js .is-loaded .etn-cover-text > :nth-child(3) { transition-delay: .1s; }
+        .js .is-loaded .etn-cover-text > :nth-child(4) { transition-delay: .2s; }
+        .js .is-loaded .etn-cover-text > :nth-child(5) { transition-delay: .3s; }
+        .js .is-loaded .etn-cover-text > :nth-child(6) { transition-delay: .4s; }
 
-       Palette: cooling lava, near-black basalt glass warming to
-       an oxidised rust, with an ember accent. A cool ash grey marks
-       anything tied specifically to the Moon side of a comparison.
-       ═══════════════════════════════════════════════════════════ */
+        /* ── Text sections ─────────────────────────────────────────────── */
+        .etn-band { padding: clamp(4.5rem, 9vw, 8rem) 0; }
+        .etn-band + .etn-band { padding-top: 0; }
+        .etn-split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+        .etn h2 { font-size: clamp(2.8rem, 5.4vw, 4.8rem); line-height: .98; letter-spacing: -.015em; }
+        .etn-prose p { max-width: 62ch; margin-bottom: 1.25rem; }
+        .etn-prose p:last-child { margin-bottom: 0; }
+        .etn-question { font-family: var(--font-display); font-weight: 300; font-size: clamp(1.9rem, 3.5vw, 3.1rem); line-height: 1.14; letter-spacing: -.01em; max-width: 25em; margin: 0; }
 
-    body.esim {
-        --post-accent:      #e8590c;
-        --post-accent-deep: #a13a02;
-        --post-tint:        #f6efe6;
-        --post-ink:         #1b1210;
-        --post-ink-2:       #3a1f12;
-        --post-on-ink:      #f2e7da;
+        /* three sites, by elevation */
+        .sites { list-style: none; margin: clamp(2.5rem, 5vw, 4rem) 0 0; }
+        .site {
+            display: grid;
+            grid-template-columns: minmax(0, 11rem) minmax(0, 4fr) minmax(0, 6fr) minmax(0, 8rem);
+            gap: .4rem clamp(1rem, 3vw, 2.5rem);
+            align-items: baseline;
+            border-top: 1px solid var(--border);
+            padding: 1.3rem 0 1.5rem;
+        }
+        .site-alt { font-family: var(--font-display); font-weight: 300; font-size: clamp(1.9rem, 3vw, 2.7rem); line-height: 1; font-variant-numeric: lining-nums; }
+        .site h3 { font-size: clamp(1.45rem, 2vw, 1.8rem); line-height: 1.1; }
+        .site p { margin: 0; }
+        .site-samples { font-family: var(--font-mono); font-size: .8rem; color: var(--color-copper); }
 
-        /* two new tokens: the "Moon side" of every comparison */
-        --moon:      #9a9488;
-        --moon-deep: #6b665c;
-    }
+        /* ── The twin test, driven by scroll ───────────────────────────── */
+        .twin {
+            --etna-d: #e0604f;
+            --moon-d: #5b8ad6;
+            --other-d: #a4a89d;
+            background: var(--color-night);
+            color: #f1efe8;
+        }
+        .twin-intro { padding: clamp(4.5rem, 9vw, 8rem) 0 clamp(1rem, 3vw, 2rem); }
+        .twin-intro h2 { color: #fff; margin-bottom: 1rem; }
+        .twin-intro p { max-width: 58ch; color: rgba(255,255,255,.78); margin: 0; }
+        .twin-grid { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: clamp(1.5rem, 4vw, 4rem); }
+        .twin-stage {
+            position: sticky;
+            top: 64px;
+            height: calc(100vh - 64px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            order: 2;
+        }
+        html:not(.js) .twin-stage { display: none; }
+        .twin-title { font-family: var(--font-mono); font-size: .76rem; letter-spacing: .06em; text-transform: uppercase; color: rgba(255,255,255,.62); margin: 0 0 .9rem; }
+        .twin-head {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 5.5rem minmax(0, 1fr);
+            align-items: baseline;
+            margin-bottom: .7rem;
+        }
+        .twin-name { font-family: var(--font-display); font-size: clamp(1.25rem, 2.1vw, 1.8rem); line-height: 1.1; color: #fff; }
+        .twin-name i { display: inline-block; width: 11px; height: 11px; border-radius: 3px; margin: 0 .5rem; background: var(--c); transition: background .4s; }
+        .twin-name-a { text-align: right; }
+        .twin-rows { min-height: calc(8 * 2.15rem); }
+        .tw-row {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 5.5rem minmax(0, 1fr);
+            align-items: center;
+            height: 2.15rem;
+            border-radius: 3px;
+            transition: opacity .35s;
+        }
+        .tw-row:hover { background: rgba(255,255,255,.05); }
+        .tw-row.is-empty { opacity: 0; }
+        .tw-label { text-align: center; font-family: var(--font-mono); font-size: .8rem; color: rgba(255,255,255,.82); }
+        .tw-side { display: flex; align-items: center; gap: .5rem; min-width: 0; }
+        .tw-side-a { flex-direction: row-reverse; }
+        .tw-bar {
+            height: 12px;
+            width: var(--w, 0%);
+            max-width: calc(100% - 4rem);
+            min-width: 2px;
+            background: var(--c);
+            transition: width .75s var(--ease-out), background .4s;
+        }
+        .tw-side-a .tw-bar { border-radius: 4px 0 0 4px; }
+        .tw-side-b .tw-bar { border-radius: 0 4px 4px 0; }
+        .tw-val { font-family: var(--font-mono); font-size: .8rem; color: #fff; white-space: nowrap; font-variant-numeric: tabular-nums; }
+        .twin-verdict { font-family: var(--font-display); font-style: italic; font-size: clamp(1.15rem, 1.9vw, 1.55rem); line-height: 1.25; color: #f3d79b; margin: .9rem 0 0; min-height: 2.5em; }
+        .twin-note { font-size: .78rem; color: rgba(255,255,255,.55); margin: .2rem 0 0; min-height: 1.3em; }
+        .twin-steps { order: 1; padding-bottom: 28vh; }
+        .step { min-height: 82vh; display: flex; flex-direction: column; justify-content: center; opacity: .32; transition: opacity .5s var(--ease-out); }
+        html:not(.js) .step { opacity: 1; min-height: 0; padding: 2rem 0; }
+        .step.is-active { opacity: 1; }
+        .step-n { font-family: var(--font-mono); font-size: .76rem; letter-spacing: .08em; text-transform: uppercase; color: #f0b39f; margin-bottom: .8rem; }
+        .step h3 { font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 300; line-height: 1.04; color: #fff; margin-bottom: 1rem; }
+        .step p { margin-bottom: .9rem; max-width: 42ch; color: rgba(255,255,255,.84); }
+        .step p:last-child { margin-bottom: 0; }
 
-    /* ═══ HERO ═══════════════════════════════════════════════ */
-    .esim .e-hero {
-        position: relative;
-        margin-top: var(--nav-height);
-        min-height: 66vh;
-        display: flex;
-        align-items: flex-end;
-        overflow: hidden;
-        background: var(--post-ink);
-    }
+        /* the numbers as a plain table */
+        .twin-tables { padding: 0 0 clamp(4rem, 8vw, 6rem); }
+        .twin-tables summary { cursor: pointer; font-weight: 600; font-size: .95rem; color: #fff; }
+        .twin-tables summary:hover { color: #f0b39f; }
+        .data-wrap { overflow-x: auto; margin-top: 1.5rem; }
+        .data { border-collapse: collapse; width: 100%; font-family: var(--font-mono); font-size: .82rem; color: rgba(255,255,255,.85); }
+        .data caption { text-align: left; font-family: var(--font-body); font-size: .88rem; color: rgba(255,255,255,.62); padding-bottom: .6rem; }
+        .data th, .data td { padding: .45rem .7rem; text-align: right; border-bottom: 1px solid rgba(255,255,255,.14); font-weight: 400; white-space: nowrap; }
+        .data th:first-child { text-align: left; }
+        .data thead th { color: #fff; }
 
-    .esim .e-hero-img {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center 35%;
-        margin: 0;
-        border-radius: 0;
-        filter: saturate(0.92);
-    }
+        /* ── Figures ───────────────────────────────────────────────────── */
+        .fig { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(1.5rem, 4vw, 4rem); align-items: start; padding: clamp(2.5rem, 5vw, 4rem) 0; border-top: 1px solid var(--border); }
+        .fig-plate { margin: 0; }
+        .fig-plate > a { display: block; }
+        .fig-plate img { width: 100%; height: auto; background: #fff; transition: opacity .3s; }
+        .fig-plate > a:hover img { opacity: .9; }
+        .fig-plate figcaption { font-size: .86rem; line-height: 1.5; color: var(--color-slate); margin-top: .9rem; }
+        .fig-plate figcaption strong { color: var(--color-ink); font-weight: 600; }
+        .credit { display: block; margin-top: .45rem; color: var(--color-ite); }
+        .credit a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+        .fig-notes { position: sticky; top: 96px; }
+        .fig-notes h3 { font-size: clamp(1.9rem, 2.8vw, 2.5rem); font-weight: 300; line-height: 1.05; margin-bottom: 1.2rem; }
+        .fig-notes dl { margin: 0; }
+        .fig-notes dt { font-family: var(--font-mono); font-size: .8rem; color: var(--color-copper); margin-top: 1rem; }
+        .fig-notes dd { margin: .15rem 0 0; }
+        .fig-notes p { max-width: 50ch; }
+        .fig-dark { background: var(--color-night); color: #f1efe8; }
+        .fig-dark .fig { border-top: 0; padding: clamp(3.5rem, 7vw, 6rem) 0; }
+        .fig-dark .fig-plate figcaption, .fig-dark .credit { color: rgba(255,255,255,.64); }
+        .fig-dark .fig-plate figcaption strong { color: #fff; }
+        .fig-dark .fig-notes h3 { color: #fff; }
+        .fig-dark .fig-notes dt { color: #f0b39f; }
 
-    .esim .e-hero-scrim {
-        position: absolute;
-        inset: 0;
-        background:
-            linear-gradient(180deg, rgba(27,18,16,.20) 0%, rgba(27,18,16,.55) 48%, rgba(27,18,16,.95) 100%),
-            linear-gradient(100deg, rgba(27,18,16,.85) 0%, rgba(27,18,16,.35) 55%, rgba(27,18,16,.12) 100%);
-    }
+        /* ── Strength chart ────────────────────────────────────────────── */
+        .mixes { margin: clamp(2.5rem, 5vw, 4rem) 0 0; }
+        .mixes-title { font-family: var(--font-display); font-style: italic; font-size: 1.3rem; margin: 0 0 1.2rem; }
+        .mix {
+            display: grid;
+            grid-template-columns: minmax(0, 15rem) minmax(0, 1fr) 7.5rem;
+            gap: .3rem clamp(1rem, 2.5vw, 2rem);
+            align-items: center;
+            border-top: 1px solid var(--border);
+            padding: .95rem 0;
+            border-radius: 3px;
+        }
+        .mix:hover { background: var(--color-calcite); }
+        .mix-name { font-family: var(--font-display); font-size: 1.4rem; line-height: 1.1; }
+        .mix-name small { display: block; font-family: var(--font-mono); font-size: .74rem; color: var(--color-slate); margin-top: .25rem; }
+        .mix-track { position: relative; height: 26px; }
+        .mix-bar {
+            position: absolute;
+            left: 0;
+            top: 7px;
+            height: 12px;
+            width: var(--v);
+            background: var(--etna);
+            border-radius: 0 4px 4px 0;
+            transform-origin: left;
+            transition: transform 1.1s var(--ease-out) var(--d, 0s);
+        }
+        .js .mix.reveal .mix-bar { transform: scaleX(0); }
+        .js .mix.reveal.is-in .mix-bar { transform: none; }
+        .mix-err { position: absolute; top: 12px; height: 2px; left: var(--lo); width: calc(var(--hi) - var(--lo)); background: var(--color-ink); }
+        .mix-err::before, .mix-err::after { content: ''; position: absolute; top: -4px; width: 2px; height: 10px; background: var(--color-ink); }
+        .mix-err::before { left: 0; }
+        .mix-err::after { right: 0; }
+        .mix-val { font-family: var(--font-mono); font-size: .86rem; font-variant-numeric: tabular-nums; text-align: right; line-height: 1.3; }
+        .mix-val small { display: block; font-size: .72rem; color: var(--color-slate); }
+        .mix-axis { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr) 7.5rem; gap: .3rem clamp(1rem, 2.5vw, 2rem); border-top: 1px solid var(--color-ink); padding-top: .45rem; }
+        .mix-scale { position: relative; height: 1.2rem; font-family: var(--font-mono); font-size: .72rem; color: var(--color-slate); }
+        .mix-scale span { position: absolute; transform: translateX(-50%); }
+        .mix-scale span:first-child { transform: none; }
+        .mixes-note { font-size: .85rem; color: var(--color-slate); margin: .7rem 0 0; max-width: 66ch; }
 
-    .esim .e-hero-inner {
-        position: relative;
-        z-index: 2;
-        width: 100%;
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: clamp(3rem, 10vh, 6rem) 6% clamp(2.4rem, 6vh, 3.4rem);
-    }
+        .ledger { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 clamp(1rem, 3vw, 2.5rem); margin: clamp(2rem, 4vw, 3rem) 0 0; }
+        .entry { border-top: 1px solid var(--color-ink); padding-top: 1rem; }
+        .entry dt { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.5rem, 2.3vw, 2.05rem); line-height: 1.1; margin-bottom: .6rem; }
+        .entry dd { margin: 0; font-size: .98rem; line-height: 1.5; color: var(--color-slate); }
 
-    .esim .e-eyebrow {
-        font-family: var(--font-mono);
-        font-size: 0.72rem;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: var(--post-accent);
-        margin-bottom: 1.1rem;
-    }
+        /* ── Citation ──────────────────────────────────────────────────── */
+        .cite { background: var(--color-night); color: #f1efe8; padding: clamp(4rem, 8vw, 7rem) 0; }
+        .cite h2 { color: #fff; }
+        .cite-text { font-family: var(--font-display); font-size: clamp(1.35rem, 2vw, 1.7rem); line-height: 1.3; margin-bottom: 1.5rem; }
+        .cite-text strong { font-weight: 500; color: #f0b39f; }
+        .cite .etn-actions { margin-bottom: 2rem; }
+        .cite small { display: block; font-size: .88rem; line-height: 1.55; color: rgba(255,255,255,.62); margin-top: .7rem; max-width: 64ch; }
+        .cite small a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+        .cite .back-link { color: rgba(255,255,255,.8); margin: 2.5rem 0 0; }
+        .cite .back-link:hover { color: #fff; }
 
-    .esim .e-hero h1 {
-        font-family: var(--font-display);
-        font-weight: 400;
-        font-size: clamp(1.9rem, 4.4vw, 3.05rem);
-        line-height: 1.2;
-        color: #f7f1e8;
-        max-width: 22ch;
-        margin: 0 0 1.1rem;
-    }
+        /* ── Responsive ────────────────────────────────────────────────── */
+        @media (max-width: 1000px) {
+            .ledger { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.8rem clamp(1rem, 3vw, 2.5rem); }
+        }
+        @media (max-width: 860px) {
+            .etn-split, .fig { grid-template-columns: 1fr; }
+            .fig-notes { position: static; order: -1; }
+            .ground-note { display: none; }
+            .etn-cover { padding-top: 260px; }
+            .divider { bottom: auto; height: 250px; }
+            .ground-tag { top: 84px; }
+            .divider-knob { top: 190px; width: 38px; height: 38px; margin: -19px 0 0 -19px; }
+            .etn-cover::after {
+                background: linear-gradient(0deg, rgba(13,15,12,.96) 0%, rgba(13,15,12,.88) 58%, rgba(13,15,12,.2) 82%, rgba(13,15,12,.5) 100%);
+            }
+            .site { grid-template-columns: minmax(0, 8rem) minmax(0, 1fr); }
+            .site p, .site-samples { grid-column: 1 / -1; }
 
-    .esim .e-hero h1 .e-glow {
-        color: var(--post-accent);
-        font-style: italic;
-    }
-
-    .esim .e-deck {
-        font-size: clamp(1rem, 1.6vw, 1.15rem);
-        line-height: 1.6;
-        color: #d9cfc2;
-        max-width: 58ch;
-        margin: 0 0 1.6rem;
-    }
-
-    .esim .e-hero-meta {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.7rem;
-    }
-
-    .esim .e-chip {
-        font-family: var(--font-mono);
-        font-size: 0.72rem;
-        letter-spacing: 0.04em;
-        color: #f0e6d8;
-        border: 1px solid rgba(240,230,216,.35);
-        border-radius: 20px;
-        padding: 0.45rem 1rem;
-        text-decoration: none;
-        transition: border-color 0.25s, color 0.25s;
-    }
-
-    .esim .e-chip:hover { border-color: var(--post-accent); color: var(--post-accent); }
-
-    @media (max-width: 640px) {
-        .esim .e-hero { min-height: 58vh; }
-    }
-
-    /* ═══ BODY SPACING ═══════════════════════════════════════ */
-    .esim .article-detail { padding-top: 2.6rem; }
-    .esim .article-body h2 { margin-top: 2.6em; }
-    .esim .article-body p.lede { font-size: 1.15rem; color: var(--text-primary); }
-
-    /* ═══ FIELD SITES - laid out by real elevation ═══════════ */
-    .esim .e-sites {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.8rem;
-        margin: 1.8rem 0 2.6rem;
-        padding-top: 1.8rem;
-        border-top: 1px solid var(--border);
-    }
-
-    .esim .e-site { display: flex; flex-direction: column; }
-
-    .esim .e-site-elev {
-        font-family: var(--font-mono);
-        font-size: 0.72rem;
-        letter-spacing: 0.05em;
-        color: var(--text-light);
-        margin-bottom: 0.6rem;
-    }
-
-    .esim .e-site-bar {
-        display: block;
-        width: 3px;
-        background: var(--post-accent);
-        border-radius: 2px;
-        margin-bottom: 1rem;
-    }
-
-    .esim .e-site h3 {
-        font-size: 1.02rem;
-        margin-bottom: 0.4rem;
-        color: var(--text-primary);
-    }
-
-    .esim .e-site p {
-        font-size: 0.92rem;
-        line-height: 1.62;
-        color: var(--text-secondary);
-        margin-bottom: 0.8rem;
-        flex: 1;
-    }
-
-    .esim .e-site-samples {
-        font-family: var(--font-mono);
-        font-size: 0.7rem;
-        letter-spacing: 0.03em;
-        color: var(--post-accent-deep);
-    }
-
-    @media (max-width: 760px) {
-        .esim .e-sites { grid-template-columns: 1fr; gap: 2rem; }
-    }
-
-    /* ═══ TWIN TAG - the "near-twin" comparison label ════════ */
-    .esim .e-twin {
-        display: flex;
-        align-items: center;
-        gap: 0.9rem;
-        font-family: var(--font-mono);
-        font-size: 0.72rem;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        margin: 1.8rem 0 1rem;
-    }
-
-    .esim .e-twin-a { color: var(--post-accent-deep); }
-    .esim .e-twin-b { color: var(--moon-deep); }
-    .esim .e-twin-x { color: var(--text-light); font-size: 0.9rem; }
-
-    /* ═══ COMPARISON TABLE ════════════════════════════════════ */
-    .esim .e-table-wrap { overflow-x: auto; margin: 1.4em 0 1.8em; }
-    .esim .e-table-wrap .comparison-table { margin: 0; min-width: 520px; }
-
-    .esim .comparison-table {
-        width: 100%;
-        border-collapse: collapse;
-        font-size: 0.92em;
-    }
-    .esim .comparison-table th {
-        background: var(--post-ink);
-        color: var(--post-accent);
-        padding: 0.8em 1em;
-        text-align: left;
-        font-weight: 600;
-        white-space: nowrap;
-    }
-    .esim .comparison-table td {
-        padding: 0.7em 1em;
-        border-bottom: 1px solid var(--border);
-    }
-    .esim .comparison-table tr:nth-child(even) td { background: var(--post-tint); }
-    .esim .comparison-table .match { color: #1a7f4b; font-weight: 600; }
-    .esim .comparison-table .diff { color: var(--moon-deep); font-weight: 600; }
-
-    /* ═══ RESPONSIVE / MOTION ═════════════════════════════════ */
-    @media (max-width: 640px) {
-        .esim .e-hero-inner { padding-left: 5%; padding-right: 5%; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-        .esim .e-chip { transition: none; }
-    }
+            .twin-grid { display: block; }
+            .twin-stage { height: auto; z-index: 2; padding: .6rem 0 .5rem; background: var(--color-night); box-shadow: 0 14px 24px -8px var(--color-night); }
+            .twin-title { display: none; }
+            .twin-head, .tw-row { grid-template-columns: minmax(0, 1fr) 3.6rem minmax(0, 1fr); }
+            .twin-head { margin-bottom: .25rem; }
+            .twin-name { font-size: 1rem; }
+            .twin-rows { min-height: calc(8 * 1.42rem); }
+            .tw-row { height: 1.42rem; }
+            .tw-label, .tw-val { font-size: .68rem; }
+            .tw-bar { height: 8px; max-width: calc(100% - 3rem); }
+            .twin-verdict { font-size: .95rem; margin-top: .35rem; min-height: 2.4em; }
+            .twin-note { display: none; }
+            .twin-steps { padding-bottom: 40vh; }
+            .step { min-height: 60vh; justify-content: flex-start; padding-top: 1.5rem; }
+        }
+        @media (max-width: 640px) {
+            .mix, .mix-axis { grid-template-columns: minmax(0, 1fr) 6.6rem; }
+            .mix-val { font-size: .76rem; }
+            .mix-name { grid-column: 1 / -1; }
+            .mix-axis > :first-child { display: none; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .etn *, .etn *::before, .etn *::after { transition-duration: .01ms !important; transition-delay: 0s !important; }
+        }
     </style>
 </head>
-<body class="esim">
+<body class="has-cover etn">
     <div id="site-header"></div>
 
-    <!-- ══════════════════════════════════════════════════════
-         HERO, Etna's own volcanic material, seen through it
-    ══════════════════════════════════════════════════════ -->
-    <header class="e-hero">
-        <img class="e-hero-img" src="../img/articles/etna-simulants-hero.jpg"
-             alt="Pyroclastic volcanic material sampled on Mount Etna for lunar simulant characterisation, pen for scale"
-             loading="eager">
-        <div class="e-hero-scrim" aria-hidden="true"></div>
-        <div class="e-hero-inner">
-            <p class="e-eyebrow">Publications · Materials Today Advances · 2026</p>
-            <h1>Volcanic deposits from Mount Etna (Italy) as high-fidelity <span class="e-glow">lunar simulants</span> for ISRU applications</h1>
-            <p class="e-deck">A pyroclastic deposit from Etna's Cisternazza crater turns out to be a near-twin of the regolith Apollo 14 brought home, in chemistry, glass content and spectral signature, and it can be baked into oxygen and built into bricks.</p>
-            <div class="e-hero-meta">
-                <a class="e-chip" href="https://doi.org/10.1016/j.mtadv.2025.100678" target="_blank" rel="noopener">DOI · 10.1016/j.mtadv.2025.100678</a>
-                <a class="e-chip" href="https://youtu.be/orKbDZ7eTls" target="_blank" rel="noopener">Video interview</a>
-            </div>
-        </div>
-    </header>
-
     <main>
-        <div class="container">
-            <a href="../publications.html" class="back-link">Back to Publications</a>
+        <!-- ===== COVER ===== -->
+        <section class="etn-cover" id="cover">
+            <img class="ground ground-moon" src="../img/articles/etna/moon-fra-mauro.jpg" alt="The Apollo 14 Lunar Module and astronaut Alan Shepard on the grey lunar surface at Fra Mauro, seen across a field of rocks." fetchpriority="high">
+            <img class="ground ground-etna" src="../img/articles/etna/etna-cl2.jpg" alt="Dark volcanic grains from Mount Etna, with a pen for scale.">
+            <input class="divider-range" id="split" type="range" min="4" max="96" step="1" value="63" aria-label="Move the divider between the Etna photo and the Apollo 14 photo">
+            <div class="divider" aria-hidden="true"><span class="divider-knob">↔</span></div>
+            <p class="ground-tag ground-tag-etna" aria-hidden="true">ETNA<br>2,600 m a.s.l.</p>
+            <p class="ground-tag ground-tag-moon" aria-hidden="true">MOON<br>Fra Mauro</p>
 
-            <div class="article-detail">
-                <div class="article-body">
-
-                    <!-- ═══════════════════════════════════════ -->
-                    <h2>Why this research matters</h2>
-
-                    <p class="lede">Before we can build on the Moon, we need to practice on Earth, and that means finding rocks that genuinely resemble lunar soil. Only about 380 kg of real lunar material was brought back by the Apollo missions, and that is far too precious to crush inside a concrete mixer or feed into an oxygen-extraction reactor. Scientists therefore rely on <em>lunar simulants</em>: terrestrial materials that mimic the chemistry, mineralogy and grain-size of the real regolith closely enough to serve as stand-ins for engineering tests.</p>
-
-                    <p>The problem is that most existing simulants are produced in the United States, supply is limited, and European alternatives remain scarce. This is where Mount Etna enters the picture. Europe's largest active volcano sits at a tectonic crossroads, the Ionian oceanic lithosphere subducting beneath the Calabrian Arc, and its complex magmatic plumbing has generated an unusually wide compositional range of volcanic products, from tholeiitic to alkali basalts. Some of those products turn out to be remarkably close to what Apollo astronauts scooped up on the lunar highlands.</p>
-
-                    <div class="highlight-box">
-                        <strong>The core question:</strong> Can we find, right on the slopes of Etna, a natural volcanic deposit whose chemistry, mineralogy and grain-size distribution are close enough to real lunar regolith to serve as a high-fidelity simulant, and can that same material actually be processed into construction bricks and breathable oxygen through In-Situ Resource Utilization (ISRU) techniques?
-                    </div>
-
-                    <!-- ═══════════════════════════════════════ -->
-                    <h2>What we did</h2>
-
-                    <p>We collected samples from three geologically distinct sites on Etna, each representing a different volcanic environment that could mirror features we expect to find on the Moon:</p>
-
-                    <div class="e-sites">
-                        <div class="e-site">
-                            <span class="e-site-elev">2 600 m a.s.l.</span>
-                            <span class="e-site-bar" style="height:64px" aria-hidden="true"></span>
-                            <h3>Cisternazza Pit Crater</h3>
-                            <p>A summit pit crater mantled by fresh pyroclastic fall deposits from the paroxysmal eruptions of the last four decades, unweathered, glassy material ideal for simulating impact-generated lunar regolith.</p>
-                            <span class="e-site-samples">CL-2 · CM-1 · CM-3</span>
-                        </div>
-                        <div class="e-site">
-                            <span class="e-site-elev">1 790 m a.s.l.</span>
-                            <span class="e-site-bar" style="height:44px" aria-hidden="true"></span>
-                            <h3>Monte Nunziata Lava Tube</h3>
-                            <p>Pyroclastic deposits behind the lining wall of an 1843-eruption lava tube, analogous to material that might accumulate inside lunar lava tubes, the prime candidates for future sheltered habitats.</p>
-                            <span class="e-site-samples">MN-1</span>
-                        </div>
-                        <div class="e-site">
-                            <span class="e-site-elev">1 625 m a.s.l.</span>
-                            <span class="e-site-bar" style="height:40px" aria-hidden="true"></span>
-                            <h3>Tre Livelli Lava Tube System</h3>
-                            <p>Basaltic samples from different levels of a multi-tiered 1792–93 lava tube, capturing the internal variability of tube-hosted flows, relevant because the Moon hosts extensive lava tube networks.</p>
-                            <span class="e-site-samples">TL-4 · TL-5</span>
-                        </div>
-                    </div>
-
-                    <p>We then subjected these samples to a comprehensive analytical workflow inspired by, but not limited to, the NASA protocol for simulant characterisation. The pipeline combined bulk chemical screening (XRF + principal component analysis), quantitative mineralogy (Rietveld-refined XRD), cross-validation (ICP-OES), morphological analysis (optical microscopy, SEM-EDS, particle-size distribution), hyperspectral imaging in the VIS-NIR range, and two practical ISRU tests: alkali-activated material synthesis (i.e. "lunar concrete") and solid-gas carbothermal reduction for oxygen/water extraction.</p>
-
-                    <!-- ═══════════════════════════════════════ -->
-                    <h2>Key findings</h2>
-
-                    <h3>1. Chemistry: a near-twin of Apollo 14</h3>
-
-                    <p>Principal component analysis of major-element XRF data immediately flagged sample <strong>CL2</strong> (Cisternazza pyroclastics) as the closest match to Apollo 14 highlands materials, specifically to sample 14259, a mature regolith collected 125 m west of the Apollo 14 Lunar Module on the Fra Mauro formation. The main compositional offset is higher alkali content (Na₂O ≈ 3.3 % vs 0.7 %; K₂O ≈ 1.8 % vs 0.5 %), which is expected: the Moon is depleted in volatile lithophile elements by a factor of 4–5 relative to Earth's primitive upper mantle.</p>
-
-                    <p class="e-twin">
-                        <span class="e-twin-a">Etna · CL2</span>
-                        <span class="e-twin-x">≈</span>
-                        <span class="e-twin-b">Apollo 14 · 14259</span>
+            <div class="frame" style="width:100%; pointer-events:none">
+                <div class="etn-cover-text" style="pointer-events:auto">
+                    <a href="../publications.html" class="back-link">Back to Publications</a>
+                    <p class="etn-kicker">Materials Today Advances · 2026 · The keystone of my first year in Padova</p>
+                    <h1>Volcanic deposits from Mount Etna (Italy) as high-fidelity lunar simulants for In-Situ Resource Utilization (ISRU) applications</h1>
+                    <p class="etn-lede">To build on the Moon you first have to practise on Earth, with something that behaves like lunar soil. We found a close match on the slopes of Etna: a volcanic deposit that resembles what Apollo 14 brought home, and that can be turned into building material and oxygen.</p>
+                    <p class="etn-authors">G. Melchiori, <strong>F. Santoro De Vico</strong> (corresponding author), A. Dottori, R. Pozzobon, L. Valentini, P. Ferretti, A. Bonetto, M. Lavagna, S. Calvari, M. Massironi</p>
+                    <p class="etn-actions">
+                        <a href="https://doi.org/10.1016/j.mtadv.2025.100678" target="_blank" rel="noopener">Read the paper (open access)</a>
+                        <a href="https://youtu.be/orKbDZ7eTls" target="_blank" rel="noopener">Watch the video interview</a>
                     </p>
+                </div>
+            </div>
+            <p class="ground-note">Drag to compare. Left: pyroclastic grains from Etna, pen for scale. Right: Apollo 14 at Fra Mauro, photo AS14-68-9487, NASA. Different scales, a related story.</p>
+        </section>
 
-                    <div class="e-table-wrap">
-                        <table class="comparison-table">
-                            <thead>
-                                <tr><th>Oxide</th><th>CL2 (Etna)</th><th>14259 (Apollo 14)</th><th>Match?</th></tr>
-                            </thead>
+        <!-- ===== THE PROBLEM ===== -->
+        <section class="etn-band">
+            <div class="frame">
+                <div class="etn-split">
+                    <h2 class="reveal rise">380 kg of Moon</h2>
+                    <div class="etn-prose reveal rise">
+                        <p>That is about how much soil and rock the Apollo missions brought back. It is far too little, and far too precious, to test a construction method or an oxygen reactor on. So engineers work with <em>lunar simulants</em>: terrestrial materials that stand in for the real regolith.</p>
+                        <p>Most simulants are produced in the United States, only a few come from Europe, and commercial availability remains limited. European volcanic provinces have been largely unexplored for this purpose.</p>
+                        <p>Etna is an unusual place to start. At the meeting point of the African and Eurasian plates, where the Ionian lithosphere subducts beneath the Calabrian Arc, it has spent about 500,000 years producing varied volcanic deposits, with compositions spanning both mare-like and highland-like lithologies. And Sicilian law already allows volcanic ash fallout to be reused in place of raw materials.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="etn-band">
+            <div class="frame">
+                <p class="etn-question reveal rise">Is there a natural deposit on Etna close enough to real lunar soil to work as a high-fidelity simulant, and can it actually be turned into building material and oxygen?</p>
+            </div>
+        </section>
+
+        <section class="etn-band">
+            <div class="frame">
+                <h2 class="reveal rise">Three sites, six samples</h2>
+                <ul class="sites">
+                    <li class="site reveal rise">
+                        <span class="site-alt">2,600 m</span>
+                        <h3>Cisternazza pit crater</h3>
+                        <p>Mantled by fresh pyroclastic fall deposits, 2–64 mm, from the paroxysmal events of the last four decades. Unweathered material.</p>
+                        <span class="site-samples">CL2 · CM1 · CM3</span>
+                    </li>
+                    <li class="site reveal rise">
+                        <span class="site-alt">1,790 m</span>
+                        <h3>Monte Nunziata lava tube</h3>
+                        <p>Pyroclastic deposits behind the lining wall of the 1843 tube, potentially similar to material in lunar lava tube environments.</p>
+                        <span class="site-samples">MN1</span>
+                    </li>
+                    <li class="site reveal rise">
+                        <span class="site-alt">1,625 m</span>
+                        <h3>Tre Livelli lava tube system</h3>
+                        <p>Samples from different levels of the 1792–93 tube, to capture the variability inside one volcanic structure.</p>
+                        <span class="site-samples">TL4 · TL5</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="fig-dark">
+            <div class="frame">
+                <div class="fig">
+                    <figure class="fig-plate reveal rise">
+                        <a href="../img/articles/etna/fig1.jpg" target="_blank" rel="noopener" aria-label="Open Figure 1 at full size"><img src="../img/articles/etna/fig1.jpg" width="1500" height="936" loading="lazy" alt="Field photographs inside and at the entrance of two lava tubes and at the rim of the Cisternazza pit crater, with a coloured topographic map of Etna marking the sampling sites."></a>
+                        <figcaption><strong>Figure 1</strong> Etna's sites in this study. a) Tre Livelli cave, 1792–93 eruption; b) Entrance of Monte Nunziata cave, 1843 eruption; c) Satellite image of sample location and isoline maps with the identification of the spot sites; d) Cisternazza pit crater, 1792–93 eruption.
+                            <span class="credit">From Melchiori, Santoro De Vico <em>et al.</em> (2026), <em>Materials Today Advances</em> 29, 100678. © 2025 The Authors, <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a>. Reproduced without changes.</span></figcaption>
+                    </figure>
+                    <div class="fig-notes reveal rise">
+                        <h3>Where it all comes from</h3>
+                        <p>We started from a modified version of the NASA workflow for simulant characterisation. Because the goal was ISRU, we put chemistry first: even a chemically poor simulant can serve geotechnical tests if its grain size is right.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== THE TWIN TEST ===== -->
+        <section class="twin">
+            <div class="frame twin-intro">
+                <h2 class="reveal rise">The twin test</h2>
+                <p class="reveal rise">The reference is sample 14259, a regolith collected 125 m west of the Apollo 14 Lunar Module. Scroll to set the Etna candidates against it, measurement after measurement. All values come from the paper.</p>
+            </div>
+            <div class="frame twin-grid">
+                <div class="twin-stage" aria-hidden="true">
+                    <p class="twin-title" id="tw-title"></p>
+                    <div class="twin-head">
+                        <div class="twin-name twin-name-a"><span id="tw-a"></span><i id="tw-a-c"></i></div>
+                        <div></div>
+                        <div class="twin-name"><i style="--c:var(--moon-d)"></i>14259 · Apollo 14</div>
+                    </div>
+                    <div class="twin-rows" id="tw-rows"></div>
+                    <p class="twin-verdict" id="tw-verdict"></p>
+                    <p class="twin-note" id="tw-note"></p>
+                </div>
+
+                <div class="twin-steps">
+                    <article class="step" data-s="0">
+                        <p class="step-n">Test 1 · Chemistry</p>
+                        <h3>The screening</h3>
+                        <p>A principal component analysis of X-ray fluorescence data set six Etna samples against Apollo compositions and established simulants. Two of them clustered with Apollo 14. The first is CL2, pyroclastics from Cisternazza.</p>
+                        <p>The big oxides line up. The alkalis do not, and we come back to that below.</p>
+                    </article>
+                    <article class="step" data-s="1">
+                        <p class="step-n">Test 1 · Chemistry</p>
+                        <h3>A second candidate</h3>
+                        <p>TL5, from the Tre Livelli lava tube, looks just as promising. On chemistry alone there would be no reason to choose between them.</p>
+                    </article>
+                    <article class="step" data-s="2">
+                        <p class="step-n">Test 2 · Mineralogy</p>
+                        <h3>One goes out</h3>
+                        <p>X-ray diffraction with Rietveld refinement separates them at once. TL5 has too much feldspar and no glass at all. Lunar regolith is full of glass, from impact melting and explosive volcanism, so TL5 is disqualified.</p>
+                    </article>
+                    <article class="step" data-s="3">
+                        <p class="step-n">Test 2 · Mineralogy</p>
+                        <h3>The right cocktail</h3>
+                        <p>CL2 carries plagioclase, pyroxene and olivine, plus about 50 % glass against 47.7 % in the Moon sample. Its glass is even the right kind: by the MgO/Al₂O₃ and CaO/Al₂O₃ ratios used for lunar glasses (0.29 and 0.55), it plots in the highland impact-glass field.</p>
+                    </article>
+                    <article class="step" data-s="4">
+                        <p class="step-n">Test 3 · Grain size</p>
+                        <h3>Sieved to match</h3>
+                        <p>Grain size controls how a soil behaves mechanically. We crushed CL2 and rebuilt its distribution through four sieves to align it with Apollo samples, and the curve follows 14259 closely: Pearson r = 0.84, with a low Jensen-Shannon divergence (0.083).</p>
+                    </article>
+                    <article class="step" data-s="5">
+                        <p class="step-n">Test 4 · Light</p>
+                        <h3>The spectral fingerprint</h3>
+                        <p>In the 0.4–2.5 µm range, the 1-µm absorption band of CL2 aligns best with the agglutinate fraction of 14259: clusters of mineral fragments welded by impact glass, which can make up 60–70 % of some lunar soils.</p>
+                        <p>The centres sit a few tens of nanometres apart, because Etna's pyroxene is high-Ca augite and the agglutinates are dominated by low-Ca orthopyroxene.</p>
+                    </article>
+                </div>
+            </div>
+
+            <div class="frame twin-tables">
+                <details>
+                    <summary>See the numbers as tables</summary>
+                    <div class="data-wrap">
+                        <table class="data">
+                            <caption>Oxides, wt% (Table 1 of the paper; FeO is reported for 14259, Fe₂O₃ for the Etna samples)</caption>
+                            <thead><tr><th>Sample</th><th>SiO₂</th><th>TiO₂</th><th>Al₂O₃</th><th>FeO</th><th>Fe₂O₃</th><th>MnO</th><th>MgO</th><th>CaO</th><th>Na₂O</th><th>K₂O</th><th>P₂O₅</th></tr></thead>
                             <tbody>
-                                <tr><td>SiO₂</td><td>47.5 %</td><td>48.1 %</td><td class="match">✓ excellent</td></tr>
-                                <tr><td>TiO₂</td><td>1.9 %</td><td>1.8 %</td><td class="match">✓ excellent</td></tr>
-                                <tr><td>Al₂O₃</td><td>16.4 %</td><td>17.0 %</td><td class="match">✓ excellent</td></tr>
-                                <tr><td>FeO<sub>tot</sub></td><td>11.7 %</td><td>10.1 %</td><td class="match">✓ good</td></tr>
-                                <tr><td>CaO</td><td>10.8 %</td><td>10.7 %</td><td class="match">✓ excellent</td></tr>
-                                <tr><td>MgO</td><td>5.5 %</td><td>9.3 %</td><td class="diff">△ lower</td></tr>
-                                <tr><td>Na₂O</td><td>3.3 %</td><td>0.7 %</td><td class="diff">△ higher (expected)</td></tr>
-                                <tr><td>K₂O</td><td>1.8 %</td><td>0.5 %</td><td class="diff">△ higher (expected)</td></tr>
+                                <tr><th>CL2</th><td>47.5</td><td>1.9</td><td>16.4</td><td>/</td><td>11.7</td><td>0.2</td><td>5.5</td><td>10.8</td><td>3.3</td><td>1.8</td><td>0.5</td></tr>
+                                <tr><th>TL5</th><td>48.1</td><td>1.7</td><td>17.1</td><td>/</td><td>11.6</td><td>0.2</td><td>5.7</td><td>9.8</td><td>3.6</td><td>1.4</td><td>0.5</td></tr>
+                                <tr><th>14259 (Apollo 14)</th><td>48.1</td><td>1.8</td><td>17.0</td><td>10.1</td><td>/</td><td>0.1</td><td>9.3</td><td>10.7</td><td>0.7</td><td>0.5</td><td>0.5</td></tr>
                             </tbody>
                         </table>
                     </div>
+                    <div class="data-wrap">
+                        <table class="data">
+                            <caption>Minerals, % (Table 2 of the paper)</caption>
+                            <thead><tr><th>Sample</th><th>Glass</th><th>Feldspar</th><th>Pyroxene</th><th>Olivine</th><th>Oxides</th><th>Quartz</th><th>Sodalite</th></tr></thead>
+                            <tbody>
+                                <tr><th>CL2</th><td>50.3</td><td>25.0</td><td>16.7</td><td>4.7</td><td>2.7</td><td>0.6</td><td>0</td></tr>
+                                <tr><th>TL5</th><td>0</td><td>63.1</td><td>19.4</td><td>3.7</td><td>11.6</td><td>0.2</td><td>0.7</td></tr>
+                                <tr><th>14259 (Apollo 14)</th><td>47.7</td><td>24.6</td><td>21.5</td><td>3.8</td><td>1.7</td><td>1.3</td><td>0</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </details>
+            </div>
+        </section>
 
-                    <h3>2. Mineralogy: the right mineral cocktail, including 50 % glass</h3>
-
-                    <p>Rietveld-refined XRD showed CL2 carries a plagioclase-pyroxene-olivine assemblage with roughly <strong>50 % amorphous (glass) phase</strong>, strikingly close to the 47.7 % glass measured in Apollo 14259. That glass fraction is crucial: on the Moon, impact melting and explosive volcanism produce abundant glassy phases in the regolith, and any serious simulant must reproduce this feature. Sample TL5, despite acceptable chemistry, was disqualified because it lacked glass entirely (>55 % feldspar instead).</p>
-
-                    <figure class="img-block">
-                        <img src="../img/articles/SEM_Etna_particles.jpg"
-                             alt="Composite figure: optical and back-scattered electron microscopy of sample CL2, EDS spectra of its mineral and glass phases, and a MgO/Al2O3 versus CaO/Al2O3 diagram comparing CL2 to Apollo 14259 and to glasses in the lunar meteorite NWA 7948"
-                             loading="lazy">
-                        <figcaption>
-                            Hand-sample and back-scattered SEM images of CL2 (a–f) show a mineral-and-glass texture that, at this scale, reads as lunar breccia. EDS spectra (g) resolve the amorphous glass phase from pyroxene, olivine, spinel and plagioclase. The MgO/Al₂O₃ vs CaO/Al₂O₃ diagram (h) places CL2's glass compositions inside the same field as glasses measured in Apollo 14259 and in the lunar meteorite NWA 7948.
-                            <span class="credit">SEM-EDS · sample CL2</span>
-                        </figcaption>
+        <!-- ===== EVIDENCE ===== -->
+        <section class="etn-band" style="padding-bottom:0">
+            <div class="frame">
+                <div class="fig" style="border-top:0">
+                    <figure class="fig-plate reveal rise">
+                        <a href="../img/articles/etna/fig3.jpg" target="_blank" rel="noopener" aria-label="Open Figure 3 at full size"><img src="../img/articles/etna/fig3.jpg" width="1500" height="1685" loading="lazy" alt="Principal component biplot placing Etna samples, Apollo missions and commercial simulants, with stacked bars of oxide and mineral composition for CL2, TL5 and 14259."></a>
+                        <figcaption><strong>Figure 3</strong> Chemical screening using XRF and XRD. a) PCA comparing our samples (CL2, MN1, CM1, CM3, TL4, TL5) with the average composition of Apollo lunar samples and established lunar regolith simulants (EAC-1, JSC-1A, JSC-2A, OPRL2N, OPRH2N); b) Direct comparison of the chemical composition of CL2, TL5 and 14259 in terms of major elements. c) Direct comparison of the mineral assemblages in samples CL2, TL5, and 14259.
+                            <span class="credit">From Melchiori, Santoro De Vico <em>et al.</em> (2026), <em>Materials Today Advances</em> 29, 100678. © 2025 The Authors, <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a>. Reproduced without changes.</span></figcaption>
                     </figure>
-
-                    <h3>3. Spectral fingerprint: CL2 looks like lunar agglutinates</h3>
-
-                    <p>Hyperspectral analysis in the 0.4–2.5 µm range revealed that CL2's 1-µm absorption feature, diagnostic of Fe²⁺ in pyroxene and olivine, closely matches the spectral signature of the agglutinate-rich fraction of Apollo 14259. A PCA of spectral parameters (band centre, FWHM, asymmetry) confirmed this affinity. The slight ~30 nm offset in band minimum reflects the higher Ca content in Etna's augite compared with the low-Ca orthopyroxene dominant in the Apollo agglutinates.</p>
-
-                    <div class="callout">
-                        <div class="callout-title">What are agglutinates?</div>
-                        Agglutinates are clusters of mineral and rock fragments welded together by impact-generated glass. They can make up 60–70 % of a mature lunar soil and are a hallmark of prolonged space weathering. Their spectral resemblance to CL2, a volcanic glass-rich pyroclastic, is expected because both consist of mineral fragments embedded in a glassy matrix.
-                    </div>
-
-                    <h3>4. Building with "Moon dust": up to 16.4 MPa compressive strength</h3>
-
-                    <p>Four alkali-activated formulations were prepared from CL2 powder and cured for 28 days at 25 °C and 65 % relative humidity. The best performer (sodium aluminate + sodium hydroxide, liquid/solid ratio 0.27) reached an average compressive strength of <strong>16.40 ± 3.36 MPa</strong>. Adding 3 % urea slightly reduced peak strength (14.50 MPa) but dramatically improved batch-to-batch consistency (coefficient of variation dropping from 20.5 % to 6.9 %), a critical advantage for automated robotic construction on the Moon.</p>
-
-                    <p>On the Moon, where gravity is only 1/6 of Earth's, even a conservatively degraded material (accounting for vacuum and thermal cycling) would bear loads equivalent to a much stronger terrestrial concrete, making these values promising for habitats, landing pads and radiation shielding.</p>
-
-                    <h3>5. Oxygen and water extraction: comparable to certified simulants</h3>
-
-                    <p>CL2 was tested in a solid-gas carbothermal reduction plant at 1 100 °C for 8 hours using a H₂/CH₄ gas mixture. The CO extraction trend closely tracked those of certified highlands simulants NU-LHT-2M and LHS-1. CL2's higher ferrous-oxide content actually increased its reactivity with hydrogen, supporting faster reduction during hydrogen-only process steps, a practical advantage for ISRU oxygen production.</p>
-
-                    <div class="key-number-grid">
-                        <div class="key-number">
-                            <span class="number">~50 %</span>
-                            <span class="label">Amorphous glass in CL2, matching Apollo 14's 47.7 %</span>
-                        </div>
-                        <div class="key-number">
-                            <span class="number">16.4 MPa</span>
-                            <span class="label">Best compressive strength as alkali-activated material</span>
-                        </div>
-                        <div class="key-number">
-                            <span class="number">r = 0.84</span>
-                            <span class="label">Pearson correlation of grain-size distribution with Apollo 14259</span>
-                        </div>
-                        <div class="key-number">
-                            <span class="number">6 sites</span>
-                            <span class="label">sampled across lava tubes and pit craters on Etna</span>
-                        </div>
-                    </div>
-
-                    <!-- ═══════════════════════════════════════ -->
-                    <h2>Why Etna, and why now?</h2>
-
-                    <p>Mount Etna offers something no artificial blending plant can easily replicate: <em>natural compositional variability</em>. Its complex slab-edge geodynamics has produced both mare-like and highlands-like lithologies within a few kilometres of each other, and Sicilian law already classifies volcanic ash fallout as a reusable waste stream. That means tonnes of fresh simulant material can be sourced legally, sustainably and cheaply, right on the doorstep of European space agencies and research labs. As ISRU technologies mature and demand for large-volume testing grows, a readily accessible, high-fidelity natural simulant like CL2 could become an invaluable asset for the next phase of lunar exploration.</p>
-
-                    <hr class="divider">
-
-                    <div class="sources">
-                        <h3>Full paper &amp; media</h3>
-                        <ul>
-                            <li>
-                                Volcanic deposits from Mount Etna (Italy) as high-fidelity lunar simulants for ISRU applications
-                                <span class="src-meta">Materials Today Advances, Vol. 29, 100678 (2026) · <a href="https://doi.org/10.1016/j.mtadv.2025.100678" target="_blank" rel="noopener">doi.org/10.1016/j.mtadv.2025.100678</a></span>
-                            </li>
-                            <li>
-                                Video interview about this work
-                                <span class="src-meta"><a href="https://youtu.be/orKbDZ7eTls" target="_blank" rel="noopener">youtu.be/orKbDZ7eTls</a></span>
-                            </li>
-                        </ul>
+                    <div class="fig-notes reveal rise">
+                        <h3>The map that picked the winner</h3>
+                        <dl>
+                            <dt>(a) Black, blue, red, orange</dt>
+                            <dd>Apollo missions, commercial simulants, CL2 and the other Etna samples. Look at where CL2 and TL5 sit relative to Apollo 14 and to OPRL2N.</dd>
+                            <dt>(b, c) The turning point</dt>
+                            <dd>The oxide bars are nearly the same for all three. In the mineral bars, the red glass block is simply missing from TL5.</dd>
+                        </dl>
                     </div>
                 </div>
 
-                <div class="post-nav">
-                    <a href="../publications.html" class="back-link">Back to Publications</a>
+                <div class="fig">
+                    <figure class="fig-plate reveal rise">
+                        <a href="../img/articles/etna/fig5.jpg" target="_blank" rel="noopener" aria-label="Open Figure 5 at full size"><img src="../img/articles/etna/fig5.jpg" width="1500" height="571" loading="lazy" alt="Oxide comparison on a logarithmic scale, a bar comparison of major oxides, and cumulative grain-size curves of CL2 and 14259 within the lunar soil envelope."></a>
+                        <figcaption><strong>Figure 5</strong> Geochemical and grain size distribution comparison of CL2 and Apollo 14259 lunar samples. a) Multi-element oxide composition by XRF and ICP-OES against literature data for 14259. b) Major oxide components, averaged. c) Cumulative grain-size curves of CL2 (red) and 14259 (green) in phi units, with the average lunar soil distribution and one standard deviation.
+                            <span class="credit">From Melchiori, Santoro De Vico <em>et al.</em> (2026), <em>Materials Today Advances</em> 29, 100678. © 2025 The Authors, <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a>. Reproduced without changes; caption shortened.</span></figcaption>
+                    </figure>
+                    <div class="fig-notes reveal rise">
+                        <h3>Where the two lines part</h3>
+                        <p>In (a) the two red lines are our own check, XRF against ICP-OES. They leave the grey Apollo lines at K₂O and Na₂O, and dip below them at MgO. In (c) CL2 runs inside the lunar envelope for most of the curve, though four sieve cuts cannot control what happens between them.</p>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <section class="fig-dark">
+            <div class="frame">
+                <div class="fig">
+                    <figure class="fig-plate reveal rise">
+                        <a href="../img/articles/etna/fig6.jpg" target="_blank" rel="noopener" aria-label="Open Figure 6 at full size"><img src="../img/articles/etna/fig6.jpg" width="1500" height="1493" loading="lazy" alt="Thin section and electron microscope images of CL2 with an image of an Apollo 11 agglutinate, EDX spectra of its mineral phases, and a diagram placing its glass among lunar glasses."></a>
+                        <figcaption><strong>Figure 6</strong> Microscopy analysis and chemistry of CL2. a) Optical microscopy thin section overview of CL2 under parallel nicols; b) SEM detail of section A showing a low concentration of pores; c) backscattered electron image of an agglutinate from Apollo 11; d) SEM image of selected porous spots from image A, where different colors represent varying mineralogy of the sample, as highlighted in G with EDX; e) Detail of image D; f) Close-up of the amorphous matrix of CL2 with embedded crystals; g) EDX spectra of selected spots of the CL2 sample; h) MgO/Al₂O₃ and CaO/Al₂O₃ ratios of CL2 sample (blue triangle) compared to lunar samples (red dots and green squares).
+                            <span class="credit">From Melchiori, Santoro De Vico <em>et al.</em> (2026), <em>Materials Today Advances</em> 29, 100678. © 2025 The Authors, <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a>. Reproduced without changes.</span></figcaption>
+                    </figure>
+                    <div class="fig-notes reveal rise">
+                        <h3>Etna next to Apollo 11</h3>
+                        <dl>
+                            <dt>(b, d) vs (c)</dt>
+                            <dd>Panel (c) is a real lunar agglutinate. Next to it, the pores and glass of CL2 tell a similar visual story at this scale.</dd>
+                            <dt>(e, f) The crystals</dt>
+                            <dd>Forsteritic olivine (Fo₈₀), augite and bytownite (An₇₁) in a glassy groundmass, plus titanomagnetite, an accessory phase of interest for oxygen extraction.</dd>
+                            <dt>(h) The glass</dt>
+                            <dd>CL2's blue triangle lands in the highland field, close to the glasses of 14259.</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="etn-band" style="padding-bottom:0">
+            <div class="frame">
+                <div class="fig" style="border-top:0">
+                    <figure class="fig-plate reveal rise">
+                        <a href="../img/articles/etna/fig7.jpg" target="_blank" rel="noopener" aria-label="Open Figure 7 at full size"><img src="../img/articles/etna/fig7.jpg" width="1500" height="1109" loading="lazy" alt="Reflectance spectra of CL2 grain-size fractions and 14259 phases, continuum-removed spectra, a principal component analysis of spectral parameters, and a direct comparison of CL2 and 14259 agglutinates."></a>
+                        <figcaption><strong>Figure 7</strong> Hyperspectral analysis on CL2 and spectral comparison between CL2 and Apollo samples. a) Comparison between hyperspectral acquisitions at different grain sizes of CL2. b) Comparison between hyperspectral acquisitions at different grain sizes of CL2. c) PCA analysis of the spectral parameters from Apollo sample 14259 and CL2; d) Direct comparison of the CL2 and 14259 agglutinate spectra.
+                            <span class="credit">From Melchiori, Santoro De Vico <em>et al.</em> (2026), <em>Materials Today Advances</em> 29, 100678. © 2025 The Authors, <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a>. Reproduced without changes.</span></figcaption>
+                    </figure>
+                    <div class="fig-notes reveal rise">
+                        <h3>What it means for instruments</h3>
+                        <p>Space weathering makes lunar spectra darker and redder, and it cannot be fully replicated on Earth. Even so, the match around 1 µm points to a further use: testing the optical instruments and remote-sensing technologies designed for lunar exploration.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== BUILD ===== -->
+        <section class="etn-band">
+            <div class="frame">
+                <div class="etn-split">
+                    <h2 class="reveal rise">From powder to bricks</h2>
+                    <div class="etn-prose reveal rise">
+                        <p>Passing as Moon dust is one thing, working like building material is another. We mixed CL2 powder with alkaline activators into four formulations, cast them as 40 × 40 × 160 mm prisms, and cured them for 28 days at 25 °C and 65 % relative humidity.</p>
+                        <p>The strongest mix is also the least predictable. For robots building on the Moon that matters: adding 3 % urea gives up 11.6 % of the mean strength but brings the coefficient of variation down from 20.5 % to 6.9 %.</p>
+                    </div>
+                </div>
+
+                <div class="mixes">
+                    <p class="mixes-title reveal rise">Compressive strength after 28 days, MPa (mean of three specimens ± standard deviation)</p>
+                    <div class="mix reveal" title="Mix 1: 12.89 ± 0.79 MPa, CV 6.1 %">
+                        <div class="mix-name">Mix 1<small>Sodium silicate + NaOH · L/S 0.41</small></div>
+                        <div class="mix-track"><span class="mix-bar" style="--v:64.45%"></span><span class="mix-err" style="--lo:60.5%;--hi:68.4%"></span></div>
+                        <div class="mix-val">12.89 ± 0.79<small>CV 6.1 %</small></div>
+                    </div>
+                    <div class="mix reveal" title="Mix 2: 11.62 ± 1.59 MPa">
+                        <div class="mix-name">Mix 2<small>Sodium aluminate + NaOH · L/S 0.30</small></div>
+                        <div class="mix-track"><span class="mix-bar" style="--v:58.1%"></span><span class="mix-err" style="--lo:50.15%;--hi:66.05%"></span></div>
+                        <div class="mix-val">11.62 ± 1.59</div>
+                    </div>
+                    <div class="mix reveal" title="Mix 3: 16.40 ± 3.36 MPa, CV 20.5 %">
+                        <div class="mix-name">Mix 3<small>Sodium aluminate + NaOH · L/S 0.27</small></div>
+                        <div class="mix-track"><span class="mix-bar" style="--v:82%"></span><span class="mix-err" style="--lo:65.2%;--hi:98.8%"></span></div>
+                        <div class="mix-val">16.40 ± 3.36<small>CV 20.5 %</small></div>
+                    </div>
+                    <div class="mix reveal" title="Mix 4: 14.50 ± 1.00 MPa, CV 6.9 %">
+                        <div class="mix-name">Mix 4<small>As Mix 3, plus 3 % urea · L/S 0.27</small></div>
+                        <div class="mix-track"><span class="mix-bar" style="--v:72.5%"></span><span class="mix-err" style="--lo:67.5%;--hi:77.5%"></span></div>
+                        <div class="mix-val">14.50 ± 1.00<small>CV 6.9 %</small></div>
+                    </div>
+                    <div class="mix-axis" aria-hidden="true">
+                        <div></div>
+                        <div class="mix-scale"><span style="left:0">0</span><span style="left:25%">5</span><span style="left:50%">10</span><span style="left:75%">15</span><span style="left:100%">20</span></div>
+                        <div></div>
+                    </div>
+                    <p class="mixes-note">Tested on Earth, in air. Values as given in the text of the paper; the same data are plotted in Fig. 8a.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="etn-band" style="padding-bottom:0">
+            <div class="frame">
+                <div class="etn-split" style="margin-bottom:clamp(2rem,4vw,3rem)">
+                    <h2 class="reveal rise">Oxygen from rock</h2>
+                    <div class="etn-prose reveal rise">
+                        <p>The same powder went into a carbothermal reduction plant: 50 g sieved to 250 µm, at 1,100 °C for 8 hours, alternating an 85/15 H₂/CH₄ mixture with pure hydrogen. Oxygen comes out as carbon oxides, later converted to water.</p>
+                        <p>CL2 behaved like the certified highland simulants NU-LHT-2M and LHS-1. Its higher ferrous oxide content made it more reactive with hydrogen, supporting faster reduction during the hydrogen-only steps. Less water than expected was actually recovered, which we attribute to the low efficiency of the plant's condensation stage.</p>
+                    </div>
+                </div>
+                <div class="fig">
+                    <figure class="fig-plate reveal rise">
+                        <a href="../img/articles/etna/fig8.jpg" target="_blank" rel="noopener" aria-label="Open Figure 8 at full size"><img src="../img/articles/etna/fig8.jpg" width="1500" height="1208" loading="lazy" alt="Bar chart of compressive strength for four mixes, and plots of carbon monoxide fraction and integrated carbon monoxide mass over time for CL2, NU-LHT-2M and LHS-1."></a>
+                        <figcaption><strong>Figure 8</strong> ISRU potential in terms of building materials and water extraction. a) Compressive strength tests performed according to BS EN 12390–3:2002 standard after 28 days curing at 25 °C and 65 % RH. b) Results in terms of molar percentage of CO (log10) in the flow downstream of the carbothermal reactor, retrieved from chromatograms. c) The integrated CO mass extracted during the carbothermal process, calculated from gas chromatograph data. For a mixing phase we use a mixture of 85 % H₂/15 % CH₄ (vol%) flowing through the reactor at a constant total flux of 0.5 L/min, and for the washing phase only H₂ flowing through the reactor.
+                            <span class="credit">From Melchiori, Santoro De Vico <em>et al.</em> (2026), <em>Materials Today Advances</em> 29, 100678. © 2025 The Authors, <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a>. Reproduced without changes.</span></figcaption>
+                    </figure>
+                    <div class="fig-notes reveal rise">
+                        <h3>Reading the gas</h3>
+                        <dl>
+                            <dt>(b) CO over time</dt>
+                            <dd>An initial peak, then steady production. Square and round markers switch between gas phases, and CL2 barely changes: carbon deposited in the mixing phase keeps reacting in the hydrogen phase.</dd>
+                            <dt>(c) The running total</dt>
+                            <dd>CO mass over time follows the same kind of trend as the certified simulants.</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== NOT A PERFECT TWIN ===== -->
+        <section class="etn-band">
+            <div class="frame">
+                <h2 class="reveal rise">Not a perfect twin</h2>
+                <dl class="ledger">
+                    <div class="entry reveal rise">
+                        <dt>Too many alkalis</dt>
+                        <dd>Na₂O 3.3 % against 0.7 %, K₂O 1.8 % against 0.5 %. Expected: the Moon's stock of volatile lithophile elements is lower than Earth's primitive upper mantle by a factor of 4–5.</dd>
+                    </div>
+                    <div class="entry reveal rise">
+                        <dt>A different origin for the glass</dt>
+                        <dd>Etna's formed in rapid cooling during explosive eruptions, the Moon's under meteorite bombardment. Similar amount and composition, different history. In our tests composition seemed to matter more.</dd>
+                    </div>
+                    <div class="entry reveal rise">
+                        <dt>Earth is not the Moon</dt>
+                        <dd>All of this ran at 1 atm. Thermal cycling (about 30 %) plus vacuum effects (up to about 40 %) could add up to a 60–70 % loss of strength, close to structural limits. Thermally stable sites or regolith cover could help.</dd>
+                    </div>
+                    <div class="entry reveal rise">
+                        <dt>But gravity helps</dt>
+                        <dd>Structures bear one sixth of the load they would on Earth. A 16 MPa material degraded to 10 MPa would still perform like 60 MPa here, if the combined damage stays below that.</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+
+        <section class="etn-band">
+            <div class="frame">
+                <div class="etn-split">
+                    <h2 class="reveal rise">What comes next</h2>
+                    <div class="etn-prose reveal rise">
+                        <p>The conclusion is specific: CL2 from Cisternazza is a high-fidelity simulant for Apollo 14 Fra Mauro materials, with strong potential for lunar construction and resource extraction. A "perfect" simulant remains out of reach, since no terrestrial rock has lived through space weathering.</p>
+                        <p>The next step is to test both processes in a vacuum chamber, to measure how much of this survives real lunar conditions. And because the material is abundant and easy to reach, the simulant can be refined as ISRU technologies evolve.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CITATION ===== -->
+        <section class="cite">
+            <div class="frame">
+                <div class="etn-split">
+                    <h2 class="reveal rise">The paper</h2>
+                    <div class="reveal rise">
+                        <p class="cite-text">Melchiori, G., <strong>Santoro De Vico, F.</strong>, Dottori, A., Pozzobon, R., Valentini, L., Ferretti, P., Bonetto, A., Lavagna, M., Calvari, S., Massironi, M. (2026) Volcanic deposits from mount Etna (Italy) as high-fidelity lunar simulants for In-Situ Resource Utilization (ISRU) applications. <em>Materials Today Advances</em> 29, 100678.</p>
+                        <p class="etn-actions">
+                            <a href="https://doi.org/10.1016/j.mtadv.2025.100678" target="_blank" rel="noopener">doi.org/10.1016/j.mtadv.2025.100678</a>
+                            <a href="https://youtu.be/orKbDZ7eTls" target="_blank" rel="noopener">Video: From Mount Etna to the Moon</a>
+                        </p>
+                        <small>Open access under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a>. Cover photo of Fra Mauro: AS14-68-9487, Edgar D. Mitchell, NASA, cropped.</small>
+                        <small>Carried out within the Space It Up project, funded by the Italian Space Agency (ASI) and the Ministry of University and Research (MUR). The carbothermal work was part of the ORACLE project, funded by ASI.</small>
+                        <a href="../publications.html" class="back-link">Back to Publications</a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <div id="site-footer"></div>
-    <script src="../js/components.js"></script>
+    <script src="../js/components.js?v=3"></script>
+    <script>
+    (function () {
+      'use strict';
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* ---------------------------------------------------------------
+         COVER: drag anywhere on the photos to move the divider; arrow keys
+         work through the hidden range input. One slow sweep on load.
+         --------------------------------------------------------------- */
+      (function () {
+        var cover = document.getElementById('cover');
+        var range = document.getElementById('split');
+        var dragging = false, touched = false;
+
+        function setX(pct) {
+          pct = Math.max(4, Math.min(96, pct));
+          cover.style.setProperty('--x', pct + '%');
+          range.value = Math.round(pct);
+        }
+        function fromEvent(e) {
+          var r = cover.getBoundingClientRect();
+          setX((e.clientX - r.left) / r.width * 100);
+        }
+        function isControl(t) { return t.closest && t.closest('a, .etn-cover-text'); }
+
+        cover.addEventListener('pointerdown', function (e) {
+          if (isControl(e.target)) return;
+          dragging = true; touched = true;
+          fromEvent(e);
+          if (e.pointerType === 'mouse') e.preventDefault();
+          if (cover.setPointerCapture) cover.setPointerCapture(e.pointerId);
+        });
+        cover.addEventListener('pointermove', function (e) { if (dragging) fromEvent(e); });
+        ['pointerup', 'pointercancel'].forEach(function (n) {
+          cover.addEventListener(n, function () { dragging = false; });
+        });
+        range.addEventListener('input', function () { touched = true; setX(parseFloat(range.value)); });
+
+        if (reduce) return;
+        // opening sweep: the Moon is uncovered from the right
+        var from = 90, to = window.innerWidth <= 860 ? 50 : 63, t0 = 0, DUR = 2600;
+        setX(from);
+        function sweep(ms) {
+          if (touched) return;
+          if (!t0) t0 = ms;
+          var p = Math.min(1, (ms - t0) / DUR), f = 1 - Math.pow(1 - p, 3);
+          setX(from + (to - from) * f);
+          if (p < 1) requestAnimationFrame(sweep);
+        }
+        setTimeout(function () { requestAnimationFrame(sweep); }, 500);
+      })();
+
+      /* ---------------------------------------------------------------
+         THE TWIN TEST. Values are from Tables 1 and 2 of the paper and from
+         section 3.2. One axis per scene; bars stay on the same scale within
+         a scene; TL5 is neutral grey so that it never reads as the winner.
+         --------------------------------------------------------------- */
+      (function () {
+        var steps = Array.prototype.slice.call(document.querySelectorAll('.step'));
+        var rowsEl = document.getElementById('tw-rows');
+        if (!rowsEl) return;
+        var titleEl = document.getElementById('tw-title');
+        var aEl = document.getElementById('tw-a');
+        var aC = document.getElementById('tw-a-c');
+        var verdictEl = document.getElementById('tw-verdict');
+        var noteEl = document.getElementById('tw-note');
+
+        var CL2 = { n: 'CL2 · Cisternazza', c: 'var(--etna-d)' };
+        var TL5 = { n: 'TL5 · Tre Livelli', c: 'var(--other-d)' };
+        var FE = 'Fe₂O₃ for the Etna samples, FeO for 14259. wt%.';
+        var SCENES = [
+          { title: 'Major oxides, wt%', a: CL2, max: 50, unit: '', note: FE, verdict: 'Close on the big oxides. MgO and the alkalis are the exceptions.',
+            rows: [['SiO₂', 47.5, 48.1], ['Al₂O₃', 16.4, 17.0], ['Fe oxide', 11.7, 10.1], ['CaO', 10.8, 10.7], ['MgO', 5.5, 9.3], ['Na₂O', 3.3, 0.7], ['TiO₂', 1.9, 1.8], ['K₂O', 1.8, 0.5]] },
+          { title: 'Major oxides, wt%', a: TL5, max: 50, unit: '', note: FE, verdict: 'Just as close. Chemistry alone cannot decide.',
+            rows: [['SiO₂', 48.1, 48.1], ['Al₂O₃', 17.1, 17.0], ['Fe oxide', 11.6, 10.1], ['CaO', 9.8, 10.7], ['MgO', 5.7, 9.3], ['Na₂O', 3.6, 0.7], ['TiO₂', 1.7, 1.8], ['K₂O', 1.4, 0.5]] },
+          { title: 'Mineral assemblage, %', a: TL5, max: 65, unit: '', note: 'Rietveld-refined XRD.', verdict: 'No glass, too much feldspar. TL5 is out.',
+            rows: [['Glass', 0, 47.7], ['Feldspar', 63.1, 24.6], ['Pyroxene', 19.4, 21.5], ['Olivine', 3.7, 3.8], ['Oxides', 11.6, 1.7], ['Quartz', 0.2, 1.3], ['Sodalite', 0.7, 0]] },
+          { title: 'Mineral assemblage, %', a: CL2, max: 65, unit: '', note: 'Rietveld-refined XRD.', verdict: 'About half glass on both sides.',
+            rows: [['Glass', 50.3, 47.7], ['Feldspar', 25.0, 24.6], ['Pyroxene', 16.7, 21.5], ['Olivine', 4.7, 3.8], ['Oxides', 2.7, 1.7], ['Quartz', 0.6, 1.3], ['Sodalite', 0, 0]] },
+          { title: 'Grain size, µm', a: CL2, max: 60, unit: ' µm', note: 'Quartile grain sizes. Pearson r = 0.84 on the whole curve.', verdict: 'A slightly coarser fine fraction, and a very similar median.',
+            rows: [['Q25', 27.6, 22.1], ['Median', 51.8, 48.4]] },
+          { title: 'Centre of the 1-µm band', a: CL2, max: 1.2, unit: ' µm', dp: 2, note: 'CL2 under 75 µm against the agglutinates of 14259, read from Fig. 7d.', verdict: 'Almost the same place, with an offset that the pyroxene explains.',
+            rows: [['Band', 1.0087, 0.99]] }
+        ];
+
+        var rows = [], i;
+        for (i = 0; i < 8; i++) {
+          var r = document.createElement('div');
+          r.className = 'tw-row is-empty';
+          r.innerHTML = '<div class="tw-side tw-side-a"><span class="tw-bar"></span><span class="tw-val"></span></div>' +
+                        '<div class="tw-label"></div>' +
+                        '<div class="tw-side tw-side-b"><span class="tw-bar" style="--c:var(--moon-d)"></span><span class="tw-val"></span></div>';
+          rowsEl.appendChild(r);
+          rows.push({ el: r, barA: r.querySelector('.tw-side-a .tw-bar'), valA: r.querySelector('.tw-side-a .tw-val'),
+                      label: r.querySelector('.tw-label'), barB: r.querySelector('.tw-side-b .tw-bar'), valB: r.querySelector('.tw-side-b .tw-val') });
+        }
+
+        function fmt(v, s) {
+          if (s.dp) return (v >= 1 ? v.toFixed(4) : v.toFixed(2)) + s.unit;
+          return (v === 0 ? '0' : v.toFixed(1)) + s.unit;
+        }
+
+        var active = -1;
+        function show(n) {
+          if (n === active) return;
+          active = n;
+          var s = SCENES[n];
+          titleEl.textContent = s.title;
+          aEl.textContent = s.a.n;
+          aC.style.setProperty('--c', s.a.c);
+          verdictEl.textContent = s.verdict;
+          noteEl.textContent = s.note;
+          rows.forEach(function (R, k) {
+            var d = s.rows[k];
+            R.el.classList.toggle('is-empty', !d);
+            if (!d) { R.barA.style.setProperty('--w', '0%'); R.barB.style.setProperty('--w', '0%'); return; }
+            R.label.textContent = d[0];
+            R.barA.style.setProperty('--c', s.a.c);
+            // bars run from the centre outwards, on one scale per scene
+            R.barA.style.setProperty('--w', (d[1] / s.max * 78) + '%');
+            R.barB.style.setProperty('--w', (d[2] / s.max * 78) + '%');
+            R.valA.textContent = fmt(d[1], s);
+            R.valB.textContent = fmt(d[2], s);
+          });
+          steps.forEach(function (el, k) { el.classList.toggle('is-active', k === n); });
+        }
+
+        function read() {
+          var mobile = window.innerWidth <= 860;
+          var probe = window.innerHeight * (mobile ? 0.72 : 0.5);
+          var best = 0, bd = Infinity;
+          steps.forEach(function (el, k) {
+            var r = el.getBoundingClientRect();
+            var c = r.top + (mobile ? 90 : r.height / 2);
+            var d = Math.abs(c - probe);
+            if (d < bd) { bd = d; best = k; }
+          });
+          show(best);
+        }
+        var ticking = false;
+        window.addEventListener('scroll', function () {
+          if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; read(); }); }
+        }, { passive: true });
+        window.addEventListener('resize', read);
+        read();
+      })();
+    })();
+    </script>
 </body>
 </html>

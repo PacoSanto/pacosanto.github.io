@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Injection grouts for mosaic conservation | Francesco Santoro De Vico</title>
+    <meta name="description" content="Five commercial injection grouts, one column of crushed brick. What it takes for a grout to reach the void behind a mosaic, and to survive salt once it gets there.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fsdv.eu/articles/injection-grouts.html">
+    <meta property="og:title" content="Novel Techniques for the Assessment of Injectability &amp; Environmental Resistance of Injection Grouts for Mosaic Conservation">
+    <meta property="og:description" content="Five commercial injection grouts, one column of crushed brick. What it takes for a grout to reach the void behind a mosaic, and to survive salt once it gets there.">
+    <meta property="og:image" content="https://fsdv.eu/img/articles/grouts/injection-grouts-og.jpg">
+    <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
+    <link rel="stylesheet" href="../css/style.css?v=3">
+    <style>
+        /* Two accents: crushed brick, and the pale grout that fills it. */
+        body.grt {
+            --brick: #a8502f;
+            --grout: #e6d8b8;
+            font-size: 1.0625rem;
+            color: var(--color-ink);
+        }
+        .grt p { color: inherit; }
+        .grt .site-footer { margin-top: 0; }
+        .grt sub, .grt sup { line-height: 0; font-size: .72em; }
+
+        /* ── Cover: a polished section of the column, filling live ─────── */
+        .grt-cover {
+            position: relative;
+            min-height: 100vh;
+            min-height: 100svh;
+            display: flex;
+            align-items: flex-end;
+            padding: 150px 0 clamp(2.5rem, 6vw, 4.5rem);
+            color: #fff;
+            overflow: hidden;
+            isolation: isolate;
+            background: #2a1d17;
+        }
+        .section-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -2; }
+        .grt-cover::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background:
+                linear-gradient(90deg, rgba(13,15,12,.92) 0%, rgba(13,15,12,.76) 42%, rgba(13,15,12,.05) 74%),
+                linear-gradient(0deg, rgba(13,15,12,.7) 0%, rgba(13,15,12,0) 34%),
+                linear-gradient(180deg, rgba(13,15,12,.62) 0%, rgba(13,15,12,0) 22%);
+        }
+        .grt-cover-text { max-width: 47rem; }
+        .grt-cover .back-link { color: rgba(255,255,255,.82); font-size: .85rem; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 1.6rem; }
+        .grt-cover .back-link:hover { color: #fff; }
+        .grt-kicker { font-size: .8rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--color-sandstone); margin-bottom: 1.1rem; }
+        .grt-cover h1 { font-size: clamp(2.4rem, 4.5vw, 4.2rem); line-height: 1; letter-spacing: -.02em; color: #fff; margin-bottom: 1.4rem; }
+        .grt-lede { font-size: 1.14rem; line-height: 1.58; color: rgba(255,255,255,.92); border-left: 2px solid var(--color-amber); padding-left: 1.25rem; margin-bottom: 1.3rem; }
+        .grt-authors { font-size: .95rem; color: rgba(255,255,255,.76); margin-bottom: 1.1rem; }
+        .grt-authors strong { color: #fff; font-weight: 600; }
+        .grt-actions { display: flex; flex-wrap: wrap; gap: .6rem 1.6rem; margin: 0; }
+        .grt-actions a { font-weight: 600; font-size: .95rem; color: #fff; padding-bottom: 4px; background: linear-gradient(var(--color-amber), var(--color-amber)) 0 100% / 100% 1px no-repeat; }
+        .grt-actions a:hover { color: #f0b39f; }
+        .section-note {
+            position: absolute;
+            right: var(--gutter);
+            bottom: clamp(1.2rem, 3vw, 2.2rem);
+            max-width: 20rem;
+            font-size: .8rem;
+            line-height: 1.42;
+            text-align: right;
+            color: #fff;
+            text-shadow: 0 0 8px #000, 0 0 2px #000;
+            margin: 0;
+        }
+        .js .grt-cover-text > * { opacity: 0; transform: translateY(22px); transition: opacity 1s var(--ease-out), transform 1s var(--ease-out); }
+        .js .is-loaded .grt-cover-text > * { opacity: 1; transform: none; }
+        .js .is-loaded .grt-cover-text > :nth-child(3) { transition-delay: .1s; }
+        .js .is-loaded .grt-cover-text > :nth-child(4) { transition-delay: .2s; }
+        .js .is-loaded .grt-cover-text > :nth-child(5) { transition-delay: .3s; }
+        .js .is-loaded .grt-cover-text > :nth-child(6) { transition-delay: .4s; }
+
+        /* ── Sections ──────────────────────────────────────────────────── */
+        .grt-band { padding: clamp(4.5rem, 9vw, 8rem) 0; }
+        .grt-band + .grt-band { padding-top: 0; }
+        .grt-split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+        .grt h2 { font-size: clamp(2.8rem, 5.4vw, 4.8rem); line-height: .98; letter-spacing: -.015em; }
+        .grt-prose p { max-width: 62ch; margin-bottom: 1.25rem; }
+        .grt-prose p:last-child { margin-bottom: 0; }
+        .protocol { list-style: none; margin: 0; }
+        .protocol li { display: grid; grid-template-columns: minmax(0, 10rem) minmax(0, 1fr); gap: .3rem 1.5rem; border-top: 1px solid var(--border); padding: 1rem 0 1.1rem; }
+        .protocol span { font-family: var(--font-mono); font-size: .76rem; letter-spacing: .05em; text-transform: uppercase; color: var(--color-copper); padding-top: .3rem; }
+        .protocol p { margin: 0; }
+
+        /* ── The race ──────────────────────────────────────────────────── */
+        .race { background: var(--color-night); color: #f1efe8; padding: clamp(4.5rem, 9vw, 8rem) 0; }
+        .race h2 { color: #fff; margin-bottom: 1rem; }
+        .race-intro { max-width: 58ch; color: rgba(255,255,255,.8); margin: 0; }
+        .race-bar { display: flex; flex-wrap: wrap; align-items: baseline; gap: .8rem 1.4rem; margin: clamp(1.5rem, 3vw, 2.2rem) 0 1.4rem; }
+        .race-clock { font-family: var(--font-display); font-weight: 300; font-size: clamp(2.6rem, 5vw, 4.2rem); line-height: 1; color: #fff; font-variant-numeric: lining-nums tabular-nums; }
+        .race-clock small { font-size: .42em; color: rgba(255,255,255,.65); }
+        .replay { font-family: var(--font-body); font-weight: 600; font-size: .95rem; padding: .6rem 1.1rem; color: var(--color-night); background: #f1efe8; border: 0; border-radius: 2px; cursor: pointer; transition: background .25s; }
+        .replay:hover { background: #f0b39f; }
+        .replay:focus-visible { outline: 3px solid var(--color-amber); outline-offset: 3px; }
+        html:not(.js) .replay, html:not(.js) .race-clock { display: none; }
+        .columns { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(.6rem, 2vw, 1.75rem); align-items: start; }
+        .column { display: flex; flex-direction: column; align-items: center; min-width: 0; }
+        .tube {
+            position: relative;
+            flex: none;
+            width: min(100%, 86px);
+            height: clamp(300px, 46vh, 460px);
+            border: 2px solid rgba(255,255,255,.55);
+            border-top: 0;
+            border-radius: 0 0 10px 10px;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 30% 30%, #c0694a 0 3px, transparent 3.6px) 0 0 / 15px 13px,
+                radial-gradient(circle at 70% 60%, #8c4227 0 4px, transparent 4.6px) 4px 3px / 19px 17px,
+                radial-gradient(circle at 50% 50%, #b35a3a 0 2.5px, transparent 3px) 8px 6px / 11px 15px,
+                #54291a;
+        }
+        .tube-fill {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: calc(var(--h, 100) * 1%);
+            background: rgba(230, 216, 184, .9);
+            border-top: 2px solid #fff6dc;
+        }
+        .tube-top { position: absolute; top: 0; left: 0; right: 0; height: 2px; background: rgba(255,255,255,.55); }
+        .column h3 { font-family: var(--font-display); font-size: clamp(1.05rem, 1.8vw, 1.5rem); font-weight: 400; color: #fff; margin: .8rem 0 .15rem; text-align: center; line-height: 1.1; min-height: 2.2em; }
+        @media (min-width: 861px) { .column h3 { min-height: 0; } }
+        .column .w { font-family: var(--font-mono); font-size: .72rem; color: rgba(255,255,255,.55); margin: 0; }
+        .class { font-family: var(--font-mono); font-size: .74rem; line-height: 1.35; text-align: center; color: #fff; margin: .55rem 0 0; min-height: 3.1em; }
+        .class b { display: block; font-weight: 500; font-size: 1.05rem; color: #f3d79b; }
+        .class.is-d b { color: #f0b39f; }
+        .js .class:not(.is-on) { visibility: hidden; }
+        .race-note { font-size: .85rem; color: rgba(255,255,255,.62); max-width: 70ch; margin: 1.6rem 0 0; line-height: 1.5; }
+
+        /* ── Bars: optimisation ───────────────────────────────────────── */
+        .reach { margin: clamp(2rem, 4vw, 3rem) 0 0; }
+        .reach-title { font-family: var(--font-display); font-style: italic; font-size: 1.3rem; margin: 0 0 1rem; }
+        .rrow { display: grid; grid-template-columns: minmax(0, 13rem) minmax(0, 1fr) 7.5rem; gap: .3rem clamp(.8rem, 2vw, 1.5rem); align-items: center; border-top: 1px solid var(--border); padding: .7rem 0; }
+        .rrow:hover { background: var(--color-calcite); }
+        .rname { font-family: var(--font-display); font-size: 1.25rem; line-height: 1.1; }
+        .rname small { display: block; font-family: var(--font-mono); font-size: .72rem; color: var(--color-slate); margin-top: .2rem; }
+        .rtrack { position: relative; height: 12px; background: var(--color-calcite); border-radius: 0 4px 4px 0; }
+        .rfill { position: absolute; inset: 0 auto 0 0; width: var(--v); min-width: 2px; background: var(--brick); border-radius: 0 4px 4px 0; transform-origin: left; transition: transform 1.1s var(--ease-out) var(--d, 0s); }
+        .js .rrow.reveal .rfill { transform: scaleX(0); }
+        .js .rrow.reveal.is-in .rfill { transform: none; }
+        .rval { font-family: var(--font-mono); font-size: .84rem; font-variant-numeric: tabular-nums; text-align: right; }
+        .reach-note { font-size: .85rem; color: var(--color-slate); margin: .7rem 0 0; max-width: 66ch; }
+
+        /* ── Figures ───────────────────────────────────────────────────── */
+        .fig { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: clamp(1.5rem, 4vw, 4rem); align-items: start; padding: clamp(2.5rem, 5vw, 4rem) 0; border-top: 1px solid var(--border); }
+        .fig-plate { margin: 0; }
+        .fig-plate > a { display: block; }
+        .fig-plate img { width: 100%; height: auto; background: #fff; transition: opacity .3s; }
+        .fig-plate > a:hover img { opacity: .9; }
+        .fig-plate figcaption { font-size: .86rem; line-height: 1.5; color: var(--color-slate); margin-top: .9rem; }
+        .fig-plate figcaption strong { color: var(--color-ink); font-weight: 600; }
+        .credit { display: block; margin-top: .45rem; color: var(--color-ite); }
+        .fig-notes { position: sticky; top: 96px; }
+        .fig-notes h3 { font-size: clamp(1.9rem, 2.8vw, 2.5rem); font-weight: 300; line-height: 1.05; margin-bottom: 1.2rem; }
+        .fig-notes p { max-width: 50ch; }
+        .fig-notes p:last-child { margin-bottom: 0; }
+
+        /* ── Rebuilt Figure 7 ─────────────────────────────────────────── */
+        .fig-wide { grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); }
+        .ys { margin: 0; position: relative; }
+        .ys-title { font-family: var(--font-display); font-style: italic; font-size: 1.3rem; margin: 0 0 .7rem; }
+        .ys-legend { list-style: none; display: flex; flex-wrap: wrap; gap: .3rem 1.1rem; margin: 0 0 .7rem; font-size: .88rem; color: var(--color-slate); }
+        .ys-legend li { display: flex; align-items: center; gap: .4rem; }
+        .ys-plot svg { display: block; width: 100%; height: auto; overflow: visible; }
+        .ys-plot img { width: 100%; height: auto; }
+        .ys-plot text { font-family: var(--font-mono); font-size: 11px; fill: var(--color-slate); }
+        .ys-plot .ys-end { font-family: var(--font-body); font-size: 12.5px; font-weight: 600; fill: var(--color-ink); }
+        .ys-plot .ys-band-label { font-family: var(--font-display); font-style: italic; font-size: 14px; fill: #6b5a20; }
+        .ys-plot .hit { fill: transparent; cursor: pointer; }
+        .ys-plot .hit:focus { outline: none; }
+        .ys-tip { position: absolute; z-index: 5; pointer-events: none; background: var(--color-night); color: #fff; font-family: var(--font-mono); font-size: .76rem; line-height: 1.4; padding: .4rem .6rem; white-space: nowrap; transform: translate(-50%, -115%); }
+        .ys figcaption { font-size: .86rem; line-height: 1.5; color: var(--color-slate); margin-top: .7rem; }
+        .ys figcaption strong { font-weight: 600; color: var(--color-ink); }
+        .ys figcaption a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+        .ys-table { margin-top: .7rem; font-size: .92rem; }
+        .ys-table summary { cursor: pointer; font-weight: 600; }
+        .ys-table td { font-family: var(--font-mono); font-size: .8rem; }
+
+        /* ── Trade-offs ────────────────────────────────────────────────── */
+        .map-wrap { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: clamp(1.5rem, 4vw, 4rem); align-items: center; margin: clamp(2.5rem, 5vw, 4rem) 0; }
+        .map svg { display: block; width: 100%; height: auto; }
+        .map text { font-family: var(--font-mono); font-size: 11px; fill: var(--color-slate); }
+        .map .name { font-family: var(--font-display); font-size: 17px; fill: var(--color-ink); }
+        .map .zone { font-family: var(--font-display); font-style: italic; font-size: 16px; fill: var(--color-slate); }
+        .map circle { stroke: var(--color-white); stroke-width: 2; }
+        .map g:hover .name { fill: var(--brick); }
+        .map-note { font-size: .86rem; color: var(--color-slate); margin: .6rem 0 0; }
+        .table-wrap { overflow-x: auto; }
+        .scores { border-collapse: collapse; width: 100%; font-size: .96rem; min-width: 640px; }
+        .scores th, .scores td { padding: .85rem .9rem .85rem 0; text-align: left; vertical-align: top; border-top: 1px solid var(--border); }
+        .scores thead th { font-family: var(--font-mono); font-size: .74rem; font-weight: 400; letter-spacing: .05em; text-transform: uppercase; color: var(--color-copper); border-top: 0; }
+        .scores tbody th { font-family: var(--font-display); font-size: 1.25rem; font-weight: 400; white-space: nowrap; }
+        .scores tbody tr:hover { background: var(--color-calcite); }
+
+        .takeaways { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(1rem, 3vw, 2.5rem); margin: clamp(2rem, 4vw, 3rem) 0 0; }
+        .takeaway { border-top: 1px solid var(--color-ink); padding-top: 1rem; }
+        .takeaway h3 { font-size: clamp(1.6rem, 2.3vw, 2.05rem); font-weight: 400; line-height: 1.1; margin-bottom: .7rem; }
+        .takeaway p { margin: 0; font-size: 1rem; line-height: 1.55; color: var(--color-slate); }
+
+        /* ── Citation ──────────────────────────────────────────────────── */
+        .cite { background: var(--color-night); color: #f1efe8; padding: clamp(4rem, 8vw, 7rem) 0; }
+        .cite h2 { color: #fff; }
+        .cite-text { font-family: var(--font-display); font-size: clamp(1.35rem, 2vw, 1.7rem); line-height: 1.3; margin-bottom: 1.5rem; }
+        .cite-text strong { font-weight: 500; color: #f0b39f; }
+        .cite .grt-actions { margin-bottom: 2rem; }
+        .cite small { display: block; font-size: .88rem; line-height: 1.55; color: rgba(255,255,255,.62); margin-top: .7rem; max-width: 64ch; }
+        .cite small a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+        .cite .back-link { color: rgba(255,255,255,.8); margin: 2.5rem 0 0; }
+        .cite .back-link:hover { color: #fff; }
+
+        /* ── Responsive ────────────────────────────────────────────────── */
+        @media (max-width: 860px) {
+            .grt-split, .fig, .fig-wide, .map-wrap, .takeaways { grid-template-columns: 1fr; }
+            .takeaways { gap: 1.6rem; }
+            .fig-notes { position: static; order: -1; }
+            .section-note { display: none; }
+            .grt-cover { padding-top: 200px; }
+            .grt-cover::after { background: linear-gradient(0deg, rgba(13,15,12,.96) 0%, rgba(13,15,12,.87) 60%, rgba(13,15,12,.25) 88%, rgba(13,15,12,.55) 100%); }
+            .tube { height: 260px; }
+            .class { font-size: .64rem; min-height: 4.4em; }
+            .class b { font-size: .9rem; }
+            .column .w { font-size: .62rem; }
+        }
+        @media (max-width: 640px) {
+            .rrow { grid-template-columns: minmax(0, 1fr) 6.2rem; }
+            .rname { grid-column: 1 / -1; }
+            .protocol li { grid-template-columns: 1fr; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .grt *, .grt *::before, .grt *::after { transition-duration: .01ms !important; transition-delay: 0s !important; }
+        }
+    </style>
+</head>
+<body class="has-cover grt">
+    <div id="site-header"></div>
+
+    <main>
+        <section class="grt-cover" id="cover">
+            <canvas class="section-canvas" id="section" aria-hidden="true"></canvas>
+            <div class="frame" style="width:100%">
+                <div class="grt-cover-text">
+                    <a href="../publications.html" class="back-link">Back to Publications</a>
+                    <p class="grt-kicker">RILEM Proceedings PRO 136 · 2024</p>
+                    <h1>Novel Techniques for the Assessment of Injectability &amp; Environmental Resistance of Injection Grouts for Mosaic Conservation</h1>
+                    <p class="grt-lede">When a mosaic comes away from its bed, there is an alternative to detaching it: inject a fluid mortar into the gap behind it. Conservators often choose that mortar without much data to go on, so we put five commercial grouts to the test.</p>
+                    <p class="grt-authors"><strong>F. Santoro De Vico</strong>, M.C. Dalconi, E. Garbin, G. Artioli, M. Bellotto</p>
+                    <p class="grt-actions">
+                        <a href="../posts/papers/santoro-de-vico-injection-grouts-rilem-pro136.pdf" download>Download the paper (PDF, 8.6 MB)</a>
+                        <a href="https://www.rilem.net/publication/publication/544" target="_blank" rel="noopener">The proceedings</a>
+                    </p>
+                </div>
+            </div>
+            <p class="section-note">Drawn live: a sketch of a polished column section, built with the proportions we measured. 56.4 % crushed brick, 32.4 % grout, 11.2 % air, shown in blue as our lapis lazuli pigment showed it.</p>
+        </section>
+
+        <section class="grt-band">
+            <div class="frame">
+                <div class="grt-split">
+                    <h2 class="reveal rise">A rescue from behind</h2>
+                    <div class="grt-prose reveal rise">
+                        <p>Injection grouting introduces a fluid suspension behind a wall painting, plaster or mosaic, to fill cracks and voids and re-establish adhesion with the substrate. First reported in the 1980s, it has become an established alternative to detaching the work. The layers involved range from a few millimetres in renders and plasters to one or two centimetres in mosaics.</p>
+                        <p>The grout has to do a lot at once: flow through a narrow network, stay stable without separating, be compatible with the original materials, and resist sulphates. Yet there are no standardised methods for testing injectability and salt resistance in this class of materials, and technical data on ready-mix products are often scarce. That can leave decisions to marketing, cost and local availability.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="grt-band">
+            <div class="frame">
+                <div class="grt-split">
+                    <h2 class="reveal rise">The test bench</h2>
+                    <ul class="protocol">
+                        <li class="reveal rise"><span>Five grouts</span><p>Ledan TB1, Ledan TA1, PLM-1, PLM-SM and Bio Aedilitia, a specially formulated natural hydraulic lime (NHL) grout</p></li>
+                        <li class="reveal rise"><span>The column</span><p>An adaptation of the sand column test of EN 1771: a transparent tube, 22 mm wide and 390 mm long, packed with crushed brick of 2–4 mm</p></li>
+                        <li class="reveal rise"><span>The push</span><p>Injected from the bottom at a constant 10 psi (about 0.75 bar), all prepared first at the same water-to-solid ratio (w/s) of 0.8</p></li>
+                        <li class="reveal rise"><span>The flow</span><p>Rotational rheometry at different w/s, plus grain size by laser diffraction</p></li>
+                        <li class="reveal rise"><span>The solid</span><p>XRPD with Rietveld refinement and FTIR on the powders; compression and splitting tests after 28 days; image analysis of polished sections</p></li>
+                        <li class="reveal rise"><span>The salt</span><p>25 daily cycles in 6 wt% Na₂SO₄ solution, dried at 105 °C, with and without crushed brick</p></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== THE RACE ===== -->
+        <section class="race" id="race">
+            <div class="frame">
+                <h2 class="reveal rise">Five columns, one pressure</h2>
+                <p class="race-intro reveal rise">Same bricks, same pressure, same water ratio. Here is the test again, ten times faster than real time, with the heights of Fig. 3 of the paper. The classes used: <b>E</b>asy if the column fills and at least 1 mL/min keeps flowing out, <b>F</b>easible if it fills without reaching that overflow, <b>D</b>ifficult if it stops or rises too slowly.</p>
+                <div class="race-bar">
+                    <div class="race-clock" aria-hidden="true"><span id="clock">120</span><small> s</small></div>
+                    <button type="button" class="replay" id="replay">Run it again</button>
+                </div>
+                <div class="columns" id="columns">
+                    <div class="column" data-pts="0,0 1,100 2,150 4,200 8,250 12,300 16.5,360">
+                        <div class="tube"><span class="tube-fill" style="--h:100"></span></div>
+                        <h3>Bio Aedilitia</h3><p class="w">w/s 0.8</p>
+                        <p class="class is-on"><b>E</b>full in ~17 s</p>
+                    </div>
+                    <div class="column" data-pts="0,0 1,50 2,100 4,150 6.5,200 11.5,250 19,300 30.5,360">
+                        <div class="tube"><span class="tube-fill" style="--h:100"></span></div>
+                        <h3>Ledan TA1</h3><p class="w">w/s 0.8</p>
+                        <p class="class is-on"><b>E</b>full in ~31 s</p>
+                    </div>
+                    <div class="column" data-pts="0,0 2,50 3.5,100 7.5,150 13,200 31,250 57,300 104,360">
+                        <div class="tube"><span class="tube-fill" style="--h:100"></span></div>
+                        <h3>Ledan TB1</h3><p class="w">w/s 0.8</p>
+                        <p class="class is-on"><b>E</b>full in ~104 s</p>
+                    </div>
+                    <div class="column" data-pts="0,0 1,50 3,100 7.5,150 17,200 120,250">
+                        <div class="tube"><span class="tube-fill" style="--h:69.4"></span></div>
+                        <h3>PLM-SM</h3><p class="w">w/s 0.8</p>
+                        <p class="class is-d is-on"><b>D</b>250 mm in 120 s</p>
+                    </div>
+                    <div class="column" data-pts="0,0 2,50 16,100 120,150">
+                        <div class="tube"><span class="tube-fill" style="--h:41.7"></span></div>
+                        <h3>PLM-1</h3><p class="w">w/s 0.8</p>
+                        <p class="class is-d is-on"><b>D</b>150 mm in 120 s</p>
+                    </div>
+                </div>
+                <p class="race-note">Heights and times are read from the published plot, so they are approximate; the top of each tube marks 360 mm, the height used for full columns in the plot. Tube texture is illustrative. Bio Aedilitia wins here at w/s 0.8, but at this ratio its viscosity is extremely low and it sediments fast, so its speed is not the whole story.</p>
+            </div>
+        </section>
+
+        <!-- ===== OPTIMISING ===== -->
+        <section class="grt-band">
+            <div class="frame">
+                <div class="grt-split">
+                    <h2 class="reveal rise">"Just change the water"</h2>
+                    <div class="grt-prose reveal rise">
+                        <p>The obvious fix is to adjust the water-to-solid ratio until each grout matches the flow of the best one. We took Ledan TA1 as the reference, because it came out of the column behaving as it went in, and worked out from rheology the ratio that should bring each of the others to the same yield stress.</p>
+                        <p>In the rheometer it looked promising. In the column it did not.</p>
+                    </div>
+                </div>
+                <div class="reach">
+                    <p class="reach-title reveal rise">How far grouts got at their rheologically optimised w/s, out of a 36 cm column</p>
+                    <div class="rrow reveal"><div class="rname">Ledan TB1<small>w/s 0.7</small></div><div class="rtrack"><span class="rfill" style="--v:27.8%"></span></div><div class="rval">10 cm</div></div>
+                    <div class="rrow reveal"><div class="rname">PLM-SM, pre-wetted<small>w/s 0.5</small></div><div class="rtrack"><span class="rfill" style="--v:22.2%"></span></div><div class="rval">8 cm</div></div>
+                    <div class="rrow reveal"><div class="rname">PLM-1<small>w/s 0.7</small></div><div class="rtrack"><span class="rfill" style="--v:13.9%"></span></div><div class="rval">5 cm</div></div>
+                    <div class="rrow reveal"><div class="rname">PLM-SM<small>w/s 0.5</small></div><div class="rtrack"><span class="rfill" style="--v:5.6%"></span></div><div class="rval">2 cm</div></div>
+                    <div class="rrow reveal"><div class="rname">Bio Aedilitia<small>w/s not stated in this test</small></div><div class="rtrack"></div><div class="rval">plugged</div></div>
+                    <p class="reach-note">Bio Aedilitia formed a plug in the connection tube and never reached the bricks. Crushed brick absorbs 28.4 % of its weight in water, so a lower w/s also meets a thirsty column, though overall pre-wetting did not significantly change the injection performance.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="grt-band" style="padding-bottom:0">
+            <div class="frame">
+                <div class="fig fig-wide">
+                    <figure class="ys reveal rise" id="ys">
+                        <p class="ys-title">Yield stress against water-to-solid ratio</p>
+                        <ul class="ys-legend" aria-hidden="true">
+                            <li><svg width="30" height="12"><line x1="1" y1="6" x2="29" y2="6" stroke="#2a78d6" stroke-width="2"/><circle cx="15" cy="6" r="4" fill="#2a78d6"/></svg>Ledan TA1</li>
+                            <li><svg width="30" height="12"><line x1="1" y1="6" x2="29" y2="6" stroke="#2a78d6" stroke-width="2" stroke-dasharray="5 4"/><rect x="11" y="2" width="8" height="8" fill="#2a78d6"/></svg>Ledan TB1</li>
+                            <li><svg width="30" height="12"><line x1="1" y1="6" x2="29" y2="6" stroke="#eb6834" stroke-width="2"/><circle cx="15" cy="6" r="4" fill="#eb6834"/></svg>PLM-1</li>
+                            <li><svg width="30" height="12"><line x1="1" y1="6" x2="29" y2="6" stroke="#eb6834" stroke-width="2" stroke-dasharray="5 4"/><rect x="11" y="2" width="8" height="8" fill="#eb6834"/></svg>PLM-SM</li>
+                            <li><svg width="30" height="12"><line x1="1" y1="6" x2="29" y2="6" stroke="#1baf7a" stroke-width="2"/><circle cx="15" cy="6" r="4" fill="#1baf7a"/></svg>Bio Aedilitia</li>
+                        </ul>
+                        <div class="ys-plot" id="ys-plot"><img src="../img/articles/grouts/fig7.jpg" width="758" height="475" loading="lazy" alt="Published plot of yield stress against water-to-solid ratio for the five grouts."></div>
+                        <div class="ys-tip" id="ys-tip" hidden></div>
+                        <figcaption>Redrawn from <strong>Figure 7</strong> of the paper (<a href="../img/articles/grouts/fig7.jpg" target="_blank" rel="noopener">see the original</a>). Values are read from the published plot, so they are approximate. Logarithmic scale.</figcaption>
+                        <details class="ys-table">
+                            <summary>See the values as a table</summary>
+                            <div class="table-wrap">
+                                <table class="scores" style="min-width:0">
+                                    <thead><tr><th scope="col">Grout</th><th scope="col">w/s → yield stress (Pa, approximate)</th></tr></thead>
+                                    <tbody>
+                                        <tr><th scope="row">Ledan TA1</th><td>0.66 → 8.5 · 0.8 → 4.7 · 0.9 → 2.9 · 1.0 → 3.1</td></tr>
+                                        <tr><th scope="row">Ledan TB1</th><td>0.66 → 9.1 · 0.8 → 1.9 · 0.9 → 1.1 · 1.0 → 0.72</td></tr>
+                                        <tr><th scope="row">PLM-1</th><td>0.5 → 100 · 0.66 → 11 · 0.71 → 7.1 · 0.8 → 0.32</td></tr>
+                                        <tr><th scope="row">PLM-SM</th><td>0.45 → 24 · 0.5 → 2.9 · 0.66 → 0.32 · 0.8 → 0.18</td></tr>
+                                        <tr><th scope="row">Bio Aedilitia</th><td>0.3 → 0.21 · 0.35 → 0.059 · 0.4 → 0.0054 · 0.5 → 0.0033</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </details>
+                    </figure>
+                    <div class="fig-notes reveal rise">
+                        <h3>The yellow band</h3>
+                        <p>It marks the reference, Ledan TA1 at w/s 0.8. Lower the water and most lines climb into it, at their own ratio: that is the "optimum". Bio Aedilitia stays far below, even at w/s 0.3.</p>
+                        <p>But the band describes low-shear behaviour, and in the column we estimated shear rates of about 14 to 320 s⁻¹. Changing w/s improves stability against sedimentation, yet viscosity can't be controlled at low shear (for stability) and high shear (for injection) with water alone.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== TRADE-OFFS ===== -->
+        <section class="grt-band">
+            <div class="frame">
+                <h2 class="reveal rise">No grout wins everything</h2>
+                <div class="map-wrap">
+                    <div class="grt-prose reveal rise">
+                        <p>Rietveld refinement sorted out what is actually in the bags. Filler can be calcite or quartz, and it is slightly more than half of every grout except Ledan TB1, at about 75 wt%. The binder is mostly Portland cement, except in PLM-1 and Bio Aedilitia, where it is based on NHL. The C₃S/C₂S ratio separates the two.</p>
+                        <p>Binder drives the hardened behaviour: the cement-based grouts with high C₃S/C₂S gave the highest strength in our tests and low salt resistance. Grain size has more to say about the flow.</p>
+                    </div>
+                    <figure class="map reveal rise" style="margin:0">
+                        <svg viewBox="0 0 520 360" role="img" aria-label="Scatter plot of filler type against binder type. PLM-1 and Bio Aedilitia have low C3S to C2S ratios; Ledan TB1, Ledan TA1 and PLM-SM have high ones. PLM-1 and PLM-SM have quartz filler; the others have calcite filler.">
+                            <rect x="60" y="20" width="192" height="280" fill="#efe6d6"/>
+                            <rect x="252" y="20" width="248" height="280" fill="#eee9df"/>
+                            <text class="zone" x="72" y="44">NHL binder</text>
+                            <text class="zone" x="264" y="44">Cement binder</text>
+                            <line x1="60" y1="300" x2="500" y2="300" stroke="#1d201b"/>
+                            <line x1="60" y1="20" x2="60" y2="300" stroke="#1d201b"/>
+                            <g>
+                                <text x="60" y="318" text-anchor="middle">0</text><text x="124" y="318" text-anchor="middle">1</text><text x="188" y="318" text-anchor="middle">2</text><text x="252" y="318" text-anchor="middle">3</text><text x="316" y="318" text-anchor="middle">4</text><text x="380" y="318" text-anchor="middle">5</text><text x="444" y="318" text-anchor="middle">6</text>
+                                <text x="280" y="344" text-anchor="middle">C₃S/C₂S</text>
+                                <text x="52" y="304" text-anchor="end">0</text><text x="52" y="184" text-anchor="end">6</text><text x="52" y="64" text-anchor="end">12</text>
+                                <text x="-160" y="16" transform="rotate(-90)" text-anchor="middle">Quartz / calcite</text>
+                            </g>
+                            <g><circle cx="102" cy="77" r="8" fill="#a8502f"/><title>PLM-1: C3S/C2S 0.66, quartz/calcite 11.2</title><text class="name" x="116" y="83">PLM-1</text></g>
+                            <g><circle cx="456" cy="126" r="8" fill="#a8502f"/><title>PLM-SM: C3S/C2S 6.2, quartz/calcite 8.7</title><text class="name" x="444" y="112" text-anchor="end">PLM-SM</text></g>
+                            <g><circle cx="123" cy="300" r="8" fill="#a8502f"/><title>Bio Aedilitia: C3S/C2S 1.0, no quartz</title><text class="name" x="123" y="282" text-anchor="middle">Bio Aedilitia</text></g>
+                            <g><circle cx="313" cy="300" r="8" fill="#a8502f"/><title>Ledan TB1: C3S/C2S 4.0, no quartz</title><text class="name" x="313" y="282" text-anchor="middle">Ledan TB1</text></g>
+                            <g><circle cx="348" cy="300" r="8" fill="#a8502f"/><title>Ledan TA1: C3S/C2S 4.5, no quartz</title><text class="name" x="385" y="282" text-anchor="start" dx="-4">Ledan TA1</text></g>
+                        </svg>
+                        <figcaption class="map-note">Replotted from the phase quantities in Table 2 of the paper, following its Fig. 8. Boundary at C₃S/C₂S = 3 as in that figure.</figcaption>
+                    </figure>
+                </div>
+
+                <div class="table-wrap reveal rise">
+                    <table class="scores">
+                        <thead><tr><th scope="col">Grout</th><th scope="col">Binder</th><th scope="col">Filler</th><th scope="col">Column at w/s 0.8</th><th scope="col">Strength</th><th scope="col">Sulphates</th></tr></thead>
+                        <tbody>
+                            <tr><th scope="row">Ledan TA1</th><td>Cement</td><td>Calcite</td><td>Easy, stable before and after</td><td>Among the two highest</td><td>Low. Without brick it lost large portions in the first days</td></tr>
+                            <tr><th scope="row">Ledan TB1</th><td>Cement</td><td>Calcite, ~75 wt%</td><td>Easy, more fluid before than after</td><td>Lower</td><td>Fractured on day 8 with brick; failed without</td></tr>
+                            <tr><th scope="row">PLM-SM</th><td>Cement</td><td>Quartz</td><td>Difficult</td><td>Among the two highest</td><td>Low</td></tr>
+                            <tr><th scope="row">PLM-1</th><td>NHL</td><td>Quartz</td><td>Difficult</td><td>Low</td><td>Moderate</td></tr>
+                            <tr><th scope="row">Bio Aedilitia</th><td>NHL</td><td>Calcite</td><td>Easy, but sediments fast</td><td>Lower</td><td>The best: a compact core to the end</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="grt-band" style="padding-bottom:0">
+            <div class="frame">
+                <div class="fig">
+                    <figure class="fig-plate reveal rise">
+                        <a href="../img/articles/grouts/fig6.jpg" target="_blank" rel="noopener" aria-label="Open Figure 6 at full size"><img src="../img/articles/grouts/fig6.jpg" width="1193" height="691" loading="lazy" alt="Normalised sample weight over 25 days of sodium sulphate attack for the five grouts with and without brick, and photographs of the samples before and after."></a>
+                        <figcaption><strong>Figure 6</strong> Sulfate resistance tests result: (a) Dehydrated Weight in 25-Day Na₂SO₄ Salt Attack; (b) Sample Before Sulfate Attack; (c) Sample After Sulfate Attack.
+                            <span class="credit">From Santoro De Vico <em>et al.</em> (2024), RILEM Proceedings PRO 136.</span></figcaption>
+                    </figure>
+                    <div class="fig-notes reveal rise">
+                        <h3>Twenty-five days of salt</h3>
+                        <p>Solid lines are grouts inside crushed brick, dashed lines are grout alone. Inside brick, most lines stay near 1 for about 17 days, then corrosion starts on the outside of the cylinders. Only Bio Aedilitia escapes that.</p>
+                        <p>Grout alone is much more dramatic: look at the red dashed line of Ledan TA1, which falls within days, even though it is one of the strongest.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="grt-band">
+            <div class="frame">
+                <h2 class="reveal rise">What to look for in a grout</h2>
+                <div class="takeaways">
+                    <div class="takeaway reveal rise">
+                        <h3>Cohesion for the flow</h3>
+                        <p>The key to good injectability lies in cohesivity, controlled by choosing the right particle size distribution, or by adding rheology modifiers. The finer Ledan products have a higher water demand and yield stress, and are more stable against sedimentation.</p>
+                    </div>
+                    <div class="takeaway reveal rise">
+                        <h3>Lime for the salt</h3>
+                        <p>Sulphate resistance comes from the choice of binder, with NHL performing better than cement.</p>
+                    </div>
+                    <div class="takeaway reveal rise">
+                        <h3>Test the column, too</h3>
+                        <p>Rheometry is useful but not enough. Adapted from EN 1771, the column test shows how a grout behaves in a real capillary network, dry or pre-wetted, which is why it can guide better formulations.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cite">
+            <div class="frame">
+                <div class="grt-split">
+                    <h2 class="reveal rise">The paper</h2>
+                    <div class="reveal rise">
+                        <p class="cite-text"><strong>Santoro De Vico, F.</strong>, Dalconi, M.C., Garbin, E., Artioli, G., Bellotto, M. (2024) Novel Techniques for the Assessment of Injectability &amp; Environmental Resistance of Injection Grouts for Mosaic Conservation. In: Papayianni, I., Válek, J. (eds.) <em>Proceedings of the Workshop "Lime Based Materials for Repairing Historic Structures"</em>, RILEM Proceedings PRO 136, pp. 226–241.</p>
+                        <p class="grt-actions">
+                            <a href="../posts/papers/santoro-de-vico-injection-grouts-rilem-pro136.pdf" download>Download the paper (PDF, 8.6 MB)</a>
+                            <a href="https://www.rilem.net/publication/publication/544" target="_blank" rel="noopener">The proceedings on RILEM</a>
+                        </p>
+                        <small>Published by RILEM Publications. ISBN 978-2-35158-240-4, e-ISBN 978-2-35158-237-4. The workshop was held in Thessaloniki in February 2022.</small>
+                        <a href="../publications.html" class="back-link">Back to Publications</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="site-footer"></div>
+    <script src="../js/components.js?v=3"></script>
+    <script>
+    (function () {
+      'use strict';
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* ---------------------------------------------------------------
+         COVER: a polished section of the injected column. Voronoi cells
+         make the brick clasts; thresholds are set from the data themselves
+         so the final image is 56.4 % brick, 32.4 % grout and 11.2 % air,
+         the shares measured by image analysis in the paper.
+         --------------------------------------------------------------- */
+      (function () {
+        var cover = document.getElementById('cover');
+        var cv = document.getElementById('section');
+        if (!cv.getContext) return;
+        var ctx = cv.getContext('2d');
+        var w, h, img, kind, tone, front, raf, t0, DUR = 7000;
+
+        function prng(a) {
+          return function () {
+            a |= 0; a = a + 0x6D2B79F5 | 0;
+            var t = Math.imul(a ^ a >>> 15, 1 | a);
+            t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+            return ((t ^ t >>> 14) >>> 0) / 4294967296;
+          };
+        }
+        function percentile(arr, q) {
+          var s = Float32Array.from(arr).sort();
+          return s[Math.min(s.length - 1, Math.floor(q * s.length))];
+        }
+
+        function setup() {
+          var cw = cover.clientWidth, ch = cover.clientHeight;
+          var f = Math.min(1, 640 / cw);
+          w = cv.width = Math.round(cw * f);
+          h = cv.height = Math.round(ch * f);
+          img = ctx.createImageData(w, h);
+          var n = w * h, r = prng(23), i, k, x, y;
+          var cell = Math.max(20, w / 26);
+          var seeds = [], shade = [];
+          var perRow = 0;
+          for (x = -cell; x < w + cell; x += cell) perRow++;
+          for (y = -cell; y < h + cell; y += cell) for (x = -cell; x < w + cell; x += cell) {
+            seeds.push([x + r() * cell * .96, y + r() * cell * .96]);
+            shade.push(r());
+          }
+          // low-frequency noise for air pockets and the grout front
+          var gw = 40, gh = 26, grid = new Float32Array((gw + 1) * (gh + 1));
+          for (i = 0; i < grid.length; i++) grid[i] = r();
+          function noise(px, py, sc) {
+            var fx = (px / w * gw * sc) % gw, fy = (py / h * gh * sc) % gh, ix = Math.min(gw - 1, fx | 0), iy = Math.min(gh - 1, fy | 0);
+            var tx = fx - ix, ty = fy - iy;
+            tx = tx * tx * (3 - 2 * tx); ty = ty * ty * (3 - 2 * ty);
+            var a = grid[iy * (gw + 1) + ix], b = grid[iy * (gw + 1) + ix + 1];
+            var c = grid[(iy + 1) * (gw + 1) + ix], d = grid[(iy + 1) * (gw + 1) + ix + 1];
+            return (a + (b - a) * tx) * (1 - ty) + (c + (d - c) * tx) * ty;
+          }
+
+          var gap = new Float32Array(n), own = new Int32Array(n), air = new Float32Array(n);
+          front = new Float32Array(n);
+          for (y = 0, k = 0; y < h; y++) for (x = 0; x < w; x++, k++) {
+            var cx = Math.floor((x + cell) / cell), cy = Math.floor((y + cell) / cell);
+            var d1 = 1e9, d2 = 1e9, id = 0;
+            for (var j = -2; j <= 2; j++) for (var m = -2; m <= 2; m++) {
+              if (cx + m < 0 || cx + m >= perRow) continue;
+              var q = (cy + j) * perRow + cx + m;
+              if (q < 0 || q >= seeds.length) continue;
+              var dx = x - seeds[q][0], dy = y - seeds[q][1];
+              var dd = Math.sqrt(dx * dx + dy * dy);   // polygons: angular, crushed-looking clasts
+              if (dd < d1) { d2 = d1; d1 = dd; id = q; } else if (dd < d2) d2 = dd;
+            }
+            gap[k] = d2 - d1;
+            own[k] = id;
+            air[k] = noise(x, y, 1.1) + noise(x, y, 2.9) * .5;
+            front[k] = (1 - y / h) * .82 + noise(x, y, .6) * .18;
+          }
+
+          // brick where the gap between cells is widest: exactly 56.4 % of the pixels
+          var thrBrick = percentile(gap, 1 - .564);
+          var poreAir = [];
+          for (k = 0; k < n; k++) if (gap[k] < thrBrick) poreAir.push(air[k]);
+          // of the remaining 43.6 %, the share 11.2 / 43.6 stays air
+          var thrAir = percentile(poreAir, 1 - .112 / .436);
+          kind = new Uint8Array(n);
+          tone = new Uint8ClampedArray(n * 3);
+          var counts = [0, 0, 0];
+          for (k = 0; k < n; k++) {
+            if (gap[k] >= thrBrick) {
+              kind[k] = 0;
+              var s = shade[own[k]], edge = Math.min(1, (gap[k] - thrBrick) / 3);
+              var g = 96 + s * 66 + (r() - .5) * 13 - (1 - edge) * 30;
+              tone[k * 3] = g * 1.18 + 14; tone[k * 3 + 1] = g * .62 + 6; tone[k * 3 + 2] = g * .46 + 2;
+            } else {
+              kind[k] = air[k] >= thrAir ? 2 : 1;
+            }
+            counts[kind[k]]++;
+          }
+          cover.dataset.shares = counts.map(function (c) { return (c / n * 100).toFixed(1); }).join('/');
+        }
+
+        function paint(p) {
+          var d = img.data, n = w * h, level = p * 1.08;
+          for (var k = 0, q = 0; k < n; k++, q += 4) {
+            var R, G, B;
+            if (kind[k] === 0) { R = tone[k * 3]; G = tone[k * 3 + 1]; B = tone[k * 3 + 2]; }
+            else if (front[k] > level) { R = 30; G = 21; B = 16; }           // dry void
+            else if (kind[k] === 1) { R = 204; G = 190; B = 158; }           // grout
+            else { R = 40; G = 72; B = 138; }                                // air, blue pigment
+            d[q] = R; d[q + 1] = G; d[q + 2] = B; d[q + 3] = 255;
+          }
+          ctx.putImageData(img, 0, 0);
+        }
+
+        function frame(ms) {
+          if (!t0) t0 = ms;
+          var p = Math.min(1, (ms - t0) / DUR);
+          paint(1 - Math.pow(1 - p, 2));
+          if (p < 1) raf = requestAnimationFrame(frame);
+        }
+        function start() {
+          cancelAnimationFrame(raf); t0 = 0;
+          setup();
+          if (reduce) paint(1); else raf = requestAnimationFrame(frame);
+        }
+        start();
+        var lastW = window.innerWidth, timer;
+        window.addEventListener('resize', function () {
+          if (window.innerWidth === lastW) return;
+          lastW = window.innerWidth;
+          clearTimeout(timer);
+          timer = setTimeout(start, 200);
+        });
+      })();
+
+      /* ---------------------------------------------------------------
+         THE RACE: replays the height/time points of Fig. 3, at 10x speed.
+         --------------------------------------------------------------- */
+      (function () {
+        var box = document.getElementById('columns');
+        var clock = document.getElementById('clock');
+        var btn = document.getElementById('replay');
+        if (!box) return;
+        var FULL = 360, END = 120, SPEED = 10;
+        var cols = Array.prototype.map.call(box.querySelectorAll('.column'), function (el) {
+          var pts = el.getAttribute('data-pts').split(' ').map(function (s) { return s.split(',').map(Number); });
+          return { fill: el.querySelector('.tube-fill'), tag: el.querySelector('.class'), pts: pts };
+        });
+        function heightAt(c, t) {
+          var p = c.pts;
+          if (t >= p[p.length - 1][0]) return { h: p[p.length - 1][1], done: true };
+          for (var i = 1; i < p.length; i++) if (t < p[i][0]) {
+            return { h: p[i - 1][1] + (p[i][1] - p[i - 1][1]) * (t - p[i - 1][0]) / (p[i][0] - p[i - 1][0]), done: false };
+          }
+          return { h: 0, done: false };
+        }
+        function show(t) {
+          clock.textContent = Math.round(t);
+          cols.forEach(function (c) {
+            var v = heightAt(c, t);
+            c.fill.style.setProperty('--h', (v.h / FULL * 100).toFixed(1));
+            c.tag.classList.toggle('is-on', v.done);
+          });
+        }
+        var raf, t0;
+        function run(ms) {
+          if (!t0) t0 = ms;
+          var t = Math.min(END, (ms - t0) / 1000 * SPEED);
+          show(t);
+          if (t < END) raf = requestAnimationFrame(run);
+        }
+        function play() {
+          cancelAnimationFrame(raf); t0 = 0;
+          if (reduce) { show(END); return; }
+          show(0); raf = requestAnimationFrame(run);
+        }
+        btn.addEventListener('click', play);
+        show(0);
+        if (reduce) show(END);
+        else if ('IntersectionObserver' in window) {
+          var io = new IntersectionObserver(function (es) {
+            if (es[0].isIntersecting) { io.disconnect(); play(); }
+          }, { threshold: 0.45 });
+          io.observe(box);
+        } else show(END);
+      })();
+
+      /* ---------------------------------------------------------------
+         FIGURE 7, redrawn. Colour follows the family, dash and marker shape
+         separate the two grouts within it, and each line carries its name.
+         Points read from the published plot. One logarithmic axis.
+         --------------------------------------------------------------- */
+      (function () {
+        var host = document.getElementById('ys-plot');
+        var tip = document.getElementById('ys-tip');
+        if (!host) return;
+        var SERIES = [
+          { n: 'Ledan TA1', c: '#2a78d6', dash: '', shape: 'o', p: [[.66, 8.5], [.8, 4.7], [.9, 2.9], [1, 3.1]], lab: 'r' },
+          { n: 'Ledan TB1', c: '#2a78d6', dash: '6 5', shape: 's', p: [[.66, 9.1], [.8, 1.9], [.9, 1.1], [1, .72]], lab: 'r' },
+          { n: 'PLM-1', c: '#eb6834', dash: '', shape: 'o', p: [[.5, 100], [.66, 11], [.71, 7.1], [.8, .32]], lab: 't' },
+          { n: 'PLM-SM', c: '#eb6834', dash: '6 5', shape: 's', p: [[.45, 24], [.5, 2.9], [.66, .32], [.8, .18]], lab: 'b' },
+          { n: 'Bio Aedilitia', c: '#1baf7a', dash: '', shape: 'o', p: [[.3, .21], [.35, .059], [.4, .0054], [.5, .0033]], lab: 'r' }
+        ];
+        var small = host.clientWidth < 560;
+        var W = small ? 440 : 720, H = small ? 400 : 430, L = small ? 50 : 62, R = small ? 74 : 96, T = 14, B = 44;
+        var X0 = .25, X1 = 1.05, Y0 = -3, Y1 = 2.2;
+        var NS = 'http://www.w3.org/2000/svg';
+        function X(v) { return L + (v - X0) / (X1 - X0) * (W - L - R); }
+        function Y(v) { return T + (Y1 - Math.log10(v)) / (Y1 - Y0) * (H - T - B); }
+        function el(name, attrs, parent, text) {
+          var e = document.createElementNS(NS, name);
+          for (var k in attrs) e.setAttribute(k, attrs[k]);
+          if (text != null) e.textContent = text;
+          (parent || svg).appendChild(e);
+          return e;
+        }
+        var svg = document.createElementNS(NS, 'svg');
+        svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+        svg.setAttribute('role', 'img');
+        svg.setAttribute('aria-label', 'Line chart of yield stress in pascal, on a logarithmic scale, against water-to-solid ratio. Yield stress falls as water increases. Ledan TA1, Ledan TB1, PLM-1 and PLM-SM cross the yellow reference band; Bio Aedilitia stays far below it. Values are in the table below.');
+        // reference band: Ledan TA1 at w/s 0.8, as drawn in the paper
+        el('rect', { x: L, y: Y(8.8), width: W - L - R, height: Y(4.6) - Y(8.8), fill: '#f6e27a', 'fill-opacity': .55 });
+        el('text', { 'class': 'ys-band-label', x: X(.27), y: Y(6.4) + 5 }, null, small ? 'Reference' : 'Reference: TA1 at w/s 0.8');
+        // recessive grid and axes
+        [-3, -2, -1, 0, 1, 2].forEach(function (d) {
+          var v = Math.pow(10, d);
+          el('line', { x1: L, x2: W - R, y1: Y(v), y2: Y(v), stroke: '#d9d4c9', 'stroke-width': 1 });
+          el('text', { x: L - 8, y: Y(v) + 4, 'text-anchor': 'end' }, null, String(v));
+        });
+        (small ? [.3, .5, .7, .9] : [.3, .4, .5, .6, .7, .8, .9, 1]).forEach(function (v) {
+          el('text', { x: X(v), y: H - B + 18, 'text-anchor': 'middle' }, null, v.toFixed(1));
+        });
+        el('line', { x1: L, x2: W - R, y1: H - B, y2: H - B, stroke: '#1d201b', 'stroke-width': 1 });
+        el('text', { x: (L + W - R) / 2, y: H - 6, 'text-anchor': 'middle' }, null, 'Water-to-solid ratio (w/s)');
+        el('text', { transform: 'translate(14 ' + ((T + H - B) / 2) + ') rotate(-90)', 'text-anchor': 'middle' }, null, 'Yield stress (Pa)');
+
+        SERIES.forEach(function (s) {
+          el('path', { d: s.p.map(function (q, i) { return (i ? 'L' : 'M') + X(q[0]).toFixed(1) + ' ' + Y(q[1]).toFixed(1); }).join(' '),
+                       fill: 'none', stroke: s.c, 'stroke-width': 2, 'stroke-dasharray': s.dash, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' });
+        });
+        SERIES.forEach(function (s) {
+          s.p.forEach(function (q) {
+            var cx = X(q[0]), cy = Y(q[1]);
+            if (s.shape === 'o') el('circle', { cx: cx, cy: cy, r: 4.5, fill: s.c, stroke: '#fffefa', 'stroke-width': 2 });
+            else el('rect', { x: cx - 4.5, y: cy - 4.5, width: 9, height: 9, fill: s.c, stroke: '#fffefa', 'stroke-width': 2 });
+            var hit = el('circle', { 'class': 'hit', cx: cx, cy: cy, r: 13, tabindex: 0 });
+            var msg = s.n + ' · w/s ' + q[0] + ' · ' + q[1] + ' Pa';
+            function on() {
+              var box = svg.getBoundingClientRect(), par = host.parentNode.getBoundingClientRect();
+              tip.textContent = msg;
+              tip.hidden = false;
+              tip.style.left = (box.left - par.left + cx / W * box.width) + 'px';
+              tip.style.top = (box.top - par.top + cy / H * box.height) + 'px';
+            }
+            function off() { tip.hidden = true; }
+            hit.addEventListener('mouseenter', on); hit.addEventListener('focus', on);
+            hit.addEventListener('click', on);
+            hit.addEventListener('mouseleave', off); hit.addEventListener('blur', off);
+          });
+        });
+        // names on the lines, in ink
+        [['Ledan TA1', 1, 3.1, 12, 4, 'start'], ['Ledan TB1', 1, .72, 12, 4, 'start'], ['PLM-1', .5, 100, 11, 1, 'start'],
+         ['PLM-SM', .45, 24, -11, 1, 'end'], ['Bio Aedilitia', .5, .0033, 12, 4, 'start']].forEach(function (l) {
+          el('text', { 'class': 'ys-end', x: X(l[1]) + l[3], y: Y(l[2]) + l[4], 'text-anchor': l[5] }, null, l[0]);
+        });
+        host.innerHTML = '';
+        host.appendChild(svg);
+      })();
+    })();
+    </script>
+</body>
+</html>

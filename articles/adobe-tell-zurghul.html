@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archaeological adobe from Tell Zurghul/Nigin | Francesco Santoro De Vico</title>
+    <meta name="description" content="Bricks from Tell Zurghul/Nigin, in southern Iraq, look chemically alike across 2,000 years. Under the microscope and in the rain they behave very differently, and that matters for their conservation.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fsdv.eu/articles/adobe-tell-zurghul.html">
+    <meta property="og:title" content="Chemical-mineralogical features and physical properties of archaeological adobe from Tell Zurghul/Nigin">
+    <meta property="og:description" content="Bricks from Tell Zurghul/Nigin, in southern Iraq, look chemically alike across 2,000 years. Under the microscope and in the rain they behave very differently, and that matters for their conservation.">
+    <meta property="og:image" content="https://fsdv.eu/img/articles/adobe/adobe-tell-zurghul-og.jpg">
+    <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
+    <link rel="stylesheet" href="../css/style.css?v=3">
+    <style>
+        /* Two accents: the mud of the bricks and the rain that undoes them. */
+        body.ado {
+            --mud: #a86a33;
+            --rain: #2f6f9f;
+            font-size: 1.0625rem;
+            color: var(--color-ink);
+        }
+        .ado p { color: inherit; }
+        .ado .site-footer { margin-top: 0; }
+
+        /* ── Cover ─────────────────────────────────────────────────────── */
+        .ado-cover {
+            position: relative;
+            min-height: 92vh;
+            min-height: 92svh;
+            display: flex;
+            align-items: flex-end;
+            padding: 150px 0 clamp(2.5rem, 6vw, 4.5rem);
+            color: #fff;
+            overflow: hidden;
+            isolation: isolate;
+            background: var(--color-night);
+        }
+        .ado-cover > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% 40%; z-index: -2; }
+        .ado-cover::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background:
+                linear-gradient(90deg, rgba(13,15,12,.9) 0%, rgba(13,15,12,.72) 42%, rgba(13,15,12,.08) 76%),
+                linear-gradient(0deg, rgba(13,15,12,.72) 0%, rgba(13,15,12,0) 34%),
+                linear-gradient(180deg, rgba(13,15,12,.55) 0%, rgba(13,15,12,0) 22%);
+        }
+        .ado-cover-text { max-width: 47rem; }
+        .ado-cover .back-link { color: rgba(255,255,255,.82); font-size: .85rem; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 1.6rem; }
+        .ado-cover .back-link:hover { color: #fff; }
+        .ado-kicker { font-size: .8rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--color-sandstone); margin-bottom: 1.1rem; }
+        .ado-cover h1 { font-size: clamp(2.4rem, 4.4vw, 4.1rem); line-height: 1; letter-spacing: -.02em; color: #fff; margin-bottom: 1.4rem; }
+        .ado-lede { font-size: 1.14rem; line-height: 1.58; color: rgba(255,255,255,.92); border-left: 2px solid var(--color-amber); padding-left: 1.25rem; margin-bottom: 1.3rem; }
+        .ado-authors { font-size: .95rem; color: rgba(255,255,255,.76); margin-bottom: 1.1rem; }
+        .ado-authors strong { color: #fff; font-weight: 600; }
+        .ado-actions { display: flex; flex-wrap: wrap; gap: .6rem 1.6rem; margin: 0; }
+        .ado-actions a { font-weight: 600; font-size: .95rem; color: #fff; padding-bottom: 4px; background: linear-gradient(var(--color-amber), var(--color-amber)) 0 100% / 100% 1px no-repeat; }
+        .ado-actions a:hover { color: #f0b39f; }
+        .js .ado-cover-text > * { opacity: 0; transform: translateY(22px); transition: opacity 1s var(--ease-out), transform 1s var(--ease-out); }
+        .js .is-loaded .ado-cover-text > * { opacity: 1; transform: none; }
+        .js .is-loaded .ado-cover-text > :nth-child(3) { transition-delay: .1s; }
+        .js .is-loaded .ado-cover-text > :nth-child(4) { transition-delay: .2s; }
+        .js .is-loaded .ado-cover-text > :nth-child(5) { transition-delay: .3s; }
+        .js .is-loaded .ado-cover-text > :nth-child(6) { transition-delay: .4s; }
+
+        /* ── Sections ──────────────────────────────────────────────────── */
+        .ado-band { padding: clamp(4.5rem, 9vw, 8rem) 0; }
+        .ado-band + .ado-band { padding-top: 0; }
+        .ado-split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+        .ado h2 { font-size: clamp(2.8rem, 5.4vw, 4.8rem); line-height: .98; letter-spacing: -.015em; }
+        .ado-prose p { max-width: 62ch; margin-bottom: 1.25rem; }
+        .ado-prose p:last-child { margin-bottom: 0; }
+
+        .facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 clamp(1rem, 3vw, 2.5rem); margin: clamp(2.5rem, 5vw, 4rem) 0 0; }
+        .fact { border-top: 1px solid var(--color-ink); padding-top: 1rem; }
+        .fact dt { font-family: var(--font-display); font-weight: 300; font-size: clamp(2.2rem, 3.6vw, 3.3rem); line-height: 1; margin-bottom: .7rem; font-variant-numeric: lining-nums; }
+        .fact dd { margin: 0; font-size: .98rem; line-height: 1.45; color: var(--color-slate); }
+
+        /* ── Figures ───────────────────────────────────────────────────── */
+        .fig { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(1.5rem, 4vw, 4rem); align-items: start; padding: clamp(2.5rem, 5vw, 4rem) 0; border-top: 1px solid var(--border); }
+        .fig-plate { margin: 0; }
+        .fig-plate > a { display: block; }
+        .fig-plate img { width: 100%; height: auto; background: #fff; transition: opacity .3s; }
+        .fig-plate > a:hover img { opacity: .9; }
+        .fig-plate figcaption { font-size: .86rem; line-height: 1.5; color: var(--color-slate); margin-top: .9rem; }
+        .fig-plate figcaption strong { color: var(--color-ink); font-weight: 600; }
+        .credit { display: block; margin-top: .45rem; color: var(--color-ite); }
+        .credit a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+        .fig-notes { position: sticky; top: 96px; }
+        .fig-notes h3 { font-size: clamp(1.9rem, 2.8vw, 2.5rem); font-weight: 300; line-height: 1.05; margin-bottom: 1.2rem; }
+        .fig-notes p { max-width: 50ch; }
+        .fig-notes p:last-child { margin-bottom: 0; }
+        .fig-notes dl { margin: 0; }
+        .fig-notes dt { font-family: var(--font-mono); font-size: .8rem; color: var(--color-copper); margin-top: 1rem; }
+        .fig-notes dd { margin: .15rem 0 0; }
+
+        /* ── Under the microscope: one button crosses the polars ──────── */
+        .scope { background: var(--color-night); color: #f1efe8; padding: clamp(4.5rem, 9vw, 8rem) 0; }
+        .scope h2 { color: #fff; margin-bottom: 1rem; }
+        .scope-intro { max-width: 58ch; color: rgba(255,255,255,.8); }
+        .scope-bar { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 1.4rem; margin: clamp(1.5rem, 3vw, 2.2rem) 0 1.2rem; }
+        .polar-btn {
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: .98rem;
+            padding: .7rem 1.25rem;
+            color: var(--color-night);
+            background: #f1efe8;
+            border: 0;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: background .25s;
+        }
+        .polar-btn:hover { background: #f0b39f; }
+        .polar-btn:focus-visible { outline: 3px solid var(--color-amber); outline-offset: 3px; }
+        html:not(.js) .polar-btn { display: none; }
+        .polar-state { font-family: var(--font-mono); font-size: .8rem; color: rgba(255,255,255,.72); margin: 0; }
+        .thin-sections { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(.8rem, 2vw, 1.5rem); }
+        .thin { margin: 0; }
+        .thin-img { position: relative; aspect-ratio: 736 / 480; background: #111; overflow: hidden; }
+        .thin-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+        .thin-img .xpl { opacity: 0; transition: opacity .8s var(--ease-out); }
+        .is-crossed .thin-img .xpl { opacity: 1; }
+        .thin h3 { font-size: clamp(1.5rem, 2.1vw, 1.9rem); font-weight: 400; line-height: 1.1; color: #fff; margin: 1rem 0 .4rem; }
+        .thin .id { font-family: var(--font-mono); font-size: .76rem; color: #f0b39f; margin: 0; }
+        .thin p { margin: .4rem 0 0; font-size: .98rem; line-height: 1.5; color: rgba(255,255,255,.78); }
+        .scope .credit { font-size: .86rem; color: rgba(255,255,255,.6); margin-top: 1.4rem; line-height: 1.5; }
+        .scope .credit strong { font-weight: 600; color: #fff; }
+
+        /* ── The lesson ───────────────────────────────────────────────── */
+        .lesson { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.5rem, 4vw, 4rem); margin: clamp(2.5rem, 5vw, 4rem) 0 0; }
+        .lesson > div { border-top: 3px solid var(--c); padding-top: 1.1rem; }
+        .lesson h3 { font-size: clamp(1.8rem, 2.6vw, 2.35rem); font-weight: 400; line-height: 1.08; margin-bottom: .7rem; }
+        .lesson .tag { font-family: var(--font-mono); font-size: .76rem; color: var(--color-slate); margin: 0 0 .55rem; }
+        .lesson p { margin-bottom: .75rem; max-width: 52ch; }
+        .lesson p:last-child { margin-bottom: 0; }
+
+        .caveats { list-style: none; margin: clamp(2rem, 4vw, 3rem) 0 0; }
+        .caveats li { border-top: 1px solid var(--border); padding: 1rem 0 1.1rem; max-width: 74ch; }
+
+        /* ── Citation ──────────────────────────────────────────────────── */
+        .cite { background: var(--color-night); color: #f1efe8; padding: clamp(4rem, 8vw, 7rem) 0; }
+        .cite h2 { color: #fff; }
+        .cite-text { font-family: var(--font-display); font-size: clamp(1.35rem, 2vw, 1.7rem); line-height: 1.3; margin-bottom: 1.5rem; }
+        .cite-text strong { font-weight: 500; color: #f0b39f; }
+        .cite .ado-actions { margin-bottom: 2rem; }
+        .cite small { display: block; font-size: .88rem; line-height: 1.55; color: rgba(255,255,255,.62); margin-top: .7rem; max-width: 64ch; }
+        .cite small a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+        .cite .back-link { color: rgba(255,255,255,.8); margin: 2.5rem 0 0; }
+        .cite .back-link:hover { color: #fff; }
+
+        /* ── Responsive ────────────────────────────────────────────────── */
+        @media (max-width: 1000px) {
+            .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.8rem clamp(1rem, 3vw, 2.5rem); }
+        }
+        @media (max-width: 860px) {
+            .ado-split, .fig, .lesson { grid-template-columns: 1fr; }
+            .fig-notes { position: static; order: -1; }
+            .thin-sections { grid-template-columns: 1fr; }
+            .ado-cover::after { background: linear-gradient(0deg, rgba(13,15,12,.96) 0%, rgba(13,15,12,.86) 60%, rgba(13,15,12,.3) 88%, rgba(13,15,12,.5) 100%); }
+            .ado-cover { padding-top: 220px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .ado *, .ado *::before, .ado *::after { transition-duration: .01ms !important; transition-delay: 0s !important; }
+        }
+    </style>
+</head>
+<body class="has-cover ado">
+    <div id="site-header"></div>
+
+    <main>
+        <section class="ado-cover">
+            <img src="../img/articles/adobe/cover.jpg" alt="Aerial view of the excavation at the top of Mound B at Tell Zurghul/Nigin: pale earthen wall remains in a dry desert plain." fetchpriority="high">
+            <div class="frame" style="width:100%">
+                <div class="ado-cover-text">
+                    <a href="../publications.html" class="back-link">Back to Publications</a>
+                    <p class="ado-kicker">PLOS ONE · 2026 · Southern Iraq</p>
+                    <h1>Chemical-mineralogical features and physical properties of archaeological adobe: The evidence from Tell Zurghul/Nigin (Dhi Qar, Iraq)</h1>
+                    <p class="ado-lede">These mud bricks lasted thousands of years buried. Once dug up, they start to decay again. We asked what they are made of and how they stand up to the local rain, because you can't protect a wall you don't understand.</p>
+                    <p class="ado-authors">L. Volpi, <strong>F. Santoro De Vico</strong>, A. Arizzi, N. Lanzaro, D. Nadali</p>
+                    <p class="ado-actions">
+                        <a href="https://doi.org/10.1371/journal.pone.0342009" target="_blank" rel="noopener">Read the paper (open access)</a>
+                        <a href="https://doi.org/10.6084/m9.figshare.30933299" target="_blank" rel="noopener">The data</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="ado-band">
+            <div class="frame">
+                <div class="ado-split">
+                    <h2 class="reveal rise">Excavation exposes them</h2>
+                    <div class="ado-prose reveal rise">
+                        <p>In use, an earthen wall had plaster on its surface and a roof over its head. After excavation it has neither, and it is directly exposed to the elements.</p>
+                        <p>Conservators have four main options: backfilling, protective shelters, limited interventions with new locally made bricks and mortars, and stabilising treatments such as ethyl silicate or polymer solutions. Choosing among them requires knowing the material in detail. That was our starting point.</p>
+                        <p>My part of the work was the geological and climatic context, the colour measurements, the polarised-light microscopy, and the water and rain tests.</p>
+                    </div>
+                </div>
+                <dl class="facts">
+                    <div class="fact reveal rise"><dt>70 ha</dt><dd>The settlement of Tell Zurghul, identified with the Sumerian city of Nigin, in the ancient State of Lagash.</dd></div>
+                    <div class="fact reveal rise"><dt>~2,500 years</dt><dd>Of occupation, from the mid-5th to the end of the 3rd millennium BCE.</dd></div>
+                    <div class="fact reveal rise"><dt>&lt; 100 mm</dt><dd>Of rain a year, mostly from November to April, and it falls in torrents. Summers regularly pass 40 °C.</dd></div>
+                    <div class="fact reveal rise"><dt>30 samples</dt><dd>29 adobe bricks and one earthen plaster, from Mounds A and B, excavated by the Sapienza University of Rome mission (MAIN).</dd></div>
+                </dl>
+            </div>
+        </section>
+
+        <section class="ado-band" style="padding-bottom:0">
+            <div class="frame">
+                <div class="fig">
+                    <figure class="fig-plate reveal rise">
+                        <a href="../img/articles/adobe/fig5.jpg" target="_blank" rel="noopener" aria-label="Open Figure 5 at full size"><img src="../img/articles/adobe/fig5.jpg" width="1500" height="1743" loading="lazy" alt="Five photographs of the excavations at Tell Zurghul: an aerial view of Mound B, adobe wall remains, the step trench, an aerial view of wall W.458 and a detail of its inner face."></a>
+                        <figcaption><strong>Figure 5</strong> Photographic documentation of the excavation areas. A) Area B: aerial view of the excavation at the top of the mound (APs 1–3); B) Area B: detail of adobe wall remains at the top of the mound (APs 1–3); C) Area B: picture of the Step Trench excavation in 2021 (APs 4–6), from south-west; D) Area E: aerial view of W.458; E) detail of the inner face of W.458 entering the excavation section.
+                            <span class="credit">From Volpi <em>et al.</em> (2026), <em>PLOS ONE</em> 21(2), e0342009, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>.</span></figcaption>
+                    </figure>
+                    <div class="fig-notes reveal rise">
+                        <h3>Two mounds, three stories</h3>
+                        <dl>
+                            <dt>Mound B, Late Ubaid</dt>
+                            <dd>Most of the samples, from walls of the mid-5th millennium BCE, in panels A–C.</dd>
+                            <dt>Mound B, Uruk</dt>
+                            <dd>Four samples from a wall at the base of the step trench, dated to the mid-4th millennium BCE.</dd>
+                            <dt>Mound A, mid-3rd millennium</dt>
+                            <dd>Two bricks and the plaster, from wall W.458 in panels D and E.</dd>
+                        </dl>
+                    </div>
+                </div>
+
+                <div class="fig">
+                    <figure class="fig-plate reveal rise">
+                        <a href="../img/articles/adobe/fig6.jpg" target="_blank" rel="noopener" aria-label="Open Figure 6 at full size"><img src="../img/articles/adobe/fig6.jpg" width="1500" height="1155" loading="lazy" alt="Six photographs of adobe brick fragments, one per visual group, each with a 3 cm scale."></a>
+                        <figcaption><strong>Figure 6</strong> Adobe brick samples (photos) for each autoptic group (1–6).
+                            <span class="credit">From Volpi <em>et al.</em> (2026), <em>PLOS ONE</em> 21(2), e0342009, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>.</span></figcaption>
+                    </figure>
+                    <div class="fig-notes reveal rise">
+                        <h3>First, by eye</h3>
+                        <p>Before any instrument, the samples were sorted by compactness, texture and colour into six groups. One group alone holds 15 of the 30 samples. The bricks look like one family, and the chemistry says the same.</p>
+                    </div>
+                </div>
+
+                <div class="fig">
+                    <figure class="fig-plate reveal rise">
+                        <a href="../img/articles/adobe/fig7.jpg" target="_blank" rel="noopener" aria-label="Open Figure 7 at full size"><img src="../img/articles/adobe/fig7.jpg" width="1500" height="990" loading="lazy" alt="Principal component plot of the chemical data for all samples, with most of them in one cluster and samples 56 and 67 outside it."></a>
+                        <figcaption><strong>Figure 7</strong> Principal Component Analysis (PCA) carried out on the XRF data.
+                            <span class="credit">From Volpi <em>et al.</em> (2026), <em>PLOS ONE</em> 21(2), e0342009, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>.</span></figcaption>
+                    </figure>
+                    <div class="fig-notes reveal rise">
+                        <h3>The same earth, for 2,000 years</h3>
+                        <p>Chemistry and mineralogy are remarkably uniform. Quartz and calcite dominate everywhere, and only samples 56 and 67 fall outside the 95.5 % variation in this plot. The raw materials look consistently local, in line with the geology of the Lower Mesopotamian Plain.</p>
+                        <p>There are nuances. The 5th and 4th millennium bricks show a wider variety of minerals than the 3rd millennium ones, which suggests differences in clay sourcing or purification. Halite may be a later arrival, from the salinisation of the soil rather than from the recipe.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== UNDER THE MICROSCOPE ===== -->
+        <section class="scope" id="scope">
+            <div class="frame">
+                <h2 class="reveal rise">Same earth, different bricks</h2>
+                <p class="scope-intro reveal rise">Then we looked at thin sections, and the uniformity disappeared. Similar ingredients, prepared with very different proportions of clay and grains. These are three of the nine thin sections, in plane-polarised light. Now cross the polars.</p>
+                <div class="scope-bar">
+                    <button type="button" class="polar-btn" id="polar" aria-pressed="false">Cross the polars</button>
+                    <p class="polar-state" id="polar-state" aria-live="polite">Plane-polarised light</p>
+                </div>
+                <div class="thin-sections" id="thins">
+                    <figure class="thin reveal rise">
+                        <div class="thin-img">
+                            <img src="../img/articles/adobe/pol-62-ppl.jpg" alt="Sample 62 in plane-polarised light: dense angular mineral grains with little matrix." loading="lazy">
+                            <img class="xpl" src="../img/articles/adobe/pol-62-xpl.jpg" alt="" loading="lazy">
+                        </div>
+                        <h3>Mostly grains</h3>
+                        <p class="id">Sample 62 · Mound B, Late Ubaid</p>
+                        <p>Very high aggregate content and minimal matrix. Angular crystals, possibly crushed on purpose.</p>
+                    </figure>
+                    <figure class="thin reveal rise">
+                        <div class="thin-img">
+                            <img src="../img/articles/adobe/pol-54-ppl.jpg" alt="Sample 54 in plane-polarised light: a grain-rich zone on the left and a dark clay-rich zone on the right." loading="lazy">
+                            <img class="xpl" src="../img/articles/adobe/pol-54-xpl.jpg" alt="" loading="lazy">
+                        </div>
+                        <h3>Half and half</h3>
+                        <p class="id">Sample 54 · Mound B, Late Ubaid</p>
+                        <p>A sharp division in one section: many grains on one side, fine clay on the other, with pores along the interface.</p>
+                    </figure>
+                    <figure class="thin reveal rise">
+                        <div class="thin-img">
+                            <img src="../img/articles/adobe/pol-68-ppl.jpg" alt="Sample 68 in plane-polarised light: dark clay matrix crossed by bright fractures." loading="lazy">
+                            <img class="xpl" src="../img/articles/adobe/pol-68-xpl.jpg" alt="" loading="lazy">
+                        </div>
+                        <h3>Mostly clay</h3>
+                        <p class="id">Sample 68 · Mound B, Late Ubaid</p>
+                        <p>Very high matrix content with few aggregates, and extensive fractures, horizontal and vertical.</p>
+                    </figure>
+                </div>
+                <p class="credit">Panels cropped from <strong>Figure 9</strong> (Selection of the polarised optical microscopy images), Volpi <em>et al.</em> (2026), <em>PLOS ONE</em> 21(2), e0342009, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener" style="color:inherit">CC BY 4.0</a>. See the <a href="../img/articles/adobe/fig9.jpg" target="_blank" rel="noopener" style="color:inherit">full figure with its scale</a>.</p>
+            </div>
+        </section>
+
+        <!-- ===== TESTS ===== -->
+        <section class="ado-band" style="padding-bottom:0">
+            <div class="frame">
+                <h2 class="reveal rise" style="margin-bottom:clamp(2rem,4vw,3rem)">Tape, hammer, rain</h2>
+                <div class="fig">
+                    <figure class="fig-plate reveal rise">
+                        <a href="../img/articles/adobe/fig11.jpg" target="_blank" rel="noopener" aria-label="Open Figure 11 at full size"><img src="../img/articles/adobe/fig11.jpg" width="1500" height="1545" loading="lazy" alt="Two charts by sample: material removed by adhesive tape in milligrams per square centimetre, and surface hardness in Leeb units."></a>
+                        <figcaption><strong>Figure 11</strong> Surface compactness and strength graphs. A) Scotch Tape test plot; B) Surface Hardness test plot.
+                            <span class="credit">From Volpi <em>et al.</em> (2026), <em>PLOS ONE</em> 21(2), e0342009, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>.</span></figcaption>
+                    </figure>
+                    <div class="fig-notes reveal rise">
+                        <h3>A weak surface, and thirsty</h3>
+                        <dl>
+                            <dt>(A) Tape</dt>
+                            <dd>Press a piece of tape, pull it off, weigh what came away. In 20 of the 30 samples, the loss is between 2 and 6 mg/cm².</dd>
+                            <dt>(B) Hardness</dt>
+                            <dd>Mean values run from 181.8 HL (sample 79) to 300.9 HL (sample 51). Two samples were too soft to give any result.</dd>
+                            <dt>Water</dt>
+                            <dd>Drops vanish. No static contact angle could be measured on any sample, and most imbibition times are under one second.</dd>
+                        </dl>
+                    </div>
+                </div>
+
+                <div class="fig">
+                    <figure class="fig-plate reveal rise">
+                        <a href="../img/articles/adobe/fig13.jpg" target="_blank" rel="noopener" aria-label="Open Figure 13 at full size"><img src="../img/articles/adobe/fig13.jpg" width="1500" height="1119" loading="lazy" alt="Three-dimensional models of five 2 cm brick cubes through the test steps. Most shrink and deform; sample 79 collapses into a flat mass; sample 62 keeps its shape."></a>
+                        <figcaption><strong>Figure 13</strong> Rain resistance test. Result visualisation.
+                            <span class="credit">From Volpi <em>et al.</em> (2026), <em>PLOS ONE</em> 21(2), e0342009, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>.</span></figcaption>
+                    </figure>
+                    <div class="fig-notes reveal rise">
+                        <h3>One year of rain, in four days</h3>
+                        <p>Five cubes of about 2 cm, one day for each season. We converted local rainfall into millilitres on the cube's surface, poured it all at once with a pipette as the torrential regime demands, and heated the cubes to the region's seasonal maximum temperatures.</p>
+                        <dl>
+                            <dt>How to read it</dt>
+                            <dd>Each diagonal line follows one cube, from its number at the top through steps (0) to (4). The first shape is the reference 2 cm cube.</dd>
+                            <dt>79</dt>
+                            <dd>Almost half its volume gone after the first cycle, a formless mass of clay after the second.</dd>
+                            <dt>50, 52, 55</dt>
+                            <dd>Gradual loss, cycle after cycle, until no cohesion is left at the end.</dd>
+                            <dt>62</dt>
+                            <dd>Still shaped like a cube, with slow, progressive loss.</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== THE LESSON ===== -->
+        <section class="ado-band">
+            <div class="frame">
+                <h2 class="reveal rise">What decides it is the recipe</h2>
+                <div class="lesson">
+                    <div class="reveal rise" style="--c:var(--mud)">
+                        <p class="tag">Sample 79 · clay-rich matrix</p>
+                        <h3>The first to go</h3>
+                        <p>Lowest surface hardness and lowest resistance to water. The reason is not necessarily its hardness, but its clay-rich composition. Other clay-rich samples, like 50 and 52, were also among the most susceptible.</p>
+                    </div>
+                    <div class="reveal rise" style="--c:var(--rain)">
+                        <p class="tag">Sample 62 · high aggregate content</p>
+                        <h3>The last one standing</h3>
+                        <p>It does not stand out in the surface tests, and yet it has the best water resistance, thanks to its unbalanced ratio in favour of aggregates, and its more efficient drainage.</p>
+                    </div>
+                </div>
+                <div class="ado-split" style="margin-top:clamp(3rem,6vw,5rem)">
+                    <h3 class="reveal rise" style="font-size:clamp(1.9rem,2.8vw,2.5rem);font-weight:300;line-height:1.05">Why that is useful</h3>
+                    <div class="ado-prose reveal rise">
+                        <p>Chemistry and mineralogy alone would have told us these bricks are all the same. They are not, and a conservation plan built on that assumption would miss it. Texture, and the ratio between clay and aggregate, is what needs reading first.</p>
+                        <p>These results give a quantitative basis for choosing treatments, at this site and across the wider region. The cubes tested were mostly chosen among those with intermediate surface properties, with the weakest sample among them, so that the next step can be to try practical solutions on the most vulnerable bricks.</p>
+                    </div>
+                </div>
+                <ul class="caveats">
+                    <li class="reveal rise"><strong>Keep in mind:</strong> the XRD analysis was qualitative, so it cannot say how much of each mineral is present. The rain test used five small cubes, and the plaster is a single sample, the only well-preserved one found so far at the site.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="cite">
+            <div class="frame">
+                <div class="ado-split">
+                    <h2 class="reveal rise">The paper</h2>
+                    <div class="reveal rise">
+                        <p class="cite-text">Volpi, L., <strong>Santoro De Vico, F.</strong>, Arizzi, A., Lanzaro, N., Nadali, D. (2026) Chemical-mineralogical features and physical properties of archaeological adobe: The evidence from Tell Zurghul/Nigin (Dhi Qar, Iraq). <em>PLOS ONE</em> 21(2), e0342009.</p>
+                        <p class="ado-actions">
+                            <a href="https://doi.org/10.1371/journal.pone.0342009" target="_blank" rel="noopener">doi.org/10.1371/journal.pone.0342009</a>
+                            <a href="https://doi.org/10.6084/m9.figshare.30933299" target="_blank" rel="noopener">Data on Figshare</a>
+                        </p>
+                        <small>Open access under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. Cover photo cropped from Fig. 5A of the paper. Samples were exported with the permission of the Iraqi State Board of Antiquities and Heritage (SBAH).</small>
+                        <a href="../publications.html" class="back-link">Back to Publications</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="site-footer"></div>
+    <script src="../js/components.js?v=3"></script>
+    <script>
+    (function () {
+      'use strict';
+      var btn = document.getElementById('polar');
+      var box = document.getElementById('thins');
+      var state = document.getElementById('polar-state');
+      if (!btn || !box) return;
+      var touched = false;
+      function set(on) {
+        box.classList.toggle('is-crossed', on);
+        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+        btn.textContent = on ? 'Uncross the polars' : 'Cross the polars';
+        state.textContent = on ? 'Cross-polarised light' : 'Plane-polarised light';
+      }
+      btn.addEventListener('click', function () {
+        touched = true;
+        set(!box.classList.contains('is-crossed'));
+      });
+      // the first time the sections come into view, show the effect once
+      if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        var io = new IntersectionObserver(function (es) {
+          if (es[0].isIntersecting) {
+            io.disconnect();
+            setTimeout(function () { if (!touched) set(true); }, 1600);
+          }
+        }, { threshold: 0.45 });
+        io.observe(box);
+      }
+    })();
+    </script>
+</body>
+</html>

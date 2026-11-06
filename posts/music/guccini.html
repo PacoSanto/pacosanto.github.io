@@ -7,507 +7,218 @@
 
     <meta name="description" content="Un ricordo personale per Francesco Guccini (1940–2026): un primo concerto a Montichiari, un tema andato male, tre città, la regolite lunare e un contratto che scade.">
     <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fsdv.eu/posts/music/guccini.html">
     <meta property="og:title" content="Fra la via Emilia e la Luna">
     <meta property="og:description" content="Diciassette anni di Guccini, un tema andato male, tre città e un contratto che scade.">
     <meta property="og:locale" content="it_IT">
-    <meta property="og:image" content="https://pacosanto.github.io/img/post/music/guccini-og.jpg">
+    <meta property="og:image" content="https://fsdv.eu/img/post/music/fra-la-via-emilia-og.jpg">
     <meta name="twitter:card" content="summary_large_image">
 
-    <link rel="stylesheet" href="../../../css/style.css">
+    <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
+    <link rel="stylesheet" href="/css/style.css?v=3">
 
     <style>
-    /* ═══════════════════════════════════════════════════════════
-       FRA LA VIA EMILIA E LA LUNA
-       Direzione: un disco e una carota di sondaggio sono la stessa
-       cosa, una serie temporale incisa nella materia. Il pezzo si
-       legge come un log stratigrafico: la colonna a sinistra è
-       l'unità di misura, non un ornamento.
-
-       Palette: colori di interferenza al microscopio polarizzatore
-       (rosso di primo ordine, verde di secondo) su fondo inchiostro.
-       Tipografia: monospaziato da stampata di laboratorio per le
-       etichette, serif da libretto per il testo.
-       ═══════════════════════════════════════════════════════════ */
-
+    /* FRA LA VIA EMILIA E LA LUNA
+       The post is the record. One track per section, width proportional to its
+       text; the needle moves from the rim to the label as you read, and the
+       disc turns only while you scroll. Palette: first- and second-order
+       interference colours under the polarising microscope, on ink. */
     .gp {
-        /* - colore - */
-        --ink:        #0e1013;
-        --ink-raised: #14171b;
-        --paper:      #e9e5dc;
-        --paper-dim:  #b3aea3;
-        --muted:      #7d7d78;
-        --rule:       #23272c;
-        --rule-soft:  #191d21;
-        --pol:        #c4275c;   /* rosso di primo ordine */
-        --pol-2:      #4fa89e;   /* verde di secondo ordine */
-
-        /* - tipo - */
-        --mono: var(--font-body);
-        --serif: var(--font-body);
-
-        /* - misure - */
-        --measure: 34rem;
-        --rail: 88px;
+        --ink: #0e1013; --ink-raised: #14171b; --paper: #e9e5dc; --paper-dim: #b8b3a8;
+        --muted: #8f8f89; --rule: #2a2e33;
+        --pol: #f0b39f; --pol-2: #f0b39f; --pen: #c8321f;
     }
-
-    body.gp {
-        background: var(--ink);
-        color: var(--paper);
-        font-family: var(--serif);
-        -webkit-font-smoothing: antialiased;
-    }
-
+    body.gp { background: var(--ink); color: var(--paper); -webkit-font-smoothing: antialiased; }
     .gp ::selection { background: var(--pol); color: #fff; }
+    .gp a:focus-visible, .gp button:focus-visible { outline: 2px solid var(--pol-2); outline-offset: 3px; }
+    .gp .site-footer { margin-top: 0; }
+    .gp .label { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--paper-dim); }
 
-    .gp a:focus-visible,
-    .gp button:focus-visible {
-        outline: 2px solid var(--pol-2);
-        outline-offset: 3px;
-    }
+    /* hero */
+    .gp .masthead { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: center; overflow: hidden; padding: calc(var(--nav-height) + 2rem) 0 clamp(2.5rem,5vw,4rem); background: var(--color-night); }
+    .gp .masthead > .frame { position: relative; z-index: 2; width: 100%; }
+    .gp .masthead-inner { max-width: min(calc(47vw - var(--gutter) - 1.5rem), 40rem); }
+    .gp .masthead-meta { display: flex; flex-wrap: wrap; gap: .4rem 1.4rem; margin: 0 0 1.75rem; }
+    .gp .masthead-meta .live { color: var(--pol); }
+    .gp h1 { font-weight: 300; color: #f3efe6; font-size: clamp(3.2rem,6vw,5.6rem); line-height: .96; margin: 0 0 1.5rem; }
+    .gp h1 .luna { font-style: italic; color: var(--pol); }
+    .gp .deck { font-family: var(--font-display); font-size: clamp(1.4rem,2.2vw,1.95rem); line-height: 1.22; color: var(--paper); max-width: 26em; margin: 0 0 1.75rem; }
+    .gp .thesis { border-left: 2px solid var(--color-amber); padding: .2rem 0 .2rem 1.2rem; margin: 0 0 clamp(3rem,6vw,5rem); }
+    .gp article .thesis p { margin: 0; font-size: 1.1rem; line-height: 1.6; color: var(--paper-dim); }
+    .gp .thesis strong { color: var(--paper); font-weight: 600; }
 
-    /* ── etichetta monospaziata, usata ovunque serva un dato ── */
-    .gp .label {
-        font-family: var(--mono);
-        font-size: 0.66rem;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-        color: var(--muted);
-    }
+    /* the disc: lives in the hero, then settles over .deck-slot */
+    .gp-disc { position: absolute; z-index: 1; left: 74%; top: 50%; width: var(--disc); height: var(--disc); --disc: min(80vh, 54vw); margin: calc(var(--disc) / -2) 0 0 calc(var(--disc) / -2); }
+    .is-deck .gp-disc { position: fixed; left: 0; top: 0; margin: 0; transform-origin: 0 0; will-change: transform; z-index: 5; pointer-events: none; }
+    .gp-vinyl { position: absolute; inset: 0; border-radius: 50%; background: repeating-radial-gradient(circle, #08090b 0 2px, #1b1d21 2px 4px); box-shadow: 0 0 0 1px #000, 0 40px 90px rgba(0,0,0,.5); }
+    .gp-sheen { position: absolute; inset: 0; border-radius: 50%; pointer-events: none; background: conic-gradient(from 35deg, rgba(255,255,255,.13), transparent 10%, transparent 40%, rgba(255,255,255,.09) 50%, transparent 60%, transparent 90%, rgba(255,255,255,.13)); }
+    .gp-tracks, .gp-arm { position: absolute; inset: 0; width: 100%; height: 100%; display: block; overflow: visible; }
+    .gp-tracks circle { fill: none; stroke: rgba(255,255,255,.05); transition: stroke .5s; pointer-events: none; }
+    .is-deck .gp-tracks circle { pointer-events: stroke; cursor: pointer; }
+    .gp-tracks circle.played { stroke: rgba(255,255,255,.1); }
+    .gp-tracks circle.now { stroke: rgba(240,179,159,.42); }
+    .gp-tracks circle:hover { stroke: rgba(240,179,159,.25); }
+    .gp-label { position: absolute; left: 33%; top: 33%; width: 34%; height: 34%; border-radius: 50%; overflow: hidden; background: #e9e5dc; box-shadow: 0 0 0 1px rgba(0,0,0,.6); will-change: transform; }
+    .gp-label i { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity .9s; }
+    .gp-label i.on { opacity: 1; }
+    .gp-moon { position: absolute; inset: 0; background: #e9e5dc; }
+    .gp-moon b { position: absolute; border-radius: 50%; background: #b8b3a8; }
+    .gp-hole { position: absolute; left: 49%; top: 49%; width: 2%; height: 2%; border-radius: 50%; background: var(--ink); }
+    .gp-arm { pointer-events: none; opacity: 0; }
 
-    /* ═══ HERO ═══════════════════════════════════════════════ */
-    .gp .masthead {
-        margin-top: var(--nav-height, 0);
-        padding: clamp(4rem, 14vh, 9rem) 6% clamp(2.5rem, 6vh, 4rem);
-        border-bottom: 1px solid var(--rule);
-        position: relative;
-        overflow: hidden;
-    }
+    /* reading column + rail */
+    .gp-body { overflow-x: clip; }
+    .gp .shell { display: grid; grid-template-columns: minmax(0,1fr) minmax(280px, min(400px, 48vh)); gap: clamp(2rem,6vw,6rem); align-items: start; padding-bottom: clamp(4rem,8vw,7rem); }
+    .gp .rail { position: sticky; top: calc(var(--nav-height) + .6rem); padding-top: clamp(4rem,7vw,6rem); }
+    .gp .deck-slot { display: none; aspect-ratio: 1; width: 100%; margin-bottom: 1.25rem; }
+    .is-deck .deck-slot { display: block; }
+    .gp .log ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; grid-auto-flow: column; grid-template-rows: repeat(6,auto); column-gap: 1rem; }
+    .gp .log a { display: grid; grid-template-columns: 1.7rem 1fr; padding: .24rem 0; font-size: .88rem; line-height: 1.25; color: var(--muted); transition: color .25s; }
+    .gp .log a span { font-family: var(--font-mono); font-size: .68rem; padding-top: .12rem; }
+    .gp .log a:hover { color: var(--paper); }
+    .gp .log a.is-current { color: var(--pol); }
+    .gp-progress { display: none; }
 
-    .gp .masthead-inner {
-        max-width: 1180px;
-        margin: 0 auto;
-        position: relative;
-        z-index: 2;
-    }
+    /* article */
+    .gp article { max-width: 38rem; padding-top: clamp(4rem,7vw,6rem); }
+    .gp article p { font-size: 1.14rem; line-height: 1.72; color: var(--paper); margin: 0 0 1.35rem; }
+    .gp article p.lede { font-family: var(--font-display); font-size: clamp(1.6rem,2.5vw,2.1rem); line-height: 1.28; color: #f3efe6; }
+    .gp article p.beat { font-family: var(--font-display); font-size: clamp(2.1rem,4vw,3.3rem); line-height: 1.08; color: #f3efe6; margin: 2.2rem 0; }
+    .gp article em { color: #f3efe6; }
+    .gp article strong { font-weight: 600; color: #f7f3ea; }
+    .gp article section { scroll-margin-top: 5rem; }
+    .gp article section + section { margin-top: clamp(4.5rem,9vw,8rem); }
+    .gp h2 { font-weight: 300; color: #f3efe6; font-size: clamp(2.3rem,4.4vw,3.8rem); line-height: 1.04; margin: 0 0 2rem; }
+    .gp h2 .u { display: block; font-family: var(--font-mono); font-size: .76rem; letter-spacing: .08em; color: var(--pol); margin-bottom: .8rem; }
 
-    .gp .masthead-meta {
-        display: flex;
-        gap: 1.4rem;
-        flex-wrap: wrap;
-        align-items: baseline;
-        margin-bottom: 2.4rem;
-    }
-
-    .gp .masthead-meta .live {
-        color: var(--pol);
-    }
-
-    .gp h1 {
-        font-family: var(--serif);
-        font-size: clamp(2.4rem, 7.2vw, 5.6rem);
-        font-weight: 400;
-        line-height: 0.98;
-        letter-spacing: -0.028em;
-        color: #f3efe6;
-        max-width: 14ch;
-        margin: 0 0 1.6rem;
-    }
-
-    .gp h1 .luna {
-        font-style: italic;
-        color: var(--pol);
-    }
-
-    .gp .deck {
-        font-size: clamp(1.02rem, 1.7vw, 1.26rem);
-        line-height: 1.5;
-        color: var(--paper-dim);
-        max-width: 40ch;
-        margin: 0 0 3rem;
-    }
-
-    /* la tesi: un solco e una carota sono la stessa cosa */
-    .gp .thesis {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1rem;
-        border-top: 1px solid var(--rule);
-        padding-top: 1.6rem;
-        max-width: 62ch;
-    }
-
-    .gp .thesis p {
-        margin: 0;
-        font-size: 0.94rem;
-        line-height: 1.65;
-        color: var(--muted);
-    }
-
-    .gp .thesis strong {
-        color: var(--paper-dim);
-        font-weight: 400;
-    }
-
-    /* solco/carota: bande orizzontali a spessore variabile */
-    .gp .groove {
-        position: absolute;
-        inset: 0 0 0 auto;
-        width: 46%;
-        min-width: 260px;
-        z-index: 1;
-        opacity: 0.5;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 3px;
-        padding-right: 6%;
-        pointer-events: none;
-        mask-image: linear-gradient(to left, #000 30%, transparent 100%);
-        -webkit-mask-image: linear-gradient(to left, #000 30%, transparent 100%);
-    }
-
-    .gp .groove i {
-        display: block;
-        background: var(--rule);
-    }
-
-    @media (max-width: 900px) { .gp .groove { display: none; } }
-
-    /* ═══ IMPIANTO: log + testo ══════════════════════════════ */
-    .gp .shell {
-        max-width: 1180px;
-        margin: 0 auto;
-        padding: 0 6% 7rem;
-        display: grid;
-        grid-template-columns: var(--rail) minmax(0, 1fr);
-        gap: clamp(2rem, 5vw, 4.5rem);
-        align-items: start;
-    }
-
-    /* ── colonna stratigrafica ── */
-    .gp .log {
-        position: sticky;
-        top: calc(var(--nav-height, 0px) + 3rem);
-        padding-top: 4.5rem;
-    }
-
-    .gp .log-head {
-        font-family: var(--mono);
-        font-size: 0.58rem;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-        color: var(--muted);
-        border-bottom: 1px solid var(--rule);
-        padding-bottom: 0.5rem;
-        margin-bottom: 0.75rem;
-    }
-
-    .gp .log ol {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
-
-    .gp .log li { margin: 0; }
-
-    .gp .log a {
-        display: grid;
-        grid-template-columns: 20px 1fr;
-        gap: 0.55rem;
-        align-items: stretch;
-        text-decoration: none;
-        color: var(--muted);
-        padding: 2px 0;
-    }
-
-    /* il letto: pattern litologico, spessore proporzionale */
-    .gp .bed {
-        border: 1px solid var(--rule);
-        border-radius: 1px;
-        transition: border-color .25s, background-color .25s;
-    }
-
-    .gp .bed-1 { background-image: repeating-linear-gradient(0deg, var(--rule) 0 1px, transparent 1px 5px); }
-    .gp .bed-2 { background-image: repeating-linear-gradient(45deg, var(--rule) 0 1px, transparent 1px 6px); }
-    .gp .bed-3 { background-image: radial-gradient(var(--rule) 0.8px, transparent 0.9px); background-size: 6px 6px; }
-    .gp .bed-4 { background-image: repeating-linear-gradient(-45deg, var(--rule) 0 1px, transparent 1px 7px); }
-    .gp .bed-5 { background-color: var(--rule-soft); background-image: repeating-linear-gradient(0deg, var(--rule) 0 1px, transparent 1px 9px); }
-
-    .gp .log-name {
-        font-family: var(--mono);
-        font-size: 0.6rem;
-        letter-spacing: 0.05em;
-        line-height: 1.25;
-        align-self: center;
-        transition: color .25s;
-    }
-
-    .gp .log a:hover .log-name { color: var(--paper-dim); }
-    .gp .log a:hover .bed { border-color: var(--pol-2); }
-
-    .gp .log a.is-current .log-name { color: var(--pol); }
-    .gp .log a.is-current .bed {
-        border-color: var(--pol);
-        background-color: rgba(196,39,92,0.14);
-    }
-
-    @media (max-width: 1080px) {
-        .gp .shell { grid-template-columns: 1fr; }
-        .gp .log { display: none; }
-    }
-
-    /* ═══ ARTICOLO ═══════════════════════════════════════════ */
-    .gp article {
-        max-width: var(--measure);
-        padding: 4.5rem 0 0;
-        margin: 0;
-    }
-
-    .gp article p {
-        font-size: 1.045rem;
-        line-height: 1.72;
-        color: var(--paper);
-        margin: 0 0 1.35rem;
-    }
-
-    .gp article p.lede {
-        font-size: 1.2rem;
-        line-height: 1.6;
-        color: #f1ede4;
-    }
-
-    .gp article em { color: #f1ede4; }
-    .gp article strong { font-weight: 600; color: #f5f1e8; }
-
-    /* ── titoli di sezione: numerati come le unità di un log ── */
-    .gp article section { scroll-margin-top: 6rem; }
-
-    .gp article section + section { margin-top: 4.6rem; }
-
-    .gp h2 {
-        font-family: var(--mono);
-        font-size: 0.78rem;
-        font-weight: 500;
-        letter-spacing: 0.13em;
-        text-transform: uppercase;
-        color: #f0ece3;
-        margin: 0 0 1.9rem;
-        padding-top: 1.2rem;
-        border-top: 1px solid var(--rule);
-        display: grid;
-        grid-template-columns: 2.6rem 1fr;
-        gap: 0.4rem;
-        align-items: baseline;
-    }
-
-    .gp h2 .u {
-        color: var(--pol);
-        font-size: 0.7rem;
-        letter-spacing: 0.08em;
-    }
-
-    /* ═══ SCHEDA BRANO ═══════════════════════════════════════
-       Sostituisce i vecchi blockquote: nessun testo di canzone
-       riprodotto, solo dati verificabili e una riga d'autore.  */
-    .gp .scheda {
-        margin: 2.4rem 0;
-        border: 1px solid var(--rule);
-        border-left: 2px solid var(--pol);
-        background: var(--ink-raised);
-        padding: 1.1rem 1.3rem 1.2rem;
-    }
-
-    .gp .scheda-tag {
-        font-family: var(--mono);
-        font-size: 0.56rem;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: var(--pol);
-        display: block;
-        margin-bottom: 0.6rem;
-    }
-
-    .gp .scheda-title {
-        font-size: 1.22rem;
-        line-height: 1.2;
-        color: #f5f1e8;
-        margin: 0 0 0.5rem;
-    }
-
-    .gp .scheda-fields {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.35rem 0.9rem;
-        font-family: var(--mono);
-        font-size: 0.63rem;
-        letter-spacing: 0.06em;
-        color: var(--muted);
-        border-bottom: 1px solid var(--rule);
-        padding-bottom: 0.75rem;
-        margin-bottom: 0.75rem;
-    }
-
-    .gp .scheda-fields span::before {
-        content: attr(data-k) " ";
-        color: #4a4d51;
-    }
-
-    .gp .scheda-note {
-        font-size: 0.95rem;
-        line-height: 1.6;
-        color: var(--paper-dim);
-        margin: 0;
-    }
-
-    /* ═══ DISCO (copertina + testo) ══════════════════════════ */
-    .gp .disco {
-        display: grid;
-        grid-template-columns: 128px 1fr;
-        gap: 1.4rem;
-        margin: 2.6rem 0;
-        align-items: start;
-    }
-
-    .gp .disco figure { margin: 0; }
-
-    .gp .disco img {
-        width: 100%;
-        display: block;
-        border: 1px solid var(--rule);
-        filter: grayscale(0.55) contrast(1.05) brightness(0.86);
-        transition: filter .45s ease;
-    }
-
-    .gp .disco:hover img { filter: grayscale(0) contrast(1) brightness(1); }
-
-    .gp .disco figcaption {
-        font-family: var(--mono);
-        font-size: 0.56rem;
-        line-height: 1.5;
-        letter-spacing: 0.05em;
-        color: #55585c;
-        margin-top: 0.5rem;
-    }
-
-    /* fallback pulito se la copertina non carica */
-    .gp .disco figure.missing img { display: none; }
-    .gp .disco figure.missing::before {
-        content: attr(data-fallback);
-        display: grid;
-        place-items: center;
-        text-align: center;
-        aspect-ratio: 1;
-        border: 1px solid var(--rule);
-        background: var(--ink-raised);
-        font-family: var(--mono);
-        font-size: 0.58rem;
-        line-height: 1.5;
-        letter-spacing: 0.08em;
-        color: var(--muted);
-        padding: 0.6rem;
-    }
-
-    .gp .disco p { margin-bottom: 1rem; }
+    /* the sleeve opens as it comes into view */
+    .gp .disco { margin: 0 0 2.5rem; }
+    .gp .disco figure { position: relative; width: clamp(190px, 44%, 270px); margin: 0 0 1.75rem; }
+    .gp .disco img { position: relative; z-index: 1; display: block; width: 100%; aspect-ratio: 1; object-fit: cover; box-shadow: 0 18px 44px rgba(0,0,0,.5); filter: grayscale(.7) brightness(.82); transition: filter 1.4s var(--ease-out) .25s; }
+    .gp .disco figure .out { position: absolute; left: 2.5%; top: 0; width: 95%; aspect-ratio: 1; margin-top: 2.5%; border-radius: 50%; background: radial-gradient(circle, var(--ink) 0 2.5%, var(--pol) 3% 15%, transparent 15.5%), conic-gradient(from 40deg, rgba(255,255,255,.12), transparent 14%, transparent 45%, rgba(255,255,255,.08) 52%, transparent 62%), repeating-radial-gradient(circle, #08090b 0 1px, #1a1c20 1px 3px); transform: translateX(0) rotate(0); transition: transform 1.5s var(--ease-out) .15s; }
+    .gp .disco.is-in img, html:not(.js) .gp .disco img { filter: none; }
+    .gp .disco.is-in figure .out, html:not(.js) .gp .disco figure .out { transform: translateX(46%) rotate(70deg); }
+    .gp .disco figcaption { font-family: var(--font-mono); font-size: .68rem; line-height: 1.5; color: var(--muted); margin-top: .7rem; }
+    .gp .disco figure.missing img, .gp .disco figure.missing .out { display: none; }
+    .gp .disco figure.missing::before { content: attr(data-fallback); display: grid; place-items: center; text-align: center; aspect-ratio: 1; border: 1px solid var(--rule); background: var(--ink-raised); font-family: var(--font-mono); font-size: .68rem; color: var(--muted); padding: .6rem; }
     .gp .disco p:last-child { margin-bottom: 0; }
 
-    @media (max-width: 620px) {
-        .gp .disco { grid-template-columns: 96px 1fr; gap: 1rem; }
-    }
+    /* song card */
+    .gp .scheda { margin: 2.4rem 0; border-top: 1px solid var(--pol); border-bottom: 1px solid var(--rule); padding: 1rem 0 1.25rem; }
+    .gp .scheda-tag { display: block; font-family: var(--font-mono); font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: var(--pol); margin-bottom: .6rem; }
+    .gp article .scheda-title { font-family: var(--font-display); font-size: clamp(1.8rem,3vw,2.5rem); line-height: 1.08; color: #f7f3ea; margin: 0 0 .6rem; }
+    .gp article .scheda-fields { display: flex; flex-wrap: wrap; gap: .25rem 1.2rem; font-family: var(--font-mono); font-size: .74rem; line-height: 1.5; color: var(--paper-dim); margin: 0 0 .8rem; }
+    .gp .scheda-fields span::before { content: attr(data-k) " "; color: var(--muted); }
+    .gp article .scheda-note { font-size: 1.04rem; line-height: 1.6; color: var(--paper-dim); margin: 0; }
 
-    /* ═══ MARGINALIA ═════════════════════════════════════════ */
-    .gp .nota {
-        margin: 2.2rem 0;
-        padding-left: 1.1rem;
-        border-left: 1px solid var(--pol-2);
-        font-size: 0.95rem;
-        line-height: 1.62;
-        color: var(--paper-dim);
-    }
+    /* margin notes are the punchlines */
+    .gp .nota { margin: 2.6rem 0; padding-left: 1.2rem; border-left: 2px solid var(--pol-2); font-family: var(--font-display); font-style: italic; font-size: clamp(1.45rem,2.3vw,1.85rem); line-height: 1.28; color: #f3efe6; }
+    .gp .nota strong { color: var(--pol-2); font-weight: 500; }
 
-    .gp .nota strong { color: var(--pol-2); font-weight: 400; }
+    /* the mark in red pen */
+    .gp-mark { display: block; width: clamp(120px,22vw,170px); height: auto; margin: -1rem 0 1.5rem; overflow: visible; }
+    .gp-mark path { fill: none; stroke: var(--pol); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset .7s ease-out; }
+    .gp-mark.is-in path, html:not(.js) .gp-mark path { stroke-dashoffset: 0; }
+    .gp-mark path:nth-child(2) { transition-delay: .4s; } .gp-mark path:nth-child(3) { transition-delay: .6s; } .gp-mark path:nth-child(4) { transition-delay: .8s; } .gp-mark path:nth-child(5) { transition-delay: 1.05s; transition-duration: 1s; }
 
-    /* ═══ CHIUSURA ═══════════════════════════════════════════ */
-    .gp .coda {
-        margin: 4rem 0 0;
-        padding-top: 2rem;
-        border-top: 1px solid var(--rule);
-    }
-
-    .gp .coda p:last-of-type {
-        font-size: 1.3rem;
-        line-height: 1.45;
-        color: #f3efe6;
-    }
-
-    .gp .signoff {
-        font-family: var(--mono);
-        font-size: 0.7rem;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        color: var(--pol);
-        margin: 2.5rem 0 0;
-    }
-
-    .gp .ps {
-        margin-top: 2.6rem;
-        padding-top: 1.4rem;
-        border-top: 1px dashed var(--rule);
-        font-size: 0.92rem;
-        line-height: 1.6;
-        color: var(--muted);
-    }
-
-    /* ═══ CREDITI + NAV ══════════════════════════════════════ */
-    .gp .crediti {
-        margin-top: 4rem;
-        padding-top: 1.4rem;
-        border-top: 1px solid var(--rule);
-    }
-
-    .gp .crediti p {
-        font-family: var(--mono);
-        font-size: 0.62rem;
-        line-height: 1.75;
-        letter-spacing: 0.04em;
-        color: #5a5d61;
-        margin: 0 0 0.6rem;
-    }
-
-    .gp .post-nav {
-        display: flex;
-        gap: 1.6rem;
-        flex-wrap: wrap;
-        margin-top: 2.6rem;
-        padding-top: 1.6rem;
-        border-top: 1px solid var(--rule);
-    }
-
-    .gp .post-nav a {
-        font-family: var(--mono);
-        font-size: 0.68rem;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: var(--paper-dim);
-        text-decoration: none;
-        border-bottom: 1px solid transparent;
-        padding-bottom: 2px;
-        transition: color .25s, border-color .25s;
-    }
-
+    /* close */
+    .gp .coda { margin: 4rem 0 0; padding-top: 2rem; border-top: 1px solid var(--rule); }
+    .gp article .coda p:nth-of-type(2) { font-family: var(--font-display); font-size: clamp(2.1rem,4vw,3.3rem); line-height: 1.08; color: #f3efe6; margin: 2.2rem 0; }
+    .gp article .signoff { font-family: var(--font-display); font-style: italic; font-size: clamp(2.6rem,6vw,4.8rem); line-height: 1; color: var(--pol); margin: 3rem 0 0; }
+    .gp article .ps { margin-top: 2.6rem; padding-top: 1.4rem; border-top: 1px dashed var(--rule); font-size: 1rem; line-height: 1.6; color: var(--paper-dim); }
+    .gp .crediti { margin-top: 4rem; padding-top: 1.4rem; border-top: 1px solid var(--rule); }
+    .gp article .crediti p { font-size: .88rem; line-height: 1.6; color: var(--muted); margin: 0 0 .6rem; }
+    .gp .post-nav { display: flex; flex-wrap: wrap; gap: 1.6rem; margin-top: 2.6rem; padding-top: 1.6rem; border-top: 1px solid var(--rule); }
+    .gp .post-nav a { color: var(--paper-dim); font-weight: 600; border-bottom: 1px solid transparent; transition: color .25s, border-color .25s; }
     .gp .post-nav a:hover { color: var(--pol); border-bottom-color: var(--pol); }
 
-    /* ═══ ACCESSIBILITÀ ══════════════════════════════════════ */
+    /* horizon: black sky is transparent to the record behind it */
+    .gp-horizon { position: absolute; z-index: 6; left: 0; bottom: -11vw; width: 100%; height: auto; mix-blend-mode: lighten; pointer-events: none; -webkit-mask-image: linear-gradient(to bottom, #000 38%, transparent 59%); mask-image: linear-gradient(to bottom, #000 38%, transparent 59%); }
+    .gp .masthead > .frame { z-index: 7; }
+        @keyframes gp-rise { from { translate: 0 34%; } to { translate: 0 0; } }
+    html:not(.is-deck) .gp-disc { animation: gp-rise 2.2s var(--ease-out) both; }
+
+    .gp-now { font-family: var(--font-display); font-size: 1.2rem; line-height: 1.15; min-height: 2.3em; margin: 0 0 .15rem; color: inherit; }
+    .gp-hint { font-family: var(--font-mono); font-size: .66rem; color: var(--muted); margin: 0 0 1rem; transition: opacity .6s; }
+    .gp-hint.gone { opacity: 0; }
+    .gp .rail { color: var(--paper); transition: color .5s; }
+    .gp .rail.on-paper { color: var(--color-ink); }
+    .gp .rail.on-paper .log a, .gp .rail.on-paper .gp-hint { color: var(--color-slate); }
+    .gp .rail.on-paper .log a:hover { color: var(--color-ink); }
+    .gp .rail.on-paper .log a.is-current { color: var(--color-amber); font-weight: 600; }
+    #gp-grab { pointer-events: none; cursor: grab; touch-action: none; }
+    .is-grabbing, .is-grabbing * { cursor: grabbing !important; user-select: none; }
+    html:not(.is-deck) .gp-now, html:not(.is-deck) .gp-hint { display: none; }
+
+    /* the school chapters: an Italian squared exercise book */
+    .gp section.paper { position: relative; padding: clamp(3.5rem,7vw,6rem) 0; color: var(--color-ink); --pol: var(--color-amber); --muted: #6b6f66; }
+    .gp section.paper + section.paper { padding-top: 0; margin-top: 0; }
+    .gp section.paper + section:not(.paper) { margin-top: clamp(4rem,8vw,7rem); }
+    .gp section.paper::before { content: ''; position: absolute; z-index: -1; top: 0; bottom: 0; left: -100vw; right: -100vw; background-color: var(--color-chalk); background-image: linear-gradient(rgba(70,100,140,.11) 1px, transparent 1px), linear-gradient(90deg, rgba(70,100,140,.11) 1px, transparent 1px); background-size: 24px 24px; }
+    .gp section.paper::after { content: ''; position: absolute; z-index: -1; top: 0; bottom: 0; left: -1.1rem; width: 1px; background: rgba(200,50,31,.45); }
+    .gp section.paper h2, .gp section.paper p, .gp section.paper em, .gp section.paper strong, .gp section.paper article { color: var(--color-ink); }
+    .gp article section.paper p.beat { color: var(--color-ink); }
+    .gp section.paper .nota { color: var(--color-ink); border-left-color: var(--color-amber); }
+    .gp section.paper .scheda { border-bottom-color: var(--border); }
+    .gp article section.paper .scheda-title { color: var(--color-ink); }
+    .gp article section.paper .scheda-fields, .gp article section.paper .scheda-note { color: var(--color-slate); }
+    .gp section.paper .disco figcaption { color: var(--color-slate); }
+    .gp .gp-mark path { stroke: var(--pen); }
+    .gp .pen { background: linear-gradient(var(--pen),var(--pen)) no-repeat 0 100% / 0 2px; transition: background-size 1s ease-out .5s; }
+    .gp .disco.is-in .pen, html:not(.js) .gp .pen { background-size: 100% 2px; }
+    .gp article a:not(.listen) { color: inherit; border-bottom: 1px solid var(--color-amber); }
+    .gp article a:not(.listen):hover { color: var(--color-amber); }
+
+    /* Laura's messages */
+    .gp .msgs { margin: 2rem 0; display: grid; gap: .7rem; }
+    .gp .msg { margin: 0; max-width: 88%; padding: .9rem 1.1rem; background: #fff; border: 1px solid var(--border); border-radius: 2px 14px 14px 14px; box-shadow: 0 8px 22px rgba(29,32,27,.07); }
+    .gp article .msg p { margin: 0; font-size: 1.04rem; line-height: 1.5; }
+    .gp article .msg-me { justify-self: end; max-width: 80%; margin: 0; padding: .7rem 1.1rem; background: var(--color-ink); border-radius: 14px 2px 14px 14px; font-size: 1.04rem; line-height: 1.5; color: #fff !important; }
+
+    /* listening */
+    .gp .listen-row { display: flex; flex-wrap: wrap; gap: .4rem 1.2rem; margin-top: .85rem; }
+    .gp .listen { display: inline-flex; align-items: center; gap: .55rem; min-height: 44px; padding: 0; background: none; border: 0; font: 600 .95rem var(--font-body); color: inherit; cursor: pointer; transition: color .25s; }
+    .gp .listen:hover { color: var(--color-amber); }
+    .gp .listen i { position: relative; flex: none; width: 30px; height: 30px; border-radius: 50%; background: var(--color-amber); transition: scale .35s var(--ease-out); }
+    .gp .listen i::after { content: ''; position: absolute; left: 11px; top: 8px; border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+    .gp .listen:hover i { scale: 1.12; }
+    .gp .listen-big { font: 400 clamp(1.4rem,2.6vw,2rem)/1.15 var(--font-display); text-align: left; }
+    .gp .listen-big i { width: 52px; height: 52px; }
+    .gp .listen-big i::after { left: 20px; top: 15px; border-width: 11px 0 11px 17px; }
+    .gp .gp-lp { margin-top: 2.2rem; }
+    .gp-embed { width: 100%; border: 0; display: block; margin-top: .8rem; border-radius: 12px; background: var(--ink-raised); }
+
+    /* calcite through time */
+    .gp .gp-etch { margin: 2.6rem 0; }
+    .gp-etch-view { position: relative; aspect-ratio: 617/393; background: #000; overflow: hidden; }
+    .gp-etch-view img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .45s; }
+    .gp-etch-view img.on { opacity: 1; }
+    .gp-etch-ctl { display: grid; grid-template-columns: 5rem minmax(0,1fr); gap: .8rem; align-items: center; margin-top: .75rem; font-family: var(--font-mono); font-size: .8rem; }
+    .gp-etch-ctl input { width: 100%; height: 32px; accent-color: var(--color-amber); }
+    .gp .gp-etch figcaption { margin-top: .5rem; font-size: .9rem; line-height: 1.45; color: var(--paper-dim); }
+
+    /* Etna opens the Padova chapter */
+    .gp #s7 { position: relative; padding-top: min(58vh, 540px); }
+    .gp #s7::before { content: ''; position: absolute; z-index: -1; top: 0; left: calc(var(--bleed, 16px) * -1); width: 100vw; height: min(74vh, 700px); background: linear-gradient(to top, var(--ink) 4%, rgba(14,16,19,.1) 55%), url('/img/io-etna-grotta.jpg') center 42% / cover; }
+
+    @media (max-width: 1080px) {
+      .gp .shell { grid-template-columns: minmax(0,1fr); }
+      .gp .rail { display: none; }
+      .gp article { margin: 0 auto; }
+      .gp-disc { --disc: min(100vw, 62vh); left: 80%; top: 24%; }
+      .gp-horizon { display: none; }
+      .gp .masthead > .frame { padding-top: 22vh; }
+      .gp .masthead { align-items: flex-end; }
+      .gp .masthead-inner { max-width: 100%; }
+      .js .gp-progress { display: block; position: fixed; z-index: 50; left: 0; right: 0; top: 0; height: 2px; background: var(--pol); transform: scaleX(var(--p,0)); transform-origin: left; }
+    }
     @media (prefers-reduced-motion: reduce) {
-        .gp *, .gp *::before, .gp *::after {
-            transition-duration: 0.01ms !important;
-            animation-duration: 0.01ms !important;
-        }
-        .gp html { scroll-behavior: auto; }
+      .gp .disco img, .gp .disco figure .out, .gp-mark path { transition: none; }
     }
     </style>
 </head>
 
-<body class="gp">
+<body class="has-cover gp">
 
     <div id="site-header"></div>
 
@@ -516,18 +227,17 @@
     ══════════════════════════════════════════════════════ -->
     <header class="masthead">
 
-        <div class="groove" aria-hidden="true">
-            <i style="height:2px"></i><i style="height:1px"></i><i style="height:6px"></i>
-            <i style="height:1px"></i><i style="height:1px"></i><i style="height:14px"></i>
-            <i style="height:2px"></i><i style="height:1px"></i><i style="height:4px"></i>
-            <i style="height:9px"></i><i style="height:1px"></i><i style="height:2px"></i>
-            <i style="height:1px"></i><i style="height:22px"></i><i style="height:1px"></i>
-            <i style="height:3px"></i><i style="height:1px"></i><i style="height:7px"></i>
-            <i style="height:1px"></i><i style="height:2px"></i><i style="height:11px"></i>
-            <i style="height:1px"></i><i style="height:1px"></i><i style="height:5px"></i>
+        <img class="gp-horizon" src="/img/post/music/fra-la-via-emilia-horizon.jpg" alt="" aria-hidden="true">
+        <div class="gp-disc" id="gp-disc" aria-hidden="true">
+            <div class="gp-vinyl"></div>
+            <svg class="gp-tracks" id="gp-tracks" viewBox="-300 -300 600 600"></svg>
+            <div class="gp-sheen"></div>
+            <div class="gp-label" id="gp-label"><div class="gp-moon"><b style="left:24%;top:30%;width:20%;height:20%"></b><b style="left:56%;top:52%;width:28%;height:28%"></b><b style="left:58%;top:18%;width:11%;height:11%"></b></div><i></i><i></i></div>
+            <div class="gp-hole"></div>
+            <svg class="gp-arm" viewBox="-300 -300 600 600"><g id="gp-arm"><path id="gp-grab" d="M0 0H338" fill="none" stroke="transparent" stroke-width="34"/><path d="M0 0H318" fill="none" stroke="#a8a396" stroke-width="5"/><rect x="306" y="-9" width="32" height="18" rx="2" fill="#f8f6f1"/></g><circle cx="279" cy="-279" r="20" fill="#a8a396"/><circle cx="279" cy="-279" r="7" fill="#2a2e33"/></svg>
         </div>
 
-        <div class="masthead-inner">
+        <div class="frame"><div class="masthead-inner">
             <p class="masthead-meta">
                 <span class="label">Music · Padova · Agosto 2026</span>
                 <span class="label live">Francesco Guccini &nbsp;1940, 2026</span>
@@ -539,7 +249,16 @@
                 Diciassette anni di Guccini, un tema andato male, tre città
                 e un contratto che scade.
             </p>
+        </div></div>
+    </header>
 
+    <!-- ══════════════════════════════════════════════════════
+         CORPO
+    ══════════════════════════════════════════════════════ -->
+    <div class="gp-progress" id="gp-progress"></div>
+    <div class="gp-body"><div class="frame shell">
+
+        <article>
             <div class="thesis">
                 <p>
                     <strong>Un disco è una serie temporale incisa nella materia.</strong>
@@ -549,33 +268,6 @@
                     guardare da vicino. Questa pagina è impaginata di conseguenza.
                 </p>
             </div>
-        </div>
-    </header>
-
-    <!-- ══════════════════════════════════════════════════════
-         CORPO
-    ══════════════════════════════════════════════════════ -->
-    <div class="shell">
-
-        <!-- ── colonna stratigrafica / indice ── -->
-        <nav class="log" aria-label="Indice della pagina">
-            <p class="log-head">Log</p>
-            <ol>
-                <li><a href="#s0"><span class="bed bed-5" style="height:26px"></span><span class="log-name">6 ago<br>2026</span></a></li>
-                <li><a href="#s1"><span class="bed bed-1" style="height:44px"></span><span class="log-name">Monti-<br>chiari</span></a></li>
-                <li><a href="#s2"><span class="bed bed-3" style="height:52px"></span><span class="log-name">Il tre su<br>dieci</span></a></li>
-                <li><a href="#s3"><span class="bed bed-2" style="height:34px"></span><span class="log-name">Via Paolo<br>Fabbri</span></a></li>
-                <li><a href="#s4"><span class="bed bed-4" style="height:46px"></span><span class="log-name">Il giura-<br>mento</span></a></li>
-                <li><a href="#s5"><span class="bed bed-1" style="height:40px"></span><span class="log-name">Il sisma</span></a></li>
-                <li><a href="#s6"><span class="bed bed-3" style="height:64px"></span><span class="log-name">Granada</span></a></li>
-                <li><a href="#s7"><span class="bed bed-2" style="height:44px"></span><span class="log-name">La Luna</span></a></li>
-                <li><a href="#s8"><span class="bed bed-4" style="height:48px"></span><span class="log-name">Autogrill</span></a></li>
-                <li><a href="#s9"><span class="bed bed-1" style="height:50px"></span><span class="log-name">Eskimo</span></a></li>
-                <li><a href="#s10"><span class="bed bed-5" style="height:36px"></span><span class="log-name">Pavana</span></a></li>
-            </ol>
-        </nav>
-
-        <article>
 
             <!-- ══ 00 ══════════════════════════════════════ -->
             <section id="s0">
@@ -621,7 +313,7 @@
                     <em>il</em> primo, quello che stabilisce cosa sia un concerto per tutto il resto della tua vita.
                     Ci andai con il mio amico Cisco e suo padre, perché a quattordici anni per andare ai concerti serve
                     un adulto con la patente e la pazienza, e il padre di un amico, prof di filosofia al liceo,
-                    anche lui fun di Guccini, è la figura mitologica che rende possibile l'adolescenza.
+                    anche lui fan di Guccini, è la figura mitologica che rende possibile l'adolescenza.
                 </p>
 
                 <p>
@@ -644,8 +336,8 @@
                     basta dirla.
                 </p>
 
-                <div class="nota">
-                    Ho passato gli ultimi tre anni a scrivere articoli scientifici, otre che a trovare i dati per questi ultimi.
+                <div class="nota reveal">
+                    Ho passato gli ultimi tre anni a scrivere articoli scientifici, oltre che a trovare i dati per questi ultimi.
                     Ogni volta che sono tentato di nascondere un dato debole dietro una
                     figura ben fatta, quel signore con la barba mi guarda male dalla
                     gradinata del 2008.
@@ -653,48 +345,47 @@
             </section>
 
             <!-- ══ 02 ══════════════════════════════════════ -->
-            <section id="s2">
+            <section id="s2" class="paper">
                 <h2><span class="u">02</span><span>Il tre su dieci</span></h2>
 
-                <div class="disco">
+                <div class="disco reveal">
                     <figure data-fallback="FOLK BEAT N.1 · 1967">
+                        <span class="out" aria-hidden="true"></span>
                         <img
                             src="/img/post/music/guccini-folk-beat-n1-1967.jpg"
                             alt="Copertina di Folk Beat n.1, Francesco Guccini, 1967"
                             loading="lazy"
                             onerror="this.parentNode.classList.add('missing')">
-                        <figcaption>Folk Beat n.1 · 1967<br>© RCA Italiana</figcaption>
+                        <figcaption>Folk Beat n.1 · 1967<br>© La Voce del Padrone</figcaption>
                     </figure>
                     <div>
                         <p>
                             Al liceo diedero un tema sui valori del mondo contemporaneo.
                             Io, con l'incoscienza tipica di chi ha appena scoperto
                             qualcosa e crede di averlo scoperto per primo nella storia
-                            dell'umanità, citai e difesi <strong>Dio è morto</strong>.
+                            dell'umanità, citai e difesi <strong class="pen">Dio è morto</strong>.
                         </p>
                         <p>
                             Se non la conoscete: è del 1965, Guccini la scrive a
                             venticinque anni, ed è una delle canzoni più fraintese della
                             musica italiana. Non è un manifesto ateo. È il ritratto di
-                            una generazione che si guarda intorno e vede crollare tutto
-                           , la morale borghese, le certezze dei padri, la retorica del
+                            una generazione che si guarda intorno e vede crollare tutto, la morale borghese, le certezze dei padri, la retorica del
                             dopoguerra, e prova a capire cosa si costruisce sulle macerie.
                         </p>
                     </div>
                 </div>
 
-                <div class="scheda">
-                    <span class="scheda-tag">Scheda</span>
+                <div class="scheda reveal">
                     <p class="scheda-title">Dio è morto</p>
                     <p class="scheda-fields">
-                        <span data-k="Disco">Folk Beat n.1</span>
-                        <span data-k="Anno">1967</span>
                         <span data-k="Scritta nel">1965</span>
+                        <span data-k="Prime incisioni">1967, Nomadi e Caterina Caselli</span>
                     </p>
                     <p class="scheda-note">
                         Censurata dalla RAI, trasmessa da Radio Vaticana. Il malinteso
                         è la sua biografia.
                     </p>
+                    <div class="listen-row"><button type="button" class="listen" data-spotify="track/24974Lho9Ff9SLAEKLv2Zb"><i aria-hidden="true"></i>Ascolta dal vivo, 1982</button></div>
                 </div>
 
                 <p>
@@ -703,9 +394,8 @@
                     abbastanza chiaro da quel dettaglio.
                 </p>
 
-                <p>
-                    Presi tre su dieci.
-                </p>
+                <p class="beat reveal">Presi tre su dieci.</p>
+                <svg class="gp-mark reveal" viewBox="0 0 170 110" aria-hidden="true"><path pathLength="1" d="M34 34c8-10 26-11 28-1 2 8-9 14-18 17 11-1 23 3 22 14-1 12-22 16-35 7"/><path pathLength="1" d="M92 22 72 90"/><path pathLength="1" d="M96 42l9-8-2 44"/><path pathLength="1" d="M138 36c-12 0-18 12-17 25 1 12 8 19 16 17 9-2 13-14 12-25-1-10-5-17-11-17z"/><path pathLength="1" d="M28 18C62-6 148-4 164 40c12 36-30 66-82 64C36 102 0 80 8 48 11 34 21 24 36 17"/></svg>
 
                 <p>
                     La professoressa era di Comunione e Liberazione. Non lo dico per
@@ -717,12 +407,40 @@
                 </p>
             </section>
 
+            <!-- ══ Il presentatore ═════════════════════════ -->
+            <!-- [CHECK: anno degli Inviti al Calini. Il messaggio dice 2003, ma il post dà 14 anni nel 2008: omesso.] -->
+            <section id="calini" class="paper">
+                <h2><span class="u">03</span><span>Il presentatore</span></h2>
+
+                <p>
+                    Nello stesso liceo del tre su dieci, il Calini, Guccini ci è venuto di
+                    persona. E a presentarlo, studente pivello, c'ero io, insieme a Laura.
+                    Lo so perché me lo ha scritto lei.
+                </p>
+
+                <div class="msgs">
+                    <blockquote class="msg reveal"><p>Caro Francesco, ma ti ricordi di avere presentato Guccini insieme a me quando è stato al Calini? O è un sogno ingannevole?</p></blockquote>
+                    <p class="msg-me reveal">Io mi ricordavo i Dies Fasti.</p>
+                    <blockquote class="msg reveal"><p>Non erano i Dies Fasti, ma gli Inviti al Calini […] e a me sembrava fossi proprio tu il presentatore… Eri tu!</p></blockquote>
+                </div>
+
+                <p>
+                    Peer review, di nuovo. Il dato era mio, la correzione è sua.
+                </p>
+
+                <div class="nota reveal">
+                    Nello stesso liceo ho preso tre su dieci per averlo difeso e ho avuto
+                    il compito di presentarlo. L'ordine dei fattori non cambia il risultato.
+                </div>
+            </section>
+
             <!-- ══ 03 ══════════════════════════════════════ -->
             <section id="s3">
-                <h2><span class="u">03</span><span>Via Paolo Fabbri 43</span></h2>
+                <h2><span class="u">04</span><span>Via Paolo Fabbri 43</span></h2>
 
-                <div class="disco">
+                <div class="disco reveal">
                     <figure data-fallback="VIA PAOLO FABBRI 43 · 1976">
+                        <span class="out" aria-hidden="true"></span>
                         <img
                             src="/img/post/music/guccini-via-paolo-fabbri-43-1976.jpg"
                             alt="Copertina di Via Paolo Fabbri 43, Francesco Guccini, 1976"
@@ -762,8 +480,7 @@
                     le sue.
                 </p>
 
-                <div class="scheda">
-                    <span class="scheda-tag">Scheda</span>
+                <div class="scheda reveal">
                     <p class="scheda-title">L'avvelenata</p>
                     <p class="scheda-fields">
                         <span data-k="Disco">Via Paolo Fabbri 43</span>
@@ -773,15 +490,17 @@
                         A quattordici anni pensi che serva a insultare i nemici.
                         A trentadue capisci che serve a proteggersi dagli amici.
                     </p>
+                    <div class="listen-row"><a class="listen" href="https://www.youtube.com/results?search_query=Francesco+Guccini+L%27avvelenata" target="_blank" rel="noopener"><i aria-hidden="true"></i>Cerca l'ascolto</a></div>
                 </div>
             </section>
 
             <!-- ══ 04 ══════════════════════════════════════ -->
             <section id="s4">
-                <h2><span class="u">04</span><span>Bologna, il giuramento</span></h2>
+                <h2><span class="u">05</span><span>Bologna, il giuramento</span></h2>
 
-                <div class="disco">
+                <div class="disco reveal">
                     <figure data-fallback="METROPOLIS · 1981">
+                        <span class="out" aria-hidden="true"></span>
                         <img
                             src="/img/post/music/guccini-metropolis-1981.jpg"
                             alt="Copertina di Metropolis, Francesco Guccini, 1981"
@@ -805,8 +524,7 @@
                     </div>
                 </div>
 
-                <div class="scheda">
-                    <span class="scheda-tag">Scheda</span>
+                <div class="scheda reveal">
                     <p class="scheda-title">Bologna</p>
                     <p class="scheda-fields">
                         <span data-k="Disco">Metropolis</span>
@@ -815,11 +533,10 @@
                     <p class="scheda-note">
                         Non è un inno turistico. È un ritratto di famiglia.
                     </p>
+                    <div class="listen-row"><button type="button" class="listen" data-spotify="track/6p2TRNS51jWqxuwOXsQOOE"><i aria-hidden="true"></i>Ascolta dal vivo, 1982</button></div>
                 </div>
 
-                <p>
-                    Poi andammo a Padova.
-                </p>
+                <p class="beat reveal">Poi andammo a Padova.</p>
 
                 <p>
                     Che è la città della scienza, Galileo, il teatro anatomico, l'orto
@@ -839,8 +556,7 @@
                     progettato, e che il progetto non era sbagliato, era solo un progetto.
                 </p>
 
-                <div class="scheda">
-                    <span class="scheda-tag">Scheda</span>
+                <div class="scheda reveal">
                     <p class="scheda-title">Incontro</p>
                     <p class="scheda-fields">
                         <span data-k="Disco">Radici</span>
@@ -850,21 +566,23 @@
                         A diciassette anni ti sembra una canzone d'amore.
                         A trentadue capisci che è una canzone sul curriculum, più o meno...
                     </p>
+                    <div class="listen-row"><a class="listen" href="https://www.youtube.com/results?search_query=Francesco+Guccini+Incontro" target="_blank" rel="noopener"><i aria-hidden="true"></i>Cerca l'ascolto</a></div>
                 </div>
             </section>
 
             <!-- ══ 05 ══════════════════════════════════════ -->
             <section id="s5">
-                <h2><span class="u">05</span><span>Il concerto per l'Emilia</span></h2>
+                <h2><span class="u">06</span><span>Il concerto per l'Emilia</span></h2>
 
-                <div class="disco">
+                <div class="disco reveal">
                     <figure data-fallback="RADICI · 1972">
+                        <span class="out" aria-hidden="true"></span>
                         <img
                             src="/img/post/music/guccini-radici-1972.jpg"
                             alt="Copertina di Radici, Francesco Guccini, 1972"
                             loading="lazy"
                             onerror="this.parentNode.classList.add('missing')">
-                        <figcaption>Radici · 1972<br>© RCA Italiana</figcaption>
+                        <figcaption>Radici · 1972<br>© EMI Italiana</figcaption>
                     </figure>
                     <div>
                         <p>
@@ -894,15 +612,14 @@
                     In quei concerti lì, prima o poi, arriva <strong>La locomotiva</strong>.
                     È il pezzo che tutti gli chiedevano e che lui, per tutta la vita, ha
                     suonato con una certa insofferenza: la storia dell'anarchico che lancia
-                    una locomotiva contro il treno dei signori, un episodio d'inizio
-                    Novecento riscritto in chiave epica. È diventata un inno da corteo,
+                    una locomotiva contro il treno dei signori, un episodio di fine
+                    Ottocento riscritto in chiave epica. È diventata un inno da corteo,
                     cantata a memoria da centomila persone alla volta. E lui ne diffidava
                     esattamente per quello: perché una canzone che nasce come racconto di
                     un gesto disperato e ambiguo era diventata uno slogan da alzata di pugno.
                 </p>
 
-                <div class="scheda">
-                    <span class="scheda-tag">Scheda</span>
+                <div class="scheda reveal">
                     <p class="scheda-title">La locomotiva</p>
                     <p class="scheda-fields">
                         <span data-k="Disco">Radici</span>
@@ -913,15 +630,17 @@
                         articoli: non controlli mai come verrà citato quello che hai
                         scritto.
                     </p>
+                    <div class="listen-row"><button type="button" class="listen" data-spotify="track/4sWEaPkeftiBab4MhzNnEZ"><i aria-hidden="true"></i>Ascolta dal vivo, 1982</button></div>
                 </div>
             </section>
 
             <!-- ══ 06 ══════════════════════════════════════ -->
             <section id="s6">
-                <h2><span class="u">06</span><span>Granada, la calcite, i dieci anni di una canzone</span></h2>
+                <h2><span class="u">07</span><span>Granada, la calcite, i dieci anni di una canzone</span></h2>
 
-                <div class="disco">
+                <div class="disco reveal">
                     <figure data-fallback="D'AMORE DI MORTE E DI ALTRE SCIOCCHEZZE · 1996">
+                        <span class="out" aria-hidden="true"></span>
                         <img
                             src="/img/post/music/guccini-damore-di-morte-1996.jpg"
                             alt="Copertina di D'amore di morte e di altre sciocchezze, Francesco Guccini, 1996"
@@ -958,8 +677,7 @@
                     lasciate dalle lumache. Cose minime. Cose che nessuno guarda.
                 </p>
 
-                <div class="scheda">
-                    <span class="scheda-tag">Scheda</span>
+                <div class="scheda reveal">
                     <p class="scheda-title">Vorrei</p>
                     <p class="scheda-fields">
                         <span data-k="Disco">D'amore di morte e di altre sciocchezze</span>
@@ -971,17 +689,30 @@
                         una notte. Dieci anni per una canzone che sembra un elenco di
                         dettagli irrilevanti.
                     </p>
+                    <div class="listen-row"><a class="listen" href="https://www.youtube.com/results?search_query=Francesco+Guccini+Vorrei" target="_blank" rel="noopener"><i aria-hidden="true"></i>Cerca l'ascolto</a></div>
                 </div>
 
                 <p>
                     Io faccio, fin quando me lo permetteranno, un lavoro, che consiste esattamente in questo: guardare cose
-                    minime che nessuno guarda, e passarci anni. Un cristallo di calcite di
-                    trenta micron. Una patina di ossalato su un marmo. La parietaria che
+                    minime che nessuno guarda, e passarci anni. <a href="/articles/calcite-micropillars.html">Un cristallo di calcite di
+                    trenta micron</a>. Una patina di ossalato su un marmo. La parietaria che
                     cresce su un muro è biodeterioramento, tecnicamente. Ma è anche, se sei
                     disposto a guardarla, la prova che qualcosa vive dentro la pietra.
                 </p>
 
-                <div class="nota">
+                <figure class="gp-etch reveal">
+                    <div class="gp-etch-view" id="gp-etch-view">
+                        <img src="/img/articles/calcite/sem-0h.jpg" alt="Superficie di calcite, 0 ore di attacco" class="on">
+                        <img src="/img/articles/calcite/sem-05h.jpg" alt="Superficie di calcite, 30 minuti di attacco" loading="lazy">
+                        <img src="/img/articles/calcite/sem-2h.jpg" alt="Superficie di calcite, 2 ore di attacco" loading="lazy">
+                        <img src="/img/articles/calcite/sem-24h.jpg" alt="Micropilastri di calcite, 24 ore di attacco" loading="lazy">
+                        <img src="/img/articles/calcite/sem-90h.jpg" alt="Superficie di calcite, 90 ore di attacco" loading="lazy">
+                    </div>
+                    <label class="gp-etch-ctl"><span id="gp-etch-t">0 ore</span><input type="range" id="gp-etch" min="0" max="4" step="1" value="0" aria-label="Tempo di attacco"></label>
+                    <figcaption>Guardare da vicino: calcite in NH₄Cl 1 M, da 0 a 90 ore. Da <a href="/articles/calcite-micropillars.html">Santoro De Vico et al. (2025)</a>, ritagli dalla Fig. 1, <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC</a>.</figcaption>
+                </figure>
+
+                <div class="nota reveal">
                     <strong>Vorrei</strong> è la canzone in cui ho scoperto che l'amore e
                     la mineralogia hanno lo stesso metodo: si dimostrano nell'attenzione
                     ai dettagli che agli altri non interessano.
@@ -992,13 +723,12 @@
                     <strong>Cirano</strong> e <strong>Quattro stracci</strong>. Cirano è
                     il Cyrano di Rostand preso e fatto proprio: l'uomo che ha lo spirito,
                     la lingua, il coraggio, e proprio per questo resta fuori, perché il
-                    mondo premia altro. Quattro stracci, invece, è amara e asciutta, e
-                    parla di chi ha perso: la povertà, la dignità tenuta insieme con
-                    niente, le vite di scarto che nessuno canta.
+                    mondo premia altro. Quattro stracci, invece, è amara e rabbiosa:
+                    un'invettiva contro una storia finita, la risposta di chi non ha
+                    più nessuna voglia di essere elegante.
                 </p>
 
-                <div class="scheda">
-                    <span class="scheda-tag">Scheda</span>
+                <div class="scheda reveal">
                     <p class="scheda-title">Cirano · Quattro stracci</p>
                     <p class="scheda-fields">
                         <span data-k="Disco">D'amore di morte e di altre sciocchezze</span>
@@ -1009,15 +739,17 @@
                         qualcosa di poco spendibile. La seconda l'ho ascoltata a sedici
                         anni pensando che parlasse di altri.
                     </p>
+                    <div class="listen-row"><a class="listen" href="https://www.youtube.com/results?search_query=Francesco+Guccini+Cirano" target="_blank" rel="noopener"><i aria-hidden="true"></i>Cerca Cirano</a><a class="listen" href="https://www.youtube.com/results?search_query=Francesco+Guccini+Quattro+stracci" target="_blank" rel="noopener"><i aria-hidden="true"></i>Cerca Quattro stracci</a></div>
                 </div>
             </section>
 
             <!-- ══ 07 ══════════════════════════════════════ -->
             <section id="s7">
-                <h2><span class="u">07</span><span>Padova, la Luna, i mulini a vento</span></h2>
+                <h2><span class="u">08</span><span>Padova, la Luna, i mulini a vento</span></h2>
 
-                <div class="disco">
+                <div class="disco reveal">
                     <figure data-fallback="STAGIONI · 2000">
+                        <span class="out" aria-hidden="true"></span>
                         <img
                             src="/img/post/music/guccini-stagioni-2000.jpg"
                             alt="Copertina di Stagioni, Francesco Guccini, 2000"
@@ -1032,7 +764,7 @@
                             simulanti di regolite lunare. In pratica: cerco di capire con
                             che roba si costruirà una casa sulla Luna, e siccome sulla
                             Luna per ora non ci andiamo a fare la spesa, si parte da quello
-                            che abbiamo, per esempio i depositi vulcanici dell'Etna.
+                            che abbiamo, per esempio i <a href="/articles/etna-lunar-simulants.html">depositi vulcanici dell'Etna</a>.
                         </p>
                         <p>
                             Se lo racconti a cena, la gente ride. Se lo racconti a un
@@ -1050,8 +782,7 @@
                     nessuno combatte mai niente.
                 </p>
 
-                <div class="scheda">
-                    <span class="scheda-tag">Scheda</span>
+                <div class="scheda reveal">
                     <p class="scheda-title">Don Chisciotte</p>
                     <p class="scheda-fields">
                         <span data-k="Disco">Stagioni</span>
@@ -1061,6 +792,7 @@
                     <p class="scheda-note">
                         Non dà ragione a nessuno dei due. È esattamente questo il punto.
                     </p>
+                    <div class="listen-row"><a class="listen" href="https://www.youtube.com/results?search_query=Francesco+Guccini+Don+Chisciotte" target="_blank" rel="noopener"><i aria-hidden="true"></i>Cerca l'ascolto</a></div>
                 </div>
 
                 <p>
@@ -1069,17 +801,18 @@
                     quale dei due personaggi sto interpretando, e sono abbastanza sereno al riguardo.
                 </p>
 
-                <div class="nota">
+                <div class="nota reveal">
                     Il problema è che Don Chisciotte non aveva un contratto a tempo determinato.
                 </div>
             </section>
 
             <!-- ══ 08 ══════════════════════════════════════ -->
             <section id="s8">
-                <h2><span class="u">08</span><span>Autogrill</span></h2>
+                <h2><span class="u">09</span><span>Autogrill</span></h2>
 
-                <div class="disco">
+                <div class="disco reveal">
                     <figure data-fallback="GUCCINI · 1983">
+                        <span class="out" aria-hidden="true"></span>
                         <img
                             src="/img/post/music/guccini-guccini-1983.jpg"
                             alt="Copertina dell'album Guccini, 1983"
@@ -1108,8 +841,7 @@
                     poi spariscono, su cosa stai facendo lì.
                 </p>
 
-                <div class="scheda">
-                    <span class="scheda-tag">Scheda</span>
+                <div class="scheda reveal">
                     <p class="scheda-title">Autogrill</p>
                     <p class="scheda-fields">
                         <span data-k="Disco">Guccini</span>
@@ -1118,6 +850,7 @@
                     <p class="scheda-note">
                         La canzone della mezza età che si accorge di essere in transito.
                     </p>
+                    <div class="listen-row"><a class="listen" href="https://www.youtube.com/results?search_query=Francesco+Guccini+Autogrill" target="_blank" rel="noopener"><i aria-hidden="true"></i>Cerca l'ascolto</a></div>
                 </div>
 
                 <p>
@@ -1141,8 +874,8 @@
                 <p>
                     Quindi adesso si cerca. E "si cerca", a questo livello, in questo
                     Paese, in questo settore, significa quasi sempre una parola sola:
-                    emigrare, purtroppo. E io, che non sono mai stato un tipo da emigrazione per quanto son bravo ad adattarmi. 
-                    Io che dopo il dotorato pensavo che la mia vita sarebbe stata qui, in Italia, a fare ricerca in Italia, 
+                    emigrare, purtroppo. E io non sono mai stato un tipo da emigrazione, per quanto sia bravo ad adattarmi. 
+                    Io che dopo il dottorato pensavo che la mia vita sarebbe stata qui, in Italia, a fare ricerca in Italia, 
                     mi ritrovo a dover considerare l'idea di andare a fare ricerca in un altro Paese, ancora una volta. 
                     Non perché io sia un ricercatore scarso, ma perché il sistema in cui lavoro non è più in grado di sostenermi.
                 </p>
@@ -1150,10 +883,11 @@
 
             <!-- ══ 09 ══════════════════════════════════════ -->
             <section id="s9">
-                <h2><span class="u">09</span><span>Eskimo</span></h2>
+                <h2><span class="u">10</span><span>Eskimo</span></h2>
 
-                <div class="disco">
+                <div class="disco reveal">
                     <figure data-fallback="AMERIGO · 1978">
+                        <span class="out" aria-hidden="true"></span>
                         <img
                             src="/img/post/music/guccini-amerigo-1978.jpg"
                             alt="Copertina di Amerigo, Francesco Guccini, 1978"
@@ -1175,8 +909,7 @@
                     </div>
                 </div>
 
-                <div class="scheda">
-                    <span class="scheda-tag">Scheda</span>
+                <div class="scheda reveal">
                     <p class="scheda-title">Eskimo</p>
                     <p class="scheda-fields">
                         <span data-k="Disco">Amerigo</span>
@@ -1186,6 +919,7 @@
                         Gli ideali non si tradiscono con un gesto plateale: si consumano
                         per attrito, lentamente, mentre uno cerca di campare.
                     </p>
+                    <div class="listen-row"><a class="listen" href="https://www.youtube.com/results?search_query=Francesco+Guccini+Eskimo" target="_blank" rel="noopener"><i aria-hidden="true"></i>Cerca l'ascolto</a></div>
                 </div>
 
                 <p>
@@ -1212,8 +946,7 @@
                     e adesso si parte con l'ORCID.
                 </p>
 
-                <div class="scheda">
-                    <span class="scheda-tag">Scheda</span>
+                <div class="scheda reveal">
                     <p class="scheda-title">Amerigo</p>
                     <p class="scheda-fields">
                         <span data-k="Disco">Amerigo</span>
@@ -1223,12 +956,13 @@
                         Il prozio partito per l'America, il ritorno, la vita spezzata in
                         due continenti. Cambia il bagaglio, non cambia il verbo.
                     </p>
+                    <div class="listen-row"><a class="listen" href="https://www.youtube.com/results?search_query=Francesco+Guccini+Amerigo" target="_blank" rel="noopener"><i aria-hidden="true"></i>Cerca l'ascolto</a></div>
                 </div>
             </section>
 
             <!-- ══ 10 ══════════════════════════════════════ -->
             <section id="s10">
-                <h2><span class="u">10</span><span>Pavana</span></h2>
+                <h2><span class="u">11</span><span>Pavana</span></h2>
 
                 <p>
                     Guccini, alla fine, ha fatto una cosa che non fanno quasi mai gli
@@ -1272,6 +1006,10 @@
                         Il vicinato, stanotte, dovrà sopportare la mia musica a volume alto. Non è una minaccia: è un ringraziamento.
                         Ho l'impressione che stavolta capiranno.
                     </p>
+
+                    <div class="gp-lp">
+                        <button type="button" class="listen listen-big" data-spotify="album/3PXAoSQOiNulk8NxJLPpq5" data-tall><i aria-hidden="true"></i>Metti su il disco: Concerto, 20 gennaio 1982</button>
+                    </div>
                 </div>
             </section>
 
@@ -1280,45 +1018,250 @@
                 <p>
                     Copertine dei dischi riprodotte a bassa risoluzione a scopo
                     informativo e critico, ai sensi dell'art. 70 L. 633/1941.
-                    Diritti dei rispettivi titolari: RCA Italiana, EMI Italiana,
+                    Diritti dei rispettivi titolari: La Voce del Padrone, EMI Italiana,
                     BMG Ricordi.
                 </p>
                 <p>
                     Nessun testo delle canzoni è riprodotto in questa pagina.
                     Le note nelle schede sono commento personale dell'autore.
                 </p>
+                <p>
+                    Orizzonte: NASA, Apollo 8. Etna: foto personale. Ascolti dal vivo
+                    tramite Spotify, caricati solo quando li avvii.
+                </p>
             </div>
 
             <nav class="post-nav">
-                <a href="https://fsdv.eu/hobbies/music.html">← Back to Music</a>
-                <a href="https://fsdv.eu/hobbies.html">All Hobbies &amp; Blog</a>
+                <a href="/hobbies/music.html">← Back to Music</a>
+                <a href="/hobbies.html">All Hobbies &amp; Blog</a>
             </nav>
 
         </article>
-    </div>
+
+        <aside class="rail">
+            <div class="deck-slot" id="deck-slot"></div>
+            <p class="gp-now" id="gp-now" aria-live="off"></p>
+            <p class="gp-hint" id="gp-hint">Trascina il braccio per muoverti nel disco</p>
+            <nav class="log" aria-label="Indice della pagina">
+                <ol>
+                <li><a href="#s0"><span>00</span>6 agosto 2026</a></li>
+                <li><a href="#s1"><span>01</span>Montichiari</a></li>
+                <li><a href="#s2"><span>02</span>Il tre su dieci</a></li>
+                <li><a href="#calini"><span>03</span>Il presentatore</a></li>
+                <li><a href="#s3"><span>04</span>Via Paolo Fabbri</a></li>
+                <li><a href="#s4"><span>05</span>Il giuramento</a></li>
+                <li><a href="#s5"><span>06</span>Il sisma</a></li>
+                <li><a href="#s6"><span>07</span>Granada</a></li>
+                <li><a href="#s7"><span>08</span>La Luna</a></li>
+                <li><a href="#s8"><span>09</span>Autogrill</a></li>
+                <li><a href="#s9"><span>10</span>Eskimo</a></li>
+                <li><a href="#s10"><span>11</span>Pavana</a></li>
+                </ol>
+            </nav>
+        </aside>
+    </div></div>
 
     <div id="site-footer"></div>
-    <script src="../../../js/components.js"></script>
-
+    <script src="/js/components.js?v=3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+    <script src="/js/site.js?v=3" defer></script>
     <script>
-    /* Evidenzia nel log la sezione in lettura. */
     (function () {
-        var links = Array.prototype.slice.call(document.querySelectorAll('.log a'));
-        if (!links.length || !('IntersectionObserver' in window)) return;
+      var sections = [].slice.call(document.querySelectorAll('article section'));
+      var links = [].slice.call(document.querySelectorAll('.log a'));
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var wide = window.matchMedia('(min-width: 1081px)');
+      var disc = document.getElementById('gp-disc'), slot = document.getElementById('deck-slot'),
+          hero = document.querySelector('.masthead'), label = document.getElementById('gp-label'),
+          arm = document.getElementById('gp-arm'), armSvg = document.querySelector('.gp-arm'), bar = document.getElementById('gp-progress'),
+          tracksSvg = document.getElementById('gp-tracks');
 
-        var map = {};
-        links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+      // ---- one track per section, as wide as its text is long ----
+      var R0 = 282, R1 = 112, GAP = 3;
+      var now = document.getElementById('gp-now'), hint = document.getElementById('gp-hint'), grab = document.getElementById('gp-grab');
+      var names = links.map(function (a) { return a.lastChild.textContent; });
+      var plates = sections.map(function (s) { var c = s.querySelector('.disco figcaption'); return c ? c.innerHTML.split('©')[0].replace(/<br\s*\/?>/g, ' ').replace(/\s+/g, ' ').trim() : null; });
+      var hoverI = -1;
+      var lens = sections.map(function (s) { return s.textContent.replace(/\s+/g, ' ').length; });
+      var total = lens.reduce(function (a, b) { return a + b; }, 0);
+      var usable = R0 - R1 - GAP * (sections.length - 1), edge = R0;
+      var bands = lens.map(function (l, i) {
+        var w = usable * l / total, b = { o: edge, i: edge - w };
+        edge -= w + GAP;
+        var c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        c.setAttribute('r', (b.o + b.i) / 2);
+        c.setAttribute('stroke-width', w);
+        c.addEventListener('click', function () { jump(sections[i]); });
+        c.addEventListener('mouseenter', function () { hoverI = i; showNow(); });
+        c.addEventListener('mouseleave', function () { hoverI = -1; showNow(); });
+        tracksSvg.appendChild(c);
+        b.el = c;
+        return b;
+      });
+      function showNow() {
+        var i = hoverI >= 0 ? hoverI : current;
+        if (i < 0) { now.textContent = ''; return; }
+        now.textContent = hoverI >= 0 ? names[i] : (plates[i] ? 'Sul piatto: ' + plates[i] : names[i]);
+      }
+      function jump(el) {
+        if (window.siteLenis) window.siteLenis.scrollTo(el, { offset: -64 });
+        else el.scrollIntoView();
+      }
 
-        var io = new IntersectionObserver(function (entries) {
-            entries.forEach(function (e) {
-                if (!e.isIntersecting) return;
-                links.forEach(function (a) { a.classList.remove('is-current'); });
-                var a = map[e.target.id];
-                if (a) a.classList.add('is-current');
-            });
-        }, { rootMargin: '-25% 0px -65% 0px' });
+      // ---- the record label takes the cover of the current chapter ----
+      var covers = sections.map(function (s) { var im = s.querySelector('.disco img'); return im ? im.getAttribute('src') : null; });
+      covers.forEach(function (c) { if (c) { var i = new Image(); i.src = c; } });
+      var layers = label.querySelectorAll('i'), layerOn = 0, curCover = null;
+      function setCover(src) {
+        if (src === curCover) return;
+        curCover = src;
+        if (!src) { layers[0].classList.remove('on'); layers[1].classList.remove('on'); return; }
+        layerOn = 1 - layerOn;
+        layers[layerOn].style.backgroundImage = 'url("' + src + '")';
+        layers[layerOn].classList.add('on');
+        layers[1 - layerOn].classList.remove('on');
+      }
 
-        document.querySelectorAll('article section').forEach(function (s) { io.observe(s); });
+      // ---- where the reader is, in track terms ----
+      var current = -1, top = 0, height = 0;
+      function readingPoint() { return window.pageYOffset + window.innerHeight * .38; }
+      function locate() {
+        var y = readingPoint(), idx = 0;
+        for (var i = 0; i < sections.length; i++) if (sections[i].getBoundingClientRect().top + window.pageYOffset <= y) idx = i;
+        var r = sections[idx].getBoundingClientRect(), st = r.top + window.pageYOffset;
+        return { i: idx, f: Math.max(0, Math.min(1, (y - st) / Math.max(1, r.height))), before: y < sections[0].getBoundingClientRect().top + window.pageYOffset };
+      }
+      function setCurrent(i) {
+        if (i === current) return;
+        current = i;
+        links.forEach(function (a, n) { a.classList.toggle('is-current', n === i); });
+        bands.forEach(function (b, n) {
+          b.el.classList.toggle('now', n === i);
+          b.el.classList.toggle('played', n < i);
+        });
+        setCover(i >= 0 ? covers[i] : null);
+        document.querySelector('.rail').classList.toggle('on-paper', i >= 0 && sections[i].classList.contains('paper'));
+        showNow();
+      }
+
+      // ---- tonearm: pivot at (279,-279), arm 318 long, tip kept at radius r ----
+      var D = Math.hypot(279, 279), L = 330, REST = 58;
+      function phiFor(r) { return Math.acos((D * D + L * L - r * r) / (2 * D * L)) * 180 / Math.PI; }
+      var phi = REST;
+
+      // ---- frame ----
+      var bootT = performance.now(), deck = false, spin = 0, lastY = window.pageYOffset, heroBox = null, baseSize = 0, lastT = 0;
+      function setDeck(on) {
+        if (on === deck) return;
+        deck = on;
+        document.documentElement.classList.toggle('is-deck', on);
+        disc.style.transform = '';
+        disc.style.opacity = '';
+        if (on) measure();
+      }
+      function measure() {
+        // the disc's resting box in the hero, in page coordinates, independent of scroll
+        var vw = document.documentElement.clientWidth, vh = window.innerHeight;
+        baseSize = Math.min(vh * .8, vw * .54);
+        var h = hero.getBoundingClientRect();
+        heroBox = { x: vw * .74 - baseSize / 2, y: h.top + window.pageYOffset + h.height * .5 - baseSize / 2 };
+        disc.style.width = disc.style.height = baseSize + 'px';
+      }
+      function frame(ts) {
+        var dt = Math.min(.1, (ts - lastT) / 1000 || 0); lastT = ts;
+        var y = window.pageYOffset, loc = locate();
+        setCurrent(loc.before ? -1 : loc.i);
+
+        // the disc turns only while the page moves
+        var dy = y - lastY; lastY = y;
+        if (!reduce) {
+          spin += dy * .22;
+          label.style.transform = 'rotate(' + spin.toFixed(2) + 'deg)';
+        }
+
+        // the needle
+        var end = document.querySelector('.coda').getBoundingClientRect().bottom < window.innerHeight * .5;
+        var target = REST;
+        if (!loc.before && !end) {
+          var b = bands[loc.i];
+          target = phiFor(b.o - (b.o - b.i) * loc.f);
+        }
+        phi += (target - phi) * (1 - Math.exp(-dt * 5));
+        arm.setAttribute('transform', 'translate(279 -279) rotate(' + (135 + phi).toFixed(2) + ')');
+
+        if (deck) {
+          var s = slot.getBoundingClientRect();
+          var p = Math.max(0, Math.min(1, y / (hero.offsetHeight * .8)));
+          p = p * p * (3 - 2 * p);
+          var rise = Math.max(0, 1 - (ts - bootT) / 2200); rise = rise * rise * rise;
+          var hx = heroBox.x, hy = heroBox.y - y + rise * baseSize * .34;
+          var x = hx + (s.left - hx) * p, yy = hy + (s.top - hy) * p, k = 1 + (s.width / baseSize - 1) * p;
+          disc.style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + yy.toFixed(1) + 'px,0) scale(' + k.toFixed(4) + ')';
+          disc.style.pointerEvents = p > .98 ? 'auto' : 'none';
+          grab.style.pointerEvents = p > .98 ? 'stroke' : 'none';
+          armSvg.style.opacity = Math.max(0, Math.min(1, (p - .45) / .4)).toFixed(3);
+        }
+        if (bar) {
+          var art = document.querySelector('article').getBoundingClientRect();
+          bar.style.setProperty('--p', Math.max(0, Math.min(1, (window.innerHeight * .38 - art.top) / art.height)).toFixed(4));
+        }
+        requestAnimationFrame(frame);
+      }
+      function fit() {
+        document.documentElement.style.setProperty('--bleed', document.querySelector('article').getBoundingClientRect().left + 'px');
+        setDeck(wide.matches && !reduce);
+        if (deck) measure(); else disc.style.width = disc.style.height = '';
+      }
+      // ---- drag the arm to move through the record ----
+      var dragging = false;
+      function seek(e) {
+        var box = slot.getBoundingClientRect();
+        var r = Math.hypot(e.clientX - box.left - box.width / 2, e.clientY - box.top - box.height / 2) * 600 / box.width;
+        r = Math.max(R1, Math.min(R0, r));
+        var i = 0;
+        for (var n = 0; n < bands.length; n++) if (r <= bands[n].o + GAP) i = n;
+        var f = Math.max(0, Math.min(1, (bands[i].o - r) / (bands[i].o - bands[i].i)));
+        var rc = sections[i].getBoundingClientRect();
+        var to = rc.top + window.pageYOffset + rc.height * f - window.innerHeight * .38;
+        if (window.siteLenis) window.siteLenis.scrollTo(to, { immediate: true, force: true }); else window.scrollTo(0, to);
+      }
+      grab.addEventListener('pointerdown', function (e) {
+        dragging = true;
+        grab.setPointerCapture(e.pointerId);
+        document.documentElement.classList.add('is-grabbing');
+        hint.classList.add('gone');
+        e.preventDefault();
+      });
+      grab.addEventListener('pointermove', function (e) { if (dragging) seek(e); });
+      ['pointerup', 'pointercancel'].forEach(function (t) {
+        grab.addEventListener(t, function () { dragging = false; document.documentElement.classList.remove('is-grabbing'); });
+      });
+
+      // ---- calcite through time ----
+      var etch = document.getElementById('gp-etch'), etchImgs = document.querySelectorAll('#gp-etch-view img'), etchT = document.getElementById('gp-etch-t'),
+          times = ['0 ore', '30 minuti', '2 ore', '24 ore', '90 ore'];
+      etch.addEventListener('input', function () {
+        etchImgs.forEach(function (im, i) { im.classList.toggle('on', i === +etch.value); });
+        etchT.textContent = times[+etch.value];
+      });
+
+      // ---- real recordings load only when asked for ----
+      document.querySelectorAll('[data-spotify]').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var f = document.createElement('iframe');
+          f.className = 'gp-embed';
+          f.src = 'https://open.spotify.com/embed/' + b.getAttribute('data-spotify');
+          f.height = b.hasAttribute('data-tall') ? 380 : 152;
+          f.title = b.textContent.trim();
+          f.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
+          f.loading = 'lazy';
+          b.replaceWith(f);
+        });
+      });
+
+      window.addEventListener('resize', fit);
+      fit();
+      requestAnimationFrame(frame);
     })();
     </script>
 

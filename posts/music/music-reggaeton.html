@@ -4,97 +4,444 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reggaeton Party: The Playlist I Didn't Know I Needed | Francesco Santoro De Vico</title>
-    <link rel="stylesheet" href="../../css/style.css">
-        <style>
-        .blog-post-body h2{margin-top:2.4em}
-        .hero-img{width:100%;max-height:480px;object-fit:cover;border-radius:12px;margin-bottom:.6em}
-        .highlight-box{background:linear-gradient(135deg,#2d1033,#4a1259);color:#f0dff5;border-radius:12px;padding:2em 2.2em;margin:2em 0;border-left:4px solid #e879f9;font-size:1.05em;line-height:1.7}
-        .highlight-box strong{color:#f0abfc}
-        .callout{background:#fdf4ff;border:1px solid #e879f9;border-radius:10px;padding:1.4em 1.6em;margin:1.5em 0;font-size:.95em}
-        .callout .callout-title{font-weight:700;color:#a21caf;margin-bottom:.4em}
-        .step-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.4em;margin:2em 0}
-        .step-card{background:#fdf4ff;border:1px solid #e8d5f0;border-radius:10px;padding:1.6em}
-        .step-card .step-num{display:inline-block;background:#a21caf;color:#fff;width:28px;height:28px;border-radius:50%;text-align:center;line-height:28px;font-size:.85em;font-weight:700;margin-bottom:.6em}
-        .step-card h3{margin:0 0 .4em;font-size:1.05em;color:#1a1a1a}
-        .step-card p{margin:0;font-size:.93em;color:#444;line-height:1.6}
-        .key-number-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.2em;margin:2em 0}
-        .key-number{background:#fdf4ff;border-radius:10px;padding:1.5em;text-align:center}
-        .key-number .number{font-size:2.2em;font-weight:700;color:#a21caf;display:block;line-height:1.1}
-        .key-number .label{font-size:.85em;color:#555;margin-top:.4em;display:block}
+    <meta name="description" content="Nostalgia for Spain, the history of the genre from Panamanian dembow to Bad Bunny, and an analysis of its musical characteristics (BPM, percussive structure, use of vocals).">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fsdv.eu/posts/music/music-reggaeton.html">
+    <meta property="og:title" content="Reggaeton Party: The Playlist I Didn't Know I Needed">
+    <meta property="og:description" content="Nostalgia for Spain, the history of the genre from Panamanian dembow to Bad Bunny, and an analysis of its musical characteristics (BPM, percussive structure, use of vocals).">
+    <meta property="og:image" content="https://fsdv.eu/img/post/music/music-reggaeton-og.jpg">
+    <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
+    <link rel="stylesheet" href="/css/style.css?v=3">
+    <style>
+    /* A record that plays its own subject. The disc in the hero and the four
+       lanes further down read one small synth; nothing is sampled. */
+    .rgt { --rgt-plum: #2d1033; --rgt-pink: #e879f9; background: var(--color-chalk); }
+    .rgt .site-footer { margin-top: 0; }
+
+    .rgt-hero {
+      position: relative; overflow: hidden; color: #fff; min-height: 100vh; min-height: 100svh;
+      display: flex; align-items: center;
+      background: radial-gradient(70% 90% at 76% 46%, #4a1a55 0%, var(--rgt-plum) 48%, var(--color-night) 100%);
+      padding: calc(var(--nav-height) + 2rem) 0 clamp(2.5rem,5vw,4rem);
+    }
+    .rgt-hero .frame { width: 100%; display: grid; grid-template-columns: minmax(0,6fr) minmax(0,6fr); gap: clamp(2rem,4vw,4rem); align-items: center; }
+    .rgt-hero .back-link { color: rgba(255,255,255,.75); }
+    .rgt-hero .back-link:hover { color: #fff; }
+    .rgt-date { font-family: var(--font-mono); font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--rgt-pink); margin: 1.6rem 0 .8rem; }
+    .rgt-hero h1 { color: #fff; font-weight: 300; font-size: clamp(2.9rem,6.2vw,5.8rem); line-height: .98; margin: 0 0 1.5rem; }
+    .rgt-hero h1 em { display: block; font-style: italic; }
+    .rgt-lede { max-width: 46ch; font-size: 1.12rem; line-height: 1.55; color: rgba(255,255,255,.86); margin: 0; }
+    .rgt-lede strong { color: #fff; }
+    .rgt-lede a { color: var(--rgt-pink); border-bottom: 1px solid currentColor; white-space: nowrap; }
+    .rgt-lede a:hover { color: #fff; }
+
+    /* the disc */
+    .rgt-deck { position: relative; width: min(100%, 68vh); aspect-ratio: 1; margin: 0 auto; }
+    .rgt-vinyl {
+      position: absolute; inset: 0; border-radius: 50%;
+      background: repeating-radial-gradient(circle, #0c0a0d 0 1px, #1c181e 1px 3px);
+      box-shadow: 0 0 0 1px #000, 0 40px 90px rgba(0,0,0,.55);
+    }
+    .rgt-rings { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+    .rgt-rings path { fill: none; stroke-width: 22; stroke: rgba(255,255,255,.075); }
+    .rgt-rings path.k { stroke: #fff; }
+    .rgt-rings path.s { stroke: var(--rgt-pink); }
+    .rgt-rings path.b { stroke: #a06db3; }
+    .rgt-rings path.hit { stroke-width: 28; }
+    .rgt-sheen {
+      position: absolute; inset: 0; border-radius: 50%; pointer-events: none;
+      background: conic-gradient(from 35deg, rgba(255,255,255,.14), transparent 10%, transparent 40%, rgba(255,255,255,.1) 50%, transparent 60%, transparent 90%, rgba(255,255,255,.14));
+    }
+    .rgt-reader { position: absolute; left: calc(50% - .75px); top: 7%; width: 1.5px; height: 28%; background: var(--rgt-pink); opacity: 0; transition: opacity .4s; pointer-events: none; }
+    .is-playing .rgt-reader { opacity: 1; }
+    .rgt-play {
+      position: absolute; left: 34%; top: 34%; width: 32%; height: 32%; border-radius: 50%; border: 0; cursor: pointer;
+      background: var(--color-chalk); color: var(--rgt-plum); font-family: var(--font-display); font-size: clamp(1.1rem,2.1vw,1.9rem);
+      line-height: 1.05; transition: background .3s, color .3s, scale .4s var(--ease-out);
+    }
+    .rgt-play:hover { background: var(--rgt-pink); scale: 1.03; }
+    .rgt-play small { display: block; margin-top: .25rem; font-family: var(--font-mono); font-size: clamp(.55rem,.8vw,.72rem); letter-spacing: .06em; }
+    .rgt-arm { position: absolute; right: -3%; top: -6%; width: 58%; height: 58%; overflow: visible; pointer-events: none; transform-origin: 88% 12%; transform: rotate(27deg); transition: transform .9s var(--ease-out); }
+    .is-playing .rgt-arm { transform: rotate(0); }
+
+    /* prose */
+    .rgt-body { padding: clamp(3.5rem,7vw,6rem) 0; }
+    .rgt-measure { max-width: 42rem; margin: 0 auto; font-size: 1.16rem; line-height: 1.68; color: var(--color-ink); }
+    .rgt-measure a { color: var(--color-amber); border-bottom: 1px solid currentColor; }
+    .rgt-body h2, .rgt-tick h2 { font-weight: 300; font-size: clamp(2.3rem,4.6vw,3.9rem); line-height: 1.05; margin: 0 0 1.5rem; color: inherit; }
+
+    /* history as a tracklist */
+    .rgt-eras { margin-top: clamp(1.5rem,3vw,2.5rem); }
+    .rgt-era { display: grid; grid-template-columns: 4.5rem minmax(0,4fr) minmax(0,7fr); gap: clamp(1rem,3vw,3rem); padding: clamp(1.5rem,3vw,2.4rem) 0; border-top: 1px solid var(--border); align-items: baseline; }
+    .rgt-era:last-child { border-bottom: 1px solid var(--border); }
+    .rgt-era-no { font-family: var(--font-mono); font-size: .8rem; color: var(--color-amber); }
+    .rgt-era h3 { font-weight: 400; font-size: clamp(1.6rem,2.8vw,2.4rem); line-height: 1.08; margin: 0; color: var(--color-ink); }
+    .rgt-era p { margin: 0; font-size: 1.08rem; line-height: 1.6; color: var(--color-slate); max-width: 56ch; }
+
+    /* the tick */
+    .rgt-tick { background: var(--color-night); color: #fff; padding: clamp(3.5rem,7vw,6.5rem) 0; }
+    .rgt-tick .rgt-intro { max-width: 46rem; font-size: 1.16rem; line-height: 1.68; color: rgba(255,255,255,.85); margin: 0 0 clamp(2rem,4vw,3.5rem); }
+    .rgt-lanes { position: relative; }
+    .rgt-lane { display: grid; grid-template-columns: 7rem minmax(0,1fr); gap: 1rem; align-items: center; margin-bottom: .5rem; }
+    .rgt-lane button {
+      text-align: left; background: none; color: #fff; border: 1px solid rgba(255,255,255,.26); padding: .55rem .7rem; min-height: 44px;
+      font-family: var(--font-mono); font-size: .75rem; cursor: pointer; transition: background .2s, color .2s, border-color .2s;
+    }
+    .rgt-lane button:hover { border-color: #fff; }
+    .rgt-lane button[aria-pressed="false"] { color: rgba(255,255,255,.5); text-decoration: line-through; }
+    .rgt-cells { display: grid; grid-template-columns: repeat(64,1fr); height: 44px; column-gap: 1px; }
+    .rgt-cell { background: rgba(255,255,255,.055); transition: background .12s; }
+    .rgt-cell:nth-child(16n+1) { box-shadow: -2px 0 0 var(--color-night); margin-left: 2px; }
+    .rgt-cell.on { background: var(--c); }
+    .rgt-lane[data-off] .rgt-cell.on { background: rgba(255,255,255,.14); }
+    .rgt-cell.now { background: rgba(255,255,255,.4); }
+    .rgt-cell.on.now { background: #fff; }
+    .rgt-bars { display: grid; grid-template-columns: 7rem minmax(0,1fr); gap: 1rem; font-family: var(--font-mono); font-size: .7rem; color: rgba(255,255,255,.55); margin-bottom: .5rem; }
+    .rgt-bars > div { display: grid; grid-template-columns: repeat(4,1fr); }
+    .rgt-ctrl { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 2rem; margin-top: 1.5rem; }
+    .rgt-ctrl-play { background: var(--rgt-pink); color: var(--rgt-plum); border: 0; min-height: 44px; padding: .55rem 1.3rem; font: 600 1rem var(--font-body); cursor: pointer; transition: background .25s; }
+    .rgt-ctrl-play:hover { background: #fff; }
+    .rgt-ctrl label { display: flex; align-items: center; gap: .8rem; font-family: var(--font-mono); font-size: .8rem; color: rgba(255,255,255,.85); }
+    .rgt-ctrl input { accent-color: var(--rgt-pink); width: min(52vw,240px); }
+    .rgt-note { font-size: .92rem; line-height: 1.45; color: rgba(255,255,255,.62); margin: 1rem 0 0; max-width: 62ch; }
+
+    .rgt-callout { display: grid; grid-template-columns: minmax(0,4fr) minmax(0,7fr); gap: clamp(1rem,3vw,3rem); margin-top: clamp(3rem,6vw,5rem); padding-top: clamp(1.5rem,3vw,2.5rem); border-top: 3px solid var(--rgt-pink); }
+    .rgt-callout-title { font-family: var(--font-display); font-size: clamp(1.7rem,3vw,2.5rem); line-height: 1.08; color: #fff; }
+    .rgt-callout-text { font-size: 1.1rem; line-height: 1.65; color: rgba(255,255,255,.82); }
+
+    .rgt-nums { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: clamp(1rem,3vw,3rem); margin-top: clamp(3rem,6vw,5rem); }
+    .rgt-num b { display: block; font-family: var(--font-display); font-weight: 300; font-size: clamp(3rem,7vw,6.2rem); line-height: 1; color: #fff; }
+    .rgt-num span { display: block; margin-top: .5rem; font-size: 1rem; color: rgba(255,255,255,.72); }
+
+    /* close */
+    .rgt-close { padding: clamp(3.5rem,7vw,6rem) 0; }
+    .rgt-close-grid { display: grid; grid-template-columns: minmax(0,6fr) minmax(0,6fr); gap: clamp(2rem,5vw,5rem); align-items: center; }
+    .rgt-close p { font-family: var(--font-display); font-size: clamp(1.55rem,2.5vw,2.25rem); line-height: 1.28; color: var(--color-ink); margin: 0; }
+    .rgt-spotify { width: 100%; height: 352px; border: 0; display: block; background: var(--rgt-plum); }
+    .rgt-pnav { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; margin-top: clamp(3rem,5vw,4.5rem); padding-top: 1.5rem; border-top: 1px solid var(--border); }
+
+    @media (max-width: 860px) {
+      .rgt-hero .frame { grid-template-columns: 1fr; }
+      .rgt-deck { width: min(100%, 60vh); }
+      .rgt-era { grid-template-columns: 2.6rem minmax(0,1fr); }
+      .rgt-era p { grid-column: 2; }
+      .rgt-lane, .rgt-bars { grid-template-columns: 1fr; gap: .3rem; }
+      .rgt-lane button { min-height: 40px; }
+      .rgt-cells { height: 34px; }
+      .rgt-bars > span { display: none; }
+      .rgt-callout, .rgt-close-grid { grid-template-columns: 1fr; }
+      .rgt-nums { grid-template-columns: 1fr; }
+    }
     </style>
 </head>
-<body>
+<body class="has-cover rgt">
     <div id="site-header"></div>
 
-    <main class="page-top">
-        <div class="container">
-            <a href="../../hobbies/music.html" class="back-link">Back to Music</a>
-    
-            <div class="blog-post-full">
-                <div class="blog-post-full-header">
-                    <h1>Reggaeton Party: The Playlist I Didn't Know I Needed</h1>
-                    <span class="post-date">March 2026</span>
+    <main>
+        <section class="rgt-hero" id="rgt-machine">
+            <div class="frame">
+                <div>
+                    <a href="/hobbies/music.html" class="back-link">Back to Music</a>
+                    <p class="rgt-date">March 2026</p>
+                    <h1>Reggaeton Party: <em>The Playlist I Didn't Know I Needed</em></h1>
+                    <p class="rgt-lede"><strong>A playlist born from nostalgia.</strong> When you live in Spain, reggaeton is everywhere, and you stop hearing it. When you leave, you realise it was the soundtrack of the best nights of your life. <a href="https://open.spotify.com/playlist/4S5pDxuS5jzfGJ53QU78jb?si=ba792f7f0a0d461c" target="_blank" rel="noopener">Listen on Spotify →</a></p>
                 </div>
-    
-                <!-- <img class="hero-img" src="../../img/posts/reggaeton-hero.jpg" alt="Night out vibes"> -->
-                <div class="blog-post-body">
-
-                    <div class="highlight-box">
-                        <strong>A playlist born from nostalgia.</strong> When you live in Spain, reggaeton is everywhere, and you stop hearing it. When you leave, you realise it was the soundtrack of the best nights of your life. <a href="https://open.spotify.com/playlist/4S5pDxuS5jzfGJ53QU78jb?si=ba792f7f0a0d461c" target="_blank" style="color:#f0abfc;text-decoration:underline">Listen on Spotify →</a>
-                    </div>
-
-                    <p>Here's the funny thing about living in Spain: when you're surrounded by reggaeton every single day, in every bar, every taxi, every supermarket, you sort of stop hearing it. Then you move back to Italy, and suddenly you miss it like crazy. That's how my Spotify playlist <a href="https://open.spotify.com/playlist/4S5pDxuS5jzfGJ53QU78jb?si=ba792f7f0a0d461c" target="_blank"><strong>Reggaeton Party</strong></a> was born, out of pure nostalgia for those Granada nights, the preserata with friends, the walk through narrow streets with dembow beats leaking out of every open door.</p>
-
-                    <h2>A brief history of the beat</h2>
-
-                    <p>Reggaeton's roots go deeper than most people think. It started in the early 1990s in Panama and Puerto Rico, where Jamaican dancehall rhythms collided with Latin hip-hop and electronic music.</p>
-
-                    <div class="step-cards">
-                        <div class="step-card">
-                            <div class="step-num">1</div>
-                            <h3>The dembow DNA</h3>
-                            <p>The genre's skeleton is the <em>dembow</em> riddim, a syncopated kick-snare pattern from Shabba Ranks' 1990 track <em>Dem Bow</em>. That boom-ch-boom-chick pattern became the foundation of an entire genre.</p>
-                        </div>
-                        <div class="step-card">
-                            <div class="step-num">2</div>
-                            <h3>The 2000s explosion</h3>
-                            <p>Daddy Yankee, Don Omar, Wisin &amp; Yandel took reggaeton global. <em>Gasolina</em> (2004) proved Latin urban music could dominate English-speaking charts without switching language.</p>
-                        </div>
-                        <div class="step-card">
-                            <div class="step-num">3</div>
-                            <h3>The new wave</h3>
-                            <p>J Balvin, Bad Bunny, Ozuna, Rosalía blurred the lines between reggaeton, trap latino, R&amp;B and even flamenco, a sound that is simultaneously everywhere and constantly reinventing itself.</p>
-                        </div>
-                    </div>
-
-                    <h2>What makes it tick, musically?</h2>
-
-                    <p>Strip away the production gloss and reggaeton is remarkably consistent. The dembow beat sits at around 85–100 BPM, fast enough to dance to, slow enough to feel heavy. Bass lines are deliberately simple, usually a sub-bass sine wave or an 808 hit, leaving space for the vocal. Melodic content comes from the singer, not the instrumental: most reggaeton beats are percussive frameworks designed to let the voice carry the emotion.</p>
-
-                    <div class="callout">
-                        <div class="callout-title">🎧 The tension between repetition and variation</div>
-                        A good reggaeton track loops the same four-bar pattern for minutes, but the vocalist keeps introducing micro-variations, rhythmic shifts, melodic inflections, flow switches, that keep it from feeling static. It's hypnotic in the best way. Auto-Tune, delay throws and layered ad-libs give the genre its instantly recognisable sonic texture.
-                    </div>
-
-                    <div class="key-number-grid">
-                        <div class="key-number"><span class="number">85–100</span><span class="label">BPM: the dembow sweet spot</span></div>
-                        <div class="key-number"><span class="number">1990</span><span class="label">Year the dembow riddim was born</span></div>
-                        <div class="key-number"><span class="number">2004</span><span class="label"><em>Gasolina</em>: the global tipping point</span></div>
-                    </div>
-
-                    <!-- <img src="../../img/posts/reggaeton-spotify.jpg" alt="Screenshot of Reggaeton Party playlist on Spotify"> -->
-                    <!-- <p class="img-caption">The Reggaeton Party playlist - still growing, one track at a time.</p> -->
-
-                    <p>Music has a way of anchoring memories. For me, reggaeton is now permanently linked to sunburnt evenings in the Albaicín, cheap tinto de verano, and the sound of friends laughing too loud. Not bad for a genre I used to ignore.</p>
-                </div>
-                <div class="post-nav">
-                    <a href="../../hobbies/music.html" class="back-link">Back to Music</a>
-                    <a href="../../hobbies.html" class="back-link">All Hobbies &amp; Blog</a>
+                <div class="rgt-deck">
+                    <div class="rgt-vinyl"></div>
+                    <svg class="rgt-rings" id="rgt-rings" viewBox="-300 -300 600 600" aria-hidden="true"></svg>
+                    <div class="rgt-sheen"></div>
+                    <div class="rgt-reader"></div>
+                    <svg class="rgt-arm" viewBox="0 0 300 300" aria-hidden="true">
+                        <circle cx="264" cy="36" r="24" fill="#d9d4c9"/><circle cx="264" cy="36" r="9" fill="#393d37"/>
+                        <path d="M264 36 L44 104" fill="none" stroke="#d9d4c9" stroke-width="5"/>
+                        <rect x="20" y="88" width="30" height="16" rx="2" transform="rotate(18 35 96)" fill="#f8f6f1"/>
+                    </svg>
+                    <button class="rgt-play" id="rgt-play" type="button" aria-pressed="false"><span id="rgt-play-t">Play the dembow</span><small id="rgt-play-b">92 BPM</small></button>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <section class="rgt-body">
+            <div class="frame">
+                <div class="rgt-measure reveal">
+                    <p>Here's the funny thing about living in Spain: when you're surrounded by reggaeton every single day, in every bar, every taxi, every supermarket, you sort of stop hearing it. Then you move back to Italy, and suddenly you miss it like crazy. That's how my Spotify playlist <a href="https://open.spotify.com/playlist/4S5pDxuS5jzfGJ53QU78jb?si=ba792f7f0a0d461c" target="_blank" rel="noopener"><strong>Reggaeton Party</strong></a> was born, out of pure nostalgia for those Granada nights, the preserata with friends, the walk through narrow streets with dembow beats leaking out of every open door.</p>
+                </div>
+
+                <h2 class="reveal" style="margin-top:clamp(3rem,6vw,5rem)">A brief history of the beat</h2>
+                <div class="rgt-measure reveal" style="margin-left:0">
+                    <p>Reggaeton's roots go deeper than most people think. It started in the early 1990s in Panama and Puerto Rico, where Jamaican dancehall rhythms collided with Latin hip-hop and electronic music.</p>
+                </div>
+
+                <div class="rgt-eras">
+                    <article class="rgt-era reveal">
+                        <span class="rgt-era-no">A1</span>
+                        <h3>The dembow DNA</h3>
+                        <p>The genre's skeleton is the <em>dembow</em> riddim, a syncopated kick-snare pattern from Shabba Ranks' 1990 track <em>Dem Bow</em>. That boom-ch-boom-chick pattern became the foundation of an entire genre.</p>
+                    </article>
+                    <article class="rgt-era reveal">
+                        <span class="rgt-era-no">A2</span>
+                        <h3>The 2000s explosion</h3>
+                        <p>Daddy Yankee, Don Omar, Wisin &amp; Yandel took reggaeton global. <em>Gasolina</em> (2004) proved Latin urban music could dominate English-speaking charts without switching language.</p>
+                    </article>
+                    <article class="rgt-era reveal">
+                        <span class="rgt-era-no">A3</span>
+                        <h3>The new wave</h3>
+                        <p>J Balvin, Bad Bunny, Ozuna, Rosalía blurred the lines between reggaeton, trap latino, R&amp;B and even flamenco, a sound that is simultaneously everywhere and constantly reinventing itself.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="rgt-tick">
+            <div class="frame">
+                <h2 class="reveal">What makes it tick, musically?</h2>
+                <p class="rgt-intro reveal">Strip away the production gloss and reggaeton is remarkably consistent. The dembow beat sits at around 85–100 BPM, fast enough to dance to, slow enough to feel heavy. Bass lines are deliberately simple, usually a sub-bass sine wave or an 808 hit, leaving space for the vocal. Melodic content comes from the singer, not the instrumental: most reggaeton beats are percussive frameworks designed to let the voice carry the emotion.</p>
+
+                <div class="rgt-lanes reveal" id="rgt-lanes">
+                    <div class="rgt-bars" aria-hidden="true"><span></span><div><span>Bar 1</span><span>Bar 2</span><span>Bar 3</span><span>Bar 4</span></div></div>
+                </div>
+                <div class="rgt-ctrl">
+                    <button class="rgt-ctrl-play" id="rgt-play2" type="button" aria-pressed="false">Play</button>
+                    <label for="rgt-bpm"><span id="rgt-bpm-v">92 BPM</span><input id="rgt-bpm" type="range" min="85" max="100" step="1" value="92"></label>
+                </div>
+                <p class="rgt-note">Mute a lane to hear what's holding what up. Everything is synthesised live in your browser, with nothing sampled, and the voice line is made up for this demo: it isn't from any song.</p>
+
+                <div class="rgt-callout reveal">
+                    <div class="rgt-callout-title">The tension between repetition and variation</div>
+                    <div class="rgt-callout-text">A good reggaeton track loops the same four-bar pattern for minutes, but the vocalist keeps introducing micro-variations, rhythmic shifts, melodic inflections, flow switches, that keep it from feeling static. It's hypnotic in the best way. Auto-Tune, delay throws and layered ad-libs give the genre its instantly recognisable sonic texture.</div>
+                </div>
+
+                <div class="rgt-nums">
+                    <div class="rgt-num reveal"><b>85–100</b><span>BPM: the dembow sweet spot</span></div>
+                    <div class="rgt-num reveal"><b>1990</b><span>Year the dembow riddim was born</span></div>
+                    <div class="rgt-num reveal"><b>2004</b><span><em>Gasolina</em>: the global tipping point</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="rgt-close">
+            <div class="frame">
+                <div class="rgt-close-grid">
+                    <p class="reveal">Music has a way of anchoring memories. For me, reggaeton is now permanently linked to sunburnt evenings in the Albaicín, cheap tinto de verano, and the sound of friends laughing too loud. Not bad for a genre I used to ignore.</p>
+                    <iframe class="rgt-spotify reveal" title="Reggaeton Party playlist on Spotify" src="https://open.spotify.com/embed/playlist/4S5pDxuS5jzfGJ53QU78jb" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+                </div>
+                <div class="rgt-pnav">
+                    <a href="/hobbies/music.html" class="back-link">Back to Music</a>
+                    <a href="/hobbies.html" class="back-link">All Hobbies &amp; Blog</a>
+                </div>
+            </div>
+        </section>
     </main>
+
     <div id="site-footer"></div>
-    <script src="../../js/components.js"></script>
+    <script src="/js/components.js?v=3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+    <script src="/js/site.js?v=3" defer></script>
+    <script>
+    (function () {
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      // Dembow: four-on-the-floor kick, snare on the 3+3+2 figure. Steps are sixteenths.
+      var KICK = [0, 4, 8, 12], SNARE = [3, 6, 11, 14], BASS = [0, 6, 8, 14];
+      // [step, midi note, length in steps]. Same phrase, moved a little in each bar.
+      var VOICE = [
+        [[2,69,2],[4,72,2],[6,71,1],[7,69,3],[11,67,2]],
+        [[2,69,2],[4,72,2],[6,71,1],[7,69,2],[10,67,1],[11,65,3]],
+        [[1,69,1],[2,69,2],[4,74,2],[6,72,1],[7,71,3],[11,69,2]],
+        [[2,69,2],[4,72,1],[5,74,1],[6,72,1],[7,71,1],[8,69,3],[12,64,3]]
+      ];
+      var machine = document.getElementById('rgt-machine');
+
+      // ---- hero disc: one ring per part, one turn per bar ----
+      var rings = document.getElementById('rgt-rings');
+      var NS = 'http://www.w3.org/2000/svg', ringG = document.createElementNS(NS, 'g');
+      rings.appendChild(ringG);
+      var ringPaths = [];
+      function arc(r, a0, a1) {
+        var p = function (a) { return (r * Math.sin(a)).toFixed(2) + ' ' + (-r * Math.cos(a)).toFixed(2); };
+        return 'M' + p(a0) + 'A' + r + ' ' + r + ' 0 0 1 ' + p(a1);
+      }
+      [['k', 262, KICK], ['s', 232, SNARE], ['b', 202, BASS]].forEach(function (row) {
+        for (var i = 0; i < 16; i++) {
+          var c = i / 16 * Math.PI * 2, w = Math.PI / 16 * .78, el = document.createElementNS(NS, 'path');
+          el.setAttribute('d', arc(row[1], c - w, c + w));
+          if (row[2].indexOf(i) >= 0) el.setAttribute('class', row[0]);
+          ringG.appendChild(el);
+          ringPaths[i] = ringPaths[i] || [];
+          ringPaths[i].push(el);
+        }
+      });
+
+      // ---- lanes ----
+      var lanesBox = document.getElementById('rgt-lanes');
+      var cellsAt = [];
+      var muted = { k: false, s: false, b: false, v: false };
+      function bars(list) { var o = []; for (var b = 0; b < 4; b++) list.forEach(function (s) { o.push(b * 16 + s); }); return o; }
+      var voiceCells = [];
+      VOICE.forEach(function (bar, b) { bar.forEach(function (n) { for (var i = 0; i < n[2]; i++) voiceCells.push(b * 16 + n[0] + i); }); });
+      [['k', 'Kick', '#ffffff', bars(KICK)], ['s', 'Snare', '#e879f9', bars(SNARE)], ['b', 'Sub-bass', '#a06db3', bars(BASS)], ['v', 'Voice', '#f0b39f', voiceCells]].forEach(function (l) {
+        var row = document.createElement('div');
+        row.className = 'rgt-lane';
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.textContent = l[1];
+        btn.setAttribute('aria-pressed', 'true');
+        btn.setAttribute('aria-label', l[1] + ', on');
+        btn.addEventListener('click', function () {
+          muted[l[0]] = !muted[l[0]];
+          btn.setAttribute('aria-pressed', String(!muted[l[0]]));
+          btn.setAttribute('aria-label', l[1] + (muted[l[0]] ? ', muted' : ', on'));
+          if (muted[l[0]]) row.setAttribute('data-off', ''); else row.removeAttribute('data-off');
+        });
+        var cells = document.createElement('div');
+        cells.className = 'rgt-cells';
+        cells.setAttribute('aria-hidden', 'true');
+        cells.style.setProperty('--c', l[2]);
+        for (var i = 0; i < 64; i++) {
+          var c = document.createElement('span');
+          c.className = 'rgt-cell' + (l[3].indexOf(i) >= 0 ? ' on' : '');
+          cells.appendChild(c);
+          (cellsAt[i] = cellsAt[i] || []).push(c);
+        }
+        row.appendChild(btn); row.appendChild(cells);
+        lanesBox.appendChild(row);
+      });
+
+      // ---- synth ----
+      var ctx, master, delay, noiseBuf, playing = false, bpm = 92, step = 0, nextT = 0, timer, queue = [];
+      function init() {
+        ctx = new (window.AudioContext || window.webkitAudioContext)();
+        var comp = ctx.createDynamicsCompressor();
+        master = ctx.createGain(); master.gain.value = 0;
+        master.connect(comp); comp.connect(ctx.destination);
+        delay = ctx.createDelay(1);
+        var fb = ctx.createGain(); fb.gain.value = .38;
+        delay.connect(fb); fb.connect(delay); delay.connect(master);
+        noiseBuf = ctx.createBuffer(1, ctx.sampleRate * .25, ctx.sampleRate);
+        var d = noiseBuf.getChannelData(0);
+        for (var i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+      }
+      function env(g, t, peak, dur) {
+        g.gain.setValueAtTime(.0001, t);
+        g.gain.exponentialRampToValueAtTime(peak, t + .004);
+        g.gain.exponentialRampToValueAtTime(.0001, t + dur);
+      }
+      function kick(t) {
+        var o = ctx.createOscillator(), g = ctx.createGain();
+        o.frequency.setValueAtTime(130, t); o.frequency.exponentialRampToValueAtTime(46, t + .1);
+        env(g, t, .95, .2); o.connect(g); g.connect(master); o.start(t); o.stop(t + .22);
+      }
+      function snare(t) {
+        var s = ctx.createBufferSource(), f = ctx.createBiquadFilter(), g = ctx.createGain();
+        s.buffer = noiseBuf; f.type = 'bandpass'; f.frequency.value = 2100; f.Q.value = .8;
+        env(g, t, .55, .12); s.connect(f); f.connect(g); g.connect(master); s.start(t); s.stop(t + .14);
+        var o = ctx.createOscillator(), og = ctx.createGain();
+        o.type = 'triangle'; o.frequency.value = 210; env(og, t, .26, .08);
+        o.connect(og); og.connect(master); o.start(t); o.stop(t + .1);
+      }
+      function bass(t, dur) {
+        var o = ctx.createOscillator(), g = ctx.createGain();
+        o.frequency.value = 55; env(g, t, .55, dur * 1.8);
+        o.connect(g); g.connect(master); o.start(t); o.stop(t + dur * 1.9);
+      }
+      function voice(t, midi, dur, thrown) {
+        var hz = 440 * Math.pow(2, (midi - 69) / 12);
+        var o = ctx.createOscillator(), f = ctx.createBiquadFilter(), g = ctx.createGain();
+        o.type = 'sawtooth';
+        // arrives slightly sharp and snaps to pitch, the corrected-voice gesture
+        o.frequency.setValueAtTime(hz * 1.05, t);
+        o.frequency.exponentialRampToValueAtTime(hz, t + .03);
+        f.type = 'bandpass'; f.frequency.value = 1050; f.Q.value = 1.6;
+        g.gain.setValueAtTime(.0001, t);
+        g.gain.linearRampToValueAtTime(.34, t + .012);
+        g.gain.setValueAtTime(.3, t + dur * .75);
+        g.gain.linearRampToValueAtTime(.0001, t + dur);
+        o.connect(f); f.connect(g); g.connect(master);
+        if (thrown) g.connect(delay);
+        o.start(t); o.stop(t + dur + .02);
+      }
+      function schedule(s, t, sx) {
+        var inBar = s % 16, bar = Math.floor(s / 16);
+        if (!muted.k && KICK.indexOf(inBar) >= 0) kick(t);
+        if (!muted.s && SNARE.indexOf(inBar) >= 0) snare(t);
+        if (!muted.b && BASS.indexOf(inBar) >= 0) bass(t, sx * 2.2);
+        if (!muted.v) VOICE[bar].forEach(function (n, i) {
+          if (n[0] === inBar) voice(t, n[1], n[2] * sx * .95, (bar === 1 || bar === 3) && i === VOICE[bar].length - 1);
+        });
+      }
+      function pump() {
+        var sx = 60 / bpm / 4;
+        while (nextT < ctx.currentTime + .12) {
+          schedule(step, nextT, sx);
+          queue.push({ s: step, t: nextT, d: sx });
+          nextT += sx;
+          step = (step + 1) % 64;
+        }
+      }
+      var btns = [document.getElementById('rgt-play'), document.getElementById('rgt-play2')];
+      var playT = document.getElementById('rgt-play-t');
+      function setPlaying(on) {
+        playing = on;
+        machine.classList.toggle('is-playing', on);
+        btns.forEach(function (b) { b.setAttribute('aria-pressed', String(on)); });
+        playT.textContent = on ? 'Stop' : 'Play the dembow';
+        btns[1].textContent = on ? 'Stop' : 'Play';
+        if (!on) clearNow();
+      }
+      function start() {
+        if (!ctx) init();
+        ctx.resume();
+        delay.delayTime.value = 60 / bpm / 4 * 3;
+        master.gain.cancelScheduledValues(ctx.currentTime);
+        master.gain.setValueAtTime(.8, ctx.currentTime);
+        step = 0; queue = []; nextT = ctx.currentTime + .06;
+        pump(); timer = setInterval(pump, 25);
+        setPlaying(true);
+      }
+      function stop() {
+        clearInterval(timer);
+        master.gain.setTargetAtTime(.0001, ctx.currentTime, .04);
+        setPlaying(false);
+      }
+      btns.forEach(function (b) { b.addEventListener('click', function () { playing ? stop() : start(); }); });
+      document.addEventListener('visibilitychange', function () { if (document.hidden && playing) stop(); });
+
+      var bpmIn = document.getElementById('rgt-bpm'), bpmV = document.getElementById('rgt-bpm-v'), bpmB = document.getElementById('rgt-play-b');
+      bpmIn.addEventListener('input', function () {
+        bpm = +bpmIn.value;
+        bpmV.textContent = bpmB.textContent = bpm + ' BPM';
+        if (ctx) delay.delayTime.setTargetAtTime(60 / bpm / 4 * 3, ctx.currentTime, .05);
+      });
+
+      // ---- picture follows the audio clock ----
+      var nowIdx = -1, turn = 0, last = 0;
+      function clearNow() {
+        if (nowIdx >= 0) cellsAt[nowIdx].forEach(function (c) { c.classList.remove('now'); });
+        ringPaths.forEach(function (ps) { ps.forEach(function (p) { p.classList.remove('hit'); }); });
+        nowIdx = -1;
+      }
+      function frame(ts) {
+        var dt = Math.min(.05, (ts - last) / 1000 || 0); last = ts;
+        if (playing) {
+          var now = ctx.currentTime, cur = null;
+          while (queue.length && queue[0].t <= now) { cur = queue.shift(); frame.cur = cur; }
+          cur = frame.cur;
+          if (cur) {
+            if (cur.s !== nowIdx) {
+              clearNow();
+              nowIdx = cur.s;
+              cellsAt[nowIdx].forEach(function (c) { c.classList.add('now'); });
+              ringPaths[nowIdx % 16].forEach(function (p) { p.classList.add('hit'); });
+            }
+            turn = ((cur.s % 16) + Math.min(1, (now - cur.t) / cur.d)) / 16;
+          }
+        } else if (!reduce) {
+          turn += dt / 7;
+        }
+        if (!reduce) ringG.setAttribute('transform', 'rotate(' + (-turn * 360).toFixed(2) + ')');
+        requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    })();
+    </script>
 </body>
 </html>

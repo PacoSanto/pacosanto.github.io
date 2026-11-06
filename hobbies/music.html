@@ -12,83 +12,227 @@
     <meta property="og:image" content="https://fsdv.eu/img/hobbies/music-cover.jpg">
     <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
     <link rel="stylesheet" href="../css/style.css?v=3">
+    <style>
+    /* The Music index is a crate: posts and the records inside them, flipped
+       through by scrolling. Without JS or with reduced motion it is a grid. */
+    .mus { background: var(--color-night); }
+    .crate { position: relative; background: radial-gradient(90% 70% at 72% 58%, #23211d 0%, var(--color-night) 70%); color: #fff; }
+    .crate-intro { position: relative; z-index: 3; padding: calc(var(--nav-height) + clamp(2rem,5vh,4rem)) 0 clamp(2rem,4vw,3rem); pointer-events: none; }
+    .crate-intro a { pointer-events: auto; }
+    .crate-intro .back-link { color: rgba(255,255,255,.75); }
+    .crate-intro .back-link:hover { color: #fff; }
+    .crate-intro h1 { color: #fff; font-weight: 300; font-size: clamp(4rem, 11vw, 10rem); line-height: .92; margin: .5rem 0 1rem; }
+    .crate-intro p { max-width: 38ch; font-size: 1.12rem; line-height: 1.45; color: rgba(255,255,255,.82); margin: 0; }
+
+    /* fallback grid */
+    .crate-stage { padding: 0 0 clamp(3rem,6vw,5rem); }
+    .crate-scene { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%,210px), 1fr)); gap: clamp(1rem,2vw,2rem); max-width: var(--frame); margin: 0 auto; padding: 0 var(--gutter); }
+    .sleeve { position: relative; display: block; color: #fff; }
+    .sleeve:hover { color: #fff; }
+    .sleeve-face { display: block; aspect-ratio: 1; overflow: hidden; background: #1a1a1a; box-shadow: 0 18px 40px rgba(0,0,0,.5); }
+    .sleeve-face svg, .sleeve-face img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .sleeve-cap { display: block; margin-top: .6rem; font-size: .92rem; line-height: 1.3; color: rgba(255,255,255,.72); }
+    .sleeve-cap b { color: #fff; font-weight: 600; }
+    .disc, .crate-info, .crate-nav { display: none; }
+
+    /* the crate */
+    .is-crate .crate-intro { position: absolute; top: 0; left: 0; right: 0; }
+    .is-crate .crate-stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; padding: 0; }
+    .is-crate .crate-scene {
+      display: block; position: absolute; inset: 0; max-width: none; padding: 0;
+      perspective: 1500px; perspective-origin: 56% 44%; transform-style: preserve-3d;
+    }
+    .is-crate .sleeve {
+      --size: min(54vh, 30vw);
+      position: absolute; left: 50%; top: 50%; width: var(--size); height: var(--size);
+      margin: calc(var(--size) / -2) 0 0 calc(var(--size) / -2);
+      transform-style: preserve-3d; will-change: transform, opacity;
+    }
+    .is-crate .sleeve-cap { display: none; }
+    /* keeps the navigation legible over the file of sleeves */
+    .is-crate .crate-stage::after { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 130px; z-index: 2; pointer-events: none; background: linear-gradient(var(--color-night) 25%, transparent); }
+    .is-crate .sleeve-face {
+      position: absolute; inset: 0; backface-visibility: visible;
+      box-shadow: 0 0 0 1px rgba(255,255,255,.07), 0 24px 70px rgba(0,0,0,.28);
+    }
+    /* ring wear from the record pressing against the card */
+    .is-crate .sleeve-face::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(circle at 50% 50%, transparent 46.5%, rgba(255,255,255,.07) 47.2%, transparent 48.2%),
+        linear-gradient(90deg, rgba(255,255,255,.1), transparent 3%, transparent 97%, rgba(0,0,0,.28));
+    }
+    .is-crate .disc {
+      display: block; position: absolute; inset: 2.5%;
+      transform: translate3d(calc(var(--out, 0) * 54%), 0, -2px);
+    }
+    .disc-spin {
+      display: block; width: 100%; height: 100%; border-radius: 50%;
+      background:
+        conic-gradient(from 20deg, rgba(255,255,255,.13), transparent 11%, transparent 42%, rgba(255,255,255,.1) 50%, transparent 60%, transparent 92%, rgba(255,255,255,.13)),
+        repeating-radial-gradient(circle, #0c0c0c 0 1px, #1b1b1b 1px 3px);
+      box-shadow: 0 0 0 1px #000;
+      animation: disc-spin 3.6s linear infinite paused;
+    }
+    .sleeve.is-focus .disc-spin { animation-play-state: running; }
+    .disc-label {
+      position: absolute; left: 34%; top: 34%; width: 32%; height: 32%; border-radius: 50%;
+      background: radial-gradient(circle, var(--color-night) 0 7%, var(--label) 7.5% 100%);
+    }
+    .disc-label::after { content: ''; position: absolute; inset: 12%; border-radius: 50%; border: 1px dashed rgba(255,255,255,.4); }
+    @keyframes disc-spin { to { transform: rotate(360deg); } }
+
+    .is-crate .crate-info {
+      display: block; position: absolute; z-index: 4; left: max(var(--gutter), calc((100vw - var(--frame)) / 2 + var(--gutter)));
+      bottom: clamp(1.5rem,6vh,4rem); width: min(33vw, 30rem);
+      transition: opacity .45s, translate .6s var(--ease-out);
+    }
+    .is-crate .crate-info.is-out { opacity: 0; translate: 0 10px; }
+    .crate-info-kick { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: #f0b39f; margin: 0 0 .6rem; }
+    .crate-info h2 { color: #fff; font-weight: 400; font-size: clamp(1.8rem,3.1vw,3rem); line-height: 1.06; margin: 0 0 .7rem; }
+    .crate-info-text { font-size: 1.02rem; line-height: 1.45; color: rgba(255,255,255,.78); margin: 0 0 1rem; }
+    .crate-info a { color: #fff; border-bottom: 1px solid var(--color-amber); font-weight: 600; }
+    .crate-info a:hover { color: #f0b39f; }
+
+    .is-crate .crate-nav {
+      display: flex; align-items: center; gap: .8rem; position: absolute; z-index: 4;
+      right: max(var(--gutter), calc((100vw - var(--frame)) / 2 + var(--gutter))); bottom: clamp(1.5rem,6vh,4rem);
+      font-family: var(--font-mono); font-size: .8rem; color: rgba(255,255,255,.75);
+    }
+    .crate-nav button {
+      width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,.3);
+      background: none; color: #fff; font: inherit; font-size: 1.1rem; cursor: pointer; transition: background .25s, border-color .25s;
+    }
+    .crate-nav button:hover { background: var(--color-amber); border-color: var(--color-amber); }
+
+    /* tracklist */
+    .tracks { background: var(--color-chalk); color: var(--color-ink); padding: clamp(3.5rem,7vw,6rem) 0; }
+    .tracks h2 { font-weight: 300; font-size: clamp(2.4rem,5vw,4rem); margin: 0 0 clamp(1.5rem,3vw,2.5rem); color: var(--color-ink); }
+    .track {
+      display: grid; grid-template-columns: 3.5rem minmax(0,5fr) minmax(0,6fr) 9rem; gap: clamp(1rem,2.5vw,2.5rem);
+      align-items: baseline; padding: clamp(1.25rem,2.5vw,2rem) 0; border-top: 1px solid var(--border); color: var(--color-ink);
+    }
+    .track:last-of-type { border-bottom: 1px solid var(--border); }
+    .track-no, .track-date { font-family: var(--font-mono); font-size: .8rem; color: var(--color-slate); }
+    .track-date { text-align: right; }
+    .track h3 { font-weight: 400; font-size: clamp(1.6rem,2.5vw,2.2rem); line-height: 1.1; margin: 0; color: inherit; transition: color .3s; }
+    .track p { margin: 0; color: var(--color-slate); font-size: 1rem; line-height: 1.5; }
+    .track:hover h3 { color: var(--color-amber); }
+
+    @media (max-width: 760px) {
+      .is-crate .crate-intro { position: relative; padding-bottom: 1rem; }
+      .is-crate .crate-scene { perspective-origin: 50% 32%; }
+      .is-crate .sleeve { --size: min(58vw, 36vh); top: 34%; }
+      .is-crate .crate-info { left: var(--gutter); right: var(--gutter); width: auto; bottom: 5.25rem; }
+      .crate-info h2 { font-size: 1.7rem; }
+      .crate-info-text { font-size: .95rem; margin-bottom: .6rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+      .is-crate .crate-nav { left: var(--gutter); right: auto; bottom: 1rem; }
+      .track { grid-template-columns: 2.5rem minmax(0,1fr); }
+      .track p, .track-date { grid-column: 2; text-align: left; }
+    }
+    </style>
 </head>
-<body class="has-cover">
+<body class="has-cover mus">
     <div id="site-header"></div>
 
     <main>
-        <section class="page-cover">
-            <img class="page-cover-img" src="../img/hobbies/music-cover.jpg" alt="" fetchpriority="high">
-            <div class="frame">
-                <a href="../hobbies.html" class="back-link">Back to Hobbies &amp; Blog</a>
-                <h1>Music</h1>
-                <div class="page-cover-lede">
+        <section class="crate" id="crate" aria-label="Music records">
+            <div class="crate-intro">
+                <div class="frame">
+                    <a href="../hobbies.html" class="back-link">Back to Hobbies &amp; Blog</a>
+                    <h1>Music</h1>
                     <p>From playing guitar and saxophone to listening to jazz, blues, and bossa nova. My neighbors know about my vinyl collection and its peculiar tastes. Music is the background to every field campaign and every late-night data analysis session.</p>
+                </div>
+            </div>
+            <div class="crate-stage">
+                <!--
+                    HOW TO ADD A POST:
+                    1. Create a new HTML file in /posts/music/
+                    2. Add a .sleeve at the top of .crate-scene (the counter follows)
+                    3. Add a .track at the top of the Tracklist below
+                -->
+                <div class="crate-scene" id="crate-scene">
+                    <a class="sleeve" href="../posts/music/guccini.html" style="--label:#c4275c" data-kick="Post &middot; August 2026" data-title="Fra la via Emilia e la Luna" data-text="A personal farewell to Francesco Guccini (1940&ndash;2026): a first concert at fourteen, an essay that earned a 3/10, three cities, lunar regolith, and a contract about to expire. Written in Italian." data-cta="Read the post" aria-label="Fra la via Emilia e la Luna, post, August 2026">
+                        <span class="disc" aria-hidden="true"><span class="disc-spin"><span class="disc-label"></span></span></span>
+                        <span class="sleeve-face"><svg viewBox="0 0 600 600" role="presentation"><rect width="600" height="600" fill="#0e1013"/><circle cx="412" cy="196" r="118" fill="#e9e5dc"/><circle cx="372" cy="170" r="20" fill="#b3aea3"/><circle cx="446" cy="232" r="30" fill="#b3aea3"/><circle cx="430" cy="130" r="11" fill="#b3aea3"/><g stroke="#c4275c" stroke-width="3"><path d="M0 420H600"/><path d="M0 434H600" stroke="#4fa89e"/></g><g fill="#fff"><text x="38" y="500" font-family="Cormorant Garamond,Georgia,serif" font-size="56" font-weight="400">Fra la via Emilia</text><text x="38" y="556" font-family="Cormorant Garamond,Georgia,serif" font-size="56" font-style="italic" font-weight="400">e la Luna</text></g></svg></span>
+                        <span class="sleeve-cap"><b>Fra la via Emilia e la Luna</b><br>Post &middot; August 2026</span>
+                    </a>
+                    <a class="sleeve" href="../posts/music/music-reggaeton.html" style="--label:#e879f9" data-kick="Post &middot; January 2026" data-title="The Reggaeton Party playlist on Spotify" data-text="Nostalgia for Spain, the history of the genre from Panamanian dembow to Bad Bunny, and an analysis of its musical characteristics (BPM, percussive structure, use of vocals)." data-cta="Read the post" aria-label="The Reggaeton Party playlist on Spotify, post, January 2026">
+                        <span class="disc" aria-hidden="true"><span class="disc-spin"><span class="disc-label"></span></span></span>
+                        <span class="sleeve-face"><svg viewBox="0 0 600 600" role="presentation"><rect width="600" height="600" fill="#2d1033"/><rect x="38.0" y="46" width="27" height="50" fill="#fff"/><rect x="71.2" y="46" width="27" height="50" fill="#4a1f55"/><rect x="104.5" y="46" width="27" height="50" fill="#4a1f55"/><rect x="137.8" y="46" width="27" height="50" fill="#e879f9"/><rect x="171.0" y="46" width="27" height="50" fill="#fff"/><rect x="204.2" y="46" width="27" height="50" fill="#4a1f55"/><rect x="237.5" y="46" width="27" height="50" fill="#e879f9"/><rect x="270.8" y="46" width="27" height="50" fill="#4a1f55"/><rect x="304.0" y="46" width="27" height="50" fill="#fff"/><rect x="337.2" y="46" width="27" height="50" fill="#4a1f55"/><rect x="370.5" y="46" width="27" height="50" fill="#4a1f55"/><rect x="403.8" y="46" width="27" height="50" fill="#e879f9"/><rect x="437.0" y="46" width="27" height="50" fill="#fff"/><rect x="470.2" y="46" width="27" height="50" fill="#4a1f55"/><rect x="503.5" y="46" width="27" height="50" fill="#e879f9"/><rect x="536.8" y="46" width="27" height="50" fill="#4a1f55"/><rect x="38.0" y="108" width="27" height="50" fill="#fff"/><rect x="71.2" y="108" width="27" height="50" fill="#4a1f55"/><rect x="104.5" y="108" width="27" height="50" fill="#4a1f55"/><rect x="137.8" y="108" width="27" height="50" fill="#e879f9"/><rect x="171.0" y="108" width="27" height="50" fill="#fff"/><rect x="204.2" y="108" width="27" height="50" fill="#4a1f55"/><rect x="237.5" y="108" width="27" height="50" fill="#e879f9"/><rect x="270.8" y="108" width="27" height="50" fill="#4a1f55"/><rect x="304.0" y="108" width="27" height="50" fill="#fff"/><rect x="337.2" y="108" width="27" height="50" fill="#4a1f55"/><rect x="370.5" y="108" width="27" height="50" fill="#4a1f55"/><rect x="403.8" y="108" width="27" height="50" fill="#e879f9"/><rect x="437.0" y="108" width="27" height="50" fill="#fff"/><rect x="470.2" y="108" width="27" height="50" fill="#4a1f55"/><rect x="503.5" y="108" width="27" height="50" fill="#e879f9"/><rect x="536.8" y="108" width="27" height="50" fill="#4a1f55"/><rect x="38.0" y="170" width="27" height="50" fill="#fff"/><rect x="71.2" y="170" width="27" height="50" fill="#4a1f55"/><rect x="104.5" y="170" width="27" height="50" fill="#4a1f55"/><rect x="137.8" y="170" width="27" height="50" fill="#e879f9"/><rect x="171.0" y="170" width="27" height="50" fill="#fff"/><rect x="204.2" y="170" width="27" height="50" fill="#4a1f55"/><rect x="237.5" y="170" width="27" height="50" fill="#e879f9"/><rect x="270.8" y="170" width="27" height="50" fill="#4a1f55"/><rect x="304.0" y="170" width="27" height="50" fill="#fff"/><rect x="337.2" y="170" width="27" height="50" fill="#4a1f55"/><rect x="370.5" y="170" width="27" height="50" fill="#4a1f55"/><rect x="403.8" y="170" width="27" height="50" fill="#e879f9"/><rect x="437.0" y="170" width="27" height="50" fill="#fff"/><rect x="470.2" y="170" width="27" height="50" fill="#4a1f55"/><rect x="503.5" y="170" width="27" height="50" fill="#e879f9"/><rect x="536.8" y="170" width="27" height="50" fill="#4a1f55"/><rect x="38.0" y="232" width="27" height="50" fill="#fff"/><rect x="71.2" y="232" width="27" height="50" fill="#4a1f55"/><rect x="104.5" y="232" width="27" height="50" fill="#4a1f55"/><rect x="137.8" y="232" width="27" height="50" fill="#e879f9"/><rect x="171.0" y="232" width="27" height="50" fill="#fff"/><rect x="204.2" y="232" width="27" height="50" fill="#4a1f55"/><rect x="237.5" y="232" width="27" height="50" fill="#e879f9"/><rect x="270.8" y="232" width="27" height="50" fill="#4a1f55"/><rect x="304.0" y="232" width="27" height="50" fill="#fff"/><rect x="337.2" y="232" width="27" height="50" fill="#4a1f55"/><rect x="370.5" y="232" width="27" height="50" fill="#4a1f55"/><rect x="403.8" y="232" width="27" height="50" fill="#e879f9"/><rect x="437.0" y="232" width="27" height="50" fill="#fff"/><rect x="470.2" y="232" width="27" height="50" fill="#4a1f55"/><rect x="503.5" y="232" width="27" height="50" fill="#e879f9"/><rect x="536.8" y="232" width="27" height="50" fill="#4a1f55"/><g fill="#fff"><text x="38" y="470" font-family="Cormorant Garamond,Georgia,serif" font-size="74" font-weight="400">Reggaeton</text><text x="38" y="544" font-family="Cormorant Garamond,Georgia,serif" font-size="74" font-style="italic" font-weight="400">Party</text></g></svg></span>
+                        <span class="sleeve-cap"><b>The Reggaeton Party playlist on Spotify</b><br>Post &middot; January 2026</span>
+                    </a>
+                    <a class="sleeve sleeve-album" href="../posts/music/guccini.html#s2" style="--label:#b18a4a" data-kick="Guccini &middot; 1967 &middot; &copy; RCA Italiana" data-title="Folk Beat n.1" data-text="A record from the Guccini post, in the chapter &ldquo;Il tre su dieci&rdquo;." data-cta="Read this chapter" aria-label="Folk Beat n.1, 1967, a chapter of the Guccini post">
+                        <span class="disc" aria-hidden="true"><span class="disc-spin"><span class="disc-label"></span></span></span>
+                        <span class="sleeve-face"><img src="../img/post/music/guccini-folk-beat-n1-1967.jpg" alt="" loading="lazy"></span>
+                        <span class="sleeve-cap"><b>Folk Beat n.1</b><br>Guccini &middot; 1967 &middot; &copy; RCA Italiana</span>
+                    </a>
+                    <a class="sleeve sleeve-album" href="../posts/music/guccini.html#s3" style="--label:#c98a3c" data-kick="Guccini &middot; 1976 &middot; &copy; EMI Italiana" data-title="Via Paolo Fabbri 43" data-text="A record from the Guccini post, in the chapter &ldquo;Via Paolo Fabbri 43&rdquo;." data-cta="Read this chapter" aria-label="Via Paolo Fabbri 43, 1976, a chapter of the Guccini post">
+                        <span class="disc" aria-hidden="true"><span class="disc-spin"><span class="disc-label"></span></span></span>
+                        <span class="sleeve-face"><img src="../img/post/music/guccini-via-paolo-fabbri-43-1976.jpg" alt="" loading="lazy"></span>
+                        <span class="sleeve-cap"><b>Via Paolo Fabbri 43</b><br>Guccini &middot; 1976 &middot; &copy; EMI Italiana</span>
+                    </a>
+                    <a class="sleeve sleeve-album" href="../posts/music/guccini.html#s4" style="--label:#bca4a2" data-kick="Guccini &middot; 1981 &middot; &copy; EMI Italiana" data-title="Metropolis" data-text="A record from the Guccini post, in the chapter &ldquo;Bologna, il giuramento&rdquo;." data-cta="Read this chapter" aria-label="Metropolis, 1981, a chapter of the Guccini post">
+                        <span class="disc" aria-hidden="true"><span class="disc-spin"><span class="disc-label"></span></span></span>
+                        <span class="sleeve-face"><img src="../img/post/music/guccini-metropolis-1981.jpg" alt="" loading="lazy"></span>
+                        <span class="sleeve-cap"><b>Metropolis</b><br>Guccini &middot; 1981 &middot; &copy; EMI Italiana</span>
+                    </a>
+                    <a class="sleeve sleeve-album" href="../posts/music/guccini.html#s5" style="--label:#a9772f" data-kick="Guccini &middot; 1972 &middot; &copy; RCA Italiana" data-title="Radici" data-text="A record from the Guccini post, in the chapter &ldquo;Il concerto per l&#39;Emilia&rdquo;." data-cta="Read this chapter" aria-label="Radici, 1972, a chapter of the Guccini post">
+                        <span class="disc" aria-hidden="true"><span class="disc-spin"><span class="disc-label"></span></span></span>
+                        <span class="sleeve-face"><img src="../img/post/music/guccini-radici-1972.jpg" alt="" loading="lazy"></span>
+                        <span class="sleeve-cap"><b>Radici</b><br>Guccini &middot; 1972 &middot; &copy; RCA Italiana</span>
+                    </a>
+                    <a class="sleeve sleeve-album" href="../posts/music/guccini.html#s6" style="--label:#8a7a5a" data-kick="Guccini &middot; 1996 &middot; &copy; EMI Italiana" data-title="D&#39;amore di morte e di altre sciocchezze" data-text="A record from the Guccini post, in the chapter &ldquo;Granada, la calcite, i dieci anni di una canzone&rdquo;." data-cta="Read this chapter" aria-label="D&#39;amore di morte e di altre sciocchezze, 1996, a chapter of the Guccini post">
+                        <span class="disc" aria-hidden="true"><span class="disc-spin"><span class="disc-label"></span></span></span>
+                        <span class="sleeve-face"><img src="../img/post/music/guccini-damore-di-morte-1996.jpg" alt="" loading="lazy"></span>
+                        <span class="sleeve-cap"><b>D&#39;amore di morte e di altre sciocchezze</b><br>Guccini &middot; 1996 &middot; &copy; EMI Italiana</span>
+                    </a>
+                    <a class="sleeve sleeve-album" href="../posts/music/guccini.html#s7" style="--label:#b5463a" data-kick="Guccini &middot; 2000 &middot; &copy; BMG Ricordi" data-title="Stagioni" data-text="A record from the Guccini post, in the chapter &ldquo;Padova, la Luna, i mulini a vento&rdquo;." data-cta="Read this chapter" aria-label="Stagioni, 2000, a chapter of the Guccini post">
+                        <span class="disc" aria-hidden="true"><span class="disc-spin"><span class="disc-label"></span></span></span>
+                        <span class="sleeve-face"><img src="../img/post/music/guccini-stagioni-2000.jpg" alt="" loading="lazy"></span>
+                        <span class="sleeve-cap"><b>Stagioni</b><br>Guccini &middot; 2000 &middot; &copy; BMG Ricordi</span>
+                    </a>
+                    <a class="sleeve sleeve-album" href="../posts/music/guccini.html#s8" style="--label:#919596" data-kick="Guccini &middot; 1983 &middot; &copy; EMI Italiana" data-title="Guccini" data-text="A record from the Guccini post, in the chapter &ldquo;Autogrill&rdquo;." data-cta="Read this chapter" aria-label="Guccini, 1983, a chapter of the Guccini post">
+                        <span class="disc" aria-hidden="true"><span class="disc-spin"><span class="disc-label"></span></span></span>
+                        <span class="sleeve-face"><img src="../img/post/music/guccini-guccini-1983.jpg" alt="" loading="lazy"></span>
+                        <span class="sleeve-cap"><b>Guccini</b><br>Guccini &middot; 1983 &middot; &copy; EMI Italiana</span>
+                    </a>
+                    <a class="sleeve sleeve-album" href="../posts/music/guccini.html#s9" style="--label:#9e7964" data-kick="Guccini &middot; 1978 &middot; &copy; EMI Italiana" data-title="Amerigo" data-text="A record from the Guccini post, in the chapter &ldquo;Eskimo&rdquo;." data-cta="Read this chapter" aria-label="Amerigo, 1978, a chapter of the Guccini post">
+                        <span class="disc" aria-hidden="true"><span class="disc-spin"><span class="disc-label"></span></span></span>
+                        <span class="sleeve-face"><img src="../img/post/music/guccini-amerigo-1978.jpg" alt="" loading="lazy"></span>
+                        <span class="sleeve-cap"><b>Amerigo</b><br>Guccini &middot; 1978 &middot; &copy; EMI Italiana</span>
+                    </a>
+                </div>
+                <div class="crate-info" id="crate-info">
+                    <p class="crate-info-kick" id="ci-kick"></p>
+                    <h2 id="ci-title"></h2>
+                    <p class="crate-info-text" id="ci-text"></p>
+                    <a id="ci-link" href="#"></a>
+                </div>
+                <div class="crate-nav">
+                    <button type="button" id="crate-prev" aria-label="Previous record">&larr;</button>
+                    <span id="crate-count" aria-live="off"></span>
+                    <button type="button" id="crate-next" aria-label="Next record">&rarr;</button>
                 </div>
             </div>
         </section>
 
-        <section class="post-index">
-        <div class="frame">
-
-            <!-- ===== BLOG POSTS LIST ===== -->
-            <div class="blog-post-list">
-
-                <!--
-                    HOW TO ADD A POST:
-                    1. Create a new HTML file in /posts/ (copy the template)
-                    2. Add a card here linking to it
-
-                    TEMPLATE:
-                    <a href="../posts/YOUR-POST-NAME.html" class="blog-post-card reveal">
-                        <div class="blog-post-card-image">
-                            <img src="../img/posts/your-image.jpg" alt="Post image">
-                        </div>
-                        <div class="blog-post-card-body">
-                            <span class="post-date">Month Year</span>
-                            <h3>Post Title</h3>
-                            <p>Short description.</p>
-                            <span class="read-more">Read more &rarr;</span>
-                        </div>
-                    </a>
-                -->
-                
-                <a href="../posts/music/guccini.html" class="blog-post-card reveal">
-                    <div class="blog-post-card-image">
-                        <img
-                            src="../img/post/music/guccini-og.jpg"
-                            alt="Francesco Guccini, 1940–2026"
-                            loading="lazy"
-                        >
-                    </div>
-                    <div class="blog-post-card-body">
-                        <span class="post-date">August 2026</span>
-                        <h3>Fra la via Emilia e la Luna</h3>
-                        <p>A personal farewell to Francesco Guccini (1940&ndash;2026): a first concert at fourteen, an essay that earned a 3/10, three cities, lunar regolith, and a contract about to expire. Written in Italian.</p>
-                        <span class="read-more">Read more &rarr;</span>
-                    </div>
+        <section class="tracks">
+            <div class="frame">
+                <h2 class="reveal">Tracklist</h2>
+                <a class="track reveal" href="../posts/music/guccini.html">
+                    <span class="track-no">A1</span>
+                    <h3>Fra la via Emilia e la Luna</h3>
+                    <p>A personal farewell to Francesco Guccini (1940&ndash;2026): a first concert at fourteen, an essay that earned a 3/10, three cities, lunar regolith, and a contract about to expire. Written in Italian.</p>
+                    <span class="track-date">August 2026</span>
                 </a>
-
-                <a href="../posts/music/music-reggaeton.html" class="blog-post-card reveal">
-                    <div class="blog-post-card-image">
-                        <img 
-                            src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600" 
-                            alt="Reggaeton playlist"
-                        >
-                    </div>
-                    <div class="blog-post-card-body">
-                        <span class="post-date">January 2026</span>
-                        <h3>The Reggaeton Party playlist on Spotify</h3>
-                        <p>Nostalgia for Spain, the history of the genre from Panamanian dembow to Bad Bunny, and an analysis of its musical characteristics (BPM, percussive structure, use of vocals).</p>
-                        <span class="read-more">Read more &rarr;</span>
-                    </div>
+                <a class="track reveal" href="../posts/music/music-reggaeton.html">
+                    <span class="track-no">A2</span>
+                    <h3>The Reggaeton Party playlist on Spotify</h3>
+                    <p>Nostalgia for Spain, the history of the genre from Panamanian dembow to Bad Bunny, and an analysis of its musical characteristics (BPM, percussive structure, use of vocals).</p>
+                    <span class="track-date">January 2026</span>
                 </a>
-
-           
-                
-
             </div>
-        </div>
         </section>
     </main>
 
@@ -96,5 +240,124 @@
     <script src="../js/components.js?v=3"></script>
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
     <script src="../js/site.js?v=3" defer></script>
+    <script>
+    (function () {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var crate = document.getElementById('crate');
+      var scene = document.getElementById('crate-scene');
+      var sleeves = [].slice.call(scene.querySelectorAll('.sleeve'));
+      var n = sleeves.length;
+      var info = document.getElementById('crate-info');
+      var kick = document.getElementById('ci-kick'), title = document.getElementById('ci-title'),
+          text = document.getElementById('ci-text'), link = document.getElementById('ci-link'),
+          count = document.getElementById('crate-count');
+      document.body.classList.add('is-crate');
+      crate.style.height = 'calc(100vh + ' + (n - 1) * 62 + 'vh)';
+
+      var cur = 0, target = 0, shown = -1, tiltX = 0, tiltY = 0, mx = 0, my = 0, hover = -1, swapT;
+      var mq = window.matchMedia('(max-width: 760px)');
+
+      function metrics() {
+        var r = crate.getBoundingClientRect();
+        return { top: r.top + window.pageYOffset, travel: r.height - window.innerHeight };
+      }
+      function fromScroll() {
+        var m = metrics();
+        var x = Math.max(0, Math.min(1, (window.pageYOffset - m.top) / m.travel)) * (n - 1);
+        // dwell on each record: the flip happens in the middle of each scroll step
+        var i = Math.floor(x), f = x - i;
+        var e = f < .5 ? 2 * f * f : 1 - Math.pow(-2 * f + 2, 2) / 2;
+        target = i + e;
+      }
+      function go(i) {
+        i = Math.max(0, Math.min(n - 1, i));
+        var m = metrics(), y = m.top + (i / (n - 1)) * m.travel + 1;
+        if (window.siteLenis) window.siteLenis.scrollTo(y, { duration: 1.1 });
+        else window.scrollTo(0, y);
+      }
+      function setInfo(i) {
+        if (i === shown) return;
+        var first = shown === -1;
+        shown = i;
+        var d = sleeves[i].dataset;
+        var apply = function () {
+          kick.innerHTML = d.kick; title.innerHTML = d.title; text.innerHTML = d.text;
+          link.innerHTML = d.cta; link.href = sleeves[i].getAttribute('href');
+          count.textContent = (i < 9 ? '0' : '') + (i + 1) + ' / ' + (n < 10 ? '0' : '') + n;
+          info.classList.remove('is-out');
+        };
+        clearTimeout(swapT);
+        if (first) return apply();
+        info.classList.add('is-out');
+        swapT = setTimeout(apply, 240);
+      }
+      function clamp01(v) { return Math.max(0, Math.min(1, v)); }
+      function render() {
+        var small = mq.matches, vw = window.innerWidth, vh = window.innerHeight;
+        var cx = small ? -vw * .1 : vw * .06, cy = small ? 0 : vh * .05;
+        sleeves.forEach(function (s, i) {
+          var d = i - cur, t = clamp01(Math.abs(d)), x, y, z, rot, op, out = 0;
+          if (d >= 0) {
+            // waiting in the crate: a diagonal file, edge-on, up and to the right
+            var far = Math.max(0, d - 1), lead = small ? vw * .27 : vw * .23;
+            x = cx + lead * t + (small ? vw * .13 : vw * .062) * far;
+            y = cy + (small ? -vh * .05 : -vh * .1) * t + (small ? -vh * .018 : -vh * .045) * far;
+            z = -(small ? 300 : 360) * t - (small ? 90 : 110) * far;
+            rot = -6 - 50 * t;
+            op = clamp01(1.2 - far * .14);
+            out = 1 - t;
+          } else {
+            // flipped past: drops out of the front of the crate
+            var a = -d;
+            x = cx - vw * .3 * a;
+            y = cy + vh * .4 * a;
+            z = 180 * a;
+            rot = -6 + 34 * Math.min(a, 1);
+            op = clamp01(1 - a * 2.4);
+            out = clamp01(1 - a * 2.4);
+          }
+          if (i === hover && Math.abs(d) >= .5 && d > 0) y -= vh * .035;
+          s.style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,' + z.toFixed(1) +
+            'px) rotateY(' + (rot + tiltX).toFixed(2) + 'deg) rotateX(' + tiltY.toFixed(2) + 'deg)';
+          s.style.opacity = op.toFixed(3);
+          s.style.visibility = op <= .01 ? 'hidden' : 'visible';
+          s.style.setProperty('--out', out.toFixed(3));
+          s.classList.toggle('is-focus', Math.abs(d) < .5);
+          s.tabIndex = Math.abs(d) < .5 ? 0 : -1;
+        });
+      }
+      var lastT = 0;
+      function tick(ts) {
+        var dt = Math.min(.1, (ts - lastT) / 1000 || 0); lastT = ts;
+        cur += (target - cur) * (1 - Math.exp(-dt * 8));
+        if (Math.abs(target - cur) < .0005) cur = target;
+        tiltX += (mx * 3 - tiltX) * (1 - Math.exp(-dt * 4));
+        tiltY += (-my * 2 - tiltY) * (1 - Math.exp(-dt * 4));
+        render();
+        setInfo(Math.max(0, Math.min(n - 1, Math.round(cur))));
+        requestAnimationFrame(tick);
+      }
+
+      sleeves.forEach(function (s, i) {
+        s.addEventListener('click', function (e) {
+          if (Math.abs(i - cur) < .5) return;
+          e.preventDefault();
+          go(i);
+        });
+        s.addEventListener('mouseenter', function () { hover = i; });
+        s.addEventListener('mouseleave', function () { if (hover === i) hover = -1; });
+      });
+      document.getElementById('crate-prev').addEventListener('click', function () { go(Math.round(cur) - 1); });
+      document.getElementById('crate-next').addEventListener('click', function () { go(Math.round(cur) + 1); });
+      window.addEventListener('mousemove', function (e) {
+        mx = e.clientX / window.innerWidth - .5; my = e.clientY / window.innerHeight - .5;
+      }, { passive: true });
+      window.addEventListener('scroll', fromScroll, { passive: true });
+      window.addEventListener('resize', fromScroll);
+      fromScroll();
+      cur = target;
+      requestAnimationFrame(tick);
+    })();
+    </script>
 </body>
 </html>

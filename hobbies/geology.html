@@ -12,8 +12,112 @@
     <meta property="og:image" content="https://fsdv.eu/img/hobbies/geology-cover.jpg">
     <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
     <link rel="stylesheet" href="../css/style.css?v=3">
+    <style>
+    /* Geology index: three doors onto three kinds of work. The doors are links
+       and every panel is in the HTML, so without JS the page is one long list. */
+    .geo-doors { background: var(--color-night); padding: clamp(1rem, 2vw, 1.75rem) 0 0; }
+    .geo-door-row { display: flex; gap: clamp(.5rem, 1vw, .9rem); height: clamp(340px, 58vh, 600px); }
+    .geo-door {
+      position: relative; flex: 1 1 0; min-width: 0; overflow: hidden; color: #fff;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: clamp(1.1rem, 2vw, 1.75rem);
+      transition: flex-grow .9s var(--ease-out);
+    }
+    .geo-door:hover, .geo-door:focus-visible { color: #fff; flex-grow: 1.35; }
+    .js .geo-door[aria-selected="true"] { flex-grow: 1.7; }
+    .geo-door img {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      filter: saturate(.75) brightness(.72); transition: filter .9s var(--ease-out), transform 1.4s var(--ease-out);
+    }
+    .geo-door:hover img, .js .geo-door[aria-selected="true"] img { filter: none; transform: scale(1.03); }
+    .geo-door::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(13,15,12,.92) 8%, rgba(13,15,12,.1) 62%);
+    }
+    .geo-door > span { position: relative; z-index: 1; }
+    .geo-door-count {
+      font-family: var(--font-mono); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase;
+      color: #f0b39f; margin-bottom: .55rem;
+    }
+    .geo-door-name {
+      font-family: var(--font-display); font-weight: 400; line-height: 1.05;
+      font-size: clamp(1.7rem, 3vw, 2.9rem);
+    }
+    .geo-door-note {
+      display: block; max-width: 34ch; margin-top: .6rem; font-size: 1rem; line-height: 1.4;
+      color: rgba(255,255,255,.82);
+    }
+    /* amber bar under the open door, reaching down into its panel */
+    .geo-door-bar {
+      position: absolute !important; left: 0; right: 0; bottom: 0; height: 5px; z-index: 2 !important;
+      background: var(--color-amber); transform: scaleX(0); transform-origin: left;
+      transition: transform .8s var(--ease-out);
+    }
+    .js .geo-door[aria-selected="true"] .geo-door-bar { transform: scaleX(1); }
+
+    .geo-panel-head { display: grid; grid-template-columns: minmax(0,5fr) minmax(0,7fr); gap: clamp(1.5rem,4vw,4rem); align-items: end; margin-bottom: clamp(2.5rem,5vw,4.5rem); }
+    .geo-panel-head h2 { font-weight: 300; font-size: clamp(2.4rem, 5vw, 4.4rem); line-height: 1.02; margin: 0; color: inherit; }
+    .geo-panel-head p { font-size: 1.12rem; max-width: 56ch; margin: 0; }
+
+    /* Papers: an index on night, unlike the paper-coloured posts */
+    .geo-papers { background: var(--color-night); color: #fff; padding: clamp(3.5rem,7vw,6.5rem) 0; }
+    .geo-papers .geo-panel-head p { color: rgba(255,255,255,.72); }
+    .geo-paper {
+      position: relative; display: grid; grid-template-columns: 5.5rem minmax(0,4fr) minmax(0,7fr);
+      gap: clamp(1rem,3vw,3rem); padding: clamp(1.75rem,3vw,2.75rem) 0;
+      border-top: 1px solid rgba(255,255,255,.16);
+    }
+    .geo-paper:last-child { border-bottom: 1px solid rgba(255,255,255,.16); }
+    .geo-paper-year { font-family: var(--font-mono); font-size: .82rem; color: rgba(255,255,255,.6); padding-top: .55rem; }
+    .geo-paper-img { aspect-ratio: 4/3; overflow: hidden; background: #1a1d18; }
+    .geo-paper-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease-out); }
+    .geo-paper:hover .geo-paper-img img { transform: scale(1.05); }
+    .geo-paper h3 { font-weight: 400; font-size: clamp(1.5rem,2.4vw,2.15rem); line-height: 1.14; margin: 0 0 .8rem; color: #fff; }
+    .geo-paper h3 a { color: inherit; transition: color .3s; }
+    .geo-paper h3 a::after { content: ''; position: absolute; inset: 0; }
+    .geo-paper:hover h3 a { color: #f0b39f; }
+    .geo-paper-text { color: rgba(255,255,255,.76); font-size: 1.04rem; line-height: 1.5; max-width: 60ch; margin: 0 0 1.1rem; }
+    .geo-paper-cite { font-size: .94rem; line-height: 1.45; color: rgba(255,255,255,.62); margin: 0 0 .35rem; }
+    .geo-paper-meta { display: flex; flex-wrap: wrap; gap: .4rem 1.25rem; margin-top: .9rem; font-size: .9rem; }
+    .geo-paper-role { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: #f0b39f; padding-top: .2rem; }
+    .geo-paper-meta a { position: relative; z-index: 1; color: #fff; border-bottom: 1px solid var(--color-amber); }
+    .geo-paper-meta a:hover { color: #f0b39f; }
+
+    /* Stories keep the site's ordinary post cards */
+    .geo-stories .geo-panel-head { color: var(--color-ink); }
+    .geo-stories .geo-panel-head p { color: var(--color-slate); }
+
+    /* Video */
+    .geo-video { background: var(--color-night); color: #fff; padding: clamp(3.5rem,7vw,6.5rem) 0; }
+    .geo-video .geo-panel-head p { color: rgba(255,255,255,.72); }
+    .geo-video-p { position: relative; display: block; aspect-ratio: 16/9; overflow: hidden; background: #000; color: #fff; }
+    .geo-video-p img, .geo-video-p iframe { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border: 0; }
+    .geo-video-p img { transition: transform 1.4s var(--ease-out), filter .6s; filter: brightness(.86); }
+    .geo-video-p:hover { color: #fff; }
+    .geo-video-p:hover img { transform: scale(1.025); filter: none; }
+    .geo-video-play {
+      position: absolute; left: 50%; top: 50%; width: clamp(64px,8vw,104px); aspect-ratio: 1; margin: 0;
+      translate: -50% -50%; border-radius: 50%; background: var(--color-amber); transition: scale .5s var(--ease-out);
+    }
+    .geo-video-play::after { content: ''; position: absolute; left: 40%; top: 30%; border-style: solid; border-width: clamp(10px,1.4vw,18px) 0 clamp(10px,1.4vw,18px) clamp(16px,2.2vw,28px); border-color: transparent transparent transparent #fff; }
+    .geo-video-p:hover .geo-video-play { scale: 1.1; }
+    .geo-video-cap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 2rem; margin-top: 1.1rem; font-size: 1rem; color: rgba(255,255,255,.72); }
+    .geo-video-cap a { color: #fff; border-bottom: 1px solid var(--color-amber); }
+    .geo-video-cap a:hover { color: #f0b39f; }
+
+    @media (max-width: 760px) {
+      .geo-door-row { flex-direction: column; height: auto; }
+      .geo-door, .geo-door:hover, .js .geo-door[aria-selected="true"] { flex: none; min-height: 188px; }
+      .geo-panel-head { grid-template-columns: 1fr; gap: 1rem; }
+      .geo-paper { grid-template-columns: 1fr; }
+      .geo-paper-year { padding: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .geo-door, .geo-door img, .geo-paper-img img, .geo-video-p img { transition: none; }
+    }
+    </style>
 </head>
-<body class="has-cover">
+<body class="has-cover geo">
     <div id="site-header"></div>
 
     <main>
@@ -28,8 +132,138 @@
             </div>
         </section>
 
-        <section class="post-index">
+        <section class="geo-doors" aria-label="Browse by kind">
+            <div class="frame">
+                <div class="geo-door-row" role="tablist" aria-label="Kinds of work">
+                    <a class="geo-door" id="door-papers" href="#papers" role="tab" aria-controls="papers" aria-selected="true">
+                        <img src="../img/hobbies/geology/calcite-micropillars.jpg" alt="" fetchpriority="low">
+                        <span class="geo-door-count">7 papers</span>
+                        <span class="geo-door-name">Scientific papers</span>
+                        <span class="geo-door-note">My own research, each paper opened up into a page you can explore.</span>
+                        <span class="geo-door-bar"></span>
+                    </a>
+                    <a class="geo-door" id="door-stories" href="#stories" role="tab" aria-controls="stories" aria-selected="false">
+                        <img src="../img/post/geology/lanzarote-skylight.jpg" alt="">
+                        <span class="geo-door-count">2 posts</span>
+                        <span class="geo-door-name">Stories</span>
+                        <span class="geo-door-note">Geology written for anyone curious, from fieldwork to the Dolomites.</span>
+                        <span class="geo-door-bar"></span>
+                    </a>
+                    <a class="geo-door" id="door-video" href="#video" role="tab" aria-controls="video" aria-selected="false">
+                        <img src="../img/hobbies/geology/video-door.jpg" alt="">
+                        <span class="geo-door-count">1 video</span>
+                        <span class="geo-door-name">Video</span>
+                        <span class="geo-door-note">The research explained on camera.</span>
+                        <span class="geo-door-bar"></span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="geo-papers geo-panel" id="papers" role="tabpanel" aria-labelledby="door-papers">
+            <div class="frame">
+                <header class="geo-panel-head">
+                    <h2>Scientific papers</h2>
+                    <p>The peer-reviewed side of the work, newest first. The full list, with co-authored papers that have no page yet, is in <a href="../publications.html" style="color:#fff;border-bottom:1px solid var(--color-amber)">Publications</a>.</p>
+                </header>
+                <div class="geo-paper-list">
+                    <article class="geo-paper reveal">
+                        <p class="geo-paper-year">2026</p>
+                        <div class="geo-paper-img"><img src="../img/post/geology/lanzarote-skylight.jpg" alt="Collapsed lava-tube roof in Lanzarote" loading="lazy"></div>
+                        <div>
+                            <h3><a href="../posts/geology/geology-two-roofs.html">Two Roofs for the Moon: two papers, one post</a></h3>
+                            <p class="geo-paper-text">A tunnel in Lanzarote and a paste of crushed volcanic glass: two 2026 papers, accepted a day apart, on the same problem, a ceiling on a world with no air.</p>
+                            <p class="geo-paper-cite">Journal of Geophysical Research: Planets, Volume 131, Issue 8, e2026JE009802, 2026</p>
+                            <p class="geo-paper-cite">Materials and Structures, Volume 59, Issue 7, p. 349, 2026</p>
+                            <div class="geo-paper-meta">
+                                <span class="geo-paper-role">Co-author</span>
+                                <a href="https://doi.org/10.1029/2026JE009802" target="_blank" rel="noopener">DOI, JGR Planets</a>
+                                <a href="https://doi.org/10.1617/s11527-026-03243-w" target="_blank" rel="noopener">DOI, Materials and Structures</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="geo-paper reveal">
+                        <p class="geo-paper-year">2026</p>
+                        <div class="geo-paper-img"><img src="../img/hobbies/geology/etna-lunar-simulants.jpg" alt="Etna volcanic deposit beside the Apollo 14 landing site" loading="lazy"></div>
+                        <div>
+                            <h3><a href="../articles/etna-lunar-simulants.html">Volcanic deposits from Mount Etna (Italy) as high-fidelity lunar simulants for In-Situ Resource Utilization (ISRU) applications</a></h3>
+                            <p class="geo-paper-text">A volcanic deposit from Mount Etna matches Apollo 14 lunar soil in chemistry, glass content and spectral signature, and it can be turned into building material and oxygen.</p>
+                            <p class="geo-paper-cite">Materials Today Advances, Volume 29, 2026, 100678</p>
+                            <div class="geo-paper-meta">
+                                <span class="geo-paper-role">Corresponding author</span>
+                                <a href="https://doi.org/10.1016/j.mtadv.2025.100678" target="_blank" rel="noopener">DOI</a>
+                                <a href="#video">Video</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="geo-paper reveal">
+                        <p class="geo-paper-year">2026</p>
+                        <div class="geo-paper-img"><img src="../img/hobbies/geology/adobe-tell-zurghul.jpg" alt="Excavated adobe walls at Tell Zurghul/Nigin" loading="lazy"></div>
+                        <div>
+                            <h3><a href="../articles/adobe-tell-zurghul.html">Chemical-mineralogical features and physical properties of archaeological adobe: The evidence from Tell Zurghul/Nigin (Dhi Qar, Iraq)</a></h3>
+                            <p class="geo-paper-text">Bricks from Tell Zurghul/Nigin, in southern Iraq, look chemically alike across 2,000 years. Under the microscope and in the rain they behave very differently, and that matters for their conservation.</p>
+                            <p class="geo-paper-cite">PLOS ONE, 21 (2), e0342009, 2026</p>
+                            <div class="geo-paper-meta">
+                                <span class="geo-paper-role">Co-author</span>
+                                <a href="https://doi.org/10.1371/journal.pone.0342009" target="_blank" rel="noopener">DOI</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="geo-paper reveal">
+                        <p class="geo-paper-year">2025</p>
+                        <div class="geo-paper-img"><img src="../img/hobbies/geology/calcite-micropillars.jpg" alt="Rendered relief of etch pits on a calcite surface" loading="lazy"></div>
+                        <div>
+                            <h3><a href="../articles/calcite-micropillars.html">Formation of micropillars on etched calcite and their biomimetic effect on wettability</a></h3>
+                            <p class="geo-paper-text">Calcite dissolves in water. We used that weakness to protect it: controlled etching grows a bed of micropillars that takes the contact angle from about 60° to about 140°, with no coating.</p>
+                            <p class="geo-paper-cite">Materials &amp; Design, 255, 2025</p>
+                            <div class="geo-paper-meta">
+                                <span class="geo-paper-role">First author</span>
+                                <a href="https://doi.org/10.1016/j.matdes.2025.114214" target="_blank" rel="noopener">DOI</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="geo-paper reveal">
+                        <p class="geo-paper-year">2024</p>
+                        <div class="geo-paper-img"><img src="../img/hobbies/geology/mgco3-citrate.jpg" alt="Rendered electron diffraction rings" loading="lazy"></div>
+                        <div>
+                            <h3><a href="../articles/mgco3-citrate.html">Additive impact on early-stage magnesium carbonate mineralisation</a></h3>
+                            <p class="geo-paper-text">What happens before the first solid exists? How a small dose of citrate reroutes magnesium carbonate formation towards less hydrated phases, better suited to CO₂ storage.</p>
+                            <p class="geo-paper-cite">Geochemical Perspectives Letters, 32 (2024), 46–51</p>
+                            <div class="geo-paper-meta">
+                                <span class="geo-paper-role">First author</span>
+                                <a href="https://doi.org/10.7185/geochemlet.2441" target="_blank" rel="noopener">DOI</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="geo-paper reveal">
+                        <p class="geo-paper-year">2024</p>
+                        <div class="geo-paper-img"><img src="../img/hobbies/geology/injection-grouts.jpg" alt="Rendered polished section of brick, lime and voids" loading="lazy"></div>
+                        <div>
+                            <h3><a href="../articles/injection-grouts.html">Novel Techniques for the Assessment of Injectability &amp; Environmental Resistance of Injection Grouts for Mosaic Conservation</a></h3>
+                            <p class="geo-paper-text">Five commercial injection grouts, one column of crushed brick. What it takes for a grout to reach the void behind a mosaic, and to survive salt once it gets there.</p>
+                            <p class="geo-paper-cite">Proceedings of the Workshop "Lime Based Materials for Repairing Historic Structures"</p>
+                            <div class="geo-paper-meta">
+                                <span class="geo-paper-role">First author</span>
+                                <a href="../posts/papers/santoro-de-vico-injection-grouts-rilem-pro136.pdf">PDF</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="post-index geo-stories geo-panel" id="stories" role="tabpanel" aria-labelledby="door-stories">
         <div class="frame">
+
+            <header class="geo-panel-head">
+                <h2>Stories</h2>
+                <p>Geology not as work, but as wonder.</p>
+            </header>
 
             <!-- ===== BLOG POSTS LIST ===== -->
             <div class="blog-post-list">
@@ -80,11 +314,89 @@
             </div>
         </div>
         </section>
+
+        <section class="geo-video geo-panel" id="video" role="tabpanel" aria-labelledby="door-video">
+            <div class="frame">
+                <header class="geo-panel-head">
+                    <h2>Video</h2>
+                    <p>A video interview about the Etna lunar simulants.</p>
+                </header>
+                <a class="geo-video-p reveal" id="geo-player" href="https://youtu.be/orKbDZ7eTls" target="_blank" rel="noopener" aria-label="Play the video: From Mount Etna to the Moon">
+                    <img src="../img/hobbies/geology/video-etna-moon.jpg" alt="" loading="lazy">
+                    <span class="geo-video-play" aria-hidden="true"></span>
+                </a>
+                <div class="geo-video-cap">
+                    <span>From Mount Etna to the Moon</span>
+                    <a href="../articles/etna-lunar-simulants.html">Read about the paper</a>
+                </div>
+            </div>
+        </section>
     </main>
 
     <div id="site-footer"></div>
     <script src="../js/components.js?v=3"></script>
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+    <script>
+    (function () {
+      var doors = [].slice.call(document.querySelectorAll('.geo-door'));
+      var panels = [].slice.call(document.querySelectorAll('.geo-panel'));
+      function open(id, focus) {
+        doors.forEach(function (d) {
+          var on = d.getAttribute('aria-controls') === id;
+          d.setAttribute('aria-selected', on);
+          d.tabIndex = on ? 0 : -1;
+          if (on && focus) d.focus();
+        });
+        panels.forEach(function (p) { p.hidden = p.id !== id; });
+        if (window.siteLenis) window.siteLenis.resize();
+      }
+      function jump(id) {
+        var el = document.getElementById(id);
+        if (window.siteLenis) window.siteLenis.scrollTo(el, { offset: -64 });
+        else window.scrollTo(0, el.getBoundingClientRect().top + window.pageYOffset - 64);
+      }
+      doors.forEach(function (d, i) {
+        d.addEventListener('click', function (e) {
+          e.preventDefault();
+          var id = d.getAttribute('aria-controls');
+          open(id);
+          history.replaceState(null, '', '#' + id);
+          jump(id);
+        });
+        d.addEventListener('keydown', function (e) {
+          var step = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
+          if (!step) return;
+          e.preventDefault();
+          open(doors[(i + step + doors.length) % doors.length].getAttribute('aria-controls'), true);
+        });
+      });
+      // the Video link in a paper row opens the Video door
+      document.querySelectorAll('.geo-paper-meta a[href="#video"]').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          open('video');
+          history.replaceState(null, '', '#video');
+          jump('video');
+        });
+      });
+      var start = location.hash.slice(1);
+      open(document.getElementById(start) && doors.some(function (d) { return d.getAttribute('aria-controls') === start; }) ? start : 'papers');
+
+      var player = document.getElementById('geo-player');
+      player.addEventListener('click', function (e) {
+        e.preventDefault();
+        var f = document.createElement('iframe');
+        f.src = 'https://www.youtube-nocookie.com/embed/orKbDZ7eTls?autoplay=1&rel=0';
+        f.title = 'From Mount Etna to the Moon';
+        f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+        f.allowFullscreen = true;
+        var box = document.createElement('div');
+        box.className = 'geo-video-p';
+        box.appendChild(f);
+        player.replaceWith(box);
+      });
+    })();
+    </script>
     <script src="../js/site.js?v=3" defer></script>
 </body>
 </html>

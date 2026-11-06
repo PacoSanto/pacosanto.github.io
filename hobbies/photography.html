@@ -12,24 +12,286 @@
     <meta property="og:image" content="https://fsdv.eu/img/hobbies/photography-cover.jpg">
     <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
     <link rel="stylesheet" href="../css/style.css?v=3">
+    <style>
+    /* Photography index: film on a light table. The opening strip is drawn with
+       WebGL from the .shot[data-hero] links below, so the HTML stays the only
+       list of photos. Without WebGL or with reduced motion the strip is skipped. */
+    .pho { background: var(--color-chalk); }
+    .film { position: relative; background: var(--color-chalk); }
+    .film-stage { position: relative; padding: calc(var(--nav-height) + 1.5rem) 0 2rem; }
+    .film-intro { position: relative; z-index: 2; }
+    .film-intro h1 { font-weight: 300; font-size: clamp(3.2rem,8vw,7rem); line-height: .95; margin: .7rem 0 .9rem; color: var(--color-ink); }
+    .film-intro p { max-width: 50ch; margin: 0; font-size: 1.08rem; line-height: 1.5; color: var(--color-slate); }
+    .film-intro a:not(.back-link) { color: var(--color-ink); border-bottom: 1px solid var(--color-amber); }
+    .film-canvas, .film-read { display: none; }
+
+    .is-film .film-stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; padding: 0; background: radial-gradient(80% 70% at 50% 62%, var(--color-white), var(--color-chalk) 70%); }
+    .is-film .film-intro { position: absolute; left: 0; right: 0; top: calc(var(--nav-height) + 1rem); pointer-events: none; }
+    .is-film .film-intro a { pointer-events: auto; }
+    .is-film .film-canvas { display: block; position: absolute; inset: 0; width: 100%; height: 100%; touch-action: pan-y; cursor: grab; }
+    .is-film .film-canvas.is-drag { cursor: grabbing; }
+    .is-film .film-read { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .3rem 2rem; position: absolute; z-index: 3; left: 0; right: 0; bottom: 1.1rem; pointer-events: none; font-family: var(--font-mono); font-size: .72rem; letter-spacing: .05em; text-transform: uppercase; color: var(--color-slate); }
+
+    /* contact sheet: one roll per group */
+    .rolls { padding: clamp(3.5rem,7vw,6rem) 0 clamp(2rem,4vw,3rem); background: var(--color-chalk); }
+    .rolls-h, .pho-posts-h { font-weight: 300; font-size: clamp(2.5rem,5vw,4.2rem); line-height: 1.03; margin: 0 0 clamp(2rem,4vw,3.5rem); color: var(--color-ink); }
+    .roll { margin-bottom: clamp(2.75rem,5vw,4.5rem); }
+    .roll-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem 1.1rem; margin-bottom: .8rem; }
+    .roll-no, .roll-count { font-family: var(--font-mono); font-size: .74rem; color: var(--color-slate); }
+    .roll-head h3 { font-weight: 400; font-size: clamp(1.7rem,2.8vw,2.5rem); line-height: 1.05; margin: 0; color: var(--color-ink); }
+    .roll-album { margin-left: auto; font-weight: 600; font-size: .95rem; color: var(--color-ink); border-bottom: 1px solid var(--color-amber); }
+    .roll-album:hover { color: var(--color-amber); }
+    .roll-album::after { content: ' \2197'; }
+
+    .roll-strip { overflow-x: auto; overflow-y: hidden; scrollbar-width: thin; scrollbar-color: var(--color-sandstone) transparent; cursor: grab; }
+    .roll-strip.is-drag { cursor: grabbing; }
+    .roll-strip.is-drag a { pointer-events: none; }
+    .roll-film {
+      --h: clamp(150px, 21vw, 300px); --band: clamp(18px, 2.2vw, 28px);
+      display: inline-flex; gap: clamp(4px,.5vw,7px); padding: var(--band) max(var(--gutter), calc((100vw - var(--frame)) / 2 + var(--gutter)));
+      background-color: #141312;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='14'%3E%3Crect x='6' y='1' width='14' height='11' rx='2.5' fill='%23f8f6f1'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='14'%3E%3Crect x='6' y='1' width='14' height='11' rx='2.5' fill='%23f8f6f1'/%3E%3C/svg%3E");
+      background-repeat: repeat-x; background-size: auto calc(var(--band) * .62); background-position: 0 calc(var(--band) * .18), 0 calc(100% - var(--band) * .18);
+      will-change: transform; transform: translateX(var(--drift, 0));
+    }
+    .shot { position: relative; display: block; flex: none; height: var(--h); overflow: hidden; background: #000; }
+    .shot img { display: block; height: 100%; width: auto; transition: transform 1s var(--ease-out), filter .5s; user-select: none; -webkit-user-drag: none; }
+    .shot:hover img, .shot:focus-visible img { transform: scale(1.045); }
+    .shot:focus-visible { outline: 3px solid var(--color-amber); outline-offset: -3px; }
+    .roll-read { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .1rem 2rem; min-height: 1.5em; margin-top: .55rem; margin-bottom: 0; font-family: var(--font-mono); font-size: .72rem; line-height: 1.5; color: var(--color-slate); }
+    .roll-title { color: var(--color-ink); }
+
+    .pho .post-index { padding-top: clamp(2rem,4vw,3rem); }
+
+    @media (max-width: 760px) {
+      .is-film .film-intro p { font-size: .98rem; }
+      .is-film .film-read { font-size: .66rem; bottom: .7rem; }
+      .roll-album { margin-left: 0; width: 100%; border: 0; }
+      .roll-album span { border-bottom: 1px solid var(--color-amber); }
+    }
+    @media (prefers-reduced-motion: reduce) { .shot img { transition: none; } .roll-film { transform: none; } }
+    </style>
 </head>
-<body class="has-cover">
+<body class="pho">
     <div id="site-header"></div>
 
     <main>
-        <section class="page-cover">
-            <img class="page-cover-img" src="../img/hobbies/photography-cover.jpg" alt="" fetchpriority="high">
-            <div class="frame">
-                <a href="../hobbies.html" class="back-link">Back to Hobbies &amp; Blog</a>
-                <h1>Photography</h1>
-                <div class="page-cover-lede">
+        <section class="film" id="film" aria-label="Photography">
+            <div class="film-stage">
+                <canvas class="film-canvas" id="film-canvas" aria-hidden="true"></canvas>
+                <div class="frame film-intro">
+                    <a href="../hobbies.html" class="back-link">Back to Hobbies &amp; Blog</a>
+                    <h1>Photography</h1>
                     <p>From landscape and architectural photography to visual arts and cultural heritage. I find beauty in geological formations, old buildings, and the play of light on stone surfaces. You can see more on my <a href="https://www.juzaphoto.com/me.php?p=232357&pg=allphotos&srt=data&l=it" target="_blank">JuzaPhoto gallery</a>.</p>
                 </div>
+                <p class="frame film-read" aria-hidden="true"><span id="fr-n"></span><span id="fr-e"></span></p>
             </div>
+        </section>
+
+        <section class="rolls" id="rolls">
+            <div class="frame"><h2 class="rolls-h reveal">Contact sheet</h2></div>
+            <!--
+                COME AGGIUNGERE UNA FOTO DA JUZAPHOTO
+                1. Prendi il numero della foto dall'indirizzo su Juza (...galleria.php?t=NUMERO).
+                2. Scaricala e riducila nella cartella del sito:
+                     cd img/hobbies/photography
+                     curl -O https://img4.r3-it.storage.cloud.it/uploads/NUMERO.jpg
+                     mogrify -resize '1000x1000>' -strip -interlace Plane -quality 78 NUMERO.jpg
+                     identify -format '%w %h\n' NUMERO.jpg     (ti dà width e height)
+                3. Copia questa riga dentro la .roll-film del gruppo giusto, dove vuoi che compaia:
+
+                   <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=NUMERO&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/8 · 1/250 · 50mm · Sony A7 II"><img src="../img/hobbies/photography/NUMERO.jpg" alt="Titolo della foto" width="1000" height="667" loading="lazy" draggable="false"></a>
+
+                4. Aggiorna "N frames" nell'intestazione del gruppo.
+                5. Per metterla anche nella pellicola d'apertura aggiungi l'attributo data-hero
+                   al link. Meglio foto orizzontali, e non più di una quindicina in tutto.
+
+                NUOVO GRUPPO: copia un intero blocco <section class="roll"> ... </section>
+                e cambia numero, nome, conteggio e link all'album. Il resto (lettura dei dati,
+                trascinamento, pellicola) funziona da solo: non c'è JavaScript da toccare.
+            -->
+
+            <section class="roll reveal" aria-label="Granada">
+                <div class="frame roll-head">
+                    <span class="roll-no">01</span>
+                    <h3>Granada</h3>
+                    <span class="roll-count">10 frames</span>
+                    <a class="roll-album" href="https://www.juzaphoto.com/me.php?pg=325041&amp;l=it" target="_blank" rel="noopener">Album on JuzaPhoto</a>
+                </div>
+                <div class="roll-strip" tabindex="-1">
+                    <div class="roll-film">
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4675616&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 50 · f/22 · 1/13 · 156mm · Sony A7 II"><img src="../img/hobbies/photography/4675616.jpg" alt="Alhambra con metro" width="1000" height="800" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4327331&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 320 · f/2.8 · 1/125 · 114mm · Sony A7 II"><img src="../img/hobbies/photography/4327331.jpg" alt="Spettegules dell&#x27;Albaycin" width="650" height="1000" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4277434&amp;l=it" target="_blank" rel="noopener" data-exif="" data-hero><img src="../img/hobbies/photography/4277434.jpg" alt="Seconda foto fatta all&#x27;Alhambra 2019" width="1000" height="750" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4278785&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 250 · f/1.8 · 1/60 · Sony A7 II"><img src="../img/hobbies/photography/4278785.jpg" alt="In verticale come una palma in calle capuchinas" width="667" height="1000" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4278784&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 640 · f/1.8 · 1/60 · Sony A7 II"><img src="../img/hobbies/photography/4278784.jpg" alt="Banda Corpus, 2021" width="667" height="1000" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4186011&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/11 · 1/125 · Sony A7 II" data-hero><img src="../img/hobbies/photography/4186011.jpg" alt="Silla del moro arrabbiata" width="1000" height="667" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4327330&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/2.8 · 1/1600 · 200mm · Sony A7 II"><img src="../img/hobbies/photography/4327330.jpg" alt="San Nicolas al tramonto" width="1000" height="667" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4675627&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 160 · f/22 · 1/10 · 70mm · Sony A7 II"><img src="../img/hobbies/photography/4675627.jpg" alt="Colori autunnali di Plaza Libertad, Granada" width="1000" height="667" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4278783&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/1.8 · 1/640 · Sony A7 II"><img src="../img/hobbies/photography/4278783.jpg" alt="Simmetrie al tramonto in Piazza Elvira" width="1000" height="667" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4675625&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 160 · f/22 · 1/20 · 70mm · Sony A7 II"><img src="../img/hobbies/photography/4675625.jpg" alt="Riflessi su porta Elvira, Granada" width="667" height="1000" loading="lazy" draggable="false"></a>
+                    </div>
+                </div>
+                <p class="frame roll-read" aria-hidden="true"><span class="roll-title">&nbsp;</span><span class="roll-exif"></span></p>
+            </section>
+
+            <section class="roll reveal" aria-label="Greece">
+                <div class="frame roll-head">
+                    <span class="roll-no">02</span>
+                    <h3>Greece</h3>
+                    <span class="roll-count">9 frames</span>
+                    <a class="roll-album" href="https://www.juzaphoto.com/me.php?pg=328563&amp;l=it" target="_blank" rel="noopener">Album on JuzaPhoto</a>
+                </div>
+                <div class="roll-strip" tabindex="-1">
+                    <div class="roll-film">
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4261021&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/2.8 · 1/5000 · 95mm · Sony A7 II" data-hero><img src="../img/hobbies/photography/4261021.jpg" alt="Grecia." width="1000" height="667" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4261008&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/5.6 · 1/200 · 46mm · Sony A7 II" data-hero><img src="../img/hobbies/photography/4261008.jpg" alt="Chiesa sulla caldera di Santorini" width="1000" height="667" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4261009&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/11 · 1/320 · 70mm · Sony A7 II"><img src="../img/hobbies/photography/4261009.jpg" alt="Azzurro su Oia" width="1000" height="667" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4260994&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/2.8 · 1/800 · 99mm · Sony A7 II"><img src="../img/hobbies/photography/4260994.jpg" alt="Last minute presentation in Santorini" width="1000" height="667" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4261010&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/2.8 · 1/4000 · 158mm · Sony A7 II"><img src="../img/hobbies/photography/4261010.jpg" alt="Spot fotografici di lusso" width="1000" height="563" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4261025&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/3.2 · 1/2500 · 70mm · Sony A7 II"><img src="../img/hobbies/photography/4261025.jpg" alt="Il principe timido di Oia" width="800" height="1000" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4261022&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/8 · 1/500 · 200mm · Sony A7 II"><img src="../img/hobbies/photography/4261022.jpg" alt="Il re di Oia" width="1000" height="667" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4261001&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/8 · 1/125 · 28mm · Sony A7 II"><img src="../img/hobbies/photography/4261001.jpg" alt="Il leone di Fira" width="1000" height="667" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4260455&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/2.8 · 1/2500 · 70mm · Sony A7 II"><img src="../img/hobbies/photography/4260455.jpg" alt="tramonto dal kástro" width="1000" height="667" loading="lazy" draggable="false"></a>
+                    </div>
+                </div>
+                <p class="frame roll-read" aria-hidden="true"><span class="roll-title">&nbsp;</span><span class="roll-exif"></span></p>
+            </section>
+
+            <section class="roll reveal" aria-label="Verona and Northern Italy">
+                <div class="frame roll-head">
+                    <span class="roll-no">03</span>
+                    <h3>Verona and Northern Italy</h3>
+                    <span class="roll-count">8 frames</span>
+                    <a class="roll-album" href="https://www.juzaphoto.com/me.php?pg=327994&amp;l=it" target="_blank" rel="noopener">Album on JuzaPhoto</a>
+                </div>
+                <div class="roll-strip" tabindex="-1">
+                    <div class="roll-film">
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4247075&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/4.5 · 1/160 · 74mm · Sony A7 II" data-hero><img src="../img/hobbies/photography/4247075.jpg" alt="Basilica di Santa Anastasia in pink" width="1000" height="667" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4247052&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/5.6 · 1/200 · 150mm · Sony A7 II"><img src="../img/hobbies/photography/4247052.jpg" alt="Santa Maria Matricolare incatenata al verde" width="1000" height="667" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4247068&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/22 · 1/15 · 70mm · Sony A7 II"><img src="../img/hobbies/photography/4247068.jpg" alt="Vicolo botte prima della salita" width="667" height="1000" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4247060&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/7.1 · 1/200 · 138mm · Sony A7 II"><img src="../img/hobbies/photography/4247060.jpg" alt="Vista dal basso dell&#x27;adige ponte di cemento" width="1000" height="667" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4271505&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/11 · 1/125 · 37mm · Sony A7 II"><img src="../img/hobbies/photography/4271505.jpg" alt="La lavandaia Pavese" width="1000" height="563" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4271513&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 160 · f/4 · 1/250 · 200mm · Sony A7 II"><img src="../img/hobbies/photography/4271513.jpg" alt="Fabbro Pavese" width="667" height="1000" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4271507&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/4.5 · 1/320 · 200mm · Sony A7 II"><img src="../img/hobbies/photography/4271507.jpg" alt="Il canto della vita tra le torri Pavesi" width="1000" height="667" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4271510&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/4 · 1/250 · 200mm · Sony A7 II"><img src="../img/hobbies/photography/4271510.jpg" alt="Generazioni a confronto" width="1000" height="625" loading="lazy" draggable="false"></a>
+                    </div>
+                </div>
+                <p class="frame roll-read" aria-hidden="true"><span class="roll-title">&nbsp;</span><span class="roll-exif"></span></p>
+            </section>
+
+            <section class="roll reveal" aria-label="Brussels">
+                <div class="frame roll-head">
+                    <span class="roll-no">04</span>
+                    <h3>Brussels</h3>
+                    <span class="roll-count">8 frames</span>
+                    <a class="roll-album" href="https://www.juzaphoto.com/me.php?pg=324735&amp;l=it" target="_blank" rel="noopener">Album on JuzaPhoto</a>
+                </div>
+                <div class="roll-strip" tabindex="-1">
+                    <div class="roll-film">
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4179761&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 3200 · f/5.6 · 1/160 · 70mm · Sony A7 II" data-hero><img src="../img/hobbies/photography/4179761.jpg" alt="Il riposo del condottiero belga" width="1000" height="667" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4179755&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 200 · f/5.6 · 1/160 · 70mm · Sony A7 II"><img src="../img/hobbies/photography/4179755.jpg" alt="Selfi della polizia sul Manneken Pis" width="1000" height="667" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4179756&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/5 · 1/200 · 28mm · Sony A7 II"><img src="../img/hobbies/photography/4179756.jpg" alt="Matrimonio multiculturale" width="1000" height="563" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4179754&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 250 · f/4 · 1/160 · 29mm · Sony A7 II"><img src="../img/hobbies/photography/4179754.jpg" alt="Manneken Pis da un altro punto di vista" width="1000" height="667" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4179768&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/32 · 1/8 · 57mm · Sony A7 II"><img src="../img/hobbies/photography/4179768.jpg" alt="Palazzi europei" width="1000" height="563" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4179753&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/4.5 · 1/200 · 44mm · Sony A7 II"><img src="../img/hobbies/photography/4179753.jpg" alt="Leggere imperfezioni" width="1000" height="667" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4180578&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/9 · 1/200 · 70mm · Sony A7 II"><img src="../img/hobbies/photography/4180578.jpg" alt="Scalando i cieli di Bruxel" width="1000" height="750" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4179751&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/18 · 1/8 · 70mm · Sony A7 II"><img src="../img/hobbies/photography/4179751.jpg" alt="Manneken Pis del giorno" width="1000" height="667" loading="lazy" draggable="false"></a>
+                    </div>
+                </div>
+                <p class="frame roll-read" aria-hidden="true"><span class="roll-title">&nbsp;</span><span class="roll-exif"></span></p>
+            </section>
+
+            <section class="roll reveal" aria-label="Leuven">
+                <div class="frame roll-head">
+                    <span class="roll-no">05</span>
+                    <h3>Leuven</h3>
+                    <span class="roll-count">8 frames</span>
+                    <a class="roll-album" href="https://www.juzaphoto.com/me.php?pg=324521&amp;l=it" target="_blank" rel="noopener">Album on JuzaPhoto</a>
+                </div>
+                <div class="roll-strip" tabindex="-1">
+                    <div class="roll-film">
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4175355&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 2500 · f/5.6 · 1/160 · 70mm · Sony A7 II" data-hero><img src="../img/hobbies/photography/4175355.jpg" alt="Dettaglio libreria" width="1000" height="667" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4175356&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/6.3 · 1/80 · 40mm · Sony A7 II"><img src="../img/hobbies/photography/4175356.jpg" alt="Dentro la chiesa" width="667" height="1000" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4175362&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/10 · 1/125 · 48mm · Sony A7 II"><img src="../img/hobbies/photography/4175362.jpg" alt="Lovanio municipio 1" width="667" height="1000" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4175370&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 160 · f/5 · 1/160 · 58mm · Sony A7 II" data-hero><img src="../img/hobbies/photography/4175370.jpg" alt="Stecchino biricchino" width="1000" height="667" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4175358&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/10 · 1/125 · 66mm · Sony A7 II"><img src="../img/hobbies/photography/4175358.jpg" alt="Borgo ombre su casa" width="1000" height="667" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4175366&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/9 · 1/160 · 55mm · Sony A7 II"><img src="../img/hobbies/photography/4175366.jpg" alt="Legno e luce" width="1000" height="667" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4175375&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/11 · 1/125 · 47mm · Sony A7 II"><img src="../img/hobbies/photography/4175375.jpg" alt="Bici e monopattino" width="1000" height="667" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4175361&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/10 · 1/125 · 70mm · Sony A7 II"><img src="../img/hobbies/photography/4175361.jpg" alt="Lovanio dall&#x27;alto della torre della biblioteca" width="1000" height="667" loading="lazy" draggable="false"></a>
+                    </div>
+                </div>
+                <p class="frame roll-read" aria-hidden="true"><span class="roll-title">&nbsp;</span><span class="roll-exif"></span></p>
+            </section>
+
+            <section class="roll reveal" aria-label="Wallonia">
+                <div class="frame roll-head">
+                    <span class="roll-no">06</span>
+                    <h3>Wallonia</h3>
+                    <span class="roll-count">8 frames</span>
+                    <a class="roll-album" href="https://www.juzaphoto.com/me.php?pg=324787&amp;l=it" target="_blank" rel="noopener">Album on JuzaPhoto</a>
+                </div>
+                <div class="roll-strip" tabindex="-1">
+                    <div class="roll-film">
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4180366&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/5.6 · 1/160 · 65mm · Sony A7 II"><img src="../img/hobbies/photography/4180366.jpg" alt="Decadenza della birra" width="1000" height="667" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4180400&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 1600 · f/4.5 · 1/160 · 48mm · Sony A7 II" data-hero><img src="../img/hobbies/photography/4180400.jpg" alt="Boulangerie per matrimoni" width="1000" height="667" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4180377&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/5.6 · 1/80 · 45mm · Sony A7 II"><img src="../img/hobbies/photography/4180377.jpg" alt="L&#x27;acqua degli dei" width="1000" height="667" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4180404&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/11 · 1/160 · 49mm · Sony A7 II" data-hero><img src="../img/hobbies/photography/4180404.jpg" alt="La romanica collegiata di Santa Gertrude a colori" width="1000" height="667" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4180395&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/7.1 · 1/80 · 34mm · Sony A7 II"><img src="../img/hobbies/photography/4180395.jpg" alt="Fine del mercato, inizio della tempesta" width="1000" height="667" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4180396&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/4.5 · 1/200 · 28mm · Sony A7 II"><img src="../img/hobbies/photography/4180396.jpg" alt="Viste dal mercato di Nivelles" width="1000" height="667" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4180386&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 3200 · f/3.5 · 1/60 · 28mm · Sony A7 II"><img src="../img/hobbies/photography/4180386.jpg" alt="Tetto basilica di Charleroi" width="1000" height="667" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4180376&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/5.6 · 1/640 · 70mm · Sony A7 II"><img src="../img/hobbies/photography/4180376.jpg" alt="Decadenza moderna di Charleroy" width="1000" height="667" loading="lazy" draggable="false"></a>
+                    </div>
+                </div>
+                <p class="frame roll-read" aria-hidden="true"><span class="roll-title">&nbsp;</span><span class="roll-exif"></span></p>
+            </section>
+
+            <section class="roll reveal" aria-label="Mille Miglia">
+                <div class="frame roll-head">
+                    <span class="roll-no">07</span>
+                    <h3>Mille Miglia</h3>
+                    <span class="roll-count">6 frames</span>
+                    <a class="roll-album" href="https://www.juzaphoto.com/me.php?pg=329130&amp;l=it" target="_blank" rel="noopener">Album on JuzaPhoto</a>
+                </div>
+                <div class="roll-strip" tabindex="-1">
+                    <div class="roll-film">
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4271536&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/2.8 · 1/640 · 70mm · Sony A7 II" data-hero><img src="../img/hobbies/photography/4271536.jpg" alt="Si vola" width="1000" height="563" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4271519&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/5.6 · 1/320 · 105mm · Sony A7 II"><img src="../img/hobbies/photography/4271519.jpg" alt="Voglio volare" width="1000" height="667" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4271532&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 160 · f/4 · 1/250 · 200mm · Sony A7 II"><img src="../img/hobbies/photography/4271532.jpg" alt="California 208" width="1000" height="667" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4271538&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/2.8 · 1/2000 · 120mm · Sony A7 II"><img src="../img/hobbies/photography/4271538.jpg" alt="Focused on victory" width="1000" height="667" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4271534&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/2.8 · 1/1600 · 91mm · Sony A7 II"><img src="../img/hobbies/photography/4271534.jpg" alt="Old but good" width="1000" height="667" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4271542&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/2.8 · 1/1000 · 147mm · Sony A7 II"><img src="../img/hobbies/photography/4271542.jpg" alt="It&#x27;s not your turn" width="1000" height="667" loading="lazy" draggable="false"></a>
+                    </div>
+                </div>
+                <p class="frame roll-read" aria-hidden="true"><span class="roll-title">&nbsp;</span><span class="roll-exif"></span></p>
+            </section>
+
+            <section class="roll reveal" aria-label="Elsewhere">
+                <div class="frame roll-head">
+                    <span class="roll-no">08</span>
+                    <h3>Elsewhere</h3>
+                    <span class="roll-count">6 frames</span>
+                    <a class="roll-album" href="https://www.juzaphoto.com/me.php?p=232357&amp;pg=galleries&amp;l=it" target="_blank" rel="noopener">Album on JuzaPhoto</a>
+                </div>
+                <div class="roll-strip" tabindex="-1">
+                    <div class="roll-film">
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4186987&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 800 · f/32 · 1/80 · 70mm · Sony A7 II" data-hero><img src="../img/hobbies/photography/4186987.jpg" alt="Il pavone e la luce 1" width="1000" height="667" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4186986&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 100 · f/1.8 · 1/1000 · Sony A7 II"><img src="../img/hobbies/photography/4186986.jpg" alt="Il pavone e le sue geometrie 2" width="667" height="1000" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4317433&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 3200 · f/2.8 · 1/6 · 200mm · Sony A7 II" data-hero><img src="../img/hobbies/photography/4317433.jpg" alt="Pele in azione, dea della creazione-distruzione." width="1000" height="667" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4175270&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 125 · f/2.8 · 1/320 · Canon PowerShot G16"><img src="../img/hobbies/photography/4175270.jpg" alt="Escursione universitaria sulla vetta di stromboli" width="1000" height="750" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4175271&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 80 · f/2.8 · 1/200 · Canon PowerShot G16"><img src="../img/hobbies/photography/4175271.jpg" alt="Scacco matto da matera" width="1000" height="750" loading="lazy" draggable="false"></a>
+                        <a class="shot" href="https://www.juzaphoto.com/galleria.php?t=4175272&amp;l=it" target="_blank" rel="noopener" data-exif="ISO 80 · f/8 · 10s · Canon PowerShot G16"><img src="../img/hobbies/photography/4175272.jpg" alt="Foresta di rosmarini al tramonto" width="1000" height="750" loading="lazy" draggable="false"></a>
+                    </div>
+                </div>
+                <p class="frame roll-read" aria-hidden="true"><span class="roll-title">&nbsp;</span><span class="roll-exif"></span></p>
+            </section>
         </section>
 
         <section class="post-index">
         <div class="frame">
+            <h2 class="pho-posts-h reveal">Posts</h2>
 
             <!-- ===== BLOG POSTS LIST ===== -->
             <div class="blog-post-list">
@@ -88,5 +350,244 @@
     <script src="../js/components.js?v=3"></script>
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
     <script src="../js/site.js?v=3" defer></script>
+    <script>
+    (function () {
+      var shots = [].slice.call(document.querySelectorAll('.shot'));
+
+      // ---- contact sheet: readout, mouse drag, gentle drift ----
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      document.querySelectorAll('.roll').forEach(function (roll) {
+        var t = roll.querySelector('.roll-title'), e = roll.querySelector('.roll-exif'), strip = roll.querySelector('.roll-strip');
+        function show(a) { t.textContent = a.querySelector('img').alt; e.textContent = a.getAttribute('data-exif'); }
+        roll.querySelectorAll('.shot').forEach(function (a) {
+          a.addEventListener('mouseenter', function () { show(a); });
+          a.addEventListener('focus', function () { show(a); });
+        });
+        show(roll.querySelector('.shot'));
+        var down = false, startX = 0, startL = 0, moved = false;
+        strip.addEventListener('pointerdown', function (ev) { if (ev.pointerType !== 'mouse') return; down = true; moved = false; startX = ev.clientX; startL = strip.scrollLeft; });
+        window.addEventListener('pointermove', function (ev) {
+          if (!down) return;
+          var d = ev.clientX - startX;
+          if (Math.abs(d) > 5) { moved = true; strip.classList.add('is-drag'); }
+          if (moved) strip.scrollLeft = startL - d;
+        });
+        window.addEventListener('pointerup', function () { down = false; setTimeout(function () { strip.classList.remove('is-drag'); }, 0); });
+        strip.addEventListener('click', function (ev) { if (moved) { ev.preventDefault(); moved = false; } }, true);
+      });
+      if (!reduce) {
+        var films = [].slice.call(document.querySelectorAll('.roll-film'));
+        var drift = function () {
+          films.forEach(function (f, i) {
+            var r = f.getBoundingClientRect();
+            if (r.bottom < 0 || r.top > window.innerHeight) return;
+            var c = (r.top + r.height / 2 - window.innerHeight / 2) / window.innerHeight;
+            f.style.setProperty('--drift', ((i % 2 ? 1 : -1) * c * 34).toFixed(1) + 'px');
+          });
+        };
+        window.addEventListener('scroll', drift, { passive: true });
+        drift();
+      }
+
+      // ---- opening strip ----
+      var picks = shots.filter(function (a) { return a.hasAttribute('data-hero'); });
+      var canvas = document.getElementById('film-canvas');
+      var gl = !reduce && picks.length > 1 && canvas.getContext('webgl2', { alpha: true, premultipliedAlpha: true, antialias: true });
+      if (!gl) return;
+      document.documentElement.classList.add('is-film');
+
+      var VS = '#version 300 es\n\
+in vec2 aP; uniform float uS0,uW,uOff,uT,uAsp,uH,uYc,uShadow; out vec2 vUv; out float vLight; out float vSheen;\n\
+void main(){\n\
+  float s=uS0+aP.x*uW-uOff; float v=aP.y;\n\
+  float y=uH*(.2*sin(s*1.25+uT*.32)+.07*sin(s*2.9-uT*.21+1.3));\n\
+  float th=.5*sin(s*1.05+uT*.26+.6)+.14*sin(s*2.4-uT*.17);\n\
+  float z=v*uH*sin(th)+.16*sin(s*.8+uT*.18);\n\
+  float py=y+v*uH*cos(th);\n\
+  float w=(2.6-z)/2.6;\n\
+  vec2 sh=uShadow>.5?vec2(.018,-.05):vec2(0.);\n\
+  gl_Position=vec4((s+sh.x)/uAsp,py+uYc+sh.y,0.,w);\n\
+  vUv=vec2(aP.x,.5-aP.y);\n\
+  vLight=.86+.2*cos(th*2.)-.12*sin(th);\n\
+  vSheen=pow(max(0.,sin(s*1.25+th*2.2+uT*.3)),14.);\n\
+}';
+      var FS = '#version 300 es\n\
+precision highp float; in vec2 vUv; in float vLight; in float vSheen; uniform sampler2D uTex; uniform float uShadow; out vec4 o;\n\
+void main(){\n\
+  if(uShadow>.5){ float a=texture(uTex,vUv,3.5).a; o=vec4(0.,0.,0.,a*.17); return; }\n\
+  vec4 c=texture(uTex,vUv); c.rgb*=vLight; c.rgb+=c.a*vSheen*.13; o=c;\n\
+}';
+      function sh(type, src) { var x = gl.createShader(type); gl.shaderSource(x, src); gl.compileShader(x); return x; }
+      var prog = gl.createProgram();
+      gl.attachShader(prog, sh(gl.VERTEX_SHADER, VS)); gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, FS)); gl.linkProgram(prog);
+      if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) { document.documentElement.classList.remove('is-film'); return; }
+      gl.useProgram(prog);
+      var u = {}; ['uS0', 'uW', 'uOff', 'uT', 'uAsp', 'uH', 'uYc', 'uShadow', 'uTex'].forEach(function (n) { u[n] = gl.getUniformLocation(prog, n); });
+
+      // a grid fine enough to bend: x 0..1, y -.5...5
+      var NX = 40, NY = 8, verts = [], idx = [];
+      for (var j = 0; j <= NY; j++) for (var i = 0; i <= NX; i++) verts.push(i / NX, j / NY - .5);
+      for (j = 0; j < NY; j++) for (i = 0; i < NX; i++) {
+        var a = j * (NX + 1) + i, b = a + 1, c = a + NX + 1, d = c + 1;
+        idx.push(a, b, c, b, d, c);
+      }
+      gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer()); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(verts), gl.STATIC_DRAW);
+      gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, gl.createBuffer()); gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(idx), gl.STATIC_DRAW);
+      var loc = gl.getAttribLocation(prog, 'aP'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+      gl.enable(gl.BLEND); gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA); gl.clearColor(0, 0, 0, 0);
+      var aniso = gl.getExtension('EXT_texture_filter_anisotropic');
+
+      // ---- each frame: film base, sprocket holes, edge marks, photo ----
+      var P = 64, H = 820, BAND = 110, IH = H - BAND * 2;
+      var frames = picks.map(function (a, n) {
+        var im = a.querySelector('img');
+        var r = (+im.getAttribute('width') / +im.getAttribute('height')) || 1.5;
+        var k = Math.max(4, Math.round((IH * r + 24) / P));
+        return { a: a, n: n, pxW: k * P, ratio: r, src: im.getAttribute('src'), tex: null };
+      });
+      var total = 0;
+      frames.forEach(function (f) { f.px0 = total; total += f.pxW; });
+
+      function compose(f, img) {
+        var c = document.createElement('canvas'); c.width = f.pxW; c.height = H;
+        var x = c.getContext('2d');
+        x.fillStyle = '#141312'; x.fillRect(0, 0, f.pxW, H);
+        x.globalCompositeOperation = 'destination-out';
+        for (var i = 0; i * P < f.pxW; i++) {
+          [24, H - 24 - 62].forEach(function (y) {
+            x.beginPath(); x.roundRect(i * P + 13, y, 38, 62, 9); x.fill();
+          });
+        }
+        x.globalCompositeOperation = 'source-over';
+        var w = f.pxW - 24, sx = 0, sy = 0, sw = img.naturalWidth, sh2 = img.naturalHeight, want = w / IH;
+        if (sw / sh2 > want) { sx = (sw - sh2 * want) / 2; sw = sh2 * want; } else { sy = (sh2 - sw / want) / 2; sh2 = sw / want; }
+        x.drawImage(img, sx, sy, sw, sh2, 12, BAND, w, IH);
+        x.fillStyle = '#d8d2c4';
+        x.font = '700 21px "Source Sans 3", sans-serif'; x.fillText('FSDV 100', 26, 15 + 3); 
+        x.font = '500 20px "JetBrains Mono", monospace';
+        var no = f.n + 1;
+        x.fillText(String(no), 24, H - 2);
+        x.fillText(no + 'A', f.pxW / 2, H - 2);
+        return c;
+      }
+      function upload(f, c) {
+        var t = gl.createTexture();
+        gl.bindTexture(gl.TEXTURE_2D, t);
+        gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, true);
+        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, c);
+        gl.generateMipmap(gl.TEXTURE_2D);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+        if (aniso) gl.texParameterf(gl.TEXTURE_2D, aniso.TEXTURE_MAX_ANISOTROPY_EXT, 4);
+        f.tex = t;
+      }
+      var ready = document.fonts && document.fonts.load ? Promise.all([document.fonts.load('700 21px "Source Sans 3"'), document.fonts.load('500 20px "JetBrains Mono"')]) : Promise.resolve();
+      ready.catch(function () {}).then(function () {
+        frames.forEach(function (f) {
+          var im = new Image();
+          im.onload = function () { upload(f, compose(f, im)); };
+          im.src = f.src;
+        });
+      });
+
+      // ---- layout + scroll ----
+      var film = document.getElementById('film'), read = { n: document.getElementById('fr-n'), e: document.getElementById('fr-e') };
+      film.style.height = 'calc(100vh + ' + (frames.length - 1) * 42 + 'vh)';
+      var intro = document.querySelector('.film-intro'), yc0 = -.36, yc1 = -.06, asp = 1, hWorld = .74, unit = 1, yc = -.36, off = 0, target = 0, first = 0, last = 0;
+      function size() {
+        var d = Math.min(window.devicePixelRatio || 1, 1.75), w = canvas.clientWidth, h = canvas.clientHeight;
+        canvas.width = Math.round(w * d); canvas.height = Math.round(h * d);
+        gl.viewport(0, 0, canvas.width, canvas.height);
+        asp = w / h;
+        hWorld = Math.min(.74, asp * 1.05);
+        unit = hWorld / H;
+        yc0 = asp < .8 ? -.2 : -.36; yc1 = asp < .8 ? -.04 : -.06; yc = yc0;
+        first = (frames[0].pxW / 2) * unit;
+        last = (total - frames[frames.length - 1].pxW / 2) * unit;
+        fromScroll();
+        off = target;
+      }
+      function travel() { var r = film.getBoundingClientRect(); return { top: r.top + window.pageYOffset, len: r.height - window.innerHeight }; }
+      function fromScroll() {
+        var m = travel(), p = Math.max(0, Math.min(1, (window.pageYOffset - m.top) / m.len));
+        target = first + (last - first) * p;
+      }
+      window.addEventListener('scroll', fromScroll, { passive: true });
+      window.addEventListener('resize', size);
+
+      // ---- drag moves the page; a click opens the frame on JuzaPhoto ----
+      function frameAt(ev) {
+        var r = canvas.getBoundingClientRect();
+        var nx = (ev.clientX - r.left) / r.width * 2 - 1, ny = 1 - (ev.clientY - r.top) / r.height * 2;
+        var s = nx * asp, y = hWorld * (.2 * Math.sin(s * 1.25 + time * .32) + .07 * Math.sin(s * 2.9 - time * .21 + 1.3));
+        if (Math.abs(ny - yc - y) > hWorld * .62) return null;
+        var px = (s + off) / unit;
+        for (var i = 0; i < frames.length; i++) if (px >= frames[i].px0 && px < frames[i].px0 + frames[i].pxW) return frames[i];
+        return null;
+      }
+      var drag = null;
+      canvas.addEventListener('pointerdown', function (ev) { drag = { x: ev.clientX, y0: window.pageYOffset, moved: false, id: ev.pointerId }; canvas.setPointerCapture(ev.pointerId); });
+      canvas.addEventListener('pointermove', function (ev) {
+        if (!drag) { canvas.style.cursor = frameAt(ev) ? 'pointer' : ''; return; }
+        var dx = ev.clientX - drag.x;
+        if (Math.abs(dx) > 6) { drag.moved = true; canvas.classList.add('is-drag'); canvas.style.cursor = ''; }
+        if (drag.moved) {
+          var m = travel(), worldPerPage = (last - first) / m.len, y = drag.y0 - (dx / canvas.clientWidth * 2 * asp) / worldPerPage;
+          y = Math.max(m.top, Math.min(m.top + m.len, y));
+          if (window.siteLenis) window.siteLenis.scrollTo(y, { immediate: true, force: true }); else window.scrollTo(0, y);
+        }
+      });
+      function endDrag(ev) {
+        if (!drag) return;
+        var wasMoved = drag.moved; drag = null; canvas.classList.remove('is-drag');
+        if (!wasMoved && ev.type === 'pointerup') { var f = frameAt(ev); if (f) window.open(f.a.href, '_blank', 'noopener'); }
+      }
+      canvas.addEventListener('pointerup', endDrag);
+      canvas.addEventListener('pointercancel', endDrag);
+
+      // ---- draw ----
+      var time = 0, lastT = 0, shown = -1, visible = true;
+      if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { visible = e[0].isIntersecting; }).observe(canvas);
+      function drawAll(shadow) {
+        gl.uniform1f(u.uShadow, shadow);
+        frames.forEach(function (f) {
+          if (!f.tex) return;
+          var s0 = f.px0 * unit, w = f.pxW * unit;
+          if (s0 + w - off < -asp - .9 || s0 - off > asp + .9) return;
+          gl.bindTexture(gl.TEXTURE_2D, f.tex);
+          gl.uniform1f(u.uS0, s0); gl.uniform1f(u.uW, w);
+          gl.drawElements(gl.TRIANGLES, idx.length, gl.UNSIGNED_SHORT, 0);
+        });
+      }
+      function tick(ts) {
+        requestAnimationFrame(tick);
+        var dt = Math.min(.1, (ts - lastT) / 1000 || 0); lastT = ts;
+        if (!visible) return;
+        time += dt;
+        off += (target - off) * (1 - Math.exp(-dt * 7));
+        // the intro clears out as the film starts to run, and the film rises to the middle
+        var run = Math.max(0, Math.min(1, (off - first) / ((last - first) * .09)));
+        run = run * run * (3 - 2 * run);
+        yc = yc0 + (yc1 - yc0) * run;
+        intro.style.opacity = (1 - run).toFixed(3);
+        intro.style.visibility = run > .99 ? 'hidden' : '';
+        gl.clear(gl.COLOR_BUFFER_BIT);
+        gl.uniform1f(u.uOff, off); gl.uniform1f(u.uT, time); gl.uniform1f(u.uAsp, asp); gl.uniform1f(u.uH, hWorld); gl.uniform1f(u.uYc, yc);
+        drawAll(1); drawAll(0);
+        var px = off / unit, cur = 0;
+        for (var i = 0; i < frames.length; i++) if (px >= frames[i].px0) cur = i;
+        if (cur !== shown) {
+          shown = cur;
+          var a = frames[cur].a, nn = cur + 1;
+          read.n.textContent = (nn < 10 ? '0' : '') + nn + ' / ' + (frames.length < 10 ? '0' : '') + frames.length + ' · ' + a.querySelector('img').alt;
+          read.e.textContent = a.getAttribute('data-exif');
+        }
+      }
+      gl.uniform1i(u.uTex, 0);
+      size();
+      requestAnimationFrame(tick);
+    })();
+    </script>
 </body>
 </html>

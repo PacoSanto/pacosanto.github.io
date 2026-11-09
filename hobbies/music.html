@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music | Hobbies &amp; Blog | Francesco Santoro De Vico</title>
-    <meta name="description" content="Guitar, saxophone, jazz, blues, bossa nova, and a vinyl collection with peculiar tastes.">
+    <meta name="description" content="Guitar, saxophone, jazz, blues, bossa nova, and a vinyl collection with peculiar tastes. The playlists behind the posts: MyBossa, Guccini and Reggaeton party.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fsdv.eu/hobbies/music.html">
     <meta property="og:title" content="Music | Hobbies &amp; Blog | Francesco Santoro De Vico">
@@ -93,6 +93,7 @@
     .crate-info-text { font-size: 1.02rem; line-height: 1.45; color: rgba(255,255,255,.78); margin: 0 0 1rem; }
     .crate-info a { color: #fff; border-bottom: 1px solid var(--color-amber); font-weight: 600; }
     .crate-info a:hover { color: #f0b39f; }
+    .crate-info #ci-sp { margin-left: 1.5rem; border-bottom-color: rgba(255,255,255,.35); font-weight: 400; }
 
     .is-crate .crate-nav {
       display: flex; align-items: center; gap: .8rem; position: absolute; z-index: 4;
@@ -119,6 +120,22 @@
     .track p { margin: 0; color: var(--color-slate); font-size: 1rem; line-height: 1.5; }
     .track:hover h3 { color: var(--color-amber); }
 
+
+    .pl-lede { margin: -1rem 0 clamp(1.5rem,3vw,2.5rem); font-size: 1.1rem; color: var(--color-slate); }
+    .pl { display: grid; grid-template-columns: 3.5rem minmax(0,5fr) minmax(0,6fr); gap: clamp(1rem,3vw,3rem); padding: clamp(1.5rem,3vw,2.5rem) 0; border-top: 1px solid var(--border); align-items: start; }
+    .pl:last-of-type { border-bottom: 1px solid var(--border); }
+    .pl .track-no { font-family: var(--font-mono); font-size: .8rem; color: var(--color-slate); padding-top: .5rem; }
+    .pl-date { margin: 0 0 .4rem; font-family: var(--font-mono); font-size: .74rem; letter-spacing: .06em; text-transform: uppercase; color: var(--color-amber); }
+    .pl h3 { font-weight: 400; font-size: clamp(2rem,3.4vw,3rem); line-height: 1.05; margin: 0 0 .7rem; color: var(--color-ink); }
+    .pl-text p { margin: 0 0 1rem; font-size: 1.05rem; line-height: 1.55; color: var(--color-slate); }
+    .pl-links { display: flex; flex-wrap: wrap; gap: .4rem 1.6rem; }
+    .pl-links a { font-weight: 600; color: var(--color-ink); border-bottom: 1px solid var(--color-amber); }
+    .pl-links a:hover { color: var(--color-amber); }
+    .pl-embed iframe { display: block; width: 100%; height: 352px; border: 0; border-radius: 12px; background: #1d201b; }
+    .pl-chips { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: .7rem; }
+    .pl-chips button { min-height: 40px; padding: .35rem 1rem; background: none; border: 1px solid var(--color-sandstone); font: 600 .92rem var(--font-body); color: var(--color-ink); cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+    .pl-chips button[aria-pressed="true"] { background: var(--color-ink); border-color: var(--color-ink); color: #fff; }
+    @media (max-width: 860px) { .pl { grid-template-columns: 2.4rem minmax(0,1fr); } .pl-embed { grid-column: 1 / -1; } }
     @media (max-width: 760px) {
       .is-crate .crate-intro { position: relative; padding-bottom: 1rem; }
       .is-crate .crate-scene { perspective-origin: 50% 32%; }
@@ -147,67 +164,34 @@
             <div class="crate-stage">
                 <!--
                     HOW TO ADD A POST:
-                    1. Create a new HTML file in /posts/music/
-                    2. Add a .sleeve at the top of .crate-scene (the counter follows)
-                    3. Add a .track at the top of the Tracklist below
+                    A SLEEVE IS A PLAYLIST, NOT A RECORD.
+                    1. Create the page in /posts/music/ (music-<slug>.html)
+                    2. Add a .sleeve at the top of .crate-scene: data-sp is the Spotify playlist URL,
+                       and the art is a small inline SVG (copy one of the three)
+                    3. Add a .pl row at the top of the Tracklist below, with the playlist id in the iframe
                 -->
                 <div class="crate-scene" id="crate-scene">
-                    <a class="sleeve" href="../posts/music/guccini.html" style="--label:#ad563e" data-kick="Post &middot; August 2026" data-title="Fra la via Emilia e la Luna" data-text="A personal farewell to Francesco Guccini (1940&ndash;2026): a first concert at fourteen, an essay that earned a 3/10, three cities, lunar regolith, and a contract about to expire. Written in Italian." data-cta="Read the post" aria-label="Fra la via Emilia e la Luna, post, August 2026">
+                    <a class="sleeve" href="../posts/music/music-bossa-nova.html" style="--label:#e0733f" data-kick="Playlist &middot; Spotify" data-title="MyBossa" data-text="Bossa nova, the music that came out of Rio de Janeiro in the late 1950s: the playlist, and the rhythm behind it." data-cta="Read the post" data-sp="https://open.spotify.com/playlist/72chZUnvjFvC0kvDjXSnlD" aria-label="MyBossa, playlist and post">
                         <span class="disc" aria-hidden="true"><span class="disc-spin"><span class="disc-label"></span></span></span>
-                        <span class="sleeve-face"><svg viewBox="0 0 600 600" role="presentation"><rect width="600" height="600" fill="#0e1013"/><circle cx="412" cy="196" r="118" fill="#e9e5dc"/><circle cx="372" cy="170" r="20" fill="#b3aea3"/><circle cx="446" cy="232" r="30" fill="#b3aea3"/><circle cx="430" cy="130" r="11" fill="#b3aea3"/><g stroke="#ad563e" stroke-width="3"><path d="M0 420H600"/><path d="M0 434H600" stroke="#e9e5dc"/></g><g fill="#fff"><text x="38" y="500" font-family="Cormorant Garamond,Georgia,serif" font-size="56" font-weight="400">Fra la via Emilia</text><text x="38" y="556" font-family="Cormorant Garamond,Georgia,serif" font-size="56" font-style="italic" font-weight="400">e la Luna</text></g></svg></span>
-                        <span class="sleeve-cap"><b>Fra la via Emilia e la Luna</b><br>Post &middot; August 2026</span>
+                        <span class="sleeve-face"><svg viewBox="0 0 600 600" role="presentation"><rect width="600" height="600" fill="#f1e6cf"/><circle cx="420" cy="168" r="96" fill="#e0733f"/><path d="M-60 330 q 40 -18 80 0 q 40 18 80 0 q 40 -18 80 0 q 40 18 80 0 q 40 -18 80 0 q 40 18 80 0 q 40 -18 80 0 q 40 18 80 0 q 40 -18 80 0" fill="none" stroke="#1f5f78" stroke-width="12" stroke-linecap="round" opacity="1.00"/><path d="M-60 360 q 40 18 80 0 q 40 -18 80 0 q 40 18 80 0 q 40 -18 80 0 q 40 18 80 0 q 40 -18 80 0 q 40 18 80 0 q 40 -18 80 0 q 40 18 80 0" fill="none" stroke="#1f5f78" stroke-width="12" stroke-linecap="round" opacity="0.88"/><path d="M-60 390 q 40 -18 80 0 q 40 18 80 0 q 40 -18 80 0 q 40 18 80 0 q 40 -18 80 0 q 40 18 80 0 q 40 -18 80 0 q 40 18 80 0 q 40 -18 80 0" fill="none" stroke="#1f5f78" stroke-width="12" stroke-linecap="round" opacity="0.76"/><path d="M-60 420 q 40 18 80 0 q 40 -18 80 0 q 40 18 80 0 q 40 -18 80 0 q 40 18 80 0 q 40 -18 80 0 q 40 18 80 0 q 40 -18 80 0 q 40 18 80 0" fill="none" stroke="#1f5f78" stroke-width="12" stroke-linecap="round" opacity="0.64"/><path d="M-60 450 q 40 -18 80 0 q 40 18 80 0 q 40 -18 80 0 q 40 18 80 0 q 40 -18 80 0 q 40 18 80 0 q 40 -18 80 0 q 40 18 80 0 q 40 -18 80 0" fill="none" stroke="#1f5f78" stroke-width="12" stroke-linecap="round" opacity="0.52"/><g fill="#123c4d"><text x="38" y="106" font-family="Cormorant Garamond,Georgia,serif" font-size="84" font-weight="400">MyBossa</text><text x="38" y="150" font-family="Cormorant Garamond,Georgia,serif" font-size="40" font-style="italic" font-weight="400">bossa nova</text></g></svg></span>
+                        <span class="sleeve-cap"><b>MyBossa</b><br>Playlist &middot; November 2026</span>
                     </a>
-                    <a class="sleeve" href="../posts/music/music-reggaeton.html" style="--label:#e879f9" data-kick="Post &middot; January 2026" data-title="The Reggaeton Party playlist on Spotify" data-text="Nostalgia for Spain, the history of the genre from Panamanian dembow to Bad Bunny, and an analysis of its musical characteristics (BPM, percussive structure, use of vocals)." data-cta="Read the post" aria-label="The Reggaeton Party playlist on Spotify, post, January 2026">
+                    <a class="sleeve" href="../posts/music/guccini.html" style="--label:#c4275c" data-kick="Playlist &middot; Spotify" data-title="Guccini" data-text="The playlist behind a personal farewell to Francesco Guccini (1940&ndash;2026). The post is written in Italian." data-cta="Read the post" data-sp="https://open.spotify.com/playlist/51dS5HcfRgxeGxFAZCso7J" aria-label="Guccini, playlist and post">
+                        <span class="disc" aria-hidden="true"><span class="disc-spin"><span class="disc-label"></span></span></span>
+                        <span class="sleeve-face"><svg viewBox="0 0 600 600" role="presentation"><rect width="600" height="600" fill="#0e1013"/><circle cx="412" cy="196" r="118" fill="#e9e5dc"/><circle cx="372" cy="170" r="20" fill="#b3aea3"/><circle cx="446" cy="232" r="30" fill="#b3aea3"/><circle cx="430" cy="130" r="11" fill="#b3aea3"/><path d="M0 420H600" stroke="#c4275c" stroke-width="3"/><path d="M0 434H600" stroke="#4fa89e" stroke-width="3"/><g fill="#fff"><text x="38" y="512" font-family="Cormorant Garamond,Georgia,serif" font-size="92" font-weight="400">Guccini</text><text x="38" y="562" font-family="Cormorant Garamond,Georgia,serif" font-size="42" font-style="italic" font-weight="400">playlist</text></g></svg></span>
+                        <span class="sleeve-cap"><b>Guccini</b><br>Playlist &middot; August 2026</span>
+                    </a>
+                    <a class="sleeve" href="../posts/music/music-reggaeton.html" style="--label:#e879f9" data-kick="Playlist &middot; Spotify" data-title="Reggaeton party" data-text="Nostalgia for Spain, the history of the genre from Panamanian dembow to Bad Bunny, and an analysis of its musical characteristics. With a second playlist, Party espa&ntilde;ol." data-cta="Read the post" data-sp="https://open.spotify.com/playlist/4S5pDxuS5jzfGJ53QU78jb" aria-label="Reggaeton party, playlist and post">
                         <span class="disc" aria-hidden="true"><span class="disc-spin"><span class="disc-label"></span></span></span>
                         <span class="sleeve-face"><svg viewBox="0 0 600 600" role="presentation"><rect width="600" height="600" fill="#2d1033"/><rect x="38.0" y="46" width="27" height="50" fill="#fff"/><rect x="71.2" y="46" width="27" height="50" fill="#4a1f55"/><rect x="104.5" y="46" width="27" height="50" fill="#4a1f55"/><rect x="137.8" y="46" width="27" height="50" fill="#e879f9"/><rect x="171.0" y="46" width="27" height="50" fill="#fff"/><rect x="204.2" y="46" width="27" height="50" fill="#4a1f55"/><rect x="237.5" y="46" width="27" height="50" fill="#e879f9"/><rect x="270.8" y="46" width="27" height="50" fill="#4a1f55"/><rect x="304.0" y="46" width="27" height="50" fill="#fff"/><rect x="337.2" y="46" width="27" height="50" fill="#4a1f55"/><rect x="370.5" y="46" width="27" height="50" fill="#4a1f55"/><rect x="403.8" y="46" width="27" height="50" fill="#e879f9"/><rect x="437.0" y="46" width="27" height="50" fill="#fff"/><rect x="470.2" y="46" width="27" height="50" fill="#4a1f55"/><rect x="503.5" y="46" width="27" height="50" fill="#e879f9"/><rect x="536.8" y="46" width="27" height="50" fill="#4a1f55"/><rect x="38.0" y="108" width="27" height="50" fill="#fff"/><rect x="71.2" y="108" width="27" height="50" fill="#4a1f55"/><rect x="104.5" y="108" width="27" height="50" fill="#4a1f55"/><rect x="137.8" y="108" width="27" height="50" fill="#e879f9"/><rect x="171.0" y="108" width="27" height="50" fill="#fff"/><rect x="204.2" y="108" width="27" height="50" fill="#4a1f55"/><rect x="237.5" y="108" width="27" height="50" fill="#e879f9"/><rect x="270.8" y="108" width="27" height="50" fill="#4a1f55"/><rect x="304.0" y="108" width="27" height="50" fill="#fff"/><rect x="337.2" y="108" width="27" height="50" fill="#4a1f55"/><rect x="370.5" y="108" width="27" height="50" fill="#4a1f55"/><rect x="403.8" y="108" width="27" height="50" fill="#e879f9"/><rect x="437.0" y="108" width="27" height="50" fill="#fff"/><rect x="470.2" y="108" width="27" height="50" fill="#4a1f55"/><rect x="503.5" y="108" width="27" height="50" fill="#e879f9"/><rect x="536.8" y="108" width="27" height="50" fill="#4a1f55"/><rect x="38.0" y="170" width="27" height="50" fill="#fff"/><rect x="71.2" y="170" width="27" height="50" fill="#4a1f55"/><rect x="104.5" y="170" width="27" height="50" fill="#4a1f55"/><rect x="137.8" y="170" width="27" height="50" fill="#e879f9"/><rect x="171.0" y="170" width="27" height="50" fill="#fff"/><rect x="204.2" y="170" width="27" height="50" fill="#4a1f55"/><rect x="237.5" y="170" width="27" height="50" fill="#e879f9"/><rect x="270.8" y="170" width="27" height="50" fill="#4a1f55"/><rect x="304.0" y="170" width="27" height="50" fill="#fff"/><rect x="337.2" y="170" width="27" height="50" fill="#4a1f55"/><rect x="370.5" y="170" width="27" height="50" fill="#4a1f55"/><rect x="403.8" y="170" width="27" height="50" fill="#e879f9"/><rect x="437.0" y="170" width="27" height="50" fill="#fff"/><rect x="470.2" y="170" width="27" height="50" fill="#4a1f55"/><rect x="503.5" y="170" width="27" height="50" fill="#e879f9"/><rect x="536.8" y="170" width="27" height="50" fill="#4a1f55"/><rect x="38.0" y="232" width="27" height="50" fill="#fff"/><rect x="71.2" y="232" width="27" height="50" fill="#4a1f55"/><rect x="104.5" y="232" width="27" height="50" fill="#4a1f55"/><rect x="137.8" y="232" width="27" height="50" fill="#e879f9"/><rect x="171.0" y="232" width="27" height="50" fill="#fff"/><rect x="204.2" y="232" width="27" height="50" fill="#4a1f55"/><rect x="237.5" y="232" width="27" height="50" fill="#e879f9"/><rect x="270.8" y="232" width="27" height="50" fill="#4a1f55"/><rect x="304.0" y="232" width="27" height="50" fill="#fff"/><rect x="337.2" y="232" width="27" height="50" fill="#4a1f55"/><rect x="370.5" y="232" width="27" height="50" fill="#4a1f55"/><rect x="403.8" y="232" width="27" height="50" fill="#e879f9"/><rect x="437.0" y="232" width="27" height="50" fill="#fff"/><rect x="470.2" y="232" width="27" height="50" fill="#4a1f55"/><rect x="503.5" y="232" width="27" height="50" fill="#e879f9"/><rect x="536.8" y="232" width="27" height="50" fill="#4a1f55"/><g fill="#fff"><text x="38" y="470" font-family="Cormorant Garamond,Georgia,serif" font-size="74" font-weight="400">Reggaeton</text><text x="38" y="544" font-family="Cormorant Garamond,Georgia,serif" font-size="74" font-style="italic" font-weight="400">Party</text></g></svg></span>
-                        <span class="sleeve-cap"><b>The Reggaeton Party playlist on Spotify</b><br>Post &middot; January 2026</span>
-                    </a>
-                    <a class="sleeve sleeve-album" href="../posts/music/guccini.html#s2" style="--label:#b18a4a" data-kick="Guccini &middot; 1967 &middot; &copy; La Voce del Padrone" data-title="Folk Beat n.1" data-text="A record from the Guccini post, in the chapter &ldquo;Il tre su dieci&rdquo;." data-cta="Read this chapter" aria-label="Folk Beat n.1, 1967, a chapter of the Guccini post">
-                        <span class="disc" aria-hidden="true"><span class="disc-spin"><span class="disc-label"></span></span></span>
-                        <span class="sleeve-face"><img src="../img/post/music/guccini-folk-beat-n1-1967.jpg" alt="" loading="lazy"></span>
-                        <span class="sleeve-cap"><b>Folk Beat n.1</b><br>Guccini &middot; 1967 &middot; &copy; La Voce del Padrone</span>
-                    </a>
-                    <a class="sleeve sleeve-album" href="../posts/music/guccini.html#s3" style="--label:#c98a3c" data-kick="Guccini &middot; 1976 &middot; &copy; EMI Italiana" data-title="Via Paolo Fabbri 43" data-text="A record from the Guccini post, in the chapter &ldquo;Via Paolo Fabbri 43&rdquo;." data-cta="Read this chapter" aria-label="Via Paolo Fabbri 43, 1976, a chapter of the Guccini post">
-                        <span class="disc" aria-hidden="true"><span class="disc-spin"><span class="disc-label"></span></span></span>
-                        <span class="sleeve-face"><img src="../img/post/music/guccini-via-paolo-fabbri-43-1976.jpg" alt="" loading="lazy"></span>
-                        <span class="sleeve-cap"><b>Via Paolo Fabbri 43</b><br>Guccini &middot; 1976 &middot; &copy; EMI Italiana</span>
-                    </a>
-                    <a class="sleeve sleeve-album" href="../posts/music/guccini.html#s4" style="--label:#bca4a2" data-kick="Guccini &middot; 1981 &middot; &copy; EMI Italiana" data-title="Metropolis" data-text="A record from the Guccini post, in the chapter &ldquo;Bologna, il giuramento&rdquo;." data-cta="Read this chapter" aria-label="Metropolis, 1981, a chapter of the Guccini post">
-                        <span class="disc" aria-hidden="true"><span class="disc-spin"><span class="disc-label"></span></span></span>
-                        <span class="sleeve-face"><img src="../img/post/music/guccini-metropolis-1981.jpg" alt="" loading="lazy"></span>
-                        <span class="sleeve-cap"><b>Metropolis</b><br>Guccini &middot; 1981 &middot; &copy; EMI Italiana</span>
-                    </a>
-                    <a class="sleeve sleeve-album" href="../posts/music/guccini.html#s5" style="--label:#a9772f" data-kick="Guccini &middot; 1972 &middot; &copy; EMI Italiana" data-title="Radici" data-text="A record from the Guccini post, in the chapter &ldquo;Il concerto per l&#39;Emilia&rdquo;." data-cta="Read this chapter" aria-label="Radici, 1972, a chapter of the Guccini post">
-                        <span class="disc" aria-hidden="true"><span class="disc-spin"><span class="disc-label"></span></span></span>
-                        <span class="sleeve-face"><img src="../img/post/music/guccini-radici-1972.jpg" alt="" loading="lazy"></span>
-                        <span class="sleeve-cap"><b>Radici</b><br>Guccini &middot; 1972 &middot; &copy; EMI Italiana</span>
-                    </a>
-                    <a class="sleeve sleeve-album" href="../posts/music/guccini.html#s6" style="--label:#8a7a5a" data-kick="Guccini &middot; 1996 &middot; &copy; EMI Italiana" data-title="D&#39;amore di morte e di altre sciocchezze" data-text="A record from the Guccini post, in the chapter &ldquo;Granada, la calcite, i dieci anni di una canzone&rdquo;." data-cta="Read this chapter" aria-label="D&#39;amore di morte e di altre sciocchezze, 1996, a chapter of the Guccini post">
-                        <span class="disc" aria-hidden="true"><span class="disc-spin"><span class="disc-label"></span></span></span>
-                        <span class="sleeve-face"><img src="../img/post/music/guccini-damore-di-morte-1996.jpg" alt="" loading="lazy"></span>
-                        <span class="sleeve-cap"><b>D&#39;amore di morte e di altre sciocchezze</b><br>Guccini &middot; 1996 &middot; &copy; EMI Italiana</span>
-                    </a>
-                    <a class="sleeve sleeve-album" href="../posts/music/guccini.html#s7" style="--label:#b5463a" data-kick="Guccini &middot; 2000 &middot; &copy; BMG Ricordi" data-title="Stagioni" data-text="A record from the Guccini post, in the chapter &ldquo;Padova, la Luna, i mulini a vento&rdquo;." data-cta="Read this chapter" aria-label="Stagioni, 2000, a chapter of the Guccini post">
-                        <span class="disc" aria-hidden="true"><span class="disc-spin"><span class="disc-label"></span></span></span>
-                        <span class="sleeve-face"><img src="../img/post/music/guccini-stagioni-2000.jpg" alt="" loading="lazy"></span>
-                        <span class="sleeve-cap"><b>Stagioni</b><br>Guccini &middot; 2000 &middot; &copy; BMG Ricordi</span>
-                    </a>
-                    <a class="sleeve sleeve-album" href="../posts/music/guccini.html#s8" style="--label:#919596" data-kick="Guccini &middot; 1983 &middot; &copy; EMI Italiana" data-title="Guccini" data-text="A record from the Guccini post, in the chapter &ldquo;Autogrill&rdquo;." data-cta="Read this chapter" aria-label="Guccini, 1983, a chapter of the Guccini post">
-                        <span class="disc" aria-hidden="true"><span class="disc-spin"><span class="disc-label"></span></span></span>
-                        <span class="sleeve-face"><img src="../img/post/music/guccini-guccini-1983.jpg" alt="" loading="lazy"></span>
-                        <span class="sleeve-cap"><b>Guccini</b><br>Guccini &middot; 1983 &middot; &copy; EMI Italiana</span>
-                    </a>
-                    <a class="sleeve sleeve-album" href="../posts/music/guccini.html#s9" style="--label:#9e7964" data-kick="Guccini &middot; 1978 &middot; &copy; EMI Italiana" data-title="Amerigo" data-text="A record from the Guccini post, in the chapter &ldquo;Eskimo&rdquo;." data-cta="Read this chapter" aria-label="Amerigo, 1978, a chapter of the Guccini post">
-                        <span class="disc" aria-hidden="true"><span class="disc-spin"><span class="disc-label"></span></span></span>
-                        <span class="sleeve-face"><img src="../img/post/music/guccini-amerigo-1978.jpg" alt="" loading="lazy"></span>
-                        <span class="sleeve-cap"><b>Amerigo</b><br>Guccini &middot; 1978 &middot; &copy; EMI Italiana</span>
+                        <span class="sleeve-cap"><b>Reggaeton party</b><br>Playlist &middot; March 2026</span>
                     </a>
                 </div>
                 <div class="crate-info" id="crate-info">
                     <p class="crate-info-kick" id="ci-kick"></p>
                     <h2 id="ci-title"></h2>
                     <p class="crate-info-text" id="ci-text"></p>
-                    <a id="ci-link" href="#"></a>
+                    <a id="ci-link" href="#"></a><a id="ci-sp" href="#" target="_blank" rel="noopener">Open on Spotify &nearr;</a>
                 </div>
                 <div class="crate-nav">
                     <button type="button" id="crate-prev" aria-label="Previous record">&larr;</button>
@@ -220,18 +204,37 @@
         <section class="tracks">
             <div class="frame">
                 <h2 class="reveal">Tracklist</h2>
-                <a class="track reveal" href="../posts/music/guccini.html">
+                <p class="pl-lede reveal">A taste of each playlist, live from Spotify. Press play on any track.</p>
+                <article class="pl reveal">
                     <span class="track-no">A1</span>
-                    <h3>Fra la via Emilia e la Luna</h3>
-                    <p>A personal farewell to Francesco Guccini (1940&ndash;2026): a first concert at fourteen, an essay that earned a 3/10, three cities, lunar regolith, and a contract about to expire. Written in Italian.</p>
-                    <span class="track-date">August 2026</span>
-                </a>
-                <a class="track reveal" href="../posts/music/music-reggaeton.html">
+                    <div class="pl-text">
+                        <p class="pl-date">November 2026</p>
+                        <h3>MyBossa</h3>
+                        <p>Bossa nova, the music that came out of Rio de Janeiro in the late 1950s: the playlist, and the rhythm behind it.</p>
+                        <p class="pl-links"><a href="../posts/music/music-bossa-nova.html">Read the post</a><a href="https://open.spotify.com/playlist/72chZUnvjFvC0kvDjXSnlD" target="_blank" rel="noopener">Open on Spotify &nearr;</a></p>
+                    </div>
+                    <div class="pl-embed"><iframe title="MyBossa, Spotify playlist" src="https://open.spotify.com/embed/playlist/72chZUnvjFvC0kvDjXSnlD" height="352" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe></div>
+                </article>
+                <article class="pl reveal">
                     <span class="track-no">A2</span>
-                    <h3>The Reggaeton Party playlist on Spotify</h3>
-                    <p>Nostalgia for Spain, the history of the genre from Panamanian dembow to Bad Bunny, and an analysis of its musical characteristics (BPM, percussive structure, use of vocals).</p>
-                    <span class="track-date">January 2026</span>
-                </a>
+                    <div class="pl-text">
+                        <p class="pl-date">August 2026</p>
+                        <h3>Guccini</h3>
+                        <p>The playlist behind a personal farewell to Francesco Guccini (1940&ndash;2026). The post is written in Italian.</p>
+                        <p class="pl-links"><a href="../posts/music/guccini.html">Read the post</a><a href="https://open.spotify.com/playlist/51dS5HcfRgxeGxFAZCso7J" target="_blank" rel="noopener">Open on Spotify &nearr;</a></p>
+                    </div>
+                    <div class="pl-embed"><iframe title="Guccini, Spotify playlist" src="https://open.spotify.com/embed/playlist/51dS5HcfRgxeGxFAZCso7J" height="352" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe></div>
+                </article>
+                <article class="pl reveal">
+                    <span class="track-no">A3</span>
+                    <div class="pl-text">
+                        <p class="pl-date">March 2026</p>
+                        <h3>Reggaeton party</h3>
+                        <p>Nostalgia for Spain, the history of the genre from Panamanian dembow to Bad Bunny, and an analysis of its musical characteristics.</p>
+                        <p class="pl-links"><a href="../posts/music/music-reggaeton.html">Read the post</a><a href="https://open.spotify.com/playlist/4S5pDxuS5jzfGJ53QU78jb" target="_blank" rel="noopener">Open on Spotify &nearr;</a></p>
+                    </div>
+                    <div class="pl-embed"><div class="pl-chips"><button type="button" data-id="4S5pDxuS5jzfGJ53QU78jb" aria-pressed="true">Reggaeton party</button><button type="button" data-id="6xsoL8YNPbQdRuCmayyiEa" aria-pressed="false">Party español</button></div><iframe title="Reggaeton party, Spotify playlist" src="https://open.spotify.com/embed/playlist/4S5pDxuS5jzfGJ53QU78jb" height="352" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe></div>
+                </article>
             </div>
         </section>
     </main>
@@ -241,6 +244,17 @@
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
     <script src="../js/site.js?v=3" defer></script>
     <script>
+    document.querySelectorAll('.pl-chips').forEach(function (box) {
+      var f = box.parentNode.querySelector('iframe');
+      box.querySelectorAll('button').forEach(function (b) {
+        b.addEventListener('click', function () {
+          box.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
+          f.src = 'https://open.spotify.com/embed/playlist/' + b.dataset.id;
+        });
+      });
+    });
+    </script>
+    <script>
     (function () {
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       var crate = document.getElementById('crate');
@@ -249,7 +263,7 @@
       var n = sleeves.length;
       var info = document.getElementById('crate-info');
       var kick = document.getElementById('ci-kick'), title = document.getElementById('ci-title'),
-          text = document.getElementById('ci-text'), link = document.getElementById('ci-link'),
+          text = document.getElementById('ci-text'), link = document.getElementById('ci-link'), spl = document.getElementById('ci-sp'),
           count = document.getElementById('crate-count');
       document.body.classList.add('is-crate');
       crate.style.height = 'calc(100vh + ' + (n - 1) * 62 + 'vh)';
@@ -282,7 +296,7 @@
         var d = sleeves[i].dataset;
         var apply = function () {
           kick.innerHTML = d.kick; title.innerHTML = d.title; text.innerHTML = d.text;
-          link.innerHTML = d.cta; link.href = sleeves[i].getAttribute('href');
+          link.innerHTML = d.cta; link.href = sleeves[i].getAttribute('href'); spl.href = d.sp;
           count.textContent = (i < 9 ? '0' : '') + (i + 1) + ' / ' + (n < 10 ? '0' : '') + n;
           info.classList.remove('is-out');
         };

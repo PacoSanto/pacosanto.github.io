@@ -118,6 +118,9 @@
     .rgt-close-grid { display: grid; grid-template-columns: minmax(0,6fr) minmax(0,6fr); gap: clamp(2rem,5vw,5rem); align-items: center; }
     .rgt-close p { font-family: var(--font-display); font-size: clamp(1.55rem,2.5vw,2.25rem); line-height: 1.28; color: var(--color-ink); margin: 0; }
     .rgt-spotify { width: 100%; height: 352px; border: 0; display: block; background: var(--rgt-plum); }
+    .rgt-chips { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: .7rem; }
+    .rgt-chips button { min-height: 40px; padding: .35rem 1rem; background: none; border: 1px solid var(--color-sandstone); font: 600 .92rem var(--font-body); color: var(--color-ink); cursor: pointer; transition: background .2s, color .2s; }
+    .rgt-chips button[aria-pressed="true"] { background: var(--rgt-plum); border-color: var(--rgt-plum); color: #fff; }
     .rgt-pnav { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; margin-top: clamp(3rem,5vw,4.5rem); padding-top: 1.5rem; border-top: 1px solid var(--border); }
 
     @media (max-width: 860px) {
@@ -223,7 +226,10 @@
             <div class="frame">
                 <div class="rgt-close-grid">
                     <p class="reveal">Music has a way of anchoring memories. For me, reggaeton is now permanently linked to sunburnt evenings in the Albaicín, cheap tinto de verano, and the sound of friends laughing too loud. Not bad for a genre I used to ignore.</p>
-                    <iframe class="rgt-spotify reveal" title="Reggaeton Party playlist on Spotify" src="https://open.spotify.com/embed/playlist/4S5pDxuS5jzfGJ53QU78jb" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+                    <div class="rgt-pl reveal">
+                        <div class="rgt-chips"><button type="button" data-id="4S5pDxuS5jzfGJ53QU78jb" aria-pressed="true">Reggaeton party</button><button type="button" data-id="6xsoL8YNPbQdRuCmayyiEa" aria-pressed="false">Party español</button></div>
+                        <iframe class="rgt-spotify" id="rgt-embed" title="Reggaeton playlists on Spotify" src="https://open.spotify.com/embed/playlist/4S5pDxuS5jzfGJ53QU78jb" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+                    </div>
                 </div>
                 <div class="rgt-pnav">
                     <a href="/hobbies/music.html" class="back-link">Back to Music</a>
@@ -442,6 +448,14 @@
       }
       requestAnimationFrame(frame);
     })();
+    </script>
+    <script>
+    document.querySelectorAll('.rgt-chips button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        document.querySelectorAll('.rgt-chips button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
+        document.getElementById('rgt-embed').src = 'https://open.spotify.com/embed/playlist/' + b.dataset.id;
+      });
+    });
     </script>
 </body>
 </html>

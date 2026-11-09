@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyBossa: a Bossa Nova Playlist | Francesco Santoro De Vico</title>
+    <meta name="description" content="MyBossa, a bossa nova playlist on Spotify, and a small groove you can edit and play: nylon guitar, bass and rim click over a four-chord loop.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fsdv.eu/posts/music/music-bossa-nova.html">
+    <meta property="og:title" content="MyBossa: a Bossa Nova Playlist">
+    <meta property="og:description" content="A bossa nova playlist on Spotify, and the rhythm behind it to play with.">
+    <meta property="og:image" content="https://fsdv.eu/img/post/music/music-bossa-nova-og.jpg">
+    <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
+    <link rel="stylesheet" href="/css/style.css?v=3">
+    <style>
+    /* MYBOSSA. A playlist page whose picture is the rhythm: the wave band of the Copacabana
+       pavement moves with a small bossa groove you can edit. Cream, sea and one sun. */
+    .bn { --bn-sea: #1f5f78; --bn-sun: #e0733f; --bn-cream: #f1e6cf; background: var(--color-chalk); }
+    .bn .site-footer { margin-top: 0; }
+    .bn-clip { overflow-x: clip; }
+
+    .bn-hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; color: #fff; background: linear-gradient(#0e3342, #14485b 60%, #1f5f78); }
+    .bn-hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .bn-hero::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to top, rgba(8,32,43,.94) 6%, rgba(8,32,43,.55) 38%, transparent 64%); }
+    .bn-sun { position: absolute; right: 12%; top: 16%; width: clamp(120px,22vw,300px); aspect-ratio: 1; border-radius: 50%; background: var(--bn-sun); opacity: .95; }
+    .bn-hero .frame { position: relative; z-index: 2; width: 100%; padding-bottom: clamp(2rem,5vw,4rem); }
+    .bn-hero .back-link { color: rgba(255,255,255,.85); }
+    .bn-hero .back-link:hover { color: #fff; }
+    .bn-kick { margin: 1.2rem 0 .8rem; font-family: var(--font-mono); font-size: .76rem; letter-spacing: .1em; text-transform: uppercase; color: #f5c9a8; }
+    .bn-hero h1 { color: #fff; font-weight: 300; font-size: clamp(3.4rem,9vw,8.4rem); line-height: .92; margin: 0 0 1.2rem; }
+    .bn-hero h1 em { display: block; font-size: .42em; line-height: 1.1; margin-top: .2em; }
+    .bn-lede { max-width: 38rem; margin: 0; font-size: clamp(1.05rem,1.6vw,1.3rem); line-height: 1.55; color: rgba(255,255,255,.88); }
+
+    .bn h2 { font-weight: 300; font-size: clamp(2.3rem,4.6vw,3.8rem); line-height: 1.04; margin: 0 0 1.4rem; color: var(--color-ink); }
+    .bn-list { padding: clamp(3.5rem,7vw,6rem) 0; background: var(--bn-cream); }
+    .bn-list-grid { display: grid; grid-template-columns: minmax(0,5fr) minmax(0,7fr); gap: clamp(1.5rem,4vw,4rem); align-items: start; }
+    .bn-list p { font-size: 1.14rem; line-height: 1.65; color: var(--color-ink); margin: 0 0 1.2rem; }
+    .bn-list a { color: var(--color-ink); border-bottom: 1px solid var(--color-amber); }
+    .bn-list a:hover { color: var(--bn-sun); }
+    .bn-list iframe { display: block; width: 100%; height: 420px; border: 0; border-radius: 12px; background: #14485b; }
+
+    .bn-mach { background: var(--color-night); color: #fff; padding: clamp(3.5rem,7vw,6rem) 0; }
+    .bn-mach h2 { color: #fff; }
+    .bn-mach-intro { max-width: 40rem; margin: 0 0 1.8rem; font-size: 1.1rem; line-height: 1.6; color: rgba(255,255,255,.82); }
+    .bn-wave { position: relative; margin-bottom: 1.4rem; }
+    .bn-wave canvas { display: block; width: 100%; height: clamp(150px,22vw,250px); background: #0f2f3c; }
+    .bn-chord { position: absolute; left: 1rem; top: .7rem; font-family: var(--font-display); font-size: clamp(1.6rem,3vw,2.4rem); color: #fff; }
+    .bn-grid { display: grid; gap: .5rem; }
+    .bn-lane { display: grid; grid-template-columns: 5.5rem minmax(0,1fr); gap: .8rem; align-items: center; }
+    .bn-lane > span { font-family: var(--font-mono); font-size: .74rem; letter-spacing: .04em; color: rgba(255,255,255,.75); }
+    .bn-steps { display: grid; grid-template-columns: repeat(16,minmax(0,1fr)); gap: 4px; }
+    .bn-steps button { height: clamp(30px,4vw,42px); padding: 0; border: 0; background: rgba(255,255,255,.1); cursor: pointer; transition: background .15s, transform .15s; }
+    .bn-steps button:nth-child(4n+1) { background: rgba(255,255,255,.18); }
+    .bn-steps button.on { background: var(--bn-sun); }
+    .bn-steps button.now { transform: scaleY(1.18); box-shadow: 0 0 0 2px rgba(255,255,255,.65); }
+    .bn-ctrl { display: flex; flex-wrap: wrap; align-items: center; gap: .7rem 1.6rem; margin-top: 1.4rem; }
+    .bn-ctrl button { min-height: 44px; padding: .5rem 1.4rem; border: 0; background: var(--bn-sun); color: #fff; font: 600 1rem var(--font-body); cursor: pointer; transition: background .25s; }
+    .bn-ctrl button:hover { background: #ee8a5a; }
+    .bn-ctrl button.ghost { background: none; border: 1px solid rgba(255,255,255,.4); }
+    .bn-ctrl label { display: flex; align-items: center; gap: .7rem; font-family: var(--font-mono); font-size: .8rem; color: rgba(255,255,255,.85); }
+    .bn-ctrl input { width: min(46vw,220px); accent-color: var(--bn-sun); }
+    .bn-note { margin: 1rem 0 0; font-size: .9rem; line-height: 1.45; color: rgba(255,255,255,.6); max-width: 62ch; }
+
+    .bn-roots { padding: clamp(3.5rem,7vw,6rem) 0; }
+    .bn-roots-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: clamp(1.2rem,3vw,3rem); margin-top: 2rem; }
+    .bn-card { padding-top: .9rem; border-top: 3px solid var(--bn-sea); }
+    .bn-card b { display: block; font-family: var(--font-display); font-weight: 400; font-size: clamp(1.7rem,2.6vw,2.3rem); line-height: 1.05; color: var(--color-ink); }
+    .bn-card span { display: block; margin: .4rem 0 .7rem; font-family: var(--font-mono); font-size: .74rem; letter-spacing: .06em; text-transform: uppercase; color: var(--bn-sun); }
+    .bn-card p { margin: 0; font-size: 1.04rem; line-height: 1.6; color: var(--color-slate); }
+    .bn-src { margin: 1.6rem 0 0; font-size: .86rem; color: var(--color-slate); }
+    .bn-src a { color: inherit; border-bottom: 1px solid var(--color-sandstone); }
+    .bn-end { padding: 0 0 clamp(4rem,8vw,7rem); }
+    .bn-pnav { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; padding-top: 1.4rem; border-top: 1px solid var(--border); }
+
+    @media (max-width: 860px) {
+      .bn-list-grid, .bn-roots-grid { grid-template-columns: 1fr; }
+      .bn-lane { grid-template-columns: 1fr; gap: .25rem; }
+      .bn-steps { gap: 3px; }
+    }
+    </style>
+</head>
+<body class="has-cover bn">
+    <div id="site-header"></div>
+    <div class="bn-clip">
+    <header class="bn-hero">
+        <canvas id="bn-bg" aria-hidden="true"></canvas>
+        <div class="bn-sun" aria-hidden="true"></div>
+        <div class="frame">
+            <a href="/hobbies/music.html" class="back-link">Back to Music</a>
+            <p class="bn-kick">Playlist &nbsp;·&nbsp; Bossa nova &nbsp;·&nbsp; November 2026</p>
+            <h1>MyBossa <em>a bossa nova playlist</em></h1>
+            <p class="bn-lede">Bossa nova, the music that came out of Rio de Janeiro in the late 1950s. The playlist is below, and so is the rhythm behind it, to play with.</p>
+        </div>
+    </header>
+
+    <section class="bn-list">
+        <div class="frame bn-list-grid">
+            <div class="reveal">
+                <h2>The playlist</h2>
+                <!-- [YOUR TEXT: why these songs, what bossa nova means to you. Write it here, in English.] -->
+                <p>Press play, or <a href="https://open.spotify.com/playlist/72chZUnvjFvC0kvDjXSnlD" target="_blank" rel="noopener">open it on Spotify</a>.</p>
+            </div>
+            <iframe class="reveal" title="MyBossa, Spotify playlist" src="https://open.spotify.com/embed/playlist/72chZUnvjFvC0kvDjXSnlD" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+        </div>
+    </section>
+
+    <section class="bn-mach">
+        <div class="frame">
+            <h2 class="reveal">The rhythm</h2>
+            <p class="bn-mach-intro reveal">Bossa nova is carried by the nylon-string guitar, which plays bass and chords at once, over a syncopated pattern. Switch the squares on and off, press play, and watch the wave follow.</p>
+            <div class="bn-wave reveal"><canvas id="bn-wave"></canvas><span class="bn-chord" id="bn-chord">Dm7</span></div>
+            <div class="bn-grid reveal" id="bn-grid"></div>
+            <div class="bn-ctrl">
+                <button type="button" id="bn-play">Play</button>
+                <button type="button" class="ghost" id="bn-reset">Reset the groove</button>
+                <label for="bn-bpm"><span id="bn-bpm-v">112 BPM</span><input id="bn-bpm" type="range" min="80" max="140" value="112"></label>
+            </div>
+            <p class="bn-note">A simplified groove for illustration, not a transcription: a four-bar loop of Dm7, G7, Cmaj7 and A7, synthesised live in your browser. The pattern of five hits in the top lane is the one usually counted 3-3-4-3-3.</p>
+        </div>
+    </section>
+
+    <section class="bn-roots">
+        <div class="frame">
+            <h2 class="reveal">Where it comes from</h2>
+            <div class="bn-roots-grid">
+                <div class="bn-card reveal"><b>Rio de Janeiro</b><span>late 1950s</span><p>Bossa nova took shape in the wealthy South Zone of Rio, in neighbourhoods such as Ipanema and Copacabana.</p></div>
+                <div class="bn-card reveal"><b>Chega de Saudade</b><span>1958</span><p>Written by Antônio Carlos Jobim and Vinícius de Moraes and recorded by João Gilberto, the song is widely credited with launching the movement.</p></div>
+                <div class="bn-card reveal"><b>Getz/Gilberto</b><span>recorded 1963, released 1964</span><p>The album with saxophonist Stan Getz took the style around the world. It carries "The Girl from Ipanema", sung by Astrud Gilberto in English and by João in Portuguese.</p></div>
+            </div>
+            <p class="bn-src reveal">Sources: <a href="https://www.encyclopedia.com/arts/culture-magazines/bossa-nova" target="_blank" rel="noopener">Encyclopedia.com, Bossa Nova</a> and the <a href="https://en.wikipedia.org/wiki/Bossa_nova" target="_blank" rel="noopener">Wikipedia entry</a>. Sources differ on whether the first release of "Chega de Saudade" is dated 1958 or 1959.</p>
+        </div>
+    </section>
+
+    <section class="bn-end">
+        <div class="frame">
+            <div class="bn-pnav">
+                <a href="/hobbies/music.html" class="back-link">Back to Music</a>
+                <a href="/hobbies.html" class="back-link">All Hobbies &amp; Blog</a>
+            </div>
+        </div>
+    </section>
+    </div>
+    <div id="site-footer"></div>
+    <script src="/js/components.js?v=3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+    <script src="/js/site.js?v=3" defer></script>
+    <script>
+    (function () {
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var $ = function (id) { return document.getElementById(id); };
+
+      // ---- waves: the black-and-white pavement of the Copacabana promenade, in sea colours ----
+      function waves(cv, getAmp, light) {
+        var x = cv.getContext('2d'), t0 = performance.now(), vis = true;
+        function fit() { var d = Math.min(devicePixelRatio || 1, 2); cv.width = cv.clientWidth * d; cv.height = cv.clientHeight * d; x.setTransform(d, 0, 0, d, 0, 0); }
+        fit(); addEventListener('resize', fit);
+        if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { vis = e[0].isIntersecting; }).observe(cv);
+        function draw(ts) {
+          requestAnimationFrame(draw);
+          if (!vis) return;
+          var w = cv.clientWidth, h = cv.clientHeight, t = (ts - t0) / 1000, amp = getAmp();
+          x.clearRect(0, 0, w, h);
+          var bands = 7, bh = h / bands;
+          for (var k = 0; k < bands; k++) {
+            x.beginPath();
+            for (var px = 0; px <= w; px += 6) {
+              var y = bh * (k + .7) + Math.sin(px / 70 + t * (.5 + k * .06) + k) * (bh * (.18 + amp * .5)) + Math.sin(px / 23 - t * .8) * amp * bh * .2;
+              px ? x.lineTo(px, y) : x.moveTo(px, y);
+            }
+            x.lineWidth = bh * .42; x.lineCap = 'round';
+            x.strokeStyle = (k % 2 ? 'rgba(241,230,207,' : 'rgba(31,95,120,') + (light ? .85 : .4) + ')';
+            x.stroke();
+          }
+        }
+        requestAnimationFrame(draw);
+      }
+      waves($('bn-bg'), function () { return .06; }, false);
+
+      // ---- the groove ----
+      var LANES = [
+        { id: 'rim', name: 'Rim click', on: [0,3,6,10,13] },
+        { id: 'gtr', name: 'Violão', on: [3,6,10,13] },
+        { id: 'bass', name: 'Bass', on: [0,6,8,14] }
+      ];
+      var CHORDS = [
+        { n: 'Dm7', root: 38, notes: [53,57,60,64] },
+        { n: 'G7', root: 43, notes: [53,55,59,65] },
+        { n: 'Cmaj7', root: 36, notes: [52,55,59,64] },
+        { n: 'A7', root: 45, notes: [52,55,57,61] }
+      ];
+      var state = {}, cells = {};
+      var grid = $('bn-grid');
+      function build() {
+        grid.innerHTML = ''; cells = {};
+        LANES.forEach(function (l) {
+          state[l.id] = state[l.id] || []; state[l.id].length = 16;
+          for (var i = 0; i < 16; i++) state[l.id][i] = l.on.indexOf(i) >= 0;
+          var row = document.createElement('div'); row.className = 'bn-lane';
+          row.innerHTML = '<span>' + l.name + '</span><div class="bn-steps"></div>';
+          var box = row.querySelector('.bn-steps'); cells[l.id] = [];
+          for (i = 0; i < 16; i++) (function (i) {
+            var b = document.createElement('button'); b.type = 'button';
+            b.setAttribute('aria-label', l.name + ', step ' + (i + 1)); b.setAttribute('aria-pressed', state[l.id][i]);
+            if (state[l.id][i]) b.className = 'on';
+            b.addEventListener('click', function () { state[l.id][i] = !state[l.id][i]; b.classList.toggle('on', state[l.id][i]); b.setAttribute('aria-pressed', state[l.id][i]); });
+            box.appendChild(b); cells[l.id][i] = b;
+          })(i);
+          grid.appendChild(row);
+        });
+      }
+      build();
+      $('bn-reset').addEventListener('click', build);
+
+      var ctx, master, nz, playing = false, step = 0, bar = 0, nextT = 0, timer, bpm = 112, queue = [], energy = 0;
+      function init() {
+        ctx = new (window.AudioContext || window.webkitAudioContext)();
+        var comp = ctx.createDynamicsCompressor(); master = ctx.createGain(); master.gain.value = .0001;
+        master.connect(comp); comp.connect(ctx.destination);
+        nz = ctx.createBuffer(1, ctx.sampleRate * .1, ctx.sampleRate);
+        var d = nz.getChannelData(0); for (var i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+      }
+      function hz(m) { return 440 * Math.pow(2, (m - 69) / 12); }
+      function env(g, t, peak, dur) { g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(peak, t + .006); g.gain.exponentialRampToValueAtTime(.0001, t + dur); }
+      function pluck(t, m, v, dur) {
+        var o = ctx.createOscillator(), f = ctx.createBiquadFilter(), g = ctx.createGain();
+        o.type = 'triangle'; o.frequency.value = hz(m);
+        f.type = 'lowpass'; f.frequency.setValueAtTime(2600, t); f.frequency.exponentialRampToValueAtTime(700, t + dur);
+        env(g, t, v, dur); o.connect(f); f.connect(g); g.connect(master); o.start(t); o.stop(t + dur + .05);
+      }
+      function bassNote(t, m) {
+        var o = ctx.createOscillator(), g = ctx.createGain(); o.type = 'sine'; o.frequency.value = hz(m);
+        env(g, t, .55, .42); o.connect(g); g.connect(master); o.start(t); o.stop(t + .45);
+      }
+      function rim(t) {
+        var s = ctx.createBufferSource(), f = ctx.createBiquadFilter(), g = ctx.createGain();
+        s.buffer = nz; f.type = 'bandpass'; f.frequency.value = 2400; f.Q.value = 3;
+        env(g, t, .22, .05); s.connect(f); f.connect(g); g.connect(master); s.start(t); s.stop(t + .06);
+      }
+      function schedule(st, b, t) {
+        var c = CHORDS[b];
+        if (state.rim[st]) rim(t);
+        if (state.gtr[st]) c.notes.forEach(function (m, i) { pluck(t + i * .009, m, .2, .55); });
+        if (state.bass[st]) bassNote(t, st >= 8 && st !== 14 ? c.root + 7 : c.root + (st === 14 ? 7 : 0));
+      }
+      function pump() {
+        var sx = 60 / bpm / 4;
+        while (nextT < ctx.currentTime + .12) {
+          schedule(step, bar, nextT); queue.push({ s: step, b: bar, t: nextT });
+          nextT += sx; step++; if (step === 16) { step = 0; bar = (bar + 1) % 4; }
+        }
+      }
+      function setPlaying(on) {
+        playing = on; $('bn-play').textContent = on ? 'Stop' : 'Play';
+        if (!on) { Object.keys(cells).forEach(function (k) { cells[k].forEach(function (c) { c.classList.remove('now'); }); }); }
+      }
+      $('bn-play').addEventListener('click', function () {
+        if (playing) { clearInterval(timer); master.gain.setTargetAtTime(.0001, ctx.currentTime, .04); setPlaying(false); return; }
+        if (!ctx) init(); ctx.resume();
+        master.gain.cancelScheduledValues(ctx.currentTime); master.gain.setValueAtTime(.9, ctx.currentTime);
+        step = 0; bar = 0; queue = []; nextT = ctx.currentTime + .06; pump(); timer = setInterval(pump, 25); setPlaying(true);
+      });
+      $('bn-bpm').addEventListener('input', function () { bpm = +this.value; $('bn-bpm-v').textContent = bpm + ' BPM'; });
+      document.addEventListener('visibilitychange', function () { if (document.hidden && playing) $('bn-play').click(); });
+
+      // the wave breathes with what is played
+      var last = null;
+      function tickVis() {
+        requestAnimationFrame(tickVis);
+        energy *= .94;
+        if (!playing) return;
+        var now = ctx.currentTime, cur = null;
+        while (queue.length && queue[0].t <= now) cur = queue.shift();
+        if (cur) {
+          if (last) Object.keys(cells).forEach(function (k) { cells[k][last.s].classList.remove('now'); });
+          Object.keys(cells).forEach(function (k) { cells[k][cur.s].classList.add('now'); });
+          $('bn-chord').textContent = CHORDS[cur.b].n; last = cur;
+          if (state.gtr[cur.s]) energy = 1; else if (state.rim[cur.s] || state.bass[cur.s]) energy = Math.max(energy, .55);
+        }
+      }
+      requestAnimationFrame(tickVis);
+      waves($('bn-wave'), function () { return .1 + energy * .9; }, true);
+    })();
+    </script>
+</body>
+</html>

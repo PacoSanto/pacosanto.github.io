@@ -4,106 +4,454 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Dolomites: Walking Through the Geology of Wonder | Francesco Santoro De Vico</title>
-    <link rel="stylesheet" href="../../css/style.css">
-        <style>
-        .blog-post-body h2{margin-top:2.4em}
-        .hero-img{width:100%;max-height:480px;object-fit:cover;border-radius:12px;margin-bottom:.6em}
-        .highlight-box{background:linear-gradient(135deg,#1a1a2e,#16213e);color:#e0e0e0;border-radius:12px;padding:2em 2.2em;margin:2em 0;border-left:4px solid #f59e0b;font-size:1.05em;line-height:1.7}
-        .highlight-box strong{color:#fbbf24}
-        .callout{background:#fefce8;border:1px solid #f59e0b;border-radius:10px;padding:1.4em 1.6em;margin:1.5em 0;font-size:.95em}
-        .callout .callout-title{font-weight:700;color:#b45309;margin-bottom:.4em}
-        .timeline{position:relative;padding-left:2.5em;margin:2em 0}
-        .timeline::before{content:'';position:absolute;left:.7em;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,#f59e0b,#ef4444);border-radius:2px}
-        .timeline-step{position:relative;margin-bottom:1.6em;padding-left:1em}
-        .timeline-step::before{content:'';position:absolute;left:-1.95em;top:.35em;width:14px;height:14px;border-radius:50%;background:#f59e0b;border:3px solid #fff;box-shadow:0 0 0 2px #f59e0b}
-        .timeline-step h3{margin:0 0 .3em;font-size:1.05em;color:#1a1a2e}
-        .timeline-step p{margin:0;font-size:.95em;color:#444;line-height:1.6}
-        .key-number-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.2em;margin:2em 0}
-        .key-number{background:#fffbeb;border-radius:10px;padding:1.5em;text-align:center}
-        .key-number .number{font-size:2.2em;font-weight:700;color:#b45309;display:block;line-height:1.1}
-        .key-number .label{font-size:.85em;color:#555;margin-top:.4em;display:block}
+    <meta name="description" content="Nine Dolomite systems, 250 million years of geology, the dolomite problem and the enrosadira, from a guide at the University of Padova's exhibition.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fsdv.eu/posts/geology/geology-Dolomiti-unesco.html">
+    <meta property="og:title" content="The Dolomites: Walking Through the Geology of Wonder">
+    <meta property="og:description" content="Nine Dolomite systems, 250 million years of geology, the dolomite problem and the enrosadira.">
+    <meta property="og:image" content="https://fsdv.eu/img/post/geology/dolomiti-og.jpg">
+    <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
+    <link rel="stylesheet" href="/css/style.css?v=3">
+    <style>
+    /* An exhibition walk: a real sunset you can relight, a section plate drawn in
+       standard lithology patterns, and the acid test Dolomieu started from. */
+    .dl { --dl-rose: #f0a58f; --dl-pale: #efe8d9; background: var(--color-chalk); }
+    .dl .site-footer { margin-top: 0; }
+    .dl h2 { font-weight: 300; font-size: clamp(2.4rem,5vw,4.2rem); line-height: 1.04; margin: 0 0 1.5rem; color: var(--color-ink); }
+
+    /* hero */
+    .dl-hero { position: relative; height: 100vh; height: 100svh; min-height: 620px; overflow: hidden; background: var(--color-night); color: #fff; display: flex; align-items: flex-end; }
+    .dl-hero img, .dl-hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
+    .dl-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(13,15,12,.9) 4%, rgba(13,15,12,.24) 40%, transparent 62%), linear-gradient(to bottom, rgba(13,15,12,.42), transparent 18%); pointer-events: none; }
+    .dl-hero .frame { position: relative; z-index: 2; width: 100%; padding-bottom: clamp(1.75rem,4vw,3.25rem); }
+    .dl-hero .back-link { color: rgba(255,255,255,.85); }
+    .dl-hero .back-link:hover { color: #fff; }
+    .dl-date { font-family: var(--font-mono); font-size: .76rem; letter-spacing: .1em; text-transform: uppercase; color: var(--dl-rose); margin: 1.1rem 0 .7rem; }
+    .dl-hero h1 { color: #fff; font-weight: 300; font-size: clamp(2.9rem,7.2vw,6.6rem); line-height: .98; margin: 0; max-width: 16ch; }
+    .dl-hero h1 em { display: block; }
+    .dl-credit { position: absolute; z-index: 2; right: var(--gutter); bottom: .6rem; font-size: .74rem; color: rgba(255,255,255,.72); margin: 0; }
+    .dl-credit a { color: inherit; border-bottom: 1px solid rgba(255,255,255,.4); }
+
+    /* opening */
+    .dl-open { padding: clamp(3.5rem,7vw,6.5rem) 0 clamp(3rem,6vw,5rem); }
+    .dl-open-grid { display: grid; grid-template-columns: minmax(0,7fr) minmax(0,5fr); gap: clamp(2rem,5vw,5rem); align-items: start; }
+    .dl-lead { font-family: var(--font-display); font-size: clamp(1.6rem,2.7vw,2.35rem); line-height: 1.24; color: var(--color-ink); margin: 0 0 1.75rem; }
+    .dl-lead strong { font-weight: 500; }
+    .dl-body { font-size: 1.14rem; line-height: 1.68; color: var(--color-ink); margin: 0 0 1.3rem; }
+    .dl-body a, .dl-close a { color: var(--color-ink); border-bottom: 1px solid var(--color-amber); }
+    .dl-body a:hover, .dl-close a:hover { color: var(--color-amber); }
+    .dl-team { margin: 0; }
+    .dl-team img { display: block; width: 100%; height: auto; }
+    .dl-team figcaption { margin-top: .6rem; font-size: .92rem; line-height: 1.4; color: var(--color-slate); }
+
+    /* the plate */
+    .dl-plate-open { background: var(--dl-pale); padding: clamp(3.5rem,6vw,5.5rem) 0 clamp(1rem,2vw,1.5rem); }
+    .dl-plate-open .dl-body { max-width: 46rem; margin: 0; }
+    .plate { background: var(--dl-pale); }
+    .plate-stage { padding: clamp(3rem,6vw,5rem) 0; }
+    .plate-svg { display: block; width: 100%; height: auto; background: #f7f2e7; border: 1px solid #c9bda6; }
+    .plate-svg text { font-family: var(--font-body); font-size: 19px; font-weight: 600; fill: #33332b; }
+    .plate-svg .plate-labels [fill="#fff"] { fill: #fff; }
+    .plate-ticks, .plate-steps { display: block; }
+    .plate-ticks { display: none; }
+    .plate-step { padding: 1.1rem 0; border-top: 1px solid #c9bda6; }
+    .plate-step h3 { font-weight: 400; font-size: clamp(1.7rem,2.9vw,2.5rem); line-height: 1.08; margin: 0 0 .5rem; color: var(--color-ink); }
+    .plate-step p { font-size: 1.08rem; line-height: 1.55; color: var(--color-slate); margin: 0; max-width: 62ch; }
+    .plate-svg [class^="s"], .plate-svg .dl-sea, .plate-svg .dl-past, .plate-svg .dl-now, .plate-labels text, .plate-labels g { transition: opacity .8s ease, transform 1.2s var(--ease-out); }
+    /* one visual state per step, set by data-step on the svg; final view by default */
+    .plate-svg .dl-past, .plate-svg .s0x, .plate-svg .only0, .plate-svg .only01, .plate-svg .only1, .plate-svg .only2, .plate-svg .only3, .plate-svg .dl-sea, .plate-svg .dl-feet { opacity: 0; }
+    .plate-svg[data-step] .s1, .plate-svg[data-step] .s2, .plate-svg[data-step] .s3, .plate-svg[data-step] .s4, .plate-svg[data-step] .dl-now, .plate-svg[data-step] .only4 { opacity: 0; }
+    .plate-svg[data-step] .dl-past, .plate-svg[data-step] .dl-sea { opacity: 1; }
+    .plate-svg[data-step] .dl-now { transform: translateY(70px); }
+    .plate-svg[data-step="0"] .s0x, .plate-svg[data-step="0"] .only0, .plate-svg[data-step="0"] .only01 { opacity: 1; }
+    .plate-svg[data-step="1"] .s1, .plate-svg[data-step="1"] .only1, .plate-svg[data-step="1"] .only01 { opacity: 1; }
+    .plate-svg[data-step="2"] .s1, .plate-svg[data-step="2"] .s2, .plate-svg[data-step="2"] .only2 { opacity: 1; }
+    .plate-svg[data-step="3"] .s1, .plate-svg[data-step="3"] .s2, .plate-svg[data-step="3"] .s3, .plate-svg[data-step="3"] .only3, .plate-svg[data-step="3"] .dl-feet { opacity: 1; }
+    .plate-svg[data-step="4"] .s1, .plate-svg[data-step="4"] .s2, .plate-svg[data-step="4"] .s3, .plate-svg[data-step="4"] .s4, .plate-svg[data-step="4"] .dl-now, .plate-svg[data-step="4"] .only4 { opacity: 1; }
+    .plate-svg[data-step="4"] .dl-past, .plate-svg[data-step="4"] .dl-sea { opacity: 0; }
+    .plate-svg[data-step="4"] .dl-now { transform: none; }
+    /* sea level per step */
+    .plate-svg .dl-sea { transform-box: view-box; }
+    .plate-svg[data-step="0"] .dl-sea { transform: translateY(395px); }
+    .plate-svg[data-step="1"] .dl-sea, .plate-svg[data-step="2"] .dl-sea { transform: translateY(218px); }
+    .plate-svg[data-step="3"] .dl-sea { transform: translateY(162px); }
+
+    .is-plate .plate { height: calc(100vh + 300vh); }
+    .is-plate .plate-stage { position: sticky; top: 0; height: 100vh; height: 100svh; display: flex; align-items: center; padding: var(--nav-height) 0 1rem; }
+    .is-plate .plate-stage > .frame { width: 100%; display: grid; grid-template-columns: minmax(0,8fr) minmax(0,4fr); gap: clamp(1.5rem,3.5vw,3.5rem); align-items: center; }
+    .is-plate .plate-steps { position: relative; min-height: 18rem; }
+    .is-plate .plate-step { position: absolute; inset: 0 0 auto 0; border: 0; padding: 0; opacity: 0; transform: translateY(14px); transition: opacity .55s, transform .7s var(--ease-out); pointer-events: none; }
+    .is-plate .plate-step.is-now { opacity: 1; transform: none; pointer-events: auto; }
+    .is-plate .plate-ticks { display: flex; grid-column: 1; justify-content: space-between; gap: .4rem; margin-top: .5rem; }
+    .plate-ticks button { flex: 1; min-height: 44px; background: none; border: 0; border-top: 2px solid #c9bda6; padding: .5rem 0 0; font-family: var(--font-mono); font-size: .72rem; color: var(--color-slate); cursor: pointer; text-align: left; transition: color .3s, border-color .3s; }
+    .plate-ticks button i { display: none; }
+    .plate-ticks button:hover { color: var(--color-ink); }
+    .plate-ticks button.is-now { color: var(--color-ink); border-top-color: var(--color-amber); font-weight: 600; }
+
+    /* why white: the acid test */
+    .dl-acid { padding: clamp(3.5rem,7vw,6.5rem) 0; }
+    .dl-acid-grid { display: grid; grid-template-columns: minmax(0,5fr) minmax(0,7fr); gap: clamp(2rem,5vw,5rem); align-items: start; }
+    .bench { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(.8rem,2vw,1.5rem); }
+    .stone { position: relative; display: block; width: 100%; padding: 0; border: 0; background: none; cursor: pointer; text-align: left; font: inherit; color: inherit; }
+    .stone canvas { display: block; width: 100%; aspect-ratio: 1/.82; background: #dfd6c4; }
+    .stone span { display: block; margin-top: .5rem; font-family: var(--font-display); font-size: 1.5rem; line-height: 1.1; color: var(--color-ink); }
+    .stone small { display: block; margin-top: .15rem; font-family: var(--font-mono); font-size: .72rem; color: var(--color-slate); }
+    .bench-note { margin: .8rem 0 0; font-size: .95rem; line-height: 1.45; color: var(--color-slate); }
+    .dl-problem { margin-top: 2rem; padding-top: 1.4rem; border-top: 3px solid var(--color-amber); }
+      .dl-problem .dl-problem-t { font-family: var(--font-display); font-size: clamp(1.7rem,2.8vw,2.4rem); line-height: 1.08; color: var(--color-ink); margin: 0 0 .7rem; }
+    .dl-problem p { font-size: 1.08rem; line-height: 1.62; color: var(--color-ink); margin: 0; }
+
+    /* enrosadira */
+    .glow { background: var(--color-night); color: #fff; padding: clamp(3.5rem,7vw,6.5rem) 0; }
+    .glow h2 { color: #fff; }
+    .glow-intro { font-size: 1.14rem; line-height: 1.68; color: rgba(255,255,255,.86); max-width: 46rem; margin: 0 0 clamp(1.75rem,3vw,2.75rem); }
+    .glow-view { position: relative; aspect-ratio: 16/9; overflow: hidden; background: #000; }
+    .glow-view img, .glow-view canvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .glow-ctl { display: flex; flex-wrap: wrap; align-items: center; gap: .9rem 2rem; margin-top: 1.1rem; }
+    .glow-ctl label { flex: 1 1 320px; display: grid; grid-template-columns: auto minmax(0,1fr) auto; gap: .9rem; align-items: center; font-family: var(--font-mono); font-size: .76rem; color: rgba(255,255,255,.85); }
+    .glow-ctl input { width: 100%; height: 32px; accent-color: var(--dl-rose); }
+    .glow-ctl button { min-height: 44px; padding: .5rem 1.1rem; background: none; color: #fff; border: 1px solid rgba(255,255,255,.4); font: 600 .96rem var(--font-body); cursor: pointer; transition: background .25s, border-color .25s, color .25s; }
+    .glow-ctl button:hover { border-color: #fff; }
+    .glow-ctl button[aria-pressed="true"] { background: var(--dl-rose); border-color: var(--dl-rose); color: var(--color-ink); }
+    .glow-note { margin: .75rem 0 0; font-size: .9rem; line-height: 1.45; color: rgba(255,255,255,.62); max-width: 68ch; }
+    .glow-note a { color: inherit; border-bottom: 1px solid rgba(255,255,255,.4); }
+
+    /* numbers, as labels on an exhibition wall */
+    .dl-wall { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: clamp(1rem,2.5vw,2.5rem); margin-top: clamp(3rem,6vw,5rem); }
+    .dl-wall b { display: block; font-family: var(--font-display); font-weight: 300; font-size: clamp(2.4rem,4.7vw,4.3rem); line-height: 1; color: #fff; }
+    .dl-wall span { display: block; margin-top: .45rem; font-size: 1rem; line-height: 1.3; color: rgba(255,255,255,.72); }
+
+    .dl-close { padding: clamp(3.5rem,7vw,6rem) 0; }
+    .dl-close p { font-family: var(--font-display); font-size: clamp(1.7rem,3vw,2.6rem); line-height: 1.24; color: var(--color-ink); max-width: 32em; margin: 0; }
+    .dl-pnav { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; margin-top: clamp(3rem,5vw,4.5rem); padding-top: 1.5rem; border-top: 1px solid var(--border); }
+
+    @media (max-width: 900px) {
+      .dl-open-grid, .dl-acid-grid { grid-template-columns: 1fr; }
+      .is-plate .plate-stage > .frame { grid-template-columns: 1fr; gap: .9rem; }
+      .is-plate .plate-steps { min-height: 12.5rem; }
+      .plate-svg .plate-labels { display: none; }
+      .dl-wall { grid-template-columns: 1fr 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) { .plate-svg * { transition: none !important; } }
     </style>
 </head>
-
-<body>
+<body class="has-cover dl">
     <div id="site-header"></div>
-    <main class="page-top">
-        <div class="container">
-            <a href="../../hobbies/geology.html" class="back-link">Back to Geology</a>
-            <div class="blog-post-full">
-                <div class="blog-post-full-header">
-                    <h1>The Dolomites: Walking Through the Geology of Wonder</h1>
-                    <span class="post-date">March 2026</span>
+
+    <main>
+        <section class="dl-hero">
+            <img id="dl-hero-img" src="/img/post/geology/dolomiti-catinaccio.jpg" alt="The Catinaccio group glowing pink at sunset above the Rifugio Bolzano">
+            <canvas id="dl-hero-cv" aria-hidden="true"></canvas>
+            <div class="frame">
+                <a href="/hobbies/geology.html" class="back-link">Back to Geology</a>
+                <p class="dl-date">March 2026</p>
+                <h1>The Dolomites: <em>Walking Through the Geology of Wonder</em></h1>
+            </div>
+            <p class="dl-credit">Photo: Anna Marchenkova, <a href="https://commons.wikimedia.org/wiki/File:Tramonto_al_rifugio_Bolzano.jpg" target="_blank" rel="noopener">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a></p>
+        </section>
+
+        <section class="dl-open">
+            <div class="frame dl-open-grid">
+                <div class="reveal">
+                    <p class="dl-lead"><strong>UNESCO World Heritage since 2009.</strong> Nine Dolomite systems inscribed not just for beauty, but because they are the most complete fossil reef archipelago on Earth, 250 million years of geological history readable with a precision found almost nowhere else on the planet.</p>
+                    <p class="dl-body">There are mountains, and then there are the Dolomites. Pale towers of carbonate rock rising like fossilised cathedrals from green meadows, glowing pink and orange at sunset in the famous <em>enrosadira</em>. I have the privilege of being a guide for the exhibition <a href="https://www.geoscienze.unipd.it/dolomiti-cammino-nella-geologia-della-meraviglia" target="_blank" rel="noopener"><em>"Dolomiti: in cammino nella geologia della meraviglia"</em></a>, hosted by the University of Padova's Department of Geosciences and promoted by the Fondazione Dolomiti UNESCO. Every time I walk visitors through it, I learn something new, and here are a few things that blow my mind the most.</p>
                 </div>
-                <!-- <img class="hero-img" src="../../img/posts/dolomites-hero.jpg" alt="Panoramic view of the Dolomites"> -->
-                <div class="blog-post-body">
+                <figure class="dl-team reveal">
+                    <img src="/img/post/geology/dolomiti-team.jpg" alt="Group photo in front of the Dolomites World Heritage Geotrail panels at the Department of Geosciences, Padova" loading="lazy">
+                    <figcaption>At the exhibition, Department of Geosciences, Padova.</figcaption>
+                </figure>
+            </div>
+        </section>
 
-                    <div class="highlight-box">
-                        <strong>UNESCO World Heritage since 2009.</strong> Nine Dolomite systems inscribed not just for beauty, but because they are the most complete fossil reef archipelago on Earth, 250 million years of geological history readable with a precision found almost nowhere else on the planet.
+        <section class="dl-plate-open">
+            <div class="frame">
+                <h2 class="reveal">250 million years in a nutshell</h2>
+                <p class="dl-body reveal">Imagine standing where the Tre Cime di Lavaredo are today, 220 million years ago. No mountains. You're underwater, in a warm tropical sea dotted with coral atolls, not unlike the Maldives. Algae, sponges and corals build massive carbonate platforms while volcanic eruptions periodically bury them in ash and lava. These ancient reefs are now the white walls of the Dolomites.</p>
+            </div>
+        </section>
+
+        <section class="plate" id="plate">
+            <div class="plate-stage">
+                <div class="frame">
+                    <div class="plate-fig">
+                        <svg class="plate-svg" id="plate-svg" viewBox="0 70 1200 490" role="img" aria-label="Schematic cross-section of the Dolomites through time, redrawn at each step">
+                            <defs>
+                                <pattern id="p-base" width="16" height="16" patternUnits="userSpaceOnUse" patternTransform="rotate(38)"><rect width="16" height="16" fill="#8e8a7e"/><path d="M0 4H16M0 11H16" stroke="#58554c" stroke-width="1.1"/></pattern>
+                                <pattern id="p-porph" width="20" height="16" patternUnits="userSpaceOnUse"><rect width="20" height="16" fill="#a0503d"/><path d="M3 12l3-6 3 6M13 6l3-5 3 5" fill="none" stroke="#5e2a20" stroke-width="1.2"/></pattern>
+                                <pattern id="p-sed" width="24" height="10" patternUnits="userSpaceOnUse"><rect width="24" height="10" fill="#bfae8c"/><path d="M0 5H24" stroke="#8b7b5e" stroke-width=".9"/></pattern>
+                                <pattern id="p-carb" width="34" height="18" patternUnits="userSpaceOnUse"><rect width="34" height="18" fill="#efe8d9"/><path d="M0 0H34M0 9H34M0 18H34M9 0V9M26 9V18" stroke="#a79f8c" stroke-width="1"/></pattern>
+                                <pattern id="p-volc" width="20" height="16" patternUnits="userSpaceOnUse"><rect width="20" height="16" fill="#3e3b40"/><path d="M4 6l3 6 3-6M14 13l3-6 3 6" fill="none" stroke="#7a757d" stroke-width="1"/></pattern>
+                                <pattern id="p-volc2" width="20" height="16" patternUnits="userSpaceOnUse"><rect width="20" height="16" fill="#57524f"/><path d="M4 6l3 6 3-6M14 13l3-6 3 6" fill="none" stroke="#8c8580" stroke-width="1"/></pattern>
+                                <clipPath id="dl-erode"><path d="M-20.0 800.0 L-20.0 410.0 L60.0 405.0 L110.0 350.0 L150.0 265.0 L170.0 255.9 L172.0 211.0 L211.7 216.4 L213.7 317.3 L230.5 259.7 L230.5 251.5 L232.5 222.7 L266.2 227.7 L268.2 290.1 L277.6 272.3 L277.6 232.4 L279.6 201.3 L316.3 199.5 L318.3 317.0 L329.6 302.4 L329.6 236.2 L331.6 214.2 L353.7 216.4 L355.7 262.1 L365.2 308.5 L365.2 261.5 L367.2 180.5 L391.2 185.2 L393.2 319.7 L404.6 289.3 L404.6 260.2 L406.6 179.9 L448.4 182.8 L450.4 315.6 L470.0 275.3 L450.0 300.0 L486.0 392.0 L528.0 396.0 L560.0 300.0 L560.0 236.4 L562.0 177.6 L591.7 174.3 L593.7 298.2 L605.3 258.2 L605.3 241.3 L607.3 187.6 L649.1 191.8 L651.1 280.9 L664.9 285.9 L664.9 261.3 L666.9 171.3 L709.6 167.5 L711.6 312.7 L728.6 259.0 L728.6 249.4 L730.6 189.2 L776.6 185.3 L778.6 272.9 L787.1 313.4 L800.0 300.0 L840.0 396.0 L890.0 392.0 L930.0 300.0 L930.0 259.9 L932.0 211.8 L955.5 217.3 L957.5 283.3 L969.6 288.4 L969.6 254.5 L971.6 174.3 L1017.1 178.2 L1019.1 264.2 L1037.4 312.9 L1037.4 250.3 L1039.4 187.8 L1058.9 192.9 L1060.9 317.5 L1072.9 289.6 L1072.9 237.3 L1074.9 186.4 L1102.8 183.2 L1104.8 303.4 L1114.6 315.8 L1140.0 290.0 L1185.0 380.0 L1225.0 405.0 L1225.0 800.0 Z"/></clipPath>
+                                <linearGradient id="dl-sky" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#8fb0c9"/><stop offset=".7" stop-color="#ead9c4"/></linearGradient>
+                            </defs>
+                            <rect class="s4" width="1200" height="560" fill="url(#dl-sky)"/>
+                            <path class="s0x" d="M1.1 395.6 L7.0 389.5 L14.4 378.3 L17.8 379.4 L28.2 371.6 L29.4 356.7 L37.2 353.5 L45.7 343.5 L51.7 336.4 L55.4 335.7 L64.6 328.5 L70.0 320.1 L75.4 312.0 L85.0 310.2 L87.4 296.2 L99.9 306.4 L107.6 307.5 L113.5 313.2 L123.9 319.5 L130.9 330.9 L137.0 331.7 L147.5 340.6 L153.6 340.3 L159.6 350.6 L167.5 347.8 L177.3 345.5 L184.9 337.2 L192.3 328.6 L195.8 328.1 L201.9 318.2 L212.6 315.7 L216.8 303.8 L224.1 303.3 L231.1 290.8 L240.0 288.9 L248.1 286.3 L255.0 274.9 L261.2 267.2 L265.2 261.7 L275.7 260.3 L278.5 248.6 L286.1 254.8 L293.2 261.2 L298.9 269.1 L309.5 275.0 L316.6 281.4 L319.6 289.5 L330.7 290.9 L332.5 299.4 L342.6 306.1 L352.0 313.1 L358.0 313.3 L363.4 326.7 L367.5 325.8 L379.9 329.5 L384.4 322.4 L393.2 319.1 L404.7 309.6 L410.6 310.3 L420.9 305.9 L428.6 297.1 L440.5 296.0 L446.1 290.2 L455.9 287.5 L465.6 280.0 L473.5 278.1 L482.1 275.1 L489.9 281.1 L498.5 283.8 L503.7 289.7 L513.2 292.1 L518.8 294.5 L528.6 308.2 L534.3 305.2 L541.1 313.0 L549.5 323.6 L555.9 322.2 L564.1 330.8 L575.9 331.4 L579.5 339.4 L590.5 349.1 L594.4 335.6 L602.4 331.2 L609.8 330.7 L619.1 320.2 L623.8 315.3 L630.9 314.6 L638.9 307.0 L649.0 300.8 L652.8 299.4 L663.9 288.4 L668.9 289.1 L675.6 276.2 L680.2 278.0 L691.8 266.8 L697.5 273.6 L703.3 283.8 L712.9 281.8 L716.4 289.6 L725.9 298.3 L735.3 301.9 L739.3 302.8 L747.6 309.3 L758.2 317.4 L764.2 327.6 L769.3 328.5 L775.9 336.3 L782.3 342.3 L794.7 347.8 L797.5 347.7 L809.0 340.7 L815.3 339.2 L825.8 335.2 L832.9 327.1 L840.2 323.0 L848.7 314.5 L855.8 310.5 L861.8 308.4 L867.2 306.2 L875.8 295.8 L882.1 290.5 L892.1 289.4 L899.2 283.9 L905.5 285.9 L915.5 296.7 L925.5 298.5 L928.5 300.8 L940.5 304.4 L947.5 311.6 L952.1 321.9 L964.7 319.1 L971.4 324.9 L977.8 332.4 L985.2 335.4 L993.6 343.7 L1000.7 344.0 L1011.4 350.3 L1020.5 348.1 L1027.1 341.2 L1035.5 334.2 L1039.3 329.7 L1050.4 331.2 L1055.2 323.6 L1067.0 320.9 L1070.4 312.7 L1078.7 307.1 L1088.0 302.0 L1099.0 301.0 L1104.4 298.6 L1113.7 295.8 L1119.3 286.3 L1126.7 288.8 L1133.9 301.3 L1144.7 307.8 L1150.1 311.6 L1153.5 314.5 L1162.7 323.3 L1168.5 326.2 L1178.2 336.0 L1187.4 339.8 L1190.7 347.0 L1200.0 350.0" fill="none" stroke="#6f6a5d" stroke-width="1.6" stroke-dasharray="7 7"/>
+                            <rect class="dl-sea" x="0" y="0" width="1200" height="560" fill="#7fb2c4" fill-opacity=".62"/>
+                            <g class="dl-past"><g id="dl-stack">
+                                <path class="l-base" d="M-0.1 470.3 L10.2 469.6 L18.2 469.9 L26.4 469.3 L36.7 470.3 L44.4 467.9 L53.5 469.9 L64.1 466.3 L74.0 470.1 L82.2 468.3 L90.0 465.4 L100.1 465.4 L108.3 466.0 L116.9 466.7 L127.1 468.1 L136.4 467.0 L145.5 466.8 L154.4 464.9 L165.0 467.8 L173.6 466.3 L181.3 464.0 L190.4 463.0 L200.7 464.2 L210.0 463.9 L219.4 465.7 L226.0 462.7 L237.4 463.6 L246.7 463.0 L253.4 463.8 L264.4 462.0 L271.6 462.0 L283.0 463.6 L289.9 461.1 L298.9 460.1 L309.9 460.9 L318.4 462.3 L326.6 463.9 L335.6 463.8 L344.7 463.1 L354.1 462.7 L365.2 465.3 L372.6 466.0 L381.5 464.1 L392.4 465.5 L399.5 467.3 L409.0 464.4 L419.6 465.0 L427.5 464.1 L436.1 466.6 L445.6 467.0 L455.1 466.7 L465.8 467.1 L473.9 469.0 L482.0 466.2 L493.1 469.4 L500.5 466.9 L510.9 470.5 L518.6 470.8 L529.6 469.6 L537.5 467.7 L545.6 471.8 L555.3 470.9 L564.5 471.7 L574.5 469.7 L582.6 471.8 L591.4 469.9 L601.9 473.0 L611.2 470.7 L621.1 470.7 L627.8 470.7 L637.9 469.4 L646.2 470.5 L656.3 469.1 L664.8 472.1 L675.5 470.8 L683.7 470.1 L691.3 467.4 L700.0 470.9 L710.9 470.8 L718.1 469.1 L728.3 469.1 L736.9 470.0 L745.3 467.7 L756.1 468.9 L765.1 467.7 L774.3 468.3 L782.2 467.0 L792.7 467.5 L800.4 466.8 L810.6 465.5 L819.0 464.4 L828.0 465.1 L835.7 464.9 L847.1 465.6 L855.4 463.1 L864.5 463.6 L872.7 464.5 L880.8 463.7 L889.7 462.8 L899.9 460.8 L909.6 462.2 L918.5 464.3 L926.6 460.6 L935.8 463.8 L944.7 461.8 L955.6 464.2 L963.5 465.4 L972.3 464.7 L981.0 463.9 L991.7 466.2 L1001.0 464.2 L1009.3 464.1 L1017.2 465.1 L1028.2 466.9 L1036.9 467.6 L1044.9 464.4 L1054.4 465.1 L1062.9 466.0 L1073.1 466.6 L1081.3 468.3 L1092.2 466.9 L1098.9 465.3 L1110.1 465.6 L1118.7 468.1 L1126.8 469.3 L1135.1 466.7 L1145.3 466.5 L1155.4 467.6 L1162.7 467.0 L1173.1 469.0 L1182.2 470.2 L1191.7 471.8 L1200.5 468.7 L1199.9 477.8 L1198.7 488.2 L1200.6 496.1 L1199.4 506.0 L1200.5 515.9 L1200.3 526.1 L1199.7 535.5 L1201.1 541.5 L1201.1 553.5 L1199.0 561.5 L1200.3 572.6 L1199.7 580.3 L1201.0 590.5 L1201.2 598.2 L1200.4 606.2 L1200.6 618.1 L1200.4 626.8 L1199.2 636.8 L1201.3 646.3 L1200.1 654.6 L1199.5 664.3 L1200.9 671.0 L1198.9 680.6 L1200.1 691.2 L1200.0 697.1 L1200.8 706.4 L1200.8 716.1 L1199.6 727.9 L1199.1 734.3 L1200.0 746.0 L1200.9 755.0 L1201.2 763.3 L1201.2 770.7 L1199.3 781.8 L1199.4 791.8 L1200.4 800.1 L1191.9 800.3 L1181.5 799.5 L1173.8 801.8 L1163.1 801.5 L1156.1 800.1 L1146.1 798.7 L1136.9 800.0 L1128.1 797.9 L1120.0 800.1 L1109.5 801.3 L1100.9 800.0 L1092.2 798.1 L1082.8 799.6 L1074.9 801.9 L1064.1 799.9 L1054.7 799.7 L1047.5 801.8 L1037.5 799.2 L1027.8 800.5 L1020.7 798.4 L1011.3 797.9 L1000.7 798.8 L993.0 799.2 L983.1 800.5 L973.4 801.0 L964.4 800.0 L955.7 798.7 L947.4 799.7 L938.0 799.6 L929.4 798.5 L919.5 800.6 L911.6 800.1 L903.2 800.5 L894.2 798.8 L884.8 801.4 L876.3 799.2 L865.7 801.9 L856.4 802.2 L849.1 798.4 L838.4 801.0 L829.4 798.2 L821.9 799.7 L812.8 798.4 L802.8 800.8 L792.7 798.7 L785.4 801.8 L777.2 798.3 L766.9 801.1 L757.9 800.8 L748.1 798.1 L738.8 798.0 L731.0 800.1 L722.0 798.4 L711.9 798.7 L704.7 802.2 L695.9 798.2 L684.6 802.0 L676.6 801.2 L667.2 799.9 L658.7 799.7 L649.9 797.9 L641.1 801.5 L630.7 799.8 L623.2 799.6 L612.7 798.5 L604.5 797.9 L596.5 801.3 L587.0 801.6 L577.8 799.6 L568.7 800.0 L560.7 801.3 L549.7 801.8 L542.0 801.2 L533.2 799.6 L524.4 801.7 L514.8 801.2 L506.0 799.6 L496.8 798.1 L486.8 799.9 L476.9 799.4 L469.5 800.5 L459.4 802.0 L451.6 799.3 L442.5 800.3 L433.2 799.5 L425.4 800.6 L415.6 801.2 L407.3 797.9 L397.3 801.1 L387.3 799.6 L377.8 798.7 L369.6 798.2 L360.2 801.8 L352.0 800.0 L344.1 800.3 L335.1 800.6 L325.6 798.1 L316.0 801.1 L305.6 801.9 L296.8 799.9 L287.8 800.0 L280.0 798.1 L271.9 799.7 L261.7 800.4 L252.3 799.1 L244.0 800.3 L234.0 801.0 L225.0 797.9 L215.9 798.0 L206.6 801.1 L198.2 801.7 L190.1 798.0 L181.7 802.0 L170.3 801.8 L162.2 799.9 L154.6 798.9 L144.4 801.9 L135.9 799.9 L127.6 801.4 L117.6 798.3 L108.6 799.8 L98.5 798.0 L90.3 798.3 L81.1 800.7 L72.1 799.0 L63.4 799.6 L54.9 800.1 L46.4 802.0 L36.7 798.8 L26.0 801.7 L18.8 800.5 L8.7 799.0 L0.0 800.0 Z" fill="url(#p-base)"/>
+                                <path class="l-porph" d="M1.1 430.2 L8.8 429.7 L17.3 430.4 L28.7 429.2 L37.1 430.3 L44.9 430.5 L55.2 427.0 L62.9 426.9 L73.3 428.6 L81.8 429.3 L91.1 427.0 L99.6 428.9 L108.8 428.3 L119.0 426.6 L128.2 425.0 L138.2 427.9 L147.1 425.9 L154.4 426.6 L164.0 426.6 L173.0 424.9 L183.7 422.9 L192.1 422.1 L199.9 422.3 L211.6 425.4 L219.8 422.3 L229.0 423.9 L237.4 423.0 L247.7 420.2 L255.2 421.9 L264.2 421.2 L274.5 420.0 L283.5 420.1 L292.8 420.1 L302.1 418.5 L311.3 418.7 L321.2 420.4 L329.1 420.0 L338.6 421.5 L348.1 422.1 L356.5 423.5 L366.6 423.3 L374.6 421.8 L384.2 424.2 L393.2 422.9 L402.1 424.9 L411.0 421.5 L421.2 425.5 L430.3 424.5 L439.5 423.6 L448.2 422.9 L456.2 424.9 L466.3 425.0 L474.2 426.7 L484.6 425.0 L493.2 426.1 L502.2 425.0 L513.1 429.3 L521.6 429.2 L530.1 429.2 L538.7 429.3 L548.7 430.3 L556.7 430.2 L565.9 429.4 L577.2 427.4 L584.5 429.1 L593.8 428.4 L604.5 432.0 L612.3 430.3 L621.9 429.3 L629.6 433.4 L639.5 432.0 L650.4 433.7 L658.5 429.9 L667.3 432.6 L678.2 428.9 L687.3 429.2 L695.6 428.0 L706.0 431.2 L713.5 429.2 L722.8 429.8 L731.7 426.0 L742.7 426.5 L752.5 428.5 L761.3 424.8 L770.5 427.9 L779.1 423.7 L787.8 424.3 L798.4 423.4 L806.3 423.1 L816.9 425.1 L825.4 424.1 L836.0 423.4 L843.6 421.7 L854.7 422.9 L862.3 422.3 L871.1 423.4 L881.3 421.0 L890.8 418.4 L900.3 419.1 L908.4 421.6 L917.1 419.7 L927.9 419.8 L935.8 421.4 L944.6 423.3 L955.8 419.8 L963.5 423.2 L972.4 424.3 L981.8 421.3 L991.1 423.7 L999.6 424.0 L1009.8 423.7 L1018.2 425.5 L1027.8 424.3 L1037.6 423.1 L1046.2 423.4 L1054.8 424.0 L1063.5 426.7 L1073.5 427.0 L1081.1 426.0 L1090.2 426.7 L1100.0 424.6 L1109.3 427.9 L1118.4 428.9 L1126.4 426.0 L1135.1 427.9 L1145.3 427.9 L1153.9 429.8 L1162.5 430.6 L1172.9 429.3 L1182.6 428.2 L1190.0 428.9 L1198.8 429.2 L1200.3 440.1 L1199.4 450.4 L1198.9 461.4 L1199.1 468.9 L1190.0 470.6 L1182.7 470.8 L1171.6 468.9 L1163.3 467.8 L1155.8 466.8 L1145.4 469.7 L1137.6 466.7 L1127.2 469.1 L1117.0 466.7 L1110.1 466.0 L1099.7 466.4 L1090.7 465.2 L1080.6 469.0 L1073.4 467.6 L1062.9 465.3 L1054.7 465.0 L1045.4 467.8 L1036.0 464.9 L1028.5 465.9 L1017.0 464.7 L1009.5 463.0 L999.6 465.5 L991.9 464.8 L982.8 464.0 L972.4 465.4 L963.3 464.9 L953.8 462.8 L944.6 463.4 L935.5 461.7 L926.5 462.6 L917.7 462.3 L910.4 463.0 L901.0 460.7 L890.7 460.4 L882.4 462.0 L872.3 460.8 L863.0 462.2 L854.6 465.5 L846.4 462.9 L836.4 462.7 L828.9 464.0 L819.4 465.9 L810.8 463.1 L800.2 465.0 L790.5 467.6 L782.1 467.4 L773.6 464.6 L764.2 465.7 L754.3 465.6 L746.7 465.4 L736.9 467.5 L728.5 466.5 L719.9 467.4 L710.9 469.5 L700.4 467.8 L691.7 470.4 L683.0 469.2 L675.2 468.9 L664.6 469.7 L655.4 468.7 L645.8 471.6 L638.2 472.7 L630.3 470.8 L620.5 473.8 L610.1 472.5 L602.2 473.4 L593.5 470.0 L583.8 469.1 L574.1 470.1 L564.0 469.8 L555.5 470.0 L546.3 468.2 L537.5 469.3 L527.7 469.9 L518.7 467.1 L509.9 468.2 L500.2 468.6 L492.5 468.2 L483.4 465.6 L473.4 466.8 L463.4 466.7 L454.3 466.8 L446.5 466.4 L436.7 465.2 L426.7 465.3 L419.9 466.0 L409.1 466.2 L399.7 465.0 L391.7 466.9 L381.9 464.9 L374.3 465.5 L364.3 464.5 L354.6 463.3 L345.1 464.9 L337.6 462.6 L328.5 460.8 L317.3 462.6 L308.6 461.7 L301.3 460.5 L290.1 461.0 L282.3 461.3 L271.4 462.9 L263.4 461.8 L254.5 463.9 L245.6 464.0 L236.5 465.2 L228.5 463.2 L217.8 465.9 L208.6 465.4 L200.5 465.5 L192.1 466.3 L180.9 465.7 L172.7 465.7 L163.3 464.7 L155.2 466.0 L144.8 465.0 L135.9 464.9 L127.3 465.0 L117.0 465.0 L108.0 468.0 L99.0 467.1 L91.6 467.5 L80.9 469.4 L73.7 466.1 L63.0 468.3 L55.3 468.1 L46.0 467.7 L36.9 468.3 L26.8 470.4 L19.1 471.0 L9.3 469.4 L0.0 470.0 Z" fill="url(#p-porph)"/>
+                                <path class="l-sed" d="M0.5 395.5 L10.0 396.1 L17.2 394.0 L27.7 393.2 L35.5 392.0 L45.7 395.9 L55.8 392.1 L64.1 393.2 L73.1 392.8 L83.0 395.2 L89.7 393.8 L99.0 390.7 L108.5 393.5 L119.5 390.6 L126.8 389.9 L136.5 391.7 L145.1 390.8 L155.3 392.9 L163.1 390.7 L173.0 392.1 L183.1 390.3 L191.4 390.7 L200.8 388.8 L208.2 388.4 L219.3 388.8 L227.2 388.0 L235.9 387.4 L245.6 387.7 L254.9 388.1 L262.9 388.8 L272.4 387.6 L280.6 386.5 L291.9 387.4 L298.9 386.6 L309.1 390.5 L317.6 390.2 L327.5 388.4 L337.6 388.6 L344.8 389.6 L355.5 390.2 L363.7 391.8 L374.5 392.3 L382.6 391.9 L392.5 389.3 L399.8 389.5 L409.3 389.4 L419.1 392.6 L428.1 391.8 L436.5 390.8 L448.2 390.2 L456.3 394.0 L466.2 393.9 L474.3 394.5 L484.6 394.6 L494.3 391.9 L503.4 393.5 L511.9 393.1 L521.6 392.4 L529.9 393.6 L538.6 394.5 L548.5 396.7 L556.9 396.2 L566.1 394.9 L576.7 395.3 L583.8 395.7 L594.7 395.4 L603.9 397.1 L612.9 395.8 L620.6 395.9 L630.4 397.4 L638.7 398.0 L649.0 396.9 L658.7 399.4 L667.1 398.8 L676.7 398.0 L685.4 398.7 L695.5 398.3 L704.3 395.6 L714.8 394.3 L723.0 396.2 L734.0 394.4 L741.3 394.2 L752.7 393.0 L761.1 393.7 L770.4 392.7 L779.6 395.4 L789.5 394.0 L797.9 393.4 L806.1 394.3 L816.9 392.4 L826.2 391.9 L834.7 390.8 L844.6 392.0 L853.6 389.4 L863.2 390.9 L872.4 391.3 L882.6 389.0 L890.6 392.5 L900.6 389.2 L909.7 392.3 L917.9 392.0 L926.3 392.7 L936.3 389.6 L946.4 391.6 L955.7 392.5 L964.4 391.3 L974.0 389.5 L982.8 392.6 L990.3 393.2 L999.9 392.2 L1010.1 390.8 L1017.6 393.0 L1026.1 392.8 L1037.1 392.7 L1044.8 394.2 L1055.5 394.3 L1063.8 395.1 L1073.5 391.9 L1081.5 391.9 L1089.7 393.1 L1101.0 395.5 L1108.1 392.8 L1117.9 395.9 L1127.6 396.3 L1135.2 396.9 L1144.7 395.5 L1155.5 396.1 L1162.8 396.0 L1172.5 393.3 L1181.4 394.8 L1191.3 394.8 L1200.3 396.9 L1199.2 405.7 L1200.5 418.5 L1199.0 428.3 L1192.1 430.2 L1181.4 428.1 L1174.0 429.9 L1164.3 428.2 L1154.0 428.1 L1144.5 428.8 L1136.2 429.3 L1127.0 427.4 L1118.2 429.2 L1108.7 427.9 L1099.3 427.0 L1090.3 428.0 L1081.3 427.6 L1073.2 425.6 L1064.8 425.0 L1055.2 425.6 L1045.3 422.9 L1036.2 423.6 L1027.1 426.2 L1017.6 424.8 L1009.5 422.5 L999.8 421.7 L992.0 421.9 L981.6 422.0 L973.6 424.0 L963.9 422.3 L953.5 423.6 L944.4 420.9 L936.0 422.2 L927.7 420.2 L919.2 422.6 L907.8 420.9 L899.9 419.4 L890.6 419.6 L881.9 421.3 L873.4 423.4 L864.2 421.3 L854.4 422.8 L844.8 424.8 L833.9 422.8 L825.5 424.1 L815.7 426.0 L806.4 423.7 L796.9 424.3 L789.2 423.3 L778.4 426.2 L770.3 427.1 L760.1 427.8 L752.0 428.1 L741.1 427.1 L731.6 429.3 L724.7 429.9 L713.0 427.9 L705.1 429.1 L694.7 430.7 L685.9 429.9 L676.2 430.6 L666.9 428.9 L658.6 430.2 L650.0 430.5 L639.8 430.0 L630.1 431.4 L621.9 431.1 L613.5 429.2 L604.4 429.1 L595.5 430.4 L584.9 430.4 L577.0 431.6 L566.6 427.1 L556.8 430.3 L549.2 429.5 L538.5 428.4 L529.0 426.2 L520.6 429.6 L512.4 428.7 L501.7 426.5 L492.6 425.5 L483.5 428.0 L475.0 425.8 L466.7 427.2 L458.3 425.4 L448.0 426.6 L438.6 423.6 L430.3 423.1 L420.2 423.5 L411.4 422.8 L402.1 422.9 L392.0 424.2 L382.8 422.5 L375.0 421.6 L365.0 420.0 L356.2 420.6 L347.4 419.8 L338.9 420.6 L327.8 419.9 L321.2 417.8 L311.1 422.3 L301.4 421.0 L292.2 420.0 L283.7 421.5 L273.8 421.4 L265.2 422.8 L254.8 420.2 L246.2 421.3 L238.5 422.2 L229.5 422.4 L218.9 423.9 L209.2 425.6 L202.0 423.0 L191.5 425.4 L183.6 424.9 L172.5 425.7 L163.4 425.4 L155.6 427.0 L146.7 423.3 L138.3 426.8 L128.2 423.8 L119.5 425.9 L110.2 428.7 L101.7 425.0 L92.2 426.9 L82.9 426.9 L73.0 427.4 L63.0 427.2 L55.5 426.4 L44.7 430.0 L37.0 429.1 L26.4 427.5 L17.8 431.4 L9.3 431.6 L0.0 430.0 Z" fill="url(#p-sed)"/>
+                                <g class="s1" fill="url(#p-carb)" stroke="#6f6a5d" stroke-width="1.2"><path d="M111.1 394.6 L115.7 388.1 L118.1 379.7 L122.8 366.7 L126.3 359.8 L130.7 354.0 L133.8 344.2 L137.1 336.0 L139.9 327.2 L143.7 317.7 L147.4 307.8 L151.0 299.2 L154.9 290.4 L156.8 281.0 L160.8 270.1 L162.5 261.0 L166.4 250.5 L168.0 240.3 L169.3 233.2 L180.2 230.1 L188.6 232.4 L199.6 231.1 L209.3 230.9 L219.2 233.1 L229.8 230.7 L238.0 229.8 L248.3 229.4 L256.4 233.6 L265.0 233.1 L276.2 232.7 L285.0 230.9 L296.4 234.4 L305.5 230.6 L314.9 230.9 L322.6 232.3 L333.3 229.8 L343.3 231.9 L353.2 233.4 L362.1 230.2 L372.4 231.7 L379.8 232.2 L390.7 228.8 L399.2 228.2 L410.1 230.1 L419.4 230.7 L421.4 241.6 L424.4 250.3 L427.0 261.2 L431.5 269.1 L434.0 282.4 L435.8 290.5 L438.7 300.2 L442.1 310.8 L446.1 316.0 L447.5 328.2 L452.1 336.0 L455.4 342.9 L459.4 353.0 L464.8 360.5 L467.3 368.3 L469.9 380.1 L473.1 388.7 L478.0 395.0 Z"/><path d="M502.5 392.8 L506.9 384.3 L509.5 375.7 L514.4 368.1 L517.7 358.2 L520.7 349.6 L522.4 343.6 L529.0 335.5 L532.2 327.4 L534.8 315.1 L538.4 307.0 L542.1 299.2 L544.6 288.7 L547.8 280.1 L549.7 268.7 L552.2 261.4 L556.3 251.7 L556.3 240.7 L559.5 233.1 L571.4 233.8 L581.4 232.9 L591.1 232.3 L597.9 230.3 L609.0 231.7 L618.5 231.7 L628.9 229.3 L636.9 234.3 L644.8 230.2 L656.8 235.0 L663.5 230.6 L675.4 233.6 L683.8 232.7 L693.9 233.5 L700.9 229.3 L712.8 233.6 L722.3 230.3 L730.1 229.6 L738.5 231.4 L749.3 231.1 L760.1 230.5 L770.5 231.8 L771.7 243.7 L774.1 249.6 L776.9 261.0 L781.2 270.0 L782.0 281.4 L784.7 290.4 L787.2 302.0 L790.7 307.2 L794.7 316.4 L799.6 326.8 L803.5 334.8 L804.9 344.6 L809.0 350.4 L813.2 363.0 L816.7 368.3 L822.0 380.3 L824.0 384.5 L828.0 395.0 Z"/><path d="M872.9 396.5 L875.1 387.9 L878.9 376.6 L883.2 370.3 L886.5 362.1 L888.7 351.8 L893.4 340.9 L898.7 332.7 L900.2 327.9 L906.2 319.5 L907.9 310.9 L910.9 301.1 L916.0 288.7 L916.0 281.5 L920.9 272.0 L923.7 260.9 L924.5 249.5 L926.7 244.0 L928.7 230.4 L939.5 229.0 L949.4 229.0 L958.8 230.1 L970.1 230.9 L980.8 231.1 L991.4 229.3 L999.1 229.8 L1009.4 233.9 L1021.3 233.0 L1028.9 231.6 L1040.2 230.9 L1050.9 234.0 L1059.9 231.5 L1071.1 230.3 L1079.0 232.3 L1091.5 228.2 L1100.8 230.8 L1108.6 230.2 L1111.6 242.9 L1114.2 248.9 L1116.8 262.7 L1120.3 271.7 L1122.7 278.9 L1123.9 289.3 L1126.6 298.8 L1132.0 308.0 L1135.2 317.9 L1138.3 325.2 L1143.7 335.0 L1145.9 343.4 L1149.7 350.9 L1154.7 359.1 L1158.5 370.9 L1161.9 376.0 L1164.4 388.9 L1168.0 395.0 Z"/></g>
+                                <g class="s1" fill="none" stroke="#a7855c" stroke-width="5"><path d="M169.7 231.3 L183.3 230.0 L196.1 228.3 L209.5 230.6 L222.0 233.0" /><path d="M367.5 233.4 L380.8 231.1 L394.0 229.8 L407.0 230.3 L420.0 232.0"/><path d="M559.4 232.0 L572.7 230.6 L586.2 228.9 L598.5 231.0 L612.0 233.0" /><path d="M718.0 233.3 L731.6 230.6 L743.9 228.2 L757.4 230.0 L770.0 232.0"/><path d="M930.4 232.6 L942.7 231.3 L956.0 228.9 L969.1 231.9 L982.0 233.0" /><path d="M1058.0 233.0 L1070.7 231.7 L1084.0 228.7 L1096.6 229.9 L1110.0 232.0"/></g>
+                                <g class="s2" fill="url(#p-volc)" stroke="#2c2b2e"><path d="M-140.9 397.0 L-144.4 388.4 L-148.7 379.2 L-152.4 370.3 L-156.0 359.4 L-159.7 350.9 L-164.5 344.0 L-168.7 333.8 L-171.8 325.8 L-175.1 317.3 L-165.3 316.5 L-157.8 316.5 L-148.5 317.5 L-137.9 315.4 L-130.1 316.6 L-119.8 317.6 L-110.9 314.8 L-101.6 314.6 L-92.1 316.9 L-83.1 317.2 L-74.4 317.4 L-65.1 316.0 L-56.4 315.5 L-48.0 314.9 L-37.3 315.1 L-28.4 316.9 L-19.2 316.1 L-10.8 315.3 L-1.9 316.5 L8.3 317.4 L16.7 317.4 L27.0 315.3 L36.2 316.4 L45.4 316.9 L53.4 315.3 L62.9 316.0 L71.1 317.2 L81.2 315.9 L90.8 315.2 L98.9 316.3 L108.1 315.4 L117.0 314.6 L126.7 316.1 L137.0 316.4 L145.1 315.7 L141.0 324.8 L138.7 332.6 L133.9 343.3 L130.8 351.7 L126.8 361.8 L123.6 368.5 L119.1 379.8 L115.4 386.1 L111.6 396.0 Z"/><path d="M478.9 394.6 L474.0 387.3 L470.5 378.9 L467.6 368.8 L464.0 360.9 L460.1 351.4 L455.8 341.4 L452.2 335.2 L449.2 323.5 L443.9 315.3 L454.2 315.8 L462.1 315.8 L472.0 316.8 L480.8 316.5 L490.3 316.4 L498.2 316.7 L507.4 314.6 L517.1 314.5 L525.4 315.7 L535.2 314.7 L532.4 326.0 L527.8 334.1 L523.7 344.2 L519.6 350.9 L516.0 361.6 L512.8 369.0 L508.9 379.5 L504.9 388.0 L501.6 396.0 Z"/><path d="M828.8 395.8 L824.4 386.9 L820.8 377.6 L817.4 369.0 L813.1 361.3 L809.6 351.5 L806.7 342.5 L802.0 335.1 L799.4 325.8 L794.5 316.5 L804.4 315.3 L813.6 317.4 L822.7 316.5 L831.5 316.5 L840.3 316.9 L850.1 317.5 L858.9 316.7 L867.5 315.7 L878.1 315.2 L887.1 315.1 L895.9 317.6 L904.7 317.3 L900.7 325.2 L898.4 334.9 L893.8 343.0 L890.7 352.4 L887.0 360.7 L882.3 370.0 L879.2 378.4 L876.3 385.9 L871.6 396.0 Z"/><path d="M1169.0 395.4 L1165.1 388.6 L1160.5 378.4 L1157.2 369.3 L1152.8 360.8 L1150.5 352.1 L1145.6 343.6 L1142.1 332.6 L1138.7 324.8 L1134.8 317.6 L1144.1 317.5 L1153.0 316.8 L1161.7 315.4 L1172.1 316.6 L1181.6 315.6 L1189.8 315.5 L1199.6 314.5 L1208.5 316.5 L1217.3 315.4 L1228.0 317.4 L1236.0 315.0 L1245.0 314.7 L1255.6 316.8 L1263.8 316.0 L1273.9 314.5 L1283.4 317.2 L1291.4 316.7 L1301.6 315.5 L1311.2 315.1 L1319.7 315.4 L1328.9 317.0 L1338.4 316.3 L1348.4 315.1 L1356.2 316.4 L1365.3 317.5 L1375.0 315.8 L1371.4 325.9 L1368.6 334.3 L1363.4 342.2 L1360.7 350.6 L1357.3 361.6 L1352.3 368.9 L1348.5 378.9 L1344.5 387.7 L1341.6 396.0 Z"/></g>
+                                <path class="s2" d="M487.5 397.3 L489.6 388.9 L491.6 379.6 L492.2 369.4 L494.0 360.6 L495.4 351.3 L497.0 340.8 L498.5 331.2 L500.6 321.1 L493.9 311.2 L506.2 311.3 L506.2 321.4 L507.5 331.6 L507.9 340.3 L508.5 351.0 L509.0 358.8 L510.5 369.3 L510.2 378.2 L511.8 388.9 L512.0 398.0 Z" fill="#7c2d1f"/>
+                                <g class="s3" fill="url(#p-volc2)"><path d="M-176.1 317.1 L-177.9 306.9 L-181.5 295.9 L-183.8 289.6 L-186.1 279.8 L-189.8 268.1 L-192.7 260.6 L-195.1 249.9 L-196.9 242.0 L-200.3 231.9 L-191.4 232.2 L-182.2 231.6 L-173.4 231.3 L-164.4 230.5 L-155.2 232.3 L-146.3 230.8 L-136.2 231.9 L-127.8 231.4 L-118.0 232.8 L-109.5 232.5 L-100.4 232.0 L-91.9 231.6 L-82.7 231.9 L-73.6 232.1 L-64.1 233.3 L-56.1 230.5 L-47.0 230.5 L-37.0 232.4 L-28.9 231.0 L-18.8 233.1 L-10.1 232.6 L-1.0 231.9 L7.4 232.2 L17.3 233.6 L26.4 233.1 L33.8 231.2 L44.6 232.1 L52.7 231.4 L62.4 232.1 L71.7 230.6 L80.7 230.4 L88.1 231.6 L98.1 230.8 L106.9 233.4 L115.7 232.8 L125.1 232.3 L133.3 231.9 L143.7 232.6 L151.4 231.8 L161.1 231.5 L170.1 232.4 L166.3 240.4 L164.8 249.8 L160.9 260.8 L158.7 270.8 L156.4 277.4 L153.8 287.2 L151.4 298.1 L148.5 305.2 L145.3 316.0 Z"/><path d="M443.8 317.0 L441.3 305.7 L438.3 296.3 L436.4 289.5 L433.4 277.9 L431.6 268.3 L428.5 260.4 L426.3 249.2 L422.9 241.0 L420.6 231.2 L429.7 231.0 L438.7 233.5 L447.5 231.3 L458.1 232.6 L465.8 231.0 L475.5 231.3 L486.0 232.6 L495.6 232.5 L504.2 231.6 L513.8 232.0 L521.8 232.0 L531.8 232.1 L540.5 230.5 L551.6 231.6 L559.7 230.9 L557.4 242.7 L553.9 250.7 L551.8 260.9 L549.1 268.5 L545.7 279.4 L542.7 289.2 L539.9 296.3 L537.9 307.8 L535.3 316.0 Z"/><path d="M795.0 316.8 L792.5 307.4 L788.4 298.4 L785.8 286.9 L782.9 277.2 L781.7 269.0 L777.5 258.5 L776.2 251.0 L773.5 239.9 L769.3 231.3 L778.8 230.8 L788.2 232.4 L797.6 230.9 L807.7 231.6 L816.4 232.2 L826.5 231.6 L835.8 230.5 L845.5 231.0 L854.4 230.4 L864.9 232.3 L873.3 232.1 L883.8 230.8 L892.1 232.7 L901.5 232.7 L912.0 230.5 L920.2 231.3 L930.5 232.9 L927.6 242.7 L923.9 250.3 L922.4 260.8 L918.3 270.9 L916.7 279.8 L913.2 288.3 L911.6 298.6 L908.2 307.9 L905.3 316.0 Z"/><path d="M1135.7 317.1 L1132.3 308.1 L1128.6 297.0 L1126.6 286.8 L1124.3 277.3 L1121.2 268.6 L1117.9 260.3 L1114.9 250.5 L1113.4 242.9 L1109.5 231.6 L1119.4 231.0 L1128.8 231.0 L1137.3 231.5 L1145.3 230.4 L1154.4 231.5 L1163.9 233.6 L1173.7 230.6 L1182.9 231.1 L1191.5 232.7 L1201.3 233.4 L1209.5 231.4 L1218.6 231.4 L1228.3 231.9 L1237.2 230.9 L1246.5 233.5 L1254.4 232.4 L1263.4 230.5 L1273.0 231.0 L1282.6 232.2 L1291.6 233.5 L1299.5 230.7 L1308.5 231.9 L1319.1 232.6 L1327.6 233.1 L1336.3 230.8 L1345.9 230.5 L1354.2 230.5 L1363.1 230.6 L1372.9 230.8 L1382.1 233.0 L1390.6 230.8 L1400.3 232.7 L1398.0 241.5 L1394.7 251.8 L1392.1 261.5 L1388.6 270.2 L1386.5 278.6 L1382.6 287.9 L1380.3 297.7 L1378.0 306.7 L1375.3 316.0 Z"/></g>
+                                <path class="s3" d="M-0.7 232.5 L8.8 231.8 L18.7 230.6 L28.5 231.3 L36.4 232.5 L45.6 230.3 L55.8 231.5 L65.5 232.3 L73.6 230.1 L83.5 231.3 L92.3 232.4 L101.4 231.6 L110.4 232.3 L121.1 231.4 L129.3 231.6 L139.6 231.7 L147.4 230.8 L156.8 230.9 L167.4 231.7 L175.5 230.7 L184.9 229.6 L194.9 231.2 L203.4 230.1 L213.3 230.9 L222.2 229.2 L230.8 229.2 L241.3 230.1 L250.2 229.6 L259.0 229.2 L269.2 230.5 L277.0 230.8 L287.0 230.6 L296.5 230.7 L305.9 231.8 L314.3 231.0 L323.5 230.4 L332.7 231.1 L341.9 230.4 L351.9 231.7 L360.8 231.9 L369.5 231.4 L378.5 230.6 L387.5 232.0 L398.1 230.7 L406.4 230.3 L415.2 231.8 L425.7 230.3 L433.8 232.3 L443.0 232.7 L452.4 231.7 L461.3 231.2 L470.9 231.3 L480.6 230.7 L489.7 232.9 L498.4 231.3 L507.3 231.0 L517.6 232.6 L525.5 232.2 L535.7 231.9 L544.0 232.3 L553.7 233.9 L562.9 233.9 L573.0 233.0 L581.0 233.7 L590.1 233.1 L599.3 231.9 L608.9 231.9 L619.0 233.0 L627.9 234.0 L636.8 233.0 L645.4 233.3 L654.8 231.5 L663.7 232.1 L672.8 232.9 L682.1 232.4 L691.4 233.0 L699.3 231.0 L708.3 231.0 L719.0 231.3 L727.2 231.6 L736.5 231.0 L745.9 231.1 L755.1 232.3 L762.8 231.5 L772.0 232.3 L781.1 230.5 L791.4 231.3 L800.3 230.8 L809.1 230.1 L818.1 230.1 L827.6 229.6 L835.8 229.8 L845.5 230.8 L853.7 231.8 L864.2 230.0 L872.2 231.2 L882.6 229.3 L891.3 231.0 L900.7 229.2 L908.5 229.1 L917.7 231.2 L928.0 230.1 L935.7 229.8 L945.0 230.7 L954.9 231.1 L963.5 230.3 L972.7 230.1 L981.7 231.1 L991.3 230.1 L1000.1 229.7 L1008.3 230.4 L1017.9 229.5 L1026.6 230.6 L1037.1 231.9 L1044.7 230.5 L1054.3 230.5 L1063.0 231.3 L1073.3 230.8 L1081.3 230.1 L1090.1 232.0 L1099.5 232.0 L1109.6 230.2 L1117.7 230.9 L1127.7 232.2 L1136.0 231.4 L1145.2 231.6 L1155.0 231.0 L1164.2 232.9 L1172.9 233.1 L1182.6 231.0 L1191.7 231.1 L1200.5 230.9 L1199.7 222.7 L1200.6 214.2 L1199.5 205.7 L1200.6 195.5 L1199.2 185.7 L1199.7 176.9 L1200.7 168.3 L1191.4 166.7 L1181.4 168.5 L1172.5 167.0 L1162.9 166.4 L1154.4 167.7 L1145.3 167.6 L1136.0 166.0 L1127.6 166.8 L1118.2 166.8 L1108.7 165.8 L1099.7 166.4 L1090.3 165.6 L1081.8 165.5 L1073.4 166.3 L1063.5 166.7 L1053.7 165.4 L1045.9 166.6 L1036.4 165.9 L1027.7 166.3 L1018.7 167.1 L1009.8 166.7 L1000.3 165.9 L991.0 166.1 L981.9 166.7 L973.3 164.5 L964.1 166.0 L954.7 166.7 L944.7 165.4 L936.2 166.6 L926.7 165.4 L917.6 165.9 L909.1 165.8 L899.7 166.1 L890.1 164.4 L882.2 166.3 L873.2 164.7 L862.9 166.1 L854.9 164.4 L846.2 165.8 L835.6 165.8 L827.0 164.9 L818.8 167.3 L808.5 166.1 L799.6 166.8 L790.3 166.0 L781.7 166.5 L772.6 167.0 L764.4 168.0 L755.2 167.9 L745.0 166.3 L736.3 167.6 L727.5 166.9 L719.0 166.9 L708.3 166.4 L699.5 168.3 L691.5 166.5 L681.4 167.2 L673.2 169.1 L663.2 167.0 L655.3 169.6 L645.8 168.3 L636.8 169.3 L627.3 168.0 L618.2 169.2 L608.8 169.3 L599.4 170.3 L590.4 168.1 L582.6 170.0 L573.4 169.6 L564.2 169.4 L554.7 167.2 L545.8 169.2 L536.9 166.9 L526.5 168.7 L518.2 169.0 L509.9 167.6 L500.3 168.1 L491.2 167.2 L482.1 166.2 L473.4 167.9 L464.1 167.1 L454.1 166.9 L445.8 167.1 L435.7 165.4 L427.1 166.0 L417.7 165.8 L408.9 167.0 L400.7 166.8 L390.1 167.2 L382.0 166.7 L372.9 165.6 L363.4 164.6 L354.8 164.5 L345.8 166.8 L336.6 165.8 L327.8 166.7 L318.7 166.6 L309.0 163.8 L300.2 165.4 L291.5 165.4 L281.6 163.8 L273.3 165.6 L264.5 165.6 L255.1 166.2 L246.3 165.4 L237.0 165.3 L226.5 165.2 L217.9 167.2 L208.9 165.3 L200.3 164.9 L190.6 165.8 L181.2 166.5 L172.6 167.1 L163.4 167.7 L154.0 166.5 L145.0 165.2 L136.0 167.7 L126.9 166.7 L118.2 166.2 L109.1 165.7 L99.7 166.4 L91.4 167.8 L82.2 167.4 L73.3 167.9 L62.9 166.3 L55.0 168.4 L46.3 168.3 L35.8 167.8 L27.5 168.0 L17.6 169.1 L9.1 167.3 L0.0 168.0 Z" fill="url(#p-carb)" stroke="#6f6a5d" stroke-width="1.2"/>
+                            </g></g>
+                            <g class="dl-now"><g transform="translate(0 -88)"><use href="#dl-stack" clip-path="url(#dl-erode)"/><g clip-path="url(#dl-erode)" fill="#6b7a4c" fill-opacity=".92"><path d="M-22.0 393.5 L-7.9 398.8 L-2.2 396.4 L8.1 402.8 L16.4 399.2 L23.2 404.7 L32.2 400.9 L46.2 397.8 L54.7 406.5 L63.3 405.4 L69.3 402.3 L78.7 406.9 L88.8 403.5 L102.2 408.0 L111.2 404.5 L117.4 407.8 L126.5 403.9 L135.3 403.0 L144.3 411.9 L156.9 408.8 L163.3 406.4 L170.0 406.2 L183.4 412.7 L190.0 412.4 L201.6 411.9 L210.2 411.7 L217.6 410.3 L226.3 407.2 L238.4 408.4 L244.8 410.1 L256.1 405.5 L261.5 404.3 L272.1 404.7 L282.6 405.2 L292.9 404.2 L300.3 401.8 L311.8 402.7 L318.7 402.0 L331.0 399.6 L340.9 401.4 L347.3 396.2 L354.4 398.4 L368.2 393.9 L375.9 395.5 L385.4 389.1 L394.9 392.3 L403.4 389.8 L412.3 392.5 L421.6 391.1 L427.2 384.6 L438.8 390.4 L446.6 391.6 L458.2 386.0 L466.4 388.7 L473.0 388.7 L483.7 390.0 L492.1 389.4 L502.8 393.8 L512.8 396.7 L519.7 400.7 L527.4 396.6 L538.2 397.5 L546.4 402.6 L557.1 395.5 L567.6 397.0 L576.4 400.3 L585.7 407.4 L596.3 402.8 L605.4 405.9 L611.8 401.8 L622.3 406.9 L633.6 411.8 L640.7 406.5 L651.5 402.3 L656.0 407.2 L668.2 402.2 L677.4 408.9 L685.1 403.6 L693.4 401.4 L707.0 401.5 L716.1 406.1 L723.1 398.8 L734.6 400.5 L740.3 397.9 L752.9 398.9 L757.9 398.0 L766.1 398.7 L777.2 394.7 L788.4 399.3 L792.9 395.6 L803.6 398.9 L815.9 391.2 L821.9 389.5 L835.4 390.2 L842.3 391.2 L851.7 391.8 L861.5 386.2 L870.6 389.0 L878.2 390.4 L885.8 393.3 L895.8 392.6 L906.5 395.9 L911.2 393.5 L922.7 401.2 L934.3 398.5 L938.1 401.8 L949.6 400.8 L960.2 402.3 L967.9 406.1 L976.3 401.9 L988.1 401.0 L993.8 408.3 L1001.4 409.4 L1014.2 406.3 L1020.7 410.8 L1033.5 405.4 L1039.9 410.5 L1049.2 407.5 L1056.4 409.3 L1069.6 403.3 L1075.4 410.0 L1088.0 407.6 L1092.7 407.4 L1107.6 409.4 L1115.2 399.1 L1125.3 400.0 L1133.4 406.5 L1143.0 397.5 L1149.8 404.6 L1158.1 400.7 L1169.0 395.4 L1179.5 393.4 L1185.6 396.0 L1194.7 392.0 L1207.0 398.0 L1218.0 391.1 L1224.6 392.1 L1225.6 403.4 L1227.6 411.7 L1222.3 424.5 L1222.9 433.3 L1225.0 445.6 L1225.3 452.2 L1223.6 461.0 L1223.5 472.5 L1216.1 466.3 L1205.4 468.7 L1199.4 466.8 L1190.2 471.6 L1177.4 471.7 L1168.4 466.2 L1162.4 467.4 L1155.1 469.8 L1142.7 473.0 L1132.0 472.3 L1123.1 466.5 L1119.5 471.8 L1106.1 466.2 L1101.5 471.7 L1091.6 466.4 L1081.4 468.5 L1070.0 468.3 L1063.3 468.5 L1052.9 466.4 L1046.6 471.5 L1037.4 469.3 L1028.6 470.2 L1018.1 470.7 L1009.9 469.0 L997.0 465.3 L988.6 465.4 L983.7 469.8 L974.0 465.0 L963.2 473.9 L955.1 469.3 L945.1 466.0 L934.2 466.6 L926.5 468.9 L920.5 466.5 L907.8 467.8 L898.2 467.9 L889.6 469.8 L879.4 474.2 L872.4 474.4 L865.3 471.7 L854.9 474.5 L843.8 471.7 L835.8 471.7 L829.4 466.6 L817.2 465.2 L808.4 465.8 L800.4 474.7 L791.1 468.1 L782.7 467.8 L775.3 472.2 L762.9 467.4 L756.9 474.4 L747.7 469.3 L740.7 465.1 L726.2 472.8 L719.2 465.4 L711.1 474.9 L701.9 468.5 L690.3 465.7 L686.1 469.9 L677.3 465.5 L664.1 465.5 L656.0 465.6 L646.1 469.1 L637.4 465.5 L626.8 474.7 L618.6 470.1 L610.9 470.3 L600.0 468.1 L591.1 470.4 L587.0 471.0 L577.6 467.1 L563.5 470.4 L557.3 470.7 L547.6 471.3 L540.7 474.1 L529.2 469.5 L523.3 467.2 L510.0 468.1 L500.8 472.7 L496.2 468.1 L483.0 465.8 L474.7 465.8 L466.7 470.8 L456.6 465.6 L450.3 465.5 L438.3 467.9 L430.3 466.0 L421.6 468.1 L414.6 470.6 L406.4 471.5 L396.6 470.7 L385.6 473.2 L377.9 474.5 L369.3 472.0 L357.5 473.1 L349.2 466.3 L338.3 466.7 L330.4 471.8 L321.5 465.6 L315.4 470.6 L301.9 465.5 L293.5 468.6 L288.9 474.5 L278.4 467.3 L268.3 468.6 L258.7 465.1 L251.2 473.3 L243.0 466.0 L232.8 466.7 L224.8 469.5 L217.2 472.9 L203.3 468.2 L199.0 469.6 L187.1 469.4 L180.1 474.4 L169.7 474.7 L161.0 466.0 L153.3 469.2 L139.7 474.8 L130.6 470.8 L124.2 473.8 L114.7 467.2 L105.0 467.0 L97.7 468.6 L89.8 467.4 L78.3 467.5 L73.1 473.4 L63.3 471.2 L51.6 466.4 L45.1 469.9 L31.4 466.7 L22.7 472.2 L18.5 467.0 L8.8 468.2 L-0.9 473.6 L-10.2 473.0 L-20.0 470.0 Z"/></g></g></g>
+                            <g class="dl-feet" fill="#59402e"><ellipse cx="610" cy="151" rx="7" ry="4" transform="rotate(-8 610 151)"/><ellipse cx="636" cy="158" rx="7" ry="4" transform="rotate(-8 636 158)"/><ellipse cx="662" cy="151" rx="7" ry="4" transform="rotate(-8 662 151)"/><ellipse cx="688" cy="158" rx="7" ry="4" transform="rotate(-8 688 158)"/><ellipse cx="714" cy="151" rx="7" ry="4" transform="rotate(-8 714 151)"/><ellipse cx="740" cy="158" rx="7" ry="4" transform="rotate(-8 740 158)"/><ellipse cx="766" cy="151" rx="7" ry="4" transform="rotate(-8 766 151)"/><ellipse cx="792" cy="158" rx="7" ry="4" transform="rotate(-8 792 158)"/><ellipse cx="818" cy="151" rx="7" ry="4" transform="rotate(-8 818 151)"/><ellipse cx="844" cy="158" rx="7" ry="4" transform="rotate(-8 844 158)"/><ellipse cx="870" cy="151" rx="7" ry="4" transform="rotate(-8 870 151)"/></g>
+                            <g class="plate-labels">
+                                <g class="s0x"><text x="44" y="290">The old chain, collapsing</text></g>
+                                <text class="only0" x="1156" y="388" text-anchor="end">First sediments</text>
+                                <text x="1156" y="456" text-anchor="end" fill="#fff" class="only01">Porphyry</text>
+                                <text x="1156" y="525" text-anchor="end" fill="#fff">Older basement</text>
+                                <text class="only1" x="295" y="300" text-anchor="middle">Carbonate platform</text>
+                                <text class="only1" x="665" y="205" text-anchor="middle">Shallow tropical sea</text>
+                                <text class="only2" x="665" y="205" text-anchor="middle">Volcanic layers fill the basins</text>
+                                <text class="only3" x="772" y="128" text-anchor="middle">Footprints in carbonate mud</text>
+                                <text class="only4" x="44" y="540" fill="#fff">Lifted 3–5 km, then cut by ice</text>
+                            </g>
+                        </svg>
                     </div>
-
-                    <p>There are mountains, and then there are the Dolomites. Pale towers of carbonate rock rising like fossilised cathedrals from green meadows, glowing pink and orange at sunset in the famous <em>enrosadira</em>. I have the privilege of being a guide for the exhibition <a href="https://www.geoscienze.unipd.it/dolomiti-cammino-nella-geologia-della-meraviglia" target="_blank"><em>"Dolomiti: un cammino nella geologia della meraviglia"</em></a>, organised by the University of Padova's Department of Geosciences. Every time I walk visitors through it, I learn something new, and here are a few things that blow my mind the most.</p>
-
-                    <h2>250 million years in a nutshell</h2>
-
-                    <p>Imagine standing where the Tre Cime di Lavaredo are today, 220 million years ago. No mountains. You're underwater, in a warm tropical sea dotted with coral atolls, not unlike the Maldives. Algae, sponges and corals build massive carbonate platforms while volcanic eruptions periodically bury them in ash and lava. These ancient reefs are now the white walls of the Dolomites.</p>
-
-                    <div class="timeline">
-                        <div class="timeline-step">
+                    <div class="plate-side">
+                        <div class="plate-steps">
+                        <div class="plate-step reveal" data-i="0">
                             <h3>~280 Ma: The first sea</h3>
                             <p>An ancient mountain chain collapses. The Dolomite region sinks below sea level. Porphyry volcanics and early marine sediments begin to accumulate.</p>
                         </div>
-                        <div class="timeline-step">
+                        <div class="plate-step reveal" data-i="1">
                             <h3>~240 Ma: The reef builders arrive</h3>
                             <p>Corals, sponges and calcareous algae construct massive carbonate platforms, atolls and barrier reefs in a shallow tropical sea. Today's white cliff faces are those ancient reefs, turned to stone.</p>
                         </div>
-                        <div class="timeline-step">
-                            <h3>~230 Ma: Volcanic interlude</h3>
+                        <div class="plate-step reveal" data-i="2">
+                            <h3>~238 Ma: Volcanic interlude</h3>
                             <p>Powerful eruptions bury and modify the reefs. The volcanic layers are visible today as dark bands in the cliff faces.</p>
                         </div>
-                        <div class="timeline-step">
+                        <div class="plate-step reveal" data-i="3">
                             <h3>~220 Ma: Dinosaurs walk the flats</h3>
                             <p>Tidal flats emerge between reef episodes. Dinosaurs leave footprints in carbonate mud, preserved in rock and found at several localities across the Dolomites.</p>
                         </div>
-                        <div class="timeline-step">
+                        <div class="plate-step reveal" data-i="4">
                             <h3>~65 Ma → today: Africa meets Europe</h3>
                             <p>Continental collision lifts the entire sedimentary stack 3–5 km. Glaciers and erosion sculpt the iconic towers, pinnacles and vertical walls.</p>
                         </div>
+                        </div>
                     </div>
-
-                    <h2>But why are they white?</h2>
-
-                    <p>Déodat de Dolomieu, an 18th-century French geologist, noticed that certain Alpine limestones did not fizz with dilute acid the way normal calcite does. The mineral turned out to be a calcium-magnesium double carbonate, CaMg(CO₃)₂, named <em>dolomite</em> in his honour.</p>
-
-                    <div class="callout">
-                        <div class="callout-title">🧪 The "dolomite problem"</div>
-                        Reproducing dolomite in the lab at low temperature proved impossible for over two centuries, it was only achieved in 1995. The current consensus involves microbial mediation and specific Mg/Ca ratios. As one researcher memorably put it, the Dolomites are partly "mountains of mucilaginous bacteria."
-                    </div>
-
-                    <h2>The enrosadira: why they glow</h2>
-
-                    <p>The famous pink-orange glow at sunrise and sunset isn't magic, it's mineralogy. Fine-grained dolomite and calcite scatter low-angle sunlight in ways that darker silicate rocks simply cannot. The result is a natural light show that has inspired artists and mountaineers for centuries, and that gives me a particular thrill every time I see it, knowing exactly which mineral is responsible.</p>
-
-                    <!-- <img src="../../img/posts/dolomites-enrosadira.jpg" alt="Enrosadira on the Dolomites at sunset"> -->
-                    <!-- <p class="img-caption">The enrosadira: carbonate mineralogy meets golden-hour light.</p> -->
-
-                    <div class="key-number-grid">
-                        <div class="key-number"><span class="number">9</span><span class="label">UNESCO Dolomite systems inscribed</span></div>
-                        <div class="key-number"><span class="number">250 Ma</span><span class="label">of geological history in the rock</span></div>
-                        <div class="key-number"><span class="number">3 357 m</span><span class="label">Marmolada: highest Dolomite peak</span></div>
-                        <div class="key-number"><span class="number">2009</span><span class="label">Year of UNESCO inscription</span></div>
-                    </div>
-
-                    <p>If you're ever in the Padova area, come visit the <a href="https://www.geoscienze.unipd.it/dolomiti-cammino-nella-geologia-della-meraviglia" target="_blank">exhibition</a>. I'll be happy to walk you through 250 million years of wonder.</p>
-                </div>
-                <div class="post-nav">
-                    <a href="../../hobbies/geology.html" class="back-link">Back to Geology</a>
-                    <a href="../../hobbies.html" class="back-link">All Hobbies &amp; Blog</a>
+                    <div class="plate-ticks" aria-label="Jump to a moment"><button type="button" data-i="0"><i></i>280 Ma</button><button type="button" data-i="1"><i></i>240 Ma</button><button type="button" data-i="2"><i></i>238 Ma</button><button type="button" data-i="3"><i></i>220 Ma</button><button type="button" data-i="4"><i></i>65 Ma → today</button></div>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <section class="dl-acid">
+            <div class="frame dl-acid-grid">
+                <div class="reveal">
+                    <h2>But why are they white?</h2>
+                    <p class="dl-body">Déodat de Dolomieu, an 18th-century French geologist, noticed that certain Alpine limestones did not fizz with dilute acid the way normal calcite does. The mineral turned out to be a calcium-magnesium double carbonate, CaMg(CO₃)₂, named <em>dolomite</em> in his honour.</p>
+                </div>
+                <div class="reveal">
+                    <div class="bench">
+                        <button type="button" class="stone" id="stone-calcite" aria-label="Drop acid on calcite: it fizzes"><canvas aria-hidden="true"></canvas><span>Calcite</span><small>CaCO₃</small></button>
+                        <button type="button" class="stone" id="stone-dolomite" aria-label="Drop acid on dolomite: it barely reacts"><canvas aria-hidden="true"></canvas><span>Dolomite</span><small>CaMg(CO₃)₂</small></button>
+                    </div>
+                    <p class="bench-note">Press a stone to drop dilute acid on it, the field test Dolomieu's rocks failed.</p>
+                    <div class="dl-problem">
+                        <p class="dl-problem-t">The "dolomite problem"</p>
+                        <p>Reproducing dolomite in the lab at low temperature proved impossible for over two centuries, it was only achieved in 1995. The current consensus involves microbial mediation and specific Mg/Ca ratios. As one researcher memorably put it, the Dolomites are partly "mountains of mucilaginous bacteria."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="glow">
+            <div class="frame">
+                <h2 class="reveal">The enrosadira: why they glow</h2>
+                <p class="glow-intro reveal">The famous pink-orange glow at sunrise and sunset isn't magic, it's mineralogy. Fine-grained dolomite and calcite scatter low-angle sunlight in ways that darker silicate rocks simply cannot. The result is a natural light show that has inspired artists and mountaineers for centuries, and that gives me a particular thrill every time I see it, knowing exactly which mineral is responsible.</p>
+                <div class="glow-view reveal">
+                    <img id="glow-img" src="/img/post/geology/dolomiti-catinaccio.jpg" alt="The Catinaccio group at sunset" loading="lazy">
+                    <canvas id="glow-cv" aria-hidden="true"></canvas>
+                </div>
+                <div class="glow-ctl">
+                    <label><span>Noon</span><input type="range" id="glow-sun" min="0" max="160" value="100" aria-label="Height of the sun"><span>Dusk</span></label>
+                    <button type="button" id="glow-dark" aria-pressed="false">Swap in dark rock</button>
+                </div>
+                <p class="glow-note">The photograph is the real sunset, in the middle of the slider. Noon, dusk and the dark rock are a colour grade I applied to it to show the idea, not other photographs.</p>
+
+                <div class="dl-wall">
+                    <div class="reveal"><b>9</b><span>UNESCO Dolomite systems inscribed</span></div>
+                    <div class="reveal"><b>250 Ma</b><span>of geological history in the rock</span></div>
+                    <div class="reveal"><b>3 343 m</b><span>Marmolada: highest Dolomite peak</span></div>
+                    <div class="reveal"><b>2009</b><span>Year of UNESCO inscription</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="dl-close">
+            <div class="frame">
+                <p class="reveal">The <a href="https://www.geoscienze.unipd.it/dolomiti-cammino-nella-geologia-della-meraviglia" target="_blank" rel="noopener">exhibition</a> closed in April, but I'm still happy to walk you through 250 million years of wonder.</p>
+                <div class="dl-pnav">
+                    <a href="/hobbies/geology.html" class="back-link">Back to Geology</a>
+                    <a href="/hobbies.html" class="back-link">All Hobbies &amp; Blog</a>
+                </div>
+            </div>
+        </section>
     </main>
+
     <div id="site-footer"></div>
-    <script src="../../js/components.js"></script>
+    <script src="/js/components.js?v=3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+    <script src="/js/site.js?v=3" defer></script>
+    <script>
+    (function () {
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // ---- relighting: t 0 noon, 1 the photograph, 1.6 dusk ----
+      var VS = 'attribute vec2 p; varying vec2 v; void main(){ v=vec2(p.x*.5+.5,.5-p.y*.5); gl_Position=vec4(p,0.,1.); }';
+      var FS = 'precision mediump float; varying vec2 v; uniform sampler2D t; uniform float a,dark;\
+void main(){ vec3 c=texture2D(t,v).rgb;\
+ float pink=smoothstep(.04,.2,c.r-c.g)*smoothstep(.02,.12,c.r-c.b);\
+ float low=smoothstep(.24,.31,v.y);\
+ float l=dot(c,vec3(.3,.59,.11));\
+ vec3 day=mix(c*vec3(.96,1.,1.06),vec3(l*1.02,l*1.0,l*.96)+.05,pink);\
+ vec3 rock=pink>.0?mix(c,vec3(l*.34,l*.32,l*.34),dark*pink*low):c;\
+ vec3 base=mix(day,rock,clamp(a,0.,1.));\
+ float dusk=clamp(a-1.,0.,.6)/.6;\
+ base=mix(base,base*vec3(.42,.42,.62),dusk);\
+ gl_FragColor=vec4(base,1.); }';
+      function relight(canvas, img) {
+        var gl = canvas.getContext('webgl', { preserveDrawingBuffer: true });
+        if (!gl) return null;
+        function sh(k, s) { var x = gl.createShader(k); gl.shaderSource(x, s); gl.compileShader(x); return x; }
+        var pr = gl.createProgram();
+        gl.attachShader(pr, sh(gl.VERTEX_SHADER, VS)); gl.attachShader(pr, sh(gl.FRAGMENT_SHADER, FS)); gl.linkProgram(pr);
+        if (!gl.getProgramParameter(pr, gl.LINK_STATUS)) return null;
+        gl.useProgram(pr);
+        gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
+        var loc = gl.getAttribLocation(pr, 'p'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+        gl.bindTexture(gl.TEXTURE_2D, gl.createTexture());
+        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, img);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+        var ua = gl.getUniformLocation(pr, 'a'), ud = gl.getUniformLocation(pr, 'dark');
+        canvas.width = img.naturalWidth; canvas.height = img.naturalHeight; gl.viewport(0, 0, canvas.width, canvas.height);
+        return function (a, dark) { gl.uniform1f(ua, a); gl.uniform1f(ud, dark); gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4); };
+      }
+      function whenLoaded(img, cb) { if (img.complete && img.naturalWidth) cb(); else img.addEventListener('load', cb); }
+
+      // hero: the rock warms up once, when the page opens
+      var hImg = document.getElementById('dl-hero-img'), hCv = document.getElementById('dl-hero-cv');
+      whenLoaded(hImg, function () {
+        var draw = relight(hCv, hImg);
+        if (!draw) { hCv.remove(); return; }
+        if (reduce) { draw(1, 0); return; }
+        var t0 = performance.now();
+        (function go(t) {
+          var p = Math.min(1, (t - t0 - 500) / 3800); if (p < 0) p = 0;
+          draw(p * p * (3 - 2 * p), 0);
+          if (p < 1) requestAnimationFrame(go);
+        })(t0);
+      });
+
+      // the slider
+      var gImg = document.getElementById('glow-img'), gCv = document.getElementById('glow-cv'), sun = document.getElementById('glow-sun'),
+          darkBtn = document.getElementById('glow-dark');
+      whenLoaded(gImg, function () {
+        var draw = relight(gCv, gImg);
+        if (!draw) { gCv.remove(); sun.closest('.glow-ctl').hidden = true; return; }
+        var dark = 0, target = 0, raf;
+        function paint() {
+          draw(+sun.value / 100, dark);
+          if (Math.abs(target - dark) > .01) { dark += (target - dark) * .18; raf = requestAnimationFrame(paint); } else { dark = target; draw(+sun.value / 100, dark); raf = 0; }
+        }
+        sun.addEventListener('input', function () { if (!raf) paint(); });
+        darkBtn.addEventListener('click', function () {
+          var on = darkBtn.getAttribute('aria-pressed') !== 'true';
+          darkBtn.setAttribute('aria-pressed', on);
+          target = on ? 1 : 0;
+          if (!raf) paint();
+        });
+        paint();
+      });
+
+      // ---- plate: one state per stretch of scroll ----
+      var svg = document.getElementById('plate-svg'), steps = [].slice.call(document.querySelectorAll('.plate-step')),
+          ticks = [].slice.call(document.querySelectorAll('.plate-ticks button')), plate = document.getElementById('plate');
+      var cur = -1;
+      function setStep(i) {
+        if (i === cur) return;
+        cur = i;
+        svg.setAttribute('data-step', i);
+        steps.forEach(function (s, n) { s.classList.toggle('is-now', n === i); });
+        ticks.forEach(function (b, n) { b.classList.toggle('is-now', n === i); });
+      }
+      if (!reduce && window.innerHeight > 560) {
+        document.documentElement.classList.add('is-plate');
+        var calc = function () {
+          var r = plate.getBoundingClientRect(), len = r.height - window.innerHeight;
+          setStep(Math.max(0, Math.min(4, Math.floor(-r.top / len * 5))));
+        };
+        window.addEventListener('scroll', calc, { passive: true });
+        window.addEventListener('resize', calc);
+        calc();
+        ticks.forEach(function (b, i) {
+          b.addEventListener('click', function () {
+            var r = plate.getBoundingClientRect(), y = r.top + window.pageYOffset + (r.height - window.innerHeight) * (i + .5) / 5;
+            if (window.siteLenis) window.siteLenis.scrollTo(y); else window.scrollTo(0, y);
+          });
+        });
+      }
+
+      // ---- the acid test ----
+      [['stone-calcite', 60, 90], ['stone-dolomite', 2, 500]].forEach(function (cfg) {
+        var btn = document.getElementById(cfg[0]), cv = btn.querySelector('canvas'), x = cv.getContext('2d');
+        var W = 480, H = 394; cv.width = W; cv.height = H;
+        var calcite = cfg[0] === 'stone-calcite', drop = null, wet = 0, bub = [], running = false;
+        var seed = calcite ? 4 : 9;
+        function rnd(i) { var s = Math.sin(i * 127.1 + seed * 311.7) * 43758.5453; return s - Math.floor(s); }
+        function stone() {
+          x.clearRect(0, 0, W, H);
+          x.beginPath();
+          var n = 26;
+          for (var i = 0; i <= n; i++) {
+            var a = i / n * Math.PI * 2, r = 158 + 30 * rnd(i % n);
+            var px = W / 2 + Math.cos(a) * r * 1.22, py = 250 + Math.sin(a) * r * .62;
+            if (i === 0) x.moveTo(px, py); else x.lineTo(px, py);
+          }
+          x.closePath();
+          x.fillStyle = calcite ? '#efe9dd' : '#c6bca6'; x.fill();
+          x.lineWidth = 1.5; x.strokeStyle = '#8b8473'; x.stroke();
+          x.save(); x.clip();
+          for (i = 0; i < 90; i++) {
+            x.fillStyle = 'rgba(90,82,66,' + (.05 + rnd(i + 40) * .12) + ')';
+            x.fillRect(rnd(i) * W, 130 + rnd(i + 90) * 230, 2 + rnd(i + 7) * 26, 1.4);
+          }
+          x.restore();
+          if (wet > .01) { x.fillStyle = 'rgba(120,130,120,' + (.26 * wet) + ')'; x.beginPath(); x.ellipse(W / 2, 232, 62 * Math.sqrt(wet), 24 * Math.sqrt(wet), 0, 0, 7); x.fill(); }
+        }
+        function frame() {
+          stone();
+          if (drop !== null) {
+            drop += 15;
+            x.fillStyle = '#7fa3b0'; x.beginPath(); x.arc(W / 2, drop, 7, 0, 7); x.fill();
+            if (drop > 226) { drop = null; wet = 1; for (var i = 0; i < cfg[1]; i++) bub.push({ x: W / 2 + (Math.random() - .5) * 96, y: 232 + (Math.random() - .5) * 22, r: 2.5 + Math.random() * 6, v: 1 + Math.random() * 2.6, born: performance.now() + Math.random() * cfg[2] * 8 }); }
+          }
+          var now = performance.now();
+          bub = bub.filter(function (b) {
+            if (now < b.born) return true;
+            b.y -= b.v; b.x += Math.sin(b.y * .13) * .5;
+            x.strokeStyle = 'rgba(70,70,62,.75)'; x.lineWidth = 1; x.beginPath(); x.arc(b.x, b.y, b.r, 0, 7); x.stroke();
+            return b.y > 165;
+          });
+          if (calcite && wet > .5 && bub.length < 8 && Math.random() < .5) bub.push({ x: W / 2 + (Math.random() - .5) * 96, y: 232, r: 2.5 + Math.random() * 6, v: 1 + Math.random() * 2.6, born: now });
+          wet = Math.max(0, wet - .0028);
+          if (drop !== null || bub.length || wet > .01) requestAnimationFrame(frame); else { running = false; stone(); }
+        }
+        stone();
+        btn.addEventListener('click', function () { drop = 0; bub = []; if (!running) { running = true; frame(); } });
+      });
+    })();
+    </script>
 </body>
 </html>

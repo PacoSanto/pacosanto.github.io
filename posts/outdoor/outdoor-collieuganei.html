@@ -4,88 +4,318 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Colli Euganei: Trail, Views and Hot Springs | Francesco Santoro De Vico</title>
-    <link rel="stylesheet" href="../../css/style.css">
-        <style>
-        .blog-post-body h2{margin-top:2.4em}
-        .hero-img{width:100%;max-height:480px;object-fit:cover;border-radius:12px;margin-bottom:.6em}
-        .highlight-box{background:linear-gradient(135deg,#052e16,#14532d);color:#dcfce7;border-radius:12px;padding:2em 2.2em;margin:2em 0;border-left:4px solid #22c55e;font-size:1.05em;line-height:1.7}
-        .highlight-box strong{color:#86efac}
-        .callout{background:#f0fdf4;border:1px solid #22c55e;border-radius:10px;padding:1.4em 1.6em;margin:1.5em 0;font-size:.95em}
-        .callout .callout-title{font-weight:700;color:#15803d;margin-bottom:.4em}
-        .route-card{background:linear-gradient(135deg,#f0fdf4,#ecfdf5);border:1px solid #bbf7d0;border-radius:12px;padding:2em;margin:2em 0}
-        .route-card h3{margin:0 0 .8em;color:#15803d;font-size:1.15em}
-        .route-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1em;margin-bottom:1em}
-        .route-stat{text-align:center}
-        .route-stat .val{font-size:1.6em;font-weight:700;color:#15803d;display:block}
-        .route-stat .lbl{font-size:.8em;color:#555}
-        .key-number-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.2em;margin:2em 0}
-        .key-number{background:#f0fdf4;border-radius:10px;padding:1.5em;text-align:center}
-        .key-number .number{font-size:2.2em;font-weight:700;color:#15803d;display:block;line-height:1.1}
-        .key-number .label{font-size:.85em;color:#555;margin-top:.4em;display:block}
+    <meta name="description" content="A Sunday loop in the volcanic hills 15 km from Padova: chestnut woods, views to Venice on a clear day, and a thermal pool at the bottom.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fsdv.eu/posts/outdoor/outdoor-collieuganei.html">
+    <meta property="og:title" content="Colli Euganei: Trail, Views and Hot Springs">
+    <meta property="og:description" content="A Sunday loop in the volcanic hills 15 km from Padova: chestnut woods, views to Venice on a clear day, and a thermal pool at the bottom.">
+    <meta property="og:image" content="https://fsdv.eu/img/post/outdoor/colli-euganei-og.jpg">
+    <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
+    <link rel="stylesheet" href="/css/style.css?v=3">
+    <style>
+    /* A Sunday out of Padova: the hills on a real elevation model, a sight-line
+       you can test, and a well you can drop down. */
+    .ce { --ce-moss: #4b5c46; --ce-heat: #c25a3c; background: var(--color-chalk); }
+    .ce .site-footer { margin-top: 0; }
+    .ce h2 { font-weight: 300; font-size: clamp(2.4rem,5vw,4.2rem); line-height: 1.04; margin: 0 0 1.4rem; color: var(--color-ink); }
+
+    .ce-hero { padding: calc(var(--nav-height) + clamp(1.25rem,2.5vw,2rem)) 0 clamp(2.5rem,5vw,4rem); }
+    .ce-hero-grid { display: grid; grid-template-columns: minmax(0,5fr) minmax(0,7fr); grid-template-areas: 'text map' 'tool map'; grid-template-rows: auto 1fr; gap: clamp(.8rem,1.5vw,1.25rem) clamp(1.5rem,4vw,4rem); }
+    .ce-text { grid-area: text; } .ce-tool { grid-area: tool; } .ce-mapcol { grid-area: map; }
+    .ce-date { font-family: var(--font-mono); font-size: .76rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ce-moss); margin: 1.1rem 0 .6rem; }
+    .ce-hero h1 { font-weight: 300; font-size: clamp(2.6rem,4.5vw,4.2rem); line-height: .99; margin: 0 0 .9rem; color: var(--color-ink); }
+    .ce-hero h1 em { display: block; }
+    .ce-lede { font-family: var(--font-display); font-size: clamp(1.3rem,1.7vw,1.5rem); line-height: 1.26; color: var(--color-ink); margin: 0; }
+    .ce-lede strong { font-weight: 500; }
+
+    .ce-tool { border-top: 1px solid var(--border); padding-top: 1rem; }
+    .ce-tool-t { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--color-slate); margin: 0 0 .5rem; }
+    .ce-here { font-family: var(--font-display); font-size: clamp(1.8rem,2.6vw,2.4rem); line-height: 1.02; color: var(--color-ink); margin: 0; }
+    .ce-see { list-style: none; margin: .7rem 0 .75rem; padding: 0; font-size: 1.02rem; line-height: 1.4; color: var(--color-ink); }
+    .ce-see li { display: grid; grid-template-columns: 1.2rem minmax(0,1fr); gap: .35rem; margin-bottom: .3rem; }
+    .ce-see i { font-style: normal; color: var(--ce-moss); font-weight: 700; }
+    .ce-see li.no i { color: var(--ce-heat); }
+    .ce-pre { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0 0 .7rem; }
+    .ce-pre button { min-height: 40px; padding: .35rem .85rem; background: none; border: 1px solid var(--color-sandstone); font: 600 .9rem var(--font-body); color: var(--color-ink); cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+    .ce-pre button:hover { background: var(--ce-moss); border-color: var(--ce-moss); color: #fff; }
+    .ce-small { font-size: .88rem; line-height: 1.4; color: var(--color-slate); margin: 0; }
+
+    .ce-map { position: relative; margin: 0; aspect-ratio: 1800/1633; background: var(--color-chalk); overflow: hidden; touch-action: manipulation; cursor: crosshair; }
+    .ce-map img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+    .js .ce-map img { opacity: 0; transform: scale(1.03); transition: opacity 1.6s ease, transform 2.2s var(--ease-out); }
+    .is-loaded .ce-map img { opacity: 1; transform: none; }
+    .ce-map svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; overflow: visible; }
+    .ce-map text { font-family: var(--font-body); font-weight: 600; font-size: 31px; fill: var(--color-ink); paint-order: stroke; stroke: rgba(248,246,241,.88); stroke-width: 6px; pointer-events: none; }
+    .pl-p circle { fill: var(--color-ink); }
+    .pl-t circle { fill: #fff; stroke: var(--color-ink); stroke-width: 2; }
+    .pl-t text { font-weight: 400; }
+    #ce-line { stroke: var(--ce-heat); stroke-width: 3; stroke-dasharray: 2 9; stroke-linecap: round; fill: none; }
+    #ce-loop { stroke: var(--color-ink); stroke-width: 3.5; stroke-dasharray: 16 11; fill: none; opacity: .7; }
+    #ce-pin circle { fill: var(--ce-heat); stroke: #fff; stroke-width: 4; }
+    #ce-probe { pointer-events: none; }
+    #ce-probe circle { fill: none; stroke: var(--color-ink); stroke-width: 2; }
+    .ce-credit { margin: .5rem 0 0; font-size: .82rem; line-height: 1.4; color: var(--color-slate); }
+
+    .ce-body { font-size: 1.14rem; line-height: 1.68; color: var(--color-ink); margin: 0; }
+    .ce-open { padding: 0 0 clamp(3rem,6vw,5rem); }
+    .ce-open .ce-body { max-width: 44rem; }
+
+    /* the plan, as a trail sign */
+    .ce-plan { background: var(--ce-moss); color: #fff; padding: clamp(3.5rem,7vw,6rem) 0; }
+    .ce-plan h2 { color: #fff; }
+    .ce-way { display: inline-block; width: 66px; height: 30px; margin-bottom: 1.2rem; background: linear-gradient(#c5322a 33.3%, #fff 33.3% 66.6%, #c5322a 66.6%); box-shadow: 0 1px 0 rgba(0,0,0,.25); }
+    .ce-board { background: #f6f1e4; color: var(--color-ink); padding: clamp(1.25rem,3vw,2.4rem); clip-path: polygon(0 0, calc(100% - 42px) 0, 100% 50%, calc(100% - 42px) 100%, 0 100%); padding-right: clamp(3.5rem,7vw,6rem); box-shadow: 0 16px 40px rgba(0,0,0,.2); }
+    .ce-board h3 { font-weight: 400; font-size: clamp(1.8rem,3.4vw,3rem); line-height: 1.05; margin: 0 0 1.1rem; color: var(--color-ink); }
+    .ce-stats { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 1rem; margin: 0 0 1.2rem; padding: .9rem 0; border-top: 2px solid #c5322a; border-bottom: 1px solid var(--border); }
+    .ce-stats b { display: block; font-family: var(--font-display); font-weight: 400; font-size: clamp(1.6rem,2.8vw,2.5rem); line-height: 1; }
+    .ce-stats span { display: block; margin-top: .3rem; font-size: .92rem; color: var(--color-slate); }
+    .ce-board p { font-size: 1.08rem; line-height: 1.6; margin: 0; max-width: 62ch; }
+
+    /* the well */
+    .ce-terme { padding: clamp(3.5rem,7vw,6.5rem) 0; }
+    .ce-terme-grid { display: grid; grid-template-columns: minmax(0,6fr) minmax(0,6fr); gap: clamp(2rem,5vw,5rem); align-items: start; }
+    .well { display: grid; grid-template-columns: minmax(0,1fr) 3.2rem; gap: 1rem; }
+    .well svg { display: block; width: 100%; height: auto; background: #e6dfcf; }
+    .well input { writing-mode: vertical-lr; direction: ltr; width: 2.4rem; height: 100%; accent-color: var(--ce-heat); justify-self: center; }
+    .well-read { margin: .9rem 0 .1rem; font-family: var(--font-display); font-size: clamp(2.2rem,4vw,3.4rem); line-height: 1; color: var(--color-ink); }
+    .well-read b { font-weight: 400; color: var(--ce-heat); }
+    .well-note { margin: .4rem 0 0; font-size: .92rem; line-height: 1.4; color: var(--color-slate); }
+
+    .ce-geo { background: var(--color-night); color: #fff; padding: clamp(3.5rem,7vw,6rem) 0; }
+    .ce-geo-grid { display: grid; grid-template-columns: minmax(0,4fr) minmax(0,8fr); gap: clamp(1.5rem,4vw,4rem); }
+    .ce-geo-t { color: #fff; font-family: var(--font-display); font-weight: 300; font-size: clamp(2.2rem,4.4vw,3.9rem); line-height: 1.04; margin: 0; }
+    .ce-geo p:not(.ce-geo-t) { font-size: 1.14rem; line-height: 1.68; color: rgba(255,255,255,.86); margin: 0; }
+    .ce-nums { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: clamp(1rem,2.5vw,2.5rem); margin-top: clamp(3rem,6vw,5rem); padding-top: 1.4rem; border-top: 1px solid rgba(255,255,255,.2); }
+    .ce-nums b { display: block; font-family: var(--font-display); font-weight: 300; font-size: clamp(2.4rem,4.7vw,4.3rem); line-height: 1; color: #fff; }
+    .ce-nums span { display: block; margin-top: .4rem; font-size: 1rem; line-height: 1.3; color: rgba(255,255,255,.72); }
+
+    .ce-close { padding: clamp(3.5rem,7vw,6rem) 0; }
+    .ce-close p { font-family: var(--font-display); font-size: clamp(1.7rem,3vw,2.6rem); line-height: 1.24; color: var(--color-ink); max-width: 32em; margin: 0; }
+    .ce-pnav { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; margin-top: clamp(3rem,5vw,4.5rem); padding-top: 1.5rem; border-top: 1px solid var(--border); }
+
+    @media (max-width: 900px) {
+      .ce-hero-grid { grid-template-columns: 1fr; grid-template-areas: 'text' 'map' 'tool'; grid-template-rows: none; }
+      .ce-terme-grid, .ce-geo-grid { grid-template-columns: 1fr; }
+      .ce-stats, .ce-nums { grid-template-columns: 1fr 1fr; }
+      .ce-board { clip-path: none; padding-right: clamp(1.25rem,3vw,2.4rem); }
+      .ce-map text { font-size: 42px; stroke-width: 9px; }
+      .pl-t text { display: none; }
+    }
     </style>
 </head>
-
-<body>
+<body class="ce">
     <div id="site-header"></div>
-    <main class="page-top">
-        <div class="container">
-            <a href="../../hobbies/outdoor.html" class="back-link">Back to Outdoor &amp; Sport</a>
-            <div class="blog-post-full">
-                <div class="blog-post-full-header">
-                    <h1>Colli Euganei: Trail, Views and Hot Springs</h1>
-                    <span class="post-date">March 2026</span>
+
+    <main>
+        <section class="ce-hero">
+            <div class="frame ce-hero-grid">
+                <div class="ce-text">
+                    <a href="/hobbies/outdoor.html" class="back-link">Back to Outdoor &amp; Sport</a>
+                    <p class="ce-date">March 2026</p>
+                    <h1>Colli Euganei: <em>Trail, Views and Hot Springs</em></h1>
+                    <p class="ce-lede"><strong>15 km from Padova.</strong> A cluster of volcanic hills rising from the Veneto plain, chestnut woodland, panoramic views to Venice on a clear day, and some of Europe's oldest thermal springs waiting at the bottom. The perfect Sunday loop.</p>
                 </div>
-                <!-- <img class="hero-img" src="../../img/posts/colli-euganei-hero.jpg" alt="View of the Colli Euganei hills"> -->
-                <div class="blog-post-body">
-
-                    <div class="highlight-box">
-                        <strong>15 km from Padova.</strong> A cluster of volcanic hills rising from the Veneto plain, chestnut woodland, panoramic views to Venice on a clear day, and some of Europe's oldest thermal springs waiting at the bottom. The perfect Sunday loop.
+                <div class="ce-tool">
+                        <p class="ce-tool-t">Stand anywhere on the map</p>
+                        <p class="ce-here" id="ce-here">&nbsp;</p>
+                        <ul class="ce-see" id="ce-see"></ul>
+                        <div class="ce-pre"><button type="button" data-x="647" data-y="896">Monte Venda</button><button type="button" data-x="818" data-y="848">Monte Rua</button><button type="button" data-x="965" data-y="687">Torreglia</button></div>
+                        <p class="ce-small">Geometry only: terrain, the curve of the Earth and normal refraction. Haze has the last word, which is why it says "on a clear day".</p>
                     </div>
-
-                    <p>Living in Padova means having the Colli Euganei literally on your doorstep. They're not high (Monte Venda tops out at 601 m), they're not technical, and they're not famous. But that's precisely what makes them perfect for a lazy Sunday loop when you want fresh air, green views and zero planning stress.</p>
-
-                    <h2>The plan</h2>
-
-                    <div class="route-card">
-                        <h3>🥾 Torreglia – Monte Rua – Galzignano loop</h3>
-                        <div class="route-stats">
-                            <div class="route-stat"><span class="val">12–15 km</span><span class="lbl">Distance</span></div>
-                            <div class="route-stat"><span class="val">400–500 m</span><span class="lbl">Elevation gain</span></div>
-                            <div class="route-stat"><span class="val">4–5 h</span><span class="lbl">Walking time</span></div>
-                            <div class="route-stat"><span class="val">Easy</span><span class="lbl">Difficulty</span></div>
-                        </div>
-                        <p>Start from Torreglia or Galzignano Terme (30 min by car/bus from Padova). Follow the well-marked trails through chestnut and oak woodland toward Monte Rua, with occasional clearings that open up panoramic views across the plain. Packed earth, some rocky stretches on steeper parts, nothing that requires more than decent trainers.</p>
-                    </div>
-
-                    <!-- <img src="../../img/posts/colli-euganei-trail.jpg" alt="Trail through Colli Euganei woodland"> -->
-                    <!-- <p class="img-caption">The trails wind through chestnut and oak woodland, with volcanic geology underfoot.</p> -->
-
-                    <h2>The reward: Terme Euganee</h2>
-
-                    <p>The Colli Euganei sit on one of Europe's largest thermal basins. Abano Terme, Montegrotto Terme and Galzignano Terme have been spa destinations since Roman times, hot water rises from over 2 000 m depth, reaching the surface at 75–87 °C. After a morning of walking, dropping into a thermal pool is one of the best feelings I can imagine. Several spa centres offer day passes at reasonable prices, some with outdoor pools overlooking the hills you just walked over.</p>
-
-                    <div class="callout">
-                        <div class="callout-title">🌋 The geology angle (because I can't help myself)</div>
-                        The Colli Euganei are volcanic, a cluster of Eocene–Oligocene intrusive and extrusive bodies (trachytes, rhyolites, basalts) that punched through the surrounding sedimentary sequence 30–45 million years ago. The thermal water is heated by the residual geothermal gradient and deep circulation through fractured basement. Walking these hills, you're literally on old magma chambers and lava flows, even if the landscape looks nothing like a volcano.
-                    </div>
-
-                    <div class="key-number-grid">
-                        <div class="key-number"><span class="number">601 m</span><span class="label">Monte Venda: highest point</span></div>
-                        <div class="key-number"><span class="number">87 °C</span><span class="label">Thermal water temperature at surface</span></div>
-                        <div class="key-number"><span class="number">30 min</span><span class="label">From Padova to the trailhead</span></div>
-                        <div class="key-number"><span class="number">~35 Ma</span><span class="label">Age of the volcanic intrusions</span></div>
-                    </div>
-
-                    <p>Trail + views + thermal springs + geology, all within half an hour of home. I really have no excuse not to do this.</p>
-                </div>
-                <div class="post-nav">
-                    <a href="../../hobbies/outdoor.html" class="back-link">Back to Outdoor &amp; Sport</a>
-                    <a href="../../hobbies.html" class="back-link">All Hobbies &amp; Blog</a>
+                <div class="ce-mapcol">
+                    <figure class="ce-map">
+                        <img src="/img/post/outdoor/colli-relief.jpg" alt="Shaded relief map of the Colli Euganei rising from the flat Veneto plain" width="1800" height="1633" fetchpriority="high">
+                        <svg id="ce-svg" viewBox="0 0 1800 1633" aria-hidden="true">
+                            <path id="ce-loop" d="M965 687 C905 705 842 786 818 848 C802 916 875 967 967 961 C1013 903 1011 751 965 687"/>
+                            <line id="ce-line"/>
+                            <g class="pl-p"><circle cx="647" cy="896" r="5"/><text x="633" y="903" text-anchor="end">Monte Venda</text></g><g class="pl-p"><circle cx="818" cy="848" r="5"/><text x="832" y="855" text-anchor="start">Monte Rua</text></g><g class="pl-p"><circle cx="526" cy="455" r="5"/><text x="540" y="462" text-anchor="start">Monte Grande</text></g><g class="pl-p"><circle cx="1023" cy="1459" r="5"/><text x="1037" y="1466" text-anchor="start">Monte Ricco</text></g><g class="pl-t"><circle cx="965" cy="687" r="4"/><text x="979" y="694" text-anchor="start">Torreglia</text></g><g class="pl-t"><circle cx="967" cy="961" r="4"/><text x="981" y="968" text-anchor="start">Galzignano Terme</text></g><g class="pl-t"><circle cx="1342" cy="453" r="4"/><text x="1356" y="460" text-anchor="start">Abano Terme</text></g><g class="pl-t"><circle cx="1351" cy="726" r="4"/><text x="1365" y="733" text-anchor="start">Montegrotto Terme</text></g><g class="pl-t"><circle cx="549" cy="563" r="4"/><text x="535" y="570" text-anchor="end">Teolo</text></g><g class="pl-t"><circle cx="1288" cy="1138" r="4"/><text x="1302" y="1145" text-anchor="start">Battaglia Terme</text></g><g class="pl-t"><circle cx="850" cy="1310" r="4"/><text x="864" y="1317" text-anchor="start">Arquà Petrarca</text></g><g class="pl-t"><circle cx="495" cy="397" r="4"/><text x="481" y="404" text-anchor="end">Rovolon</text></g>
+                            <g id="ce-pin" style="display:none"><circle r="13"/></g>
+                            <g id="ce-probe" style="display:none"><circle r="20"/><text id="ce-probe-t" x="28" y="8"></text></g>
+                        </svg>
+                    </figure>
+                    <p class="ce-credit">Click the map to stand somewhere. Dashed black: a sketch of the loop, not a GPS track. Relief drawn from the Mapzen/AWS terrain tiles (SRTM, EU-DEM), about 30 m, so summits read a little low. Place positions &copy; OpenStreetMap contributors.</p>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <section class="ce-open">
+            <div class="frame">
+                <p class="ce-body reveal">Living in Padova means having the Colli Euganei literally on your doorstep. They're not high (Monte Venda tops out at 601 m), they're not technical, and they're not famous. But that's precisely what makes them perfect for a lazy Sunday loop when you want fresh air, green views and zero planning stress.</p>
+            </div>
+        </section>
+
+        <section class="ce-plan">
+            <div class="frame">
+                <span class="ce-way" aria-hidden="true"></span>
+                <h2 class="reveal">The plan</h2>
+                <div class="ce-board reveal">
+                    <h3>Torreglia – Monte Rua – Galzignano loop</h3>
+                    <div class="ce-stats">
+                        <div><b>12–15 km</b><span>Distance</span></div>
+                        <div><b>400–500 m</b><span>Elevation gain</span></div>
+                        <div><b>4–5 h</b><span>Walking time</span></div>
+                        <div><b>Easy</b><span>Difficulty</span></div>
+                    </div>
+                    <p>Start from Torreglia or Galzignano Terme (30 min by car/bus from Padova). Follow the well-marked trails through chestnut and oak woodland toward Monte Rua, with occasional clearings that open up panoramic views across the plain. Packed earth, some rocky stretches on steeper parts, nothing that requires more than decent trainers.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="ce-terme">
+            <div class="frame ce-terme-grid">
+                <div class="reveal">
+                    <h2>The reward: Terme Euganee</h2>
+                    <p class="ce-body">The Colli Euganei sit on one of Europe's largest thermal basins. Abano Terme, Montegrotto Terme and Galzignano Terme have been spa destinations since Roman times, hot water rises from over 2 000 m depth, reaching the surface at 75–87 °C. After a morning of walking, dropping into a thermal pool is one of the best feelings I can imagine. Several spa centres offer day passes at reasonable prices, some with outdoor pools overlooking the hills you just walked over.</p>
+                </div>
+                <div class="reveal">
+                    <div class="well">
+                        <svg viewBox="0 0 600 480" role="img" aria-label="Schematic cross-section from the surface to two thousand metres">
+                        <rect width="600" height="40" fill="#f6f1e4"/>
+                        <path d="M0 40 Q 180 22 300 40 T 600 40 V 88 H 0Z" fill="#c9b78a"/>
+                        <rect y="88" width="600" height="196" fill="#b7ad97"/>
+                        <g stroke="#8d8368" stroke-width="1"><path d="M0 112 H600"/><path d="M0 136 H600"/><path d="M0 160 H600"/><path d="M0 184 H600"/><path d="M0 208 H600"/><path d="M0 232 H600"/><path d="M0 256 H600"/><path d="M0 280 H600"/></g>
+                        <rect y="284" width="600" height="196" fill="#8a8579"/>
+                        <g fill="none" stroke="#3f3c35" stroke-width="2"><polyline points="161,469 149,446 167,427 187,411 171,396" /><polyline points="46,450 42,433 36,405 46,388 61,369" /><polyline points="243,368 237,354 226,336 230,302 214,273" /><polyline points="428,340 427,306 424,287 442,265 449,243" /><polyline points="412,443 400,420 386,387 374,368 367,342" /><polyline points="534,441 554,416 560,398 564,382 566,365" /><polyline points="339,434 356,407 357,373 354,358 344,334" /><polyline points="533,468 549,452 535,438 528,424 544,398" /><polyline points="185,361 169,342 189,323 174,300 158,279" /><polyline points="499,368 480,343 487,322 474,289 492,274" /><polyline points="429,341 433,325 434,308 431,290 426,257" /></g>
+                        <text x="20" y="72" font-size="19" font-weight="600" fill="#33332b">Plain sediments</text>
+                        <text x="20" y="196" font-size="19" font-weight="600" fill="#33332b">Sedimentary sequence</text>
+                        <text x="20" y="466" font-size="19" font-weight="600" fill="#fff">Fractured basement</text>
+                        <rect x="282" y="40" width="36" height="430" fill="#efe9dd" opacity=".35"/>
+                        <g id="well-dot"><circle id="well-dot-c" cx="300" cy="0" r="17" stroke="#fff" stroke-width="3"/></g>
+                    </svg>
+                        <input type="range" id="well-d" min="0" max="2000" step="20" value="1400" aria-label="Depth in metres">
+                    </div>
+                    <p class="well-read"><b id="well-t">-</b> <span id="well-m"></span></p>
+                    <p class="well-note">Drag the slider down the well. A straight line from a 13 °C surface to the 87 °C of the hottest water: a sketch of the idea, not a measured profile.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="ce-geo">
+            <div class="frame">
+                <div class="ce-geo-grid">
+                    <p class="ce-geo-t reveal">The geology angle (because I can't help myself)</p>
+                    <p class="reveal">The Colli Euganei are volcanic, a cluster of Eocene–Oligocene intrusive and extrusive bodies (trachytes, rhyolites, basalts) that punched through the surrounding sedimentary sequence 30–45 million years ago. The thermal water is rainwater that sinks along fractures to depths of 2 000 m or more and is heated by the normal geothermal gradient on the way down; the volcanic bodies themselves are too old to be the heat source. Walking these hills, you're literally on old magma chambers and lava flows, even if the landscape looks nothing like a volcano.</p>
+                </div>
+                <div class="ce-nums">
+                    <div class="reveal"><b>601 m</b><span>Monte Venda: highest point</span></div>
+                    <div class="reveal"><b>87 °C</b><span>Thermal water temperature at surface</span></div>
+                    <div class="reveal"><b>30 min</b><span>From Padova to the trailhead</span></div>
+                    <div class="reveal"><b>~35 Ma</b><span>Age of the volcanic intrusions</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="ce-close">
+            <div class="frame">
+                <p class="reveal">Trail + views + thermal springs + geology, all within half an hour of home. I really have no excuse not to do this.</p>
+                <div class="ce-pnav">
+                    <a href="/hobbies/outdoor.html" class="back-link">Back to Outdoor &amp; Sport</a>
+                    <a href="/hobbies.html" class="back-link">All Hobbies &amp; Blog</a>
+                </div>
+            </div>
+        </section>
     </main>
+
     <div id="site-footer"></div>
-    <script src="../../js/components.js"></script>
+    <script src="/js/components.js?v=3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+    <script src="/js/site.js?v=3" defer></script>
+    <script>
+    (function () {
+      // Map frame and real distances. Heights come from a raster stored as (metres*4+200) in R,G.
+      var B = { lon0: 11.59, lon1: 11.858, lat0: 45.236, lat1: 45.408, W: 1800, H: 1633 };
+      var mx = 111320 * Math.cos(45.32 * Math.PI / 180), my = 110574, Rk = 6371000 * 7 / 6;
+      var svg = document.getElementById('ce-svg'), hereEl = document.getElementById('ce-here'), see = document.getElementById('ce-see'),
+          pin = document.getElementById('ce-pin'), line = document.getElementById('ce-line'), probe = document.getElementById('ce-probe');
+      var grid = null, gw = 0, gh = 0;
+      var targets = [
+        { name: 'The Campanile di San Marco, Venice', lat: 45.43403, lon: 12.33894, h: 98.6 },
+        { name: 'Palazzo del Bo, Padova', lat: 45.40725, lon: 11.87698, h: 45 }
+      ];
+      function h(x, y) { // map pixels, bilinear
+        if (!grid) return 0;
+        var u = x / B.W * (gw - 1), v = y / B.H * (gh - 1);
+        if (u < 0 || v < 0 || u > gw - 1 || v > gh - 1) return 8;
+        var i = Math.floor(u), j = Math.floor(v), a = u - i, b = v - j, i1 = Math.min(i + 1, gw - 1), j1 = Math.min(j + 1, gh - 1);
+        return grid[j * gw + i] * (1 - a) * (1 - b) + grid[j * gw + i1] * a * (1 - b) + grid[j1 * gw + i] * (1 - a) * b + grid[j1 * gw + i1] * a * b;
+      }
+      var mPerPx = (B.lon1 - B.lon0) * mx / B.W;
+      function metres(t, x, y) { // map pixel -> target offset in metres
+        var lon = B.lon0 + x / B.W * (B.lon1 - B.lon0), lat = B.lat1 - y / B.H * (B.lat1 - B.lat0);
+        return { dx: (t.lon - lon) * mx, dy: (t.lat - lat) * my };
+      }
+      function sight(x, y, t) {
+        var o = metres(t, x, y), D = Math.hypot(o.dx, o.dy), e = h(x, y) + 1.7;
+        var ta = (t.h - e) / D - D / (2 * Rk);
+        var ux = o.dx / D / mPerPx, uy = -o.dy / D / mPerPx;
+        var worst = null, n = 700;
+        for (var i = 2; i < n; i++) {
+          var d = D * i / n;
+          var px = x + ux * d, py = y + uy * d, g = h(px, py);
+          var a = (g - e) / d - d / (2 * Rk);
+          if (a > ta && (!worst || a > worst.a)) worst = { a: a, d: d, g: g, onmap: px >= 0 && py >= 0 && px < B.W && py < B.H };
+        }
+        return { D: D, block: worst };
+      }
+      function km(m) { return (m / 1000).toFixed(m < 10000 ? 1 : 0) + ' km'; }
+      function place(x, y) {
+        pin.setAttribute('transform', 'translate(' + x + ' ' + y + ')');
+        pin.style.display = '';
+        var el = h(x, y);
+        hereEl.textContent = 'About ' + Math.round(el) + ' m up';
+        see.innerHTML = '';
+        targets.forEach(function (t, n) {
+          var r = sight(x, y, t), li = document.createElement('li'), ok = !r.block;
+          li.className = ok ? '' : 'no';
+          var why = ok ? 'in view, ' + km(r.D) + ' away'
+            : r.block.onmap && r.block.g > 60 ? 'hidden by a slope ' + km(r.block.d) + ' away, at about ' + Math.round(r.block.g) + ' m'
+            : 'below the curve of the Earth, ' + km(r.D) + ' away';
+          li.innerHTML = '<i aria-hidden="true">' + (ok ? '✓' : '×') + '</i><span><b>' + t.name + ':</b> ' + why + '</span>';
+          see.appendChild(li);
+          if (n === 0) {
+            var o = metres(t, x, y), L = Math.hypot(o.dx, o.dy), k = 2200;
+            line.setAttribute('x1', x); line.setAttribute('y1', y);
+            line.setAttribute('x2', x + o.dx / L * k); line.setAttribute('y2', y - o.dy / L * k);
+            line.style.stroke = ok ? '#4b5c46' : '';
+          }
+        });
+      }
+      function toPx(ev) { var r = svg.getBoundingClientRect(); return { x: (ev.clientX - r.left) / r.width * B.W, y: (ev.clientY - r.top) / r.height * B.H }; }
+      var img = new Image();
+      img.onload = function () {
+        var c = document.createElement('canvas'); c.width = gw = img.naturalWidth; c.height = gh = img.naturalHeight;
+        var x = c.getContext('2d', { willReadFrequently: true }); x.drawImage(img, 0, 0);
+        var d = x.getImageData(0, 0, gw, gh).data; grid = new Float32Array(gw * gh);
+        for (var i = 0; i < grid.length; i++) grid[i] = (d[i * 4] * 256 + d[i * 4 + 1] - 200) / 4;
+        document.querySelectorAll('.ce-pre button')[0].click();
+      };
+      img.src = '/img/post/outdoor/colli-height.png';
+      svg.addEventListener('pointermove', function (ev) {
+        if (!grid || ev.pointerType !== 'mouse') return;
+        var p = toPx(ev);
+        probe.setAttribute('transform', 'translate(' + p.x + ' ' + p.y + ')'); probe.style.display = '';
+        document.getElementById('ce-probe-t').textContent = Math.round(h(p.x, p.y)) + ' m';
+      });
+      svg.addEventListener('pointerleave', function () { probe.style.display = 'none'; });
+      svg.addEventListener('click', function (ev) { if (grid) { var p = toPx(ev); place(p.x, p.y); } });
+      document.querySelectorAll('.ce-pre button').forEach(function (b) {
+        b.addEventListener('click', function () { place(+b.dataset.x, +b.dataset.y); });
+      });
+
+      // ---- the well: a straight line through the two temperatures in the text ----
+      var depth = document.getElementById('well-d'), dot = document.getElementById('well-dot'), glow = document.getElementById('well-dot-c'),
+          dT = document.getElementById('well-t'), dM = document.getElementById('well-m');
+      function well() {
+        var m = +depth.value, T = 13 + (87 - 13) * m / 2000;
+        dot.setAttribute('transform', 'translate(0 ' + (56 + m / 2000 * 396) + ')');
+        var q = m / 2000;
+        glow.setAttribute('fill', 'rgb(' + Math.round(70 + 150 * q) + ',' + Math.round(130 - 45 * q) + ',' + Math.round(170 - 115 * q) + ')');
+        dT.textContent = Math.round(T) + ' °C';
+        dM.textContent = m === 0 ? 'at the surface' : 'at ' + m.toLocaleString('en-US') + ' m';
+      }
+      depth.addEventListener('input', well);
+      well();
+    })();
+    </script>
 </body>
 </html>

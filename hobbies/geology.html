@@ -101,10 +101,23 @@
     }
     .geo-video-play::after { content: ''; position: absolute; left: 40%; top: 30%; border-style: solid; border-width: clamp(10px,1.4vw,18px) 0 clamp(10px,1.4vw,18px) clamp(16px,2.2vw,28px); border-color: transparent transparent transparent #fff; }
     .geo-video-p:hover .geo-video-play { scale: 1.1; }
+    .geo-vgrid { display: grid; grid-template-columns: minmax(0,8fr) minmax(0,4fr); gap: clamp(1.5rem,3vw,3rem); align-items: start; }
+    .geo-vstack { display: grid; gap: clamp(1.75rem,3vw,2.75rem); }
+    .geo-vid { margin: 0; }
+    .geo-vid.is-short .geo-video-p { aspect-ratio: 9/16; }
+    .geo-vid figcaption { margin-top: .9rem; }
+    .geo-vid h3 { font-weight: 400; font-size: clamp(1.35rem,2.1vw,1.8rem); line-height: 1.16; margin: 0 0 .45rem; color: #fff; }
+    .geo-vid figcaption a { font-size: .95rem; color: #fff; border-bottom: 1px solid var(--color-amber); }
+    .geo-vid figcaption a:hover { color: #f0b39f; }
+    .geo-vid-tag { display: block; margin-bottom: .45rem; font-family: var(--font-mono); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: #f0b39f; }
     .geo-video-cap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 2rem; margin-top: 1.1rem; font-size: 1rem; color: rgba(255,255,255,.72); }
     .geo-video-cap a { color: #fff; border-bottom: 1px solid var(--color-amber); }
     .geo-video-cap a:hover { color: #f0b39f; }
 
+    @media (max-width: 860px) {
+      .geo-vgrid { grid-template-columns: 1fr; }
+      .geo-vid.is-short { max-width: 340px; }
+    }
     @media (max-width: 760px) {
       .geo-door-row { flex-direction: column; height: auto; }
       .geo-door, .geo-door:hover, .js .geo-door[aria-selected="true"] { flex: none; min-height: 188px; }
@@ -151,9 +164,9 @@
                     </a>
                     <a class="geo-door" id="door-video" href="#video" role="tab" aria-controls="video" aria-selected="false">
                         <img src="../img/hobbies/geology/video-door.jpg" alt="">
-                        <span class="geo-door-count">1 video</span>
+                        <span class="geo-door-count">3 videos</span>
                         <span class="geo-door-name">Video</span>
-                        <span class="geo-door-note">The research explained on camera.</span>
+                        <span class="geo-door-note">Science explained on camera.</span>
                         <span class="geo-door-bar"></span>
                     </a>
                 </div>
@@ -319,15 +332,40 @@
             <div class="frame">
                 <header class="geo-panel-head">
                     <h2>Video</h2>
-                    <p>A video interview about the Etna lunar simulants.</p>
+                    <p>From the YouTube channel of the Department of Geosciences, University of Padova.</p>
                 </header>
-                <a class="geo-video-p reveal" id="geo-player" href="https://youtu.be/orKbDZ7eTls" target="_blank" rel="noopener" aria-label="Play the video: From Mount Etna to the Moon">
-                    <img src="../img/hobbies/geology/video-etna-moon.jpg" alt="" loading="lazy">
-                    <span class="geo-video-play" aria-hidden="true"></span>
-                </a>
-                <div class="geo-video-cap">
-                    <span>From Mount Etna to the Moon</span>
-                    <a href="../articles/etna-lunar-simulants.html">Read about the paper</a>
+                <div class="geo-vgrid">
+                    <div class="geo-vstack">
+                        <figure class="geo-vid reveal" data-yt="orKbDZ7eTls">
+                            <a class="geo-video-p" href="https://youtu.be/orKbDZ7eTls" target="_blank" rel="noopener" aria-label="Play the video: From Mount Etna to the Moon: Volcanic Materials as Lunar Soil Simulants">
+                                <img src="../img/hobbies/geology/video-etna-moon.jpg" alt="" loading="lazy">
+                                <span class="geo-video-play" aria-hidden="true"></span>
+                            </a>
+                            <figcaption>
+                                <h3>From Mount Etna to the Moon: Volcanic Materials as Lunar Soil Simulants</h3>
+                                <a href="../articles/etna-lunar-simulants.html">Read about the paper</a>
+                            </figcaption>
+                        </figure>
+                        <figure class="geo-vid reveal" data-yt="i-BiWLAqh1c">
+                            <a class="geo-video-p" href="https://www.youtube.com/watch?v=i-BiWLAqh1c" target="_blank" rel="noopener" aria-label="Play the video: International Day of Women and Girls in Science, Ingrid and Francesco">
+                                <img src="../img/hobbies/geology/video-women-science.jpg" alt="" loading="lazy">
+                                <span class="geo-video-play" aria-hidden="true"></span>
+                            </a>
+                            <figcaption>
+                                <h3>International Day of Women and Girls in Science | Ingrid &amp; Francesco</h3>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <figure class="geo-vid is-short reveal" data-yt="L9MoiFEpWKU">
+                        <a class="geo-video-p" href="https://www.youtube.com/shorts/L9MoiFEpWKU" target="_blank" rel="noopener" aria-label="Play the short: Studenti detective del paesaggio con Google Earth">
+                            <img src="../img/hobbies/geology/video-google-earth-short.jpg" alt="" loading="lazy">
+                            <span class="geo-video-play" aria-hidden="true"></span>
+                        </a>
+                        <figcaption>
+                            <span class="geo-vid-tag">Short</span>
+                            <h3>Studenti detective del paesaggio con Google Earth</h3>
+                        </figcaption>
+                    </figure>
                 </div>
             </div>
         </section>
@@ -382,18 +420,20 @@
       var start = location.hash.slice(1);
       open(document.getElementById(start) && doors.some(function (d) { return d.getAttribute('aria-controls') === start; }) ? start : 'papers');
 
-      var player = document.getElementById('geo-player');
-      player.addEventListener('click', function (e) {
-        e.preventDefault();
-        var f = document.createElement('iframe');
-        f.src = 'https://www.youtube-nocookie.com/embed/orKbDZ7eTls?autoplay=1&rel=0';
-        f.title = 'From Mount Etna to the Moon';
-        f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
-        f.allowFullscreen = true;
-        var box = document.createElement('div');
-        box.className = 'geo-video-p';
-        box.appendChild(f);
-        player.replaceWith(box);
+      document.querySelectorAll('.geo-vid').forEach(function (fig) {
+        var player = fig.querySelector('.geo-video-p');
+        player.addEventListener('click', function (e) {
+          e.preventDefault();
+          var f = document.createElement('iframe');
+          f.src = 'https://www.youtube-nocookie.com/embed/' + fig.getAttribute('data-yt') + '?autoplay=1&rel=0';
+          f.title = fig.querySelector('h3').textContent;
+          f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+          f.allowFullscreen = true;
+          var box = document.createElement('div');
+          box.className = 'geo-video-p';
+          box.appendChild(f);
+          player.replaceWith(box);
+        });
       });
     })();
     </script>

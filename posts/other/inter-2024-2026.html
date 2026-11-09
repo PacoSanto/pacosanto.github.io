@@ -4,724 +4,200 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Two Stars and a Storm | Inter Milan, 2024–2026</title>
-    <meta name="description" content="From Çalhanoğlu's tears to Chivu's triumph. The story of Inter Milan between the 20th scudetto (2024) and the 21st (2026): one second star, one Munich wound, one improbable resurrection.">
-    <link rel="stylesheet" href="../../css/style.css">
+    <meta name="description" content="From the second star to Chivu's triumph. The story of Inter Milan between the 20th scudetto (2024) and the 21st (2026): one second star, one Munich wound, one improbable resurrection.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fsdv.eu/posts/other/inter-2024-2026.html">
+    <meta property="og:title" content="Two Stars and a Storm | Inter Milan, 2024–2026">
+    <meta property="og:description" content="From the second star to Chivu's triumph: one second star, one Munich wound, one improbable resurrection.">
+    <meta property="og:image" content="https://fsdv.eu/img/post/other/inter-og.jpg">
+    <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
+    <link rel="stylesheet" href="/css/style.css?v=3">
     <style>
-        /* ── Dark background for the whole page ── */
-        body {
-            background-color: #0a0a0f;
-            color: #d4d4d8;
-        }
-
-        /* ── Hero (post-specific) ── */
-        .hero {
-            position: relative;
-            width: 100%;
-            height: 92vh;
-            min-height: 500px;
-            overflow: hidden;
-            display: flex;
-            align-items: flex-end;
-            margin-top: var(--nav-height);
-        }
-
-        .hero img {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center top;
-            filter: brightness(0.45);
-        }
-
-        .hero-overlay {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            padding: 3rem 6%;
-            background: linear-gradient(to top, rgba(5,5,20,0.97) 0%, transparent 100%);
-        }
-
-        .hero-meta {
-            font-family: var(--font-body);
-            font-size: 0.78rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: #4a90d9;
-            margin-bottom: 1rem;
-        }
-
-        .hero h1 {
-            font-size: clamp(1.8rem, 4vw, 3.2rem);
-            font-weight: 400;
-            line-height: 1.25;
-            color: #f5f0e8;
-            max-width: 880px;
-            margin-bottom: 1.2rem;
-            letter-spacing: -0.01em;
-        }
-
-        .hero h1 .gold {
-            color: #c9a84c;
-            font-style: italic;
-        }
-
-        .hero-caption {
-            font-size: 0.85rem;
-            color: #8a9aaa;
-            font-family: var(--font-body);
-            font-style: italic;
-            max-width: 720px;
-            line-height: 1.6;
-        }
-
-        /* ── Article ── */
-        article {
-            max-width: 740px;
-            margin: 0 auto;
-            padding: 4rem 1.5rem 6rem;
-            background-color: #0a0a0f;
-            color: #d4d4d8;
-        }
-
-        article > p:first-of-type::first-letter {
-            float: left;
-            font-size: 4.2rem;
-            line-height: 0.8;
-            margin: 0.1em 0.12em 0 0;
-            color: #4a90d9;
-            font-family: var(--font-body);
-        }
-
-        article p {
-            margin-bottom: 1.6rem;
-            color: #d4d4d8;
-            line-height: 1.9;
-            font-family: var(--font-body);
-            font-size: 1.02rem;
-        }
-
-        .chapter-mark {
-            text-align: center;
-            font-family: var(--font-body);
-            font-size: 0.7rem;
-            color: #4a90d9;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            margin: 4rem 0 2rem;
-        }
-
-        .chapter-mark::before,
-        .chapter-mark::after {
-            content: '';
-            display: inline-block;
-            width: 50px;
-            height: 1px;
-            background: #1e3048;
-            vertical-align: middle;
-            margin: 0 1rem;
-        }
-
-        article h2 {
-            font-size: 1.55rem;
-            font-weight: 400;
-            color: #c9e0f0;
-            margin: 1.2rem 0 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid #1e3048;
-            letter-spacing: 0.01em;
-            font-family: var(--font-body);
-        }
-
-        article h3 {
-            font-size: 1.05rem;
-            font-weight: 400;
-            color: #4a90d9;
-            margin: 2.5rem 0 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            font-family: var(--font-body);
-        }
-
-        /* ── Inline Images ── */
-        .img-block { margin: 2.8rem -2rem; }
-
-        .img-block img {
-            width: 100%;
-            display: block;
-            border-radius: 3px;
-            filter: brightness(0.9) saturate(0.9);
-            transition: filter 0.4s;
-        }
-
-        .img-block img:hover { filter: brightness(1.05) saturate(1.05); }
-
-        .img-block figcaption {
-            font-size: 0.78rem;
-            color: #6a7a8a;
-            font-style: italic;
-            font-family: var(--font-body);
-            margin-top: 0.6rem;
-            padding-left: 0.8rem;
-            border-left: 2px solid #1e3048;
-            line-height: 1.6;
-        }
-
-        .img-block figcaption .credit {
-            display: block;
-            font-style: normal;
-            color: #4a90d9;
-            margin-top: 0.4rem;
-            letter-spacing: 0.04em;
-            font-size: 0.72rem;
-        }
-
-        .img-block figcaption .credit a {
-            color: #4a90d9;
-            text-decoration: none;
-            border-bottom: 1px dotted #2a4868;
-        }
-        .img-block figcaption .credit a:hover { color: #c9e0f0; }
-
-        /* ── Pull Quote ── */
-        blockquote {
-            margin: 2.5rem 0;
-            padding: 1.5rem 2rem;
-            border-left: 3px solid #4a90d9;
-            background: rgba(74,144,217,0.06);
-            border-radius: 0 4px 4px 0;
-        }
-
-        blockquote.gold {
-            border-left-color: #c9a84c;
-            background: rgba(201,168,76,0.06);
-        }
-
-        blockquote p {
-            font-size: 1.2rem;
-            color: #c9e0f0;
-            font-style: italic;
-            margin: 0;
-            line-height: 1.7;
-            font-family: var(--font-body);
-        }
-
-        blockquote cite {
-            display: block;
-            font-size: 0.78rem;
-            color: #6a7a8a;
-            font-style: normal;
-            margin-top: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-family: var(--font-body);
-        }
-
-        /* ── Stat Cards ── */
-        .stat-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin: 2.5rem 0;
-        }
-
-        .stat-card {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid #1e2a3a;
-            border-radius: 6px;
-            padding: 1.2rem 1rem;
-            text-align: center;
-        }
-
-        .stat-card .stat-number {
-            font-family: var(--font-body);
-            font-size: 2.2rem;
-            color: #c9a84c;
-            display: block;
-            line-height: 1;
-            margin-bottom: 0.4rem;
-        }
-
-        .stat-card.blue .stat-number  { color: #4a90d9; }
-        .stat-card.crimson .stat-number { color: #b04848; }
-
-        .stat-card .stat-label {
-            font-size: 0.74rem;
-            color: #6a7a8a;
-            font-family: var(--font-body);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            line-height: 1.4;
-            display: block;
-        }
-
-        /* ── Season Scorecard ── */
-        .scorecard {
-            margin: 3rem -1rem;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0;
-            border: 1px solid #1e2a3a;
-            border-radius: 8px;
-            overflow: hidden;
-            background: rgba(255,255,255,0.02);
-        }
-
-        .scorecard-col { padding: 1.6rem 1.2rem; border-right: 1px solid #1e2a3a; }
-        .scorecard-col:last-child { border-right: none; }
-        .scorecard-col.peak    { background: rgba(201,168,76,0.04); }
-        .scorecard-col.fall    { background: rgba(176,72,72,0.04); }
-        .scorecard-col.rebirth { background: rgba(74,144,217,0.04); }
-
-        .scorecard-col .season-label {
-            font-family: var(--font-body);
-            font-size: 0.7rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: #6a7a8a;
-            margin-bottom: 0.3rem;
-        }
-
-        .scorecard-col .season-tag {
-            font-family: var(--font-body);
-            font-size: 1.05rem;
-            color: #c9e0f0;
-            margin-bottom: 0.2rem;
-            font-style: italic;
-        }
-
-        .scorecard-col.peak    .season-tag { color: #c9a84c; }
-        .scorecard-col.fall    .season-tag { color: #b04848; }
-        .scorecard-col.rebirth .season-tag { color: #4a90d9; }
-
-        .scorecard-col .season-coach {
-            font-family: var(--font-body);
-            font-size: 0.72rem;
-            color: #8a9aaa;
-            margin-bottom: 1.1rem;
-            letter-spacing: 0.05em;
-        }
-
-        .scorecard-col ul { list-style: none; padding: 0; margin: 0; }
-
-        .scorecard-col ul li {
-            font-family: var(--font-body);
-            font-size: 0.78rem;
-            color: #b8b8c0;
-            padding: 0.35rem 0;
-            border-bottom: 1px dotted #1a2230;
-            line-height: 1.4;
-        }
-
-        .scorecard-col ul li:last-child { border-bottom: none; }
-
-        .scorecard-col ul li strong {
-            display: block;
-            color: #f5f0e8;
-            font-weight: 400;
-            font-size: 0.92rem;
-            font-family: var(--font-body);
-            margin-bottom: 0.1rem;
-        }
-
-        /* ── Timeline ── */
-        .moment-timeline {
-            margin: 2.5rem 0;
-            position: relative;
-            padding-left: 1.8rem;
-        }
-
-        .moment-timeline::before {
-            content: '';
-            position: absolute;
-            left: 0; top: 0; bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, #4a90d9, #c9a84c, #b04848, #4a90d9);
-        }
-
-        .moment-item { position: relative; margin-bottom: 2rem; padding-left: 1rem; }
-
-        .moment-item::before {
-            content: '';
-            position: absolute;
-            left: -1.95rem; top: 0.4rem;
-            width: 10px; height: 10px;
-            border-radius: 50%;
-            background: #4a90d9;
-            border: 2px solid #0a0a0f;
-            box-shadow: 0 0 0 2px #4a90d9;
-        }
-
-        .moment-item.gold::before    { background: #c9a84c; box-shadow: 0 0 0 2px #c9a84c; }
-        .moment-item.crimson::before { background: #b04848; box-shadow: 0 0 0 2px #b04848; }
-
-        .moment-item .moment-date {
-            font-family: var(--font-body);
-            font-size: 0.74rem;
-            color: #4a90d9;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 0.3rem;
-        }
-
-        .moment-item.gold    .moment-date { color: #c9a84c; }
-        .moment-item.crimson .moment-date { color: #b04848; }
-
-        .moment-item h4 {
-            font-family: var(--font-body);
-            font-size: 1.05rem;
-            color: #c9e0f0;
-            font-weight: 400;
-            margin-bottom: 0.4rem;
-        }
-
-        .moment-item p {
-            font-size: 0.92rem;
-            color: #8a9aaa;
-            margin-bottom: 0;
-            line-height: 1.7;
-            font-family: var(--font-body);
-        }
-
-        /* ── Typographic Blocks ── */
-        .typo-block {
-            margin: 3rem -1.5rem;
-            padding: 2.5rem 2rem;
-            border-radius: 4px;
-            position: relative;
-            background: rgba(255,255,255,0.02);
-            border: 1px solid #1e2a3a;
-            overflow: hidden;
-        }
-
-        .typo-block::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 2px;
-            background: var(--accent, #4a90d9);
-        }
-
-        .typo-block.gold    { --accent: #c9a84c; background: rgba(201,168,76,0.04); }
-        .typo-block.crimson { --accent: #b04848; background: rgba(176,72,72,0.04); }
-        .typo-block.blue    { --accent: #4a90d9; background: rgba(74,144,217,0.04); }
-
-        .typo-block .tb-meta {
-            font-family: var(--font-body);
-            font-size: 0.72rem;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            margin-bottom: 0.3rem;
-        }
-
-        .typo-block .tb-place {
-            font-family: var(--font-body);
-            font-size: 0.7rem;
-            color: #6a7a8a;
-            text-transform: uppercase;
-            letter-spacing: 0.18em;
-            margin-bottom: 1.5rem;
-        }
-
-        .typo-block .tb-headline {
-            font-family: var(--font-body);
-            font-style: italic;
-            font-size: clamp(1.4rem, 4vw, 1.85rem);
-            color: #f5f0e8;
-            line-height: 1.25;
-            margin: 0 0 1.5rem;
-            font-weight: 400;
-        }
-
-        .typo-block .tb-headline em { color: var(--accent); font-style: italic; }
-
-        .typo-block .tb-giant {
-            font-family: var(--font-body);
-            font-size: clamp(4.2rem, 14vw, 6.4rem);
-            line-height: 0.9;
-            color: var(--accent);
-            font-weight: 400;
-            letter-spacing: -0.04em;
-            margin: 0.6rem 0 0.3rem;
-            text-align: center;
-        }
-
-        .typo-block .tb-giant.score {
-            display: flex;
-            align-items: baseline;
-            justify-content: center;
-            gap: 0.4em;
-            font-style: italic;
-        }
-
-        .typo-block .tb-giant .dash {
-            color: #6a7a8a;
-            font-size: 0.6em;
-            font-style: normal;
-        }
-
-        .typo-block .tb-sublabel {
-            font-family: var(--font-body);
-            font-size: 0.72rem;
-            color: #8a9aaa;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            text-align: center;
-            margin-top: 0.5rem;
-        }
-
-        .typo-block .tb-divider {
-            height: 1px;
-            background: #1e2a3a;
-            margin: 1.8rem 0 1.5rem;
-        }
-
-        .typo-block .tb-log {
-            font-family: var(--font-body);
-            font-size: 0.85rem;
-            color: #b8b8c0;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .typo-block .tb-log li {
-            display: flex;
-            align-items: baseline;
-            gap: 1rem;
-            padding: 0.45rem 0;
-            border-bottom: 1px dotted #1a2230;
-        }
-
-        .typo-block .tb-log li:last-child { border-bottom: none; }
-
-        .typo-block .tb-log .min {
-            font-family: var(--font-body);
-            font-style: italic;
-            color: var(--accent);
-            font-size: 0.95rem;
-            min-width: 2.6rem;
-            font-weight: 400;
-        }
-
-        .typo-block .tb-log .scorer { color: #d4d4d8; font-weight: 500; }
-
-        .typo-block .tb-log .note {
-            color: #6a7a8a;
-            font-size: 0.78rem;
-            font-style: italic;
-            margin-left: auto;
-            text-align: right;
-        }
-
-        .typo-block .tb-quote {
-            font-family: var(--font-body);
-            font-style: italic;
-            font-size: 0.98rem;
-            color: #c9e0f0;
-            margin-top: 1.5rem;
-            padding-top: 1.2rem;
-            border-top: 1px solid #1e2a3a;
-            line-height: 1.7;
-        }
-
-        .typo-block .tb-quote-cite {
-            display: block;
-            font-family: var(--font-body);
-            font-style: normal;
-            font-size: 0.72rem;
-            color: #6a7a8a;
-            margin-top: 0.7rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-        }
-
-        /* ── Typographic Pair ── */
-        .typo-pair {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin: 3rem -1.5rem;
-        }
-
-        .typo-pair .typo-block { margin: 0; padding: 1.8rem 1.4rem; }
-
-        .typo-pair .tb-name {
-            font-family: var(--font-body);
-            font-size: 1.15rem;
-            color: #f5f0e8;
-            margin-bottom: 0.2rem;
-            font-style: italic;
-        }
-
-        .typo-pair .tb-role {
-            font-family: var(--font-body);
-            font-size: 0.72rem;
-            color: #6a7a8a;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            margin-bottom: 1.4rem;
-        }
-
-        .typo-pair .tb-stats {
-            display: flex;
-            justify-content: space-around;
-            margin: 1rem 0 1.2rem;
-            padding: 0.8rem 0;
-            border-top: 1px solid #1e2a3a;
-            border-bottom: 1px solid #1e2a3a;
-        }
-
-        .typo-pair .tb-stat-item { text-align: center; }
-
-        .typo-pair .tb-stat-num {
-            font-family: var(--font-body);
-            font-size: 1.6rem;
-            color: var(--accent);
-            display: block;
-            line-height: 1;
-        }
-
-        .typo-pair .tb-stat-lbl {
-            font-family: var(--font-body);
-            font-size: 0.62rem;
-            color: #6a7a8a;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            margin-top: 0.3rem;
-        }
-
-        .typo-pair .tb-tagline {
-            font-family: var(--font-body);
-            font-style: italic;
-            font-size: 0.88rem;
-            color: #b8b8c0;
-            line-height: 1.55;
-        }
-
-        /* ── Divider ── */
-        .divider { border: none; border-top: 1px solid #1e2a3a; margin: 3rem 0; }
-
-        /* ── Sources ── */
-        .sources {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid #1e2a3a;
-            border-radius: 6px;
-            padding: 1.8rem 2rem;
-            margin-top: 3rem;
-        }
-
-        .sources h3 {
-            margin-top: 0;
-            margin-bottom: 1rem;
-            color: #c9e0f0;
-        }
-
-        .sources ul { list-style: none; padding: 0; }
-
-        .sources ul li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #1a2230;
-            font-size: 0.85rem;
-            font-family: var(--font-body);
-            color: #b8b8c0;
-        }
-
-        .sources ul li:last-child { border-bottom: none; }
-
-        .sources ul li .src-meta {
-            display: block;
-            color: #6a7a8a;
-            font-size: 0.72rem;
-            margin-top: 0.2rem;
-            letter-spacing: 0.05em;
-        }
-
-        .sources a {
-            color: #4a90d9;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .sources a:hover { color: #c9e0f0; text-decoration: underline; }
-
-        /* ── Image Credits Note ── */
-        .image-credits-note {
-            background: rgba(74,144,217,0.04);
-            border-left: 2px solid #4a90d9;
-            padding: 1.2rem 1.5rem;
-            margin: 2.5rem 0 1.5rem;
-            font-family: var(--font-body);
-            font-size: 0.8rem;
-            color: #b8b8c0;
-            line-height: 1.7;
-            border-radius: 0 3px 3px 0;
-        }
-
-        .image-credits-note strong { color: #c9e0f0; font-weight: 600; }
-
-        .image-credits-note code {
-            background: rgba(0,0,0,0.3);
-            padding: 0.1rem 0.4rem;
-            border-radius: 2px;
-            color: #c9a84c;
-            font-size: 0.85em;
-        }
-
-        /* ── Responsive ── */
-        @media (max-width: 640px) {
-            .img-block   { margin: 2rem -0.5rem; }
-            .stat-grid   { grid-template-columns: 1fr 1fr; }
-            .scorecard   { grid-template-columns: 1fr; }
-            .scorecard-col { border-right: none; border-bottom: 1px solid #1e2a3a; }
-            .scorecard-col:last-child { border-bottom: none; }
-            .typo-pair   { grid-template-columns: 1fr; margin: 2rem -0.5rem; }
-            .typo-block  { margin-left: -0.5rem; margin-right: -0.5rem; padding: 1.8rem 1.4rem; }
-            .hero h1     { font-size: 1.6rem; }
-        }
+    /* TWO STARS AND A STORM. The page wears the shirt: blue and black stripes that fall
+       over the stadium, one gold for the stars, and the site's own rust for the wounds.
+       A time axis to scale runs down the left: 25 months, and where you are in them. */
+    .in { --in-blue: #0a5aa6; --in-gold: #d3ad45; background: var(--color-chalk); }
+    .in .site-footer { margin-top: 0; }
+    .in-clip { overflow-x: clip; }
+
+    .in-hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; background: #000; color: #fff; }
+    .in-hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; }
+    .in-stripes { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(14,1fr); pointer-events: none; }
+    .in-stripes i { transform-origin: top; animation: in-drop 1.2s var(--ease-out) both; animation-delay: calc(var(--i) * 80ms + .15s); }
+    .in-stripes i:nth-child(odd) { background: rgba(10,90,166,.66); }
+    .in-stripes i:nth-child(even) { background: rgba(6,6,9,.72); }
+    @keyframes in-drop { from { transform: scaleY(0); } }
+    .in-hero::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to top, rgba(0,0,0,.9) 6%, transparent 58%); }
+    .in-hero .frame { position: relative; z-index: 2; width: 100%; padding-bottom: clamp(1.75rem,4vw,3.25rem); }
+    .in-hero .back-link { color: rgba(255,255,255,.88); }
+    .in-hero .back-link:hover { color: #fff; }
+    .in-meta { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem 1.2rem; margin: 1.1rem 0 .9rem; font-family: var(--font-mono); font-size: .76rem; letter-spacing: .1em; text-transform: uppercase; color: #f0b39f; }
+    .in-stars { display: inline-flex; align-items: center; gap: .35rem; color: var(--in-gold); font-size: 1.15rem; letter-spacing: 0; }
+    .in-stars b { display: inline-grid; place-items: center; min-width: 2.1rem; height: 1.45rem; padding: 0 .35rem; background: var(--in-gold); color: #0b0b0e; font: 700 .82rem var(--font-mono); letter-spacing: 0; opacity: 0; transform: scale(.4); animation: in-pop .7s var(--ease-out) 2.1s forwards; }
+    @keyframes in-pop { to { opacity: 1; transform: none; } }
+    .in-hero h1 { color: #fff; font-weight: 300; font-size: clamp(2.7rem,6.2vw,5.6rem); line-height: .98; margin: 0 0 1.1rem; max-width: 16ch; }
+    .in-hero h1 .gold { display: block; margin-top: .25em; font-size: .42em; line-height: 1.12; font-style: italic; color: #fff; max-width: 26ch; }
+    .in-cap { max-width: 44rem; margin: 0; font-size: clamp(1rem,1.5vw,1.2rem); line-height: 1.5; color: rgba(255,255,255,.86); }
+    .in-credit { margin: 1.1rem 0 0; font-size: .74rem; color: rgba(255,255,255,.6); }
+    .in-credit a { color: inherit; border-bottom: 1px solid rgba(255,255,255,.35); }
+
+    .in-bar { position: fixed; z-index: 50; left: 0; right: 0; top: 0; height: 3px; background: var(--in-gold); transform: scaleX(var(--p,0)); transform-origin: left; pointer-events: none; }
+
+    .in-rail { position: fixed; z-index: 30; left: var(--gutter); top: calc(var(--nav-height) + 1.5rem); bottom: 1.75rem; width: 11.5rem; display: none; opacity: 0; transition: opacity .5s; pointer-events: none; }
+    .in-rail.on { opacity: 1; }
+    .in-rail-ax { position: absolute; left: 6px; top: 0; bottom: 0; width: 2px; background: linear-gradient(var(--in-blue), #111 60%, var(--in-blue)); }
+    .in-rail-t { position: absolute; left: 0; width: 14px; height: 2px; background: var(--color-ink); }
+    .in-rail-t.major { width: 14px; height: 3px; background: var(--in-gold); }
+    .in-rail-l { position: absolute; left: 22px; width: 9.4rem; font-size: .72rem; line-height: 1.2; color: var(--color-slate); transform: translateY(-50%); }
+    .in-rail-l b { display: block; font-family: var(--font-mono); font-weight: 400; font-size: .64rem; letter-spacing: .04em; color: var(--color-ink); }
+    .in-rail-dot { position: absolute; left: -1px; width: 16px; height: 16px; margin-top: -8px; border-radius: 50%; background: var(--color-amber); box-shadow: 0 0 0 4px rgba(173,86,62,.25); transition: top .35s var(--ease-out); }
+    @media (min-width: 1360px) { .in-rail { display: block; } .in-bar { display: none; } }
+
+    .in-art { max-width: 42rem; margin: 0 auto; padding: clamp(3.5rem,7vw,6rem) var(--gutter) clamp(4rem,8vw,7rem); color: var(--color-ink); }
+    .in-art > p { font-size: 1.14rem; line-height: 1.7; margin: 0 0 1.3rem; color: var(--color-ink); }
+    .in-art > p:first-child { font-family: var(--font-display); font-size: clamp(1.55rem,2.5vw,2.05rem); line-height: 1.28; }
+    .in-art a { color: inherit; border-bottom: 1px solid var(--color-amber); }
+    .in-art a:hover { color: var(--in-blue); }
+    .in-art .wide { width: min(60rem, calc(100vw - 2 * var(--gutter))); position: relative; left: 50%; transform: translateX(-50%); }
+    .in-art h2 { font-weight: 300; font-size: clamp(2.2rem,4.4vw,3.6rem); line-height: 1.05; margin: 0 0 1.5rem; color: var(--color-ink); }
+    .in-art h3 { font-weight: 400; font-size: clamp(1.6rem,2.6vw,2.1rem); line-height: 1.1; margin: 2.4rem 0 .7rem; color: var(--color-ink); }
+    .in-art blockquote { margin: 2.4rem 0; padding-left: 1.3rem; border-left: 3px solid var(--in-gold); }
+    .in-art blockquote p { font-family: var(--font-display); font-style: italic; font-size: clamp(1.45rem,2.3vw,1.85rem); line-height: 1.3; margin: 0 0 .6rem; }
+    .in-art blockquote cite { font-family: var(--font-mono); font-style: normal; font-size: .74rem; letter-spacing: .04em; color: var(--color-slate); }
+    .chapter-mark { display: flex; align-items: center; gap: .8rem; margin: clamp(4.5rem,9vw,7.5rem) 0 .7rem !important; font-family: var(--font-mono) !important; font-size: .74rem !important; letter-spacing: .1em; text-transform: uppercase; color: var(--in-blue) !important; scroll-margin-top: 5rem; }
+    .chapter-mark::before { content: ''; width: 2.6rem; height: 3px; background: var(--in-gold); }
+    .in-art hr.divider { border: 0; height: 3px; width: 4rem; margin: 3.5rem 0; background: var(--in-gold); }
+
+    /* the three seasons as three stripes of the shirt */
+    .scorecard { display: flex; min-height: 27rem; margin: 3rem 0; }
+    .scorecard-col { flex: 1 1 0; padding: 1.5rem clamp(1rem,2vw,1.6rem); color: #fff; transition: flex-grow .8s var(--ease-out); }
+    .scorecard-col:hover { flex-grow: 1.55; }
+    .scorecard-col.peak, .scorecard-col.rebirth { background: var(--in-blue); }
+    .scorecard-col.fall { background: #0b0b0e; }
+    .season-label { font-family: var(--font-mono); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.8); }
+    .season-tag { margin: .4rem 0 .3rem; font-family: var(--font-display); font-weight: 300; font-size: clamp(2.2rem,4vw,3.4rem); line-height: 1; }
+    .season-coach { font-size: .92rem; color: rgba(255,255,255,.8); }
+    .scorecard ul { margin: 1.1rem 0 0; padding: 0; list-style: none; }
+    .scorecard li { padding: .6rem 0; border-top: 1px solid rgba(255,255,255,.28); font-size: .95rem; line-height: 1.35; color: rgba(255,255,255,.85); }
+    .scorecard li strong { display: block; font-family: var(--font-display); font-weight: 400; font-size: 1.45rem; line-height: 1.1; color: #fff; }
+
+    /* numbers */
+    .stat-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: clamp(1rem,3vw,3rem); margin: 2.6rem 0; }
+    .stat-card { padding-top: 1rem; border-top: 3px solid var(--in-blue); }
+    .stat-card.blue { border-top-color: var(--color-ink); }
+    .stat-number { display: block; font-family: var(--font-display); font-weight: 300; font-size: clamp(3.4rem,8vw,6.6rem); line-height: .95; color: var(--color-ink); }
+    .stat-label { display: block; margin-top: .55rem; font-size: 1rem; line-height: 1.3; color: var(--color-slate); }
+
+    /* moments */
+    .moment-timeline { position: relative; margin: 2rem 0; padding-left: 2.2rem; }
+    .moment-timeline::before { content: ''; position: absolute; left: .55rem; top: .6rem; bottom: .6rem; width: 2px; background: var(--color-amber); }
+    .moment-item { position: relative; padding: 0 0 1.9rem; }
+    .moment-item::before { content: ''; position: absolute; left: -2.05rem; top: .35rem; width: 14px; height: 14px; border-radius: 50%; background: var(--color-chalk); border: 3px solid var(--color-amber); }
+    .moment-date { font-family: var(--font-mono); font-size: .74rem; letter-spacing: .06em; text-transform: uppercase; color: var(--color-amber); }
+    .moment-item h4 { margin: .3rem 0 .4rem; font-family: var(--font-display); font-weight: 400; font-size: clamp(1.5rem,2.4vw,1.9rem); line-height: 1.1; color: var(--color-ink); }
+    .moment-item p { margin: 0; font-size: 1.04rem; line-height: 1.6; }
+
+    /* typographic blocks */
+    .typo-block { position: relative; margin: 2.8rem 0; padding: clamp(1.4rem,3.5vw,2.6rem); background: #0b0b0e; color: #fff; border-top: 4px solid var(--in-gold); width: min(60rem, calc(100vw - 2 * var(--gutter))); left: 50%; transform: translateX(-50%); }
+    .typo-block.crimson { border-top-color: var(--color-amber); }
+    .typo-block.blue { border-top-color: var(--in-blue); }
+    .typo-pair .typo-block { width: auto; left: 0; transform: none; margin: 0; }
+    .typo-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; width: min(60rem, calc(100vw - 2 * var(--gutter))); position: relative; left: 50%; transform: translateX(-50%); margin: 2.8rem 0; }
+    .tb-meta { margin: 0 0 .3rem; font-family: var(--font-mono); font-size: .74rem; letter-spacing: .08em; text-transform: uppercase; color: var(--in-gold); }
+    .typo-block.crimson .tb-meta { color: #f0b39f; }
+    .tb-place { margin: 0 0 1.2rem; font-size: .92rem; color: rgba(255,255,255,.7); }
+    .tb-headline { font-family: var(--font-display); font-weight: 300; font-size: clamp(1.8rem,3.4vw,2.8rem); line-height: 1.1; color: #fff; margin: 0 0 1rem !important; }
+    .tb-headline em { color: var(--in-gold); }
+    .typo-block h3 { color: #fff !important; }
+    .tb-giant { font-family: var(--font-display); font-weight: 300; font-size: clamp(5rem,15vw,10rem); line-height: .9; color: #fff; text-align: center; margin: 1rem 0 .3rem; }
+    .tb-giant.score { display: flex; justify-content: center; align-items: baseline; gap: .1em; }
+    .tb-giant .dash { color: var(--color-amber); }
+    .tb-sublabel { margin: 0; text-align: center; font-family: var(--font-mono); font-size: .76rem; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.7); }
+    .tb-divider { height: 1px; margin: 1.4rem 0; background: rgba(255,255,255,.22); }
+    .typo-block p { color: rgba(255,255,255,.82); }
+    .tb-quote { margin: 1.2rem 0 0; font-family: var(--font-display); font-style: italic; font-size: clamp(1.3rem,2.2vw,1.65rem); line-height: 1.3; color: #fff !important; }
+    .tb-quote-cite { display: block; margin-top: .5rem; font-family: var(--font-mono); font-style: normal; font-size: .72rem; letter-spacing: .04em; color: rgba(255,255,255,.6); }
+    .tb-log { margin: 1rem 0 0; padding: 0; list-style: none; }
+    .tb-log li { display: grid; grid-template-columns: 3.6rem 9rem minmax(0,1fr); gap: .8rem; padding: .65rem .4rem; border-top: 1px solid rgba(255,255,255,.18); font-size: .95rem; color: rgba(255,255,255,.8); transition: background .3s, opacity .3s; }
+    .tb-log .min { font-family: var(--font-mono); color: #f0b39f; }
+    .tb-log .scorer { font-family: var(--font-display); font-size: 1.35rem; line-height: 1; color: #fff; }
+    .tb-log li.off { opacity: .28; }
+    .tb-name { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: clamp(1.8rem,3vw,2.5rem); line-height: 1.05; color: #fff !important; }
+    .tb-role { margin: .3rem 0 1.2rem; font-size: .92rem; color: rgba(255,255,255,.7); }
+    .tb-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: .8rem; }
+    .tb-stat-num { display: block; font-family: var(--font-display); font-weight: 300; font-size: clamp(2.6rem,5vw,4rem); line-height: 1; color: #fff; }
+    .tb-stat-lbl { display: block; margin-top: .25rem; font-family: var(--font-mono); font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; color: rgba(255,255,255,.65); }
+    .tb-tagline { margin: 1.2rem 0 0; font-size: .98rem; line-height: 1.45; }
+
+    /* the 81st minute as a dial, and the match as a scrubber */
+    .tb-dial { position: relative; width: min(16rem,62vw); aspect-ratio: 1; margin: 1rem auto .6rem; display: grid; place-items: center; font-size: clamp(4.5rem,11vw,7rem) !important; border-radius: 50%; background: conic-gradient(var(--in-gold) calc(var(--p, 0) * 1%), rgba(255,255,255,.14) 0); }
+    .tb-dial::before { content: ''; position: absolute; inset: 9px; border-radius: 50%; background: #0b0b0e; }
+    .tb-dial b, .tb-dial span { position: relative; font-weight: 300; }
+    .tb-dial b { grid-area: 1/1; } .tb-dial span { position: absolute; right: 18%; top: 22%; font-size: .38em; }
+    .mu { margin-top: 1.6rem; padding-top: 1.2rem; border-top: 1px solid rgba(255,255,255,.22); }
+    .mu-board { display: flex; justify-content: center; align-items: baseline; gap: 1.1rem; font-family: var(--font-display); color: #fff; }
+    .mu-board span { font-size: clamp(1.1rem,2vw,1.5rem); color: rgba(255,255,255,.75); }
+    .mu-board b { font-weight: 300; font-size: clamp(3rem,7vw,5rem); line-height: 1; font-variant-numeric: tabular-nums; }
+    .mu-ctl { display: grid; grid-template-columns: auto minmax(0,1fr) 3.4rem; gap: 1rem; align-items: center; margin-top: .6rem; }
+    .mu-ctl input { width: 100%; height: 34px; accent-color: var(--in-gold); }
+    .mu-ctl button { min-height: 44px; padding: .4rem 1.1rem; background: none; color: #fff; border: 1px solid rgba(255,255,255,.4); font: 600 .94rem var(--font-body); cursor: pointer; transition: background .25s, border-color .25s; }
+    .mu-ctl button:hover { border-color: #fff; background: rgba(255,255,255,.08); }
+    .mu-min { font-family: var(--font-mono); font-size: .9rem; text-align: right; color: var(--in-gold); }
+
+    .img-block { margin: 2.6rem 0; }
+    .img-block img { display: block; width: 100%; height: auto; }
+    .img-block figcaption { margin-top: .7rem; font-size: .96rem; line-height: 1.5; color: var(--color-slate); }
+    .img-block .credit { display: block; margin-top: .35rem; font-size: .8rem; }
+    .in-plate { display: grid; grid-template-columns: auto 1fr; gap: 1.4rem; align-items: center; padding: clamp(1.4rem,4vw,2.4rem); background: var(--in-blue); color: #fff; }
+    .in-plate b { font-family: var(--font-display); font-weight: 300; font-size: clamp(4.5rem,14vw,8.5rem); line-height: .9; }
+    .in-plate span { font-family: var(--font-mono); font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; line-height: 1.6; }
+    .image-credits-note { margin: 2rem 0; padding: 1rem 1.2rem; background: var(--color-feldspar); font-size: .92rem; line-height: 1.5; color: var(--color-slate); }
+    .sources { margin: 2.5rem 0 0; padding-top: 1.4rem; border-top: 3px solid var(--color-ink); }
+    .sources h3 { margin-top: 0; }
+    .sources ul { margin: 0; padding: 0; list-style: none; }
+    .sources li { padding: .7rem 0; border-bottom: 1px solid var(--border); }
+    .sources li a { font-weight: 600; }
+    .src-meta { display: block; margin-top: .15rem; font-size: .88rem; color: var(--color-slate); }
+    .post-nav { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid var(--border); }
+
+    @media (max-width: 820px) {
+      .scorecard { flex-direction: column; min-height: 0; }
+      .stat-grid { grid-template-columns: 1fr; }
+      .typo-pair { grid-template-columns: 1fr; }
+      .tb-log li { grid-template-columns: 3rem minmax(0,1fr); }
+      .tb-log .note { grid-column: 2; }
+      .mu-ctl { grid-template-columns: 1fr auto; }
+      .mu-ctl input { grid-column: 1 / -1; grid-row: 2; }
+    }
+    @media (prefers-reduced-motion: reduce) { .in-stripes i, .in-stars b { animation: none; opacity: 1; transform: none; } }
     </style>
 </head>
-<body>
-
-    <!-- ① Header globale iniettato da components.js -->
+<body class="has-cover in">
     <div id="site-header"></div>
-
-    <!-- HERO -->
-    <header class="hero">
-        <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Stadio_Meazza.jpg/1280px-Stadio_Meazza.jpg"
-            alt="Stadio Giuseppe Meazza: San Siro, Milano"
-            loading="eager"
-        >
-        <div class="hero-overlay">
-            <p class="hero-meta">Sport &amp; Passions &nbsp;·&nbsp; May 2026</p>
+    <div class="in-bar" id="in-bar"></div>
+    <header class="in-hero">
+        <img src="/img/post/other/inter-hero.jpg" alt="Stadio Giuseppe Meazza: San Siro, Milano" fetchpriority="high">
+        <div class="in-stripes" aria-hidden="true"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i><i style="--i:4"></i><i style="--i:5"></i><i style="--i:6"></i><i style="--i:7"></i><i style="--i:8"></i><i style="--i:9"></i><i style="--i:10"></i><i style="--i:11"></i><i style="--i:12"></i><i style="--i:13"></i></div>
+        <div class="frame">
+            <a href="/hobbies/other.html" class="back-link">Back to Other</a>
+            <p class="in-meta"><span>Sport &amp; Passions &nbsp;·&nbsp; May 2026</span><span class="in-stars" aria-hidden="true">★ ★ <b>21</b></span></p>
             <h1>Two Stars and a Storm:<br>
-                <span class="gold">Inter Milan, from Çalhanoğlu's Tears to Chivu's Triumph</span>
+                <span class="gold">Inter Milan, from the Second Star to Chivu's Triumph</span>
             </h1>
-            <p class="hero-caption">
-                Three seasons. Two scudetti. One Champions League final that no one inside San Siro will ever forgive.
-                The story of Inter between April 2024 and May 2026, when the Nerazzurri became champions, became broken, and became champions again.
-            </p>
+            <p class="in-cap">Three seasons. Two scudetti. One Champions League final that no one inside San Siro will ever forgive.
+                The story of Inter between April 2024 and May 2026, when the Nerazzurri became champions, became broken, and became champions again.</p>
+            <p class="in-credit">Photo: Stadio Meazza, <a href="https://commons.wikimedia.org/wiki/File:Stadio_Meazza.jpg" target="_blank" rel="noopener">Wikimedia Commons</a>, public domain</p>
         </div>
     </header>
-
-    <article>
+    <aside class="in-rail" id="in-rail" aria-hidden="true"></aside>
+    <div class="in-clip"><article class="in-art">
 
         <p>
-            There is a sound a city makes only when twenty years of waiting has finally ended. It is not a roar, exactly.
-            It is something rounder than that, almost domestic, the noise a thousand kitchens would make if they all
-            started weeping at the same time. Milan made that sound on the evening of 22 April 2024, when Hakan
-            Çalhanoğlu stepped to the spot in the eighty-first minute of the derby, lifted his eyes briefly toward a sky
-            he no longer trusted, and slotted the ball past Mike Maignan to put Inter two-nil up against the cousins.
-            The match would finish 2–1. The city would not stop crying until morning.
+            There is a sound a city makes only when twenty years of waiting has finally ended. It is not a roar, exactly. It is something rounder than that, almost domestic, the noise a thousand kitchens would make if they all started weeping at the same time. Milan made that sound on the evening of 22 April 2024, when Inter, with goals from Acerbi and Thuram already on the board, held on for a 2–1 win in the derby and became champions in the cousins' own stadium. The city would not stop crying until morning.
         </p>
 
         <p>
-            Two years and eleven days later, on the night of 3 May 2026, that same Hakan Çalhanoğlu stood in the centre
-            circle of San Siro and pointed up at the second star sewn onto his shirt. Beside it, freshly stitched, was a
-            new badge. It read: <em>21</em>. Twenty-first <em>scudetto</em>. Champions of Italy, again.
+            Two years and eleven days later, on the night of 3 May 2026, San Siro did it again. Inter beat Parma 2–0 and were champions of Italy for the twenty-first time, with three matches still to play.
         </p>
 
         <p>
@@ -733,7 +209,7 @@
         </p>
 
         <!-- Season Scorecard -->
-        <div class="scorecard" aria-label="Three seasons at a glance">
+        <div class="scorecard wide" aria-label="Three seasons at a glance">
             <div class="scorecard-col peak">
                 <div class="season-label">Season 1, The Peak</div>
                 <div class="season-tag">2023–24</div>
@@ -769,7 +245,7 @@
             </div>
         </div>
 
-        <p class="chapter-mark">Chapter I · The Second Star</p>
+        <p class="chapter-mark" id="ch1" data-d0="2024-04-22" data-d1="2024-05-22">Chapter I · The Second Star</p>
 
         <h2>I. April 2024: The Symphony</h2>
 
@@ -794,41 +270,29 @@
         </p>
 
         <!-- TYPOGRAPHIC BLOCK A · The Penalty (gold) -->
-        <div class="typo-block gold" aria-label="The decisive penalty in the 2024 derby">
+        <div class="typo-block gold" aria-label="The 2024 derby">
             <p class="tb-meta">22 · 04 · 2024, Derby della Madonnina</p>
-            <p class="tb-place">San Siro · Milan 1, Inter 2 · 81st minute</p>
+            <p class="tb-place">San Siro · Milan 1, Inter 2</p>
             <h3 class="tb-headline" style="margin-top:0;">
-                Çalhanoğlu steps up. Maignan dives. The ball goes <em>in</em>.
+                Acerbi at 18′. Thuram at 49′. The second star at the <em>final whistle</em>.
             </h3>
-            <div class="tb-giant">81<span style="font-size:0.4em; vertical-align:0.5em;">′</span></div>
-            <p class="tb-sublabel">The minute that sealed the second star</p>
+            <div class="tb-giant tb-dial" id="in-dial" data-min="49"><b>49</b><span>′</span></div>
+            <p class="tb-sublabel">The minute Thuram made it 2–0</p>
             <div class="tb-divider"></div>
             <p style="font-family: var(--font-body); font-size:0.95rem; color:#b8b8c0; line-height:1.75; margin:0;">
-                It is the rigore of his career. Not because it is well-struck, it is, but Çalhanoğlu has hit a hundred
-                better. It is the rigore of his career because of who is taking it (a Turk who came here from Milan),
-                where he is taking it (the Milan end of the cousins' stadium), what is on the line (the twentieth
-                <em>scudetto</em>, the second star), and who he is thinking about (his father Hüseyin, buried four
-                months earlier). He scores. He points at the sky. The Inter bench empties. Milan does not.
-            </p>
-            <p class="tb-quote">
-                "Papà, this one is for you. I know you are here with me. I will carry this star in my heart."
-                <span class="tb-quote-cite">, Hakan Çalhanoğlu, post-match interview</span>
+                Acerbi scored after eighteen minutes and Thuram early in the second half. Tomori pulled one back
+                for Milan late on, and Theo Hernández, Dumfries and Calabria were all sent off in the closing
+                stages, but Inter held on. When the final whistle blew, at 22:43 by the club's own count, the
+                twentieth <em>scudetto</em> was mathematical, won in Milan's own stadium.
             </p>
         </div>
-
         <p>
             And then there was Çalhanoğlu. To understand what he meant to that team, to that city, you have to remember
             where he came from. He had crossed the Naviglio in 2021, free from Milan, accepting the courtship of the
             sworn enemy in the most public way an Italian footballer can. For two years he was useful. By the third he
             was indispensable. By the fourth, in 2023–24, he was the most important midfielder in Serie A, full stop ,
             a player whose passing maps looked like circuit diagrams and whose set-piece deliveries felt designed by
-            engineers. He scored thirteen goals in all competitions. He played the season of his life. He also lost his
-            father, Hüseyin, in December.
-        </p>
-
-        <p>
-            The penalty against Milan in the title derby was the first time most of the world saw him point at the sky.
-            It would not be the last.
+            engineers. He scored fifteen goals in all competitions, thirteen of them in Serie A. He played the season of his life.
         </p>
 
         <h3>What the Second Star Means</h3>
@@ -848,9 +312,9 @@
         </p>
 
         <!-- San Siro image -->
-        <figure class="img-block">
+        <figure class="img-block reveal">
             <img
-                src="https://upload.wikimedia.org/wikipedia/commons/8/80/Scudo2009.jpg"
+                src="/img/post/other/inter-interior.jpg"
                 alt="Stadio Giuseppe Meazza (San Siro): interior panorama"
                 loading="lazy"
             >
@@ -858,14 +322,11 @@
                 <em>La Scala del calcio.</em> The Stadio Giuseppe Meazza in the San Siro district of Milan, home,
                 since 1947, to both Inter and Milan, and the venue where the second star was sewn onto the shirt of
                 Italy's twenty-first champions.
-                <span class="credit">
-                    Photo: <em>Stadio Meazza</em> · Wikimedia Commons · free-to-reuse licence ,
-                    <a href="https://upload.wikimedia.org/wikipedia/commons/8/80/Scudo2009.jpg" target="_blank" rel="noopener">file page</a>
-                </span>
+                <span class="credit">Photo: <em>Scudo2009</em>, oscar federico bodini · Wikimedia Commons · CC BY-SA 2.0, <a href="https://commons.wikimedia.org/wiki/File:Scudo2009.jpg" target="_blank" rel="noopener">file page</a></span>
             </figcaption>
         </figure>
 
-        <div class="stat-grid">
+        <div class="stat-grid wide">
             <div class="stat-card">
                 <span class="stat-number">20°</span>
                 <span class="stat-label">Scudetto · the Second Star</span>
@@ -880,7 +341,7 @@
             </div>
         </div>
 
-        <p class="chapter-mark">Chapter II · The Storm</p>
+        <p class="chapter-mark" id="ch2" data-d0="2024-05-22" data-d1="2025-05-31">Chapter II · The Storm</p>
 
         <h2>II. 2024–25: Inches and Heartbreak</h2>
 
@@ -911,14 +372,13 @@
 
         <h3>The Three Wounds</h3>
 
-        <div class="moment-timeline">
+        <div class="moment-timeline reveal">
 
             <div class="moment-item crimson">
-                <div class="moment-date">2 January 2025, Riyadh</div>
+                <div class="moment-date">6 January 2025, Riyadh</div>
                 <h4>Supercoppa Italiana: Milan come from behind</h4>
                 <p>
-                    The Italian Super Cup final, played in Saudi Arabia. Inter lead 2–0 at half-time and concede three
-                    in the second half. Milan win 3–2. The first crack in the season's armour, and the first time the
+                    The Italian Super Cup final, played in Saudi Arabia. Inter lead 2–0 two minutes into the second half and concede three after that. Milan win 3–2. The first crack in the season's armour, and the first time the
                     Nerazzurri have lost a Supercoppa final to Milan in a generation.
                 </p>
             </div>
@@ -964,27 +424,28 @@
                 <li><span class="min">73′</span><span class="scorer">Kvaratskhelia</span><span class="note">PSG bench storms the pitch</span></li>
                 <li><span class="min">87′</span><span class="scorer">Mayulu</span><span class="note">half the Nerazzurri curva has left</span></li>
             </ul>
-            <p class="tb-quote">
-                "I leave with a heart full of love and full of pain. The pain of how it ended. The love for everything
-                else. Inter is not a place you forget."
-                <span class="tb-quote-cite">, Simone Inzaghi, farewell statement · early June 2025</span>
-            </p>
+            <div class="mu" id="mu">
+                <div class="mu-board" aria-live="polite"><span>PSG</span><b id="mu-a">5</b><b>–</b><b id="mu-b">0</b><span>Inter</span></div>
+                <div class="mu-ctl">
+                    <button type="button" id="mu-play">Replay the match</button>
+                    <input type="range" id="mu-r" min="0" max="90" value="90" aria-label="Match minute">
+                    <span class="mu-min" id="mu-min">90′</span>
+                </div>
+            </div>
+            <p class="tb-quote">"In these four years I gave everything."<span class="tb-quote-cite">, Simone Inzaghi, farewell message to the Nerazzurri · 3 June 2025</span></p>
         </div>
 
         <!-- Allianz Arena image -->
-        <figure class="img-block">
+        <figure class="img-block reveal">
             <img
-                src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Allianz_Arena_2008-02-09.jpg"
+                src="/img/post/other/inter-allianz.jpg"
                 alt="Allianz Arena: Munich, Germany"
                 loading="lazy"
             >
             <figcaption>
                 <em>The wound that would not close.</em> The Allianz Arena in Munich, venue of the 2025 UEFA
                 Champions League final. PSG 5–0 Inter. The largest defeat in European Cup final history.
-                <span class="credit">
-                    Photo: <em>Allianz Arena Luftbild</em> · Wikimedia Commons · free-to-reuse licence ,
-                    <a href="https://upload.wikimedia.org/wikipedia/commons/e/e9/Allianz_Arena_2008-02-09.jpg" target="_blank" rel="noopener">file page</a>
-                </span>
+                <span class="credit">Photo: <em>Allianz Arena 2008-02-09</em> · Wikimedia Commons · CC BY-SA 4.0, <a href="https://commons.wikimedia.org/wiki/File:Allianz_Arena_2008-02-09.jpg" target="_blank" rel="noopener">file page</a></span>
             </figcaption>
         </figure>
 
@@ -996,7 +457,7 @@
             second number, on the night of his goodbye, weighed more.
         </p>
 
-        <p class="chapter-mark">Chapter III · The Rookie</p>
+        <p class="chapter-mark" id="ch3" data-d0="2025-05-31" data-d1="2025-06-14">Chapter III · The Rookie</p>
 
         <h2>III. June 2025: Choosing Chivu</h2>
 
@@ -1031,14 +492,6 @@
             half a decade.
         </p>
 
-        <blockquote>
-            <p>
-                "We have come back to our roots, to what <em>Interismo</em> means. Pride, loyalty, identity. Everything
-                else, we will build with our hands, day after day."
-            </p>
-            <cite>, Cristian Chivu, opening press conference · 14 June 2025</cite>
-        </blockquote>
-
         <p>
             The Italian press, in fairness, gave him roughly six weeks of patience. After three Serie A games of the
             new season, including a 4–3 home defeat to Juventus and another to Napoli, Inter sat on three points
@@ -1053,23 +506,16 @@
         </p>
 
         <!-- Chivu image -->
-        <figure class="img-block">
-            <img
-                src="https://numericalcio.wordpress.com/wp-content/uploads/2011/02/chivu.jpg"
-                alt="Cristian Chivu: Inter Milan player era"
-                loading="lazy"
-            >
+        <figure class="img-block reveal">
+            <div class="in-plate" aria-hidden="true"><b>184</b><span>appearances<br>3 scudetti<br>1 Champions League</span></div>
             <figcaption>
                 <em>The man who knew the dressing room.</em> Cristian Chivu during his playing years at Inter ,
                 184 appearances, three <em>scudetti</em>, one Champions League. The same shirt, a different role.
-                <span class="credit">
-                    Photo: <em>Cristian Chivu 2010</em> · Wikimedia Commons · free-to-reuse licence ,
-                    <a href="https://numericalcio.wordpress.com/wp-content/uploads/2011/02/chivu.jpg" target="_blank" rel="noopener">file page</a>
-                </span>
+                <span class="credit">No licence-clean photograph was available, so this one is drawn in type.</span>
             </figcaption>
         </figure>
 
-        <p class="chapter-mark">Chapter IV · The Phoenix</p>
+        <p class="chapter-mark" id="ch4" data-d0="2025-06-14" data-d1="2026-05-03">Chapter IV · The Phoenix</p>
 
         <h2>IV. The 21st: How They Got There</h2>
 
@@ -1194,17 +640,12 @@
                 <em>scudetto</em> as both Inter player and Inter coach (after Castellazzi, 1937–38). Best win
                 percentage of any Inter manager with 25+ league matches in charge.
             </p>
-            <p class="tb-quote">
-                "When I arrived, they wrote that this team was at the end of an era. But they were reborn, and they
-                found again the motivation to be what they had always been."
-                <span class="tb-quote-cite">, Cristian Chivu, after Parma · 3 May 2026</span>
-            </p>
-        </div>
+            </div>
 
         <!-- Piazza del Duomo image -->
-        <figure class="img-block">
+        <figure class="img-block reveal">
             <img
-                src="https://media-assets.wired.it/photos/615da23d6c9f4d965efcf88a/master/w_1600,c_limit/ScudettoInter.jpg"
+                src="/img/post/other/inter-duomo.jpg"
                 alt="Piazza del Duomo, Milano: celebration square"
                 loading="lazy"
             >
@@ -1212,14 +653,11 @@
                 <em>The square that holds the city's memory.</em> Piazza del Duomo, Milan, where twenty thousand
                 voices sang until two in the morning on 3 May 2026, the night the twenty-first
                 <em>scudetto</em> came home.
-                <span class="credit">
-                    Photo: <em>Milano - piazza del Duomo</em> · Wikimedia Commons · free-to-reuse licence ,
-                    <a href="https://media-assets.wired.it/photos/615da23d6c9f4d965efcf88a/master/w_1600,c_limit/ScudettoInter.jpg" target="_blank" rel="noopener">file page</a>
-                </span>
+                <span class="credit">Photo: <em>Piazza del Duomo Milano 2022-09-28</em> · Wikimedia Commons · CC0, <a href="https://commons.wikimedia.org/wiki/File:Piazza_del_Duomo_Milano_2022-09-28_04.jpg" target="_blank" rel="noopener">file page</a> (an ordinary day in the square, not the celebration)</span>
             </figcaption>
         </figure>
 
-        <p class="chapter-mark">Epilogue</p>
+        <p class="chapter-mark" id="ch5" data-d0="2026-05-03" data-d1="2026-05-13">Epilogue</p>
 
         <h2>V. What the Two Stars Mean</h2>
 
@@ -1248,10 +686,7 @@
         </p>
 
         <p>
-            In a few days, on 13 May 2026, Chivu's Inter will play Lazio in the Coppa Italia final, with the
-            possibility of a domestic double sitting in front of them like a small second course. By the time you read
-            this, that match has either confirmed the season's range or merely punctuated it. Either way, the season
-            is already what it was always going to be: the year Inter remembered who they were.
+            Ten days later, on 13 May 2026, Chivu's Inter beat Lazio 2–0 in the Coppa Italia final in Rome and completed the domestic double, the first since 2010. The season had confirmed its range, and it was what it was always going to be: the year Inter remembered who they were.
         </p>
 
         <p>
@@ -1320,6 +755,24 @@
                     </a>
                     <span class="src-meta">Club history, ownership, season summaries</span>
                 </li>
+                <li>
+                    <a href="https://www.tuttomercatoweb.com/accadde-oggi/22-aprile-2024-il-derby-della-seconda-stella-inzaghi-vince-lo-scudetto-contro-il-milan-2225650" target="_blank" rel="noopener">
+                        Tuttomercatoweb, 22 April 2024: the derby of the second star
+                    </a>
+                    <span class="src-meta">Scorers and sending-offs of Milan 1–2 Inter</span>
+                </li>
+                <li>
+                    <a href="https://en.wikipedia.org/wiki/2026_Coppa_Italia_final" target="_blank" rel="noopener">
+                        Wikipedia, 2026 Coppa Italia final
+                    </a>
+                    <span class="src-meta">Lazio 0–2 Inter · Stadio Olimpico · 13 May 2026</span>
+                </li>
+                <li>
+                    <a href="https://www.italpress.com/?p=541419" target="_blank" rel="noopener">
+                        Italpress, Inzaghi leaves Inter: "In questi quattro anni ho dato tutto"
+                    </a>
+                    <span class="src-meta">The farewell message of 3 June 2025</span>
+                </li>
             </ul>
         </div>
 
@@ -1329,13 +782,106 @@
             <a href="../../hobbies.html" class="back-link">All Hobbies &amp; Blog</a>
         </div>
 
-    </article>
+    </article></div>
 
     <!-- ② Footer globale iniettato da components.js -->
     <div id="site-footer"></div>
 
     <!-- ③ Script components (percorso relativo dalla sottocartella posts/) -->
-    <script src="../../js/components.js"></script>
+    <script src="/js/components.js?v=3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+    <script src="/js/site.js?v=3" defer></script>
+    <script>
+    (function () {
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var $ = function (id) { return document.getElementById(id); };
+      var DAY = 864e5, D = function (x) { return Date.parse(x + 'T00:00:00Z'); };
+      var T0 = D('2024-04-22'), T1 = D('2026-05-13');
+
+      // ---- the axis: twenty-five months to scale ----
+      var rail = $('in-rail'), art = document.querySelector('.in-art');
+      var EV = [
+        ['2024-04-22', '22 Apr 2024', 'Derby: the 20th scudetto', 1],
+        ['2024-05-22', '22 May 2024', 'Oaktree takes control'],
+        ['2025-01-06', '6 Jan 2025', 'Supercoppa final lost'],
+        ['2025-04-15', 'Apr 2025', 'Coppa Italia semi-final'],
+        ['2025-05-23', '23 May 2025', 'Napoli win by a point'],
+        ['2025-05-31', '31 May 2025', 'Munich, 0–5', 1],
+        ['2025-06-09', '9 Jun 2025', 'Chivu appointed'],
+        ['2026-05-03', '3 May 2026', 'The 21st scudetto', 1],
+        ['2026-05-13', '13 May 2026', 'Coppa Italia won']
+      ];
+      var H = 0, dot;
+      function pos(t) { return (t - T0) / (T1 - T0) * H; }
+      function layout() {
+        H = rail.clientHeight; rail.innerHTML = '<div class="in-rail-ax"></div>';
+        var last = -99, items = EV.map(function (e) { return { y: pos(D(e[0])), e: e }; });
+        items.forEach(function (it) {
+          var t = document.createElement('div'); t.className = 'in-rail-t' + (it.e[3] ? ' major' : ''); t.style.top = it.y + 'px'; rail.appendChild(t);
+          var ly = Math.max(it.y, last + 30); last = ly;
+          var l = document.createElement('div'); l.className = 'in-rail-l'; l.style.top = ly + 'px';
+          l.innerHTML = '<b>' + it.e[1] + '</b>' + it.e[2]; rail.appendChild(l);
+        });
+        dot = document.createElement('div'); dot.className = 'in-rail-dot'; rail.appendChild(dot);
+        move();
+      }
+      var chs = [].slice.call(document.querySelectorAll('.chapter-mark'));
+      function dateNow() {
+        var y = innerHeight * .4, first = chs[0].getBoundingClientRect().top;
+        if (first > y) return T0;
+        var i = 0; chs.forEach(function (c, k) { if (c.getBoundingClientRect().top <= y) i = k; });
+        var a = chs[i], top = a.getBoundingClientRect().top + scrollY, end = i + 1 < chs.length ? chs[i + 1].getBoundingClientRect().top + scrollY : art.getBoundingClientRect().bottom + scrollY;
+        var f = Math.max(0, Math.min(1, (scrollY + y - top) / Math.max(1, end - top)));
+        return D(a.dataset.d0) + (D(a.dataset.d1) - D(a.dataset.d0)) * f;
+      }
+      function move() {
+        if (!dot) return;
+        dot.style.top = Math.max(0, Math.min(H, pos(dateNow()))) + 'px';
+        var r = art.getBoundingClientRect(); rail.classList.toggle('on', r.top < innerHeight * .6 && r.bottom > innerHeight * .3);
+        var p = Math.max(0, Math.min(1, (innerHeight * .4 - r.top) / r.height)); $('in-bar').style.setProperty('--p', p.toFixed(4));
+      }
+      layout(); addEventListener('resize', layout); addEventListener('scroll', move, { passive: true });
+
+      // ---- the 81st minute ----
+      var dial = $('in-dial');
+      if (dial) new IntersectionObserver(function (e, io) {
+        if (!e[0].isIntersecting) return; io.disconnect();
+        var tgt = +dial.dataset.min, t0 = performance.now(), b = dial.querySelector('b');
+        if (reduce) { dial.style.setProperty('--p', tgt / 90 * 100); return; }
+        (function go(t) { var p = Math.min(1, (t - t0) / 2200), m = Math.round(tgt * (1 - Math.pow(1 - p, 3))); b.textContent = m; dial.style.setProperty('--p', (m / 90 * 100).toFixed(2)); if (p < 1) requestAnimationFrame(go); })(t0);
+      }, { threshold: .6 }).observe(dial);
+
+      // ---- Munich, minute by minute ----
+      var r = $('mu-r'), log = [].slice.call(document.querySelectorAll('.typo-block.crimson .tb-log li')), playing = false, timer;
+      function setMin(m) {
+        r.value = m; $('mu-min').textContent = m + '′';
+        var n = 0; log.forEach(function (li) { var g = parseInt(li.querySelector('.min').textContent, 10), on = g <= m; if (on) n++; li.classList.toggle('off', !on); });
+        $('mu-a').textContent = n;
+      }
+      r.addEventListener('input', function () { stop(); setMin(+r.value); });
+      function stop() { playing = false; clearInterval(timer); $('mu-play').textContent = 'Replay the match'; }
+      $('mu-play').addEventListener('click', function () {
+        if (playing) { stop(); return; }
+        playing = true; $('mu-play').textContent = 'Stop'; var m = 0; setMin(0);
+        timer = setInterval(function () { m++; setMin(m); if (m >= 90) stop(); }, 140);
+      });
+      setMin(90);
+
+      // ---- numbers count up ----
+      function count(el) {
+        var tn = [].slice.call(el.childNodes).filter(function (n) { return n.nodeType === 3 && /\d/.test(n.nodeValue); })[0]; if (!tn || reduce) return;
+        var m = tn.nodeValue.match(/^(\s*[+\-]?)(\d+)(.*)$/); if (!m) return;
+        var n = +m[2]; tn.nodeValue = m[1] + '0' + m[3];
+        new IntersectionObserver(function (e, io) {
+          if (!e[0].isIntersecting) return; io.disconnect();
+          var t0 = performance.now();
+          (function go(t) { var p = Math.min(1, (t - t0) / 1400); tn.nodeValue = m[1] + Math.round(n * (1 - Math.pow(1 - p, 3))) + m[3]; if (p < 1) requestAnimationFrame(go); })(t0);
+        }, { threshold: .6 }).observe(el);
+      }
+      document.querySelectorAll('.stat-number, .tb-stat-num, div[style*="grid-template-columns"] .tb-giant').forEach(count);
+    })();
+    </script>
+
 
 </body>
 </html>

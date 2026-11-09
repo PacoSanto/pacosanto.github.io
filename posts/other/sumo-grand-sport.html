@@ -5,701 +5,256 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Sport of Giants: An Introduction to Grand Sumo | Francesco Santoro De Vico</title>
     <meta name="description" content="An introduction to Grand Sumo, history, hierarchy, ceremony, kimarite, and the tournaments of 2025–2026. Discovered through NHK World Japan.">
-    <link rel="stylesheet" href="../../css/style.css">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fsdv.eu/posts/other/sumo-grand-sport.html">
+    <meta property="og:title" content="The Sport of Giants: An Introduction to Grand Sumo">
+    <meta property="og:description" content="History, hierarchy, ceremony, kimarite, and the tournaments of 2025–2026.">
+    <meta property="og:image" content="https://fsdv.eu/img/post/other/sumo-og.jpg">
+    <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
+    <link rel="stylesheet" href="/css/style.css?v=3">
     <style>
-
-        /* ══════════════════════════════════════════════
-           HERO
-        ══════════════════════════════════════════════ */
-        .post-hero {
-            position: relative;
-            width: 100%;
-            height: 72vh;
-            min-height: 440px;
-            overflow: hidden;
-            display: flex;
-            align-items: flex-end;
-            margin-top: var(--nav-height, 64px);
-        }
-
-        .post-hero img {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center 30%;
-            filter: brightness(0.52);
-        }
-
-        .post-hero-overlay {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            padding: 3rem 6%;
-            background: linear-gradient(to top,
-                rgba(245,240,232,0.98) 0%,
-                rgba(245,240,232,0.4) 55%,
-                transparent 100%);
-        }
-
-        .post-hero-meta {
-            font-family: var(--font-body, 'Inter', sans-serif);
-            font-size: 0.76rem;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: var(--accent-alt, #4a8b7f);
-            margin-bottom: 0.9rem;
-        }
-
-        .post-hero h1 {
-            font-family: var(--font-display, 'Playfair Display', Georgia, serif);
-            font-size: clamp(1.9rem, 4.5vw, 3.2rem);
-            font-weight: 400;
-            line-height: 1.2;
-            color: var(--color-obsidian, #1a1a2e);
-            max-width: 860px;
-            margin-bottom: 0.9rem;
-        }
-
-        .post-hero h1 .highlight {
-            color: var(--color-amber);
-            font-style: normal;
-        }
-
-        .post-hero-caption {
-            font-size: 0.76rem;
-            color: var(--text-secondary, #4a4a6a);
-            font-style: italic;
-        }
-
-        /* ══════════════════════════════════════════════
-           ARTICLE LAYOUT
-        ══════════════════════════════════════════════ */
-        article {
-            max-width: 760px;
-            margin: 0 auto;
-            padding: 4.5rem 1.5rem 7rem;
-        }
-
-        /* Drop cap */
-        article > p:first-of-type::first-letter {
-            float: left;
-            font-size: 4.4rem;
-            line-height: 0.78;
-            margin: 0.1em 0.14em 0 0;
-            color: var(--color-amber, #d4a03c);
-            font-family: var(--font-display, 'Playfair Display', Georgia, serif);
-        }
-
-        article p {
-            margin-bottom: 1.65rem;
-            color: var(--text-secondary, #4a4a6a);
-            line-height: 1.88;
-            font-size: 1.02rem;
-        }
-
-        /* Section headings */
-        article h2 {
-            font-family: var(--font-display, 'Playfair Display', Georgia, serif);
-            font-size: 1.6rem;
-            font-weight: 400;
-            color: var(--text-primary, #1a1a2e);
-            margin: 4rem 0 1.4rem;
-            padding-bottom: 0.55rem;
-            border-bottom: 2px solid var(--color-amber, #d4a03c);
-        }
-
-        article h2::after { display: none; }
-
-        article h3 {
-            font-family: var(--font-body, 'Inter', sans-serif);
-            font-size: 0.82rem;
-            font-weight: 700;
-            color: var(--accent-alt, #4a8b7f);
-            margin: 2.8rem 0 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.14em;
-        }
-
-        article h3::after { display: none; }
-
-        /* Tournament result heading */
-        article h4 {
-            font-family: var(--font-display, 'Playfair Display', Georgia, serif);
-            font-size: 1.15rem;
-            font-weight: 400;
-            color: var(--text-primary, #1a1a2e);
-            margin: 2.8rem 0 0.8rem;
-            padding-left: 1.1rem;
-            border-left: 3px solid var(--color-amber, #d4a03c);
-        }
-
-        /* Horizontal rule */
-        .divider {
-            border: none;
-            border-top: 1px solid var(--border, #e0ddd6);
-            margin: 3.5rem 0;
-        }
-
-        /* ══════════════════════════════════════════════
-           IMAGES
-        ══════════════════════════════════════════════ */
-        .img-block {
-            margin: 3rem -2rem;
-        }
-
-        .img-block img {
-            width: 100%;
-            display: block;
-            border-radius: var(--radius, 6px);
-            filter: brightness(0.94);
-            transition: filter 0.4s ease;
-        }
-
-        .img-block img:hover { filter: brightness(1); }
-
-        .img-block figcaption {
-            font-size: 0.77rem;
-            color: var(--text-light, #7a7a9a);
-            font-style: italic;
-            font-family: var(--font-body, 'Inter', sans-serif);
-            margin-top: 0.65rem;
-            padding-left: 0.9rem;
-            border-left: 2px solid var(--color-amber, #d4a03c);
-            line-height: 1.65;
-        }
-
-        .img-block figcaption .credit {
-            display: block;
-            font-style: normal;
-            color: var(--accent-alt, #4a8b7f);
-            margin-top: 0.3rem;
-            font-size: 0.7rem;
-            letter-spacing: 0.04em;
-        }
-
-        .img-block figcaption .credit a {
-            color: var(--accent-alt, #4a8b7f);
-            text-decoration: none;
-            border-bottom: 1px dotted var(--border, #e0ddd6);
-        }
-
-        .img-block figcaption .credit a:hover {
-            color: var(--color-apatite-dark, #2d6b60);
-        }
-
-        /* 2-col image grid */
-        .img-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin: 3rem -2rem;
-        }
-
-        .img-grid figure { margin: 0; }
-
-        .img-grid figure img {
-            width: 100%;
-            display: block;
-            border-radius: var(--radius, 6px);
-            aspect-ratio: 4/3;
-            object-fit: cover;
-            filter: brightness(0.90);
-            transition: filter 0.4s ease;
-        }
-
-        .img-grid figure img:hover { filter: brightness(1); }
-
-        .img-grid figcaption {
-            font-size: 0.72rem;
-            color: var(--text-light, #7a7a9a);
-            font-style: italic;
-            font-family: var(--font-body, 'Inter', sans-serif);
-            margin-top: 0.5rem;
-            padding-left: 0.6rem;
-            border-left: 2px solid var(--border, #e0ddd6);
-            line-height: 1.55;
-        }
-
-        /* ══════════════════════════════════════════════
-           PULL QUOTE
-        ══════════════════════════════════════════════ */
-        blockquote {
-            margin: 2.8rem 0;
-            padding: 1.6rem 2.2rem;
-            border-left: 3px solid var(--color-amber, #d4a03c);
-            background: rgba(212,160,60,0.045);
-            border-radius: 0 var(--radius, 6px) var(--radius, 6px) 0;
-        }
-
-        blockquote p {
-            font-size: 1.18rem;
-            color: var(--text-primary, #1a1a2e);
-            font-style: italic;
-            margin: 0;
-            line-height: 1.75;
-        }
-
-        blockquote cite {
-            display: block;
-            font-size: 0.76rem;
-            color: var(--text-light, #7a7a9a);
-            font-style: normal;
-            margin-top: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-family: var(--font-body, 'Inter', sans-serif);
-        }
-
-        /* ══════════════════════════════════════════════
-           RANK TABLE
-        ══════════════════════════════════════════════ */
-        .rank-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 2rem 0 2.8rem;
-            font-family: var(--font-body, 'Inter', sans-serif);
-            font-size: 0.9rem;
-        }
-
-        .rank-table thead tr {
-            background: var(--color-obsidian, #1a1a2e);
-            color: #f5f0e8;
-        }
-
-        .rank-table th {
-            padding: 0.75rem 1.1rem;
-            text-align: left;
-            font-weight: 600;
-            font-size: 0.76rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        .rank-table tbody tr {
-            border-bottom: 1px solid var(--border, #e0ddd6);
-            transition: background 0.2s;
-        }
-
-        .rank-table tbody tr:hover {
-            background: rgba(212,160,60,0.04);
-        }
-
-        .rank-table td {
-            padding: 0.8rem 1.1rem;
-            color: var(--text-secondary, #4a4a6a);
-            vertical-align: top;
-            line-height: 1.6;
-        }
-
-        .rank-table td:first-child {
-            font-family: var(--font-display, 'Playfair Display', Georgia, serif);
-            color: var(--text-primary, #1a1a2e);
-            font-size: 1rem;
-            white-space: nowrap;
-        }
-
-        .rank-table td .kanji {
-            display: block;
-            font-size: 0.76rem;
-            color: var(--text-light, #7a7a9a);
-            margin-top: 0.15rem;
-            font-family: var(--font-body, 'Inter', sans-serif);
-        }
-
-        .rank-badge {
-            display: inline-block;
-            padding: 2px 9px;
-            border-radius: 3px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            white-space: nowrap;
-        }
-
-        .rank-badge.top    { background: rgba(212,160,60,0.15); color: #b8852a; }
-        .rank-badge.second { background: rgba(74,139,127,0.12); color: #3a7a6e; }
-        .rank-badge.mid    { background: rgba(92,92,122,0.12);  color: #5c5c7a; }
-        .rank-badge.base   { background: rgba(26,26,46,0.06);   color: #7a7a9a; }
-
-        /* ══════════════════════════════════════════════
-           TOURNAMENT CARDS
-        ══════════════════════════════════════════════ */
-        .tournament-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin: 2.2rem 0 2.8rem;
-        }
-
-        .tournament-card {
-            background: var(--color-white, #fff);
-            border: 1px solid var(--border, #e0ddd6);
-            border-radius: var(--radius, 6px);
-            padding: 1.3rem 1.5rem;
-            border-top: 3px solid var(--color-amber, #d4a03c);
-            transition: box-shadow 0.3s ease;
-        }
-
-        .tournament-card:hover {
-            box-shadow: 0 6px 22px rgba(26,26,46,0.07);
-        }
-
-        .tournament-card .t-tag {
-            display: inline-block;
-            font-size: 0.68rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            padding: 2px 8px;
-            border-radius: 3px;
-            background: rgba(212,160,60,0.1);
-            color: #a07020;
-            margin-bottom: 0.75rem;
-        }
-
-        .tournament-card .t-name {
-            font-family: var(--font-display, 'Playfair Display', Georgia, serif);
-            font-size: 1.12rem;
-            color: var(--text-primary, #1a1a2e);
-            margin-bottom: 0.2rem;
-            line-height: 1.3;
-        }
-
-        .tournament-card .t-kanji {
-            font-size: 0.74rem;
-            color: var(--text-light, #7a7a9a);
-            font-family: var(--font-body, 'Inter', sans-serif);
-            letter-spacing: 0.05em;
-            margin-bottom: 0.65rem;
-        }
-
-        .tournament-card .t-detail {
-            font-size: 0.83rem;
-            color: var(--text-secondary, #4a4a6a);
-            line-height: 1.65;
-            margin: 0;
-        }
-
-        /* ══════════════════════════════════════════════
-           KIMARITE (TECHNIQUE LIST)
-        ══════════════════════════════════════════════ */
-        .technique-list {
-            margin: 1.8rem 0 2.2rem;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .technique-item {
-            display: grid;
-            grid-template-columns: 210px 1fr;
-            gap: 1.2rem;
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--border, #e0ddd6);
-            align-items: baseline;
-        }
-
-        .technique-item:last-child { border-bottom: none; }
-
-        .technique-item .t-romaji {
-            font-family: var(--font-display, 'Playfair Display', Georgia, serif);
-            font-size: 1.02rem;
-            color: var(--text-primary, #1a1a2e);
-            display: block;
-        }
-
-        .technique-item .t-kanji-small {
-            font-size: 0.74rem;
-            color: var(--text-light, #7a7a9a);
-            display: block;
-            margin-top: 0.1rem;
-            font-family: var(--font-body, 'Inter', sans-serif);
-        }
-
-        .technique-item .t-meaning {
-            font-size: 0.76rem;
-            color: var(--color-amber, #d4a03c);
-            font-style: italic;
-            display: block;
-            margin-top: 0.2rem;
-            font-family: var(--font-body, 'Inter', sans-serif);
-        }
-
-        .technique-item .t-desc {
-            font-size: 0.91rem;
-            color: var(--text-secondary, #4a4a6a);
-            line-height: 1.7;
-            margin: 0;
-        }
-
-        /* ══════════════════════════════════════════════
-           STATS ROW
-        ══════════════════════════════════════════════ */
-        .stat-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin: 2.5rem 0;
-        }
-
-        .stat-card {
-            background: var(--color-white, #fff);
-            border: 1px solid var(--border, #e0ddd6);
-            border-radius: var(--radius, 6px);
-            padding: 1.3rem 1rem;
-            text-align: center;
-            border-top: 3px solid var(--color-amber, #d4a03c);
-        }
-
-        .stat-card.alt { border-top-color: var(--accent-alt, #4a8b7f); }
-
-        .stat-card .stat-number {
-            font-family: var(--font-display, 'Playfair Display', Georgia, serif);
-            font-size: 2.4rem;
-            color: var(--color-amber, #d4a03c);
-            display: block;
-            line-height: 1;
-            margin-bottom: 0.45rem;
-        }
-
-        .stat-card.alt .stat-number { color: var(--accent-alt, #4a8b7f); }
-
-        .stat-card .stat-label {
-            font-size: 0.72rem;
-            color: var(--text-light, #7a7a9a);
-            font-family: var(--font-body, 'Inter', sans-serif);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            line-height: 1.5;
-        }
-
-        /* ══════════════════════════════════════════════
-           SEASON RESULT CARDS
-        ══════════════════════════════════════════════ */
-        .season-result {
-            background: var(--color-white, #fff);
-            border: 1px solid var(--border, #e0ddd6);
-            border-radius: var(--radius, 6px);
-            padding: 1.5rem 1.7rem;
-            margin: 1.5rem 0;
-            display: grid;
-            grid-template-columns: auto 1fr;
-            gap: 1.4rem;
-            align-items: start;
-            transition: box-shadow 0.3s ease;
-        }
-
-        .season-result:hover {
-            box-shadow: 0 6px 22px rgba(26,26,46,0.07);
-        }
-
-        .season-result .sr-date {
-            text-align: center;
-            min-width: 76px;
-        }
-
-        .season-result .sr-month {
-            display: block;
-            font-family: var(--font-body, 'Inter', sans-serif);
-            font-size: 0.68rem;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--text-light, #7a7a9a);
-        }
-
-        .season-result .sr-location {
-            display: block;
-            font-family: var(--font-display, 'Playfair Display', Georgia, serif);
-            font-size: 1.15rem;
-            color: var(--color-amber, #d4a03c);
-            line-height: 1.1;
-            margin: 0.25rem 0;
-        }
-
-        .season-result .sr-year {
-            display: block;
-            font-size: 0.68rem;
-            color: var(--text-light, #7a7a9a);
-            font-family: var(--font-body, 'Inter', sans-serif);
-        }
-
-        .season-result .sr-title {
-            font-family: var(--font-display, 'Playfair Display', Georgia, serif);
-            font-size: 1.08rem;
-            color: var(--text-primary, #1a1a2e);
-            margin-bottom: 0.35rem;
-            line-height: 1.35;
-        }
-
-        .season-result .sr-winner {
-            display: inline-block;
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            padding: 2px 9px;
-            border-radius: 3px;
-            background: rgba(212,160,60,0.12);
-            color: #a07020;
-            margin-bottom: 0.65rem;
-        }
-
-        .season-result .sr-text {
-            font-size: 0.9rem;
-            color: var(--text-secondary, #4a4a6a);
-            line-height: 1.7;
-            margin: 0;
-        }
-
-        /* Live / ongoing badge */
-        .live-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.45rem;
-            background: rgba(74,139,127,0.1);
-            border: 1px solid rgba(74,139,127,0.28);
-            color: var(--accent-alt, #4a8b7f);
-            font-family: var(--font-body, 'Inter', sans-serif);
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            padding: 4px 11px;
-            border-radius: 20px;
-            margin-left: 0.7rem;
-            vertical-align: middle;
-        }
-
-        .live-badge::before {
-            content: '';
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--accent-alt, #4a8b7f);
-            animation: blink 1.6s infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50%       { opacity: 0.25; }
-        }
-
-        /* Update note */
-        .update-note {
-            background: rgba(74,139,127,0.05);
-            border-left: 3px solid var(--accent-alt, #4a8b7f);
-            padding: 1rem 1.5rem;
-            margin: 2rem 0;
-            border-radius: 0 var(--radius, 6px) var(--radius, 6px) 0;
-            font-family: var(--font-body, 'Inter', sans-serif);
-            font-size: 0.85rem;
-            color: var(--text-secondary, #4a4a6a);
-            line-height: 1.65;
-        }
-
-        .update-note strong { color: var(--accent-alt, #4a8b7f); }
-
-        /* ══════════════════════════════════════════════
-           SOURCES BLOCK
-        ══════════════════════════════════════════════ */
-        .sources {
-            background: rgba(245,240,232,0.6);
-            border: 1px solid var(--border, #e0ddd6);
-            border-radius: var(--radius, 6px);
-            padding: 2rem 2.2rem;
-            margin-top: 3.5rem;
-        }
-
-        .sources h3 {
-            margin-top: 0;
-            margin-bottom: 1.1rem;
-            font-size: 0.78rem;
-            text-transform: uppercase;
-            letter-spacing: 0.14em;
-            color: var(--text-secondary, #4a4a6a);
-        }
-
-        .sources h3::after { display: none; }
-
-        .sources ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .sources ul li {
-            padding: 0.55rem 0;
-            border-bottom: 1px solid var(--border, #e0ddd6);
-            font-size: 0.84rem;
-            font-family: var(--font-body, 'Inter', sans-serif);
-            color: var(--text-secondary, #4a4a6a);
-            line-height: 1.55;
-        }
-
-        .sources ul li:last-child { border-bottom: none; }
-
-        .sources ul li a {
-            color: var(--accent-alt, #4a8b7f);
-            text-decoration: none;
-            border-bottom: 1px dotted var(--border, #e0ddd6);
-        }
-
-        .sources ul li a:hover { color: #2d6b60; }
-
-        .sources ul li .src-meta {
-            display: block;
-            color: var(--text-light, #7a7a9a);
-            font-size: 0.71rem;
-            margin-top: 0.2rem;
-        }
-
-        /* ══════════════════════════════════════════════
-           RESPONSIVE
-        ══════════════════════════════════════════════ */
-        @media (max-width: 640px) {
-            .img-block       { margin: 2rem -0.5rem; }
-            .img-grid        { grid-template-columns: 1fr; margin: 2rem -0.5rem; }
-            .stat-grid       { grid-template-columns: 1fr 1fr; }
-            .tournament-grid { grid-template-columns: 1fr; }
-            .technique-item  { grid-template-columns: 1fr; gap: 0.4rem; }
-            .season-result   { grid-template-columns: 1fr; }
-            .sr-date         { display: flex; gap: 0.7rem; align-items: baseline; }
-            .post-hero h1    { font-size: 1.65rem; }
-            article          { padding: 3rem 1rem 5rem; }
-        }
+    /* GRAND SUMO. The page is read like a day at the basho: the ring first, then the
+       ranks, the year, the techniques, the results. Two tokens only: shu (the vermilion
+       of the shrine) and clay (the dohyō surface). Everything else is the site's own. */
+    .sm { --sm-shu: #b8322a; --sm-clay: #d9c4a0; background: var(--color-chalk); counter-reset: sm; }
+    .sm .site-footer { margin-top: 0; }
+
+    .sm-hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; background: var(--color-night); color: #fff; }
+    .sm-hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 24%; }
+    .sm-hero::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to top, rgba(13,15,12,.94) 4%, rgba(13,15,12,.18) 52%), linear-gradient(to bottom, rgba(13,15,12,.5), transparent 20%); }
+    .sm-salt { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; cursor: crosshair; touch-action: pan-y; }
+    .sm-hero .frame { position: relative; z-index: 3; width: 100%; padding-bottom: clamp(1.75rem,4vw,3.25rem); pointer-events: none; }
+    .sm-hero .back-link { color: rgba(255,255,255,.85); pointer-events: auto; }
+    .sm-hero .back-link:hover { color: #fff; }
+    .sm-meta { font-family: var(--font-mono); font-size: .76rem; letter-spacing: .1em; text-transform: uppercase; color: #f0b39f; margin: 1.1rem 0 .7rem; }
+    .sm-hero h1 { color: #fff; font-weight: 300; font-size: clamp(2.6rem,5.6vw,5.2rem); line-height: .98; margin: 0; max-width: 17ch; }
+    .sm-hero h1 .highlight { display: block; font-style: italic; }
+    .sm-hint { position: absolute; z-index: 3; right: var(--gutter); bottom: 1.1rem; margin: 0; font-family: var(--font-mono); font-size: .7rem; letter-spacing: .06em; color: rgba(255,255,255,.7); pointer-events: none; transition: opacity .6s; }
+    .sm-credit { margin: 1.2rem 0 0; font-size: .74rem; color: rgba(255,255,255,.62); pointer-events: auto; }
+    .sm-credit a { color: inherit; border-bottom: 1px solid rgba(255,255,255,.35); }
+
+    .sm-pill { position: fixed; z-index: 45; left: var(--gutter); bottom: 1rem; display: flex; align-items: center; gap: .6rem; max-width: min(78vw,22rem); padding: .35rem 1rem .35rem .4rem; border-radius: 99px; background: rgba(13,15,12,.86); color: #fff; font-size: .78rem; line-height: 1.2; opacity: 0; transform: translateY(8px); transition: opacity .4s, transform .5s var(--ease-out); pointer-events: none; }
+    .sm-pill.on { opacity: 1; transform: none; }
+    .sm-pill svg { flex: none; width: 30px; height: 30px; transform: rotate(-90deg); }
+    .sm-pill circle { fill: none; stroke-width: 3.4; }
+    .sm-pill .bg { stroke: rgba(255,255,255,.22); }
+    .sm-pill .fg { stroke: var(--sm-shu); stroke-linecap: round; }
+    .sm-pill span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    .sm-art { max-width: 44rem; margin: 0 auto; padding: clamp(3.5rem,7vw,6rem) var(--gutter) clamp(4rem,8vw,7rem); color: var(--color-ink); }
+    .sm-art > p, .sm-art .video-section > p { font-size: 1.14rem; line-height: 1.7; margin: 0 0 1.3rem; color: var(--color-ink); }
+    .sm-art > p:first-child { font-family: var(--font-display); font-size: clamp(1.55rem,2.5vw,2.05rem); line-height: 1.28; }
+    .sm-art em { color: inherit; }
+    .sm-art a { color: inherit; border-bottom: 1px solid var(--color-amber); }
+    .sm-art a:hover { color: var(--sm-shu); }
+    .sm-art h2 { font-weight: 300; font-size: clamp(2.2rem,4.4vw,3.6rem); line-height: 1.05; margin: clamp(3.5rem,7vw,5.5rem) 0 1.5rem; color: var(--color-ink); }
+    .sm-art h2::before { counter-increment: sm; content: counter(sm, decimal-leading-zero); display: block; margin-bottom: .75rem; font-family: var(--font-mono); font-size: .74rem; letter-spacing: .08em; color: var(--sm-shu); }
+    .sm-art .video-section h2 { font-size: clamp(1.7rem,3vw,2.4rem); margin-top: 1rem; }
+    .sm-art .video-section h2::before { content: none; }
+    .sm-art h3 { font-weight: 400; font-size: clamp(1.6rem,2.6vw,2.1rem); line-height: 1.1; margin: 2.4rem 0 .7rem; color: var(--color-ink); }
+    .sm-art blockquote { margin: 2.4rem 0; padding-left: 1.3rem; border-left: 3px solid var(--sm-shu); }
+    .sm-art blockquote p { font-family: var(--font-display); font-style: italic; font-size: clamp(1.45rem,2.3vw,1.85rem); line-height: 1.3; margin: 0; }
+    .sm-art hr.divider { border: 0; height: 52px; margin: 3.2rem 0 .5rem; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='52' viewBox='0 0 52 52'%3E%3Cpath d='M26 5C11 4 4 15 5 27c1 13 12 21 24 19 13-2 20-13 17-26-2-8-8-13-15-14' fill='none' stroke='%23b8322a' stroke-width='3.2' stroke-linecap='round'/%3E%3C/svg%3E") center no-repeat; }
+
+    .sm-art .wide { width: min(72rem, calc(100vw - 2 * var(--gutter))); position: relative; left: 50%; transform: translateX(-50%); }
+
+    /* stat numbers */
+    .stat-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: clamp(1rem,3vw,3rem); margin: 2.5rem 0; }
+    .stat-card { padding-top: 1rem; border-top: 3px solid var(--sm-shu); }
+    .stat-number { display: block; font-family: var(--font-display); font-weight: 300; font-size: clamp(3.4rem,8vw,7rem); line-height: .95; color: var(--color-ink); }
+    .stat-label { display: block; margin-top: .55rem; font-size: 1rem; line-height: 1.3; color: var(--color-slate); }
+
+    /* the bout clock */
+    .sm-clock { margin: 2.6rem 0; padding: clamp(1.25rem,3vw,2rem); background: var(--color-night); color: #fff; }
+    .clock-top { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1.5rem; }
+    .clock-t { font-family: var(--font-display); font-size: clamp(1.6rem,2.6vw,2.2rem); line-height: 1.1; margin: 0 auto 0 0; color: #fff; }
+    .clock-read { margin: 0; font-family: var(--font-display); font-size: clamp(2rem,4vw,3.2rem); line-height: 1; color: #fff; }
+    .clock-read b { font-weight: 300; font-variant-numeric: tabular-nums; }
+    .clock-ctl { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1.2rem; }
+    .clock-go { min-height: 44px; padding: .5rem 1.4rem; border: 0; background: var(--sm-shu); color: #fff; font: 600 1rem var(--font-body); cursor: pointer; transition: background .25s; }
+    .clock-go:hover { background: #d4463c; }
+    .clock-fast { display: flex; align-items: center; gap: .5rem; font-size: .88rem; color: rgba(255,255,255,.75); min-height: 44px; }
+    .clock-fast input { width: 18px; height: 18px; accent-color: var(--sm-shu); }
+    .clock-axis { position: relative; height: 5.4rem; margin-top: 1.2rem; }
+    .clock-line { position: absolute; left: 0; right: 0; top: 1.2rem; height: 2px; background: rgba(255,255,255,.3); }
+    .clock-band { position: absolute; top: .85rem; height: 14px; background: var(--sm-clay); opacity: .9; }
+    .clock-fill { position: absolute; left: 0; top: .85rem; height: 14px; background: var(--sm-shu); width: 0; }
+    .clock-tick { position: absolute; top: 0; transform: translateX(-50%); text-align: center; font-size: .82rem; line-height: 1.25; color: rgba(255,255,255,.8); }
+    .clock-tick::before { content: ''; display: block; width: 2px; height: 2.4rem; margin: 0 auto .35rem; background: rgba(255,255,255,.55); }
+    .clock-tick b { display: block; font-family: var(--font-mono); font-weight: 400; font-size: .76rem; color: #fff; }
+    .clock-tick.hit { color: #fff; } .clock-tick.hit::before { background: var(--sm-shu); }
+    .clock-tick span { display: block; max-width: 9em; }
+    .clock-tick.t2 { transform: translateX(-20%); text-align: left; } .clock-tick.t2::before { margin-left: 20%; }
+    .clock-tick.t180 { transform: translateX(-100%); text-align: right; } .clock-tick.t180::before { margin-right: 0; margin-left: auto; }
+    .clock-band-l { position: absolute; top: 2.5rem; font-family: var(--font-mono); font-size: .68rem; color: var(--sm-clay); transform: translateX(-50%); white-space: nowrap; }
+
+    /* ranks */
+    .rank-table { width: 100%; margin: 2rem 0; border-collapse: collapse; }
+    .rank-table th { padding: .6rem .8rem; text-align: left; font-family: var(--font-mono); font-size: .7rem; font-weight: 400; letter-spacing: .08em; text-transform: uppercase; color: var(--color-slate); border-bottom: 2px solid var(--color-ink); }
+    .rank-table td { padding: 1.05rem .8rem; vertical-align: top; font-size: 1rem; line-height: 1.5; border-bottom: 1px solid var(--border); }
+    .rank-table td:first-child { font-family: var(--font-display); font-size: 1.75rem; line-height: 1.05; white-space: nowrap; }
+    .rank-table .kanji { margin-left: .5rem; font-family: var(--font-body); font-size: .9rem; color: var(--color-slate); }
+    .rank-table tbody tr:nth-child(2) td:first-child { padding-left: 1.6rem; }
+    .rank-table tbody tr:nth-child(3) td:first-child { padding-left: 2.4rem; }
+    .rank-table tbody tr:nth-child(4) td:first-child { padding-left: 3.2rem; }
+    .rank-table tbody tr:nth-child(5) td:first-child { padding-left: 4rem; }
+    .rank-table tbody tr:hover td { background: rgba(184,50,42,.06); }
+    .rank-badge { display: inline-block; margin: 0 .5rem .2rem 0; padding: .1rem .55rem; font-family: var(--font-mono); font-size: .66rem; letter-spacing: .06em; text-transform: uppercase; border: 1px solid var(--color-ink); }
+    .rank-badge.top { background: var(--sm-shu); border-color: var(--sm-shu); color: #fff; }
+    .rank-badge.second { background: var(--color-ink); color: #fff; }
+    .rank-badge.mid { background: var(--sm-clay); border-color: var(--sm-clay); }
+
+    /* the year */
+    .tournament-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1.75rem clamp(1rem,3vw,2.5rem); margin: 2.2rem 0; }
+    .tournament-card { padding-top: .9rem; border-top: 2px solid var(--color-ink); }
+    .t-tag { display: block; font-family: var(--font-mono); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--sm-shu); }
+    .t-name { font-family: var(--font-display); font-size: 1.9rem; line-height: 1.05; margin: .3rem 0 .15rem; }
+    .t-kanji { font-size: .95rem; color: var(--color-slate); margin: 0 0 .6rem; }
+    .t-detail { font-size: .98rem; line-height: 1.5; color: var(--color-ink); margin: 0; }
+    .sm-basho { display: none; }
+    .is-js .sm-basho { display: grid; grid-template-columns: minmax(0,5fr) minmax(0,6fr); gap: clamp(1.5rem,4vw,3.5rem); align-items: center; margin: 2.2rem 0; padding: clamp(1.25rem,3vw,2.25rem); background: var(--color-feldspar); }
+    .is-js .tournament-grid.is-wheel { display: none; }
+    .sm-basho svg { display: block; width: 100%; max-width: 380px; height: auto; margin: 0 auto; }
+    .sm-basho .ring { fill: none; stroke: var(--color-ink); stroke-width: 2; }
+    .sm-basho .node { cursor: pointer; }
+    .sm-basho .node circle { fill: var(--color-chalk); stroke: var(--color-ink); stroke-width: 2; transition: fill .25s, stroke .25s; }
+    .sm-basho .node text { font-family: var(--font-mono); font-size: 13px; text-anchor: middle; dominant-baseline: central; fill: var(--color-ink); pointer-events: none; transition: fill .25s; }
+    .sm-basho .node:hover circle { fill: var(--sm-clay); }
+    .sm-basho .node.on circle { fill: var(--sm-shu); stroke: var(--sm-shu); }
+    .sm-basho .node.on text { fill: #fff; }
+    .sm-basho .dot { fill: var(--color-ink); opacity: .55; }
+    .sm-basho .mo { font-family: var(--font-mono); font-size: 10px; text-anchor: middle; dominant-baseline: central; fill: var(--color-slate); }
+    .sm-basho .hub { font-family: var(--font-display); font-size: 21px; text-anchor: middle; fill: var(--color-ink); }
+    .sm-basho .hub2 { font-family: var(--font-mono); font-size: 11px; text-anchor: middle; fill: var(--color-slate); }
+    .sm-basho-card { min-height: 15rem; }
+    .sm-basho-card .t-name { font-size: clamp(2.4rem,4.2vw,3.5rem); }
+    .sm-basho-card .t-detail { font-size: 1.1rem; line-height: 1.6; }
+
+    /* interlude photo */
+    .sm-band { margin: 3.5rem 0 0; }
+    .sm-band img { display: block; width: 100%; height: clamp(260px,44vw,560px); object-fit: cover; }
+    .sm-band figcaption { margin-top: .5rem; font-size: .8rem; color: var(--color-slate); }
+    .sm-band figcaption a { color: inherit; }
+    .sm-art .wide.sm-band { width: 100%; max-width: none; left: 0; transform: none; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); width: auto; }
+    .sm-clip { overflow-x: clip; }
+    .sm-art .wide.sm-band figcaption { padding: 0 var(--gutter); }
+
+    .img-block { margin: 2.4rem 0; }
+    .img-block img { display: block; width: 100%; height: auto; }
+    .img-block figcaption { margin-top: .7rem; font-size: .96rem; line-height: 1.5; color: var(--color-slate); }
+    .img-block .credit { display: block; margin-top: .35rem; font-size: .8rem; color: var(--color-slate); }
+
+    /* kimarite */
+    .sm-82 { margin: 2.4rem 0; padding: clamp(1.1rem,3vw,2rem); background: var(--color-night); color: #fff; }
+    .sm-82-top { display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem 1.5rem; margin-bottom: 1rem; }
+    .sm-82-top b { font-family: var(--font-display); font-weight: 300; font-size: clamp(2.6rem,5vw,4.2rem); line-height: 1; }
+    .sm-82-top span { font-size: 1rem; color: rgba(255,255,255,.78); }
+    .sm-82-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(clamp(30px,4.4vw,44px),1fr)); gap: 6px; }
+    .sm-82-grid button { aspect-ratio: 1; padding: 0; border: 1px solid rgba(255,255,255,.2); background: rgba(255,255,255,.05); color: rgba(255,255,255,.45); font: 400 .7rem var(--font-mono); cursor: default; transition: background .25s, border-color .25s, transform .3s var(--ease-out); }
+    .sm-82-grid button.lit { border-color: #f0b39f; background: rgba(240,179,159,.14); color: #fff; cursor: pointer; font-weight: 600; }
+    .sm-82-grid button.lit:hover, .sm-82-grid button.lit:focus-visible, .sm-82-grid button.lit.on { background: var(--sm-shu); border-color: var(--sm-shu); transform: translateY(-3px); }
+    .sm-82-read { min-height: 3.2rem; margin: 1rem 0 0; font-family: var(--font-display); font-size: clamp(1.5rem,2.6vw,2.1rem); line-height: 1.15; color: #fff; }
+    .sm-82-read small { margin-left: .7rem; font-family: var(--font-body); font-size: .95rem; color: rgba(255,255,255,.7); }
+    .technique-list { margin: 1.5rem 0; }
+    .technique-item { padding: 1.1rem 0; border-top: 1px solid var(--border); scroll-margin-top: 6rem; }
+    .technique-item:last-child { border-bottom: 1px solid var(--border); }
+    .technique-item .t-romaji { font-family: var(--font-display); font-size: 1.8rem; line-height: 1.05; }
+    .technique-item .t-kanji-small { margin-left: .6rem; font-size: 1rem; color: var(--color-slate); }
+    .technique-item .t-meaning { display: block; margin-top: .2rem; font-family: var(--font-mono); font-size: .76rem; letter-spacing: .03em; color: var(--sm-shu); }
+    .technique-item .t-desc { margin: .7rem 0 0; font-size: 1.02rem; line-height: 1.6; max-width: 60ch; }
+    .is-js .technique-item > div:first-child { position: relative; padding-right: 2rem; cursor: pointer; }
+    .is-js .technique-item > div:first-child::after { content: '+'; position: absolute; right: 0; top: 0; font-family: var(--font-mono); font-size: 1.3rem; color: var(--sm-shu); transition: transform .35s var(--ease-out); }
+    .is-js .technique-item.open > div:first-child::after { transform: rotate(45deg); }
+    .is-js .technique-item .t-desc { display: none; }
+    .is-js .technique-item.open .t-desc { display: block; }
+
+    /* results */
+    .season-result { display: grid; grid-template-columns: 5.6rem minmax(0,1fr); gap: clamp(1rem,3vw,2.5rem); padding: 1.6rem 0; border-top: 1px solid var(--border); scroll-margin-top: 6rem; transition: background .5s; }
+    .season-result.flash { background: rgba(184,50,42,.08); }
+    .sr-date { text-align: left; }
+    .sr-month { display: block; font-family: var(--font-display); font-size: 2.6rem; line-height: 1; }
+    .sr-location, .sr-year { display: block; font-family: var(--font-mono); font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; color: var(--color-slate); margin-top: .25rem; }
+    .sr-title { font-family: var(--font-display); font-size: clamp(1.55rem,2.5vw,2rem); line-height: 1.1; margin: 0 0 .5rem; }
+    .sr-winner { display: inline-block; margin-bottom: .7rem; padding: .15rem .7rem; font-family: var(--font-mono); font-size: .74rem; letter-spacing: .03em; background: var(--color-ink); color: #fff; }
+    .sr-text { font-size: 1.04rem; line-height: 1.62; margin: 0; }
+    .live-badge { display: inline-block; vertical-align: middle; margin-left: .6rem; padding: .1rem .6rem .1rem 1rem; position: relative; font-family: var(--font-mono); font-size: .66rem; letter-spacing: .08em; text-transform: uppercase; background: var(--sm-shu); color: #fff; }
+    .live-badge::before { content: ''; position: absolute; left: .4rem; top: 50%; width: 6px; height: 6px; margin-top: -3px; border-radius: 50%; background: #fff; animation: sm-pulse 1.6s ease-in-out infinite; }
+    @keyframes sm-pulse { 50% { opacity: .25; } }
+    .update-note { margin: 2rem 0; padding: 1rem 1.2rem; background: var(--color-feldspar); font-size: .95rem; line-height: 1.5; }
+
+    .sm-champs { margin: 2.2rem 0; padding: clamp(1.1rem,3vw,2rem); background: var(--color-night); color: #fff; }
+    .champs-row { display: grid; grid-template-columns: repeat(var(--n), minmax(0,1fr)); gap: clamp(4px,.8vw,10px); }
+    .champs-row button { position: relative; aspect-ratio: 1; padding: 0; border-radius: 50%; border: 2px solid transparent; background: var(--c); color: #fff; font: 600 clamp(.62rem,1.2vw,.86rem) var(--font-mono); cursor: pointer; transition: transform .3s var(--ease-out), box-shadow .3s; }
+    .champs-row button:hover, .champs-row button:focus-visible { transform: translateY(-5px) scale(1.06); box-shadow: 0 0 0 3px #fff; }
+    .champs-row button.live { background: none; border: 2px dashed rgba(255,255,255,.6); color: rgba(255,255,255,.8); }
+    .champs-mo { display: grid; grid-template-columns: repeat(var(--n), minmax(0,1fr)); gap: clamp(4px,.8vw,10px); margin-top: .5rem; font-family: var(--font-mono); font-size: clamp(.55rem,1vw,.7rem); text-align: center; color: rgba(255,255,255,.6); }
+    .champs-read { min-height: 3rem; margin: 1rem 0 0; font-family: var(--font-display); font-size: clamp(1.4rem,2.4vw,1.9rem); line-height: 1.15; }
+    .champs-read small { display: block; margin-top: .25rem; font-family: var(--font-mono); font-size: .74rem; letter-spacing: .04em; color: rgba(255,255,255,.7); }
+    .champs-key { display: flex; flex-wrap: wrap; gap: .4rem 1.4rem; margin: .9rem 0 0; padding: 0; list-style: none; font-size: .9rem; color: rgba(255,255,255,.85); }
+    .champs-key i { display: inline-block; width: 11px; height: 11px; margin-right: .45rem; border-radius: 50%; background: var(--c); }
+
+    .sm-tri { margin: 2.4rem auto; text-align: center; }
+    .sm-tri svg { display: block; width: 100%; max-width: 480px; margin: 0 auto; height: auto; }
+    .sm-champs p, .sm-clock p, .sm-82 p { color: #fff; }
+    .sm-champs small { color: rgba(255,255,255,.7); }
+    .sm-tri .corner { fill: var(--color-ink); }
+    .sm-tri .nm { font-family: var(--font-display); font-size: 25px; text-anchor: middle; fill: var(--color-ink); }
+    .sm-tri .arrow { fill: none; stroke: var(--sm-shu); stroke-width: 3; stroke-dasharray: 9 8; animation: sm-flow 1.4s linear infinite; }
+    .sm-tri .head { fill: var(--sm-shu); }
+    @keyframes sm-flow { to { stroke-dashoffset: -34; } }
+    .sm-tri figcaption { margin-top: .4rem; font-size: .92rem; color: var(--color-slate); }
+
+    .video-section { margin-top: 1rem; }
+    .video-wrapper { display: none; }
+    .sm-nhk { display: grid; grid-template-columns: 4.5rem minmax(0,1fr); gap: 1.2rem; align-items: center; margin: 1.5rem 0; padding: 1.2rem 1.4rem; background: var(--color-night); color: #fff; border: 0 !important; }
+    .sm-nhk:hover { color: #fff !important; background: #1d201b; }
+    .sm-nhk i { position: relative; width: 4.5rem; height: 4.5rem; border-radius: 50%; background: var(--sm-shu); }
+    .sm-nhk i::after { content: ''; position: absolute; left: 36%; top: 26%; border-style: solid; border-width: 1.15rem 0 1.15rem 1.7rem; border-color: transparent transparent transparent #fff; }
+    .sm-nhk b { display: block; font-family: var(--font-display); font-weight: 400; font-size: 1.6rem; line-height: 1.1; }
+    .sm-nhk span { display: block; margin-top: .25rem; font-size: .92rem; color: rgba(255,255,255,.72); }
+    .sources { margin: 2.5rem 0 0; padding-top: 1.4rem; border-top: 3px solid var(--color-ink); }
+    .sources h3 { margin-top: 0; }
+    .sources ul { margin: 0; padding: 0; list-style: none; }
+    .sources li { padding: .7rem 0; border-bottom: 1px solid var(--border); }
+    .sources li a { font-weight: 600; }
+    .src-meta { display: block; margin-top: .15rem; font-size: .88rem; color: var(--color-slate); }
+    .post-nav { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid var(--border); }
+
+    @media (max-width: 820px) {
+      .stat-grid, .tournament-grid { grid-template-columns: 1fr; }
+      .is-js .sm-basho { grid-template-columns: 1fr; }
+      .sm-hint { display: none; }
+      .rank-table thead { display: none; }
+      .rank-table, .rank-table tbody, .rank-table tr, .rank-table td { display: block; }
+      .rank-table tr { padding: .9rem 0; border-bottom: 1px solid var(--border); }
+      .rank-table td { padding: .15rem 0 !important; border: 0; }
+      .season-result { grid-template-columns: 1fr; gap: .6rem; }
+      .sr-date { display: flex; align-items: baseline; gap: .6rem; }
+      .clock-tick span { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) { .sm-tri .arrow, .live-badge::before { animation: none; } }
     </style>
 </head>
-<body>
-
+<body class="has-cover sm">
 <div id="site-header"></div>
 
-<!-- ════════════════════════════════════════
-     HERO
-════════════════════════════════════════ -->
-<header class="post-hero">
-    <img
-        src="https://cdn.theculturetrip.com/wp-content/uploads/2017/05/3989894162_bbeaacae7d_b.jpg"
-        alt="Grand Sumo tournament"
-        loading="eager"
-    >
-   <div class="post-hero-overlay">
-        <p class="post-hero-meta">Sport &amp; Passions &nbsp;·&nbsp; May 2026</p>
+<header class="sm-hero">
+    <img src="/img/post/other/sumo-hero.jpg" alt="A Yokozuna entering the dohyō with his attendants" fetchpriority="high">
+    <canvas class="sm-salt" id="sm-salt" aria-hidden="true"></canvas>
+    <div class="frame">
+        <a href="/hobbies/other.html" class="back-link">Back to Other</a>
+        <p class="sm-meta">Sport &amp; Passions &nbsp;·&nbsp; May 2026</p>
         <h1>The Sport of Giants:<br>
             <span class="highlight">An Introduction to Grand Sumo</span>
         </h1>
-        <p class="post-hero-caption">
-              &nbsp;·&nbsp;
-            <em></em>
-        </p>
+        <p class="sm-credit">Photo: Eckhard Pecher, <a href="https://commons.wikimedia.org/wiki/File:Asashoryu_Ring_Entry_Jan08.jpg" target="_blank" rel="noopener">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener">CC BY 3.0</a></p>
     </div>
+    <p class="sm-hint" id="sm-hint">Click for a handful of salt</p>
 </header>
 
-<!-- ════════════════════════════════════════
-     ARTICLE
-════════════════════════════════════════ -->
-<article>
+<div class="sm-pill" id="sm-pill" aria-hidden="true"><svg viewBox="0 0 36 36"><circle class="bg" cx="18" cy="18" r="15"/><circle class="fg" id="sm-ring" cx="18" cy="18" r="15" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/></svg><span id="sm-sec"></span></div>
+
+<div class="sm-clip"><article class="sm-art">
 
     <!-- INTRODUCTION -->
     <p>
@@ -742,16 +297,16 @@
         divisions work their way up under considerably more spartan conditions.
     </p>
 
-    <div class="stat-grid">
-        <div class="stat-card">
+    <div class="stat-grid wide">
+        <div class="stat-card reveal">
             <span class="stat-number">6</span>
             <span class="stat-label">Grand tournaments per year</span>
         </div>
-        <div class="stat-card">
+        <div class="stat-card reveal">
             <span class="stat-number">82</span>
             <span class="stat-label">Official winning techniques</span>
         </div>
-        <div class="stat-card alt">
+        <div class="stat-card alt reveal">
             <span class="stat-number">700</span>
             <span class="stat-label">Active professional wrestlers</span>
         </div>
@@ -776,6 +331,27 @@
         and twenty seconds. A match lasting sixty seconds is a rarity; one lasting more than three minutes
         is a genuine event.
     </p>
+    <div class="sm-clock wide" id="sm-clock">
+        <div class="clock-top">
+            <p class="clock-t">How long is a bout?</p>
+            <p class="clock-read"><b id="clock-s">0.0</b> s</p>
+            <div class="clock-ctl">
+                <button type="button" class="clock-go" id="clock-go">Tachiai</button>
+                <label class="clock-fast"><input type="checkbox" id="clock-fast"> 10× faster</label>
+            </div>
+        </div>
+        <div class="clock-axis" aria-hidden="true">
+            <div class="clock-line"></div>
+            <div class="clock-band" id="clock-band"></div>
+            <div class="clock-fill" id="clock-fill"></div>
+            <span class="clock-band-l" id="clock-bl">typically 2–20 s</span>
+            <div class="clock-tick t2" data-t="2"><b>2 s</b></div>
+            <div class="clock-tick" data-t="20"><b>20 s</b></div>
+            <div class="clock-tick" data-t="60"><b>60 s</b><span>a rarity</span></div>
+            <div class="clock-tick t180" data-t="180"><b>3 min</b><span>a genuine event</span></div>
+        </div>
+    </div>
+
 
     <blockquote>
         <p>
@@ -802,11 +378,11 @@
         structure runs as follows:
     </p>
 
-    <table class="rank-table">
+    <table class="rank-table wide">
         <thead>
             <tr>
                 <th>Rank</th>
-                <th>Kanji</th>
+                <th>Meaning</th>
                 <th>Wrestlers</th>
                 <th>Notes</th>
             </tr>
@@ -856,6 +432,11 @@
     </p>
 
     <!-- ── THE SIX TOURNAMENTS ── -->
+    
+    <figure class="sm-band wide reveal">
+        <img src="/img/post/other/sumo-band.jpg" alt="Wrestlers standing in a circle around the dohyō during the ring-entering ceremony" loading="lazy">
+        <figcaption>Dohyō-iri, May 2014. Photo: Simon Q, <a href="https://commons.wikimedia.org/wiki/File:Sumo_dohyo-iri_May_2014_001.jpg" target="_blank" rel="noopener">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener">CC BY 2.0</a></figcaption>
+    </figure>
     <h2>The Six Grand Tournaments</h2>
 
     <p>
@@ -866,7 +447,8 @@
         prizes from sponsoring countries and organisations.
     </p>
 
-    <div class="tournament-grid">
+    <div class="sm-basho wide" id="sm-basho" aria-label="The six grand tournaments around the year"></div>
+    <div class="tournament-grid wide" id="sm-grid">
         <div class="tournament-card">
             <span class="t-tag">January · Tokyo</span>
             <p class="t-name">Hatsu Basho</p>
@@ -908,9 +490,9 @@
     <!-- ── CEREMONY ── -->
     <h2>The Ceremony: Ritual at the Heart of the Sport</h2>
 
-<figure class="img-block">
+<figure class="img-block reveal">
     <img
-        src="https://upload.wikimedia.org/wikipedia/commons/b/b1/09_Osaka_Juryo_dohyo-iri.JPG"
+        src="/img/post/other/sumo-juryo.jpg"
         alt="Jūryō-division wrestlers in embroidered silk aprons performing the dohyō-iri ring-entering ceremony, Osaka 2009"
         loading="lazy"
     >
@@ -999,9 +581,9 @@
         the most common ones transforms watching sumo from witnessing chaos into reading a language.
     </p>
 
-    <figure class="img-block">
+    <figure class="img-block reveal">
     <img
-        src="https://cdn.theculturetrip.com/wp-content/uploads/2017/10/4274125794_cdc0f9d822_b.jpg"
+        src="/img/post/other/sumo-bout.jpg"
         alt="Two top-division (Makuuchi) wrestlers squaring off at the January 2010 Tokyo Basho"
         loading="lazy"
     >
@@ -1011,14 +593,19 @@
         Each wrestler wears the <em>mawashi</em> fighting loincloth; the bout begins
         the instant both place their fists on the clay simultaneously.
         <span class="credit">
-            Photo: davidgsteadman / Flickr, CC BY 2.0 ·
+            Photo: davidgsteadman / Flickr, public domain mark ·
             <a href="https://www.flickr.com/photos/davidgsteadman/4274125794"
                target="_blank" rel="noopener">Original photo</a>
         </span>
     </figcaption>
     </figure>
 
-    <div class="technique-list">
+    <div class="sm-82 wide" id="sm-82">
+        <div class="sm-82-top"><b>82</b><span>official winning techniques. <span id="sm-82-n">14</span> of them are described below: press a lit square.</span></div>
+        <div class="sm-82-grid" id="sm-82-grid"></div>
+        <p class="sm-82-read" id="sm-82-read">&nbsp;</p>
+    </div>
+    <div class="technique-list" id="sm-tech">
 
         <div class="technique-item">
             <div>
@@ -1169,7 +756,8 @@
     </p>
 
     <!-- HATSU 2025 -->
-    <div class="season-result">
+    <div class="sm-champs wide" id="sm-champs" aria-label="Champion of each tournament"></div>
+    <div class="season-result reveal">
         <div class="sr-date">
             <span class="sr-month">Jan</span>
             <span class="sr-location">Tokyo</span>
@@ -1189,7 +777,7 @@
     </div>
 
     <!-- HARU 2025 -->
-    <div class="season-result">
+    <div class="season-result reveal">
         <div class="sr-date">
             <span class="sr-month">Mar</span>
             <span class="sr-location">Osaka</span>
@@ -1209,7 +797,7 @@
     </div>
 
     <!-- NATSU 2025 -->
-    <div class="season-result">
+    <div class="season-result reveal">
         <div class="sr-date">
             <span class="sr-month">May</span>
             <span class="sr-location">Tokyo</span>
@@ -1229,7 +817,7 @@
     </div>
 
     <!-- NAGOYA 2025 -->
-    <div class="season-result">
+    <div class="season-result reveal">
         <div class="sr-date">
             <span class="sr-month">Jul</span>
             <span class="sr-location">Nagoya</span>
@@ -1250,7 +838,7 @@
     </div>
 
     <!-- AKI 2025 -->
-    <div class="season-result">
+    <div class="season-result reveal">
         <div class="sr-date">
             <span class="sr-month">Sep</span>
             <span class="sr-location">Tokyo</span>
@@ -1270,7 +858,7 @@
     </div>
 
     <!-- KYUSHU 2025 -->
-    <div class="season-result">
+    <div class="season-result reveal">
         <div class="sr-date">
             <span class="sr-month">Nov</span>
             <span class="sr-location">Fukuoka</span>
@@ -1294,7 +882,7 @@
     <h3>2026: The Triangle Holds</h3>
 
     <!-- HATSU 2026 -->
-    <div class="season-result">
+    <div class="season-result reveal">
         <div class="sr-date">
             <span class="sr-month">Jan</span>
             <span class="sr-location">Tokyo</span>
@@ -1316,9 +904,20 @@
             </p>
         </div>
     </div>
+    <figure class="sm-tri reveal">
+        <svg viewBox="0 0 480 330" role="img" aria-label="Hōshōryū beats Ōnosato, Ōnosato beats Aonishiki, Aonishiki beats Hōshōryū">
+            <path class="arrow" d="M150 74 C 215 60 262 60 322 74"/><path class="head" d="M338 80 L314 64 L312 88Z"/>
+            <path class="arrow" d="M372 118 C 350 170 318 218 276 256"/><path class="head" d="M262 270 L292 258 L272 242Z"/>
+            <path class="arrow" d="M200 262 C 160 222 130 172 104 120"/><path class="head" d="M96 104 L98 132 L118 120Z"/>
+            <circle class="corner" cx="120" cy="82" r="9"/><circle class="corner" cx="360" cy="82" r="9"/><circle class="corner" cx="240" cy="266" r="9"/>
+            <text class="nm" x="104" y="48">Hōshōryū</text><text class="nm" x="376" y="48">Ōnosato</text><text class="nm" x="240" y="312">Aonishiki</text>
+        </svg>
+        <figcaption>Hōshōryū beats Ōnosato, Ōnosato beats Aonishiki, Aonishiki beats Hōshōryū.</figcaption>
+    </figure>
+
 
     <!-- HARU 2026 -->
-    <div class="season-result">
+    <div class="season-result reveal">
         <div class="sr-date">
             <span class="sr-month">Mar</span>
             <span class="sr-location">Osaka</span>
@@ -1340,27 +939,64 @@
     </div>
 
     <!-- NATSU 2026 -->
-    <div class="season-result">
+    <div class="season-result reveal">
         <div class="sr-date">
             <span class="sr-month">May</span>
             <span class="sr-location">Tokyo</span>
             <span class="sr-year">2026</span>
         </div>
         <div class="sr-body">
-            <p class="sr-title">
-                Natsu Basho, Summer Tournament
-                <span class="live-badge">Ongoing</span>
-            </p>
+            <p class="sr-title">Natsu Basho, Summer Tournament</p>
+            <span class="sr-winner">Champion: Wakatakakage · 12–3 (playoff)</span>
             <p class="sr-text">
-                The May tournament is currently underway as of the writing of this post. This section will
-                be updated when it concludes.
+                The summer tournament ended in a playoff between two wrestlers on 12–3: Wakatakakage, then a komusubi, and Kirishima. Wakatakakage thrust his rival out with an <em>oshidashi</em>, avenging the defeat Kirishima had handed him on day eleven, and took the second top-division title of his career. His first had come as a sekiwake in Osaka in 2022. He also collected the Technique Prize, for the seventh time.
+            </p>
+        </div>
+    </div>
+    <div class="season-result reveal">
+        <div class="sr-date">
+            <span class="sr-month">Jul</span>
+            <span class="sr-location">Nagoya</span>
+            <span class="sr-year">2026</span>
+        </div>
+        <div class="sr-body">
+            <p class="sr-title">Nagoya Basho</p>
+            <span class="sr-winner">Champion: Aonishiki · 12–3 (three-way playoff)</span>
+            <p class="sr-text">
+                Three wrestlers finished level on 12–3, Aonishiki, Atamifuji and Kirishima, so the title went to a three-way playoff in which the first man to win two bouts in a row takes the cup. Atamifuji beat Kirishima, Aonishiki beat Atamifuji, and then Aonishiki beat Kirishima with a left-foot wrap and a forward shove. It was his third title, and he took the Technique Prize as well.
+            </p>
+        </div>
+    </div>
+    <div class="season-result reveal">
+        <div class="sr-date">
+            <span class="sr-month">Sep</span>
+            <span class="sr-location">Tokyo</span>
+            <span class="sr-year">2026</span>
+        </div>
+        <div class="sr-body">
+            <p class="sr-title">Aki Basho, Autumn Tournament</p>
+            <span class="sr-winner">Champion: Ōnosato · 12–3</span>
+            <p class="sr-text">
+                Ōnosato won the title on the final day by pushing out Aonishiki, who finished on 11–4, with a <em>tsukidashi</em>. According to the reports, he cried while the national anthem was played.
+            </p>
+        </div>
+    </div>
+    <div class="season-result reveal">
+        <div class="sr-date">
+            <span class="sr-month">Nov</span>
+            <span class="sr-location">Fukuoka</span>
+            <span class="sr-year">2026</span>
+        </div>
+        <div class="sr-body">
+            <p class="sr-title">Kyūshū Basho <span class="live-badge">Ongoing</span></p>
+            <p class="sr-text">
+                The November tournament opened on 8 November in Fukuoka and runs until the 22nd. This section will be updated when it concludes.
             </p>
         </div>
     </div>
 
     <div class="update-note">
-        <strong>Last updated:</strong> May 2026. The Natsu Basho (Tokyo, May 2026) is currently in progress.
-        All tournament results above are sourced from Wikipedia, Sumo Stomp! (Substack), and Combat Press.
+        <strong>Last updated:</strong> November 2026. The Kyūshū Basho (Fukuoka, 8–22 November 2026) is in progress. All tournament results above are sourced from Wikipedia, Sumo Stomp! (Substack), Combat Press and Tachiai.
     </div>
 
     <!-- ── HOW TO WATCH ── -->
@@ -1370,17 +1006,10 @@
     <section class="video-section">
     <h2>Watch Grand Sumo</h2>
     
-    <!-- Promo Video -->
-    <div class="video-wrapper">
-        <h3>Promo Video</h3>
-        <iframe
-            src="https://www.youtube.com/embed/E4_fTjwih5I"
-            title="Grand Sumo Promo Video"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-            loading="lazy"
-        ></iframe>
-    </div>
+    <a class="sm-nhk" href="https://www3.nhk.or.jp/nhkworld/en/tv/sumo/" target="_blank" rel="noopener">
+        <i aria-hidden="true"></i>
+        <span><b>Grand Sumo Highlights, NHK World Japan</b><span>Free daily highlight broadcasts on YouTube and the NHK World platform</span></span>
+    </a>
         
     <p>
         NHK World Japan uploads daily highlight packages for every <em>honbasho</em> to YouTube, free of
@@ -1425,6 +1054,10 @@
                 <span class="src-meta">Tournament result summaries and pre-tournament rankings in English</span>
             </li>
             <li>
+                <a href="https://tachiai.org" target="_blank" rel="noopener">Tachiai</a>
+                <span class="src-meta">Day-by-day and senshuraku reports in English, used for the May, July and September 2026 tournaments</span>
+            </li>
+            <li>
                 <a href="https://www.sumo.or.jp/En/" target="_blank" rel="noopener">Nihon Sumo Kyōkai, Official site</a>
                 <span class="src-meta">Official banzuke, results, wrestler profiles, and tournament schedules from the Japan Sumo Association</span>
             </li>
@@ -1439,9 +1072,11 @@
         </ul>
     </div>
 
-    <p style="font-size:0.75rem; color:var(--text-light,#7a7a9a); margin-top:2rem; font-style:italic; font-family:var(--font-body,'Inter',sans-serif);">
-        Hero image: <em>Sumo November Tournament 2005</em>, Wikimedia Commons, CC BY-SA 3.0.
-        Ceremony image: <em>09 Osaka Juryo dohyo-iri</em>, Wikimedia Commons, CC BY-SA 3.0.
+    <p class="sm-cred">
+        Hero image: <em>Asashoryu Ring Entry Jan08</em>, Eckhard Pecher, Wikimedia Commons, CC BY 3.0.
+        Ceremony image: <em>09 Osaka Juryo dohyo-iri</em>, FourTildes, Wikimedia Commons, CC BY-SA 3.0.
+        Band image: <em>Sumo dohyo-iri May 2014 001</em>, Simon Q, Wikimedia Commons, CC BY 2.0.
+        Bout image: davidgsteadman, Flickr, public domain mark.
         All photographs reproduced under their respective free licences with attribution.
     </p>
 
@@ -1451,9 +1086,190 @@
             <a href="../../hobbies.html" class="back-link">All Hobbies &amp; Blog</a>
         </div>
 
-    </article>
+    </article></div>
 
     <div id="site-footer"></div>
-    <script src="../../js/components.js"></script>
+    <script src="/js/components.js?v=3"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+<script src="/js/site.js?v=3" defer></script>
+<script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.documentElement.classList.add('is-js');
+  var $ = function (id) { return document.getElementById(id); };
+
+  // ---- salt: click the hero ----
+  var cv = $('sm-salt'), cx = cv.getContext('2d'), grains = [], run = false, hint = $('sm-hint');
+  function fit() { var d = Math.min(devicePixelRatio || 1, 2); cv.width = cv.clientWidth * d; cv.height = cv.clientHeight * d; cx.setTransform(d, 0, 0, d, 0, 0); }
+  fit(); window.addEventListener('resize', fit);
+  function throwSalt(x, y) {
+    for (var i = 0; i < 90; i++) {
+      var a = -Math.PI / 2 + (Math.random() - .5) * 1.5, v = 3 + Math.random() * 8;
+      grains.push({ x: x, y: y, vx: Math.cos(a) * v, vy: Math.sin(a) * v, r: .8 + Math.random() * 2.1, life: 1 });
+    }
+    if (!run) { run = true; requestAnimationFrame(step); }
+    hint.style.opacity = 0;
+  }
+  function step() {
+    cx.clearRect(0, 0, cv.clientWidth, cv.clientHeight);
+    grains = grains.filter(function (g) {
+      g.vy += .22; g.vx *= .992; g.x += g.vx; g.y += g.vy; g.life -= .0075;
+      if (g.life <= 0) return false;
+      cx.globalAlpha = Math.min(1, g.life * 1.6); cx.fillStyle = '#fff'; cx.fillRect(g.x, g.y, g.r, g.r);
+      return true;
+    });
+    if (grains.length) requestAnimationFrame(step); else { run = false; cx.clearRect(0, 0, cv.clientWidth, cv.clientHeight); }
+  }
+  cv.addEventListener('pointerdown', function (e) { var r = cv.getBoundingClientRect(); throwSalt(e.clientX - r.left, e.clientY - r.top); });
+  if (!reduce) setTimeout(function () { throwSalt(cv.clientWidth * .62, cv.clientHeight * .62); }, 1500);
+
+  // ---- reading pill ----
+  var pill = $('sm-pill'), ringEl = $('sm-ring'), secEl = $('sm-sec'), art = document.querySelector('.sm-art');
+  var heads = [].slice.call(art.querySelectorAll('h2')).filter(function (h) { return !h.closest('.video-section'); });
+  function readPos() {
+    var r = art.getBoundingClientRect(), p = Math.max(0, Math.min(1, (innerHeight * .4 - r.top) / r.height));
+    ringEl.style.strokeDashoffset = (100 - p * 100).toFixed(1);
+    pill.classList.toggle('on', r.top < innerHeight * .5 && r.bottom > innerHeight * .4);
+    var cur = '', y = innerHeight * .4;
+    heads.forEach(function (h) { if (h.getBoundingClientRect().top < y) cur = h.textContent.replace(/\s+/g, ' ').trim(); });
+    if (secEl.textContent !== cur) secEl.textContent = cur;
+  }
+  addEventListener('scroll', readPos, { passive: true }); readPos();
+
+  // ---- numbers count up ----
+  document.querySelectorAll('.stat-number').forEach(function (el) {
+    var n = parseInt(el.textContent, 10); if (!n || reduce) return;
+    el.textContent = '0';
+    new IntersectionObserver(function (e, io) {
+      if (!e[0].isIntersecting) return; io.disconnect();
+      var t0 = performance.now();
+      (function go(t) { var p = Math.min(1, (t - t0) / 1300); el.textContent = Math.round(n * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(go); })(t0);
+    }, { threshold: .6 }).observe(el);
+  });
+
+  // ---- bout clock on a log axis ----
+  var MAXT = 200, X = function (t) { return Math.log(Math.max(t, 1)) / Math.log(MAXT) * 100; };
+  var ticks = [].slice.call(document.querySelectorAll('.clock-tick'));
+  ticks.forEach(function (t) { t.style.left = X(+t.dataset.t) + '%'; });
+  $('clock-band').style.left = X(2) + '%'; $('clock-band').style.width = (X(20) - X(2)) + '%';
+  $('clock-bl').style.left = (X(2) + X(20)) / 2 + '%';
+  var clk = { on: false, t: 0, last: 0 }, goBtn = $('clock-go');
+  function clockFrame(ts) {
+    if (!clk.on) return;
+    var dt = (ts - clk.last) / 1000; clk.last = ts;
+    clk.t += dt * ($('clock-fast').checked ? 10 : 1);
+    if (clk.t >= MAXT) { clk.t = MAXT; clk.on = false; goBtn.textContent = 'Again'; }
+    $('clock-s').textContent = clk.t < 60 ? clk.t.toFixed(1) : (clk.t / 60 >= 1 ? Math.floor(clk.t / 60) + ':' + ('0' + Math.floor(clk.t % 60)).slice(-2) : clk.t.toFixed(0));
+    $('clock-fill').style.width = X(Math.max(clk.t, 1)) + '%';
+    ticks.forEach(function (t) { t.classList.toggle('hit', clk.t >= +t.dataset.t); });
+    if (clk.on) requestAnimationFrame(clockFrame);
+  }
+  goBtn.addEventListener('click', function () {
+    if (clk.on || clk.t >= MAXT) { clk.on = false; clk.t = 0; $('clock-s').textContent = '0.0'; $('clock-fill').style.width = 0; ticks.forEach(function (t) { t.classList.remove('hit'); }); goBtn.textContent = 'Tachiai'; if (clk.t === 0 && !clk.restart) { clk.restart = true; } }
+    if (goBtn.textContent === 'Tachiai' && !clk.on && clk.restart !== 'skip') { clk.on = true; clk.last = performance.now(); goBtn.textContent = 'Reset'; requestAnimationFrame(clockFrame); }
+    clk.restart = false;
+  });
+
+  // ---- the six basho on a year wheel ----
+  var grid = $('sm-grid'), cards = [].slice.call(grid.querySelectorAll('.tournament-card')), wheel = $('sm-basho');
+  var MON = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'], MON3 = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  var NS = 'http://www.w3.org/2000/svg', R = 138, active = null;
+  var svg = document.createElementNS(NS, 'svg'); svg.setAttribute('viewBox', '0 0 380 380'); svg.setAttribute('role', 'group'); svg.setAttribute('aria-label', 'Year wheel');
+  svg.innerHTML = '<circle class="ring" cx="190" cy="190" r="' + R + '"/>';
+  var nodes = {};
+  MON.forEach(function (m, i) {
+    var a = (-90 + i * 30) * Math.PI / 180, x = 190 + Math.cos(a) * R, y = 190 + Math.sin(a) * R;
+    var lx = 190 + Math.cos(a) * (R + 30), ly = 190 + Math.sin(a) * (R + 30);
+    var idx = cards.findIndex(function (c) { return c.querySelector('.t-tag').textContent.trim().indexOf(MON3[i]) === 0 || (MON3[i] === 'Jan' && /January/.test(c.querySelector('.t-tag').textContent)); });
+    var tag = cards.map(function (c) { return c.querySelector('.t-tag').textContent.trim(); });
+    var k = tag.findIndex(function (t) { return t.toLowerCase().indexOf(['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'][i]) === 0; });
+    if (k >= 0) {
+      var g = document.createElementNS(NS, 'g'); g.setAttribute('class', 'node'); g.setAttribute('tabindex', 0); g.setAttribute('role', 'button');
+      g.setAttribute('aria-label', cards[k].querySelector('.t-name').textContent.trim() + ', ' + tag[k]);
+      g.innerHTML = '<circle cx="' + x + '" cy="' + y + '" r="23"/><text x="' + x + '" y="' + y + '">' + MON3[i] + '</text>';
+      g.addEventListener('click', function () { pick(k); });
+      g.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(k); } });
+      svg.appendChild(g); nodes[k] = g;
+    } else {
+      svg.insertAdjacentHTML('beforeend', '<circle class="dot" cx="' + x + '" cy="' + y + '" r="4"/>');
+    }
+  });
+  svg.insertAdjacentHTML('beforeend', '<text class="hub" x="190" y="186">One year</text><text class="hub2" x="190" y="208">six honbasho</text>');
+  var cardBox = document.createElement('div'); cardBox.className = 'sm-basho-card'; cardBox.setAttribute('aria-live', 'polite');
+  wheel.appendChild(svg); wheel.appendChild(cardBox); grid.classList.add('is-wheel');
+  function pick(k) {
+    if (active === k) return; active = k;
+    Object.keys(nodes).forEach(function (n) { nodes[n].classList.toggle('on', +n === k); });
+    cardBox.style.opacity = 0;
+    setTimeout(function () { cardBox.innerHTML = cards[k].innerHTML; cardBox.style.opacity = 1; }, 160);
+  }
+  cardBox.style.transition = 'opacity .3s';
+  cardBox.innerHTML = cards[0].innerHTML; active = 0; nodes[0] && nodes[0].classList.add('on');
+
+  // ---- 82 squares, 14 of them described ----
+  var items = [].slice.call(document.querySelectorAll('.technique-item')), g82 = $('sm-82-grid'), rd = $('sm-82-read');
+  $('sm-82-n').textContent = items.length;
+  var litAt = []; for (var i = 0; i < 82; i++) litAt.push(i);
+  var step82 = Math.floor(82 / items.length), lit = items.map(function (_, i) { return Math.min(81, 2 + i * Math.floor(78 / (items.length - 1))); });
+  for (var n = 0; n < 82; n++) {
+    var b = document.createElement('button'); b.type = 'button'; b.tabIndex = -1; b.setAttribute('aria-hidden', 'true');
+    var li = lit.indexOf(n);
+    if (li >= 0) {
+      b.className = 'lit'; b.tabIndex = 0; b.removeAttribute('aria-hidden');
+      var it = items[li], ro = it.querySelector('.t-romaji').textContent.trim(), kj = it.querySelector('.t-kanji-small').textContent.trim(), me = it.querySelector('.t-meaning').textContent.trim();
+      b.textContent = ro.charAt(0); b.setAttribute('aria-label', ro + ', ' + me);
+      (function (b, it, ro, kj, me) {
+        var show = function () { rd.innerHTML = ro + ' <small>' + kj + ' · ' + me + '</small>'; };
+        b.addEventListener('mouseenter', show); b.addEventListener('focus', show);
+        b.addEventListener('click', function () {
+          g82.querySelectorAll('.on').forEach(function (x) { x.classList.remove('on'); }); b.classList.add('on'); show();
+          items.forEach(function (x) { x.classList.toggle('open', x === it); });
+          if (window.siteLenis) window.siteLenis.scrollTo(it, { offset: -110 }); else it.scrollIntoView({ block: 'center' });
+        });
+      })(b, it, ro, kj, me);
+    }
+    g82.appendChild(b);
+  }
+  items.forEach(function (it, i) {
+    it.querySelector('div').addEventListener('click', function () { it.classList.toggle('open'); });
+    if (i === 0) it.classList.add('open');
+  });
+
+  // ---- champions, read from the results below ----
+  var res = [].slice.call(document.querySelectorAll('.season-result')), box = $('sm-champs');
+  var PAL = ['#c9553f', '#4f8fba', '#d4a03c', '#7a9a5c', '#9a6bb0', '#c97a9a', '#5aa39a'], who = {}, order = [];
+  var data = res.map(function (r) {
+    var w = r.querySelector('.sr-winner'), txt = w ? w.textContent.replace(/^\s*Champion:\s*/, '').trim() : '';
+    var name = txt.split('·')[0].trim(), rec = txt.split('·').slice(1).join('·').trim();
+    if (name && !who[name]) { who[name] = PAL[order.length % PAL.length]; order.push(name); }
+    return { r: r, name: name, rec: rec, month: r.querySelector('.sr-month').textContent.trim(), year: r.querySelector('.sr-year').textContent.trim(), title: r.querySelector('.sr-title').firstChild.textContent.trim(), loc: r.querySelector('.sr-location').textContent.trim() };
+  });
+  var counts = {}; data.forEach(function (d) { if (d.name) counts[d.name] = (counts[d.name] || 0) + 1; });
+  var row = document.createElement('div'), mo = document.createElement('div'), read = document.createElement('p'), key = document.createElement('ul');
+  row.className = 'champs-row'; mo.className = 'champs-mo'; read.className = 'champs-read'; key.className = 'champs-key';
+  row.style.setProperty('--n', data.length); mo.style.setProperty('--n', data.length);
+  read.innerHTML = 'Twelve tournaments, six champions so far.<small>Press a circle to jump to that tournament.</small>';
+  data.forEach(function (d) {
+    var b = document.createElement('button'); b.type = 'button';
+    if (d.name) { b.style.setProperty('--c', who[d.name]); b.textContent = d.name.replace(/[^A-Za-zĀāŌōŪū]/g, '').slice(0, 2); }
+    else { b.className = 'live'; b.textContent = '·'; }
+    var label = d.name ? d.name + ' · ' + d.month + ' ' + d.year : d.month + ' ' + d.year + ' · ongoing';
+    b.setAttribute('aria-label', label);
+    var show = function () { read.innerHTML = (d.name || 'Ongoing') + '<small>' + d.title + ' · ' + d.loc + ' ' + d.year + (d.rec ? ' · ' + d.rec : '') + '</small>'; };
+    b.addEventListener('mouseenter', show); b.addEventListener('focus', show);
+    b.addEventListener('click', function () {
+      show();
+      if (window.siteLenis) window.siteLenis.scrollTo(d.r, { offset: -100 }); else d.r.scrollIntoView({ block: 'center' });
+      d.r.classList.add('flash'); setTimeout(function () { d.r.classList.remove('flash'); }, 1800);
+    });
+    row.appendChild(b);
+    var m = document.createElement('span'); m.textContent = d.month.slice(0, 3); mo.appendChild(m);
+  });
+  order.forEach(function (n) { var li = document.createElement('li'); li.style.setProperty('--c', who[n]); li.innerHTML = '<i></i>' + n + ' · ' + counts[n]; key.appendChild(li); });
+  read.innerHTML = data.length + ' tournaments, ' + order.length + ' different champions.<small>Press a circle to jump to that tournament.</small>';
+  box.appendChild(row); box.appendChild(mo); box.appendChild(read); box.appendChild(key);
+  read.firstChild; 
+})();
+</script>
 </body>
 </html>

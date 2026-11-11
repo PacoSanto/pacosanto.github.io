@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Canvas: planning a project on one page | Francesco Santoro De Vico</title>
+    <meta name="description" content="One page, thirteen boxes: why a geologist built an open-source LaTeX tool to plan a research project, from the problem to the money, and how to use it.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fsdv.eu/posts/geology/geology-research-canvas.html">
+    <meta property="og:title" content="Research Canvas: planning a project on one page">
+    <meta property="og:description" content="One page. Thirteen boxes. Your whole research project, from the problem to the money. An open-source LaTeX/TikZ canvas.">
+    <meta property="og:image" content="https://fsdv.eu/img/post/geology/research-canvas-og.jpg">
+    <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
+    <link rel="stylesheet" href="/css/style.css?v=3">
+    <style>
+    /* RESEARCH CANVAS. The page is the canvas: the hero assembles the thirteen boxes in the order
+       you are meant to fill them (problem first, pitch last), and the filled example below keeps
+       the real layout of the PDF. The three lens colours are the tool's own palette. */
+    .rcp { --rc-d: #b4801e; --rc-f: #2e8c9a; --rc-v: #5e8f3a; --rc-p: #334155; background: var(--color-chalk); }
+    .rcp .site-footer { margin-top: 0; }
+    .rcp-clip { overflow-x: clip; }
+
+    .rcp-hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: center; overflow: hidden; background: var(--color-night); color: #fff; padding: calc(var(--nav-height) + 1.5rem) 0 clamp(2rem,4vw,3.5rem); }
+    .rcp-hero .frame { width: 100%; display: grid; grid-template-columns: minmax(0,6fr) minmax(0,6fr); gap: clamp(2rem,5vw,5rem); align-items: center; }
+    .rcp-hero .back-link { color: rgba(255,255,255,.85); }
+    .rcp-hero .back-link:hover { color: #fff; }
+    .rcp-kick { margin: 1.2rem 0 .8rem; font-family: var(--font-mono); font-size: .76rem; letter-spacing: .1em; text-transform: uppercase; color: #f0b39f; }
+    .rcp-hero h1 { color: #fff; font-weight: 300; font-size: clamp(2.8rem,5.6vw,5.4rem); line-height: .99; margin: 0 0 1.3rem; }
+    .rcp-hero h1 em { display: block; }
+    .rcp-lede { max-width: 34rem; margin: 0; font-size: clamp(1.1rem,1.6vw,1.35rem); line-height: 1.5; color: rgba(255,255,255,.86); }
+    .rcp-btn { display: inline-flex; align-items: center; gap: .7rem; margin-top: 1.8rem; min-height: 48px; padding: .75rem 1.5rem; background: var(--color-amber); color: #fff; font: 600 1rem var(--font-body); border: 0; transition: background .25s, transform .3s var(--ease-out); }
+    .rcp-btn:hover { background: #c4664d; color: #fff; transform: translateY(-2px); }
+    .rcp-btn::after { content: '\2197'; }
+    .mini { display: grid; grid-template-columns: repeat(5,1fr); grid-template-rows: 1.15fr 1.15fr 1fr; grid-template-areas: "n4 n5 n9 n2 n1" "n8 n13 n13 n13 n6" "n12 n7 n3 n10 n11"; gap: clamp(4px,.8vw,9px); aspect-ratio: 5 / 3.3; width: 100%; }
+    .mini i { position: relative; border: 2px solid var(--c); background: color-mix(in srgb, var(--c) 14%, transparent); border-radius: 3px; opacity: 0; transform: translateY(-14px) scale(.94); animation: mini-in .7s var(--ease-out) forwards; animation-delay: calc(var(--n) * .26s + .35s); }
+    .mini i::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 24%; background: var(--c); border-radius: 1px 1px 0 0; }
+    .mini i b { position: absolute; left: 5px; top: 3px; font: 600 clamp(.58rem,1vw,.8rem) var(--font-mono); color: #fff; }
+    .mini i.d { --c: var(--rc-d); } .mini i.f { --c: var(--rc-f); } .mini i.v { --c: var(--rc-v); } .mini i.p { --c: #8794a8; }
+    .mini i[style*="--n:13"]::after { content: ''; position: absolute; inset: 40% 14% 18% 14%; background: repeating-linear-gradient(#fff 0 2px, transparent 2px 9px); opacity: .55; }
+    .mini i[style*="--n:4"] { grid-area: n4; } .mini i[style*="--n:5"] { grid-area: n5; } .mini i[style*="--n:9"] { grid-area: n9; } .mini i[style*="--n:2"] { grid-area: n2; } .mini i[style*="--n:1"] { grid-area: n1; }
+    .mini i[style*="--n:8"] { grid-area: n8; } .mini i[style*="--n:13"] { grid-area: n13; } .mini i[style*="--n:6"] { grid-area: n6; }
+    .mini i[style*="--n:12"] { grid-area: n12; } .mini i[style*="--n:7"] { grid-area: n7; } .mini i[style*="--n:3"] { grid-area: n3; } .mini i[style*="--n:10"] { grid-area: n10; } .mini i[style*="--n:11"] { grid-area: n11; }
+    @keyframes mini-in { to { opacity: 1; transform: none; } }
+    .mini-cap { margin: .9rem 0 0; font-family: var(--font-mono); font-size: .72rem; letter-spacing: .04em; color: rgba(255,255,255,.6); }
+
+    .rcp-col { max-width: 42rem; margin: 0 auto; padding: 0 var(--gutter); }
+    .rcp-sec { padding: clamp(3.5rem,7vw,6rem) 0 0; }
+    .rcp-art h2 { font-weight: 300; font-size: clamp(2.3rem,4.6vw,3.8rem); line-height: 1.04; margin: 0 0 1.4rem; color: var(--color-ink); }
+    .rcp-art h2::before { counter-increment: rcs; content: counter(rcs, decimal-leading-zero); display: block; margin-bottom: .7rem; font-family: var(--font-mono); font-size: .74rem; letter-spacing: .08em; color: var(--color-amber); }
+    .rcp-art { counter-reset: rcs; }
+    .rcp-art p { font-size: 1.14rem; line-height: 1.7; color: var(--color-ink); margin: 0 0 1.25rem; }
+    .rcp-art .rcp-col > p:first-of-type { font-family: var(--font-display); font-size: clamp(1.55rem,2.5vw,2.05rem); line-height: 1.28; }
+    .rcp-art a:not(.rcp-btn):not(.back-link) { color: inherit; border-bottom: 1px solid var(--color-amber); }
+    .rcp-art a:not(.rcp-btn):not(.back-link):hover { color: var(--color-amber); }
+    .rcp-quote { margin: 2.4rem 0; padding-left: 1.3rem; border-left: 3px solid var(--color-amber); font-family: var(--font-display); font-style: italic; font-size: clamp(1.7rem,3vw,2.5rem); line-height: 1.15; color: var(--color-ink); }
+    .rcp-wide { width: min(76rem, calc(100vw - 2 * var(--gutter))); position: relative; left: 50%; transform: translateX(-50%); }
+
+
+    .shelf { display: grid; grid-template-columns: auto minmax(0,1fr); gap: clamp(1rem,3vw,2.2rem); align-items: end; margin-top: 1.6rem; margin-bottom: 1rem; max-width: 48rem; }
+    .spines { display: flex; align-items: flex-end; gap: 6px; padding: 0 .6rem; border-bottom: 5px solid var(--color-ink); }
+    .spine { position: relative; display: grid; place-items: center; width: clamp(44px,5.6vw,56px); padding: 1.6rem 0 .8rem; border: 0; color: #fff; cursor: pointer; transition: transform .4s var(--ease-out), box-shadow .4s; }
+    .spine span { writing-mode: vertical-rl; transform: rotate(180deg); font: 600 .76rem var(--font-body); letter-spacing: .02em; text-align: left; white-space: nowrap; }
+    .spine.s1 { height: 276px; background: var(--color-ink); }
+    .spine.s2 { height: 196px; background: var(--color-amber); }
+    .spine.s3 { height: 226px; background: #4b5c46; }
+    .spine::after { content: ''; position: absolute; left: 7px; right: 7px; top: 12px; height: 3px; background: rgba(255,255,255,.55); }
+    .spine:hover { transform: translateY(-6px); }
+    .spine[aria-selected="true"] { transform: translateY(-14px); box-shadow: 0 14px 22px rgba(29,32,27,.25); }
+    .spine:focus-visible { outline: 3px solid var(--color-amber); outline-offset: 3px; }
+    .bk { margin: 0; padding: 0 0 .4rem; }
+    .bk[hidden] { display: none; }
+    .rcp-art .bk blockquote { margin: 0 0 .9rem; padding-left: 1.1rem; border-left: 3px solid var(--color-amber); }
+    .rcp-art .bk blockquote p { margin: 0; font-family: var(--font-display); font-style: italic; font-size: clamp(1.5rem,2.4vw,2rem); line-height: 1.22; color: var(--color-ink); }
+    .rcp-art .bk figcaption { font-size: .98rem; line-height: 1.5; color: var(--color-slate); }
+    .bk .echo { display: block; margin-top: .45rem; color: var(--color-ink); }
+    .bk:not([hidden]) { animation: bk-in .5s var(--ease-out); }
+    @keyframes bk-in { from { opacity: 0; transform: translateY(10px); } }
+    @media (max-width: 640px) { .shelf { grid-template-columns: 1fr; } .spines { width: fit-content; } .spine.s1 { height: 262px; } .spine.s2 { height: 186px; } .spine.s3 { height: 214px; } }
+    @media (prefers-reduced-motion: reduce) { .bk:not([hidden]) { animation: none; } }
+    .qs { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); gap: .5rem; margin: 1.8rem 0 2rem; padding: 0; list-style: none; }
+    .qs li { padding: .55rem .6rem; border-top: 2px solid var(--color-ink); font-family: var(--font-display); font-size: 1.25rem; line-height: 1.12; color: var(--color-ink); }
+    .ideas { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1.2rem 2rem; max-width: 42rem; margin: 2rem auto; padding: 0 var(--gutter); list-style: none; }
+    .ideas li { padding-top: .8rem; border-top: 2px solid var(--color-ink); }
+    .ideas b { display: block; font-family: var(--font-display); font-weight: 400; font-size: 1.5rem; line-height: 1.1; margin-bottom: .3rem; }
+    .ideas span { font-size: 1.02rem; line-height: 1.5; color: var(--color-slate); }
+    .rcp-art .ideas a { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .04em; border-bottom: 0 !important; color: var(--color-amber) !important; }
+
+    .lenses { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: clamp(.8rem,1.6vw,1.4rem); margin: 2rem 0; padding: 0; list-style: none; }
+    .lenses li { padding: 1rem 1rem 1.1rem; border-top: 5px solid var(--c); background: color-mix(in srgb, var(--c) 8%, var(--color-white)); }
+    .lenses .d { --c: var(--rc-d); } .lenses .f { --c: var(--rc-f); } .lenses .v { --c: var(--rc-v); } .lenses .p { --c: var(--rc-p); }
+    .lenses b { display: block; font-family: var(--font-display); font-weight: 400; font-size: 1.7rem; line-height: 1.05; }
+    .lenses em { display: block; margin: .25rem 0 .7rem; font-style: normal; font-size: .98rem; color: var(--color-slate); }
+    .lenses span { display: block; font-family: var(--font-mono); font-size: .72rem; line-height: 1.5; color: var(--color-ink); }
+
+    .rctl { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1.2rem; margin: 1.6rem 0 1rem; }
+    .rctl-group { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .rctl button, .rctl label.sw { min-height: 42px; padding: .4rem 1rem; background: none; border: 1px solid var(--color-sandstone); font: 600 .92rem var(--font-body); color: var(--color-ink); cursor: pointer; transition: background .2s, color .2s, border-color .2s; display: inline-flex; align-items: center; gap: .5rem; }
+    .rctl button:hover, .rctl label.sw:hover { border-color: var(--color-ink); }
+    .rctl button[aria-pressed="true"] { background: var(--color-ink); border-color: var(--color-ink); color: #fff; }
+    .rctl button i { width: 11px; height: 11px; border-radius: 50%; background: var(--c); display: inline-block; }
+    .rctl .go { background: var(--color-amber); border-color: var(--color-amber); color: #fff; }
+    .rctl .go:hover { background: #c4664d; border-color: #c4664d; }
+    #rc-bm { position: absolute; opacity: 0; pointer-events: none; }
+    label.sw:has(#rc-bm:focus-visible) { outline: 2px solid var(--color-amber); outline-offset: 2px; }
+    .rc-step { min-height: 2.6rem; margin: 0 0 .8rem; font-family: var(--font-display); font-size: clamp(1.35rem,2.2vw,1.8rem); line-height: 1.15; color: var(--color-ink); }
+    .rc-step small { margin-left: .6rem; font-family: var(--font-mono); font-size: .72rem; letter-spacing: .04em; color: var(--color-slate); }
+
+    .rcgrid { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 8px; grid-template-areas: "n4 n5 n9 n2 n1" "n8 n13 n13 n13 n6" "n12 n7 n3 n10 n11"; }
+    .box { --c: var(--rc-f); position: relative; display: flex; flex-direction: column; min-width: 0; background: color-mix(in srgb, var(--c) 6%, var(--color-white)); border: 1.5px solid var(--c); border-radius: 4px; overflow: hidden; transition: opacity .45s, transform .45s var(--ease-out), box-shadow .45s; }
+    .box.d { --c: var(--rc-d); } .box.f { --c: var(--rc-f); } .box.v { --c: var(--rc-v); } .box.p { --c: var(--rc-p); }
+    #rc-4 { grid-area: n4; } #rc-5 { grid-area: n5; } #rc-9 { grid-area: n9; } #rc-2 { grid-area: n2; } #rc-1 { grid-area: n1; }
+    #rc-8 { grid-area: n8; } #rc-13 { grid-area: n13; } #rc-6 { grid-area: n6; }
+    #rc-12 { grid-area: n12; } #rc-7 { grid-area: n7; } #rc-3 { grid-area: n3; } #rc-10 { grid-area: n10; } #rc-11 { grid-area: n11; }
+    .box header { display: flex; align-items: center; gap: .5rem; padding: .45rem .55rem; background: var(--c); color: #fff; }
+    .box header b { flex: none; display: grid; place-items: center; width: 1.5rem; height: 1.5rem; border-radius: 50%; background: #fff; color: var(--c); font: 700 .74rem var(--font-mono); }
+    .box h3 { margin: 0; font: 700 .82rem/1.15 var(--font-body); color: #fff; }
+    .box .bm { display: none; margin: 0; padding: .3rem .6rem; font: 600 .7rem/1.3 var(--font-mono); letter-spacing: .02em; color: var(--c); background: color-mix(in srgb, var(--c) 12%, var(--color-white)); }
+    .rcgrid.show-bm .bm { display: block; }
+    .box .bd { padding: .5rem .6rem .7rem; font-size: .8rem; line-height: 1.38; color: var(--color-ink); }
+    .box h4 { margin: .55rem 0 .15rem; font: 700 .62rem/1.2 var(--font-body); letter-spacing: .06em; text-transform: uppercase; color: var(--c); }
+    .box h4:first-child { margin-top: 0; }
+    .box ul { margin: 0; padding-left: .95rem; }
+    .box li { margin: 0 0 .12rem; }
+    .box p { margin: 0 0 .5rem; font-size: .8rem; line-height: 1.38; }
+    .box .mute, .box p.mute { color: var(--color-slate); }
+    #rc-13 .bd { padding: 1rem 1.4rem; display: grid; align-content: center; }
+    #rc-13 p { font-family: var(--font-display); font-size: clamp(1.15rem,1.9vw,1.55rem); line-height: 1.3; margin: 0 0 .7rem; }
+    #rc-13 p.mute { font-family: var(--font-body); font-size: .86rem; }
+    .js .box { opacity: 0; transform: translateY(12px); }
+    .js .rcgrid.is-in .box { opacity: 1; transform: none; transition-delay: calc(var(--n) * 90ms); }
+    .rcgrid[data-lens] .box:not(.sel) { opacity: .22 !important; transition-delay: 0s !important; }
+    .rcgrid .box.hot { box-shadow: 0 0 0 3px var(--c), 0 14px 30px rgba(0,0,0,.18); transform: translateY(-4px); z-index: 2; opacity: 1 !important; }
+    .rcgrid.playing .box:not(.hot):not(.done) { opacity: .3 !important; }
+
+    .rcp-fig { margin: 2.6rem auto 0; }
+    .rcp-fig a { display: block; border: 0 !important; }
+    .rcp-fig img { display: block; width: 100%; height: auto; box-shadow: 0 20px 50px rgba(29,32,27,.18); }
+    .rcp-fig figcaption { margin-top: .8rem; font-size: .96rem; line-height: 1.5; color: var(--color-slate); }
+
+    .rules { margin: 1.6rem 0; padding: 0; list-style: none; counter-reset: r; }
+    .rules li { counter-increment: r; display: grid; grid-template-columns: 2.4rem minmax(0,1fr); padding: .85rem 0; border-top: 1px solid var(--border); font-size: 1.08rem; line-height: 1.5; }
+    .rules li::before { content: counter(r); font-family: var(--font-display); font-size: 1.7rem; line-height: 1; color: var(--color-amber); }
+    .rcp-art pre { margin: 1.4rem 0; padding: 1rem 1.2rem; overflow-x: auto; background: var(--color-night); color: #e9e5dc; font: .86rem/1.55 var(--font-mono); border-radius: 3px; }
+    .rcp-art code { font-family: var(--font-mono); font-size: .92em; }
+    .rcp-art pre code { font-size: inherit; }
+    .rcp-art pre .c { color: #96988f; }
+
+    .rcp-cta { margin-top: clamp(3.5rem,7vw,6rem); padding: clamp(3rem,6vw,5rem) 0; background: var(--color-night); color: #fff; }
+    .rcp-cta h2 { color: #fff; }
+    .rcp-art .rcp-cta p { color: rgba(255,255,255,.86); }
+    .rcp-cta .rcp-btn { margin-top: .6rem; }
+    .contrib { margin: 1.6rem 0; padding: 0; list-style: none; }
+    .contrib li { padding: .65rem 0; border-top: 1px solid rgba(255,255,255,.22); color: rgba(255,255,255,.9); font-size: 1.06rem; }
+    .rcp-art .rcp-cta a:not(.rcp-btn) { color: #fff; border-bottom-color: var(--color-amber); }
+    .rcp-art .rcp-credit { margin: 2rem 0 0; font-size: .86rem; line-height: 1.5; color: rgba(255,255,255,.6); }
+    .rcp-pnav { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; max-width: 42rem; margin: 0 auto; padding: 1.6rem var(--gutter) clamp(3.5rem,7vw,5rem); }
+
+    @media (max-width: 1000px) {
+      .rcp-hero .frame { grid-template-columns: 1fr; }
+      .lenses { grid-template-columns: 1fr 1fr; }
+      .rcgrid { grid-template-columns: 1fr 1fr; grid-template-areas: none; }
+      .rcgrid .box { grid-area: auto !important; order: var(--n); }
+      #rc-13 { grid-column: 1 / -1; order: 13; }
+    }
+    @media (max-width: 640px) {
+      .qs { grid-template-columns: repeat(2,1fr); }
+      .ideas { grid-template-columns: 1fr; }
+      .lenses { grid-template-columns: 1fr; }
+      .rcgrid { grid-template-columns: 1fr; }
+      #rc-13 { grid-column: auto; }
+    }
+    @media (prefers-reduced-motion: reduce) { .mini i { animation: none; opacity: 1; transform: none; } .js .box { opacity: 1; transform: none; } }
+    </style>
+</head>
+<body class="has-cover rcp">
+    <div id="site-header"></div>
+    <div class="rcp-clip">
+    <header class="rcp-hero">
+        <div class="frame">
+            <div>
+                <a href="/hobbies/geology.html" class="back-link">Back to Geology</a>
+                <p class="rcp-kick">Stories &nbsp;·&nbsp; Open source &nbsp;·&nbsp; November 2026</p>
+                <h1>Research Canvas: <em>planning a project on one page</em></h1>
+                <p class="rcp-lede">One page. Thirteen boxes. Your whole research project, from the problem to the money.</p>
+                <a class="rcp-btn" href="https://github.com/PacoSanto/research-canvas-latex" target="_blank" rel="noopener">Get it on GitHub</a>
+            </div>
+            <div>
+                <div class="mini" aria-hidden="true"><i class="d" style="--n:1"><b>1</b></i><i class="d" style="--n:2"><b>2</b></i><i class="d" style="--n:3"><b>3</b></i><i class="f" style="--n:4"><b>4</b></i><i class="f" style="--n:5"><b>5</b></i><i class="f" style="--n:6"><b>6</b></i><i class="d" style="--n:7"><b>7</b></i><i class="f" style="--n:8"><b>8</b></i><i class="f" style="--n:9"><b>9</b></i><i class="v" style="--n:10"><b>10</b></i><i class="v" style="--n:11"><b>11</b></i><i class="f" style="--n:12"><b>12</b></i><i class="p" style="--n:13"><b>13</b></i></div>
+                <p class="mini-cap" aria-hidden="true">The order you fill it in: 1, the problem, to 13, the pitch.</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="rcp-art">
+        <section class="rcp-sec">
+            <div class="rcp-col">
+                <h2 class="reveal">It started with a no</h2>
+                <p class="reveal">I had an idea for a spin-off. I wrote it up with a colleague and two professors, we sent it to the University of Padova to become a university spin-off, and the answer was no.</p>
+                <p class="reveal">I am a geologist, but my days are not all minerals. I spend them reading articles, doing paperwork and following students' theses, and when I manage to find room for research, that means a diffractometer and a handful of microscopes. For a long time I explained my projects the way scientists usually do: a long list of methods, then a long list of results.</p>
+                <p class="reveal">After that no, I started reading. Ben Horowitz's <em>The Hard Thing About Hard Things</em>, Peter Thiel's <em>Zero to One</em>, which I read as <em>Da zero a uno</em>, and Eric Ries's <em>The Lean Startup</em>, which I read as <em>Partire leggeri</em>. Since then I keep reading a little economics, and I leaf through <em>Il Sole 24 Ore</em> now and then. None of it was about geology. What it gave me, more than answers, was the habit of asking myself questions, the same ones that funders, industry partners, curators and department heads ask, and they are business-like:</p>
+                <ul class="qs reveal" aria-label="The questions">
+                    <li>Who needs this?</li><li>What changes if it works?</li><li>Why you?</li><li>What does it cost?</li><li>Who pays?</li><li>What can go wrong?</li>
+                </ul>
+                <p class="reveal">Here is one line from each of the three books, next to the part of the canvas where I hear it.</p>
+            </div>
+            <div class="rcp-col shelf reveal" id="shelf">
+                <div class="spines" role="tablist" aria-label="Three books">
+                    <button type="button" class="spine s1" role="tab" id="tb1" aria-controls="bk1" aria-selected="true"><span>The Hard Thing About Hard Things</span></button>
+                    <button type="button" class="spine s2" role="tab" id="tb2" aria-controls="bk2" aria-selected="false"><span>Zero to One</span></button>
+                    <button type="button" class="spine s3" role="tab" id="tb3" aria-controls="bk3" aria-selected="false"><span>The Lean Startup</span></button>
+                </div>
+                <div class="books">
+                    <figure class="bk" id="bk1" role="tabpanel" aria-labelledby="tb1">
+                        <blockquote><p>There are no silver bullets for this, only lead bullets.</p></blockquote>
+                        <figcaption><b>Ben Horowitz</b>, from his 2011 post <a href="https://a16z.com/lead-bullets/" target="_blank" rel="noopener">Lead Bullets</a>. His book is <i>The Hard Thing About Hard Things: Building a Business When There Are No Easy Answers</i> (HarperCollins, 2014). <span class="echo">I hear it in <a href="#rc-12">box 12, Risks</a>: no magic fix, only mitigation.</span></figcaption>
+                    </figure>
+                    <figure class="bk" id="bk2" role="tabpanel" aria-labelledby="tb2" hidden>
+                        <blockquote><p>What important truth do very few people agree with you on?</p></blockquote>
+                        <figcaption><b>Peter Thiel</b>, <i>Zero to One</i> (2014), chapter 1; I read the Italian edition, <i>Da zero a uno</i> (ETAS, 2015). <span class="echo">I hear it in <a href="#rc-9">box 9, Advantage</a> and <a href="#rc-13">box 13, Unique Value Proposition</a>.</span></figcaption>
+                    </figure>
+                    <figure class="bk" id="bk3" role="tabpanel" aria-labelledby="tb3" hidden>
+                        <blockquote><p>The more pertinent questions are “Should this product be built?” and “Can we build a sustainable business around this set of products and services?”</p></blockquote>
+                        <figcaption><b>Eric Ries</b>, <i>The Lean Startup</i> (2011); I read the Italian edition, <i>Partire leggeri</i>. <span class="echo">I hear it in the first two lenses: <a href="#rc-2">desirability</a> and <a href="#rc-10">viability</a>.</span></figcaption>
+                    </figure>
+                </div>
+            </div>
+            <div class="rcp-col">
+                <p class="rcp-quote reveal">Big initiatives grow out of a no.</p>
+                <p class="reveal">That is what I took from it. The no closed one door, and the reading opened a question: how to describe a research project the way the people who decide about it read it.</p>
+            </div>
+        </section>
+
+        <section class="rcp-sec">
+            <div class="rcp-col">
+                <h2 class="reveal">Why economics can help a geologist</h2>
+                <p class="reveal">Economics, at its simplest, is the study of choices when resources are scarce. A research project is exactly that: a limited number of months, a limited budget, a limited number of instruments and people, and many things you could do with them. Four ideas from a first economics lesson turn out to be enough.</p>
+            </div>
+            <ul class="ideas rcp-col reveal">
+                <li><b>Scarcity and opportunity cost</b><span>Every month spent on one thing is a month not spent on another. <a href="#rc-10">box 10, Expenses</a></span></li>
+                <li><b>Value is for someone</b><span>A result is valuable when a particular person can do something they could not do before. <a href="#rc-2">box 2, Users</a> · <a href="#rc-3">box 3, Outcomes</a></span></li>
+                <li><b>Costs and income</b><span>What the project spends, and who pays for it. <a href="#rc-10">box 10</a> · <a href="#rc-11">box 11, Funding</a></span></li>
+                <li><b>Risk</b><span>What can go wrong, and what you do about it. <a href="#rc-12">box 12, Risks</a></span></li>
+            </ul>
+        </section>
+
+        <section class="rcp-sec">
+            <div class="rcp-col">
+                <h2 class="reveal">What is a canvas?</h2>
+                <p class="reveal">A canvas is a single page divided into boxes, each one answering one question, so that a whole idea can be seen, discussed and criticised at once.</p>
+                <p class="reveal">The best known is the Business Model Canvas by Alexander Osterwalder and Yves Pigneur, which fits a company on a page: who the customers are, what value you offer them, what it costs, where the money comes from. The Lean Canvas, adapted from it by Ash Maurya, does the same for a start-up that is still testing its idea. Mine is an adaptation of the Research Canvas by Dr Katia Smith-Litière, made for the Postdocs to Innovators (p2i) Network on the same logic, with customers renamed users and revenue renamed funding. Press <em>In business terms</em> on the filled example below to see each box next to its business counterpart.</p>
+            </div>
+        </section>
+
+        <section class="rcp-sec">
+            <div class="rcp-col">
+                <h2 class="reveal">Three lenses and a pitch</h2>
+                <p class="reveal">The thirteen boxes come in three colours. They are three lenses borrowed from design thinking, and a good project needs all of them.</p>
+            </div>
+            <ul class="lenses rcp-wide reveal" id="rc-lenses">
+                <li class="d"><b>Desirability</b><em>Is it needed? Who benefits?</em><span>1 Problem · 2 Users · 3 Outcomes · 7 Actions to impact</span></li>
+                <li class="f"><b>Feasibility</b><em>Can we do it? Why us?</em><span>4 Response · 5 Objectives · 6 Outputs · 8 Partners · 9 Advantage · 12 Risks</span></li>
+                <li class="v"><b>Viability</b><em>Can it be paid for?</em><span>10 Expenses · 11 Funding</span></li>
+                <li class="p"><b>Pitch</b><em>Can I say it in 30 seconds?</em><span>13 Unique Value Proposition</span></li>
+            </ul>
+        </section>
+
+        <section class="rcp-sec" id="example">
+            <div class="rcp-col">
+                <h2 class="reveal">The canvas, filled in with my own PhD</h2>
+                <p class="reveal">This is a retrospective canvas of my PhD in the <a href="https://sublime-etn.eu/" target="_blank" rel="noopener">SUBLime</a> ETN (ESR3, lime-based mortars and plasters with added functionality, University of Granada), reconstructed from public information. It is not an official project document. Filter it by lens, or press <em>Fill it in order</em> to watch the sequence.</p>
+            </div>
+            <div class="rcp-wide">
+                <div class="rctl">
+                    <div class="rctl-group" role="group" aria-label="Show a lens" id="rc-lens-btns">
+                        <button type="button" data-l="all" aria-pressed="true">All</button>
+                        <button type="button" data-l="d" aria-pressed="false" style="--c:var(--rc-d)"><i></i>Desirability</button>
+                        <button type="button" data-l="f" aria-pressed="false" style="--c:var(--rc-f)"><i></i>Feasibility</button>
+                        <button type="button" data-l="v" aria-pressed="false" style="--c:var(--rc-v)"><i></i>Viability</button>
+                        <button type="button" data-l="p" aria-pressed="false" style="--c:var(--rc-p)"><i></i>Pitch</button>
+                    </div>
+                    <button type="button" class="go" id="rc-go">Fill it in order</button>
+                    <label class="sw" for="rc-bm"><input type="checkbox" id="rc-bm"> In business terms</label>
+                </div>
+                <p class="rc-step" id="rc-step" aria-live="polite">&nbsp;</p>
+                <div class="rcgrid" id="rcgrid">
+                <article class="box f" id="rc-4" data-n="4" style="--n:4">
+                    <header><b>4</b><h3>Research response (solution)</h3></header>
+                    <p class="bm">In business terms: Solution</p>
+                    <div class="bd"><h4>Aims</h4><ul><li>Aim 1: add self-cleaning and water repellency to lime</li><li>Aim 2: protect heritage without synthetic polymers</li></ul><h4>Novelty</h4><ul><li>Nanoparticle and biomimetic surface treatments</li><li>Nature-inspired textures on calcite (lotus-like)</li></ul><h4>Ethics, data, RRI</h4><ul><li>Ethics: none identified</li><li>Data: open-access papers, open data</li><li>Users: industry mentors from year 1</li></ul></div>
+                </article>
+                <article class="box f" id="rc-5" data-n="5" style="--n:5">
+                    <header><b>5</b><h3>Research objectives</h3></header>
+                    <p class="bm">In business terms: Key activities</p>
+                    <div class="bd"><ul><li><b>O1, M1–12</b> Characterise historic lime mortars, XRD, SEM, Raman</li><li><b>O2, M8–24</b> Etch calcite to tune wettability, micropillars</li><li><b>O3, M14–30</b> Add TiO<sub>2</sub> nanoparticles, test self-cleaning</li><li><b>O4, M24–36</b> Validate on mortars with industry, µ-CT</li></ul><h4>Measurable</h4><ul><li>Papers; thesis; tested formulations</li></ul></div>
+                </article>
+                <article class="box f" id="rc-9" data-n="9" style="--n:9">
+                    <header><b>9</b><h3>Competitive advantage</h3></header>
+                    <p class="bm">In business terms: Unfair advantage</p>
+                    <div class="bd"><h4>Researcher</h4><ul><li>Lime mortars of different periods (NanoWorld J., 2023)</li><li>XRD, Raman, FTIR, SEM, TEM, PHREEQC</li></ul><h4>Host / team</h4><ul><li>Mineralogy lab at Univ. of Granada (UGR)</li><li>Supervisors: carbonates and heritage</li></ul><h4>What is different</h4><ul><li>Mineral-based and nature-inspired, no polymer coating</li></ul></div>
+                </article>
+                <article class="box d" id="rc-2" data-n="2" style="--n:2">
+                    <header><b>2</b><h3>Users and beneficiaries</h3></header>
+                    <p class="bm">In business terms: Customer segments</p>
+                    <div class="bd"><h4>Research</h4><ul><li>Materials scientists, conservation scientists</li></ul><h4>Industry / public</h4><ul><li>Lime and mortar producers (Lhoist, EuLA)</li><li>Heritage institutes (IAPH) and restorers</li></ul><h4>Society</h4><ul><li>Citizens: heritage, lower CO<sub>2</sub> buildings</li></ul><h4>Feedback so far</h4><ul><li>Industry mentors in the network from the start</li></ul></div>
+                </article>
+                <article class="box d" id="rc-1" data-n="1" style="--n:1">
+                    <header><b>1</b><h3>Research problem and context</h3></header>
+                    <p class="bm">In business terms: Problem</p>
+                    <div class="bd"><h4>Question</h4><ul><li>Can lime stay breathable and compatible, yet repel water and clean itself?</li></ul><h4>Why it matters, what cannot be done</h4><ul><li>Lime is porous: water, dirt and biofilms damage it</li><li>EU lime and plaster: 20 Mt/y, 4.2 bn € (2015)</li></ul><h4>Evidence</h4><ul><li>Lime has lower carbon footprint than cement</li><li>Biomimetic textures control wetting of surfaces</li></ul><h4>Own work</h4><ul><li>Erasmus+ traineeship on carbonation, 2019</li></ul></div>
+                </article>
+                <article class="box f" id="rc-8" data-n="8" style="--n:8">
+                    <header><b>8</b><h3>Collaborators, partners &amp; resources</h3></header>
+                    <p class="bm">In business terms: Key partners, key resources</p>
+                    <div class="bd"><h4>Critical</h4><ul><li>UGent (De Belie): functional mortars, µ-CT</li><li>Lhoist R&amp;D: industrial mix design</li></ul><h4>Useful (proposed, not yet approached)</h4><ul><li>IAPH: heritage conservation needs</li><li>Univ. of Padova: rheology (ARQUS)</li></ul><h4>Existing network</h4><ul><li>SUBLime: 6 universities, 12 industry partners</li></ul><h4>Resources</h4><ul><li>XRD, Raman, FTIR, SEM, TEM, µ-CT</li><li>Lime, calcite crystals, nanoparticles</li><li>Central services at UGR and UGent</li></ul></div>
+                </article>
+                <article class="box p" id="rc-13" data-n="13" style="--n:13">
+                    <header><b>13</b><h3>Unique Value Proposition</h3></header>
+                    <p class="bm">In business terms: Unique value proposition</p>
+                    <div class="bd"><p>Lime mortars protect our heritage and emit less CO<sub>2</sub> than cement, but water and dirt wear them out.</p><p><b>We teach lime to repel water and keep itself clean, the way a lotus leaf does.</b></p><p>Longer-lasting, low-carbon mortars and gentler treatments for historic buildings.</p><p class="mute">A geologist with mineralogy tools, inside a network linking labs, industry and heritage.</p></div>
+                </article>
+                <article class="box f" id="rc-6" data-n="6" style="--n:6">
+                    <header><b>6</b><h3>Research outputs</h3></header>
+                    <p class="bm">In business terms: Product / deliverables</p>
+                    <div class="bd"><h4>Papers (open access)</h4><ul><li>Micropillars on etched calcite (Mater. Des., 2025)</li><li>Historic lime mortars (NanoWorld J., 2023)</li></ul><h4>Data and methods</h4><ul><li>PhD thesis, UGR, 2026 (open access)</li><li>Etching and treatment protocols</li></ul><h4>Talks and training</h4><ul><li>SUBLime workshops; teaching at UGR</li></ul><h4>Possible IP</h4><ul><li>Know-how shared with industry partners</li></ul><h4>Follow-up</h4><ul><li>Postdoc: Space It Up, Padova (ASI, MUR)</li></ul></div>
+                </article>
+                <article class="box f" id="rc-12" data-n="12" style="--n:12">
+                    <header><b>12</b><h3>Risks → mitigation</h3></header>
+                    <p class="bm">In business terms: Risk register</p>
+                    <div class="bd"><ul><li><b>Weak durability</b> → test other nanoparticles</li><li><b>Instrument access</b> → secondments (UGent)</li><li><b>Overlap with peers</b> → literature check, M1</li><li><b>Negative result</b> → publish the limits</li><li><b>Pandemic delays</b> → remote work, re-plan</li></ul></div>
+                </article>
+                <article class="box d" id="rc-7" data-n="7" style="--n:7">
+                    <header><b>7</b><h3>Actions to outcomes / impact</h3></header>
+                    <p class="bm">In business terms: Channels, adoption</p>
+                    <div class="bd"><h4>Awareness</h4><ul><li>Research: papers, conferences, workshops</li><li>Industry: secondment at Lhoist (2022)</li></ul><h4>Uptake</h4><ul><li>Treatments tested on mortars, shared with partners</li></ul><h4>Evidence of impact</h4><ul><li>Citations, partner feedback, follow-up work</li></ul></div>
+                </article>
+                <article class="box d" id="rc-3" data-n="3" style="--n:3">
+                    <header><b>3</b><h3>Outcomes and impact</h3></header>
+                    <p class="bm">In business terms: Value created / key metrics</p>
+                    <div class="bd"><h4>Short term</h4><ul><li>Mineral and physical map of historic mortars</li><li>Etching protocol for wettability control</li></ul><h4>Long term</h4><ul><li>Added-function lime products and treatments</li><li>More durable, low-carbon heritage and housing</li></ul><h4>Without this research</h4><ul><li>Lime stays vulnerable to water and biofilms</li></ul></div>
+                </article>
+                <article class="box v" id="rc-10" data-n="10" style="--n:10">
+                    <header><b>10</b><h3>Research expenses</h3></header>
+                    <p class="bm">In business terms: Cost structure</p>
+                    <div class="bd"><p class="mute">Rough estimates, to be confirmed.</p><h4>Personnel</h4><ul><li>Salary: MSCA early-stage researcher contract</li></ul><h4>Research</h4><ul><li>Equipment: existing lab facilities</li><li>Consumables: lime, nanoparticles, reagents</li></ul><h4>Impact</h4><ul><li>Travel: secondments, workshops, conferences</li><li>Publication: open-access fees</li></ul><h4>Total besides personnel</h4><ul><li>Covered by the network budget <span class="mute">(tbc)</span></li></ul></div>
+                </article>
+                <article class="box v" id="rc-11" data-n="11" style="--n:11">
+                    <header><b>11</b><h3>Funding streams (income)</h3></header>
+                    <p class="bm">In business terms: Revenue streams</p>
+                    <div class="bd"><h4>In place</h4><ul><li>Horizon 2020 MSCA ITN, GA 955986</li></ul><h4>Target</h4><ul><li><b>Call 1</b>: MSCA ITN: 15 PhDs, 540 months</li><li><b>Call 2</b>: partner in-kind: labs and mentors</li></ul><h4>Further options</h4><ul><li>Follow-on: postdoc and national projects <span class="mute">(tbc)</span></li></ul><h4>Bridge</h4><ul><li>Industry mentors: samples and know-how</li></ul></div>
+                </article>
+                </div>
+                <figure class="rcp-fig">
+                    <a href="https://github.com/PacoSanto/research-canvas-latex/blob/main/Example_SUBLIME_ESR3.pdf" target="_blank" rel="noopener">
+                        <img src="/img/post/geology/research-canvas-example.jpg" width="1521" height="1075" loading="lazy" alt="The filled Research Canvas for the SUBLime ESR3 project, on one A4 landscape page: thirteen coloured boxes in three lens colours, with the Unique Value Proposition in the centre.">
+                    </a>
+                    <figcaption>The same canvas as the PDF page it comes from: <a href="https://github.com/PacoSanto/research-canvas-latex/blob/main/Example_SUBLIME_ESR3.pdf" target="_blank" rel="noopener">Example_SUBLIME_ESR3.pdf</a>, one A4 landscape sheet.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="rcp-sec">
+            <div class="rcp-col">
+                <h2 class="reveal">How I built it</h2>
+                <p class="reveal">I built it in LaTeX with TikZ, for three reasons. It can be versioned on GitHub like code. It prints cleanly on an A4 landscape page, or on a wall. And it can sit on its own or as the last page of a proposal. Each box is a single call, so moving or resizing one means changing a few numbers:</p>
+                <pre class="reveal"><code>\rcbox{x}{y}{width}{height}{colour}{number}{title}{content}</code></pre>
+                <p class="reveal">With a LaTeX distribution, <code>make</code> builds the empty template and <code>make example</code> builds the filled one. Without one, upload the folder to Overleaf and compile. The repository also has a mode for dropping the canvas at the end of a longer document.</p>
+                <!-- [YOUR WORDS: one or two sentences on the process, e.g. how long it took, what went wrong with TikZ, who tested it.] -->
+                <p class="reveal">What I like most is a constraint. The boxes have a fixed size, so text that does not fit is text that is not clear yet: I cut words, I never shrink the font. It is also the first rule of five, in the order I would give them to a colleague:</p>
+                <ol class="rules reveal">
+                    <li>Keywords, not sentences: one or two lines per point.</li>
+                    <li>Respect the box: text that does not fit is not clear yet.</li>
+                    <li><span>Write <code>n/a</code> in a box that does not apply, never leave it empty.</span></li>
+                    <li>Be concrete: numbers, names, dates, calls. No adjectives.</li>
+                    <li>Read box 13 aloud to someone outside your field.</li>
+                </ol>
+                <p class="reveal">Start from the problem and end with the pitch. If you cannot write box 13 in plain words after filling the others, the project is not clear yet, and it is better to find out now than in front of a panel. I filled my own example retrospectively, and two boxes still carry a <em>tbc</em>: expenses and funding. They are the money boxes, the ones I used to skip.</p>
+            </div>
+        </section>
+
+        <section class="rcp-cta">
+            <div class="rcp-col">
+                <h2 class="reveal">Use it, break it, translate it</h2>
+                <p class="reveal">The canvas is free to use, share and adapt, also commercially, under <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener">CC BY-SA 3.0</a>: give credit and share your version under the same licence. The repository has the empty template, the filled example, a Makefile, and works on Overleaf.</p>
+                <a class="rcp-btn reveal" href="https://github.com/PacoSanto/research-canvas-latex" target="_blank" rel="noopener">Open the repository on GitHub</a>
+                <p class="reveal" style="margin-top:1.8rem">If you use it, I would love to see it. <a href="https://github.com/PacoSanto/research-canvas-latex/issues" target="_blank" rel="noopener">Open an issue</a> or a pull request, especially for:</p>
+                <ul class="contrib reveal">
+                    <li>translations (the comments in the body file are in Italian)</li>
+                    <li>new colour themes, and a black-and-white print version</li>
+                    <li>an A3 poster or a Beamer version</li>
+                    <li>your own filled-in examples from other disciplines</li>
+                </ul>
+                <p class="reveal">If it helped you, a star on the repository helps other researchers find it.</p>
+                <p class="rcp-credit reveal">Adapted from the Research Canvas by Dr Katia Smith-Litière for the <a href="https://www.p2i-network.eu" target="_blank" rel="noopener">Postdocs to Innovators (p2i) Network</a>, itself based on the Business Model Canvas and the Lean Canvas. LaTeX/TikZ version and example by Francesco Santoro De Vico.</p>
+            </div>
+        </section>
+        <div class="rcp-pnav">
+            <a href="/hobbies/geology.html" class="back-link">Back to Geology</a>
+            <a href="/hobbies.html" class="back-link">All Hobbies &amp; Blog</a>
+        </div>
+    </main>
+    </div>
+    <div id="site-footer"></div>
+    <script src="/js/components.js?v=3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+    <script src="/js/site.js?v=3" defer></script>
+    <script>
+    (function () {
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var $ = function (id) { return document.getElementById(id); };
+      var grid = $('rcgrid'), boxes = [].slice.call(grid.querySelectorAll('.box')).sort(function (a, b) { return +a.dataset.n - +b.dataset.n; });
+      var step = $('rc-step'), go = $('rc-go'), timer = null, idx = 0;
+
+      // boxes arrive in the order they are filled in
+      if ('IntersectionObserver' in window && !reduce) new IntersectionObserver(function (e, io) { if (e[0].isIntersecting) { grid.classList.add('is-in'); io.disconnect(); } }, { threshold: .12 }).observe(grid);
+      else grid.classList.add('is-in');
+
+      // lens filter
+      var lensBtns = [].slice.call(document.querySelectorAll('#rc-lens-btns button'));
+      function setLens(l) {
+        stop(true);
+        lensBtns.forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.l === l); });
+        if (l === 'all') grid.removeAttribute('data-lens'); else grid.setAttribute('data-lens', l);
+        boxes.forEach(function (b) { b.classList.toggle('sel', l === 'all' || b.classList.contains(l)); });
+        var names = { d: 'Desirability: is it needed?', f: 'Feasibility: can we do it?', v: 'Viability: can it be paid for?', p: 'Pitch: can I say it in 30 seconds?' };
+        step.innerHTML = names[l] || '&nbsp;';
+      }
+      lensBtns.forEach(function (b) { b.addEventListener('click', function () { setLens(b.dataset.l); }); });
+      setLens('all');
+      // the three lens cards above also open the filter
+      document.querySelectorAll('#rc-lenses li').forEach(function (li) {
+        li.style.cursor = 'pointer';
+        li.addEventListener('click', function () {
+          var l = li.className.replace(/\s.*/, ''); setLens(l);
+          var t = $('example'); if (window.siteLenis) window.siteLenis.scrollTo(t, { offset: -70 }); else t.scrollIntoView();
+        });
+      });
+
+      // the shelf: one line from each book
+      var spines = [].slice.call(document.querySelectorAll('.spine'));
+      spines.forEach(function (b) {
+        b.addEventListener('click', function () {
+          spines.forEach(function (x) {
+            var on = x === b; x.setAttribute('aria-selected', on);
+            document.getElementById(x.getAttribute('aria-controls')).hidden = !on;
+          });
+        });
+        b.addEventListener('keydown', function (e) {
+          var i = spines.indexOf(b), k = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
+          if (!k) return; e.preventDefault(); var n = spines[(i + k + spines.length) % spines.length]; n.focus(); n.click();
+        });
+      });
+
+      $('rc-bm').addEventListener('change', function () { grid.classList.toggle('show-bm', this.checked); });
+
+      // fill it in order
+      function stop(quiet) {
+        clearInterval(timer); timer = null; grid.classList.remove('playing');
+        boxes.forEach(function (b) { b.classList.remove('hot', 'done'); });
+        go.textContent = 'Fill it in order';
+        if (!quiet) step.innerHTML = '&nbsp;';
+      }
+      function show(i) {
+        var b = boxes[i], t = b.querySelector('h3').textContent;
+        boxes.forEach(function (x, k) { x.classList.toggle('hot', k === i); x.classList.toggle('done', k < i); });
+        step.innerHTML = b.dataset.n + '. ' + t + '<small>step ' + (i + 1) + ' of 13' + (i === 0 ? ' · start here' : i === 12 ? ' · last, once the others are clear' : '') + '</small>';
+        if (window.innerWidth <= 1000) b.scrollIntoView({ block: 'center', behavior: reduce ? 'auto' : 'smooth' });
+      }
+      go.addEventListener('click', function () {
+        if (timer) { stop(); return; }
+        setLens('all'); grid.classList.add('is-in', 'playing'); go.textContent = 'Stop'; idx = 0; show(0);
+        timer = setInterval(function () { idx++; if (idx > 12) { stop(true); step.innerHTML = 'Thirteen boxes, one page.'; return; } show(idx); }, 1500);
+      });
+    })();
+    </script>
+</body>
+</html>

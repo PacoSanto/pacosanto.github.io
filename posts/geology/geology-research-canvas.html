@@ -35,6 +35,8 @@
     .mini i { position: relative; border: 2px solid var(--c); background: color-mix(in srgb, var(--c) 14%, transparent); border-radius: 3px; opacity: 0; transform: translateY(-14px) scale(.94); animation: mini-in .7s var(--ease-out) forwards; animation-delay: calc(var(--n) * .26s + .35s); }
     .mini i::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 24%; background: var(--c); border-radius: 1px 1px 0 0; }
     .mini i b { position: absolute; left: 5px; top: 3px; font: 600 clamp(.58rem,1vw,.8rem) var(--font-mono); color: #fff; }
+    .mini i span { position: absolute; left: clamp(18px,2.2vw,26px); right: 3px; top: 3px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font: 600 clamp(.46rem,.8vw,.68rem) var(--font-mono); letter-spacing: .02em; color: rgba(255,255,255,.92); }
+    @media (max-width: 640px) { .mini i span { display: none; } }
     .mini i.d { --c: var(--rc-d); } .mini i.f { --c: var(--rc-f); } .mini i.v { --c: var(--rc-v); } .mini i.p { --c: #8794a8; }
     .mini i[style*="--n:13"]::after { content: ''; position: absolute; inset: 40% 14% 18% 14%; background: repeating-linear-gradient(#fff 0 2px, transparent 2px 9px); opacity: .55; }
     .mini i[style*="--n:4"] { grid-area: n4; } .mini i[style*="--n:5"] { grid-area: n5; } .mini i[style*="--n:9"] { grid-area: n9; } .mini i[style*="--n:2"] { grid-area: n2; } .mini i[style*="--n:1"] { grid-area: n1; }
@@ -185,7 +187,7 @@
                 <a class="rcp-btn" href="https://github.com/PacoSanto/research-canvas-latex" target="_blank" rel="noopener">Get it on GitHub</a>
             </div>
             <div>
-                <div class="mini" aria-hidden="true"><i class="d" style="--n:1"><b>1</b></i><i class="d" style="--n:2"><b>2</b></i><i class="d" style="--n:3"><b>3</b></i><i class="f" style="--n:4"><b>4</b></i><i class="f" style="--n:5"><b>5</b></i><i class="f" style="--n:6"><b>6</b></i><i class="d" style="--n:7"><b>7</b></i><i class="f" style="--n:8"><b>8</b></i><i class="f" style="--n:9"><b>9</b></i><i class="v" style="--n:10"><b>10</b></i><i class="v" style="--n:11"><b>11</b></i><i class="f" style="--n:12"><b>12</b></i><i class="p" style="--n:13"><b>13</b></i></div>
+                <div class="mini" aria-hidden="true"><i class="d" style="--n:1"><b>1</b><span>Problem</span></i><i class="d" style="--n:2"><b>2</b><span>Users</span></i><i class="d" style="--n:3"><b>3</b><span>Outcomes</span></i><i class="f" style="--n:4"><b>4</b><span>Response</span></i><i class="f" style="--n:5"><b>5</b><span>Objectives</span></i><i class="f" style="--n:6"><b>6</b><span>Outputs</span></i><i class="d" style="--n:7"><b>7</b><span>Actions</span></i><i class="f" style="--n:8"><b>8</b><span>Partners</span></i><i class="f" style="--n:9"><b>9</b><span>Advantage</span></i><i class="v" style="--n:10"><b>10</b><span>Expenses</span></i><i class="v" style="--n:11"><b>11</b><span>Funding</span></i><i class="f" style="--n:12"><b>12</b><span>Risks</span></i><i class="p" style="--n:13"><b>13</b><span>Unique Value Proposition</span></i></div>
                 <p class="mini-cap" aria-hidden="true">The order you fill it in: 1, the problem, to 13, the pitch.</p>
             </div>
         </div>

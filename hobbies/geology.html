@@ -13,8 +13,9 @@
     <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
     <link rel="stylesheet" href="../css/style.css?v=3">
     <style>
-    /* Geology index: three doors onto three kinds of work. The doors are links
-       and every panel is in the HTML, so without JS the page is one long list. */
+    /* Geology index: one long page. Three doors at the top scroll to the three parts:
+       papers on night, the stories inside a pale frame that unfolds as you arrive,
+       then the videos on night again. A slim section bar follows you down. */
     .geo-doors { background: var(--color-night); padding: clamp(1rem, 2vw, 1.75rem) 0 0; }
     .geo-door-row { display: flex; gap: clamp(.5rem, 1vw, .9rem); height: clamp(340px, 58vh, 600px); }
     .geo-door {
@@ -24,12 +25,11 @@
       transition: flex-grow .9s var(--ease-out);
     }
     .geo-door:hover, .geo-door:focus-visible { color: #fff; flex-grow: 1.35; }
-    .js .geo-door[aria-selected="true"] { flex-grow: 1.7; }
     .geo-door img {
       position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
       filter: saturate(.75) brightness(.72); transition: filter .9s var(--ease-out), transform 1.4s var(--ease-out);
     }
-    .geo-door:hover img, .js .geo-door[aria-selected="true"] img { filter: none; transform: scale(1.03); }
+    .geo-door:hover img, .geo-door.is-active img { filter: none; transform: scale(1.03); }
     .geo-door::after {
       content: ''; position: absolute; inset: 0;
       background: linear-gradient(to top, rgba(13,15,12,.92) 8%, rgba(13,15,12,.1) 62%);
@@ -53,7 +53,7 @@
       background: var(--color-amber); transform: scaleX(0); transform-origin: left;
       transition: transform .8s var(--ease-out);
     }
-    .js .geo-door[aria-selected="true"] .geo-door-bar { transform: scaleX(1); }
+    .geo-door.is-active .geo-door-bar { transform: scaleX(1); }
 
     .geo-panel-head { display: grid; grid-template-columns: minmax(0,5fr) minmax(0,7fr); gap: clamp(1.5rem,4vw,4rem); align-items: end; margin-bottom: clamp(2.5rem,5vw,4.5rem); }
     .geo-panel-head h2 { font-weight: 300; font-size: clamp(2.4rem, 5vw, 4.4rem); line-height: 1.02; margin: 0; color: inherit; }
@@ -83,9 +83,18 @@
     .geo-paper-meta a { position: relative; z-index: 1; color: #fff; border-bottom: 1px solid var(--color-amber); }
     .geo-paper-meta a:hover { color: #f0b39f; }
 
-    /* Stories keep the site's ordinary post cards */
+    /* Stories keep the site's ordinary post cards, inside a pale frame on the night page */
+    .geo-stories-sec { background: var(--color-night); padding: clamp(.5rem,2vw,1.5rem) 0 clamp(2rem,4vw,3.5rem); scroll-margin-top: 4rem; }
+    .geo-frame { margin: 0 var(--gutter); background: var(--color-chalk); color: var(--color-ink); border-radius: 6px; clip-path: inset(var(--ci,0px) var(--cx,0px) 0 var(--cx,0px) round 6px); will-change: clip-path; }
+    .geo-frame.post-index { padding-top: clamp(3rem,6vw,5.5rem); }
     .geo-stories .geo-panel-head { color: var(--color-ink); }
     .geo-stories .geo-panel-head p { color: var(--color-slate); }
+
+    .geo-snav { position: fixed; z-index: 44; bottom: 1rem; left: 50%; display: flex; gap: .2rem; padding: .3rem; background: rgba(13,15,12,.9); border: 1px solid rgba(255,255,255,.16); border-radius: 99px; transform: translate(-50%,14px); opacity: 0; pointer-events: none; transition: opacity .4s, transform .5s var(--ease-out); }
+    .geo-snav.on { opacity: 1; transform: translate(-50%,0); pointer-events: auto; }
+    .geo-snav a { min-height: 38px; display: inline-flex; align-items: center; padding: 0 1.1rem; border-radius: 99px; font: 600 .88rem var(--font-body); color: rgba(255,255,255,.75); transition: background .25s, color .25s; }
+    .geo-snav a:hover { color: #fff; }
+    .geo-snav a.is-active { background: var(--color-amber); color: #fff; }
 
     /* Video */
     .geo-video { background: var(--color-night); color: #fff; padding: clamp(3.5rem,7vw,6.5rem) 0; }
@@ -120,7 +129,7 @@
     }
     @media (max-width: 760px) {
       .geo-door-row { flex-direction: column; height: auto; }
-      .geo-door, .geo-door:hover, .js .geo-door[aria-selected="true"] { flex: none; min-height: 188px; }
+      .geo-door, .geo-door:hover { flex: none; min-height: 188px; }
       .geo-panel-head { grid-template-columns: 1fr; gap: 1rem; }
       .geo-paper { grid-template-columns: 1fr; }
       .geo-paper-year { padding: 0; }
@@ -147,22 +156,22 @@
 
         <section class="geo-doors" aria-label="Browse by kind">
             <div class="frame">
-                <div class="geo-door-row" role="tablist" aria-label="Kinds of work">
-                    <a class="geo-door" id="door-papers" href="#papers" role="tab" aria-controls="papers" aria-selected="true">
+                <div class="geo-door-row">
+                    <a class="geo-door" id="door-papers" href="#papers">
                         <img src="../img/hobbies/geology/calcite-micropillars.jpg" alt="" fetchpriority="low">
                         <span class="geo-door-count">7 papers</span>
                         <span class="geo-door-name">Scientific papers</span>
                         <span class="geo-door-note">My own research, each paper opened up into a page you can explore.</span>
                         <span class="geo-door-bar"></span>
                     </a>
-                    <a class="geo-door" id="door-stories" href="#stories" role="tab" aria-controls="stories" aria-selected="false">
+                    <a class="geo-door" id="door-stories" href="#stories">
                         <img src="../img/post/geology/lanzarote-skylight.jpg" alt="">
                         <span class="geo-door-count">3 posts</span>
                         <span class="geo-door-name">Stories</span>
                         <span class="geo-door-note">Geology written for anyone curious, from fieldwork to the Dolomites.</span>
                         <span class="geo-door-bar"></span>
                     </a>
-                    <a class="geo-door" id="door-video" href="#video" role="tab" aria-controls="video" aria-selected="false">
+                    <a class="geo-door" id="door-video" href="#video">
                         <img src="../img/hobbies/geology/video-door.jpg" alt="">
                         <span class="geo-door-count">3 videos</span>
                         <span class="geo-door-name">Video</span>
@@ -173,7 +182,11 @@
             </div>
         </section>
 
-        <section class="geo-papers geo-panel" id="papers" role="tabpanel" aria-labelledby="door-papers">
+        <nav class="geo-snav" id="geo-snav" aria-label="Sections of this page">
+            <a href="#papers">Papers</a><a href="#stories">Stories</a><a href="#video">Video</a>
+        </nav>
+
+        <section class="geo-papers geo-panel" id="papers">
             <div class="frame">
                 <header class="geo-panel-head">
                     <h2>Scientific papers</h2>
@@ -270,7 +283,8 @@
             </div>
         </section>
 
-        <section class="post-index geo-stories geo-panel" id="stories" role="tabpanel" aria-labelledby="door-stories">
+        <section class="geo-stories-sec" id="stories">
+        <div class="geo-frame post-index geo-stories" id="geo-frame">
         <div class="frame">
 
             <header class="geo-panel-head">
@@ -283,7 +297,7 @@
 
                 <a href="../posts/geology/geology-research-canvas.html" class="blog-post-card reveal">
                     <div class="blog-post-card-image">
-                        <img src="../img/post/geology/research-canvas-og.jpg" alt="Thirteen boxes of the Research Canvas, in three colours, assembling on a dark page">
+                        <img src="../img/post/geology/research-canvas-og.jpg" alt="The empty Research Canvas: thirteen boxes in three colours on one A4 page, on a black background">
                     </div>
                     <div class="blog-post-card-body">
                         <span class="post-date">November 2026</span>
@@ -338,9 +352,10 @@
 
             </div>
         </div>
+        </div>
         </section>
 
-        <section class="geo-video geo-panel" id="video" role="tabpanel" aria-labelledby="door-video">
+        <section class="geo-video geo-panel" id="video">
             <div class="frame">
                 <header class="geo-panel-head">
                     <h2>Video</h2>
@@ -388,49 +403,26 @@
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
     <script>
     (function () {
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var doors = [].slice.call(document.querySelectorAll('.geo-door'));
-      var panels = [].slice.call(document.querySelectorAll('.geo-panel'));
-      function open(id, focus) {
-        doors.forEach(function (d) {
-          var on = d.getAttribute('aria-controls') === id;
-          d.setAttribute('aria-selected', on);
-          d.tabIndex = on ? 0 : -1;
-          if (on && focus) d.focus();
-        });
-        panels.forEach(function (p) { p.hidden = p.id !== id; });
-        if (window.siteLenis) window.siteLenis.resize();
+      var snavLinks = [].slice.call(document.querySelectorAll('.geo-snav a'));
+      var ids = ['papers', 'stories', 'video'].map(function (i) { return document.getElementById(i); });
+      var snav = document.getElementById('geo-snav'), doorsSec = document.querySelector('.geo-doors'), frame = document.getElementById('geo-frame');
+      function spy() {
+        var y = window.innerHeight * .38, cur = -1;
+        ids.forEach(function (el, i) { if (el.getBoundingClientRect().top <= y) cur = i; });
+        doors.forEach(function (d, i) { d.classList.toggle('is-active', i === cur); });
+        snavLinks.forEach(function (a, i) { a.classList.toggle('is-active', i === cur); });
+        snav.classList.toggle('on', doorsSec.getBoundingClientRect().bottom < 70);
+        // the stories frame unfolds as it comes into view
+        var r = frame.getBoundingClientRect(), p = reduce ? 1 : Math.max(0, Math.min(1, (window.innerHeight * .92 - r.top) / (window.innerHeight * .75)));
+        p = p * p * (3 - 2 * p);
+        frame.style.setProperty('--cx', ((1 - p) * 9).toFixed(2) + 'vw');
+        frame.style.setProperty('--ci', ((1 - p) * 12).toFixed(2) + 'vh');
       }
-      function jump(id) {
-        var el = document.getElementById(id);
-        if (window.siteLenis) window.siteLenis.scrollTo(el, { offset: -64 });
-        else window.scrollTo(0, el.getBoundingClientRect().top + window.pageYOffset - 64);
-      }
-      doors.forEach(function (d, i) {
-        d.addEventListener('click', function (e) {
-          e.preventDefault();
-          var id = d.getAttribute('aria-controls');
-          open(id);
-          history.replaceState(null, '', '#' + id);
-          jump(id);
-        });
-        d.addEventListener('keydown', function (e) {
-          var step = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
-          if (!step) return;
-          e.preventDefault();
-          open(doors[(i + step + doors.length) % doors.length].getAttribute('aria-controls'), true);
-        });
-      });
-      // the Video link in a paper row opens the Video door
-      document.querySelectorAll('.geo-paper-meta a[href="#video"]').forEach(function (a) {
-        a.addEventListener('click', function (e) {
-          e.preventDefault();
-          open('video');
-          history.replaceState(null, '', '#video');
-          jump('video');
-        });
-      });
-      var start = location.hash.slice(1);
-      open(document.getElementById(start) && doors.some(function (d) { return d.getAttribute('aria-controls') === start; }) ? start : 'papers');
+      window.addEventListener('scroll', spy, { passive: true });
+      window.addEventListener('resize', spy);
+      spy();
 
       document.querySelectorAll('.geo-vid').forEach(function (fig) {
         var player = fig.querySelector('.geo-video-p');

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<!--
+    /posts/geology/geology-living-without-water.html
+    Companion reading trail for a talk at the 13th Granada-Muenster Discussion Meeting (Granada, 25-27 Nov 2026).
+    Deliberately NOT a preview of the talk. A removable post: delete this file, its card in hobbies/geology.html
+    (and change "4 posts" back to "3 posts"), and img/post/geology/lww-*.jpg.
+
+    Markers left in this file (HTML comments, not visible on the page):
+      [CHECK]  Chogani et al. 2025: only title, authors and pages were verified (Crossref); the one-line
+               description of the paper rests on the title. Read the abstract and adjust if you like.
+      [CHECK]  Xu et al. 2022 and Li et al. 2018: journal and year are right, volume/pages not checked, so none are printed.
+      [YOU]    Slots where your own words would fit are marked.
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Living Without Water | Francesco Santoro De Vico</title>
+    <meta name="description" content="A reading trail on minerals and water where there is almost none: the Moon, an asteroid, and rocks under stress. The papers behind a talk in Granada, not the talk.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Living Without Water">
+    <meta property="og:description" content="A reading trail on minerals and water where there is almost none: the Moon, an asteroid, and rocks under stress.">
+    <meta property="og:image" content="https://fsdv.eu/img/post/geology/living-without-water-og.jpg">
+    <meta property="og:url" content="https://fsdv.eu/posts/geology/geology-living-without-water.html">
+    <meta property="og:locale" content="en_GB">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
+    <link rel="stylesheet" href="/css/style.css?v=3">
+
+    <style>
+    /* ─────────────────────────────────────────────────────────────
+       Living Without Water
+
+       Signature: a trail. A thin line runs down the page and fills as you
+                  read; each paper is a numbered station on it. Three chips
+                  (Moon / Asteroid / Rock) dim the stations that do not match,
+                  so the trail stays in one piece while you follow one world.
+       Palette:   --sig      dust amber from the site's own accent family,
+                             the colour of a thin film on a grain.
+                  --sig-alt  pale water blue, used only for the filled line.
+       Everything scoped under .lw.
+       ───────────────────────────────────────────────────────────── */
+    .lw { --sig: #e0b25c; --sig-alt: #8fc4d6; background: var(--color-night); color: rgba(255,255,255,.88); }
+    .lw .site-footer { margin-top: 0; }
+    .lw-clip { overflow-x: clip; }
+
+    .lw-hero { position: relative; min-height: 88vh; min-height: 88svh; display: flex; align-items: flex-end; overflow: hidden; padding: calc(var(--nav-height) + 2rem) 0 clamp(2.5rem,6vw,5rem); }
+    .lw-hero-img { position: absolute; inset: 0; background: var(--color-night) url('/img/articles/etna/moon-fra-mauro.jpg') center 40% / cover no-repeat; opacity: .55; transform: scale(1.08); transition: transform 2.4s var(--ease-out); }
+    .is-loaded .lw-hero-img { transform: scale(1); }
+    .lw-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,10,14,.35) 0%, var(--color-night) 100%); }
+    .lw-hero .frame { position: relative; z-index: 1; width: 100%; }
+    .lw-hero .back-link { color: rgba(255,255,255,.85); }
+    .lw-hero .back-link:hover { color: #fff; }
+    .lw-kick { margin: 1.4rem 0 .9rem; font-family: var(--font-mono); font-size: .76rem; letter-spacing: .1em; text-transform: uppercase; color: var(--sig); }
+    .lw-hero h1 { color: #fff; font-weight: 300; font-size: clamp(3rem,7.4vw,7rem); line-height: .96; margin: 0 0 1.4rem; }
+    .lw-hero h1 em { display: block; color: var(--sig); font-style: italic; }
+    .lw-lede { max-width: 38rem; margin: 0; font-size: clamp(1.1rem,1.6vw,1.35rem); line-height: 1.55; color: rgba(255,255,255,.86); }
+    .lw-credit { position: absolute; z-index: 1; right: var(--gutter); bottom: .8rem; margin: 0; font: .68rem var(--font-mono); letter-spacing: .04em; color: rgba(255,255,255,.55); }
+
+    .lw-note { max-width: 40rem; margin: 0 auto; padding: clamp(2.5rem,5vw,4rem) var(--gutter) 0; font-size: 1.08rem; line-height: 1.7; }
+    .lw-note p { margin: 0 0 1.1em; color: rgba(255,255,255,.88); }
+    .lw-note a, .lw-st a { color: var(--sig); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+    .lw-note a:hover, .lw-st a:hover { color: #fff; }
+
+    .lw-chips { position: sticky; top: var(--nav-height); z-index: 5; display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; justify-content: center; padding: .8rem var(--gutter); margin-top: 2rem; background: rgba(8,10,14,.86); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(255,255,255,.08); }
+    .lw-chips span { font: .7rem var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.55); margin-right: .4rem; }
+    .lw-chip { min-height: 40px; padding: .4rem 1rem; background: transparent; color: rgba(255,255,255,.85); border: 1px solid rgba(255,255,255,.3); border-radius: 999px; font: 600 .92rem var(--font-body); cursor: pointer; transition: background .25s, color .25s, border-color .25s; }
+    .lw-chip:hover { border-color: var(--sig); }
+    .lw-chip[aria-pressed="true"] { background: var(--sig); border-color: var(--sig); color: #14161a; }
+
+    .lw-trail { position: relative; max-width: 62rem; margin: 0 auto; padding: clamp(3rem,6vw,5rem) var(--gutter) clamp(4rem,8vw,7rem) calc(var(--gutter) + 3.2rem); }
+    .lw-line, .lw-fill { position: absolute; left: calc(var(--gutter) + 1rem); top: clamp(3rem,6vw,5rem); bottom: clamp(4rem,8vw,7rem); width: 2px; }
+    .lw-line { background: rgba(255,255,255,.14); }
+    .lw-fill { background: var(--sig-alt); transform-origin: top; transform: scaleY(var(--p, 0)); }
+
+    .lw-st { position: relative; padding-bottom: clamp(3.5rem,7vw,6rem); transition: opacity .4s; }
+    .lw-st:last-child { padding-bottom: 0; }
+    .lw-st.is-dim { opacity: .2; }
+    .lw-dot { position: absolute; left: -3.2rem; top: .15rem; width: 2.1rem; height: 2.1rem; border-radius: 50%; display: grid; place-items: center; background: var(--color-night); border: 2px solid rgba(255,255,255,.3); font: 600 .78rem var(--font-mono); color: rgba(255,255,255,.7); transition: border-color .4s, color .4s, background .4s; }
+    .lw-st.is-lit .lw-dot { border-color: var(--sig-alt); color: var(--color-night); background: var(--sig-alt); }
+    .lw-tag { margin: 0 0 .5rem; font: .72rem var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--sig); }
+    .lw-st h2 { color: #fff; font-weight: 300; font-size: clamp(1.9rem,3.6vw,3rem); line-height: 1.06; margin: 0 0 1rem; }
+    .lw-st p { color: rgba(255,255,255,.88); max-width: 38rem; font-size: 1.08rem; line-height: 1.7; margin: 0 0 1em; }
+    .lw-ref { max-width: 38rem; margin: 1.2rem 0 0; padding: .9rem 1.1rem; border-left: 2px solid var(--sig); background: rgba(255,255,255,.04); font-size: .92rem; line-height: 1.55; color: rgba(255,255,255,.78); }
+    .lw-ref + .lw-ref { margin-top: .7rem; }
+    .lw-ref b { color: #fff; font-weight: 600; }
+    .lw-fig { margin: 1.8rem 0 1.8rem; max-width: 46rem; }
+    .lw-fig img { display: block; width: 100%; height: auto; background: #fff; border-radius: 3px; }
+    .lw-fig figcaption { margin-top: .6rem; font-size: .84rem; line-height: 1.5; color: rgba(255,255,255,.62); }
+    .lw-fig figcaption a { color: rgba(255,255,255,.8); }
+
+    .lw-refs { max-width: 46rem; margin: 0 auto; padding: 0 var(--gutter) clamp(3rem,6vw,5rem); }
+    .lw-refs h2 { color: #fff; font-weight: 300; font-size: clamp(1.6rem,3vw,2.3rem); margin: 0 0 .6rem; }
+    .lw-refs > p { color: rgba(255,255,255,.7); font-size: .98rem; margin: 0 0 1.4rem; }
+    .lw-refs details { border-top: 1px solid rgba(255,255,255,.14); }
+    .lw-refs details:last-of-type { border-bottom: 1px solid rgba(255,255,255,.14); }
+    .lw-refs summary { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; min-height: 48px; padding: .9rem 0; cursor: pointer; list-style: none; font-family: var(--font-display); font-size: clamp(1.2rem,2.2vw,1.5rem); color: #fff; }
+    .lw-refs summary::-webkit-details-marker { display: none; }
+    .lw-refs summary small { font: .72rem var(--font-mono); color: var(--sig); letter-spacing: .08em; }
+    .lw-refs summary::after { content: '+'; font: 1.2rem var(--font-mono); color: var(--sig); }
+    .lw-refs details[open] summary::after { content: '\2212'; }
+    .lw-refs summary small { margin-left: auto; }
+    .lw-refs ol { margin: 0 0 1.2rem; padding-left: 1.4rem; font-size: .93rem; line-height: 1.55; color: rgba(255,255,255,.8); }
+    .lw-refs li { margin: .5rem 0; padding-left: .2rem; }
+    .lw-refs a { color: var(--sig); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; overflow-wrap: anywhere; }
+    .lw-refs a:hover { color: #fff; }
+    .lw-end p { color: rgba(255,255,255,.8); }
+    .lw-end { max-width: 40rem; margin: 0 auto; padding: 0 var(--gutter) clamp(4rem,8vw,7rem); font-size: 1.05rem; line-height: 1.7; color: rgba(255,255,255,.8); }
+    .lw-end h2 { color: #fff; font-weight: 300; font-size: clamp(1.6rem,3vw,2.3rem); margin: 0 0 .8rem; }
+    .lw-end a { color: var(--sig); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+    .lw-end a:hover { color: #fff; }
+    .lw-end ul { padding-left: 1.1rem; margin: 0 0 1.4em; }
+    .lw-end li { margin: .3rem 0; }
+
+    @media (max-width: 640px) {
+        .lw-trail { padding-left: calc(var(--gutter) + 2.6rem); }
+        .lw-line, .lw-fill { left: calc(var(--gutter) + .7rem); }
+        .lw-dot { left: -2.6rem; width: 1.8rem; height: 1.8rem; font-size: .7rem; }
+        .lw-credit { position: static; padding: .8rem var(--gutter) 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .lw-hero-img { transform: none; transition: none; }
+        .lw-fill { transition: none; }
+        .lw-st, .lw-dot { transition: none; }
+    }
+    </style>
+</head>
+<body class="lw">
+    <div id="site-header"></div>
+    <div class="lw-clip">
+
+    <header class="lw-hero">
+        <div class="lw-hero-img" role="img" aria-label="The Moon's surface at Fra Mauro, photographed during Apollo 14"></div>
+        <div class="frame">
+            <a href="/hobbies/geology.html#stories" class="back-link">Geology</a>
+            <p class="lw-kick">A reading trail &middot; GMDM 13, Granada</p>
+            <h1>Living <em>without water</em></h1>
+            <p class="lw-lede">Minerals do not need an ocean to meet water. On the Moon it takes the form of rims a hundred nanometres thick on a grain. Six stops through the papers I keep coming back to.</p>
+        </div>
+        <p class="lw-credit">Fra Mauro, Apollo 14 &middot; NASA, AS14-68-9487</p>
+    </header>
+
+    <section class="lw-note">
+        <p>In November I will be at the <a href="https://sites.google.com/go.ugr.es/gmdm/gmdm-13th" rel="noopener">13th Granada&ndash;M&uuml;nster Discussion Meeting</a> in Granada, 25&ndash;27 November 2026. This page is not a preview of what I will say there.
+        It is the shelf: the articles I would put in someone&rsquo;s hands if they asked where to start, in the order I would read them.</p>
+        <!-- [YOU] one or two sentences in your own voice about why this subject, if you want them -->
+        <p>Every figure comes from an open-access paper and keeps its licence and credit. Where a paper is not open, I describe it and link it, nothing more.</p>
+    </section>
+
+    <div class="lw-chips" role="group" aria-label="Filter the trail by world">
+        <span>Follow</span>
+        <button class="lw-chip" type="button" data-f="all" aria-pressed="true">Everything</button>
+        <button class="lw-chip" type="button" data-f="moon" aria-pressed="false">The Moon</button>
+        <button class="lw-chip" type="button" data-f="asteroid" aria-pressed="false">An asteroid</button>
+        <button class="lw-chip" type="button" data-f="rock" aria-pressed="false">Rock on Earth</button>
+    </div>
+
+    <main class="lw-trail" id="trail">
+        <div class="lw-line" aria-hidden="true"></div>
+        <div class="lw-fill" id="lw-fill" aria-hidden="true"></div>
+
+        <article class="lw-st" data-w="moon">
+            <span class="lw-dot" aria-hidden="true">1</span>
+            <p class="lw-tag">The Moon &middot; from orbit</p>
+            <h2>Thin, but everywhere</h2>
+            <p>Orbital spectrometers do not see the Moon&rsquo;s interior, they see a skin: the Moon Mineralogy Mapper is sensitive to roughly the upper millimetre.
+            Li and Milliken mapped hydroxyl and water in that skin and its variation with latitude and time of day; Bandfield and colleagues, working from other spectral data,
+            found OH/H<sub>2</sub>O at all latitudes and local times, with no significant daily migration, and tied the solar-wind part to defect sites in the minerals.</p>
+            <p>Read them together: the first gives the map, the second asks whether the water moves with the Sun.</p>
+            <p class="lw-ref"><b>Li, S. &amp; Milliken, R. E.</b> Water on the surface of the Moon as seen by the Moon Mineralogy Mapper: distribution, abundance, and origins. <i>Science Advances</i> 3, e1701471 (2017). Open access, CC BY-NC.</p>
+            <p class="lw-ref"><b>Bandfield, J. L., Poston, M. J., Klima, R. L. &amp; Edwards, C. S.</b> Widespread distribution of OH/H<sub>2</sub>O on the lunar surface inferred from spectral data. <i>Nature Geoscience</i> 11, 173&ndash;177 (2018).</p>
+        </article>
+
+        <article class="lw-st" data-w="moon">
+            <span class="lw-dot" aria-hidden="true">2</span>
+            <p class="lw-tag">The Moon &middot; the grain</p>
+            <h2>Where the hydrogen sits</h2>
+            <p>Down at the scale of a single grain, the story changes. Xu and colleagues measured soil returned by Chang&rsquo;e-5 from a mid-latitude site and found the topmost ~100 nm of the grains
+            holding between 1,116 and 2,516 ppm of hydrogen, with deuterium values so light they point to the solar wind as the source; in the glass, the profile with depth is bell-shaped, in the minerals it only decreases.</p>
+            <p>The reason those rims exist at all is older, and it is a classic: Keller and McKay showed in 1997 that most lunar soil grains are wrapped in rims 60&ndash;200 nm thick,
+            amorphous or full of nanophase iron, built by solar-wind damage and by vapour from impacts. Pieters and Noble&rsquo;s review is a good map of what &ldquo;space weathering&rdquo; means across airless bodies.</p>
+            <p class="lw-ref"><b>Xu, Y. et al.</b> High abundance of solar wind-derived water in lunar soils from the middle latitude. <i>PNAS</i> (2022). Open access, CC BY-NC-ND.</p>
+            <p class="lw-ref"><b>Keller, L. P. &amp; McKay, D. S.</b> The nature and origin of rims on lunar soil grains. <i>Geochimica et Cosmochimica Acta</i> 61, 2331&ndash;2341 (1997).</p>
+            <p class="lw-ref"><b>Pieters, C. M. &amp; Noble, S. K.</b> Space weathering on airless bodies. <i>Journal of Geophysical Research: Planets</i> 121, 1865&ndash;1884 (2016).</p>
+        </article>
+
+        <article class="lw-st" data-w="moon">
+            <span class="lw-dot" aria-hidden="true">3</span>
+            <p class="lw-tag">The Moon &middot; a reservoir</p>
+            <h2>Water in glass beads</h2>
+            <p>He and colleagues looked at impact glass beads from the same Chang&rsquo;e-5 soil and showed that solar-wind hydrogen does not stay on the outside:
+            it diffuses inward, on timescales they estimate at under 15 years at 360 K, and a thick enough layer of such beads could hold as much as 2.7&times;10<sup>14</sup> kg of water.
+            The schematic below is theirs, and it is a useful picture of how a surface that looks dry can keep a store.</p>
+            <figure class="lw-fig">
+                <img src="/img/post/geology/lww-lunar-water-cycle.jpg" alt="Three-stage schematic: an impact makes glass beads, solar wind hydrogen diffuses into them, and they become a water reservoir of 2.7 times 10 to the 14 kg" width="1000" height="520" loading="lazy">
+                <figcaption>Stages of the lunar surface water cycle with impact glass beads. Fig. 4 in He et al. (2023), cropped. &copy; the authors, <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener">CC BY 4.0</a>.</figcaption>
+            </figure>
+            <p class="lw-ref"><b>He, H. et al.</b> A solar wind-derived water reservoir on the Moon hosted by impact glass beads. <i>Nature Geoscience</i> 16, 294&ndash;300 (2023). <a href="https://doi.org/10.1038/s41561-023-01159-6" rel="noopener">doi:10.1038/s41561-023-01159-6</a></p>
+        </article>
+
+        <article class="lw-st" data-w="moon">
+            <span class="lw-dot" aria-hidden="true">4</span>
+            <p class="lw-tag">The Moon &middot; the cold end</p>
+            <h2>And then, ice</h2>
+            <p>The one place where water does sit as ice is in the permanently shadowed regions. Li and colleagues found spectral features of H<sub>2</sub>O ice exposed at the optical surface,
+            within 20&deg; of both poles, where annual maximum temperatures stay below 110 K. It is patchy: only about 3.5% of the cold traps show exposed ice,
+            and some pixels may hold around 30 wt% mixed with dry regolith.</p>
+            <p class="lw-ref"><b>Li, S. et al.</b> Direct evidence of surface exposed water ice in the lunar polar regions. <i>PNAS</i> (2018). Open access, CC BY-NC-ND (so no figure here).</p>
+        </article>
+
+        <article class="lw-st" data-w="asteroid">
+            <span class="lw-dot" aria-hidden="true">5</span>
+            <p class="lw-tag">An asteroid &middot; the opposite problem</p>
+            <h2>Too much water, then none</h2>
+            <p>Bennu is the counterpart to the Moon: water was abundant once, and it left. In samples returned by OSIRIS-REx, McCoy and colleagues found sodium-bearing phosphates, carbonates, sulfates, chlorides and fluorides,
+            the leftovers of a late-stage brine that evaporated early in the history of Bennu&rsquo;s parent body. They also note that many of these salts decompose with prolonged exposure to Earth&rsquo;s air, which is why the sample return and its curation matter.</p>
+            <figure class="lw-fig">
+                <img src="/img/post/geology/lww-bennu-brine.jpg" alt="Chart of the order in which mineral phases form as the brine on Bennu's parent body evaporates, from calcium carbonate to sodium fluoride" width="800" height="545" loading="lazy">
+                <figcaption>Sequence of mineral phases as the brine evaporates. Fig. 6 in McCoy et al. (2025), cropped. &copy; the authors, <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener">CC BY 4.0</a>.</figcaption>
+            </figure>
+            <p class="lw-ref"><b>McCoy, T. J. et al.</b> An evaporite sequence from ancient brine recorded in Bennu samples. <i>Nature</i> 637 (2025). <a href="https://doi.org/10.1038/s41586-024-08495-6" rel="noopener">doi:10.1038/s41586-024-08495-6</a></p>
+        </article>
+
+        <article class="lw-st" data-w="rock">
+            <span class="lw-dot" aria-hidden="true">6</span>
+            <p class="lw-tag">Rock on Earth &middot; what water does inside a crystal</p>
+            <h2>The stress is the story</h2>
+            <p>A reaction between a mineral and a little water is not a quiet thing. Pl&uuml;mper and colleagues took marbles containing periclase that had hydrated to brucite and measured what the reaction did to the rock around it:
+            differential stresses of at least 300 MPa, with local maxima around 1.5 GPa, dislocation densities up to 10<sup>15</sup>&nbsp;m<sup>&minus;2</sup>, and a network of reaction-induced cracks that X-ray tomography shows connecting the brucite domains.
+            It is one of those papers where the figure does most of the talking.</p>
+            <figure class="lw-fig">
+                <img src="/img/post/geology/lww-brucite-marble.jpg" alt="Microscope, electron-image and tomography views of marble with brucite grains surrounded by cracks" width="1000" height="470" loading="lazy">
+                <figcaption>Microstructures in brucite-free and brucite-bearing marble. Fig. 1 in Pl&uuml;mper et al. (2022), cropped. &copy; the authors, <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener">CC BY</a>.</figcaption>
+            </figure>
+            <p>The companion question is what water <em>is</em> when it is almost nowhere. Chogani, King, Tutolo, &#381;ivkovi&#263; and Pl&uuml;mper&rsquo;s title says it plainly:
+            the geochemistry of aqueous fluids changes when they are confined in nanometre-scale spaces.</p>
+            <!-- [CHECK] sentence above rests on the title only; verify against the abstract. -->
+            <p class="lw-ref"><b>Pl&uuml;mper, O., Wallis, D., Teuling, F., Moulas, E., Schmalholz, S. M., Amiri, H. &amp; M&uuml;ller, D.</b> High-magnitude stresses induced by mineral-hydration reactions. <i>Geology</i> 50, 1351 (2022). Open access, CC BY.</p>
+            <p class="lw-ref"><b>Chogani, A., King, H. E., Tutolo, B., &#381;ivkovi&#263;, A. &amp; Pl&uuml;mper, O.</b> Geochemistry of lithospheric aqueous fluids modified by nanoconfinement. <i>Nature Geoscience</i> 18, 191&ndash;196 (2025). <a href="https://doi.org/10.1038/s41561-024-01629-5" rel="noopener">doi:10.1038/s41561-024-01629-5</a></p>
+        </article>
+    </main>
+
+    <section class="lw-refs" id="references">
+        <h2>The reading, by topic</h2>
+        <p>Everything the trail and the talk lean on, grouped by subject. A DOI is printed only where I have checked it.</p>
+        <details open>
+            <summary>Water on the Moon: how much, where, in what form<small>11</small></summary>
+            <ol>
+                <li>Li, S. &amp; Milliken, R. E. (2017). Water on the surface of the Moon as seen by the Moon Mineralogy Mapper. <i>Science Advances</i> 3, e1701471. <a href="https://doi.org/10.1126/sciadv.1701471" rel="noopener">doi:10.1126/sciadv.1701471</a></li>
+                <li>W&ouml;hler, C. et al. (2017). Time-of-day&ndash;dependent global distribution of lunar surficial water/hydroxyl. <i>Science Advances</i> 3, e1701286. <a href="https://doi.org/10.1126/sciadv.1701286" rel="noopener">doi:10.1126/sciadv.1701286</a></li>
+                <li>Bandfield, J. L. et al. (2018). Widespread distribution of OH/H<sub>2</sub>O on the lunar surface inferred from spectral data. <i>Nature Geoscience</i> 11, 173&ndash;177. <a href="https://doi.org/10.1038/s41561-018-0065-0" rel="noopener">doi:10.1038/s41561-018-0065-0</a></li>
+                <li>Honniball, C. I. et al. (2021). Molecular water detected on the sunlit Moon by SOFIA. <i>Nature Astronomy</i> 5. <a href="https://doi.org/10.1038/s41550-020-01222-x" rel="noopener">doi:10.1038/s41550-020-01222-x</a></li>
+                <li>Lin, H. et al. (2022). In situ detection of water on the Moon by the Chang&rsquo;E-5 lander. <i>Science Advances</i> 8, eabl9174. <a href="https://doi.org/10.1126/sciadv.abl9174" rel="noopener">doi:10.1126/sciadv.abl9174</a></li>
+                <li>Xu, Y. et al. (2022). High abundance of solar wind-derived water in lunar soils from the middle latitude. <i>PNAS</i> 119, e2214395119. <a href="https://doi.org/10.1073/pnas.2214395119" rel="noopener">doi:10.1073/pnas.2214395119</a></li>
+                <li>He, H. et al. (2023). A solar wind-derived water reservoir on the Moon hosted by impact glass beads. <i>Nature Geoscience</i> 16, 294&ndash;300. <a href="https://doi.org/10.1038/s41561-023-01159-6" rel="noopener">doi:10.1038/s41561-023-01159-6</a></li>
+                <li>Xu, Y. et al. (2025). Widespread ilmenite contributions to the surface water cycle in lunar Procellarum KREEP Terrane. <i>Nature Communications</i> 16. <a href="https://doi.org/10.1038/s41467-025-62914-4" rel="noopener">doi:10.1038/s41467-025-62914-4</a></li>
+                <li>Jin, S. et al. (2024). Evidence of a hydrated mineral enriched in water and ammonium molecules in the Chang&rsquo;e-5 lunar sample. <i>Nature Astronomy</i> 8, 1127&ndash;1137. <a href="https://doi.org/10.1038/s41550-024-02306-8" rel="noopener">doi:10.1038/s41550-024-02306-8</a></li>
+                <li>Li, S. et al. (2018). Direct evidence of surface exposed water ice in the lunar polar regions. <i>PNAS</i> 115, 8907. <a href="https://doi.org/10.1073/pnas.1802345115" rel="noopener">doi:10.1073/pnas.1802345115</a></li>
+                <li>Colaprete, A. et al. (2010). Detection of water in the LCROSS ejecta plume. <i>Science</i> 330. <a href="https://doi.org/10.1126/science.1186986" rel="noopener">doi:10.1126/science.1186986</a></li>
+            </ol>
+        </details>
+        <details>
+            <summary>Space weathering and airless surfaces<small>7</small></summary>
+            <ol>
+                <li>Pieters, C. M. &amp; Noble, S. K. (2016). Space weathering on airless bodies. <i>JGR Planets</i> 121, 1865&ndash;1884. <a href="https://doi.org/10.1002/2016JE005128" rel="noopener">doi:10.1002/2016JE005128</a></li>
+                <li>Keller, L. P. &amp; McKay, D. S. (1997). The nature and origin of rims on lunar soil grains. <i>Geochimica et Cosmochimica Acta</i> 61, 2331&ndash;2341.</li>
+                <li>Li, C. et al. (2022). Impact-driven disproportionation origin of nanophase iron particles in Chang&rsquo;e-5 lunar soil sample. <i>Nature Astronomy</i> 6, 1156&ndash;1162. <a href="https://doi.org/10.1038/s41550-022-01763-3" rel="noopener">doi:10.1038/s41550-022-01763-3</a></li>
+                <li>Delbo, M. et al. (2014). Thermal fatigue as the origin of regolith on small asteroids. <i>Nature</i> 508, 233. <a href="https://doi.org/10.1038/nature13153" rel="noopener">doi:10.1038/nature13153</a></li>
+                <li>Denevi, B. W. et al. (2023). Space weathering at the Moon. <i>Reviews in Mineralogy and Geochemistry</i> 89, 611&ndash;650.</li>
+                <li>Neal, C. R. et al. (eds.) (2023). <i>New Views of the Moon 2</i>. Reviews in Mineralogy and Geochemistry 89.</li>
+                <li>Heiken, G., Vaniman, D. &amp; French, B. M. (eds.) (1991). <i>Lunar Sourcebook</i>. Cambridge University Press.</li>
+            </ol>
+        </details>
+        <details>
+            <summary>Dust<small>2</small></summary>
+            <ol>
+                <li>Farrell, W. M. et al. (2023). The dust, atmosphere, and plasma at the Moon. <i>Reviews in Mineralogy and Geochemistry</i> 89, 563&ndash;609.</li>
+                <li>Szalay, J. R. &amp; Hor&aacute;nyi, M. (2015). The search for electrostatically lofted grains above the Moon with the Lunar Dust Experiment. <i>Geophysical Research Letters</i> 42, 5141.</li>
+            </ol>
+        </details>
+        <details>
+            <summary>Water, minerals and confinement on Earth<small>8</small></summary>
+            <ol>
+                <li>Putnis, A. (2009). Mineral replacement reactions. <i>Reviews in Mineralogy and Geochemistry</i> 70, 87&ndash;124.</li>
+                <li>Pl&uuml;mper, O. et al. (2022). High-magnitude stresses induced by mineral-hydration reactions. <i>Geology</i> 50, 1351. <a href="https://doi.org/10.1130/G50493.1" rel="noopener">doi:10.1130/G50493.1</a></li>
+                <li>Chogani, A. et al. (2025). Geochemistry of lithospheric aqueous fluids modified by nanoconfinement. <i>Nature Geoscience</i> 18, 191&ndash;196. <a href="https://doi.org/10.1038/s41561-024-01629-5" rel="noopener">doi:10.1038/s41561-024-01629-5</a></li>
+                <li>Tamppari, L. K. et al. (2012). <i>Antarctic Science</i> 24, 211, on weathering in the Antarctic Dry Valleys.</li>
+                <li>McCoy, T. J. et al. (2025). An evaporite sequence from ancient brine recorded in Bennu samples. <i>Nature</i> 637. <a href="https://doi.org/10.1038/s41586-024-08495-6" rel="noopener">doi:10.1038/s41586-024-08495-6</a></li>
+                <li>Santoro De Vico, F. et al. (2024). Additive impact on early-stage magnesium carbonate mineralisation. <i>Geochemical Perspectives Letters</i> 32, 46&ndash;51. <a href="https://doi.org/10.7185/geochemlet.2441" rel="noopener">doi:10.7185/geochemlet.2441</a></li>
+                <li>Santoro De Vico, F. et al. (2025). Formation of micropillars on etched calcite and their biomimetic effect on wettability. <i>Materials &amp; Design</i> 255, 114214. <a href="https://doi.org/10.1016/j.matdes.2025.114214" rel="noopener">doi:10.1016/j.matdes.2025.114214</a></li>
+                <li><i>Elements</i> 18(3) (2022), &ldquo;Water in Planetary Bodies&rdquo;. Marrocchi &amp; Beck, pp. 149&ndash;153; Peslier &amp; De Sanctis, from p. 167; Vacher &amp; Fujiya, pp. 175&ndash;180; Izidoro &amp; Piani, pp. 181&ndash;186: <a href="https://doi.org/10.2138/gselements.18.3.149" rel="noopener">doi:10.2138/gselements.18.3.149</a>, <a href="https://doi.org/10.2138/gselements.18.3.167" rel="noopener">doi:10.2138/gselements.18.3.167</a>, <a href="https://doi.org/10.2138/gselements.18.3.175" rel="noopener">doi:10.2138/gselements.18.3.175</a>, <a href="https://doi.org/10.2138/gselements.18.3.181" rel="noopener">doi:10.2138/gselements.18.3.181</a>.</li>
+            </ol>
+        </details>
+        <details>
+            <summary>Building where there is no liquid water<small>8</small></summary>
+            <ol>
+                <li>Melchiori, G., Santoro De Vico, F. et al. (2026). Volcanic deposits from Mount Etna (Italy) as high-fidelity lunar simulants for in-situ resource utilization (ISRU) applications. <i>Materials Today Advances</i> 29, 100678. <a href="https://doi.org/10.1016/j.mtadv.2025.100678" rel="noopener">doi:10.1016/j.mtadv.2025.100678</a></li>
+                <li>Driouich, A., Goudarzi, A., Santoro De Vico, F. et al. (2026). Role of amorphous phase, temperature fluctuations, and vacuum on the performance of alkali-activated lunar regolith simulants. <i>Materials and Structures</i> 59, 349. <a href="https://doi.org/10.1617/s11527-026-03243-w" rel="noopener">doi:10.1617/s11527-026-03243-w</a></li>
+                <li>Wang, K.-t. et al. (2017). Lunar regolith can allow the synthesis of cement materials with near-zero water consumption. <i>Gondwana Research</i> 44, 1&ndash;6. <a href="https://doi.org/10.1016/j.gr.2016.11.001" rel="noopener">doi:10.1016/j.gr.2016.11.001</a></li>
+                <li>Grugel, R. N. &amp; Toutanji, H. (2008). Sulfur &ldquo;concrete&rdquo; for lunar applications. <i>Advances in Space Research</i> 41, 103. <a href="https://doi.org/10.1016/j.asr.2007.08.018" rel="noopener">doi:10.1016/j.asr.2007.08.018</a></li>
+                <li>Meurisse, A. et al. (2018). Solar 3D printing of lunar regolith. <i>Acta Astronautica</i> 152, 800&ndash;810. <a href="https://doi.org/10.1016/j.actaastro.2018.06.063" rel="noopener">doi:10.1016/j.actaastro.2018.06.063</a></li>
+                <li>Lim, S. et al. (2022). Challenges in the microwave heating of lunar regolith: analysis through the design of a microwave heating demonstrator (MHD) payload. <i>Advances in Space Research</i> 69, 751&ndash;760. <a href="https://doi.org/10.1016/j.asr.2021.10.038" rel="noopener">doi:10.1016/j.asr.2021.10.038</a></li>
+                <li>Farries, K. W. et al. (2021). Sintered or melted regolith for lunar construction. <i>Construction and Building Materials</i> 296, 123627. <a href="https://doi.org/10.1016/j.conbuildmat.2021.123627" rel="noopener">doi:10.1016/j.conbuildmat.2021.123627</a></li>
+                <li>Roberts, A. D. et al. (2021). Blood, sweat, and tears: extraterrestrial regolith biocomposites with in vivo binders. <i>Materials Today Bio</i> 12, 100136. <a href="https://doi.org/10.1016/j.mtbio.2021.100136" rel="noopener">doi:10.1016/j.mtbio.2021.100136</a></li>
+            </ol>
+        </details>
+    </section>
+
+    <section class="lw-end">
+        <h2>Closer to home</h2>
+        <p>Some of my own papers sit on the same ground, minerals reacting at small scales with a little fluid:</p>
+        <ul>
+            <li><a href="/articles/mgco3-citrate.html">Additive impact on early-stage magnesium carbonate mineralisation</a></li>
+            <li><a href="/articles/calcite-micropillars.html">Formation of micropillars on etched calcite</a></li>
+            <li><a href="/articles/etna-lunar-simulants.html">Volcanic deposits from Mount Etna as lunar simulants</a></li>
+        </ul>
+        <p>And one from this site&rsquo;s stories, on another way of dealing with a world without air: <a href="/posts/geology/geology-two-roofs.html">Two Roofs for the Moon</a>.</p>
+        <p><a href="/hobbies/geology.html#stories">&larr; Back to the stories</a></p>
+    </section>
+
+    </div>
+    <div id="site-footer"></div>
+    <script src="/js/components.js?v=3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+    <script src="/js/site.js?v=3" defer></script>
+    <script>
+    (function () {
+      var sts = [].slice.call(document.querySelectorAll('.lw-st'));
+      var trail = document.getElementById('trail'), fill = document.getElementById('lw-fill');
+      var chips = [].slice.call(document.querySelectorAll('.lw-chip'));
+      var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      chips.forEach(function (c) {
+        c.addEventListener('click', function () {
+          var f = c.dataset.f;
+          chips.forEach(function (x) { x.setAttribute('aria-pressed', x === c); });
+          sts.forEach(function (s) { s.classList.toggle('is-dim', f !== 'all' && s.dataset.w !== f); });
+        });
+      });
+
+      function update() {
+        var r = trail.getBoundingClientRect(), vh = window.innerHeight;
+        var p = (vh * 0.6 - r.top) / r.height;
+        fill.style.setProperty('--p', Math.max(0, Math.min(1, p)).toFixed(3));
+        sts.forEach(function (s) {
+          s.classList.toggle('is-lit', s.getBoundingClientRect().top < vh * 0.6);
+        });
+      }
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    })();
+    </script>
+</body>
+</html>

@@ -1,283 +1,157 @@
 <!DOCTYPE html>
+<!--
+    /posts/photography/photography-Artemisii.html
+    Redesign Nov 2026. The text is the original; changes to it are limited to:
+      - factual fixes: art002e010208 is NASA's "The Edge of Darkness" (6 April 2026), a view of the Moon's
+        terminator with no Earth in it, so the hero/figure captions and the sentences that put Earth in that frame were corrected;
+        the "optical navigation cameras" claim was removed (NASA's page lists no camera);
+      - the "Section N:" prefixes became numerals; stray " ," before commas were fixed.
+    [CHECK] Intro and Section 3 are still written as if the mission had not yet flown ("we will see", "When Christina Koch or
+            Victor Glover look out"). Artemis II flew in April 2026: decide whether to put these in the past tense.
+    [CHECK] Blue Marble caption says "the first photograph showing the fully illuminated Earth": too strong, left as it was.
+-->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Last Frontier of Sight | Artemis II Visual Legacy</title>
-    <link rel="stylesheet" href="../../css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>The Last Frontier of Sight | Francesco Santoro De Vico</title>
+    <meta name="description" content="From Earthrise to the lunar terminator of Artemis II: how four photographs, 1968 to 2026, changed the way we see our place in space.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="The Last Frontier of Sight">
+    <meta property="og:description" content="From Earthrise to Artemis II: four photographs, 1968 to 2026, and what they did to the way we see ourselves.">
+    <meta property="og:image" content="https://fsdv.eu/img/post/photography/artemis-og.jpg">
+    <meta property="og:url" content="https://fsdv.eu/posts/photography/photography-Artemisii.html">
+    <meta property="og:locale" content="en_GB">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
+    <link rel="stylesheet" href="/css/style.css?v=3">
+
     <style>
+    /* ─────────────────────────────────────────────────────────────
+       The Last Frontier of Sight
 
-        /* ── Dark page override ── */
-        body.dark-page {
-        background-color: var(--color-obsidian);
-        color: var(--color-calcite);
-        }
+       Signature: the viewfinder. Every picture sits in a frame with crop
+                  marks at the corners and a mono data strip under it (NASA
+                  frame number, date), and a frame counter in the corner
+                  follows the picture you are looking at. The four-frame
+                  timeline places 1968, 1972, 1990 and 2026 at their real
+                  distance on one line.
+       Palette:   --sig      earthlight, the pale blue the post already used.
+                  --sig-alt  regolith cream, the light of the terminator.
+       Everything scoped under .art.
+       ───────────────────────────────────────────────────────────── */
+    .art { --sig: #7ab3d4; --sig-alt: #e6dcc3; background: var(--color-night); color: rgba(255,255,255,.86); }
+    .art .site-footer { margin-top: 0; }
+    .art-clip { overflow-x: clip; }
 
-        /* ── Hero (post-specific) ── */
-        .hero {
-            position: relative;
-            width: 100%;
-            height: 92vh;
-            min-height: 500px;
-            overflow: hidden;
-            display: flex;
-            align-items: flex-end;
-            margin-top: var(--nav-height);
-        }
+    .art-prog { position: fixed; z-index: 60; top: 0; left: 0; height: 2px; width: 100%; background: var(--sig); transform-origin: left; transform: scaleX(var(--p,0)); pointer-events: none; }
+    .art-count { position: fixed; z-index: 40; right: var(--gutter); bottom: 1.2rem; display: flex; gap: .7rem; align-items: baseline; padding: .55rem .9rem; background: rgba(8,10,14,.78); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,.14); font: .72rem var(--font-mono); letter-spacing: .08em; color: rgba(255,255,255,.75); opacity: 0; transform: translateY(8px); transition: opacity .4s, transform .4s; pointer-events: none; }
+    .art-count.is-on { opacity: 1; transform: none; }
+    .art-count b { color: var(--sig); font-weight: 500; }
 
-        .hero img {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            filter: brightness(0.55);
-        }
+    /* hero */
+    .art-hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; padding: calc(var(--nav-height) + 2rem) 0 clamp(2.5rem,6vw,5rem); }
+    .art-hero-img { position: absolute; inset: 0; background: #000 url('/img/post/photography/artemis-edge-of-darkness.jpg') center 38% / cover no-repeat; transform: scale(1.1); transition: transform 2.8s var(--ease-out); }
+    .is-loaded .art-hero-img { transform: scale(1); }
+    .art-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,10,14,.45) 0%, rgba(8,10,14,0) 30%, rgba(8,10,14,.55) 70%, var(--color-night) 100%); }
+    .art-hero .frame { position: relative; z-index: 1; width: 100%; }
+    .art-hero .back-link { color: rgba(255,255,255,.85); }
+    .art-hero .back-link:hover { color: #fff; }
+    .art-kick, .art-cap { text-shadow: 0 1px 8px rgba(0,0,0,.8); }
+    .art-kick { margin: 1.4rem 0 1rem; font: .76rem var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--sig); }
+    .art-hero h1 { color: #fff; font-weight: 300; font-size: clamp(2.8rem,6.6vw,6.4rem); line-height: .98; margin: 0 0 1.4rem; max-width: 15ch; }
+    .art-hero h1 em { display: block; font-style: italic; color: var(--sig-alt); font-size: .52em; line-height: 1.15; margin-top: .5em; max-width: 24ch; }
+    .art-cap { margin: 0; font: .72rem var(--font-mono); letter-spacing: .04em; color: rgba(255,255,255,.6); }
 
-        .hero-overlay {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            padding: 3rem 6%;
-            background: linear-gradient(to top, rgba(10,10,15,0.95) 0%, transparent 100%);
-        }
+    /* article */
+    .art-body { max-width: 42rem; margin: 0 auto; padding: clamp(3rem,6vw,5rem) var(--gutter) 2rem; }
+    .art-body p { margin: 0 0 1.5rem; font-size: 1.12rem; line-height: 1.78; color: rgba(255,255,255,.84); }
+    .art-body strong { color: #fff; font-weight: 600; }
+    .art-lead::first-letter { float: left; font-family: var(--font-display); font-weight: 300; font-size: 5.6rem; line-height: .78; margin: .08em .1em 0 0; color: var(--sig); }
+    .art-sec { margin: clamp(3.5rem,7vw,6rem) 0 1.4rem; }
+    .art-sec small { display: block; margin-bottom: .6rem; font: .74rem var(--font-mono); letter-spacing: .14em; color: var(--sig); }
+    .art-sec h2 { margin: 0; color: #fff; font-weight: 300; font-size: clamp(1.9rem,3.8vw,3rem); line-height: 1.08; }
 
-        .hero-meta {
-            font-family: var(--font-body);
-            font-size: 0.78rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: #7ab3d4;
-            margin-bottom: 1rem;
-        }
+    /* the viewfinder frame */
+    .vf { position: relative; margin: 2.8rem calc(-1 * clamp(0px, 6vw, 5rem)); }
+    .vf-in { position: relative; padding: 14px; }
+    .vf-in img { display: block; width: 100%; height: auto; max-height: 78vh; object-fit: contain; background: #000; }
+    .vf-in::before, .vf-in::after, .vf-c::before, .vf-c::after { content: ''; position: absolute; width: 22px; height: 22px; border: 0 solid var(--sig); opacity: .85; pointer-events: none; }
+    .vf-in::before { top: 0; left: 0; border-width: 1.5px 0 0 1.5px; }
+    .vf-in::after { top: 0; right: 0; border-width: 1.5px 1.5px 0 0; }
+    .vf-c { position: absolute; inset: 0; pointer-events: none; }
+    .vf-c::before { bottom: 0; left: 0; border-width: 0 0 1.5px 1.5px; }
+    .vf-c::after { bottom: 0; right: 0; border-width: 0 1.5px 1.5px 0; }
+    .vf figcaption { display: flex; flex-wrap: wrap; gap: .3rem 1rem; padding: .7rem 14px 0; font-size: .86rem; line-height: 1.55; color: rgba(255,255,255,.66); }
+    .vf figcaption .id { font: .7rem var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--sig); flex: 0 0 100%; }
 
-        .hero h1 {
-            font-size: clamp(1.8rem, 4vw, 3.2rem);
-            font-weight: 400;
-            line-height: 1.25;
-            color: #f5f0e8;
-            max-width: 820px;
-            margin-bottom: 1.2rem;
-            letter-spacing: -0.01em;
-        }
+    .art-body blockquote { margin: 3rem 0; padding: 0 0 0 1.6rem; border-left: 2px solid var(--sig); }
+    .art-body blockquote p { margin: 0; font-family: var(--font-display); font-weight: 300; font-size: clamp(1.7rem,3.4vw,2.5rem); line-height: 1.2; color: #fff; }
+    .art-body blockquote cite { display: block; margin-top: 1rem; font: .72rem var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.55); font-style: normal; }
+    .art-rule { border: 0; border-top: 1px solid rgba(255,255,255,.14); margin: 3rem 0; }
 
-        .hero-caption {
-            font-size: 0.78rem;
-            color: #8a9aaa;
-            font-family: var(--font-body);
-            font-style: italic;
-        }
+    /* four frames on one line */
+    .tl { max-width: 62rem; margin: clamp(2.5rem,5vw,4rem) auto; padding: 0 var(--gutter); }
+    .tl-stage { position: relative; aspect-ratio: 16 / 9; background: #000; overflow: hidden; }
+    .tl-stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity .6s; }
+    .tl-stage img.is-on { opacity: 1; }
+    .tl-stage::before, .tl-stage::after { content: ''; position: absolute; z-index: 1; width: 26px; height: 26px; border: 0 solid var(--sig); pointer-events: none; }
+    .tl-stage::before { top: 10px; left: 10px; border-width: 1.5px 0 0 1.5px; }
+    .tl-stage::after { bottom: 10px; right: 10px; border-width: 0 1.5px 1.5px 0; }
+    .tl-info { display: grid; grid-template-columns: 11rem 1fr; gap: .4rem 1.6rem; padding: 1.1rem 0 0; min-height: 7.2rem; }
+    .tl-info h3 { margin: 0; color: #fff; font-weight: 300; font-size: clamp(1.5rem,3vw,2.1rem); line-height: 1.1; }
+    .tl-info h3 small { display: block; margin-bottom: .4rem; font: .72rem var(--font-mono); letter-spacing: .1em; color: var(--sig); }
+    .tl-info p { margin: 0; font-size: .98rem; line-height: 1.6; color: rgba(255,255,255,.74); }
+    .tl-axis { position: relative; height: 4.4rem; margin: 1.6rem .6rem 0; }
+    .tl-axis::before { content: ''; position: absolute; left: 0; right: 0; top: 1.1rem; height: 1px; background: rgba(255,255,255,.25); }
+    .tl-pt { position: absolute; top: 0; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: .55rem; min-width: 48px; min-height: 48px; padding: 0; background: none; border: 0; color: rgba(255,255,255,.62); font: .78rem var(--font-mono); letter-spacing: .06em; cursor: pointer; }
+    .tl-pt i { width: 14px; height: 14px; margin-top: 1.1rem; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.55); background: var(--color-night); transform: translateY(-50%); transition: background .3s, border-color .3s, transform .3s; }
+    .tl-pt:hover i { border-color: var(--sig); }
+    .tl-pt[aria-selected="true"] { color: #fff; }
+    .tl-pt[aria-selected="true"] i { background: var(--sig); border-color: var(--sig); transform: translateY(-50%) scale(1.35); }
+    .tl-hint { margin: 1rem 0 0; font: .7rem var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.45); }
 
-        /* ── Article Layout ── */
-        article {
-            max-width: 740px;
-            margin: 0 auto;
-            padding: 4rem 1.5rem 6rem;
-        }
+    /* sources */
+    .art-src { max-width: 42rem; margin: 0 auto; padding: 0 var(--gutter) clamp(3rem,6vw,5rem); }
+    .art-src h3 { margin: 0 0 1rem; font: .74rem var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--sig); font-weight: 400; }
+    .art-src ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid rgba(255,255,255,.14); }
+    .art-src li { padding: .75rem 0; border-bottom: 1px solid rgba(255,255,255,.14); font-size: .95rem; }
+    .art-src a { color: rgba(255,255,255,.85); text-decoration: none; background: linear-gradient(var(--sig), var(--sig)) 0 100% / 0 1px no-repeat; transition: background-size .35s var(--ease-out), color .3s; }
+    .art-src a:hover { color: #fff; background-size: 100% 1px; }
+    .art-nav { display: flex; flex-wrap: wrap; gap: 1rem 2rem; margin-top: 2.2rem; }
 
-        /* ── Drop Cap ── */
-        article > p:first-of-type::first-letter {
-            float: left;
-            font-size: 4.2rem;
-            line-height: 0.8;
-            margin: 0.1em 0.12em 0 0;
-            color: #7ab3d4;
-            font-family: var(--font-body);
-        }
-
-        /* ── Paragraphs ── */
-        article p {
-            margin-bottom: 1.6rem;
-            color: var(--color-feldspar);
-        }
-
-        /* ── Section Headings ── */
-        article h2 {
-            font-size: 1.45rem;
-            font-weight: 400;
-            color: #c9e0f0;
-            margin: 3.5rem 0 1.2rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid #1e3048;
-            letter-spacing: 0.01em;
-        }
-
-        article h3 {
-            font-size: 1.1rem;
-            font-weight: 400;
-            color: #7ab3d4;
-            margin: 2.5rem 0 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-family: var(--font-body);
-        }
-
-        /* ── Inline Images ── */
-        .img-block {
-            margin: 2.8rem -2rem;
-        }
-
-        .img-block img {
-            width: 100%;
-            display: block;
-            border-radius: 3px;
-            filter: brightness(0.92) saturate(0.9);
-            transition: filter 0.4s;
-        }
-
-        .img-block img:hover { filter: brightness(1) saturate(1); }
-
-        .img-block figcaption {
-            font-size: 0.78rem;
-            color: #6a7a8a;
-            font-style: italic;
-            font-family: var(--font-body);
-            margin-top: 0.6rem;
-            padding: 0 0.5rem;
-            border-left: 2px solid #1e3048;
-            padding-left: 0.8rem;
-        }
-
-        /* ── Pull Quote ── */
-        blockquote {
-            margin: 2.5rem 0;
-            padding: 1.5rem 2rem;
-            border-left: 3px solid #7ab3d4;
-            background: rgba(122,179,212,0.06);
-            border-radius: 0 4px 4px 0;
-        }
-
-        blockquote p {
-            font-size: 1.2rem;
-            color: #c9e0f0;
-            font-style: italic;
-            margin: 0;
-            line-height: 1.7;
-        }
-
-        blockquote cite {
-            display: block;
-            font-size: 0.78rem;
-            color: #6a7a8a;
-            font-style: normal;
-            margin-top: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-family: var(--font-body);
-        }
-
-        /* ── Image Grid (comparison) ── */
-        .img-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin: 2.8rem -2rem;
-        }
-
-        .img-grid figure img {
-            width: 100%;
-            display: block;
-            border-radius: 3px;
-            filter: brightness(0.88) saturate(0.85);
-            transition: filter 0.4s;
-            aspect-ratio: 4/3;
-            object-fit: cover;
-        }
-
-        .img-grid figure img:hover { filter: brightness(1) saturate(1); }
-
-        .img-grid figcaption {
-            font-size: 0.72rem;
-            color: #6a7a8a;
-            font-style: italic;
-            font-family: var(--font-body);
-            margin-top: 0.4rem;
-            padding-left: 0.5rem;
-            border-left: 2px solid #1e3048;
-        }
-
-        /* ── Divider ── */
-        .divider {
-            border: none;
-            border-top: 1px solid #1e2a3a;
-            margin: 3rem 0;
-        }
-
-        /* ── Sources ── */
-        .sources {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid #1e2a3a;
-            border-radius: 6px;
-            padding: 1.8rem 2rem;
-            margin-top: 3rem;
-        }
-
-        .sources h3 {
-            margin-top: 0;
-            margin-bottom: 1rem;
-        }
-
-        .sources ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .sources ul li {
-            padding: 0.4rem 0;
-            border-bottom: 1px solid #1a2230;
-            font-size: 0.85rem;
-            font-family: var(--font-body);
-        }
-
-        .sources ul li:last-child { border-bottom: none; }
-
-        .sources a {
-            color: #7ab3d4;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .sources a:hover {
-            color: #c9e8f5;
-            text-decoration: underline;
-        }
-
-        /* ── Responsive ── */
-        @media (max-width: 640px) {
-            .img-block { margin: 2rem -0.5rem; }
-            .img-grid  { grid-template-columns: 1fr; margin: 2rem -0.5rem; }
-            .hero h1   { font-size: 1.6rem; }
-        }
+    @media (max-width: 640px) {
+        .vf { margin-left: 0; margin-right: 0; }
+        .tl-info { grid-template-columns: 1fr; }
+        .art-count { bottom: .7rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .art-hero-img { transform: none; transition: none; }
+        .tl-stage img, .art-count, .tl-pt i { transition: none; }
+    }
     </style>
 </head>
-<body class="dark-page">
-
-    <!-- ① Header globale iniettato da components.js -->
+<body class="has-cover art">
+    <div class="art-prog" id="art-prog" aria-hidden="true"></div>
+    <div class="art-count" id="art-count" aria-hidden="true"><span>FRAME</span><b id="art-id">art002e010208</b><span id="art-yr">2026</span></div>
     <div id="site-header"></div>
+    <div class="art-clip">
 
-    <!-- Hero Image -->
-    <header class="hero">
-        <img
-            src="https://images-assets.nasa.gov/image/art002e010208/art002e010208~large.jpg?w=1920&h=1280&fit=clip&crop=faces%2Cfocalpoint"
-            alt="Artemis II: Earth rising beyond the lunar limb, captured by Orion's optical navigation cameras"
-            loading="eager"
-        >
-        <div class="hero-overlay">
-            <p class="hero-meta">Space &amp; Science &nbsp;·&nbsp; May 2026</p>
-            <h1>The Last Frontier of Sight:<br>
-                Artemis II's Visual Legacy and Humanity's New Mirror</h1>
-            <p class="hero-caption">
-                Earth beyond the lunar limb, Artemis II, Orion optical navigation cameras. Credit: NASA
-            </p>
+    <header class="art-hero">
+        <div class="art-hero-img" role="img" aria-label="The Moon's terminator seen from Orion during the Artemis II flyby: crater rims standing out against the night"></div>
+        <div class="frame">
+            <a href="/hobbies/photography.html" class="back-link">Photography</a>
+            <p class="art-kick">Space &amp; Science &middot; May 2026</p>
+            <h1>The Last Frontier of Sight<em>Artemis II&rsquo;s Visual Legacy and Humanity&rsquo;s New Mirror</em></h1>
+            <p class="art-cap">&ldquo;The Edge of Darkness&rdquo; &middot; Artemis II, 6 April 2026 &middot; art002e010208 &middot; Credit: NASA</p>
         </div>
     </header>
 
-    <!-- Article Body -->
-    <article>
+    <article class="art-body">
 
         <!-- Introduction -->
-        <p>
+        <p class="art-lead">
             Close your eyes for a moment and imagine the deafening roar slowly fading,
             replaced by the nearly imperceptible hum of life-support systems. You are
             aboard the Orion capsule. Through the small reinforced porthole, the darkness
@@ -294,7 +168,7 @@
         </p>
 
         <!-- Section 1 -->
-        <h2>Section 1: The Historical Context: The Pillars of Our Perception</h2>
+        <div class="art-sec reveal"><small>01</small><h2>The Historical Context: The Pillars of Our Perception</h2></div>
 
         <p>
             To understand the importance of Artemis II, you must first look back. The history
@@ -312,21 +186,22 @@
             "Spaceship Earth."
         </p>
 
-        <figure class="img-block">
-            <img
-                src="https://images-assets.nasa.gov/image/as08-14-2383/as08-14-2383~large.jpg"
-                alt="Earthrise: Earth rising above the lunar horizon, Apollo 8, 1968"
-                loading="lazy"
-            >
+        <figure class="vf reveal" data-id="as08-14-2383" data-yr="1968">
+            <div class="vf-in">
+                <img src="/img/post/photography/apollo8-earthrise.jpg" width="1400" height="1400" loading="lazy"
+                     alt="Earthrise: Earth rising above the lunar horizon, Apollo 8, 1968">
+                <span class="vf-c"></span>
+            </div>
             <figcaption>
-                <em>Earthrise</em> (Apollo 8, December 24, 1968). Photograph by William Anders.
-                The image widely credited with launching the modern environmental movement. Source: NASA.
+                <span class="id">AS08-14-2383 &middot; 24 December 1968</span>
+                <span><em>Earthrise</em> (Apollo 8, December 24, 1968). Photograph by William Anders.
+                The image widely credited with launching the modern environmental movement. Source: NASA.</span>
             </figcaption>
         </figure>
 
         <p>
             A few years later, in 1972, the crew of Apollo 17 gave us the <strong>Blue Marble</strong>.
-            For the first time, the entire sunlit face of the Earth was visible in a single frame ,
+            For the first time, the entire sunlit face of the Earth was visible in a single frame,
             no borders, no nations, only swirling clouds and oceans. Then, in 1990, the Voyager 1
             probe turned back from six billion kilometres away to capture the <strong>Pale Blue Dot</strong>.
             As Carl Sagan wrote, Earth was reduced to "a mote of dust suspended in a sunbeam."
@@ -334,35 +209,33 @@
             our responsibility toward the only home we have ever known.
         </p>
 
-        <blockquote>
-            <p>
-                "Look again at that dot. That's here. That's home. That's us."
-            </p>
-            <cite>, Carl Sagan, Pale Blue Dot: A Vision of the Human Future in Space, 1994</cite>
+        <blockquote class="reveal">
+            <p>"Look again at that dot. That's here. That's home. That's us."</p>
+            <cite>Carl Sagan, Pale Blue Dot: A Vision of the Human Future in Space, 1994</cite>
         </blockquote>
 
         <!-- Section 2 -->
-        <h2>Section 2: The Photographs of Artemis II: Analysis of Image art002e010208</h2>
+        <div class="art-sec reveal"><small>02</small><h2>The Photographs of Artemis II: Analysis of Image art002e010208</h2></div>
 
         <p>
             We arrive at the present. Artemis II delivers an image quality without precedent,
             thanks to digital sensors that far surpass the sensitivity of the Hasselblad film
-            cameras used during the Apollo era. Examine this specific frame captured by Orion's
-            optical navigation cameras:
+            cameras used during the Apollo era. Examine this specific frame, taken on the
+            April 6, 2026 flyby:
         </p>
 
-        <figure class="img-block">
-            <img
-                src="https://images-assets.nasa.gov/image/art002e010208/art002e010208~large.jpg?w=1920&h=1280&fit=clip&crop=faces%2Cfocalpoint"
-                alt="Artemis II: Earth beyond the lunar limb, captured by Orion optical navigation cameras"
-                loading="lazy"
-            >
+        <figure class="vf reveal" data-id="art002e010208" data-yr="2026">
+            <div class="vf-in">
+                <img src="/img/post/photography/artemis-edge-of-darkness-1000.jpg" width="1000" height="667" loading="lazy"
+                     alt="The lunar terminator photographed during the Artemis II flyby: crater rims lit at the edge of the night">
+                <span class="vf-c"></span>
+            </div>
             <figcaption>
-                A symphony of contrasts. In the foreground, the lunar limb reveals its rugged skin ,
-                a regolith desert where every crater records the violence of deep geological time.
-                In the background, Earth emerges as a sapphire jewel set in ebony, reminding us
-                of the physical and metaphysical distance bridged by the crew.
-                (Source: NASA, Artemis II Multimedia)
+                <span class="id">art002e010208 &middot; 6 April 2026</span>
+                <span>A symphony of contrasts. Along the terminator, the lunar surface reveals its rugged skin,
+                a regolith desert where every crater records the violence of deep geological time,
+                and rims stand out like islands in the night. NASA titles the frame
+                &ldquo;The Edge of Darkness&rdquo;. (Source: NASA, Artemis II Multimedia)</span>
             </figcaption>
         </figure>
 
@@ -370,16 +243,14 @@
             In this image, the Moon is no longer a distant destination but a material
             presence, almost tactile. The sharpness of surface details, small craters
             nested within larger ones, razor-sharp shadows cast by the absence of
-            atmosphere, stands in deliberate contrast to the softness of the Earth
-            blurred in the distance. It is a composition that shouts "perspective."
-            It tells you that we have returned, but with new eyes: eyes capable of
+            atmosphere, tells you that we have returned, but with new eyes: eyes capable of
             capturing the nuances of lunar dust with a precision our grandparents
             could only dream of. Every pixel is a data point; every shadow is a
             story written in silence over billions of years.
         </p>
 
         <!-- Section 3 -->
-        <h2>Section 3: Why These Images Change Everything: A Prospective View</h2>
+        <div class="art-sec reveal"><small>03</small><h2>Why These Images Change Everything: A Prospective View</h2></div>
 
         <p>
             The photographs of Artemis II are not merely "more beautiful" than their
@@ -394,7 +265,7 @@
         <p>
             The cultural impact is immense. We live in the age of instant sharing.
             If Apollo was documented through grainy footage transmitted with minutes
-            of delay, Artemis II allows us to experience space in 4K resolution ,
+            of delay, Artemis II allows us to experience space in 4K resolution,
             vivid, immediate, almost visceral. This will transform the way the next
             generation, the so-called <em>Artemis Generation</em>, perceives science.
             Documentation becomes immersive. You do not simply look at a photograph;
@@ -416,7 +287,7 @@
         </p>
 
         <!-- Section 4 -->
-        <h2>Section 4: A Visual Dialogue Across Epochs</h2>
+        <div class="art-sec reveal"><small>04</small><h2>A Visual Dialogue Across Epochs</h2></div>
 
         <p>
             Comparing the historic shots with those of Artemis II is like observing
@@ -435,32 +306,29 @@
             of the moment that produced them.
         </p>
 
-        <div class="img-grid">
-            <figure>
-                <img
-                    src="https://images-assets.nasa.gov/image/as17-148-22727/as17-148-22727~large.jpg"
-                    alt="Blue Marble: Full Earth photographed by Apollo 17, 1972"
-                    loading="lazy"
-                >
-                <figcaption>
-                    <em>Blue Marble</em> (Apollo 17, December 7, 1972).
-                    The first photograph showing the fully illuminated Earth.
-                    An icon of planetary unity. Source: NASA.
-                </figcaption>
-            </figure>
-            <figure>
-                <img
-                    src="https://images-assets.nasa.gov/image/PIA23645/PIA23645~large.jpg"
-                    alt="Pale Blue Dot: Earth seen from Voyager 1, 1990, revisited"
-                    loading="lazy"
-                >
-                <figcaption>
-                    <em>Pale Blue Dot</em> revisited (Voyager 1, 1990 / reprocessed 2020).
-                    The vastness that puts everything in perspective.
-                    Source: NASA / JPL-Caltech.
-                </figcaption>
-            </figure>
+    </article>
+
+    <section class="tl" id="tl" aria-label="Four photographs, 1968 to 2026">
+        <div class="tl-stage">
+            <img class="is-on" data-i="0" src="/img/post/photography/apollo8-earthrise.jpg" alt="Earthrise, Apollo 8, 1968" loading="lazy">
+            <img data-i="1" src="/img/post/photography/apollo17-blue-marble.jpg" alt="Blue Marble, Apollo 17, 1972" loading="lazy">
+            <img data-i="2" src="/img/post/photography/voyager1-pale-blue-dot.jpg" alt="Pale Blue Dot revisited, Voyager 1, 1990, reprocessed 2020" loading="lazy">
+            <img data-i="3" src="/img/post/photography/artemis-edge-of-darkness-1000.jpg" alt="The Edge of Darkness, Artemis II, 2026" loading="lazy">
         </div>
+        <div class="tl-info" aria-live="polite">
+            <h3 id="tl-h"><small id="tl-s">1968 &middot; AS08-14-2383</small>Earthrise</h3>
+            <p id="tl-p"><em>Earthrise</em> (Apollo 8, December 24, 1968). Photograph by William Anders. The image widely credited with launching the modern environmental movement. Source: NASA.</p>
+        </div>
+        <div class="tl-axis" role="tablist" aria-label="Choose a year" id="tl-axis">
+            <button class="tl-pt" role="tab" aria-selected="true" data-i="0" data-y="1968" style="left:0%"><i></i>1968</button>
+            <button class="tl-pt" role="tab" aria-selected="false" data-i="1" data-y="1972" style="left:6.9%"><i></i>1972</button>
+            <button class="tl-pt" role="tab" aria-selected="false" data-i="2" data-y="1990" style="left:37.9%"><i></i>1990</button>
+            <button class="tl-pt" role="tab" aria-selected="false" data-i="3" data-y="2026" style="left:100%"><i></i>2026</button>
+        </div>
+        <p class="tl-hint">Years are to scale &middot; arrow keys move along the line</p>
+    </section>
+
+    <article class="art-body" style="padding-top:0">
 
         <p>
             What unites all these images, from Earthrise to the lunar limb of
@@ -481,10 +349,10 @@
             look at it with honesty and wonder.
         </p>
 
-        <hr class="divider">
+        <hr class="art-rule">
 
         <!-- Conclusion -->
-        <h2>Conclusion: To Photograph Space Is to Photograph Ourselves</h2>
+        <div class="art-sec reveal" style="margin-top:0"><small>&mdash;</small><h2>Conclusion: To Photograph Space Is to Photograph Ourselves</h2></div>
 
         <p>
             Why do we keep pointing lenses into that silent void? Because
@@ -501,52 +369,74 @@
             It has always been the same answer. It is us, together, small
             and extraordinary, suspended in the light.
         </p>
-
-        <!-- Sources -->
-        <div class="sources">
-            <h3>Sources</h3>
-            <ul>
-                <li>
-                    <a href="https://www.nasa.gov/artemis-ii-multimedia/" target="_blank" rel="noopener">
-                        NASA, Artemis II Multimedia Official Page
-                    </a>
-                </li>
-                <li>
-                    <a href="https://images-assets.nasa.gov/image/art002e010208/art002e010208~large.jpg" target="_blank" rel="noopener">
-                        NASA Image Archive, Artemis II (art002e010208)
-                    </a>
-                </li>
-                <li>
-                    <a href="https://images-assets.nasa.gov/image/as08-14-2383/as08-14-2383~large.jpg" target="_blank" rel="noopener">
-                        NASA Image Archive, Earthrise, Apollo 8 (1968)
-                    </a>
-                </li>
-                <li>
-                    <a href="https://images-assets.nasa.gov/image/as17-148-22727/as17-148-22727~large.jpg" target="_blank" rel="noopener">
-                        NASA Image Archive, Blue Marble, Apollo 17 (1972)
-                    </a>
-                </li>
-                <li>
-                    <a href="https://images-assets.nasa.gov/image/PIA23645/PIA23645~large.jpg" target="_blank" rel="noopener">
-                        NASA / JPL-Caltech, Pale Blue Dot revisited (2020)
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-        <!-- Navigazione in fondo -->
-        <div class="post-nav">
-            <a href="../../hobbies/geology.html" class="back-link">← Back to Space &amp; Science</a>
-            <a href="../../hobbies.html" class="back-link">All Hobbies &amp; Blog</a>
-        </div>
-
     </article>
 
-    <!-- ② Footer globale iniettato da components.js -->
+    <section class="art-src">
+        <h3>Sources</h3>
+        <ul>
+            <li><a href="https://www.nasa.gov/artemis-ii-multimedia/" target="_blank" rel="noopener">NASA, Artemis II Multimedia Official Page</a></li>
+            <li><a href="https://www.nasa.gov/image-detail/amf-art002e010208/" target="_blank" rel="noopener">NASA, &ldquo;The Edge of Darkness&rdquo;, Artemis II (art002e010208)</a></li>
+            <li><a href="https://images-assets.nasa.gov/image/as08-14-2383/as08-14-2383~large.jpg" target="_blank" rel="noopener">NASA Image Archive, Earthrise, Apollo 8 (1968)</a></li>
+            <li><a href="https://images-assets.nasa.gov/image/as17-148-22727/as17-148-22727~large.jpg" target="_blank" rel="noopener">NASA Image Archive, Blue Marble, Apollo 17 (1972)</a></li>
+            <li><a href="https://images-assets.nasa.gov/image/PIA23645/PIA23645~large.jpg" target="_blank" rel="noopener">NASA / JPL-Caltech, Pale Blue Dot revisited (2020)</a></li>
+        </ul>
+        <div class="art-nav">
+            <a href="/hobbies/geology.html" class="back-link">Back to Space &amp; Science</a>
+            <a href="/hobbies.html" class="back-link">All Hobbies &amp; Blog</a>
+        </div>
+    </section>
+
+    </div>
     <div id="site-footer"></div>
+    <script src="/js/components.js?v=3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+    <script src="/js/site.js?v=3" defer></script>
+    <script>
+    (function () {
+      var prog = document.getElementById('art-prog'), cnt = document.getElementById('art-count');
+      var idEl = document.getElementById('art-id'), yrEl = document.getElementById('art-yr');
+      var figs = [].slice.call(document.querySelectorAll('.vf'));
 
-    <!-- ③ Script components (percorso relativo dalla sottocartella posts/) -->
-    <script src="../../js/components.js"></script>
+      function update() {
+        var h = document.documentElement, max = h.scrollHeight - window.innerHeight;
+        prog.style.setProperty('--p', max > 0 ? Math.min(1, window.scrollY / max).toFixed(4) : 0);
+        var mid = window.innerHeight * 0.5, cur = null;
+        figs.forEach(function (f) { var r = f.getBoundingClientRect(); if (r.top < mid && r.bottom > mid) cur = f; });
+        var tl = document.getElementById('tl'), tr = tl.getBoundingClientRect();
+        if (tr.top < mid && tr.bottom > mid) { cur = null; cnt.classList.remove('is-on'); return; }
+        if (cur) { idEl.textContent = cur.dataset.id; yrEl.textContent = cur.dataset.yr; cnt.classList.add('is-on'); }
+        else cnt.classList.remove('is-on');
+      }
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
 
+      // four frames on one line
+      var data = [
+        { s: '1968 · AS08-14-2383', h: 'Earthrise', p: '<em>Earthrise</em> (Apollo 8, December 24, 1968). Photograph by William Anders. The image widely credited with launching the modern environmental movement. Source: NASA.' },
+        { s: '1972 · AS17-148-22727', h: 'Blue Marble', p: '<em>Blue Marble</em> (Apollo 17, December 7, 1972). The first photograph showing the fully illuminated Earth. An icon of planetary unity. Source: NASA.' },
+        { s: '1990 · PIA23645', h: 'Pale Blue Dot', p: '<em>Pale Blue Dot</em> revisited (Voyager 1, 1990 / reprocessed 2020). The vastness that puts everything in perspective. Source: NASA / JPL-Caltech.' },
+        { s: '2026 · art002e010208', h: 'The Edge of Darkness', p: 'Artemis II, April 6, 2026. The lunar terminator, where crater rims stand out like islands in the night. Source: NASA.' }
+      ];
+      var imgs = [].slice.call(document.querySelectorAll('.tl-stage img'));
+      var pts = [].slice.call(document.querySelectorAll('.tl-pt'));
+      var hh = document.getElementById('tl-h'), ss = document.getElementById('tl-s'), pp = document.getElementById('tl-p');
+      function pick(i) {
+        imgs.forEach(function (m, k) { m.classList.toggle('is-on', k === i); });
+        pts.forEach(function (b, k) { b.setAttribute('aria-selected', k === i); b.tabIndex = k === i ? 0 : -1; });
+        ss.textContent = data[i].s; pp.innerHTML = data[i].p;
+        hh.lastChild.nodeValue = data[i].h;
+      }
+      pts.forEach(function (b, i) {
+        b.addEventListener('click', function () { pick(i); });
+        b.addEventListener('keydown', function (e) {
+          var k = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
+          if (!k) return; e.preventDefault();
+          var n = (i + k + pts.length) % pts.length; pts[n].focus(); pick(n);
+        });
+      });
+      pick(0);
+    })();
+    </script>
 </body>
 </html>

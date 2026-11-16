@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brazuca: a Playlist | Francesco Santoro De Vico</title>
+    <meta name="description" content="Brazuca, my Brazilian music playlist on Spotify, under a string of festa junina flags you can flip.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fsdv.eu/posts/music/music-brazuca.html">
+    <meta property="og:title" content="Brazuca: a Playlist">
+    <meta property="og:description" content="Brazuca, my Brazilian music playlist on Spotify, under a string of festa junina flags you can flip.">
+    <meta property="og:image" content="https://fsdv.eu/img/post/music/music-brazuca-og.jpg">
+    <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
+    <link rel="stylesheet" href="/css/style.css?v=3">
+    <style>
+    /* Brazuca. A playlist page: the hero is a small toy that belongs to the playlist. Scoped under .bz. */
+    .bz { --mp-paper:#fff6d6; --mp-ink:#0e3b22; --mp-acc:#0b6b3a; }
+
+    .bz { background: var(--color-chalk); }
+    .bz .site-footer { margin-top: 0; }
+    .mp-clip { overflow-x: clip; }
+    .mp-hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; }
+    .mp-art { position: absolute; inset: 0; }
+    .mp-hero .frame { position: relative; z-index: 3; width: 100%; padding: calc(var(--nav-height) + 1.5rem) var(--gutter) clamp(2rem,5vw,4rem); pointer-events: none; }
+    .mp-hero .frame a, .mp-hero .frame button { pointer-events: auto; }
+    .mp-kick { margin: 1.2rem 0 .8rem; font-family: var(--font-mono); font-size: .76rem; letter-spacing: .1em; text-transform: uppercase; }
+    .mp-hero h1 { font-weight: 300; font-size: clamp(3.4rem,9vw,8.4rem); line-height: .92; margin: 0 0 1.2rem; }
+    .mp-lede { color: inherit; max-width: 34rem; margin: 0; font-size: clamp(1.1rem,1.6vw,1.35rem); line-height: 1.5; }
+    .mp-hint { color: inherit; margin: 1.4rem 0 0; font: .72rem var(--font-mono); letter-spacing: .1em; text-transform: uppercase; opacity: .7; }
+    .mp-listen { padding: clamp(3.5rem,7vw,6rem) 0; background: var(--mp-paper); color: var(--mp-ink); }
+    .mp-grid { display: grid; grid-template-columns: minmax(0,5fr) minmax(0,7fr); gap: clamp(1.5rem,4vw,4rem); align-items: start; }
+    .mp-listen h2 { font-weight: 300; font-size: clamp(2.3rem,4.6vw,3.8rem); line-height: 1.04; margin: 0 0 1.4rem; color: inherit; }
+    .mp-listen p { font-size: 1.14rem; line-height: 1.65; margin: 0 0 1.2rem; color: inherit; }
+    .mp-listen a { color: inherit; border-bottom: 1px solid var(--mp-acc); }
+    .mp-listen a:hover { color: var(--mp-acc); }
+    .mp-listen iframe { display: block; width: 100%; height: 452px; border: 0; border-radius: 12px; background: #111; }
+    .mp-end { padding: 1.6rem 0 2.4rem; background: var(--mp-paper); color: var(--mp-ink); }
+    .mp-end .frame { display: flex; flex-wrap: wrap; gap: 1rem 2rem; }
+    .mp-end .back-link { color: var(--mp-ink); }
+    @media (max-width: 860px) { .mp-grid { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) { .mp-art * { animation: none !important; } }
+    .bz .mp-hero .mp-lede, .bz .mp-hero .mp-hint { color: #fff; }
+
+    .bz .mp-hero { background: linear-gradient(#0a5a30, #0b6b3a 55%, #0e8447); color: #fff; }
+    .bz .mp-hero h1 { color: #fff; } .bz .mp-kick { color: #ffd200; }
+    .bz .mp-hero .back-link { color: rgba(255,255,255,.9); }
+    .bz-line { position: absolute; left: -2%; right: -2%; height: 38vh; }
+    .bz-line svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+    .bz-line svg path { fill: none; stroke: rgba(255,255,255,.7); stroke-width: 2; vector-effect: non-scaling-stroke; }
+    .bz-flag { position: absolute; width: clamp(34px,4.4vw,64px); height: clamp(44px,5.6vw,80px); margin-left: calc(clamp(34px,4.4vw,64px) / -2); border: 0; padding: 0; background: none; cursor: pointer; transform-origin: 50% 0; animation: bz-sw 3.6s ease-in-out infinite; }
+    .bz-flag i { display: block; width: 100%; height: 100%; background: var(--c); clip-path: polygon(0 0, 100% 0, 100% 78%, 50% 100%, 0 78%); transition: transform .5s; }
+    .bz-flag.is-flip i { transform: rotateY(180deg); filter: brightness(1.25); }
+    @keyframes bz-sw { 0%,100% { rotate: -5deg; } 50% { rotate: 5deg; } }
+    /* lab */
+    .mp-lab { padding: clamp(3.5rem,7vw,6rem) 0; background: var(--mp-paper); color: var(--mp-ink); border-top: 1px solid color-mix(in srgb, var(--mp-ink) 18%, transparent); }
+    .mp-lab h2 { font-weight: 300; font-size: clamp(2.1rem,4.2vw,3.4rem); line-height: 1.06; margin: 0 0 1rem; color: inherit; max-width: 22ch; }
+    .mp-lab h3 { font: 500 .78rem var(--font-mono); letter-spacing: .12em; text-transform: uppercase; margin: clamp(2.2rem,4vw,3.2rem) 0 1rem; color: var(--mp-acc); }
+    .mp-lab p { color: inherit; }
+    .mp-lab-kick { margin: 0 0 .7rem; font: .74rem var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--mp-acc); }
+    .mp-lab-lede { max-width: 40rem; font-size: 1.12rem; line-height: 1.6; margin: 0 0 1.6rem; }
+    .mp-lab button { font: 600 .92rem var(--font-body); cursor: pointer; }
+    .lab-b { min-height: 44px; padding: .4rem 1rem; background: none; border: 1px solid currentColor; color: inherit; transition: background .2s, color .2s; }
+    .lab-b:hover { background: color-mix(in srgb, var(--mp-ink) 10%, transparent); }
+    .lab-b[aria-pressed="true"], .lab-b[aria-selected="true"] { background: var(--mp-ink); border-color: var(--mp-ink); color: var(--mp-paper); }
+    .lab-row { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin: 0 0 1rem; }
+    .lab-row label { font: .72rem var(--font-mono); letter-spacing: .08em; text-transform: uppercase; display: inline-flex; align-items: center; gap: .6rem; }
+    .lab-row input[type=range] { accent-color: var(--mp-acc); min-height: 44px; }
+    .lab-note { font-size: .92rem; opacity: .75; margin: .8rem 0 0; max-width: 40rem; }
+    .sq { overflow-x: auto; padding-bottom: .4rem; }
+    .sq-r { display: grid; grid-template-columns: 9.5rem repeat(var(--n), minmax(34px, 1fr)); gap: 5px; align-items: stretch; margin-bottom: 5px; min-width: calc(9.5rem + var(--n) * 40px); }
+    .sq-l { font: .72rem var(--font-mono); letter-spacing: .06em; text-transform: uppercase; align-self: center; }
+    .sq-c { min-height: 44px; padding: 0; background: color-mix(in srgb, var(--mp-ink) 9%, transparent); border: 0; transition: background .08s, outline-color .08s; font: .66rem var(--font-mono); color: color-mix(in srgb, var(--mp-ink) 55%, transparent); }
+    .sq-c.on { background: var(--mp-acc); color: transparent; }
+    .sq-c.now { outline: 2px solid var(--mp-ink); outline-offset: -2px; }
+    .sq-h { font: .66rem var(--font-mono); text-align: center; opacity: .65; }
+    .tlc-bar { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
+    .tlc-bar .lab-b { font-family: var(--font-mono); font-size: .8rem; }
+    .tlc-p { min-height: 8.5rem; max-width: 44rem; padding: 1.2rem 1.4rem; border-left: 3px solid var(--mp-acc); background: color-mix(in srgb, var(--mp-ink) 6%, transparent); }
+    .tlc-p b { display: block; font: 400 clamp(1.5rem,2.6vw,2rem)/1.15 var(--font-display); margin-bottom: .5rem; }
+    .tlc-p span { font-size: 1.02rem; line-height: 1.6; }
+    .mp-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr)); gap: 1rem; }
+    .mp-cards article { padding: 1.2rem 1.3rem; border: 1px solid color-mix(in srgb, var(--mp-ink) 22%, transparent); }
+    .mp-cards h4 { margin: 0 0 .5rem; font: 400 1.35rem/1.15 var(--font-display); color: inherit; }
+    .mp-cards p { margin: 0; font-size: .97rem; line-height: 1.55; }
+    .mp-src { list-style: none; margin: 0; padding: 0; font-size: .92rem; }
+    .mp-src li { padding: .5rem 0; border-top: 1px solid color-mix(in srgb, var(--mp-ink) 16%, transparent); }
+    .mp-src a { color: inherit; border-bottom: 1px solid var(--mp-acc); }
+    .mp-src-note { font-size: .85rem; opacity: .7; margin-top: .8rem; }
+    .lab-stage { border: 1px solid color-mix(in srgb, var(--mp-ink) 22%, transparent); padding: 1rem; }
+    .lab-stage canvas { display: block; width: 100%; touch-action: none; }
+    .lab-big { font: 300 clamp(2.4rem,6vw,4.4rem)/1 var(--font-display); }
+    .lab-pad { display: grid; grid-template-columns: repeat(4, minmax(60px, 1fr)); gap: 8px; max-width: 28rem; }
+    .lab-pad button { min-height: 72px; background: color-mix(in srgb, var(--mp-ink) 9%, transparent); border: 0; color: inherit; font-size: 1.2rem; }
+    .lab-pad button.hit { background: var(--mp-acc); color: #fff; }
+    /* end lab */
+    </style>
+</head>
+<body class="has-cover bz">
+    <div id="site-header"></div>
+    <div class="mp-clip">
+    <header class="mp-hero">
+        <div class="mp-art"><div class="bz-line" id="bz-l1" style="top:2%"></div><div class="bz-line" id="bz-l2" style="top:20%"></div></div>
+        <div class="frame">
+            <a href="/hobbies/music.html" class="back-link">Back to Music</a>
+            <p class="mp-kick">Playlist · Spotify · Música brasileira</p>
+            <h1>Brazuca</h1>
+            <p class="mp-lede">Brazilian music.</p>
+            <!-- [YOU] your own caption for this playlist goes here, in place of the line above -->
+            <p class="mp-hint">Flip a flag</p>
+        </div>
+    </header>
+
+    <section class="mp-listen">
+        <div class="frame">
+            <div class="mp-grid">
+                <div>
+                    <h2 class="reveal">Listen</h2>
+                    <p class="reveal">Brazilian music.</p>
+                    <!-- [YOU] a few more lines about the playlist, if you want them -->
+                    <p class="reveal"><a href="https://open.spotify.com/playlist/3f4etutuSE0BsrO0tovK4o" target="_blank" rel="noopener">Open on Spotify &nearr;</a></p>
+                </div>
+                <iframe class="reveal" title="Brazuca, Spotify playlist" src="https://open.spotify.com/embed/playlist/3f4etutuSE0BsrO0tovK4o" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="mp-lab">
+        <div class="frame">
+            <p class="mp-lab-kick reveal">How it works</p>
+            <h2 class="reveal">Two beats, two drums</h2>
+            <p class="mp-lab-lede reveal">Samba is in 2/4. In a Rio carnival bateria the biggest surdo, the marcação, sounds on the second beat and sets the reference for everyone, while a smaller surdo answers on the first.</p>
+            <div id="lab" class="reveal"></div>
+            <p class="lab-note">Eight squares are two beats split into sixteenths. This is a simplified skeleton: a real bateria has far more going on.</p>
+            <h3>Worth knowing</h3>
+            <div class="mp-cards"><article class="reveal"><h4>Surdo</h4><p>The first surdo, the marcação, is the largest and deepest drum and sounds on the second beat. The second, the resposta, answers on the first. The third, the cutador, plays fills and syncopations across the other two.</p></article><article class="reveal"><h4>The first samba</h4><p>"Pelo Telefone" was registered with the National Library on 27 November 1916 and released on 78 rpm on 19 January 1917. It is called the founding landmark of samba as a song genre, though the claim of a "first samba" is disputed.</p></article><article class="reveal"><h4>Samba de roda</h4><p>In 2005 UNESCO declared Samba de Roda part of the Intangible Cultural Heritage of Humanity. Samba originated in the Afro-Brazilian communities of Bahia and developed in Rio de Janeiro and Salvador.</p></article><article class="reveal"><h4>Forró</h4><p>Traditional forró (pé-de-serra) is played by an accordion, a triangle and a zabumba drum, in the Northeast of Brazil. Luiz Gonzaga made "Asa Branca" famous across Brazil in the 1940s.</p></article><article class="reveal"><h4>Where "forró" comes from</h4><p>The main theory is that the word is a clipping of "forrobodó", a big party. The source marks this as unconfirmed.</p></article></div>
+            <h3>Sources</h3>
+            <ul class="mp-src"><li><a href="https://en.wikipedia.org/wiki/Samba" target="_blank" rel="noopener">Wikipedia: Samba</a></li><li><a href="https://en.wikipedia.org/wiki/Surdo" target="_blank" rel="noopener">Wikipedia: Surdo</a></li><li><a href="https://en.wikipedia.org/wiki/Forr%C3%B3" target="_blank" rel="noopener">Wikipedia: Forró</a></li></ul><p class="mp-src-note">Facts checked against these pages on 17 November 2026. Where a page marks a claim as uncertain, the text here says so.</p>
+        </div>
+    </section>
+
+    <section class="mp-end">
+        <div class="frame">
+            <a href="/hobbies/music.html" class="back-link">Back to Music</a>
+            <a href="/hobbies.html" class="back-link">All Hobbies &amp; Blog</a>
+        </div>
+    </section>
+    </div>
+    <div id="site-footer"></div>
+    <script src="/js/components.js?v=3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+    <script src="/js/site.js?v=3" defer></script>
+    <script>
+    (function () {
+
+  var cols = ['#ffd200', '#1b3a8a', '#ffffff', '#ff5d8f', '#f59e0b', '#7fd6a2', '#e0482a'];
+  function line(id, sag, n, phase) {
+    var el = document.getElementById(id), W = 1000, H = 100; el.innerHTML = '';
+    var NS = 'http://www.w3.org/2000/svg', svg = document.createElementNS(NS, 'svg'); svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H); svg.setAttribute('preserveAspectRatio', 'none');
+    var p = document.createElementNS(NS, 'path'); p.setAttribute('d', 'M0 10 Q ' + W / 2 + ' ' + (10 + sag * 2) + ' ' + W + ' 10'); svg.appendChild(p); el.appendChild(svg);
+    for (var i = 0; i < n; i++) {
+      var t = (i + .5) / n, y = (10 * (1 - t) * (1 - t) + 2 * t * (1 - t) * (10 + sag * 2) + 10 * t * t) / H * 100;
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'bz-flag'; b.setAttribute('aria-label', 'Flag');
+      b.style.left = (t * 100) + '%'; b.style.top = y + '%'; b.style.setProperty('--c', cols[(i + phase) % cols.length]); b.style.animationDelay = (-(i * .37 % 3.6)).toFixed(2) + 's';
+      b.innerHTML = '<i></i>'; b.addEventListener('click', function () { this.classList.toggle('is-flip'); }); el.appendChild(b);
+    }
+  }
+  function build() { var n = innerWidth < 700 ? 9 : 19; line('bz-l1', 70, n, 0); line('bz-l2', 90, n - 2, 3); }
+  var rt; addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(build, 200); }); build();
+    })();
+    </script>
+    <script>
+    (function () {
+
+  var AC = null;
+  function ac() { if (!AC) AC = new (window.AudioContext || window.webkitAudioContext)(); if (AC.state === 'suspended') AC.resume(); return AC; }
+  function tone(f, d, type, g, t0, f2) { var a = ac(), t = t0 || a.currentTime, o = a.createOscillator(), n = a.createGain(); o.type = type || 'sine'; o.frequency.setValueAtTime(f, t); if (f2) o.frequency.exponentialRampToValueAtTime(f2, t + d); n.gain.setValueAtTime(.0001, t); n.gain.exponentialRampToValueAtTime(g || .2, t + .006); n.gain.exponentialRampToValueAtTime(.0001, t + d); o.connect(n); n.connect(a.destination); o.start(t); o.stop(t + d + .05); }
+  function noise(d, f, q, g, type) { var a = ac(), len = Math.max(1, Math.floor(a.sampleRate * d)), b = a.createBuffer(1, len, a.sampleRate), x = b.getChannelData(0); for (var i = 0; i < len; i++) x[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 2); var s = a.createBufferSource(), fl = a.createBiquadFilter(), n = a.createGain(); s.buffer = b; fl.type = type || 'bandpass'; fl.frequency.value = f; fl.Q.value = q || 1; n.gain.value = g || .3; s.connect(fl); fl.connect(n); n.connect(a.destination); s.start(); }
+  var V = {
+    kick: function () { tone(130, .28, 'sine', .55, 0, 42); },
+    snare: function () { noise(.16, 1800, .6, .5); tone(190, .1, 'triangle', .2); },
+    rim: function () { tone(1700, .05, 'square', .12); noise(.04, 3000, 2, .25); },
+    hat: function () { noise(.05, 8000, .8, .18, 'highpass'); },
+    clapS: function () { noise(.13, 1500, 1.2, .8); },
+    clapW: function () { noise(.09, 1000, 1.2, .28); },
+    low: function () { tone(98, .5, 'triangle', .35); },
+    mid: function () { tone(330, .18, 'square', .1); },
+    tick: function () { tone(880, .05, 'square', .1); }
+  };
+  function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
+  // step sequencer
+  function seq(root, cfg) {
+    var N = cfg.steps, grid = {}, timer = null, k = -1, bpm = cfg.bpm || 80, labels = cfg.labels;
+    var box = el('div', 'sq'), cells = {};
+    root.appendChild(el('div', 'lab-row', null));
+    var pr = root.lastChild, pbtns = [];
+    cfg.presets.forEach(function (p, i) { var b = el('button', 'lab-b', p.name); b.type = 'button'; b.setAttribute('aria-pressed', 'false'); b.addEventListener('click', function () { load(i); }); pr.appendChild(b); pbtns.push(b); });
+    var play = el('button', 'lab-b', 'Play'); play.type = 'button'; play.setAttribute('aria-pressed', 'false'); pr.appendChild(play);
+    var lab = el('label', null, 'Tempo '); var rg = el('input'); rg.type = 'range'; rg.min = cfg.min || 50; rg.max = cfg.max || 140; rg.value = bpm; rg.setAttribute('aria-label', 'Tempo'); var bv = el('span', null, bpm + ' bpm'); lab.appendChild(rg); lab.appendChild(bv); pr.appendChild(lab);
+    var hr = el('div', 'sq-r'); hr.style.setProperty('--n', N); hr.appendChild(el('span')); var hs = [];
+    for (var i = 0; i < N; i++) { var h = el('span', 'sq-h', labels[i]); hr.appendChild(h); hs.push(h); } box.appendChild(hr);
+    cfg.tracks.forEach(function (t) { var r = el('div', 'sq-r'); r.style.setProperty('--n', N); r.appendChild(el('span', 'sq-l', t.label)); grid[t.id] = []; cells[t.id] = [];
+      for (var i = 0; i < N; i++) { (function (i) { var c = el('button', 'sq-c'); c.type = 'button'; c.setAttribute('aria-label', t.label + ' ' + (i + 1)); c.addEventListener('click', function () { grid[t.id][i] = !grid[t.id][i]; c.classList.toggle('on', grid[t.id][i]); pbtns.forEach(function (b) { b.setAttribute('aria-pressed', 'false'); }); if (grid[t.id][i]) V[t.voice](); }); r.appendChild(c); cells[t.id].push(c); grid[t.id][i] = false; })(i); }
+      box.appendChild(r); });
+    root.appendChild(box);
+    function load(i) { var p = cfg.presets[i]; if (p.labels) { labels = p.labels; hs.forEach(function (h, j) { h.textContent = labels[j]; }); } else { labels = cfg.labels; hs.forEach(function (h, j) { h.textContent = labels[j]; }); }
+      cfg.tracks.forEach(function (t) { for (var j = 0; j < N; j++) { var on = !!(p.on[t.id] && p.on[t.id].indexOf(j) > -1); grid[t.id][j] = on; cells[t.id][j].classList.toggle('on', on); } });
+      pbtns.forEach(function (b, j) { b.setAttribute('aria-pressed', j === i); }); }
+    function step() { if (k >= 0) cfg.tracks.forEach(function (t) { cells[t.id][k].classList.remove('now'); }); k = (k + 1) % N;
+      cfg.tracks.forEach(function (t) { cells[t.id][k].classList.add('now'); if (grid[t.id][k]) V[t.voice](); else if (t.soft && t.soft(k, grid)) V[t.softVoice](); }); }
+    function run() { clearInterval(timer); timer = setInterval(step, 60000 / rg.value / (cfg.perBeat || 2)); }
+    play.addEventListener('click', function () { var on = play.getAttribute('aria-pressed') !== 'true'; play.setAttribute('aria-pressed', on); play.textContent = on ? 'Stop' : 'Play'; if (on) { ac(); k = -1; step(); run(); } else { clearInterval(timer); cfg.tracks.forEach(function (t) { cells[t.id].forEach(function (c) { c.classList.remove('now'); }); }); } });
+    rg.addEventListener('input', function () { bv.textContent = rg.value + ' bpm'; if (play.getAttribute('aria-pressed') === 'true') run(); });
+    load(0);
+  }
+  // timeline chips
+  function tlc(root, items) { var bar = el('div', 'tlc-bar'), p = el('div', 'tlc-p'), h = el('b'), s = el('span'); p.appendChild(h); p.appendChild(s); p.setAttribute('aria-live', 'polite'); var bs = [];
+    items.forEach(function (it, i) { var b = el('button', 'lab-b', it.y); b.type = 'button'; b.setAttribute('role', 'tab'); b.setAttribute('aria-selected', 'false'); b.addEventListener('click', function () { sel(i); }); bar.appendChild(b); bs.push(b); });
+    function sel(i) { bs.forEach(function (b, j) { b.setAttribute('aria-selected', j === i); }); h.textContent = items[i].t; s.textContent = items[i].d; }
+    root.appendChild(bar); root.appendChild(p); sel(0); }
+
+  seq(document.getElementById('lab'), { steps: 8, labels: ['1','e','&','a','2','e','&','a'], bpm: 100, min: 70, max: 150, perBeat: 4,
+    tracks: [{ id: 'a', label: 'Surdo resposta', voice: 'low' }, { id: 'b', label: 'Surdo marcação', voice: 'kick' }, { id: 'p', label: 'Pandeiro-like pulse', voice: 'hat' }],
+    presets: [{ name: 'Surdos only', on: { a: [0], b: [4] } }, { name: 'With a steady pulse', on: { a: [0], b: [4], p: [0,1,2,3,4,5,6,7] } }] });
+    })();
+    </script>
+</body>
+</html>

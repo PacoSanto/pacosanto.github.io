@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gli italiani lo fanno meglio: a Playlist | Francesco Santoro De Vico</title>
+    <meta name="description" content="Two playlists of Italian cantautorato, with a notebook page to write a line on.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fsdv.eu/posts/music/music-cantautori-italiani.html">
+    <meta property="og:title" content="Gli italiani lo fanno meglio: a Playlist">
+    <meta property="og:description" content="Two playlists of Italian cantautorato, with a notebook page to write a line on.">
+    <meta property="og:image" content="https://fsdv.eu/img/post/music/music-cantautori-italiani-og.jpg">
+    <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
+    <link rel="stylesheet" href="/css/style.css?v=3">
+    <style>
+    /* Gli italiani lo fanno meglio. A playlist page: the hero is a small toy that belongs to the playlist. Scoped under .it. */
+    .it { --mp-paper:#efe6d2; --mp-ink:#1d3557; --mp-acc:#b5483a; }
+
+    .it { background: var(--color-chalk); }
+    .it .site-footer { margin-top: 0; }
+    .mp-clip { overflow-x: clip; }
+    .mp-hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; }
+    .mp-art { position: absolute; inset: 0; }
+    .mp-hero .frame { position: relative; z-index: 3; width: 100%; padding: calc(var(--nav-height) + 1.5rem) var(--gutter) clamp(2rem,5vw,4rem); pointer-events: none; }
+    .mp-hero .frame a, .mp-hero .frame button { pointer-events: auto; }
+    .mp-kick { margin: 1.2rem 0 .8rem; font-family: var(--font-mono); font-size: .76rem; letter-spacing: .1em; text-transform: uppercase; }
+    .mp-hero h1 { font-weight: 300; font-size: clamp(3.4rem,9vw,8.4rem); line-height: .92; margin: 0 0 1.2rem; }
+    .mp-lede { color: inherit; max-width: 34rem; margin: 0; font-size: clamp(1.1rem,1.6vw,1.35rem); line-height: 1.5; }
+    .mp-hint { color: inherit; margin: 1.4rem 0 0; font: .72rem var(--font-mono); letter-spacing: .1em; text-transform: uppercase; opacity: .7; }
+    .mp-listen { padding: clamp(3.5rem,7vw,6rem) 0; background: var(--mp-paper); color: var(--mp-ink); }
+    .mp-grid { display: grid; grid-template-columns: minmax(0,5fr) minmax(0,7fr); gap: clamp(1.5rem,4vw,4rem); align-items: start; }
+    .mp-listen h2 { font-weight: 300; font-size: clamp(2.3rem,4.6vw,3.8rem); line-height: 1.04; margin: 0 0 1.4rem; color: inherit; }
+    .mp-listen p { font-size: 1.14rem; line-height: 1.65; margin: 0 0 1.2rem; color: inherit; }
+    .mp-listen a { color: inherit; border-bottom: 1px solid var(--mp-acc); }
+    .mp-listen a:hover { color: var(--mp-acc); }
+    .mp-listen iframe { display: block; width: 100%; height: 452px; border: 0; border-radius: 12px; background: #111; }
+    .mp-end { padding: 1.6rem 0 2.4rem; background: var(--mp-paper); color: var(--mp-ink); }
+    .mp-end .frame { display: flex; flex-wrap: wrap; gap: 1rem 2rem; }
+    .mp-end .back-link { color: var(--mp-ink); }
+    @media (max-width: 860px) { .mp-grid { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) { .mp-art * { animation: none !important; } }
+    .it .mp-hero .mp-lede, .it .mp-hero .mp-hint { color: #1d3557; }
+    .mp-chips { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: .8rem; }
+    .mp-chips button { min-height: 44px; padding: .4rem 1rem; background: none; border: 1px solid currentColor; color: inherit; font: 600 .92rem var(--font-body); cursor: pointer; }
+    .mp-chips button[aria-pressed="true"] { background: var(--mp-ink); border-color: var(--mp-ink); color: var(--mp-paper); }
+    .it .mp-hero { background: #efe6d2; color: #1d3557; }
+    .it .mp-hero h1 { color: #1d3557; } .it .mp-kick { color: #b5483a; }
+    .it .mp-hero .back-link { color: #1d3557; }
+
+    .it-pad { position: absolute; right: clamp(1rem,10vw,12rem); top: clamp(5.5rem,12vh,8rem); width: clamp(260px,34vw,460px); height: clamp(300px,52vh,460px); background: repeating-linear-gradient(transparent 0 35px, #9db3c8 35px 36px) 0 18px, #fbf6e8; border-left: 3px solid #b5483a; box-shadow: 0 26px 60px rgba(29,53,87,.28); transform: rotate(2deg); }
+    .it-pad textarea { position: absolute; inset: 0; width: 100%; height: 100%; padding: 14px 18px 14px 26px; border: 0; resize: none; background: none; color: #1d3557; font: italic 1.5rem/36px var(--font-display); outline: none; }
+    @media (max-width: 760px) { .it-pad { right: 50%; transform: translateX(50%) rotate(2deg); top: 5rem; } }
+    /* lab */
+    .mp-lab { padding: clamp(3.5rem,7vw,6rem) 0; background: var(--mp-paper); color: var(--mp-ink); border-top: 1px solid color-mix(in srgb, var(--mp-ink) 18%, transparent); }
+    .mp-lab h2 { font-weight: 300; font-size: clamp(2.1rem,4.2vw,3.4rem); line-height: 1.06; margin: 0 0 1rem; color: inherit; max-width: 22ch; }
+    .mp-lab h3 { font: 500 .78rem var(--font-mono); letter-spacing: .12em; text-transform: uppercase; margin: clamp(2.2rem,4vw,3.2rem) 0 1rem; color: var(--mp-acc); }
+    .mp-lab p { color: inherit; }
+    .mp-lab-kick { margin: 0 0 .7rem; font: .74rem var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--mp-acc); }
+    .mp-lab-lede { max-width: 40rem; font-size: 1.12rem; line-height: 1.6; margin: 0 0 1.6rem; }
+    .mp-lab button { font: 600 .92rem var(--font-body); cursor: pointer; }
+    .lab-b { min-height: 44px; padding: .4rem 1rem; background: none; border: 1px solid currentColor; color: inherit; transition: background .2s, color .2s; }
+    .lab-b:hover { background: color-mix(in srgb, var(--mp-ink) 10%, transparent); }
+    .lab-b[aria-pressed="true"], .lab-b[aria-selected="true"] { background: var(--mp-ink); border-color: var(--mp-ink); color: var(--mp-paper); }
+    .lab-row { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin: 0 0 1rem; }
+    .lab-row label { font: .72rem var(--font-mono); letter-spacing: .08em; text-transform: uppercase; display: inline-flex; align-items: center; gap: .6rem; }
+    .lab-row input[type=range] { accent-color: var(--mp-acc); min-height: 44px; }
+    .lab-note { font-size: .92rem; opacity: .75; margin: .8rem 0 0; max-width: 40rem; }
+    .sq { overflow-x: auto; padding-bottom: .4rem; }
+    .sq-r { display: grid; grid-template-columns: 9.5rem repeat(var(--n), minmax(34px, 1fr)); gap: 5px; align-items: stretch; margin-bottom: 5px; min-width: calc(9.5rem + var(--n) * 40px); }
+    .sq-l { font: .72rem var(--font-mono); letter-spacing: .06em; text-transform: uppercase; align-self: center; }
+    .sq-c { min-height: 44px; padding: 0; background: color-mix(in srgb, var(--mp-ink) 9%, transparent); border: 0; transition: background .08s, outline-color .08s; font: .66rem var(--font-mono); color: color-mix(in srgb, var(--mp-ink) 55%, transparent); }
+    .sq-c.on { background: var(--mp-acc); color: transparent; }
+    .sq-c.now { outline: 2px solid var(--mp-ink); outline-offset: -2px; }
+    .sq-h { font: .66rem var(--font-mono); text-align: center; opacity: .65; }
+    .tlc-bar { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
+    .tlc-bar .lab-b { font-family: var(--font-mono); font-size: .8rem; }
+    .tlc-p { min-height: 8.5rem; max-width: 44rem; padding: 1.2rem 1.4rem; border-left: 3px solid var(--mp-acc); background: color-mix(in srgb, var(--mp-ink) 6%, transparent); }
+    .tlc-p b { display: block; font: 400 clamp(1.5rem,2.6vw,2rem)/1.15 var(--font-display); margin-bottom: .5rem; }
+    .tlc-p span { font-size: 1.02rem; line-height: 1.6; }
+    .mp-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr)); gap: 1rem; }
+    .mp-cards article { padding: 1.2rem 1.3rem; border: 1px solid color-mix(in srgb, var(--mp-ink) 22%, transparent); }
+    .mp-cards h4 { margin: 0 0 .5rem; font: 400 1.35rem/1.15 var(--font-display); color: inherit; }
+    .mp-cards p { margin: 0; font-size: .97rem; line-height: 1.55; }
+    .mp-src { list-style: none; margin: 0; padding: 0; font-size: .92rem; }
+    .mp-src li { padding: .5rem 0; border-top: 1px solid color-mix(in srgb, var(--mp-ink) 16%, transparent); }
+    .mp-src a { color: inherit; border-bottom: 1px solid var(--mp-acc); }
+    .mp-src-note { font-size: .85rem; opacity: .7; margin-top: .8rem; }
+    .lab-stage { border: 1px solid color-mix(in srgb, var(--mp-ink) 22%, transparent); padding: 1rem; }
+    .lab-stage canvas { display: block; width: 100%; touch-action: none; }
+    .lab-big { font: 300 clamp(2.4rem,6vw,4.4rem)/1 var(--font-display); }
+    .lab-pad { display: grid; grid-template-columns: repeat(4, minmax(60px, 1fr)); gap: 8px; max-width: 28rem; }
+    .lab-pad button { min-height: 72px; background: color-mix(in srgb, var(--mp-ink) 9%, transparent); border: 0; color: inherit; font-size: 1.2rem; }
+    .lab-pad button.hit { background: var(--mp-acc); color: #fff; }
+    /* end lab */
+    </style>
+</head>
+<body class="has-cover it">
+    <div id="site-header"></div>
+    <div class="mp-clip">
+    <header class="mp-hero">
+        <div class="mp-art"><div class="it-pad"><textarea id="it-t" aria-label="Write a line of your own" placeholder="Scrivi una riga…" maxlength="220"></textarea></div></div>
+        <div class="frame">
+            <a href="/hobbies/music.html" class="back-link">Back to Music</a>
+            <p class="mp-kick">Playlist · Spotify · Cantautorato italiano</p>
+            <h1 style="font-size:clamp(2.4rem,5.2vw,5rem);max-width:62%">Gli italiani lo fanno meglio</h1>
+            <p class="mp-lede">Italian singer-songwriters, in two playlists.</p>
+            <!-- [YOU] your own caption for this playlist goes here, in place of the line above -->
+            <p class="mp-hint">Write a line of your own</p>
+        </div>
+    </header>
+
+    <section class="mp-listen">
+        <div class="frame">
+            <div class="mp-grid">
+                <div>
+                    <h2 class="reveal">Listen</h2>
+                    <p class="reveal">Italian singer-songwriters, in two playlists.</p>
+                    <!-- [YOU] a few more lines about the playlist, if you want them -->
+                    <p class="reveal"><a href="https://open.spotify.com/playlist/3E2SmhImYmOL8qEsH5CjjP" target="_blank" rel="noopener">Open on Spotify &nearr;</a> &nbsp; <a href="https://open.spotify.com/playlist/6XWo8MCNPIdIj3py93Db3j" target="_blank" rel="noopener">cantautoritaliani on Spotify &nearr;</a></p>
+                </div>
+                <div><div class="mp-chips reveal"><button type="button" data-id="3E2SmhImYmOL8qEsH5CjjP" aria-pressed="true">Gli italiani lo fanno meglio</button><button type="button" data-id="6XWo8MCNPIdIj3py93Db3j" aria-pressed="false">cantautoritaliani</button></div><iframe id="mp-f" title="Gli italiani lo fanno meglio, Spotify playlist" src="https://open.spotify.com/embed/playlist/3E2SmhImYmOL8qEsH5CjjP" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mp-lab">
+        <div class="frame">
+            <p class="mp-lab-kick reveal">A short map</p>
+            <h2 class="reveal">Cantautore: a singer who is also the author</h2>
+            <p class="mp-lab-lede reveal">The word joins "cantante" and "autore". A few names and dates, only the ones I could check.</p>
+            <div id="lab" class="reveal"></div>
+            <p class="lab-note">There is also a whole post on this site about one of them: <a href="/posts/music/guccini.html">Guccini</a> (in Italian).</p>
+            <h3>Worth knowing</h3>
+            <div class="mp-cards"><article class="reveal"><h4>The word</h4><p>Cantautore is the Italian equivalent of singer-songwriter, from cantante (singer) and autore (author).</p></article><article class="reveal"><h4>French roots</h4><p>The French school of the chansonniers is named as an influence on the Italian cantautori.</p></article><article class="reveal"><h4>Careful with schools</h4><p>Wikipedia marks the idea of a Genoese school as needing a citation, and gives no dates for it. I have left the dates out.</p></article></div>
+            <h3>Sources</h3>
+            <ul class="mp-src"><li><a href="https://en.wikipedia.org/wiki/Cantautore" target="_blank" rel="noopener">Wikipedia: Cantautore</a></li><li><a href="https://en.wikipedia.org/wiki/Singer-songwriter" target="_blank" rel="noopener">Wikipedia: Singer-songwriter</a></li></ul><p class="mp-src-note">Facts checked against these pages on 17 November 2026. Where a page marks a claim as uncertain, the text here says so.</p>
+        </div>
+    </section>
+
+    <section class="mp-end">
+        <div class="frame">
+            <a href="/hobbies/music.html" class="back-link">Back to Music</a>
+            <a href="/hobbies.html" class="back-link">All Hobbies &amp; Blog</a>
+        </div>
+    </section>
+    </div>
+    <div id="site-footer"></div>
+    <script src="/js/components.js?v=3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+    <script src="/js/site.js?v=3" defer></script>
+    <script>
+    (function () {
+  var fr = document.getElementById('mp-f'); [].slice.call(document.querySelectorAll('.mp-chips button')).forEach(function (b) { b.addEventListener('click', function () { [].slice.call(b.parentNode.children).forEach(function (x) { x.setAttribute('aria-pressed', x === b); }); fr.src = 'https://open.spotify.com/embed/playlist/' + b.dataset.id; }); });
+  var t = document.getElementById('it-t'); // nothing is stored: the page is only for writing on
+    })();
+    </script>
+    <script>
+    (function () {
+
+  var AC = null;
+  function ac() { if (!AC) AC = new (window.AudioContext || window.webkitAudioContext)(); if (AC.state === 'suspended') AC.resume(); return AC; }
+  function tone(f, d, type, g, t0, f2) { var a = ac(), t = t0 || a.currentTime, o = a.createOscillator(), n = a.createGain(); o.type = type || 'sine'; o.frequency.setValueAtTime(f, t); if (f2) o.frequency.exponentialRampToValueAtTime(f2, t + d); n.gain.setValueAtTime(.0001, t); n.gain.exponentialRampToValueAtTime(g || .2, t + .006); n.gain.exponentialRampToValueAtTime(.0001, t + d); o.connect(n); n.connect(a.destination); o.start(t); o.stop(t + d + .05); }
+  function noise(d, f, q, g, type) { var a = ac(), len = Math.max(1, Math.floor(a.sampleRate * d)), b = a.createBuffer(1, len, a.sampleRate), x = b.getChannelData(0); for (var i = 0; i < len; i++) x[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 2); var s = a.createBufferSource(), fl = a.createBiquadFilter(), n = a.createGain(); s.buffer = b; fl.type = type || 'bandpass'; fl.frequency.value = f; fl.Q.value = q || 1; n.gain.value = g || .3; s.connect(fl); fl.connect(n); n.connect(a.destination); s.start(); }
+  var V = {
+    kick: function () { tone(130, .28, 'sine', .55, 0, 42); },
+    snare: function () { noise(.16, 1800, .6, .5); tone(190, .1, 'triangle', .2); },
+    rim: function () { tone(1700, .05, 'square', .12); noise(.04, 3000, 2, .25); },
+    hat: function () { noise(.05, 8000, .8, .18, 'highpass'); },
+    clapS: function () { noise(.13, 1500, 1.2, .8); },
+    clapW: function () { noise(.09, 1000, 1.2, .28); },
+    low: function () { tone(98, .5, 'triangle', .35); },
+    mid: function () { tone(330, .18, 'square', .1); },
+    tick: function () { tone(880, .05, 'square', .1); }
+  };
+  function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
+  // step sequencer
+  function seq(root, cfg) {
+    var N = cfg.steps, grid = {}, timer = null, k = -1, bpm = cfg.bpm || 80, labels = cfg.labels;
+    var box = el('div', 'sq'), cells = {};
+    root.appendChild(el('div', 'lab-row', null));
+    var pr = root.lastChild, pbtns = [];
+    cfg.presets.forEach(function (p, i) { var b = el('button', 'lab-b', p.name); b.type = 'button'; b.setAttribute('aria-pressed', 'false'); b.addEventListener('click', function () { load(i); }); pr.appendChild(b); pbtns.push(b); });
+    var play = el('button', 'lab-b', 'Play'); play.type = 'button'; play.setAttribute('aria-pressed', 'false'); pr.appendChild(play);
+    var lab = el('label', null, 'Tempo '); var rg = el('input'); rg.type = 'range'; rg.min = cfg.min || 50; rg.max = cfg.max || 140; rg.value = bpm; rg.setAttribute('aria-label', 'Tempo'); var bv = el('span', null, bpm + ' bpm'); lab.appendChild(rg); lab.appendChild(bv); pr.appendChild(lab);
+    var hr = el('div', 'sq-r'); hr.style.setProperty('--n', N); hr.appendChild(el('span')); var hs = [];
+    for (var i = 0; i < N; i++) { var h = el('span', 'sq-h', labels[i]); hr.appendChild(h); hs.push(h); } box.appendChild(hr);
+    cfg.tracks.forEach(function (t) { var r = el('div', 'sq-r'); r.style.setProperty('--n', N); r.appendChild(el('span', 'sq-l', t.label)); grid[t.id] = []; cells[t.id] = [];
+      for (var i = 0; i < N; i++) { (function (i) { var c = el('button', 'sq-c'); c.type = 'button'; c.setAttribute('aria-label', t.label + ' ' + (i + 1)); c.addEventListener('click', function () { grid[t.id][i] = !grid[t.id][i]; c.classList.toggle('on', grid[t.id][i]); pbtns.forEach(function (b) { b.setAttribute('aria-pressed', 'false'); }); if (grid[t.id][i]) V[t.voice](); }); r.appendChild(c); cells[t.id].push(c); grid[t.id][i] = false; })(i); }
+      box.appendChild(r); });
+    root.appendChild(box);
+    function load(i) { var p = cfg.presets[i]; if (p.labels) { labels = p.labels; hs.forEach(function (h, j) { h.textContent = labels[j]; }); } else { labels = cfg.labels; hs.forEach(function (h, j) { h.textContent = labels[j]; }); }
+      cfg.tracks.forEach(function (t) { for (var j = 0; j < N; j++) { var on = !!(p.on[t.id] && p.on[t.id].indexOf(j) > -1); grid[t.id][j] = on; cells[t.id][j].classList.toggle('on', on); } });
+      pbtns.forEach(function (b, j) { b.setAttribute('aria-pressed', j === i); }); }
+    function step() { if (k >= 0) cfg.tracks.forEach(function (t) { cells[t.id][k].classList.remove('now'); }); k = (k + 1) % N;
+      cfg.tracks.forEach(function (t) { cells[t.id][k].classList.add('now'); if (grid[t.id][k]) V[t.voice](); else if (t.soft && t.soft(k, grid)) V[t.softVoice](); }); }
+    function run() { clearInterval(timer); timer = setInterval(step, 60000 / rg.value / (cfg.perBeat || 2)); }
+    play.addEventListener('click', function () { var on = play.getAttribute('aria-pressed') !== 'true'; play.setAttribute('aria-pressed', on); play.textContent = on ? 'Stop' : 'Play'; if (on) { ac(); k = -1; step(); run(); } else { clearInterval(timer); cfg.tracks.forEach(function (t) { cells[t.id].forEach(function (c) { c.classList.remove('now'); }); }); } });
+    rg.addEventListener('input', function () { bv.textContent = rg.value + ' bpm'; if (play.getAttribute('aria-pressed') === 'true') run(); });
+    load(0);
+  }
+  // timeline chips
+  function tlc(root, items) { var bar = el('div', 'tlc-bar'), p = el('div', 'tlc-p'), h = el('b'), s = el('span'); p.appendChild(h); p.appendChild(s); p.setAttribute('aria-live', 'polite'); var bs = [];
+    items.forEach(function (it, i) { var b = el('button', 'lab-b', it.y); b.type = 'button'; b.setAttribute('role', 'tab'); b.setAttribute('aria-selected', 'false'); b.addEventListener('click', function () { sel(i); }); bar.appendChild(b); bs.push(b); });
+    function sel(i) { bs.forEach(function (b, j) { b.setAttribute('aria-selected', j === i); }); h.textContent = items[i].t; s.textContent = items[i].d; }
+    root.appendChild(bar); root.appendChild(p); sel(0); }
+
+  tlc(document.getElementById('lab'), [
+    { y: '1958', t: 'Volare', d: 'Domenico Modugno is described as the first internationally renowned cantautore, with "Volare (Nel blu dipinto di blu)", a huge best seller in 1958.' },
+    { y: 'Late 1950s', t: 'Genoa', d: 'Gino Paoli, Umberto Bindi and Luigi Tenco began their careers in the late 1950s, and are tied to what is called the Genoese school with Fabrizio De André.' },
+    { y: '1960s', t: 'De André and Guccini', d: 'Fabrizio De André and Francesco Guccini began in the 1960s. Their songs often deal with marginalised people.' },
+    { y: '1970s', t: 'Dalla and De Gregori', d: 'Lucio Dalla and Francesco De Gregori appeared in the 1970s: Dalla with songs about marginalised people, De Gregori with songs often about rebellious ones.' }]);
+    })();
+    </script>
+</body>
+</html>

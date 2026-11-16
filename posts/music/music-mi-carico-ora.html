@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi carico ora: a Playlist | Francesco Santoro De Vico</title>
+    <meta name="description" content="Mi carico ora, a playlist to take on energy, with a battery to charge.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fsdv.eu/posts/music/music-mi-carico-ora.html">
+    <meta property="og:title" content="Mi carico ora: a Playlist">
+    <meta property="og:description" content="Mi carico ora, a playlist to take on energy, with a battery to charge.">
+    <meta property="og:image" content="https://fsdv.eu/img/post/music/music-mi-carico-ora-og.jpg">
+    <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
+    <link rel="stylesheet" href="/css/style.css?v=3">
+    <style>
+    /* Mi carico ora. A playlist page: the hero is a small toy that belongs to the playlist. Scoped under .en. */
+    .en { --mp-paper:#101015; --mp-ink:#f2f6e8; --mp-acc:#b6f23a; }
+
+    .en { background: var(--color-chalk); }
+    .en .site-footer { margin-top: 0; }
+    .mp-clip { overflow-x: clip; }
+    .mp-hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; }
+    .mp-art { position: absolute; inset: 0; }
+    .mp-hero .frame { position: relative; z-index: 3; width: 100%; padding: calc(var(--nav-height) + 1.5rem) var(--gutter) clamp(2rem,5vw,4rem); pointer-events: none; }
+    .mp-hero .frame a, .mp-hero .frame button { pointer-events: auto; }
+    .mp-kick { margin: 1.2rem 0 .8rem; font-family: var(--font-mono); font-size: .76rem; letter-spacing: .1em; text-transform: uppercase; }
+    .mp-hero h1 { font-weight: 300; font-size: clamp(3.4rem,9vw,8.4rem); line-height: .92; margin: 0 0 1.2rem; }
+    .mp-lede { color: inherit; max-width: 34rem; margin: 0; font-size: clamp(1.1rem,1.6vw,1.35rem); line-height: 1.5; }
+    .mp-hint { color: inherit; margin: 1.4rem 0 0; font: .72rem var(--font-mono); letter-spacing: .1em; text-transform: uppercase; opacity: .7; }
+    .mp-listen { padding: clamp(3.5rem,7vw,6rem) 0; background: var(--mp-paper); color: var(--mp-ink); }
+    .mp-grid { display: grid; grid-template-columns: minmax(0,5fr) minmax(0,7fr); gap: clamp(1.5rem,4vw,4rem); align-items: start; }
+    .mp-listen h2 { font-weight: 300; font-size: clamp(2.3rem,4.6vw,3.8rem); line-height: 1.04; margin: 0 0 1.4rem; color: inherit; }
+    .mp-listen p { font-size: 1.14rem; line-height: 1.65; margin: 0 0 1.2rem; color: inherit; }
+    .mp-listen a { color: inherit; border-bottom: 1px solid var(--mp-acc); }
+    .mp-listen a:hover { color: var(--mp-acc); }
+    .mp-listen iframe { display: block; width: 100%; height: 452px; border: 0; border-radius: 12px; background: #111; }
+    .mp-end { padding: 1.6rem 0 2.4rem; background: var(--mp-paper); color: var(--mp-ink); }
+    .mp-end .frame { display: flex; flex-wrap: wrap; gap: 1rem 2rem; }
+    .mp-end .back-link { color: var(--mp-ink); }
+    @media (max-width: 860px) { .mp-grid { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) { .mp-art * { animation: none !important; } }
+    .en .mp-hero .mp-lede, .en .mp-hero .mp-hint { color: #f2f6e8; }
+    .en .mp-hero { background: #0b0b0f; color: #f2f6e8; }
+    .en .mp-hero h1 { color: #f2f6e8; } .en .mp-kick { color: #b6f23a; }
+    .en .mp-hero .back-link { color: #f2f6e8; }
+
+    .en-b { position: absolute; right: clamp(1rem,9vw,11rem); top: clamp(7rem,20vh,11rem); width: clamp(280px,40vw,520px); aspect-ratio: 2; border: 10px solid #b6f23a; border-radius: 28px; padding: 14px; }
+    .en-b::after { content: ''; position: absolute; right: -28px; top: 32%; width: 18px; height: 36%; background: #b6f23a; border-radius: 0 8px 8px 0; }
+    .en-fill { height: 100%; width: var(--p, 18%); background: #b6f23a; border-radius: 10px; transition: width 2.4s cubic-bezier(.3,.7,.2,1); position: relative; overflow: hidden; }
+    .en-fill::after { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(110deg, transparent 0 18px, rgba(255,255,255,.35) 18px 28px); animation: en-s 1s linear infinite; opacity: var(--a, 0); }
+    @keyframes en-s { to { background-position: 56px 0; } }
+    .en-pct { position: absolute; left: 0; right: 0; top: 50%; margin-top: -.55em; text-align: center; font: 300 clamp(2rem,5vw,4.4rem)/1 var(--font-display); color: #fff; text-shadow: 0 0 10px #000, 0 0 3px #000; z-index: 2; }
+    .en-btn { margin-top: 1.4rem; min-height: 48px; padding: .7rem 1.4rem; background: #b6f23a; border: 0; color: #0b0b0f; font: 700 1rem var(--font-body); cursor: pointer; }
+    @media (max-width: 760px) { .en-b { right: 50%; transform: translateX(50%); top: 6rem; width: 70vw; } }
+    </style>
+</head>
+<body class="has-cover en">
+    <div id="site-header"></div>
+    <div class="mp-clip">
+    <header class="mp-hero">
+        <div class="mp-art"><div class="en-b" id="en-b" aria-hidden="true"><div class="en-fill" id="en-f"></div><div class="en-pct" id="en-p">18%</div></div></div>
+        <div class="frame">
+            <a href="/hobbies/music.html" class="back-link">Back to Music</a>
+            <p class="mp-kick">Playlist · Spotify · Energy</p>
+            <h1>Mi carico ora</h1>
+            <p class="mp-lede">For the gym, or to take on energy before doing something energetic.</p>
+            <!-- [YOU] your own caption for this playlist goes here, in place of the line above -->
+            <button class="en-btn" type="button" id="en-c">Mi carico ora</button>
+        </div>
+    </header>
+
+    <section class="mp-listen">
+        <div class="frame">
+            <div class="mp-grid">
+                <div>
+                    <h2 class="reveal">Listen</h2>
+                    <p class="reveal">For the gym, or to take on energy before doing something energetic.</p>
+                    <p class="reveal">For the gym, or to take on energy before doing something energetic.</p>
+                    <p class="reveal">The music is loud and hard.</p>
+                    <p class="reveal"><a href="https://open.spotify.com/playlist/0CG8XYIsquJXqwJMUTkqr8" target="_blank" rel="noopener">Open on Spotify &nearr;</a></p>
+                </div>
+                <iframe class="reveal" title="Mi carico ora, Spotify playlist" src="https://open.spotify.com/embed/playlist/0CG8XYIsquJXqwJMUTkqr8" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="mp-end">
+        <div class="frame">
+            <a href="/hobbies/music.html" class="back-link">Back to Music</a>
+            <a href="/hobbies.html" class="back-link">All Hobbies &amp; Blog</a>
+        </div>
+    </section>
+    </div>
+    <div id="site-footer"></div>
+    <script src="/js/components.js?v=3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+    <script src="/js/site.js?v=3" defer></script>
+    <script>
+    (function () {
+
+  var f = document.getElementById('en-f'), p = document.getElementById('en-p'), b = document.getElementById('en-c'), full = false, tm = null;
+  function show(v, ms) { var s = performance.now(), a = parseFloat(p.textContent) || 0; clearInterval(tm);
+    tm = setInterval(function () { var k = Math.min(1, (performance.now() - s) / ms); p.textContent = Math.round(a + (v - a) * k) + '%'; if (k >= 1) { clearInterval(tm); f.style.setProperty('--a', 0); } }, 40); }
+  b.addEventListener('click', function () { full = !full; f.style.setProperty('--a', 1); f.style.setProperty('--p', full ? '100%' : '18%'); show(full ? 100 : 18, 2400); b.textContent = full ? 'Svuota' : 'Mi carico ora'; });
+    })();
+    </script>
+</body>
+</html>

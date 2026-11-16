@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candlelight: a Playlist | Francesco Santoro De Vico</title>
+    <meta name="description" content="A playlist for candlelight, with a flame to blow out.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fsdv.eu/posts/music/music-candele.html">
+    <meta property="og:title" content="Candlelight: a Playlist">
+    <meta property="og:description" content="A playlist for candlelight, with a flame to blow out.">
+    <meta property="og:image" content="https://fsdv.eu/img/post/music/music-candele-og.jpg">
+    <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
+    <link rel="stylesheet" href="/css/style.css?v=3">
+    <style>
+    /* Candlelight. A playlist page: the hero is a small toy that belongs to the playlist. Scoped under .cd. */
+    .cd { --mp-paper:#1c130a; --mp-ink:#f6e9d2; --mp-acc:#ffb347; }
+
+    .cd { background: var(--color-chalk); }
+    .cd .site-footer { margin-top: 0; }
+    .mp-clip { overflow-x: clip; }
+    .mp-hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; }
+    .mp-art { position: absolute; inset: 0; }
+    .mp-hero .frame { position: relative; z-index: 3; width: 100%; padding: calc(var(--nav-height) + 1.5rem) var(--gutter) clamp(2rem,5vw,4rem); pointer-events: none; }
+    .mp-hero .frame a, .mp-hero .frame button { pointer-events: auto; }
+    .mp-kick { margin: 1.2rem 0 .8rem; font-family: var(--font-mono); font-size: .76rem; letter-spacing: .1em; text-transform: uppercase; }
+    .mp-hero h1 { font-weight: 300; font-size: clamp(3.4rem,9vw,8.4rem); line-height: .92; margin: 0 0 1.2rem; }
+    .mp-lede { color: inherit; max-width: 34rem; margin: 0; font-size: clamp(1.1rem,1.6vw,1.35rem); line-height: 1.5; }
+    .mp-hint { color: inherit; margin: 1.4rem 0 0; font: .72rem var(--font-mono); letter-spacing: .1em; text-transform: uppercase; opacity: .7; }
+    .mp-listen { padding: clamp(3.5rem,7vw,6rem) 0; background: var(--mp-paper); color: var(--mp-ink); }
+    .mp-grid { display: grid; grid-template-columns: minmax(0,5fr) minmax(0,7fr); gap: clamp(1.5rem,4vw,4rem); align-items: start; }
+    .mp-listen h2 { font-weight: 300; font-size: clamp(2.3rem,4.6vw,3.8rem); line-height: 1.04; margin: 0 0 1.4rem; color: inherit; }
+    .mp-listen p { font-size: 1.14rem; line-height: 1.65; margin: 0 0 1.2rem; color: inherit; }
+    .mp-listen a { color: inherit; border-bottom: 1px solid var(--mp-acc); }
+    .mp-listen a:hover { color: var(--mp-acc); }
+    .mp-listen iframe { display: block; width: 100%; height: 452px; border: 0; border-radius: 12px; background: #111; }
+    .mp-end { padding: 1.6rem 0 2.4rem; background: var(--mp-paper); color: var(--mp-ink); }
+    .mp-end .frame { display: flex; flex-wrap: wrap; gap: 1rem 2rem; }
+    .mp-end .back-link { color: var(--mp-ink); }
+    @media (max-width: 860px) { .mp-grid { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) { .mp-art * { animation: none !important; } }
+    .cd .mp-hero .mp-lede, .cd .mp-hero .mp-hint { color: #f6e9d2; }
+    .cd .mp-hero { background: radial-gradient(60% 70% at 72% 45%, #3a2410, #110a05); color: #f6e9d2; }
+    .cd .mp-hero h1 { color: #f6e9d2; } .cd .mp-kick { color: #ffb347; }
+    .cd .mp-hero .back-link { color: #f6e9d2; }
+
+    .cd-c { position: absolute; right: clamp(3rem,16vw,18rem); top: clamp(6rem,18vh,11rem); width: 90px; height: 360px; }
+    .cd-glow { position: absolute; left: 50%; top: 20px; width: 560px; height: 560px; margin: -280px 0 0 -280px; border-radius: 50%; background: radial-gradient(circle, rgba(255,179,71,.5), rgba(255,179,71,0) 65%); transition: opacity .8s; animation: cd-g 3s ease-in-out infinite; pointer-events: none; }
+    .cd-wax { position: absolute; left: 0; right: 0; top: 90px; bottom: 0; background: linear-gradient(90deg, #d9c8a6, #f6ecd6 40%, #cdb88f); border-radius: 8px 8px 4px 4px; }
+    .cd-wick { position: absolute; left: 50%; top: 70px; width: 3px; height: 24px; margin-left: -1.5px; background: #222; }
+    .cd-fl { position: absolute; left: 50%; top: -6px; width: 34px; height: 80px; margin-left: -17px; border-radius: 50% 50% 50% 50% / 62% 62% 38% 38%; background: radial-gradient(ellipse at 50% 80%, #fff6d6 0 20%, #ffb347 55%, rgba(255,120,30,.9)); transform-origin: 50% 100%; transform: rotate(var(--lean,0deg)); animation: cd-f .45s ease-in-out infinite alternate; transition: opacity .5s, scale .5s; filter: blur(.4px); }
+    .cd-out .cd-fl { opacity: 0; scale: .2; animation: none; } .cd-out .cd-glow { opacity: .08; animation: none; }
+    @keyframes cd-f { from { scale: 1 1; translate: -1px 0; } to { scale: .93 1.06; translate: 1px 0; } }
+    @keyframes cd-g { 50% { transform: scale(1.05); } }
+    .cd-btn { margin-top: 1.4rem; min-height: 48px; padding: .7rem 1.4rem; background: #ffb347; border: 0; color: #1c130a; font: 700 1rem var(--font-body); cursor: pointer; }
+    @media (max-width: 760px) { .cd-c { right: 50%; margin-right: -45px; top: 5rem; height: 300px; } }
+    </style>
+</head>
+<body class="has-cover cd">
+    <div id="site-header"></div>
+    <div class="mp-clip">
+    <header class="mp-hero">
+        <div class="mp-art"><div class="cd-c" id="cd-c" aria-hidden="true"><div class="cd-glow"></div><div class="cd-wax"></div><div class="cd-wick"></div><div class="cd-fl" id="cd-f"></div></div></div>
+        <div class="frame">
+            <a href="/hobbies/music.html" class="back-link">Back to Music</a>
+            <p class="mp-kick">Playlist · Spotify · Candlelight</p>
+            <h1>Candlelight</h1>
+            <p class="mp-lede">Music by candlelight.</p>
+            <!-- [YOU] your own caption for this playlist goes here, in place of the line above -->
+            <button class="cd-btn" type="button" id="cd-b" aria-pressed="false">Blow it out</button>
+        </div>
+    </header>
+
+    <section class="mp-listen">
+        <div class="frame">
+            <div class="mp-grid">
+                <div>
+                    <h2 class="reveal">Listen</h2>
+                    <p class="reveal">Music by candlelight.</p>
+                    <!-- [YOU] a few more lines about the playlist, if you want them -->
+                    <p class="reveal"><a href="https://open.spotify.com/playlist/2j8uh99mSj3WewIk6kB71B" target="_blank" rel="noopener">Open on Spotify &nearr;</a></p>
+                </div>
+                <iframe class="reveal" title="Candlelight, Spotify playlist" src="https://open.spotify.com/embed/playlist/2j8uh99mSj3WewIk6kB71B" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="mp-end">
+        <div class="frame">
+            <a href="/hobbies/music.html" class="back-link">Back to Music</a>
+            <a href="/hobbies.html" class="back-link">All Hobbies &amp; Blog</a>
+        </div>
+    </section>
+    </div>
+    <div id="site-footer"></div>
+    <script src="/js/components.js?v=3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+    <script src="/js/site.js?v=3" defer></script>
+    <script>
+    (function () {
+
+  var hero = document.querySelector('.mp-hero'), b = document.getElementById('cd-b'), f = document.getElementById('cd-f');
+  b.addEventListener('click', function () { var out = hero.classList.toggle('cd-out'); b.setAttribute('aria-pressed', out); b.textContent = out ? 'Light it' : 'Blow it out'; });
+  hero.addEventListener('pointermove', function (e) { f.style.setProperty('--lean', ((e.clientX / innerWidth - .72) * 22).toFixed(1) + 'deg'); });
+    })();
+    </script>
+</body>
+</html>

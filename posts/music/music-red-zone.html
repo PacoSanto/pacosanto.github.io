@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Music From the Red Zone: a Playlist | Francesco Santoro De Vico</title>
+    <meta name="description" content="My Music From the Red Zone, the playlist I listened to during covid, behind a block of windows.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fsdv.eu/posts/music/music-red-zone.html">
+    <meta property="og:title" content="My Music From the Red Zone: a Playlist">
+    <meta property="og:description" content="My Music From the Red Zone, the playlist I listened to during covid, behind a block of windows.">
+    <meta property="og:image" content="https://fsdv.eu/img/post/music/music-red-zone-og.jpg">
+    <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
+    <link rel="stylesheet" href="/css/style.css?v=3">
+    <style>
+    /* My Music From the Red Zone. A playlist page: the hero is a small toy that belongs to the playlist. Scoped under .cv. */
+    .cv { --mp-paper:#2a0a0e; --mp-ink:#f6e3e5; --mp-acc:#ff8a94; }
+
+    .cv { background: var(--color-chalk); }
+    .cv .site-footer { margin-top: 0; }
+    .mp-clip { overflow-x: clip; }
+    .mp-hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; }
+    .mp-art { position: absolute; inset: 0; }
+    .mp-hero .frame { position: relative; z-index: 3; width: 100%; padding: calc(var(--nav-height) + 1.5rem) var(--gutter) clamp(2rem,5vw,4rem); pointer-events: none; }
+    .mp-hero .frame a, .mp-hero .frame button { pointer-events: auto; }
+    .mp-kick { margin: 1.2rem 0 .8rem; font-family: var(--font-mono); font-size: .76rem; letter-spacing: .1em; text-transform: uppercase; }
+    .mp-hero h1 { font-weight: 300; font-size: clamp(3.4rem,9vw,8.4rem); line-height: .92; margin: 0 0 1.2rem; }
+    .mp-lede { color: inherit; max-width: 34rem; margin: 0; font-size: clamp(1.1rem,1.6vw,1.35rem); line-height: 1.5; }
+    .mp-hint { color: inherit; margin: 1.4rem 0 0; font: .72rem var(--font-mono); letter-spacing: .1em; text-transform: uppercase; opacity: .7; }
+    .mp-listen { padding: clamp(3.5rem,7vw,6rem) 0; background: var(--mp-paper); color: var(--mp-ink); }
+    .mp-grid { display: grid; grid-template-columns: minmax(0,5fr) minmax(0,7fr); gap: clamp(1.5rem,4vw,4rem); align-items: start; }
+    .mp-listen h2 { font-weight: 300; font-size: clamp(2.3rem,4.6vw,3.8rem); line-height: 1.04; margin: 0 0 1.4rem; color: inherit; }
+    .mp-listen p { font-size: 1.14rem; line-height: 1.65; margin: 0 0 1.2rem; color: inherit; }
+    .mp-listen a { color: inherit; border-bottom: 1px solid var(--mp-acc); }
+    .mp-listen a:hover { color: var(--mp-acc); }
+    .mp-listen iframe { display: block; width: 100%; height: 452px; border: 0; border-radius: 12px; background: #111; }
+    .mp-end { padding: 1.6rem 0 2.4rem; background: var(--mp-paper); color: var(--mp-ink); }
+    .mp-end .frame { display: flex; flex-wrap: wrap; gap: 1rem 2rem; }
+    .mp-end .back-link { color: var(--mp-ink); }
+    @media (max-width: 860px) { .mp-grid { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) { .mp-art * { animation: none !important; } }
+    .cv .mp-hero .mp-lede, .cv .mp-hero .mp-hint { color: #f6e3e5; }
+    .cv .mp-hero { background: #1a060a; color: #f6e3e5; }
+    .cv .mp-hero h1 { color: #f6e3e5; } .cv .mp-kick { color: #ff8a94; }
+    .cv .mp-hero .back-link { color: #f6e3e5; }
+
+    .cv-grid { position: absolute; inset: 0 0 46% 0; display: grid; grid-template-columns: repeat(var(--cols,12), 1fr); gap: 10px; padding: calc(var(--nav-height) + 1rem) var(--gutter) 0; }
+    .cv-w { border: 0; padding: 0; background: #3a1218; cursor: pointer; transition: background .5s, box-shadow .5s; aspect-ratio: .8; }
+    .cv-w.on { background: #ffd27a; box-shadow: 0 0 22px rgba(255,210,122,.55); }
+    .cv-band { position: absolute; left: 0; right: 0; bottom: 0; height: 22%; background: linear-gradient(transparent, #1a060a 60%); border-bottom: 10px solid #d62839; pointer-events: none; }
+    </style>
+</head>
+<body class="has-cover cv">
+    <div id="site-header"></div>
+    <div class="mp-clip">
+    <header class="mp-hero">
+        <div class="mp-art"><div class="cv-grid" id="cv-g" role="group" aria-label="Windows of an apartment block. Press one to switch its light."></div><div class="cv-band"></div></div>
+        <div class="frame">
+            <a href="/hobbies/music.html" class="back-link">Back to Music</a>
+            <p class="mp-kick">Playlist · Spotify · Covid</p>
+            <h1 style="font-size:clamp(2.4rem,5.2vw,5rem);max-width:62%">My Music From the Red Zone</h1>
+            <p class="mp-lede">A story of covid among the ambulances of the Brescia area.</p>
+            <!-- [YOU] your own caption for this playlist goes here, in place of the line above -->
+            <p class="mp-hint">Switch a light on or off</p>
+        </div>
+    </header>
+
+    <section class="mp-listen">
+        <div class="frame">
+            <div class="mp-grid">
+                <div>
+                    <h2 class="reveal">Listen</h2>
+                    <p class="reveal">A story of covid among the ambulances of the Brescia area.</p>
+                    <p class="reveal">This playlist helped me cover the silence and the suffering.</p>
+                    <p class="reveal"><a href="https://open.spotify.com/playlist/4rse3agWdqR2Bvilg2sOMJ" target="_blank" rel="noopener">Open on Spotify &nearr;</a></p>
+                </div>
+                <iframe class="reveal" title="My Music From the Red Zone, Spotify playlist" src="https://open.spotify.com/embed/playlist/4rse3agWdqR2Bvilg2sOMJ" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="mp-end">
+        <div class="frame">
+            <a href="/hobbies/music.html" class="back-link">Back to Music</a>
+            <a href="/hobbies.html" class="back-link">All Hobbies &amp; Blog</a>
+        </div>
+    </section>
+    </div>
+    <div id="site-footer"></div>
+    <script src="/js/components.js?v=3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+    <script src="/js/site.js?v=3" defer></script>
+    <script>
+    (function () {
+
+  var g = document.getElementById('cv-g'), ws = [];
+  function build() { g.innerHTML = ''; ws = []; var cols = innerWidth < 700 ? 6 : 12, rows = innerWidth < 700 ? 4 : 3; g.style.setProperty('--cols', cols);
+    for (var i = 0; i < cols * rows; i++) { var b = document.createElement('button'); b.type = 'button'; b.className = 'cv-w' + (Math.random() < .35 ? ' on' : ''); b.setAttribute('aria-label', 'Window'); b.addEventListener('click', function () { this.classList.toggle('on'); }); g.appendChild(b); ws.push(b); } }
+  build(); var rt; addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(build, 250); });
+  setInterval(function () { if (!ws.length) return; ws[Math.floor(Math.random() * ws.length)].classList.toggle('on'); }, 1400);
+    })();
+    </script>
+</body>
+</html>

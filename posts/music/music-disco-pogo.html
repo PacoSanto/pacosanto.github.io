@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DISCO POGO FeSS!: a Playlist | Francesco Santoro De Vico</title>
+    <meta name="description" content="DISCO POGO FeSS!, music for pogoing, with a pit to fill.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fsdv.eu/posts/music/music-disco-pogo.html">
+    <meta property="og:title" content="DISCO POGO FeSS!: a Playlist">
+    <meta property="og:description" content="DISCO POGO FeSS!, music for pogoing, with a pit to fill.">
+    <meta property="og:image" content="https://fsdv.eu/img/post/music/music-disco-pogo-og.jpg">
+    <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
+    <link rel="stylesheet" href="/css/style.css?v=3">
+    <style>
+    /* DISCO POGO FeSS!. A playlist page: the hero is a small toy that belongs to the playlist. Scoped under .pg. */
+    .pg { --mp-paper:#16161c; --mp-ink:#f4f4f6; --mp-acc:#ff2e88; }
+
+    .pg { background: var(--color-chalk); }
+    .pg .site-footer { margin-top: 0; }
+    .mp-clip { overflow-x: clip; }
+    .mp-hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; }
+    .mp-art { position: absolute; inset: 0; }
+    .mp-hero .frame { position: relative; z-index: 3; width: 100%; padding: calc(var(--nav-height) + 1.5rem) var(--gutter) clamp(2rem,5vw,4rem); pointer-events: none; }
+    .mp-hero .frame a, .mp-hero .frame button { pointer-events: auto; }
+    .mp-kick { margin: 1.2rem 0 .8rem; font-family: var(--font-mono); font-size: .76rem; letter-spacing: .1em; text-transform: uppercase; }
+    .mp-hero h1 { font-weight: 300; font-size: clamp(3.4rem,9vw,8.4rem); line-height: .92; margin: 0 0 1.2rem; }
+    .mp-lede { color: inherit; max-width: 34rem; margin: 0; font-size: clamp(1.1rem,1.6vw,1.35rem); line-height: 1.5; }
+    .mp-hint { color: inherit; margin: 1.4rem 0 0; font: .72rem var(--font-mono); letter-spacing: .1em; text-transform: uppercase; opacity: .7; }
+    .mp-listen { padding: clamp(3.5rem,7vw,6rem) 0; background: var(--mp-paper); color: var(--mp-ink); }
+    .mp-grid { display: grid; grid-template-columns: minmax(0,5fr) minmax(0,7fr); gap: clamp(1.5rem,4vw,4rem); align-items: start; }
+    .mp-listen h2 { font-weight: 300; font-size: clamp(2.3rem,4.6vw,3.8rem); line-height: 1.04; margin: 0 0 1.4rem; color: inherit; }
+    .mp-listen p { font-size: 1.14rem; line-height: 1.65; margin: 0 0 1.2rem; color: inherit; }
+    .mp-listen a { color: inherit; border-bottom: 1px solid var(--mp-acc); }
+    .mp-listen a:hover { color: var(--mp-acc); }
+    .mp-listen iframe { display: block; width: 100%; height: 452px; border: 0; border-radius: 12px; background: #111; }
+    .mp-end { padding: 1.6rem 0 2.4rem; background: var(--mp-paper); color: var(--mp-ink); }
+    .mp-end .frame { display: flex; flex-wrap: wrap; gap: 1rem 2rem; }
+    .mp-end .back-link { color: var(--mp-ink); }
+    @media (max-width: 860px) { .mp-grid { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) { .mp-art * { animation: none !important; } }
+    .pg .mp-hero .mp-lede, .pg .mp-hero .mp-hint { color: #f4f4f6; }
+    .pg .mp-hero { background: #0e0e12; color: #f4f4f6; }
+    .pg .mp-hero h1 { color: #f4f4f6; } .pg .mp-kick { color: #fff200; }
+    .pg .mp-hero .back-link { color: #f4f4f6; }
+
+    .pg canvas { position: absolute; inset: 0; width: 100%; height: 100%; cursor: pointer; }
+    /* lab */
+    .mp-lab { padding: clamp(3.5rem,7vw,6rem) 0; background: var(--mp-paper); color: var(--mp-ink); border-top: 1px solid color-mix(in srgb, var(--mp-ink) 18%, transparent); }
+    .mp-lab h2 { font-weight: 300; font-size: clamp(2.1rem,4.2vw,3.4rem); line-height: 1.06; margin: 0 0 1rem; color: inherit; max-width: 22ch; }
+    .mp-lab h3 { font: 500 .78rem var(--font-mono); letter-spacing: .12em; text-transform: uppercase; margin: clamp(2.2rem,4vw,3.2rem) 0 1rem; color: var(--mp-acc); }
+    .mp-lab p { color: inherit; }
+    .mp-lab-kick { margin: 0 0 .7rem; font: .74rem var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--mp-acc); }
+    .mp-lab-lede { max-width: 40rem; font-size: 1.12rem; line-height: 1.6; margin: 0 0 1.6rem; }
+    .mp-lab button { font: 600 .92rem var(--font-body); cursor: pointer; }
+    .lab-b { min-height: 44px; padding: .4rem 1rem; background: none; border: 1px solid currentColor; color: inherit; transition: background .2s, color .2s; }
+    .lab-b:hover { background: color-mix(in srgb, var(--mp-ink) 10%, transparent); }
+    .lab-b[aria-pressed="true"], .lab-b[aria-selected="true"] { background: var(--mp-ink); border-color: var(--mp-ink); color: var(--mp-paper); }
+    .lab-row { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin: 0 0 1rem; }
+    .lab-row label { font: .72rem var(--font-mono); letter-spacing: .08em; text-transform: uppercase; display: inline-flex; align-items: center; gap: .6rem; }
+    .lab-row input[type=range] { accent-color: var(--mp-acc); min-height: 44px; }
+    .lab-note { font-size: .92rem; opacity: .75; margin: .8rem 0 0; max-width: 40rem; }
+    .sq { overflow-x: auto; padding-bottom: .4rem; }
+    .sq-r { display: grid; grid-template-columns: 9.5rem repeat(var(--n), minmax(34px, 1fr)); gap: 5px; align-items: stretch; margin-bottom: 5px; min-width: calc(9.5rem + var(--n) * 40px); }
+    .sq-l { font: .72rem var(--font-mono); letter-spacing: .06em; text-transform: uppercase; align-self: center; }
+    .sq-c { min-height: 44px; padding: 0; background: color-mix(in srgb, var(--mp-ink) 9%, transparent); border: 0; transition: background .08s, outline-color .08s; font: .66rem var(--font-mono); color: color-mix(in srgb, var(--mp-ink) 55%, transparent); }
+    .sq-c.on { background: var(--mp-acc); color: transparent; }
+    .sq-c.now { outline: 2px solid var(--mp-ink); outline-offset: -2px; }
+    .sq-h { font: .66rem var(--font-mono); text-align: center; opacity: .65; }
+    .tlc-bar { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
+    .tlc-bar .lab-b { font-family: var(--font-mono); font-size: .8rem; }
+    .tlc-p { min-height: 8.5rem; max-width: 44rem; padding: 1.2rem 1.4rem; border-left: 3px solid var(--mp-acc); background: color-mix(in srgb, var(--mp-ink) 6%, transparent); }
+    .tlc-p b { display: block; font: 400 clamp(1.5rem,2.6vw,2rem)/1.15 var(--font-display); margin-bottom: .5rem; }
+    .tlc-p span { font-size: 1.02rem; line-height: 1.6; }
+    .mp-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr)); gap: 1rem; }
+    .mp-cards article { padding: 1.2rem 1.3rem; border: 1px solid color-mix(in srgb, var(--mp-ink) 22%, transparent); }
+    .mp-cards h4 { margin: 0 0 .5rem; font: 400 1.35rem/1.15 var(--font-display); color: inherit; }
+    .mp-cards p { margin: 0; font-size: .97rem; line-height: 1.55; }
+    .mp-src { list-style: none; margin: 0; padding: 0; font-size: .92rem; }
+    .mp-src li { padding: .5rem 0; border-top: 1px solid color-mix(in srgb, var(--mp-ink) 16%, transparent); }
+    .mp-src a { color: inherit; border-bottom: 1px solid var(--mp-acc); }
+    .mp-src-note { font-size: .85rem; opacity: .7; margin-top: .8rem; }
+    .lab-stage { border: 1px solid color-mix(in srgb, var(--mp-ink) 22%, transparent); padding: 1rem; }
+    .lab-stage canvas { display: block; width: 100%; touch-action: none; }
+    .lab-big { font: 300 clamp(2.4rem,6vw,4.4rem)/1 var(--font-display); }
+    .lab-pad { display: grid; grid-template-columns: repeat(4, minmax(60px, 1fr)); gap: 8px; max-width: 28rem; }
+    .lab-pad button { min-height: 72px; background: color-mix(in srgb, var(--mp-ink) 9%, transparent); border: 0; color: inherit; font-size: 1.2rem; }
+    .lab-pad button.hit { background: var(--mp-acc); color: #fff; }
+    /* end lab */
+    </style>
+</head>
+<body class="has-cover pg">
+    <div id="site-header"></div>
+    <div class="mp-clip">
+    <header class="mp-hero">
+        <div class="mp-art"><canvas id="pg-c" aria-label="Dots pogoing and bumping. Press to add one."></canvas></div>
+        <div class="frame">
+            <a href="/hobbies/music.html" class="back-link">Back to Music</a>
+            <p class="mp-kick">Playlist · Spotify · Pogo</p>
+            <h1 style="font-size:clamp(2.4rem,5.2vw,5rem);max-width:62%">DISCO POGO FeSS!</h1>
+            <p class="mp-lede">Music for pogoing.</p>
+            <!-- [YOU] your own caption for this playlist goes here, in place of the line above -->
+            <p class="mp-hint">Press to add a pogoer</p>
+        </div>
+    </header>
+
+    <section class="mp-listen">
+        <div class="frame">
+            <div class="mp-grid">
+                <div>
+                    <h2 class="reveal">Listen</h2>
+                    <p class="reveal">Music for pogoing.</p>
+                    <!-- [YOU] a few more lines about the playlist, if you want them -->
+                    <p class="reveal"><a href="https://open.spotify.com/playlist/4T06uOH0f0Ud6AWN4YSnxL" target="_blank" rel="noopener">Open on Spotify &nearr;</a></p>
+                </div>
+                <iframe class="reveal" title="DISCO POGO FeSS!, Spotify playlist" src="https://open.spotify.com/embed/playlist/4T06uOH0f0Ud6AWN4YSnxL" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="mp-lab">
+        <div class="frame">
+            <p class="mp-lab-kick reveal">How it works</p>
+            <h2 class="reveal">1, 2, 3, 4!</h2>
+            <p class="mp-lab-lede reveal">Tap along to any song with Space or the button and see how fast you are jumping. Then try the count-in.</p>
+            <div id="lab" class="reveal"></div>
+            <p class="lab-note">The Ramones&rsquo; early songs were "very fast and very short; most clocked in at under two minutes". The source gives no tempo figure, so I give none.</p>
+            <h3>Worth knowing</h3>
+            <div class="mp-cards"><article class="reveal"><h4>The pogo</h4><p>Dancers jump up and down, in place or moving around, named for the resemblance to a pogo stick. A common version keeps the torso stiff, arms rigid and legs together.</p></article><article class="reveal"><h4>Who invented it</h4><p>Sid Vicious claimed he invented the pogo around 1976 at early London punk shows. Whether he did or not, it became closely tied to punk. The source calls it a precursor to moshing.</p></article><article class="reveal"><h4>The Ramones</h4><p>Formed in 1974 in Forest Hills, Queens, New York. Their debut album was recorded in February 1976 and released on 23 April 1976: 14 songs, the longest barely over two and a half minutes.</p></article><article class="reveal"><h4>The count-in</h4><p>Dee Dee Ramone counted off each song&rsquo;s tempo with a rapid-fire "1-2-3-4!".</p></article></div>
+            <h3>Sources</h3>
+            <ul class="mp-src"><li><a href="https://en.wikipedia.org/wiki/Pogo_(dance)" target="_blank" rel="noopener">Wikipedia: Pogo (dance)</a></li><li><a href="https://en.wikipedia.org/wiki/Ramones" target="_blank" rel="noopener">Wikipedia: Ramones</a></li></ul><p class="mp-src-note">Facts checked against these pages on 17 November 2026. Where a page marks a claim as uncertain, the text here says so.</p>
+        </div>
+    </section>
+
+    <section class="mp-end">
+        <div class="frame">
+            <a href="/hobbies/music.html" class="back-link">Back to Music</a>
+            <a href="/hobbies.html" class="back-link">All Hobbies &amp; Blog</a>
+        </div>
+    </section>
+    </div>
+    <div id="site-footer"></div>
+    <script src="/js/components.js?v=3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+    <script src="/js/site.js?v=3" defer></script>
+    <script>
+    (function () {
+
+  function fit(cv) { var d = Math.min(2, devicePixelRatio || 1); cv.width = cv.clientWidth * d; cv.height = cv.clientHeight * d; var x = cv.getContext('2d'); x.setTransform(d,0,0,d,0,0); return x; }
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var cv = document.getElementById('pg-c'), ctx = fit(cv), D = [], col = ['#ff2e88', '#fff200', '#2ec4ff', '#ffffff', '#7cff6b'];
+  addEventListener('resize', function () { ctx = fit(cv); });
+  function add(x, y) { D.push({ x: x, y: y, vx: (Math.random() - .5) * 6, vy: -6 - Math.random() * 6, r: 12 + Math.random() * 14, c: col[D.length % col.length] }); }
+  for (var i = 0; i < 26; i++) add(Math.random() * cv.clientWidth, Math.random() * cv.clientHeight * .5);
+  cv.addEventListener('pointerdown', function (e) { var r = cv.getBoundingClientRect(); add(e.clientX - r.left, e.clientY - r.top); if (D.length > 90) D.shift(); });
+  (function draw() { var W = cv.clientWidth, H = cv.clientHeight, floor = H * .9; ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = 'rgba(255,255,255,.08)'; ctx.fillRect(0, floor, W, 2);
+    D.forEach(function (d) { if (!reduce) { d.vy += .38; d.x += d.vx; d.y += d.vy; } if (d.y + d.r > floor) { d.y = floor - d.r; d.vy = -(9 + Math.random() * 7); } if (d.x < d.r || d.x > W - d.r) { d.vx *= -1; d.x = Math.max(d.r, Math.min(W - d.r, d.x)); } });
+    for (var i = 0; i < D.length; i++) for (var j = i + 1; j < D.length; j++) { var a = D[i], b = D[j], dx = b.x - a.x, dy = b.y - a.y, m = a.r + b.r, dd = dx * dx + dy * dy; if (dd < m * m && dd > 0) { var s = Math.sqrt(dd), nx = dx / s, ny = dy / s, o = (m - s) / 2; a.x -= nx * o; a.y -= ny * o; b.x += nx * o; b.y += ny * o; var t = a.vx; a.vx = b.vx; b.vx = t; } }
+    D.forEach(function (d) { ctx.beginPath(); ctx.arc(d.x, d.y, d.r, 0, 7); ctx.fillStyle = d.c; ctx.fill(); });
+    requestAnimationFrame(draw); })();
+    })();
+    </script>
+    <script>
+    (function () {
+
+  var AC = null;
+  function ac() { if (!AC) AC = new (window.AudioContext || window.webkitAudioContext)(); if (AC.state === 'suspended') AC.resume(); return AC; }
+  function tone(f, d, type, g, t0, f2) { var a = ac(), t = t0 || a.currentTime, o = a.createOscillator(), n = a.createGain(); o.type = type || 'sine'; o.frequency.setValueAtTime(f, t); if (f2) o.frequency.exponentialRampToValueAtTime(f2, t + d); n.gain.setValueAtTime(.0001, t); n.gain.exponentialRampToValueAtTime(g || .2, t + .006); n.gain.exponentialRampToValueAtTime(.0001, t + d); o.connect(n); n.connect(a.destination); o.start(t); o.stop(t + d + .05); }
+  function noise(d, f, q, g, type) { var a = ac(), len = Math.max(1, Math.floor(a.sampleRate * d)), b = a.createBuffer(1, len, a.sampleRate), x = b.getChannelData(0); for (var i = 0; i < len; i++) x[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 2); var s = a.createBufferSource(), fl = a.createBiquadFilter(), n = a.createGain(); s.buffer = b; fl.type = type || 'bandpass'; fl.frequency.value = f; fl.Q.value = q || 1; n.gain.value = g || .3; s.connect(fl); fl.connect(n); n.connect(a.destination); s.start(); }
+  var V = {
+    kick: function () { tone(130, .28, 'sine', .55, 0, 42); },
+    snare: function () { noise(.16, 1800, .6, .5); tone(190, .1, 'triangle', .2); },
+    rim: function () { tone(1700, .05, 'square', .12); noise(.04, 3000, 2, .25); },
+    hat: function () { noise(.05, 8000, .8, .18, 'highpass'); },
+    clapS: function () { noise(.13, 1500, 1.2, .8); },
+    clapW: function () { noise(.09, 1000, 1.2, .28); },
+    low: function () { tone(98, .5, 'triangle', .35); },
+    mid: function () { tone(330, .18, 'square', .1); },
+    tick: function () { tone(880, .05, 'square', .1); }
+  };
+  function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
+  // step sequencer
+  function seq(root, cfg) {
+    var N = cfg.steps, grid = {}, timer = null, k = -1, bpm = cfg.bpm || 80, labels = cfg.labels;
+    var box = el('div', 'sq'), cells = {};
+    root.appendChild(el('div', 'lab-row', null));
+    var pr = root.lastChild, pbtns = [];
+    cfg.presets.forEach(function (p, i) { var b = el('button', 'lab-b', p.name); b.type = 'button'; b.setAttribute('aria-pressed', 'false'); b.addEventListener('click', function () { load(i); }); pr.appendChild(b); pbtns.push(b); });
+    var play = el('button', 'lab-b', 'Play'); play.type = 'button'; play.setAttribute('aria-pressed', 'false'); pr.appendChild(play);
+    var lab = el('label', null, 'Tempo '); var rg = el('input'); rg.type = 'range'; rg.min = cfg.min || 50; rg.max = cfg.max || 140; rg.value = bpm; rg.setAttribute('aria-label', 'Tempo'); var bv = el('span', null, bpm + ' bpm'); lab.appendChild(rg); lab.appendChild(bv); pr.appendChild(lab);
+    var hr = el('div', 'sq-r'); hr.style.setProperty('--n', N); hr.appendChild(el('span')); var hs = [];
+    for (var i = 0; i < N; i++) { var h = el('span', 'sq-h', labels[i]); hr.appendChild(h); hs.push(h); } box.appendChild(hr);
+    cfg.tracks.forEach(function (t) { var r = el('div', 'sq-r'); r.style.setProperty('--n', N); r.appendChild(el('span', 'sq-l', t.label)); grid[t.id] = []; cells[t.id] = [];
+      for (var i = 0; i < N; i++) { (function (i) { var c = el('button', 'sq-c'); c.type = 'button'; c.setAttribute('aria-label', t.label + ' ' + (i + 1)); c.addEventListener('click', function () { grid[t.id][i] = !grid[t.id][i]; c.classList.toggle('on', grid[t.id][i]); pbtns.forEach(function (b) { b.setAttribute('aria-pressed', 'false'); }); if (grid[t.id][i]) V[t.voice](); }); r.appendChild(c); cells[t.id].push(c); grid[t.id][i] = false; })(i); }
+      box.appendChild(r); });
+    root.appendChild(box);
+    function load(i) { var p = cfg.presets[i]; if (p.labels) { labels = p.labels; hs.forEach(function (h, j) { h.textContent = labels[j]; }); } else { labels = cfg.labels; hs.forEach(function (h, j) { h.textContent = labels[j]; }); }
+      cfg.tracks.forEach(function (t) { for (var j = 0; j < N; j++) { var on = !!(p.on[t.id] && p.on[t.id].indexOf(j) > -1); grid[t.id][j] = on; cells[t.id][j].classList.toggle('on', on); } });
+      pbtns.forEach(function (b, j) { b.setAttribute('aria-pressed', j === i); }); }
+    function step() { if (k >= 0) cfg.tracks.forEach(function (t) { cells[t.id][k].classList.remove('now'); }); k = (k + 1) % N;
+      cfg.tracks.forEach(function (t) { cells[t.id][k].classList.add('now'); if (grid[t.id][k]) V[t.voice](); else if (t.soft && t.soft(k, grid)) V[t.softVoice](); }); }
+    function run() { clearInterval(timer); timer = setInterval(step, 60000 / rg.value / (cfg.perBeat || 2)); }
+    play.addEventListener('click', function () { var on = play.getAttribute('aria-pressed') !== 'true'; play.setAttribute('aria-pressed', on); play.textContent = on ? 'Stop' : 'Play'; if (on) { ac(); k = -1; step(); run(); } else { clearInterval(timer); cfg.tracks.forEach(function (t) { cells[t.id].forEach(function (c) { c.classList.remove('now'); }); }); } });
+    rg.addEventListener('input', function () { bv.textContent = rg.value + ' bpm'; if (play.getAttribute('aria-pressed') === 'true') run(); });
+    load(0);
+  }
+  // timeline chips
+  function tlc(root, items) { var bar = el('div', 'tlc-bar'), p = el('div', 'tlc-p'), h = el('b'), s = el('span'); p.appendChild(h); p.appendChild(s); p.setAttribute('aria-live', 'polite'); var bs = [];
+    items.forEach(function (it, i) { var b = el('button', 'lab-b', it.y); b.type = 'button'; b.setAttribute('role', 'tab'); b.setAttribute('aria-selected', 'false'); b.addEventListener('click', function () { sel(i); }); bar.appendChild(b); bs.push(b); });
+    function sel(i) { bs.forEach(function (b, j) { b.setAttribute('aria-selected', j === i); }); h.textContent = items[i].t; s.textContent = items[i].d; }
+    root.appendChild(bar); root.appendChild(p); sel(0); }
+
+  var root = document.getElementById('lab'), taps = [], bpm = 0, last = 0, man = el('div', 'lab-big', '0 bpm');
+  var row = el('div', 'lab-row'); root.appendChild(row);
+  var tap = el('button', 'lab-b', 'Tap (or press Space)'); tap.type = 'button'; var ci = el('button', 'lab-b', 'Count-in: 1-2-3-4!'); ci.type = 'button'; row.appendChild(tap); row.appendChild(ci);
+  var stage = el('div', 'lab-stage'); stage.style.minHeight = '180px'; stage.style.position = 'relative'; stage.style.overflow = 'hidden'; root.appendChild(stage);
+  var dude = el('div'); dude.style.cssText = 'position:absolute;left:50%;bottom:0;width:26px;height:90px;margin-left:-13px;transition:transform .08s;'; dude.innerHTML = '<i style="display:block;width:26px;height:26px;border-radius:50%;background:var(--mp-acc)"></i><i style="display:block;width:6px;height:50px;margin:2px auto 0;background:var(--mp-ink)"></i><i style="display:block;width:22px;height:10px;margin:0 auto;background:var(--mp-ink)"></i>'; stage.appendChild(dude);
+  man.style.margin = '1rem 0 0'; root.appendChild(man);
+  var floor = 0;
+  function jump() { dude.style.transform = 'translateY(-70px)'; setTimeout(function () { dude.style.transform = 'translateY(0)'; }, 110); }
+  function hit() { var now = performance.now(); if (now - last > 2200) taps = []; last = now; taps.push(now); if (taps.length > 8) taps.shift(); if (taps.length > 1) { bpm = Math.round(60000 / ((taps[taps.length - 1] - taps[0]) / (taps.length - 1))); man.textContent = bpm + ' bpm'; } tone(1000, .03, 'square', .08); jump(); }
+  tap.addEventListener('click', hit);
+  document.addEventListener('keydown', function (e) { if (e.code === 'Space' && document.getElementById('lab').getBoundingClientRect().top < innerHeight && document.getElementById('lab').getBoundingClientRect().bottom > 0) { e.preventDefault(); hit(); } });
+  ci.addEventListener('click', function () { var a = ac(), t = a.currentTime; for (var i = 0; i < 4; i++) { tone(i === 0 ? 1200 : 900, .08, 'square', .2, t + i * .3); (function (i) { setTimeout(function () { jump(); man.textContent = String(i + 1); }, i * 300); })(i); } setTimeout(function () { for (var k = 0; k < 12; k++) (function (k) { setTimeout(function () { jump(); V.kick(); if (k % 2) V.snare(); }, k * 150); })(k); }, 1200); });
+    })();
+    </script>
+</body>
+</html>

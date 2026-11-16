@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nonni: a Playlist | Francesco Santoro De Vico</title>
+    <meta name="description" content="Nonni, the music my grandfather listened to, on an old radio you have to tune.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fsdv.eu/posts/music/music-nonni.html">
+    <meta property="og:title" content="Nonni: a Playlist">
+    <meta property="og:description" content="Nonni, the music my grandfather listened to, on an old radio you have to tune.">
+    <meta property="og:image" content="https://fsdv.eu/img/post/music/music-nonni-og.jpg">
+    <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
+    <link rel="stylesheet" href="/css/style.css?v=3">
+    <style>
+    /* Nonni. A playlist page: the hero is a small toy that belongs to the playlist. Scoped under .no. */
+    .no { --mp-paper:#f2e2c4; --mp-ink:#3b2410; --mp-acc:#a8652a; }
+
+    .no { background: var(--color-chalk); }
+    .no .site-footer { margin-top: 0; }
+    .mp-clip { overflow-x: clip; }
+    .mp-hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; }
+    .mp-art { position: absolute; inset: 0; }
+    .mp-hero .frame { position: relative; z-index: 3; width: 100%; padding: calc(var(--nav-height) + 1.5rem) var(--gutter) clamp(2rem,5vw,4rem); pointer-events: none; }
+    .mp-hero .frame a, .mp-hero .frame button { pointer-events: auto; }
+    .mp-kick { margin: 1.2rem 0 .8rem; font-family: var(--font-mono); font-size: .76rem; letter-spacing: .1em; text-transform: uppercase; }
+    .mp-hero h1 { font-weight: 300; font-size: clamp(3.4rem,9vw,8.4rem); line-height: .92; margin: 0 0 1.2rem; }
+    .mp-lede { color: inherit; max-width: 34rem; margin: 0; font-size: clamp(1.1rem,1.6vw,1.35rem); line-height: 1.5; }
+    .mp-hint { color: inherit; margin: 1.4rem 0 0; font: .72rem var(--font-mono); letter-spacing: .1em; text-transform: uppercase; opacity: .7; }
+    .mp-listen { padding: clamp(3.5rem,7vw,6rem) 0; background: var(--mp-paper); color: var(--mp-ink); }
+    .mp-grid { display: grid; grid-template-columns: minmax(0,5fr) minmax(0,7fr); gap: clamp(1.5rem,4vw,4rem); align-items: start; }
+    .mp-listen h2 { font-weight: 300; font-size: clamp(2.3rem,4.6vw,3.8rem); line-height: 1.04; margin: 0 0 1.4rem; color: inherit; }
+    .mp-listen p { font-size: 1.14rem; line-height: 1.65; margin: 0 0 1.2rem; color: inherit; }
+    .mp-listen a { color: inherit; border-bottom: 1px solid var(--mp-acc); }
+    .mp-listen a:hover { color: var(--mp-acc); }
+    .mp-listen iframe { display: block; width: 100%; height: 452px; border: 0; border-radius: 12px; background: #111; }
+    .mp-end { padding: 1.6rem 0 2.4rem; background: var(--mp-paper); color: var(--mp-ink); }
+    .mp-end .frame { display: flex; flex-wrap: wrap; gap: 1rem 2rem; }
+    .mp-end .back-link { color: var(--mp-ink); }
+    @media (max-width: 860px) { .mp-grid { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) { .mp-art * { animation: none !important; } }
+    .no .mp-hero .mp-lede, .no .mp-hero .mp-hint { color: #fbf1dc; }
+    .no .mp-hero { background: radial-gradient(90% 90% at 70% 35%, #a8703a, #5a3818); color: #fbf1dc; }
+    .no .mp-hero h1 { color: #fbf1dc; } .no .mp-kick { color: #f2e2c4; }
+    .no .mp-hero .back-link { color: #fbf1dc; }
+
+    .no-radio { position: absolute; right: clamp(1rem,8vw,10rem); top: clamp(5.5rem,13vh,9rem); width: clamp(290px,42vw,560px); aspect-ratio: 1.6; background: #e9d3a8; border-radius: 22px; box-shadow: 0 30px 70px rgba(0,0,0,.45), inset 0 0 0 6px #c58a4a; }
+    .no-grill { position: absolute; left: 6%; top: 12%; width: 30%; height: 70%; border-radius: 12px; background: repeating-linear-gradient(90deg, #6b4220 0 4px, #8a5a2b 4px 9px); }
+    .no-dial { position: absolute; left: 42%; right: 6%; top: 14%; height: 34%; background: #2a1a0c; border-radius: 8px; overflow: hidden; }
+    .no-ticks { position: absolute; inset: 0; background: repeating-linear-gradient(90deg, #f2e2c4 0 1px, transparent 1px 12px); opacity: .55; -webkit-mask: linear-gradient(transparent 30%, #000 30% 70%, transparent 70%); mask: linear-gradient(transparent 30%, #000 30% 70%, transparent 70%); }
+    .no-needle { position: absolute; top: 0; bottom: 0; width: 3px; background: #ff5a36; left: var(--n, 20%); }
+    .no-lamp { position: absolute; left: 42%; top: 56%; width: 16px; height: 16px; border-radius: 50%; background: #5a3818; transition: background .3s, box-shadow .3s; }
+    .no-on .no-lamp { background: #ffd27a; box-shadow: 0 0 18px 6px rgba(255,210,122,.8); }
+    .no-st { position: absolute; inset: 0; background-image: repeating-radial-gradient(circle at 30% 40%, rgba(255,255,255,.12) 0 1px, transparent 1px 3px); opacity: var(--s, 1); animation: no-j .3s steps(3) infinite; }
+    @keyframes no-j { 50% { transform: translate(3px,-2px); } }
+    .no-ctl { position: absolute; left: 42%; right: 6%; top: 66%; } .no-ctl input { width: 100%; accent-color: #ff5a36; min-height: 44px; }
+    @media (max-width: 760px) { .no-radio { right: 50%; transform: translateX(50%); top: 5rem; } }
+    </style>
+</head>
+<body class="has-cover no">
+    <div id="site-header"></div>
+    <div class="mp-clip">
+    <header class="mp-hero">
+        <div class="mp-art"><div class="no-radio" id="no-r"><div class="no-grill"></div><div class="no-dial"><div class="no-ticks"></div><div class="no-st"></div><div class="no-needle"></div></div><i class="no-lamp"></i><div class="no-ctl"><input id="no-i" type="range" min="0" max="100" value="12" aria-label="Tune the radio"></div></div></div>
+        <div class="frame">
+            <a href="/hobbies/music.html" class="back-link">Back to Music</a>
+            <p class="mp-kick">Playlist · Spotify · Family</p>
+            <h1>Nonni</h1>
+            <p class="mp-lede">The music my grandfather listened to.</p>
+            <!-- [YOU] your own caption for this playlist goes here, in place of the line above -->
+            <p class="mp-hint">Tune it until the lamp lights</p>
+        </div>
+    </header>
+
+    <section class="mp-listen">
+        <div class="frame">
+            <div class="mp-grid">
+                <div>
+                    <h2 class="reveal">Listen</h2>
+                    <p class="reveal">The music my grandfather listened to.</p>
+                    <p class="reveal">It made him cry like a child.</p>
+                    <p class="reveal">Because music is special for everyone, you only have to know how to listen to it. It takes you back to happiness and suffering, to emotions that are never erased and that still move you.</p>
+                    <p class="reveal"><a href="https://open.spotify.com/playlist/3xHAvCrvqUgpFAnld1tkQf" target="_blank" rel="noopener">Open on Spotify &nearr;</a></p>
+                </div>
+                <iframe class="reveal" title="Nonni, Spotify playlist" src="https://open.spotify.com/embed/playlist/3xHAvCrvqUgpFAnld1tkQf" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="mp-end">
+        <div class="frame">
+            <a href="/hobbies/music.html" class="back-link">Back to Music</a>
+            <a href="/hobbies.html" class="back-link">All Hobbies &amp; Blog</a>
+        </div>
+    </section>
+    </div>
+    <div id="site-footer"></div>
+    <script src="/js/components.js?v=3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+    <script src="/js/site.js?v=3" defer></script>
+    <script>
+    (function () {
+
+  var i = document.getElementById('no-i'), r = document.getElementById('no-r'), spot = 64;
+  function up() { var v = +i.value, d = Math.abs(v - spot); r.style.setProperty('--n', (4 + v * .92) + '%'); r.style.setProperty('--s', Math.min(1, d / 14)); r.classList.toggle('no-on', d < 3); }
+  i.addEventListener('input', up); up();
+    })();
+    </script>
+</body>
+</html>

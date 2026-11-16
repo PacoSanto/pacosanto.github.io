@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciò che ti fa stare bene: a Playlist | Francesco Santoro De Vico</title>
+    <meta name="description" content="Ciò che ti fa stare bene, another happy playlist, with confetti.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fsdv.eu/posts/music/music-ci-che-ti-fa-stare-bene.html">
+    <meta property="og:title" content="Ciò che ti fa stare bene: a Playlist">
+    <meta property="og:description" content="Ciò che ti fa stare bene, another happy playlist, with confetti.">
+    <meta property="og:image" content="https://fsdv.eu/img/post/music/music-ci-che-ti-fa-stare-bene-og.jpg">
+    <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
+    <link rel="stylesheet" href="/css/style.css?v=3">
+    <style>
+    /* Ciò che ti fa stare bene. A playlist page: the hero is a small toy that belongs to the playlist. Scoped under .fb. */
+    .fb { --mp-paper:#fff0f3; --mp-ink:#3a1a2a; --mp-acc:#1f8a7e; }
+
+    .fb { background: var(--color-chalk); }
+    .fb .site-footer { margin-top: 0; }
+    .mp-clip { overflow-x: clip; }
+    .mp-hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; }
+    .mp-art { position: absolute; inset: 0; }
+    .mp-hero .frame { position: relative; z-index: 3; width: 100%; padding: calc(var(--nav-height) + 1.5rem) var(--gutter) clamp(2rem,5vw,4rem); pointer-events: none; }
+    .mp-hero .frame a, .mp-hero .frame button { pointer-events: auto; }
+    .mp-kick { margin: 1.2rem 0 .8rem; font-family: var(--font-mono); font-size: .76rem; letter-spacing: .1em; text-transform: uppercase; }
+    .mp-hero h1 { font-weight: 300; font-size: clamp(3.4rem,9vw,8.4rem); line-height: .92; margin: 0 0 1.2rem; }
+    .mp-lede { color: inherit; max-width: 34rem; margin: 0; font-size: clamp(1.1rem,1.6vw,1.35rem); line-height: 1.5; }
+    .mp-hint { color: inherit; margin: 1.4rem 0 0; font: .72rem var(--font-mono); letter-spacing: .1em; text-transform: uppercase; opacity: .7; }
+    .mp-listen { padding: clamp(3.5rem,7vw,6rem) 0; background: var(--mp-paper); color: var(--mp-ink); }
+    .mp-grid { display: grid; grid-template-columns: minmax(0,5fr) minmax(0,7fr); gap: clamp(1.5rem,4vw,4rem); align-items: start; }
+    .mp-listen h2 { font-weight: 300; font-size: clamp(2.3rem,4.6vw,3.8rem); line-height: 1.04; margin: 0 0 1.4rem; color: inherit; }
+    .mp-listen p { font-size: 1.14rem; line-height: 1.65; margin: 0 0 1.2rem; color: inherit; }
+    .mp-listen a { color: inherit; border-bottom: 1px solid var(--mp-acc); }
+    .mp-listen a:hover { color: var(--mp-acc); }
+    .mp-listen iframe { display: block; width: 100%; height: 452px; border: 0; border-radius: 12px; background: #111; }
+    .mp-end { padding: 1.6rem 0 2.4rem; background: var(--mp-paper); color: var(--mp-ink); }
+    .mp-end .frame { display: flex; flex-wrap: wrap; gap: 1rem 2rem; }
+    .mp-end .back-link { color: var(--mp-ink); }
+    @media (max-width: 860px) { .mp-grid { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) { .mp-art * { animation: none !important; } }
+    .fb .mp-hero .mp-lede, .fb .mp-hero .mp-hint { color: #3a1a2a; }
+    .fb .mp-hero { background: #ffd6e0; color: #3a1a2a; }
+    .fb .mp-hero h1 { color: #3a1a2a; } .fb .mp-kick { color: #a1304f; }
+    .fb .mp-hero .back-link { color: #3a1a2a; }
+
+    .fb canvas { position: absolute; inset: 0; width: 100%; height: 100%; cursor: pointer; }
+    </style>
+</head>
+<body class="has-cover fb">
+    <div id="site-header"></div>
+    <div class="mp-clip">
+    <header class="mp-hero">
+        <div class="mp-art"><canvas id="fb-c" aria-label="Press anywhere for confetti"></canvas></div>
+        <div class="frame">
+            <a href="/hobbies/music.html" class="back-link">Back to Music</a>
+            <p class="mp-kick">Playlist · Spotify · Mood</p>
+            <h1 style="font-size:clamp(2.4rem,5.2vw,5rem);max-width:62%">Ciò che ti fa stare bene</h1>
+            <p class="mp-lede">Another happy one.</p>
+            <!-- [YOU] your own caption for this playlist goes here, in place of the line above -->
+            <p class="mp-hint">Press anywhere</p>
+        </div>
+    </header>
+
+    <section class="mp-listen">
+        <div class="frame">
+            <div class="mp-grid">
+                <div>
+                    <h2 class="reveal">Listen</h2>
+                    <p class="reveal">Another happy one.</p>
+                    <p class="reveal">You can tell from the title and the tracks.</p>
+                    <p class="reveal"><a href="https://open.spotify.com/playlist/1f5Bp4NG6EJmMTrOx7vngi" target="_blank" rel="noopener">Open on Spotify &nearr;</a></p>
+                </div>
+                <iframe class="reveal" title="Ciò che ti fa stare bene, Spotify playlist" src="https://open.spotify.com/embed/playlist/1f5Bp4NG6EJmMTrOx7vngi" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="mp-end">
+        <div class="frame">
+            <a href="/hobbies/music.html" class="back-link">Back to Music</a>
+            <a href="/hobbies.html" class="back-link">All Hobbies &amp; Blog</a>
+        </div>
+    </section>
+    </div>
+    <div id="site-footer"></div>
+    <script src="/js/components.js?v=3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+    <script src="/js/site.js?v=3" defer></script>
+    <script>
+    (function () {
+
+  function fit(cv) { var d = Math.min(2, devicePixelRatio || 1); cv.width = cv.clientWidth * d; cv.height = cv.clientHeight * d; var x = cv.getContext('2d'); x.setTransform(d,0,0,d,0,0); return x; }
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var cv = document.getElementById('fb-c'), ctx = fit(cv), P = [], col = ['#2a9d8f', '#e76f51', '#f4a261', '#264653', '#e9c46a', '#ff4f8b'];
+  addEventListener('resize', function () { ctx = fit(cv); });
+  function burst(x, y) { for (var i = 0; i < 70; i++) { var a = Math.random() * 6.283, v = 3 + Math.random() * 9; P.push({ x: x, y: y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 5, r: Math.random() * 6.28, vr: (Math.random() - .5) * .4, c: col[i % col.length], l: 1 }); } }
+  cv.addEventListener('pointerdown', function (e) { var r = cv.getBoundingClientRect(); burst(e.clientX - r.left, e.clientY - r.top); });
+  setTimeout(function () { burst(cv.clientWidth * .68, cv.clientHeight * .3); }, 500);
+  function draw() { ctx.clearRect(0, 0, cv.clientWidth, cv.clientHeight);
+    P = P.filter(function (p) { return p.l > 0 && p.y < cv.clientHeight + 20; });
+    P.forEach(function (p) { p.x += p.vx; p.y += p.vy; p.vy += .22; p.vx *= .985; p.r += p.vr; p.l -= .004; ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.r); ctx.fillStyle = p.c; ctx.globalAlpha = Math.min(1, p.l * 2); ctx.fillRect(-7, -3, 14, 6); ctx.restore(); });
+    requestAnimationFrame(draw); }
+  draw();
+    })();
+    </script>
+</body>
+</html>

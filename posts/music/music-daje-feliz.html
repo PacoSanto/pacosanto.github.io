@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daje Feliz: a Playlist | Francesco Santoro De Vico</title>
+    <meta name="description" content="Daje Feliz, a playlist to be a little happier, with a sun you can turn up.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fsdv.eu/posts/music/music-daje-feliz.html">
+    <meta property="og:title" content="Daje Feliz: a Playlist">
+    <meta property="og:description" content="Daje Feliz, a playlist to be a little happier, with a sun you can turn up.">
+    <meta property="og:image" content="https://fsdv.eu/img/post/music/music-daje-feliz-og.jpg">
+    <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
+    <link rel="stylesheet" href="/css/style.css?v=3">
+    <style>
+    /* Daje Feliz. A playlist page: the hero is a small toy that belongs to the playlist. Scoped under .df. */
+    .df { --mp-paper:#fff3c9; --mp-ink:#2a1606; --mp-acc:#e0482a; }
+
+    .df { background: var(--color-chalk); }
+    .df .site-footer { margin-top: 0; }
+    .mp-clip { overflow-x: clip; }
+    .mp-hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; }
+    .mp-art { position: absolute; inset: 0; }
+    .mp-hero .frame { position: relative; z-index: 3; width: 100%; padding: calc(var(--nav-height) + 1.5rem) var(--gutter) clamp(2rem,5vw,4rem); pointer-events: none; }
+    .mp-hero .frame a, .mp-hero .frame button { pointer-events: auto; }
+    .mp-kick { margin: 1.2rem 0 .8rem; font-family: var(--font-mono); font-size: .76rem; letter-spacing: .1em; text-transform: uppercase; }
+    .mp-hero h1 { font-weight: 300; font-size: clamp(3.4rem,9vw,8.4rem); line-height: .92; margin: 0 0 1.2rem; }
+    .mp-lede { color: inherit; max-width: 34rem; margin: 0; font-size: clamp(1.1rem,1.6vw,1.35rem); line-height: 1.5; }
+    .mp-hint { color: inherit; margin: 1.4rem 0 0; font: .72rem var(--font-mono); letter-spacing: .1em; text-transform: uppercase; opacity: .7; }
+    .mp-listen { padding: clamp(3.5rem,7vw,6rem) 0; background: var(--mp-paper); color: var(--mp-ink); }
+    .mp-grid { display: grid; grid-template-columns: minmax(0,5fr) minmax(0,7fr); gap: clamp(1.5rem,4vw,4rem); align-items: start; }
+    .mp-listen h2 { font-weight: 300; font-size: clamp(2.3rem,4.6vw,3.8rem); line-height: 1.04; margin: 0 0 1.4rem; color: inherit; }
+    .mp-listen p { font-size: 1.14rem; line-height: 1.65; margin: 0 0 1.2rem; color: inherit; }
+    .mp-listen a { color: inherit; border-bottom: 1px solid var(--mp-acc); }
+    .mp-listen a:hover { color: var(--mp-acc); }
+    .mp-listen iframe { display: block; width: 100%; height: 452px; border: 0; border-radius: 12px; background: #111; }
+    .mp-end { padding: 1.6rem 0 2.4rem; background: var(--mp-paper); color: var(--mp-ink); }
+    .mp-end .frame { display: flex; flex-wrap: wrap; gap: 1rem 2rem; }
+    .mp-end .back-link { color: var(--mp-ink); }
+    @media (max-width: 860px) { .mp-grid { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) { .mp-art * { animation: none !important; } }
+    .df .mp-hero .mp-lede, .df .mp-hero .mp-hint { color: #2a1606; }
+
+    .df .mp-hero { background: var(--bg, #ffd34e); color: #2a1606; transition: background .6s; }
+    .df .mp-hero h1 { color: #2a1606; } .df .mp-kick { color: #8a2a12; }
+    .df .mp-hero .back-link { color: #2a1606; }
+    .df-sun { position: absolute; right: -6%; top: 50%; width: clamp(300px,58vw,820px); aspect-ratio: 1; margin-top: calc(clamp(300px,58vw,820px) / -2 - 4%); }
+    .df-rays { position: absolute; inset: 0; border-radius: 50%; background: repeating-conic-gradient(var(--ray, #ff5d3b) 0 5deg, transparent 5deg 15deg); -webkit-mask: radial-gradient(circle, transparent 34%, #000 35%); mask: radial-gradient(circle, transparent 34%, #000 35%); animation: df-spin var(--spd, 40s) linear infinite; opacity: .75; }
+    .df-core { position: absolute; inset: 22%; border-radius: 50%; background: var(--ray, #ff5d3b); animation: df-beat var(--beat, 1.6s) ease-in-out infinite; }
+    @keyframes df-spin { to { transform: rotate(360deg); } } @keyframes df-beat { 50% { transform: scale(1.07); } }
+    .df-bars { position: absolute; left: 0; right: 0; bottom: 0; height: 14vh; display: flex; align-items: flex-end; gap: 6px; padding: 0 var(--gutter); opacity: .85; }
+    .df-bars i { flex: 1; background: var(--ray, #ff5d3b); transform-origin: bottom; animation: df-bar var(--beat, 1.6s) ease-in-out infinite; }
+    @keyframes df-bar { 0%,100% { transform: scaleY(.18); } 50% { transform: scaleY(1); } }
+    .df-btn { margin-top: 1.4rem; min-height: 48px; padding: .7rem 1.5rem; border: 0; background: #2a1606; color: #fff3c9; font: 600 1rem var(--font-body); cursor: pointer; transition: transform .2s; }
+    .df-btn:hover { transform: translateY(-2px); }
+    </style>
+</head>
+<body class="has-cover df">
+    <div id="site-header"></div>
+    <div class="mp-clip">
+    <header class="mp-hero">
+        <div class="mp-art"><div class="df-sun" aria-hidden="true"><div class="df-rays"></div><div class="df-core"></div></div><div class="df-bars" aria-hidden="true" id="df-bars"></div></div>
+        <div class="frame">
+            <a href="/hobbies/music.html" class="back-link">Back to Music</a>
+            <p class="mp-kick">Playlist · Spotify · Mood</p>
+            <h1>Daje Feliz</h1>
+            <p class="mp-lede">For being happier.</p>
+            <!-- [YOU] your own caption for this playlist goes here, in place of the line above -->
+            <button class="df-btn" type="button" id="df-b">More sun</button>
+        </div>
+    </header>
+
+    <section class="mp-listen">
+        <div class="frame">
+            <div class="mp-grid">
+                <div>
+                    <h2 class="reveal">Listen</h2>
+                    <p class="reveal">For being happier.</p>
+                    <!-- [YOU] a few more lines about the playlist, if you want them -->
+                    <p class="reveal"><a href="https://open.spotify.com/playlist/7axeRJPl9RAdRdoo9O5RHH" target="_blank" rel="noopener">Open on Spotify &nearr;</a></p>
+                </div>
+                <iframe class="reveal" title="Daje Feliz, Spotify playlist" src="https://open.spotify.com/embed/playlist/7axeRJPl9RAdRdoo9O5RHH" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="mp-end">
+        <div class="frame">
+            <a href="/hobbies/music.html" class="back-link">Back to Music</a>
+            <a href="/hobbies.html" class="back-link">All Hobbies &amp; Blog</a>
+        </div>
+    </section>
+    </div>
+    <div id="site-footer"></div>
+    <script src="/js/components.js?v=3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+    <script src="/js/site.js?v=3" defer></script>
+    <script>
+    (function () {
+
+  var hero = document.querySelector('.mp-hero'), bars = document.getElementById('df-bars');
+  for (var i = 0; i < 28; i++) { var b = document.createElement('i'); b.style.animationDelay = (-(i * 0.11 % 1.6)).toFixed(2) + 's'; bars.appendChild(b); }
+  var pal = [['#ffd34e', '#ff5d3b'], ['#ffb86b', '#d9382a'], ['#ff9fb2', '#a8226b'], ['#9fe0c8', '#0e7a5a']], k = 0, btn = document.getElementById('df-b');
+  btn.addEventListener('click', function () {
+    k = (k + 1) % pal.length; hero.style.setProperty('--bg', pal[k][0]); hero.style.setProperty('--ray', pal[k][1]);
+    hero.style.setProperty('--spd', (40 - k * 9) + 's'); hero.style.setProperty('--beat', (1.6 - k * .3) + 's');
+    btn.textContent = k === 0 ? 'More sun' : (k === pal.length - 1 ? 'Back to the start' : 'Even more');
+  });
+    })();
+    </script>
+</body>
+</html>

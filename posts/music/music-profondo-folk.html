@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profondo folk: a Playlist | Francesco Santoro De Vico</title>
+    <meta name="description" content="Profondo folk, a playlist built on folk and other great classics, with six guitar strings to pluck.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fsdv.eu/posts/music/music-profondo-folk.html">
+    <meta property="og:title" content="Profondo folk: a Playlist">
+    <meta property="og:description" content="Profondo folk, a playlist built on folk and other great classics, with six guitar strings to pluck.">
+    <meta property="og:image" content="https://fsdv.eu/img/post/music/music-profondo-folk-og.jpg">
+    <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
+    <link rel="stylesheet" href="/css/style.css?v=3">
+    <style>
+    /* Profondo folk. A playlist page: the hero is a small toy that belongs to the playlist. Scoped under .pf. */
+    .pf { --mp-paper:#f1e6cf; --mp-ink:#2a1d10; --mp-acc:#b07a1c; }
+
+    .pf { background: var(--color-chalk); }
+    .pf .site-footer { margin-top: 0; }
+    .mp-clip { overflow-x: clip; }
+    .mp-hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; }
+    .mp-art { position: absolute; inset: 0; }
+    .mp-hero .frame { position: relative; z-index: 3; width: 100%; padding: calc(var(--nav-height) + 1.5rem) var(--gutter) clamp(2rem,5vw,4rem); pointer-events: none; }
+    .mp-hero .frame a, .mp-hero .frame button { pointer-events: auto; }
+    .mp-kick { margin: 1.2rem 0 .8rem; font-family: var(--font-mono); font-size: .76rem; letter-spacing: .1em; text-transform: uppercase; }
+    .mp-hero h1 { font-weight: 300; font-size: clamp(3.4rem,9vw,8.4rem); line-height: .92; margin: 0 0 1.2rem; }
+    .mp-lede { color: inherit; max-width: 34rem; margin: 0; font-size: clamp(1.1rem,1.6vw,1.35rem); line-height: 1.5; }
+    .mp-hint { color: inherit; margin: 1.4rem 0 0; font: .72rem var(--font-mono); letter-spacing: .1em; text-transform: uppercase; opacity: .7; }
+    .mp-listen { padding: clamp(3.5rem,7vw,6rem) 0; background: var(--mp-paper); color: var(--mp-ink); }
+    .mp-grid { display: grid; grid-template-columns: minmax(0,5fr) minmax(0,7fr); gap: clamp(1.5rem,4vw,4rem); align-items: start; }
+    .mp-listen h2 { font-weight: 300; font-size: clamp(2.3rem,4.6vw,3.8rem); line-height: 1.04; margin: 0 0 1.4rem; color: inherit; }
+    .mp-listen p { font-size: 1.14rem; line-height: 1.65; margin: 0 0 1.2rem; color: inherit; }
+    .mp-listen a { color: inherit; border-bottom: 1px solid var(--mp-acc); }
+    .mp-listen a:hover { color: var(--mp-acc); }
+    .mp-listen iframe { display: block; width: 100%; height: 452px; border: 0; border-radius: 12px; background: #111; }
+    .mp-end { padding: 1.6rem 0 2.4rem; background: var(--mp-paper); color: var(--mp-ink); }
+    .mp-end .frame { display: flex; flex-wrap: wrap; gap: 1rem 2rem; }
+    .mp-end .back-link { color: var(--mp-ink); }
+    @media (max-width: 860px) { .mp-grid { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) { .mp-art * { animation: none !important; } }
+    .pf .mp-hero .mp-lede, .pf .mp-hero .mp-hint { color: #f4ead8; }
+
+    .pf .mp-hero { background: radial-gradient(120% 90% at 70% 30%, #2d2013, #140e09); color: #f4ead8; }
+    .pf .mp-hero h1 { color: #f4ead8; } .pf .mp-hero h1 em { color: #d9a441; }
+    .pf .mp-kick { color: #d9a441; }
+    .pf .mp-hero .back-link { color: rgba(255,255,255,.85); }
+    .pf canvas { position: absolute; inset: 0; width: 100%; height: 100%; touch-action: none; cursor: crosshair; }
+    .pf-keys { position: absolute; z-index: 4; left: var(--gutter); top: calc(20% - 4.25vh); display: flex; flex-direction: column; gap: 0; }
+    .pf-keys button { height: 44px; min-width: 44px; background: none; border: 0; color: #d9a441; font: 500 1rem var(--font-mono); letter-spacing: .06em; cursor: pointer; text-align: left; }
+    .pf-keys button:hover, .pf-keys button:focus-visible { color: #fff; }
+    /* lab */
+    .mp-lab { padding: clamp(3.5rem,7vw,6rem) 0; background: var(--mp-paper); color: var(--mp-ink); border-top: 1px solid color-mix(in srgb, var(--mp-ink) 18%, transparent); }
+    .mp-lab h2 { font-weight: 300; font-size: clamp(2.1rem,4.2vw,3.4rem); line-height: 1.06; margin: 0 0 1rem; color: inherit; max-width: 22ch; }
+    .mp-lab h3 { font: 500 .78rem var(--font-mono); letter-spacing: .12em; text-transform: uppercase; margin: clamp(2.2rem,4vw,3.2rem) 0 1rem; color: var(--mp-acc); }
+    .mp-lab p { color: inherit; }
+    .mp-lab-kick { margin: 0 0 .7rem; font: .74rem var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--mp-acc); }
+    .mp-lab-lede { max-width: 40rem; font-size: 1.12rem; line-height: 1.6; margin: 0 0 1.6rem; }
+    .mp-lab button { font: 600 .92rem var(--font-body); cursor: pointer; }
+    .lab-b { min-height: 44px; padding: .4rem 1rem; background: none; border: 1px solid currentColor; color: inherit; transition: background .2s, color .2s; }
+    .lab-b:hover { background: color-mix(in srgb, var(--mp-ink) 10%, transparent); }
+    .lab-b[aria-pressed="true"], .lab-b[aria-selected="true"] { background: var(--mp-ink); border-color: var(--mp-ink); color: var(--mp-paper); }
+    .lab-row { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin: 0 0 1rem; }
+    .lab-row label { font: .72rem var(--font-mono); letter-spacing: .08em; text-transform: uppercase; display: inline-flex; align-items: center; gap: .6rem; }
+    .lab-row input[type=range] { accent-color: var(--mp-acc); min-height: 44px; }
+    .lab-note { font-size: .92rem; opacity: .75; margin: .8rem 0 0; max-width: 40rem; }
+    .sq { overflow-x: auto; padding-bottom: .4rem; }
+    .sq-r { display: grid; grid-template-columns: 9.5rem repeat(var(--n), minmax(34px, 1fr)); gap: 5px; align-items: stretch; margin-bottom: 5px; min-width: calc(9.5rem + var(--n) * 40px); }
+    .sq-l { font: .72rem var(--font-mono); letter-spacing: .06em; text-transform: uppercase; align-self: center; }
+    .sq-c { min-height: 44px; padding: 0; background: color-mix(in srgb, var(--mp-ink) 9%, transparent); border: 0; transition: background .08s, outline-color .08s; font: .66rem var(--font-mono); color: color-mix(in srgb, var(--mp-ink) 55%, transparent); }
+    .sq-c.on { background: var(--mp-acc); color: transparent; }
+    .sq-c.now { outline: 2px solid var(--mp-ink); outline-offset: -2px; }
+    .sq-h { font: .66rem var(--font-mono); text-align: center; opacity: .65; }
+    .tlc-bar { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
+    .tlc-bar .lab-b { font-family: var(--font-mono); font-size: .8rem; }
+    .tlc-p { min-height: 8.5rem; max-width: 44rem; padding: 1.2rem 1.4rem; border-left: 3px solid var(--mp-acc); background: color-mix(in srgb, var(--mp-ink) 6%, transparent); }
+    .tlc-p b { display: block; font: 400 clamp(1.5rem,2.6vw,2rem)/1.15 var(--font-display); margin-bottom: .5rem; }
+    .tlc-p span { font-size: 1.02rem; line-height: 1.6; }
+    .mp-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr)); gap: 1rem; }
+    .mp-cards article { padding: 1.2rem 1.3rem; border: 1px solid color-mix(in srgb, var(--mp-ink) 22%, transparent); }
+    .mp-cards h4 { margin: 0 0 .5rem; font: 400 1.35rem/1.15 var(--font-display); color: inherit; }
+    .mp-cards p { margin: 0; font-size: .97rem; line-height: 1.55; }
+    .mp-src { list-style: none; margin: 0; padding: 0; font-size: .92rem; }
+    .mp-src li { padding: .5rem 0; border-top: 1px solid color-mix(in srgb, var(--mp-ink) 16%, transparent); }
+    .mp-src a { color: inherit; border-bottom: 1px solid var(--mp-acc); }
+    .mp-src-note { font-size: .85rem; opacity: .7; margin-top: .8rem; }
+    .lab-stage { border: 1px solid color-mix(in srgb, var(--mp-ink) 22%, transparent); padding: 1rem; }
+    .lab-stage canvas { display: block; width: 100%; touch-action: none; }
+    .lab-big { font: 300 clamp(2.4rem,6vw,4.4rem)/1 var(--font-display); }
+    .lab-pad { display: grid; grid-template-columns: repeat(4, minmax(60px, 1fr)); gap: 8px; max-width: 28rem; }
+    .lab-pad button { min-height: 72px; background: color-mix(in srgb, var(--mp-ink) 9%, transparent); border: 0; color: inherit; font-size: 1.2rem; }
+    .lab-pad button.hit { background: var(--mp-acc); color: #fff; }
+    /* end lab */
+    </style>
+</head>
+<body class="has-cover pf">
+    <div id="site-header"></div>
+    <div class="mp-clip">
+    <header class="mp-hero">
+        <div class="mp-art"><canvas id="pf-c" aria-label="Six guitar strings. Drag the pointer across them to pluck."></canvas><div class="pf-keys" id="pf-keys"></div></div>
+        <div class="frame">
+            <a href="/hobbies/music.html" class="back-link">Back to Music</a>
+            <p class="mp-kick">Playlist · Spotify · Folk</p>
+            <h1>Profondo folk</h1>
+            <p class="mp-lede">Music based on folk, and other great classics.</p>
+            <!-- [YOU] your own caption for this playlist goes here, in place of the line above -->
+            <p class="mp-hint">Drag across the strings, or press a note</p>
+        </div>
+    </header>
+
+    <section class="mp-listen">
+        <div class="frame">
+            <div class="mp-grid">
+                <div>
+                    <h2 class="reveal">Listen</h2>
+                    <p class="reveal">Music based on folk, and other great classics.</p>
+                    <!-- [YOU] a few more lines about the playlist, if you want them -->
+                    <p class="reveal"><a href="https://open.spotify.com/playlist/2JFlZ8qhgU1h4KS0umSFnC" target="_blank" rel="noopener">Open on Spotify &nearr;</a></p>
+                </div>
+                <iframe class="reveal" title="Profondo folk, Spotify playlist" src="https://open.spotify.com/embed/playlist/2JFlZ8qhgU1h4KS0umSFnC" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="mp-lab">
+        <div class="frame">
+            <p class="mp-lab-kick reveal">How it works</p>
+            <h2 class="reveal">The capo, or one shape in many keys</h2>
+            <p class="mp-lab-lede reveal">Folk guitarists often play the same few chord shapes everywhere. A capo clamps across the neck and raises every string by one semitone per fret. Choose a fret and play the three shapes.</p>
+            <div id="lab" class="reveal"></div>
+            <p class="lab-note">The shapes G, C and D stay the same under your fingers; the chords you hear are higher by the number of frets.</p>
+            <h3>Worth knowing</h3>
+            <div class="mp-cards"><article class="reveal"><h4>What folk means</h4><p>Traditional folk music has been defined as music transmitted orally, by unknown composers, on traditional instruments. It changes from generation to generation: the "folk process".</p></article><article class="reveal"><h4>Where the word comes from</h4><p>"Folklore" was coined in 1846 by the English antiquarian William Thoms. "Folk music" is a comparatively recent extension of it. The German Romantics, led by Herder, had applied "Volk" to popular music over half a century earlier.</p></article><article class="reveal"><h4>The revival</h4><p>A second folk revival reached its zenith in the 1960s and created contemporary folk music: newly composed songs by known authors. The Grammy Awards added a Folk category in 1959.</p></article><article class="reveal"><h4>Dylan</h4><p>Bob Dylan&rsquo;s "Blowin&rsquo; in the Wind" dates to 1963; "Like a Rolling Stone" was released in July 1965.</p></article></div>
+            <h3>Sources</h3>
+            <ul class="mp-src"><li><a href="https://en.wikipedia.org/wiki/Folk_music" target="_blank" rel="noopener">Wikipedia: Folk music</a></li><li><a href="https://en.wikipedia.org/wiki/Singer-songwriter" target="_blank" rel="noopener">Wikipedia: Singer-songwriter</a></li></ul><p class="mp-src-note">Facts checked against these pages on 17 November 2026. Where a page marks a claim as uncertain, the text here says so.</p>
+        </div>
+    </section>
+
+    <section class="mp-end">
+        <div class="frame">
+            <a href="/hobbies/music.html" class="back-link">Back to Music</a>
+            <a href="/hobbies.html" class="back-link">All Hobbies &amp; Blog</a>
+        </div>
+    </section>
+    </div>
+    <div id="site-footer"></div>
+    <script src="/js/components.js?v=3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+    <script src="/js/site.js?v=3" defer></script>
+    <script>
+    (function () {
+
+  var cv = document.getElementById('pf-c'), ctx = cv.getContext('2d'), keys = document.getElementById('pf-keys');
+  var notes = [['e',329.63],['B',246.94],['G',196],['D',146.83],['A',110],['E',82.41]];
+  var S = notes.map(function (n, i) { return { f: n[1], a: 0, ph: 0, w: 1 + i * .45, y: 0 }; });
+  var W, H, dpr, ac = null, reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function size() { dpr = Math.min(2, devicePixelRatio || 1); W = cv.clientWidth; H = cv.clientHeight; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+    S.forEach(function (s, i) { s.y = H * (.2 + i * .085); }); }
+  function snd(f, v) {
+    try { ac = ac || new (window.AudioContext || window.webkitAudioContext)(); if (ac.state === 'suspended') ac.resume();
+      var o = ac.createOscillator(), o2 = ac.createOscillator(), g = ac.createGain(), t = ac.currentTime;
+      o.type = 'triangle'; o2.type = 'sine'; o.frequency.value = f; o2.frequency.value = f * 2;
+      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(.22 * v, t + .006); g.gain.exponentialRampToValueAtTime(.0008, t + 2.2);
+      o.connect(g); o2.connect(g); g.connect(ac.destination); o.start(t); o2.start(t); o.stop(t + 2.3); o2.stop(t + 2.3);
+    } catch (e) {}
+  }
+  function pluck(i, v) { S[i].a = Math.min(26, 6 + v * 20); S[i].ph = 0; if (!reduce || true) snd(S[i].f, Math.min(1, .35 + v)); }
+  notes.forEach(function (n, i) { var b = document.createElement('button'); b.type = 'button'; b.textContent = n[0]; b.setAttribute('aria-label', 'Pluck string ' + n[0]);
+    b.style.height = (.085 * 100) + 'vh'; b.addEventListener('click', function () { pluck(i, .7); }); keys.appendChild(b); });
+  var lastY = null;
+  cv.addEventListener('pointermove', function (e) {
+    var r = cv.getBoundingClientRect(), y = e.clientY - r.top;
+    if (lastY !== null) S.forEach(function (s, i) { if ((lastY - s.y) * (y - s.y) < 0) pluck(i, Math.min(1, Math.abs(y - lastY) / 40)); });
+    lastY = y;
+  });
+  cv.addEventListener('pointerleave', function () { lastY = null; });
+  function draw(t) {
+    ctx.clearRect(0, 0, W, H);
+    S.forEach(function (s, i) {
+      s.a *= .985; s.ph += .55;
+      ctx.beginPath(); ctx.lineWidth = 1.2 + i * .75; ctx.strokeStyle = s.a > 1 ? '#fff3d0' : '#d9a441';
+      for (var x = 0; x <= W; x += 8) {
+        var env = Math.sin(Math.PI * x / W), y = s.y + env * s.a * Math.sin(s.ph + x * .004) * Math.cos(s.ph * .5);
+        x ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
+      }
+      ctx.stroke();
+    });
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize', size); size(); requestAnimationFrame(draw);
+    })();
+    </script>
+    <script>
+    (function () {
+
+  var AC = null;
+  function ac() { if (!AC) AC = new (window.AudioContext || window.webkitAudioContext)(); if (AC.state === 'suspended') AC.resume(); return AC; }
+  function tone(f, d, type, g, t0, f2) { var a = ac(), t = t0 || a.currentTime, o = a.createOscillator(), n = a.createGain(); o.type = type || 'sine'; o.frequency.setValueAtTime(f, t); if (f2) o.frequency.exponentialRampToValueAtTime(f2, t + d); n.gain.setValueAtTime(.0001, t); n.gain.exponentialRampToValueAtTime(g || .2, t + .006); n.gain.exponentialRampToValueAtTime(.0001, t + d); o.connect(n); n.connect(a.destination); o.start(t); o.stop(t + d + .05); }
+  function noise(d, f, q, g, type) { var a = ac(), len = Math.max(1, Math.floor(a.sampleRate * d)), b = a.createBuffer(1, len, a.sampleRate), x = b.getChannelData(0); for (var i = 0; i < len; i++) x[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 2); var s = a.createBufferSource(), fl = a.createBiquadFilter(), n = a.createGain(); s.buffer = b; fl.type = type || 'bandpass'; fl.frequency.value = f; fl.Q.value = q || 1; n.gain.value = g || .3; s.connect(fl); fl.connect(n); n.connect(a.destination); s.start(); }
+  var V = {
+    kick: function () { tone(130, .28, 'sine', .55, 0, 42); },
+    snare: function () { noise(.16, 1800, .6, .5); tone(190, .1, 'triangle', .2); },
+    rim: function () { tone(1700, .05, 'square', .12); noise(.04, 3000, 2, .25); },
+    hat: function () { noise(.05, 8000, .8, .18, 'highpass'); },
+    clapS: function () { noise(.13, 1500, 1.2, .8); },
+    clapW: function () { noise(.09, 1000, 1.2, .28); },
+    low: function () { tone(98, .5, 'triangle', .35); },
+    mid: function () { tone(330, .18, 'square', .1); },
+    tick: function () { tone(880, .05, 'square', .1); }
+  };
+  function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
+  // step sequencer
+  function seq(root, cfg) {
+    var N = cfg.steps, grid = {}, timer = null, k = -1, bpm = cfg.bpm || 80, labels = cfg.labels;
+    var box = el('div', 'sq'), cells = {};
+    root.appendChild(el('div', 'lab-row', null));
+    var pr = root.lastChild, pbtns = [];
+    cfg.presets.forEach(function (p, i) { var b = el('button', 'lab-b', p.name); b.type = 'button'; b.setAttribute('aria-pressed', 'false'); b.addEventListener('click', function () { load(i); }); pr.appendChild(b); pbtns.push(b); });
+    var play = el('button', 'lab-b', 'Play'); play.type = 'button'; play.setAttribute('aria-pressed', 'false'); pr.appendChild(play);
+    var lab = el('label', null, 'Tempo '); var rg = el('input'); rg.type = 'range'; rg.min = cfg.min || 50; rg.max = cfg.max || 140; rg.value = bpm; rg.setAttribute('aria-label', 'Tempo'); var bv = el('span', null, bpm + ' bpm'); lab.appendChild(rg); lab.appendChild(bv); pr.appendChild(lab);
+    var hr = el('div', 'sq-r'); hr.style.setProperty('--n', N); hr.appendChild(el('span')); var hs = [];
+    for (var i = 0; i < N; i++) { var h = el('span', 'sq-h', labels[i]); hr.appendChild(h); hs.push(h); } box.appendChild(hr);
+    cfg.tracks.forEach(function (t) { var r = el('div', 'sq-r'); r.style.setProperty('--n', N); r.appendChild(el('span', 'sq-l', t.label)); grid[t.id] = []; cells[t.id] = [];
+      for (var i = 0; i < N; i++) { (function (i) { var c = el('button', 'sq-c'); c.type = 'button'; c.setAttribute('aria-label', t.label + ' ' + (i + 1)); c.addEventListener('click', function () { grid[t.id][i] = !grid[t.id][i]; c.classList.toggle('on', grid[t.id][i]); pbtns.forEach(function (b) { b.setAttribute('aria-pressed', 'false'); }); if (grid[t.id][i]) V[t.voice](); }); r.appendChild(c); cells[t.id].push(c); grid[t.id][i] = false; })(i); }
+      box.appendChild(r); });
+    root.appendChild(box);
+    function load(i) { var p = cfg.presets[i]; if (p.labels) { labels = p.labels; hs.forEach(function (h, j) { h.textContent = labels[j]; }); } else { labels = cfg.labels; hs.forEach(function (h, j) { h.textContent = labels[j]; }); }
+      cfg.tracks.forEach(function (t) { for (var j = 0; j < N; j++) { var on = !!(p.on[t.id] && p.on[t.id].indexOf(j) > -1); grid[t.id][j] = on; cells[t.id][j].classList.toggle('on', on); } });
+      pbtns.forEach(function (b, j) { b.setAttribute('aria-pressed', j === i); }); }
+    function step() { if (k >= 0) cfg.tracks.forEach(function (t) { cells[t.id][k].classList.remove('now'); }); k = (k + 1) % N;
+      cfg.tracks.forEach(function (t) { cells[t.id][k].classList.add('now'); if (grid[t.id][k]) V[t.voice](); else if (t.soft && t.soft(k, grid)) V[t.softVoice](); }); }
+    function run() { clearInterval(timer); timer = setInterval(step, 60000 / rg.value / (cfg.perBeat || 2)); }
+    play.addEventListener('click', function () { var on = play.getAttribute('aria-pressed') !== 'true'; play.setAttribute('aria-pressed', on); play.textContent = on ? 'Stop' : 'Play'; if (on) { ac(); k = -1; step(); run(); } else { clearInterval(timer); cfg.tracks.forEach(function (t) { cells[t.id].forEach(function (c) { c.classList.remove('now'); }); }); } });
+    rg.addEventListener('input', function () { bv.textContent = rg.value + ' bpm'; if (play.getAttribute('aria-pressed') === 'true') run(); });
+    load(0);
+  }
+  // timeline chips
+  function tlc(root, items) { var bar = el('div', 'tlc-bar'), p = el('div', 'tlc-p'), h = el('b'), s = el('span'); p.appendChild(h); p.appendChild(s); p.setAttribute('aria-live', 'polite'); var bs = [];
+    items.forEach(function (it, i) { var b = el('button', 'lab-b', it.y); b.type = 'button'; b.setAttribute('role', 'tab'); b.setAttribute('aria-selected', 'false'); b.addEventListener('click', function () { sel(i); }); bar.appendChild(b); bs.push(b); });
+    function sel(i) { bs.forEach(function (b, j) { b.setAttribute('aria-selected', j === i); }); h.textContent = items[i].t; s.textContent = items[i].d; }
+    root.appendChild(bar); root.appendChild(p); sel(0); }
+
+  var root = document.getElementById('lab'), NAMES = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'], base = { G: 7, C: 0, D: 2 };
+  var row = el('div', 'lab-row'), fret = 0, out = el('p', 'lab-big'); var fl = el('label', null, 'Capo on fret '); var r = el('input'); r.type = 'range'; r.min = 0; r.max = 7; r.value = 0; r.setAttribute('aria-label', 'Capo fret'); var rv = el('span', null, '0'); fl.appendChild(r); fl.appendChild(rv); row.appendChild(fl); root.appendChild(row);
+  var row2 = el('div', 'lab-row'); root.appendChild(row2); root.appendChild(out);
+  function sound(sh) { var n = (base[sh] + fret) % 12, root = 261.63 * Math.pow(2, n / 12) / (n > 6 ? 2 : 1); [1, 1.2599, 1.4983].forEach(function (m, i) { tone(root * m, 1.4, 'triangle', .13, ac().currentTime + i * .045); }); tone(root / 2, 1.4, 'triangle', .12); }
+  ['G','C','D'].forEach(function (sh) { var b = el('button', 'lab-b', 'Play shape ' + sh); b.type = 'button'; b.addEventListener('click', function () { sound(sh); }); row2.appendChild(b); });
+  function up() { fret = +r.value; rv.textContent = fret; out.textContent = ['G','C','D'].map(function (s) { return s + ' \u2192 ' + NAMES[(base[s] + fret) % 12]; }).join('    '); }
+  r.addEventListener('input', up); up();
+    })();
+    </script>
+</body>
+</html>

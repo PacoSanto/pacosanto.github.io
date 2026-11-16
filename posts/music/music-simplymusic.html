@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>simplymusic: a Playlist | Francesco Santoro De Vico</title>
+    <meta name="description" content="simplymusic, the playlist I use on planes, behind a window with a shade you can lower.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fsdv.eu/posts/music/music-simplymusic.html">
+    <meta property="og:title" content="simplymusic: a Playlist">
+    <meta property="og:description" content="simplymusic, the playlist I use on planes, behind a window with a shade you can lower.">
+    <meta property="og:image" content="https://fsdv.eu/img/post/music/music-simplymusic-og.jpg">
+    <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
+    <link rel="stylesheet" href="/css/style.css?v=3">
+    <style>
+    /* simplymusic. A playlist page: the hero is a small toy that belongs to the playlist. Scoped under .sm. */
+    .sm { --mp-paper:#101c38; --mp-ink:#eef1f8; --mp-acc:#f29b5b; }
+
+    .sm { background: var(--color-chalk); }
+    .sm .site-footer { margin-top: 0; }
+    .mp-clip { overflow-x: clip; }
+    .mp-hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; }
+    .mp-art { position: absolute; inset: 0; }
+    .mp-hero .frame { position: relative; z-index: 3; width: 100%; padding: calc(var(--nav-height) + 1.5rem) var(--gutter) clamp(2rem,5vw,4rem); pointer-events: none; }
+    .mp-hero .frame a, .mp-hero .frame button { pointer-events: auto; }
+    .mp-kick { margin: 1.2rem 0 .8rem; font-family: var(--font-mono); font-size: .76rem; letter-spacing: .1em; text-transform: uppercase; }
+    .mp-hero h1 { font-weight: 300; font-size: clamp(3.4rem,9vw,8.4rem); line-height: .92; margin: 0 0 1.2rem; }
+    .mp-lede { color: inherit; max-width: 34rem; margin: 0; font-size: clamp(1.1rem,1.6vw,1.35rem); line-height: 1.5; }
+    .mp-hint { color: inherit; margin: 1.4rem 0 0; font: .72rem var(--font-mono); letter-spacing: .1em; text-transform: uppercase; opacity: .7; }
+    .mp-listen { padding: clamp(3.5rem,7vw,6rem) 0; background: var(--mp-paper); color: var(--mp-ink); }
+    .mp-grid { display: grid; grid-template-columns: minmax(0,5fr) minmax(0,7fr); gap: clamp(1.5rem,4vw,4rem); align-items: start; }
+    .mp-listen h2 { font-weight: 300; font-size: clamp(2.3rem,4.6vw,3.8rem); line-height: 1.04; margin: 0 0 1.4rem; color: inherit; }
+    .mp-listen p { font-size: 1.14rem; line-height: 1.65; margin: 0 0 1.2rem; color: inherit; }
+    .mp-listen a { color: inherit; border-bottom: 1px solid var(--mp-acc); }
+    .mp-listen a:hover { color: var(--mp-acc); }
+    .mp-listen iframe { display: block; width: 100%; height: 452px; border: 0; border-radius: 12px; background: #111; }
+    .mp-end { padding: 1.6rem 0 2.4rem; background: var(--mp-paper); color: var(--mp-ink); }
+    .mp-end .frame { display: flex; flex-wrap: wrap; gap: 1rem 2rem; }
+    .mp-end .back-link { color: var(--mp-ink); }
+    @media (max-width: 860px) { .mp-grid { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) { .mp-art * { animation: none !important; } }
+    .sm .mp-hero .mp-lede, .sm .mp-hero .mp-hint { color: #fff; }
+
+    .sm .mp-hero { background: linear-gradient(#0b1630, #14264a 55%, #6a4a58 85%, #f29b5b); color: #fff; }
+    .sm .mp-hero h1 { color: #fff; } .sm .mp-kick { color: #ffd2a6; }
+    .sm .mp-hero .back-link { color: rgba(255,255,255,.85); }
+    .sm-win { position: absolute; right: clamp(1rem,12vw,14rem); top: clamp(5.5rem,13vh,9rem); width: clamp(230px,30vw,400px); aspect-ratio: .74; border-radius: 48% / 36%; background: #cfc9bd; padding: 14px; box-shadow: 0 30px 80px rgba(0,0,0,.45), inset 0 0 0 3px #e9e4d9; }
+    .sm-pane { position: relative; width: 100%; height: 100%; border-radius: 46% / 34%; overflow: hidden; background: linear-gradient(#1d4a8a, #7fb4e6 60%, #ffd7a8); }
+    .sm-cl { position: absolute; left: -40%; width: 60%; height: 16%; border-radius: 50%; background: #fff; filter: blur(7px); opacity: .85; animation: sm-d linear infinite; }
+    .sm-cl:nth-child(1) { top: 52%; animation-duration: 26s; } .sm-cl:nth-child(2) { top: 68%; width: 80%; animation-duration: 18s; opacity: .7; animation-delay: -6s; }
+    .sm-cl:nth-child(3) { top: 40%; width: 40%; animation-duration: 34s; opacity: .6; animation-delay: -14s; } .sm-cl:nth-child(4) { top: 82%; width: 100%; height: 22%; animation-duration: 12s; animation-delay: -3s; }
+    @keyframes sm-d { to { transform: translateX(260%); } }
+    .sm-shade { position: absolute; left: 0; right: 0; top: 0; height: var(--sh, 30%); background: repeating-linear-gradient(#e8e3d8 0 6px, #d4cec1 6px 7px); box-shadow: 0 6px 12px rgba(0,0,0,.35); transition: height .15s; }
+    .sm-ctl { position: absolute; right: clamp(1rem,12vw,14rem); top: calc(clamp(5.5rem,13vh,9rem) + clamp(230px,30vw,400px) / .74 + 1.2rem); width: clamp(230px,30vw,400px); z-index: 4; color: #fff; font: .72rem var(--font-mono); letter-spacing: .1em; text-transform: uppercase; }
+    .sm-ctl input { width: 100%; accent-color: #f29b5b; min-height: 44px; }
+    @media (max-width: 760px) { .sm-win { right: 50%; transform: translateX(50%); top: 5rem; width: 62vw; } .sm-ctl { right: 50%; transform: translateX(50%); top: calc(5rem + 62vw / .74 + .6rem); width: 62vw; } }
+    </style>
+</head>
+<body class="has-cover sm">
+    <div id="site-header"></div>
+    <div class="mp-clip">
+    <header class="mp-hero">
+        <div class="mp-art"><div class="sm-win"><div class="sm-pane"><span class="sm-cl"></span><span class="sm-cl"></span><span class="sm-cl"></span><span class="sm-cl"></span><div class="sm-shade" id="sm-shade"></div></div></div><label class="sm-ctl">Window shade<input id="sm-r" type="range" min="0" max="100" value="30" aria-label="Lower or raise the window shade"></label></div>
+        <div class="frame">
+            <a href="/hobbies/music.html" class="back-link">Back to Music</a>
+            <p class="mp-kick">Playlist · Spotify · In flight</p>
+            <h1>simplymusic</h1>
+            <p class="mp-lede">The one I use to travel by plane.</p>
+            <!-- [YOU] your own caption for this playlist goes here, in place of the line above -->
+        </div>
+    </header>
+
+    <section class="mp-listen">
+        <div class="frame">
+            <div class="mp-grid">
+                <div>
+                    <h2 class="reveal">Listen</h2>
+                    <p class="reveal">The one I use to travel by plane.</p>
+                    <!-- [YOU] a few more lines about the playlist, if you want them -->
+                    <p class="reveal"><a href="https://open.spotify.com/playlist/7DVa3ZJj6lOaKRGUdNecgW" target="_blank" rel="noopener">Open on Spotify &nearr;</a></p>
+                </div>
+                <iframe class="reveal" title="simplymusic, Spotify playlist" src="https://open.spotify.com/embed/playlist/7DVa3ZJj6lOaKRGUdNecgW" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="mp-end">
+        <div class="frame">
+            <a href="/hobbies/music.html" class="back-link">Back to Music</a>
+            <a href="/hobbies.html" class="back-link">All Hobbies &amp; Blog</a>
+        </div>
+    </section>
+    </div>
+    <div id="site-footer"></div>
+    <script src="/js/components.js?v=3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+    <script src="/js/site.js?v=3" defer></script>
+    <script>
+    (function () {
+
+  var r = document.getElementById('sm-r'), sh = document.getElementById('sm-shade');
+  function up() { sh.style.setProperty('--sh', r.value + '%'); }
+  r.addEventListener('input', up); up();
+    })();
+    </script>
+</body>
+</html>

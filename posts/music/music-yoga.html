@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoga: a Playlist | Francesco Santoro De Vico</title>
+    <meta name="description" content="Yoga, a playlist for practice, with a breathing circle.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fsdv.eu/posts/music/music-yoga.html">
+    <meta property="og:title" content="Yoga: a Playlist">
+    <meta property="og:description" content="Yoga, a playlist for practice, with a breathing circle.">
+    <meta property="og:image" content="https://fsdv.eu/img/post/music/music-yoga-og.jpg">
+    <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
+    <link rel="stylesheet" href="/css/style.css?v=3">
+    <style>
+    /* Yoga. A playlist page: the hero is a small toy that belongs to the playlist. Scoped under .yg. */
+    .yg { --mp-paper:#e4efe5; --mp-ink:#23402f; --mp-acc:#4f8a63; }
+
+    .yg { background: var(--color-chalk); }
+    .yg .site-footer { margin-top: 0; }
+    .mp-clip { overflow-x: clip; }
+    .mp-hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; }
+    .mp-art { position: absolute; inset: 0; }
+    .mp-hero .frame { position: relative; z-index: 3; width: 100%; padding: calc(var(--nav-height) + 1.5rem) var(--gutter) clamp(2rem,5vw,4rem); pointer-events: none; }
+    .mp-hero .frame a, .mp-hero .frame button { pointer-events: auto; }
+    .mp-kick { margin: 1.2rem 0 .8rem; font-family: var(--font-mono); font-size: .76rem; letter-spacing: .1em; text-transform: uppercase; }
+    .mp-hero h1 { font-weight: 300; font-size: clamp(3.4rem,9vw,8.4rem); line-height: .92; margin: 0 0 1.2rem; }
+    .mp-lede { color: inherit; max-width: 34rem; margin: 0; font-size: clamp(1.1rem,1.6vw,1.35rem); line-height: 1.5; }
+    .mp-hint { color: inherit; margin: 1.4rem 0 0; font: .72rem var(--font-mono); letter-spacing: .1em; text-transform: uppercase; opacity: .7; }
+    .mp-listen { padding: clamp(3.5rem,7vw,6rem) 0; background: var(--mp-paper); color: var(--mp-ink); }
+    .mp-grid { display: grid; grid-template-columns: minmax(0,5fr) minmax(0,7fr); gap: clamp(1.5rem,4vw,4rem); align-items: start; }
+    .mp-listen h2 { font-weight: 300; font-size: clamp(2.3rem,4.6vw,3.8rem); line-height: 1.04; margin: 0 0 1.4rem; color: inherit; }
+    .mp-listen p { font-size: 1.14rem; line-height: 1.65; margin: 0 0 1.2rem; color: inherit; }
+    .mp-listen a { color: inherit; border-bottom: 1px solid var(--mp-acc); }
+    .mp-listen a:hover { color: var(--mp-acc); }
+    .mp-listen iframe { display: block; width: 100%; height: 452px; border: 0; border-radius: 12px; background: #111; }
+    .mp-end { padding: 1.6rem 0 2.4rem; background: var(--mp-paper); color: var(--mp-ink); }
+    .mp-end .frame { display: flex; flex-wrap: wrap; gap: 1rem 2rem; }
+    .mp-end .back-link { color: var(--mp-ink); }
+    @media (max-width: 860px) { .mp-grid { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) { .mp-art * { animation: none !important; } }
+    .yg .mp-hero .mp-lede, .yg .mp-hero .mp-hint { color: #23402f; }
+    .yg .mp-hero { background: linear-gradient(#cfe0d0, #e9f1e6); color: #23402f; }
+    .yg .mp-hero h1 { color: #23402f; } .yg .mp-kick { color: #3e6f50; }
+    .yg .mp-hero .back-link { color: #23402f; }
+
+    .yg-o { position: absolute; right: clamp(2rem,14vw,16rem); top: 50%; width: clamp(240px,34vw,460px); aspect-ratio: 1; margin-top: calc(clamp(240px,34vw,460px) / -2 - 6%); display: grid; place-items: center; }
+    .yg-o i { position: absolute; inset: 0; border-radius: 50%; border: 2px solid #7aa886; transform: scale(var(--sc,.55)); transition: transform var(--t, 4s) ease-in-out; }
+    .yg-o i:nth-child(2) { inset: 12%; opacity: .7; } .yg-o i:nth-child(3) { inset: 26%; background: #7aa886; opacity: .85; }
+    .yg-o b { position: relative; font: 300 clamp(1.1rem,2vw,1.7rem)/1.1 var(--font-display); text-align: center; max-width: 7ch; color: #23402f; }
+    .yg-btn { margin-top: 1.4rem; min-height: 48px; padding: .7rem 1.4rem; background: #23402f; border: 0; color: #e4efe5; font: 700 1rem var(--font-body); cursor: pointer; }
+    @media (max-width: 760px) { .yg-o { right: 50%; transform: translateX(50%); top: 7rem; margin-top: 0; } }
+    /* lab */
+    .mp-lab { padding: clamp(3.5rem,7vw,6rem) 0; background: var(--mp-paper); color: var(--mp-ink); border-top: 1px solid color-mix(in srgb, var(--mp-ink) 18%, transparent); }
+    .mp-lab h2 { font-weight: 300; font-size: clamp(2.1rem,4.2vw,3.4rem); line-height: 1.06; margin: 0 0 1rem; color: inherit; max-width: 22ch; }
+    .mp-lab h3 { font: 500 .78rem var(--font-mono); letter-spacing: .12em; text-transform: uppercase; margin: clamp(2.2rem,4vw,3.2rem) 0 1rem; color: var(--mp-acc); }
+    .mp-lab p { color: inherit; }
+    .mp-lab-kick { margin: 0 0 .7rem; font: .74rem var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--mp-acc); }
+    .mp-lab-lede { max-width: 40rem; font-size: 1.12rem; line-height: 1.6; margin: 0 0 1.6rem; }
+    .mp-lab button { font: 600 .92rem var(--font-body); cursor: pointer; }
+    .lab-b { min-height: 44px; padding: .4rem 1rem; background: none; border: 1px solid currentColor; color: inherit; transition: background .2s, color .2s; }
+    .lab-b:hover { background: color-mix(in srgb, var(--mp-ink) 10%, transparent); }
+    .lab-b[aria-pressed="true"], .lab-b[aria-selected="true"] { background: var(--mp-ink); border-color: var(--mp-ink); color: var(--mp-paper); }
+    .lab-row { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin: 0 0 1rem; }
+    .lab-row label { font: .72rem var(--font-mono); letter-spacing: .08em; text-transform: uppercase; display: inline-flex; align-items: center; gap: .6rem; }
+    .lab-row input[type=range] { accent-color: var(--mp-acc); min-height: 44px; }
+    .lab-note { font-size: .92rem; opacity: .75; margin: .8rem 0 0; max-width: 40rem; }
+    .sq { overflow-x: auto; padding-bottom: .4rem; }
+    .sq-r { display: grid; grid-template-columns: 9.5rem repeat(var(--n), minmax(34px, 1fr)); gap: 5px; align-items: stretch; margin-bottom: 5px; min-width: calc(9.5rem + var(--n) * 40px); }
+    .sq-l { font: .72rem var(--font-mono); letter-spacing: .06em; text-transform: uppercase; align-self: center; }
+    .sq-c { min-height: 44px; padding: 0; background: color-mix(in srgb, var(--mp-ink) 9%, transparent); border: 0; transition: background .08s, outline-color .08s; font: .66rem var(--font-mono); color: color-mix(in srgb, var(--mp-ink) 55%, transparent); }
+    .sq-c.on { background: var(--mp-acc); color: transparent; }
+    .sq-c.now { outline: 2px solid var(--mp-ink); outline-offset: -2px; }
+    .sq-h { font: .66rem var(--font-mono); text-align: center; opacity: .65; }
+    .tlc-bar { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
+    .tlc-bar .lab-b { font-family: var(--font-mono); font-size: .8rem; }
+    .tlc-p { min-height: 8.5rem; max-width: 44rem; padding: 1.2rem 1.4rem; border-left: 3px solid var(--mp-acc); background: color-mix(in srgb, var(--mp-ink) 6%, transparent); }
+    .tlc-p b { display: block; font: 400 clamp(1.5rem,2.6vw,2rem)/1.15 var(--font-display); margin-bottom: .5rem; }
+    .tlc-p span { font-size: 1.02rem; line-height: 1.6; }
+    .mp-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr)); gap: 1rem; }
+    .mp-cards article { padding: 1.2rem 1.3rem; border: 1px solid color-mix(in srgb, var(--mp-ink) 22%, transparent); }
+    .mp-cards h4 { margin: 0 0 .5rem; font: 400 1.35rem/1.15 var(--font-display); color: inherit; }
+    .mp-cards p { margin: 0; font-size: .97rem; line-height: 1.55; }
+    .mp-src { list-style: none; margin: 0; padding: 0; font-size: .92rem; }
+    .mp-src li { padding: .5rem 0; border-top: 1px solid color-mix(in srgb, var(--mp-ink) 16%, transparent); }
+    .mp-src a { color: inherit; border-bottom: 1px solid var(--mp-acc); }
+    .mp-src-note { font-size: .85rem; opacity: .7; margin-top: .8rem; }
+    .lab-stage { border: 1px solid color-mix(in srgb, var(--mp-ink) 22%, transparent); padding: 1rem; }
+    .lab-stage canvas { display: block; width: 100%; touch-action: none; }
+    .lab-big { font: 300 clamp(2.4rem,6vw,4.4rem)/1 var(--font-display); }
+    .lab-pad { display: grid; grid-template-columns: repeat(4, minmax(60px, 1fr)); gap: 8px; max-width: 28rem; }
+    .lab-pad button { min-height: 72px; background: color-mix(in srgb, var(--mp-ink) 9%, transparent); border: 0; color: inherit; font-size: 1.2rem; }
+    .lab-pad button.hit { background: var(--mp-acc); color: #fff; }
+    /* end lab */
+    </style>
+</head>
+<body class="has-cover yg">
+    <div id="site-header"></div>
+    <div class="mp-clip">
+    <header class="mp-hero">
+        <div class="mp-art"><div class="yg-o" id="yg-o" aria-hidden="true"><i></i><i></i><i></i><b id="yg-t">Breathe in</b></div></div>
+        <div class="frame">
+            <a href="/hobbies/music.html" class="back-link">Back to Music</a>
+            <p class="mp-kick">Playlist · Spotify · Yoga</p>
+            <h1>Yoga</h1>
+            <p class="mp-lede">For yoga.</p>
+            <!-- [YOU] your own caption for this playlist goes here, in place of the line above -->
+            <p class="mp-hint">Four seconds in, six out</p>
+            <button class="yg-btn" type="button" id="yg-b" aria-pressed="true">Pause</button>
+        </div>
+    </header>
+
+    <section class="mp-listen">
+        <div class="frame">
+            <div class="mp-grid">
+                <div>
+                    <h2 class="reveal">Listen</h2>
+                    <p class="reveal">For yoga.</p>
+                    <!-- [YOU] a few more lines about the playlist, if you want them -->
+                    <p class="reveal"><a href="https://open.spotify.com/playlist/6Invj9O1h5uTn8UrK1qLhb" target="_blank" rel="noopener">Open on Spotify &nearr;</a></p>
+                </div>
+                <iframe class="reveal" title="Yoga, Spotify playlist" src="https://open.spotify.com/embed/playlist/6Invj9O1h5uTn8UrK1qLhb" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="mp-lab">
+        <div class="frame">
+            <p class="mp-lab-kick reveal">How it works</p>
+            <h2 class="reveal">A note that does not stop</h2>
+            <p class="mp-lab-lede reveal">Much of the music for practice leans on a drone: one pitch, sustained, under everything else. In Indian classical music the tanpura plays it. Choose a note and let it ring.</p>
+            <div id="lab" class="reveal"></div>
+            <p class="lab-note">The four strings below are tuned as on a tanpura, 5-8-8-1: Pa, Sa, Sa and a lower Sa. This is a simple imitation, not a recording.</p>
+            <h3>Worth knowing</h3>
+            <div class="mp-cards"><article class="reveal"><h4>Tanpura</h4><p>A four-stringed instrument, normally tuned 5-8-8-1 (Pa-Sa-Sa-Sa). It does not play a melody: it sustains another musician or singer with a drone, the reference from which the ragas are anchored.</p></article><article class="reveal"><h4>The buzz</h4><p>The jivari bridge gives a sustained buzzing sound with a rich overtone texture. As a string fades, its contact point on the bridge moves up the slope, over roughly three to ten seconds.</p></article><article class="reveal"><h4>Tabla</h4><p>A pair of hand drums: the smaller dayan (treble) and the larger baya (bass). Since the 18th century it has been the main percussion instrument of Hindustani classical music. Teental, a very common cycle, has 16 beats grouped 4+4+4+4.</p></article><article class="reveal"><h4>Singing bowls</h4><p>Struck or rubbed on the rim. Their origin is disputed: the claim of a Tibetan pre-Buddhist origin is questioned, and they began reaching the West in the early 1970s. Healing claims are beliefs, not established effects.</p></article></div>
+            <h3>Sources</h3>
+            <ul class="mp-src"><li><a href="https://en.wikipedia.org/wiki/Tanpura" target="_blank" rel="noopener">Wikipedia: Tanpura</a></li><li><a href="https://en.wikipedia.org/wiki/Tabla" target="_blank" rel="noopener">Wikipedia: Tabla</a></li><li><a href="https://en.wikipedia.org/wiki/Singing_bowl" target="_blank" rel="noopener">Wikipedia: Singing bowl</a></li></ul><p class="mp-src-note">Facts checked against these pages on 17 November 2026. Where a page marks a claim as uncertain, the text here says so.</p>
+        </div>
+    </section>
+
+    <section class="mp-end">
+        <div class="frame">
+            <a href="/hobbies/music.html" class="back-link">Back to Music</a>
+            <a href="/hobbies.html" class="back-link">All Hobbies &amp; Blog</a>
+        </div>
+    </section>
+    </div>
+    <div id="site-footer"></div>
+    <script src="/js/components.js?v=3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+    <script src="/js/site.js?v=3" defer></script>
+    <script>
+    (function () {
+
+  var o = document.getElementById('yg-o'), t = document.getElementById('yg-t'), b = document.getElementById('yg-b'), on = true, inh = false, timer = null, rm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function cyc() { inh = !inh; o.style.setProperty('--t', (inh ? 4 : 6) + 's'); o.style.setProperty('--sc', inh ? 1 : .55); t.textContent = inh ? 'Breathe in' : 'Breathe out'; timer = setTimeout(cyc, (inh ? 4 : 6) * 1000); }
+  function start() { clearTimeout(timer); inh = false; cyc(); }
+  b.addEventListener('click', function () { on = !on; b.setAttribute('aria-pressed', on); b.textContent = on ? 'Pause' : 'Breathe'; if (on) start(); else { clearTimeout(timer); o.style.setProperty('--sc', .55); t.textContent = 'Breathe'; } });
+  start();
+    })();
+    </script>
+    <script>
+    (function () {
+
+  var AC = null;
+  function ac() { if (!AC) AC = new (window.AudioContext || window.webkitAudioContext)(); if (AC.state === 'suspended') AC.resume(); return AC; }
+  function tone(f, d, type, g, t0, f2) { var a = ac(), t = t0 || a.currentTime, o = a.createOscillator(), n = a.createGain(); o.type = type || 'sine'; o.frequency.setValueAtTime(f, t); if (f2) o.frequency.exponentialRampToValueAtTime(f2, t + d); n.gain.setValueAtTime(.0001, t); n.gain.exponentialRampToValueAtTime(g || .2, t + .006); n.gain.exponentialRampToValueAtTime(.0001, t + d); o.connect(n); n.connect(a.destination); o.start(t); o.stop(t + d + .05); }
+  function noise(d, f, q, g, type) { var a = ac(), len = Math.max(1, Math.floor(a.sampleRate * d)), b = a.createBuffer(1, len, a.sampleRate), x = b.getChannelData(0); for (var i = 0; i < len; i++) x[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 2); var s = a.createBufferSource(), fl = a.createBiquadFilter(), n = a.createGain(); s.buffer = b; fl.type = type || 'bandpass'; fl.frequency.value = f; fl.Q.value = q || 1; n.gain.value = g || .3; s.connect(fl); fl.connect(n); n.connect(a.destination); s.start(); }
+  var V = {
+    kick: function () { tone(130, .28, 'sine', .55, 0, 42); },
+    snare: function () { noise(.16, 1800, .6, .5); tone(190, .1, 'triangle', .2); },
+    rim: function () { tone(1700, .05, 'square', .12); noise(.04, 3000, 2, .25); },
+    hat: function () { noise(.05, 8000, .8, .18, 'highpass'); },
+    clapS: function () { noise(.13, 1500, 1.2, .8); },
+    clapW: function () { noise(.09, 1000, 1.2, .28); },
+    low: function () { tone(98, .5, 'triangle', .35); },
+    mid: function () { tone(330, .18, 'square', .1); },
+    tick: function () { tone(880, .05, 'square', .1); }
+  };
+  function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
+  // step sequencer
+  function seq(root, cfg) {
+    var N = cfg.steps, grid = {}, timer = null, k = -1, bpm = cfg.bpm || 80, labels = cfg.labels;
+    var box = el('div', 'sq'), cells = {};
+    root.appendChild(el('div', 'lab-row', null));
+    var pr = root.lastChild, pbtns = [];
+    cfg.presets.forEach(function (p, i) { var b = el('button', 'lab-b', p.name); b.type = 'button'; b.setAttribute('aria-pressed', 'false'); b.addEventListener('click', function () { load(i); }); pr.appendChild(b); pbtns.push(b); });
+    var play = el('button', 'lab-b', 'Play'); play.type = 'button'; play.setAttribute('aria-pressed', 'false'); pr.appendChild(play);
+    var lab = el('label', null, 'Tempo '); var rg = el('input'); rg.type = 'range'; rg.min = cfg.min || 50; rg.max = cfg.max || 140; rg.value = bpm; rg.setAttribute('aria-label', 'Tempo'); var bv = el('span', null, bpm + ' bpm'); lab.appendChild(rg); lab.appendChild(bv); pr.appendChild(lab);
+    var hr = el('div', 'sq-r'); hr.style.setProperty('--n', N); hr.appendChild(el('span')); var hs = [];
+    for (var i = 0; i < N; i++) { var h = el('span', 'sq-h', labels[i]); hr.appendChild(h); hs.push(h); } box.appendChild(hr);
+    cfg.tracks.forEach(function (t) { var r = el('div', 'sq-r'); r.style.setProperty('--n', N); r.appendChild(el('span', 'sq-l', t.label)); grid[t.id] = []; cells[t.id] = [];
+      for (var i = 0; i < N; i++) { (function (i) { var c = el('button', 'sq-c'); c.type = 'button'; c.setAttribute('aria-label', t.label + ' ' + (i + 1)); c.addEventListener('click', function () { grid[t.id][i] = !grid[t.id][i]; c.classList.toggle('on', grid[t.id][i]); pbtns.forEach(function (b) { b.setAttribute('aria-pressed', 'false'); }); if (grid[t.id][i]) V[t.voice](); }); r.appendChild(c); cells[t.id].push(c); grid[t.id][i] = false; })(i); }
+      box.appendChild(r); });
+    root.appendChild(box);
+    function load(i) { var p = cfg.presets[i]; if (p.labels) { labels = p.labels; hs.forEach(function (h, j) { h.textContent = labels[j]; }); } else { labels = cfg.labels; hs.forEach(function (h, j) { h.textContent = labels[j]; }); }
+      cfg.tracks.forEach(function (t) { for (var j = 0; j < N; j++) { var on = !!(p.on[t.id] && p.on[t.id].indexOf(j) > -1); grid[t.id][j] = on; cells[t.id][j].classList.toggle('on', on); } });
+      pbtns.forEach(function (b, j) { b.setAttribute('aria-pressed', j === i); }); }
+    function step() { if (k >= 0) cfg.tracks.forEach(function (t) { cells[t.id][k].classList.remove('now'); }); k = (k + 1) % N;
+      cfg.tracks.forEach(function (t) { cells[t.id][k].classList.add('now'); if (grid[t.id][k]) V[t.voice](); else if (t.soft && t.soft(k, grid)) V[t.softVoice](); }); }
+    function run() { clearInterval(timer); timer = setInterval(step, 60000 / rg.value / (cfg.perBeat || 2)); }
+    play.addEventListener('click', function () { var on = play.getAttribute('aria-pressed') !== 'true'; play.setAttribute('aria-pressed', on); play.textContent = on ? 'Stop' : 'Play'; if (on) { ac(); k = -1; step(); run(); } else { clearInterval(timer); cfg.tracks.forEach(function (t) { cells[t.id].forEach(function (c) { c.classList.remove('now'); }); }); } });
+    rg.addEventListener('input', function () { bv.textContent = rg.value + ' bpm'; if (play.getAttribute('aria-pressed') === 'true') run(); });
+    load(0);
+  }
+  // timeline chips
+  function tlc(root, items) { var bar = el('div', 'tlc-bar'), p = el('div', 'tlc-p'), h = el('b'), s = el('span'); p.appendChild(h); p.appendChild(s); p.setAttribute('aria-live', 'polite'); var bs = [];
+    items.forEach(function (it, i) { var b = el('button', 'lab-b', it.y); b.type = 'button'; b.setAttribute('role', 'tab'); b.setAttribute('aria-selected', 'false'); b.addEventListener('click', function () { sel(i); }); bar.appendChild(b); bs.push(b); });
+    function sel(i) { bs.forEach(function (b, j) { b.setAttribute('aria-selected', j === i); }); h.textContent = items[i].t; s.textContent = items[i].d; }
+    root.appendChild(bar); root.appendChild(p); sel(0); }
+
+  var root = document.getElementById('lab'), on = false, timer = null, i = 0;
+  var SA = { 'C': 130.81, 'D': 146.83, 'E': 164.81, 'F': 174.61, 'G': 196 };
+  var row = el('div', 'lab-row'); root.appendChild(row);
+  var play = el('button', 'lab-b', 'Drone'); play.type = 'button'; play.setAttribute('aria-pressed', 'false');
+  var sel = el('div', 'lab-row'); var cur = 'C', sb = [];
+  Object.keys(SA).forEach(function (k) { var b = el('button', 'lab-b', 'Sa = ' + k); b.type = 'button'; b.setAttribute('aria-pressed', k === cur); b.addEventListener('click', function () { cur = k; sb.forEach(function (x) { x.setAttribute('aria-pressed', x === b); }); }); sel.appendChild(b); sb.push(b); });
+  row.appendChild(play); root.appendChild(row); root.appendChild(sel);
+  function string() { var sa = SA[cur], f = [sa * 1.5, sa * 2, sa * 2, sa][i % 4]; i++; var a = ac(), t = a.currentTime;
+    [1, 2, 3, 4].forEach(function (h) { var o = a.createOscillator(), g = a.createGain(); o.type = 'sine'; o.frequency.value = f * h; g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(.12 / h, t + .05); g.gain.exponentialRampToValueAtTime(.0001, t + 3.2); o.connect(g); g.connect(a.destination); o.start(t); o.stop(t + 3.3); }); }
+  play.addEventListener('click', function () { on = !on; play.setAttribute('aria-pressed', on); play.textContent = on ? 'Stop' : 'Drone'; if (on) { string(); timer = setInterval(string, 900); } else clearInterval(timer); });
+  var bowl = el('div'); bowl.style.marginTop = '2rem'; root.appendChild(bowl);
+  var bb = el('button', 'lab-b', 'Strike a bowl'); bb.type = 'button'; bowl.appendChild(bb);
+  var bi = el('p', 'lab-note', 'A singing bowl can be struck or "sung" by rubbing its rim. This one only strikes.'); bowl.appendChild(bi);
+  bb.addEventListener('click', function () { var f = 396; [1, 2.76, 5.4].forEach(function (m, k) { tone(f * m, 5 - k, 'sine', .18 / (k + 1)); }); });
+    })();
+    </script>
+</body>
+</html>

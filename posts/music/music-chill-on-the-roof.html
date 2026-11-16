@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chill on the roof: a Playlist | Francesco Santoro De Vico</title>
+    <meta name="description" content="Chill on the roof, to relax on the sofa with the PC, over a rooftop where you set the time of day.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fsdv.eu/posts/music/music-chill-on-the-roof.html">
+    <meta property="og:title" content="Chill on the roof: a Playlist">
+    <meta property="og:description" content="Chill on the roof, to relax on the sofa with the PC, over a rooftop where you set the time of day.">
+    <meta property="og:image" content="https://fsdv.eu/img/post/music/music-chill-on-the-roof-og.jpg">
+    <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
+    <link rel="stylesheet" href="/css/style.css?v=3">
+    <style>
+    /* Chill on the roof. A playlist page: the hero is a small toy that belongs to the playlist. Scoped under .ch. */
+    .ch { --mp-paper:#171a3e; --mp-ink:#f3eefb; --mp-acc:#f4845f; }
+
+    .ch { background: var(--color-chalk); }
+    .ch .site-footer { margin-top: 0; }
+    .mp-clip { overflow-x: clip; }
+    .mp-hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; }
+    .mp-art { position: absolute; inset: 0; }
+    .mp-hero .frame { position: relative; z-index: 3; width: 100%; padding: calc(var(--nav-height) + 1.5rem) var(--gutter) clamp(2rem,5vw,4rem); pointer-events: none; }
+    .mp-hero .frame a, .mp-hero .frame button { pointer-events: auto; }
+    .mp-kick { margin: 1.2rem 0 .8rem; font-family: var(--font-mono); font-size: .76rem; letter-spacing: .1em; text-transform: uppercase; }
+    .mp-hero h1 { font-weight: 300; font-size: clamp(3.4rem,9vw,8.4rem); line-height: .92; margin: 0 0 1.2rem; }
+    .mp-lede { color: inherit; max-width: 34rem; margin: 0; font-size: clamp(1.1rem,1.6vw,1.35rem); line-height: 1.5; }
+    .mp-hint { color: inherit; margin: 1.4rem 0 0; font: .72rem var(--font-mono); letter-spacing: .1em; text-transform: uppercase; opacity: .7; }
+    .mp-listen { padding: clamp(3.5rem,7vw,6rem) 0; background: var(--mp-paper); color: var(--mp-ink); }
+    .mp-grid { display: grid; grid-template-columns: minmax(0,5fr) minmax(0,7fr); gap: clamp(1.5rem,4vw,4rem); align-items: start; }
+    .mp-listen h2 { font-weight: 300; font-size: clamp(2.3rem,4.6vw,3.8rem); line-height: 1.04; margin: 0 0 1.4rem; color: inherit; }
+    .mp-listen p { font-size: 1.14rem; line-height: 1.65; margin: 0 0 1.2rem; color: inherit; }
+    .mp-listen a { color: inherit; border-bottom: 1px solid var(--mp-acc); }
+    .mp-listen a:hover { color: var(--mp-acc); }
+    .mp-listen iframe { display: block; width: 100%; height: 452px; border: 0; border-radius: 12px; background: #111; }
+    .mp-end { padding: 1.6rem 0 2.4rem; background: var(--mp-paper); color: var(--mp-ink); }
+    .mp-end .frame { display: flex; flex-wrap: wrap; gap: 1rem 2rem; }
+    .mp-end .back-link { color: var(--mp-ink); }
+    @media (max-width: 860px) { .mp-grid { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) { .mp-art * { animation: none !important; } }
+    .ch .mp-hero .mp-lede, .ch .mp-hero .mp-hint { color: #ffffff; }
+
+    .ch .mp-hero { background: linear-gradient(var(--s1,#2b2d6e), var(--s2,#f4845f)); color: #ffffff; }
+    .ch .mp-hero h1 { color: #fff; } .ch .mp-kick { color: #ffd9cf; } .ch .mp-hero .back-link { color: #fff; }
+    .ch-sun { position: absolute; left: 62%; width: clamp(80px,11vw,150px); aspect-ratio: 1; border-radius: 50%; background: var(--sun,#ffd9a0); top: var(--sy, 40%); }
+    .ch-roof { position: absolute; left: 0; right: 0; bottom: 0; }
+    .ch-roof svg { display: block; width: 100%; height: auto; }
+    .ch-ctl { position: absolute; z-index: 4; right: var(--gutter); top: calc(var(--nav-height) + 1.4rem); width: min(280px, 50vw); font: .72rem var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: #fff; }
+    .ch-ctl input { width: 100%; accent-color: #f4845f; min-height: 44px; }
+    </style>
+</head>
+<body class="has-cover ch">
+    <div id="site-header"></div>
+    <div class="mp-clip">
+    <header class="mp-hero">
+        <div class="mp-art"><div class="ch-sun"></div><div class="ch-roof"><svg viewBox="0 0 1000 200" preserveAspectRatio="none"><path d="M0 200 V120 H90 V70 H120 V120 H230 V60 H320 V120 H430 V95 H455 V120 H560 V50 H650 V120 H760 V80 H790 V120 H900 V100 H1000 V200Z" fill="#12132e"/></svg></div><label class="ch-ctl">Time of day<input id="ch-r" type="range" min="0" max="100" value="55" aria-label="Time of day"></label></div>
+        <div class="frame">
+            <a href="/hobbies/music.html" class="back-link">Back to Music</a>
+            <p class="mp-kick">Playlist · Spotify · Chill</p>
+            <h1 style="font-size:clamp(2.4rem,5.2vw,5rem);max-width:62%">Chill on the roof</h1>
+            <p class="mp-lede">For when I need to relax on the sofa with the PC.</p>
+            <!-- [YOU] your own caption for this playlist goes here, in place of the line above -->
+        </div>
+    </header>
+
+    <section class="mp-listen">
+        <div class="frame">
+            <div class="mp-grid">
+                <div>
+                    <h2 class="reveal">Listen</h2>
+                    <p class="reveal">For when I need to relax on the sofa with the PC.</p>
+                    <p class="reveal">Perfect for the sofa and total relaxation, travelling with the thoughts.</p>
+                    <p class="reveal"><a href="https://open.spotify.com/playlist/5NhgYlA6zbFyPy7UPP9dkQ" target="_blank" rel="noopener">Open on Spotify &nearr;</a></p>
+                </div>
+                <iframe class="reveal" title="Chill on the roof, Spotify playlist" src="https://open.spotify.com/embed/playlist/5NhgYlA6zbFyPy7UPP9dkQ" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="mp-end">
+        <div class="frame">
+            <a href="/hobbies/music.html" class="back-link">Back to Music</a>
+            <a href="/hobbies.html" class="back-link">All Hobbies &amp; Blog</a>
+        </div>
+    </section>
+    </div>
+    <div id="site-footer"></div>
+    <script src="/js/components.js?v=3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+    <script src="/js/site.js?v=3" defer></script>
+    <script>
+    (function () {
+
+  var h = document.querySelector('.mp-hero'), r = document.getElementById('ch-r');
+  var A = [[[110,170,220],[255,214,160],[255,236,190],20],[[43,45,110],[244,132,95],[255,217,160],42],[[18,19,46],[63,40,96],[255,200,160],78]];
+  function mix(a, b, t) { return a.map(function (v, i) { return Math.round(v + (b[i] - v) * t); }); }
+  function up() { var v = r.value / 100 * 2, i = Math.min(1, Math.floor(v)), t = v - i, a = A[i], b = A[i + 1];
+    h.style.setProperty('--s1', 'rgb(' + mix(a[0], b[0], t) + ')'); h.style.setProperty('--s2', 'rgb(' + mix(a[1], b[1], t) + ')'); h.style.setProperty('--sun', 'rgb(' + mix(a[2], b[2], t) + ')');
+    h.style.setProperty('--sy', (a[3] + (b[3] - a[3]) * t) + '%'); }
+  r.addEventListener('input', up); up();
+    })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soul++: a Playlist | Francesco Santoro De Vico</title>
+    <meta name="description" content="Soul++, my soul playlist, with a turntable to drop the needle on.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fsdv.eu/posts/music/music-soul.html">
+    <meta property="og:title" content="Soul++: a Playlist">
+    <meta property="og:description" content="Soul++, my soul playlist, with a turntable to drop the needle on.">
+    <meta property="og:image" content="https://fsdv.eu/img/post/music/music-soul-og.jpg">
+    <script>document.documentElement.classList.add('js');setTimeout(function(){var b=document.body;if(b&&!b.classList.contains('is-loaded')){b.classList.add('is-loaded');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('is-in')})}},2500);</script>
+    <link rel="stylesheet" href="/css/style.css?v=3">
+    <style>
+    /* Soul++. A playlist page: the hero is a small toy that belongs to the playlist. Scoped under .so. */
+    .so { --mp-paper:#2a0a14; --mp-ink:#f6e3c4; --mp-acc:#e0a458; }
+
+    .so { background: var(--color-chalk); }
+    .so .site-footer { margin-top: 0; }
+    .mp-clip { overflow-x: clip; }
+    .mp-hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; }
+    .mp-art { position: absolute; inset: 0; }
+    .mp-hero .frame { position: relative; z-index: 3; width: 100%; padding: calc(var(--nav-height) + 1.5rem) var(--gutter) clamp(2rem,5vw,4rem); pointer-events: none; }
+    .mp-hero .frame a, .mp-hero .frame button { pointer-events: auto; }
+    .mp-kick { margin: 1.2rem 0 .8rem; font-family: var(--font-mono); font-size: .76rem; letter-spacing: .1em; text-transform: uppercase; }
+    .mp-hero h1 { font-weight: 300; font-size: clamp(3.4rem,9vw,8.4rem); line-height: .92; margin: 0 0 1.2rem; }
+    .mp-lede { color: inherit; max-width: 34rem; margin: 0; font-size: clamp(1.1rem,1.6vw,1.35rem); line-height: 1.5; }
+    .mp-hint { color: inherit; margin: 1.4rem 0 0; font: .72rem var(--font-mono); letter-spacing: .1em; text-transform: uppercase; opacity: .7; }
+    .mp-listen { padding: clamp(3.5rem,7vw,6rem) 0; background: var(--mp-paper); color: var(--mp-ink); }
+    .mp-grid { display: grid; grid-template-columns: minmax(0,5fr) minmax(0,7fr); gap: clamp(1.5rem,4vw,4rem); align-items: start; }
+    .mp-listen h2 { font-weight: 300; font-size: clamp(2.3rem,4.6vw,3.8rem); line-height: 1.04; margin: 0 0 1.4rem; color: inherit; }
+    .mp-listen p { font-size: 1.14rem; line-height: 1.65; margin: 0 0 1.2rem; color: inherit; }
+    .mp-listen a { color: inherit; border-bottom: 1px solid var(--mp-acc); }
+    .mp-listen a:hover { color: var(--mp-acc); }
+    .mp-listen iframe { display: block; width: 100%; height: 452px; border: 0; border-radius: 12px; background: #111; }
+    .mp-end { padding: 1.6rem 0 2.4rem; background: var(--mp-paper); color: var(--mp-ink); }
+    .mp-end .frame { display: flex; flex-wrap: wrap; gap: 1rem 2rem; }
+    .mp-end .back-link { color: var(--mp-ink); }
+    @media (max-width: 860px) { .mp-grid { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) { .mp-art * { animation: none !important; } }
+    .so .mp-hero .mp-lede, .so .mp-hero .mp-hint { color: #f6e3c4; }
+    .so .mp-hero { background: radial-gradient(100% 90% at 70% 35%, #6b1a2e, #2a0a14); color: #f6e3c4; }
+    .so .mp-hero h1 { color: #f6e3c4; } .so .mp-kick { color: #e0a458; }
+    .so .mp-hero .back-link { color: #f6e3c4; }
+
+    .so-deck { position: absolute; right: clamp(1rem,9vw,11rem); top: clamp(5.5rem,13vh,9rem); width: clamp(280px,40vw,520px); aspect-ratio: 1.12; background: #1b0a10; border: 2px solid #e0a458; border-radius: 14px; box-shadow: 0 30px 70px rgba(0,0,0,.45); }
+    .so-rec { position: absolute; left: 8%; top: 10%; width: 66%; aspect-ratio: 1; border-radius: 50%; background: repeating-radial-gradient(#0c0c0c 0 2px, #1c1c1c 2px 4px); animation: so-sp 2.4s linear infinite paused; }
+    .so-rec::before { content: ''; position: absolute; inset: 34%; border-radius: 50%; background: #e0a458; } .so-rec::after { content: ''; position: absolute; inset: 48.5%; border-radius: 50%; background: #1b0a10; }
+    .so-on .so-rec { animation-play-state: running; }
+    .so-arm { position: absolute; right: 9%; top: 9%; width: 4px; height: 58%; background: #e8dcc6; transform-origin: 50% 0; transform: rotate(-24deg); transition: transform 1s var(--ease-out); border-radius: 2px; }
+    .so-arm::after { content: ''; position: absolute; left: -6px; bottom: -8px; width: 16px; height: 22px; background: #e0a458; }
+    .so-on .so-arm { transform: rotate(14deg); }
+    @keyframes so-sp { to { transform: rotate(360deg); } }
+    .so-btn { margin-top: 1.4rem; min-height: 48px; padding: .7rem 1.4rem; background: #e0a458; border: 0; color: #2a0a14; font: 700 1rem var(--font-body); cursor: pointer; }
+    @media (max-width: 760px) { .so-deck { right: 50%; transform: translateX(50%); top: 5rem; } }
+    /* lab */
+    .mp-lab { padding: clamp(3.5rem,7vw,6rem) 0; background: var(--mp-paper); color: var(--mp-ink); border-top: 1px solid color-mix(in srgb, var(--mp-ink) 18%, transparent); }
+    .mp-lab h2 { font-weight: 300; font-size: clamp(2.1rem,4.2vw,3.4rem); line-height: 1.06; margin: 0 0 1rem; color: inherit; max-width: 22ch; }
+    .mp-lab h3 { font: 500 .78rem var(--font-mono); letter-spacing: .12em; text-transform: uppercase; margin: clamp(2.2rem,4vw,3.2rem) 0 1rem; color: var(--mp-acc); }
+    .mp-lab p { color: inherit; }
+    .mp-lab-kick { margin: 0 0 .7rem; font: .74rem var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--mp-acc); }
+    .mp-lab-lede { max-width: 40rem; font-size: 1.12rem; line-height: 1.6; margin: 0 0 1.6rem; }
+    .mp-lab button { font: 600 .92rem var(--font-body); cursor: pointer; }
+    .lab-b { min-height: 44px; padding: .4rem 1rem; background: none; border: 1px solid currentColor; color: inherit; transition: background .2s, color .2s; }
+    .lab-b:hover { background: color-mix(in srgb, var(--mp-ink) 10%, transparent); }
+    .lab-b[aria-pressed="true"], .lab-b[aria-selected="true"] { background: var(--mp-ink); border-color: var(--mp-ink); color: var(--mp-paper); }
+    .lab-row { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin: 0 0 1rem; }
+    .lab-row label { font: .72rem var(--font-mono); letter-spacing: .08em; text-transform: uppercase; display: inline-flex; align-items: center; gap: .6rem; }
+    .lab-row input[type=range] { accent-color: var(--mp-acc); min-height: 44px; }
+    .lab-note { font-size: .92rem; opacity: .75; margin: .8rem 0 0; max-width: 40rem; }
+    .sq { overflow-x: auto; padding-bottom: .4rem; }
+    .sq-r { display: grid; grid-template-columns: 9.5rem repeat(var(--n), minmax(34px, 1fr)); gap: 5px; align-items: stretch; margin-bottom: 5px; min-width: calc(9.5rem + var(--n) * 40px); }
+    .sq-l { font: .72rem var(--font-mono); letter-spacing: .06em; text-transform: uppercase; align-self: center; }
+    .sq-c { min-height: 44px; padding: 0; background: color-mix(in srgb, var(--mp-ink) 9%, transparent); border: 0; transition: background .08s, outline-color .08s; font: .66rem var(--font-mono); color: color-mix(in srgb, var(--mp-ink) 55%, transparent); }
+    .sq-c.on { background: var(--mp-acc); color: transparent; }
+    .sq-c.now { outline: 2px solid var(--mp-ink); outline-offset: -2px; }
+    .sq-h { font: .66rem var(--font-mono); text-align: center; opacity: .65; }
+    .tlc-bar { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
+    .tlc-bar .lab-b { font-family: var(--font-mono); font-size: .8rem; }
+    .tlc-p { min-height: 8.5rem; max-width: 44rem; padding: 1.2rem 1.4rem; border-left: 3px solid var(--mp-acc); background: color-mix(in srgb, var(--mp-ink) 6%, transparent); }
+    .tlc-p b { display: block; font: 400 clamp(1.5rem,2.6vw,2rem)/1.15 var(--font-display); margin-bottom: .5rem; }
+    .tlc-p span { font-size: 1.02rem; line-height: 1.6; }
+    .mp-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr)); gap: 1rem; }
+    .mp-cards article { padding: 1.2rem 1.3rem; border: 1px solid color-mix(in srgb, var(--mp-ink) 22%, transparent); }
+    .mp-cards h4 { margin: 0 0 .5rem; font: 400 1.35rem/1.15 var(--font-display); color: inherit; }
+    .mp-cards p { margin: 0; font-size: .97rem; line-height: 1.55; }
+    .mp-src { list-style: none; margin: 0; padding: 0; font-size: .92rem; }
+    .mp-src li { padding: .5rem 0; border-top: 1px solid color-mix(in srgb, var(--mp-ink) 16%, transparent); }
+    .mp-src a { color: inherit; border-bottom: 1px solid var(--mp-acc); }
+    .mp-src-note { font-size: .85rem; opacity: .7; margin-top: .8rem; }
+    .lab-stage { border: 1px solid color-mix(in srgb, var(--mp-ink) 22%, transparent); padding: 1rem; }
+    .lab-stage canvas { display: block; width: 100%; touch-action: none; }
+    .lab-big { font: 300 clamp(2.4rem,6vw,4.4rem)/1 var(--font-display); }
+    .lab-pad { display: grid; grid-template-columns: repeat(4, minmax(60px, 1fr)); gap: 8px; max-width: 28rem; }
+    .lab-pad button { min-height: 72px; background: color-mix(in srgb, var(--mp-ink) 9%, transparent); border: 0; color: inherit; font-size: 1.2rem; }
+    .lab-pad button.hit { background: var(--mp-acc); color: #fff; }
+    /* end lab */
+    </style>
+</head>
+<body class="has-cover so">
+    <div id="site-header"></div>
+    <div class="mp-clip">
+    <header class="mp-hero">
+        <div class="mp-art"><div class="so-deck" aria-hidden="true"><div class="so-rec"></div><div class="so-arm"></div></div></div>
+        <div class="frame">
+            <a href="/hobbies/music.html" class="back-link">Back to Music</a>
+            <p class="mp-kick">Playlist · Spotify · Soul</p>
+            <h1>Soul++</h1>
+            <p class="mp-lede">Soul music.</p>
+            <!-- [YOU] your own caption for this playlist goes here, in place of the line above -->
+            <button class="so-btn" type="button" id="so-b" aria-pressed="false">Drop the needle</button>
+        </div>
+    </header>
+
+    <section class="mp-listen">
+        <div class="frame">
+            <div class="mp-grid">
+                <div>
+                    <h2 class="reveal">Listen</h2>
+                    <p class="reveal">Soul music.</p>
+                    <!-- [YOU] a few more lines about the playlist, if you want them -->
+                    <p class="reveal"><a href="https://open.spotify.com/playlist/0QbFBXnJw8UikLsp2HTQ6m" target="_blank" rel="noopener">Open on Spotify &nearr;</a></p>
+                </div>
+                <iframe class="reveal" title="Soul++, Spotify playlist" src="https://open.spotify.com/embed/playlist/0QbFBXnJw8UikLsp2HTQ6m" loading="lazy" allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="mp-lab">
+        <div class="frame">
+            <p class="mp-lab-kick reveal">How it works</p>
+            <h2 class="reveal">A call, and an answer</h2>
+            <p class="mp-lab-lede reveal">Soul inherits call and response from gospel: a lead voice sings a phrase and the backing voices answer. Play four notes below, then let the page answer.</p>
+            <div id="lab" class="reveal"></div>
+            <p class="lab-note">The answer repeats your rhythm and lands on the home note. It is a toy, not a transcription of any record.</p>
+            <h3>Worth knowing</h3>
+            <div class="mp-cards"><article class="reveal"><h4>Roots</h4><p>Soul emerged in the late 1950s from African-American gospel and rhythm and blues, with jazz as a third element.</p></article><article class="reveal"><h4>Call and response</h4><p>The sound is built on call and response between lead and backing vocalists, an especially tense vocal sound and occasional improvised additions.</p></article><article class="reveal"><h4>Handclaps</h4><p>Catchy rhythms, stressed by handclaps and body movements. Motown&rsquo;s rhythm was emphasised by handclaps or tambourine.</p></article><article class="reveal"><h4>Memphis and Muscle Shoals</h4><p>Memphis, Tennessee is where the Stax sound was nurtured. Artists such as Otis Redding and Wilson Pickett recorded at studios in Muscle Shoals, Alabama.</p></article></div>
+            <h3>Sources</h3>
+            <ul class="mp-src"><li><a href="https://en.wikipedia.org/wiki/Soul_music" target="_blank" rel="noopener">Wikipedia: Soul music</a></li></ul><p class="mp-src-note">Facts checked against these pages on 17 November 2026. Where a page marks a claim as uncertain, the text here says so.</p>
+        </div>
+    </section>
+
+    <section class="mp-end">
+        <div class="frame">
+            <a href="/hobbies/music.html" class="back-link">Back to Music</a>
+            <a href="/hobbies.html" class="back-link">All Hobbies &amp; Blog</a>
+        </div>
+    </section>
+    </div>
+    <div id="site-footer"></div>
+    <script src="/js/components.js?v=3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+    <script src="/js/site.js?v=3" defer></script>
+    <script>
+    (function () {
+
+  var hero = document.querySelector('.mp-hero'), b = document.getElementById('so-b');
+  b.addEventListener('click', function () { var on = hero.classList.toggle('so-on'); b.setAttribute('aria-pressed', on); b.textContent = on ? 'Lift the needle' : 'Drop the needle'; });
+    })();
+    </script>
+    <script>
+    (function () {
+
+  var AC = null;
+  function ac() { if (!AC) AC = new (window.AudioContext || window.webkitAudioContext)(); if (AC.state === 'suspended') AC.resume(); return AC; }
+  function tone(f, d, type, g, t0, f2) { var a = ac(), t = t0 || a.currentTime, o = a.createOscillator(), n = a.createGain(); o.type = type || 'sine'; o.frequency.setValueAtTime(f, t); if (f2) o.frequency.exponentialRampToValueAtTime(f2, t + d); n.gain.setValueAtTime(.0001, t); n.gain.exponentialRampToValueAtTime(g || .2, t + .006); n.gain.exponentialRampToValueAtTime(.0001, t + d); o.connect(n); n.connect(a.destination); o.start(t); o.stop(t + d + .05); }
+  function noise(d, f, q, g, type) { var a = ac(), len = Math.max(1, Math.floor(a.sampleRate * d)), b = a.createBuffer(1, len, a.sampleRate), x = b.getChannelData(0); for (var i = 0; i < len; i++) x[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 2); var s = a.createBufferSource(), fl = a.createBiquadFilter(), n = a.createGain(); s.buffer = b; fl.type = type || 'bandpass'; fl.frequency.value = f; fl.Q.value = q || 1; n.gain.value = g || .3; s.connect(fl); fl.connect(n); n.connect(a.destination); s.start(); }
+  var V = {
+    kick: function () { tone(130, .28, 'sine', .55, 0, 42); },
+    snare: function () { noise(.16, 1800, .6, .5); tone(190, .1, 'triangle', .2); },
+    rim: function () { tone(1700, .05, 'square', .12); noise(.04, 3000, 2, .25); },
+    hat: function () { noise(.05, 8000, .8, .18, 'highpass'); },
+    clapS: function () { noise(.13, 1500, 1.2, .8); },
+    clapW: function () { noise(.09, 1000, 1.2, .28); },
+    low: function () { tone(98, .5, 'triangle', .35); },
+    mid: function () { tone(330, .18, 'square', .1); },
+    tick: function () { tone(880, .05, 'square', .1); }
+  };
+  function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
+  // step sequencer
+  function seq(root, cfg) {
+    var N = cfg.steps, grid = {}, timer = null, k = -1, bpm = cfg.bpm || 80, labels = cfg.labels;
+    var box = el('div', 'sq'), cells = {};
+    root.appendChild(el('div', 'lab-row', null));
+    var pr = root.lastChild, pbtns = [];
+    cfg.presets.forEach(function (p, i) { var b = el('button', 'lab-b', p.name); b.type = 'button'; b.setAttribute('aria-pressed', 'false'); b.addEventListener('click', function () { load(i); }); pr.appendChild(b); pbtns.push(b); });
+    var play = el('button', 'lab-b', 'Play'); play.type = 'button'; play.setAttribute('aria-pressed', 'false'); pr.appendChild(play);
+    var lab = el('label', null, 'Tempo '); var rg = el('input'); rg.type = 'range'; rg.min = cfg.min || 50; rg.max = cfg.max || 140; rg.value = bpm; rg.setAttribute('aria-label', 'Tempo'); var bv = el('span', null, bpm + ' bpm'); lab.appendChild(rg); lab.appendChild(bv); pr.appendChild(lab);
+    var hr = el('div', 'sq-r'); hr.style.setProperty('--n', N); hr.appendChild(el('span')); var hs = [];
+    for (var i = 0; i < N; i++) { var h = el('span', 'sq-h', labels[i]); hr.appendChild(h); hs.push(h); } box.appendChild(hr);
+    cfg.tracks.forEach(function (t) { var r = el('div', 'sq-r'); r.style.setProperty('--n', N); r.appendChild(el('span', 'sq-l', t.label)); grid[t.id] = []; cells[t.id] = [];
+      for (var i = 0; i < N; i++) { (function (i) { var c = el('button', 'sq-c'); c.type = 'button'; c.setAttribute('aria-label', t.label + ' ' + (i + 1)); c.addEventListener('click', function () { grid[t.id][i] = !grid[t.id][i]; c.classList.toggle('on', grid[t.id][i]); pbtns.forEach(function (b) { b.setAttribute('aria-pressed', 'false'); }); if (grid[t.id][i]) V[t.voice](); }); r.appendChild(c); cells[t.id].push(c); grid[t.id][i] = false; })(i); }
+      box.appendChild(r); });
+    root.appendChild(box);
+    function load(i) { var p = cfg.presets[i]; if (p.labels) { labels = p.labels; hs.forEach(function (h, j) { h.textContent = labels[j]; }); } else { labels = cfg.labels; hs.forEach(function (h, j) { h.textContent = labels[j]; }); }
+      cfg.tracks.forEach(function (t) { for (var j = 0; j < N; j++) { var on = !!(p.on[t.id] && p.on[t.id].indexOf(j) > -1); grid[t.id][j] = on; cells[t.id][j].classList.toggle('on', on); } });
+      pbtns.forEach(function (b, j) { b.setAttribute('aria-pressed', j === i); }); }
+    function step() { if (k >= 0) cfg.tracks.forEach(function (t) { cells[t.id][k].classList.remove('now'); }); k = (k + 1) % N;
+      cfg.tracks.forEach(function (t) { cells[t.id][k].classList.add('now'); if (grid[t.id][k]) V[t.voice](); else if (t.soft && t.soft(k, grid)) V[t.softVoice](); }); }
+    function run() { clearInterval(timer); timer = setInterval(step, 60000 / rg.value / (cfg.perBeat || 2)); }
+    play.addEventListener('click', function () { var on = play.getAttribute('aria-pressed') !== 'true'; play.setAttribute('aria-pressed', on); play.textContent = on ? 'Stop' : 'Play'; if (on) { ac(); k = -1; step(); run(); } else { clearInterval(timer); cfg.tracks.forEach(function (t) { cells[t.id].forEach(function (c) { c.classList.remove('now'); }); }); } });
+    rg.addEventListener('input', function () { bv.textContent = rg.value + ' bpm'; if (play.getAttribute('aria-pressed') === 'true') run(); });
+    load(0);
+  }
+  // timeline chips
+  function tlc(root, items) { var bar = el('div', 'tlc-bar'), p = el('div', 'tlc-p'), h = el('b'), s = el('span'); p.appendChild(h); p.appendChild(s); p.setAttribute('aria-live', 'polite'); var bs = [];
+    items.forEach(function (it, i) { var b = el('button', 'lab-b', it.y); b.type = 'button'; b.setAttribute('role', 'tab'); b.setAttribute('aria-selected', 'false'); b.addEventListener('click', function () { sel(i); }); bar.appendChild(b); bs.push(b); });
+    function sel(i) { bs.forEach(function (b, j) { b.setAttribute('aria-selected', j === i); }); h.textContent = items[i].t; s.textContent = items[i].d; }
+    root.appendChild(bar); root.appendChild(p); sel(0); }
+
+  var root = document.getElementById('lab'), pad = el('div', 'lab-pad'), notes = [262, 294, 330, 392], names = ['C', 'D', 'E', 'G'], call = [], bs = [];
+  var row = el('div', 'lab-row'), reset = el('button', 'lab-b', 'Clear'); reset.type = 'button'; row.appendChild(reset);
+  var info = el('p', 'lab-note', 'Tap up to four notes.');
+  notes.forEach(function (f, i) { var b = el('button', null, names[i]); b.type = 'button'; b.addEventListener('click', function () {
+    if (call.length >= 4) return; tone(f, .4, 'triangle', .25); b.classList.add('hit'); setTimeout(function () { b.classList.remove('hit'); }, 160); call.push({ i: i, t: performance.now() });
+    if (call.length === 4) answer(); else info.textContent = (4 - call.length) + ' more.'; }); pad.appendChild(b); bs.push(b); });
+  function answer() { info.textContent = 'Answering...'; var t0 = call[0].t, a = ac().currentTime + .5;
+    call.forEach(function (c, k) { var at = a + Math.min(.6 * k, (c.t - t0) / 1000), last = k === call.length - 1, f = last ? 262 : notes[Math.max(0, c.i - 1)] * 1.0;
+      tone(f, .5, 'sawtooth', .12, at); tone(f * 1.26, .5, 'sawtooth', .08, at); setTimeout(function () { bs[last ? 0 : Math.max(0, c.i - 1)].classList.add('hit'); setTimeout(function () { bs.forEach(function (b) { b.classList.remove('hit'); }); }, 260); }, (at - ac().currentTime) * 1000); });
+    setTimeout(function () { info.textContent = 'Call and response. Tap again.'; call = []; }, 2800); }
+  reset.addEventListener('click', function () { call = []; info.textContent = 'Tap up to four notes.'; });
+  root.appendChild(row); root.appendChild(pad); root.appendChild(info);
+  var t = el('div'); t.style.marginTop = '2rem'; root.appendChild(t);
+  tlc(t, [
+    { y: '1954', t: 'I Got a Woman', d: 'Ray Charles, "I Got a Woman" (1954), is often cited as popularising the genre.' },
+    { y: '1957', t: 'You Send Me', d: 'Sam Cooke, "You Send Me" (1957). The same year Jackie Wilson released "Reet Petite".' },
+    { y: '1961', t: 'The word "soul"', d: 'The phrase "soul music" is first attested in 1961, the year of Ben E. King\'s "Stand by Me" and Solomon Burke\'s "Just Out of Reach".' },
+    { y: '1967', t: 'Respect', d: 'Aretha Franklin\'s 1967 recordings were commercially successful, including "Respect", written and first recorded by Otis Redding, who was a major success at the Monterey International Pop Festival the same year.' },
+    { y: '1971', t: 'What\'s Going On', d: 'Marvin Gaye released "What\'s Going On" in 1971, the year Soul Train debuted on television.' },
+    { y: '1994', t: 'Neo soul', d: 'Neo soul developed around 1994, a term coined by Kedar Massenburg in the early 1990s.' }]);
+    })();
+    </script>
+</body>
+</html>
